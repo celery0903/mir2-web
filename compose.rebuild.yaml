@@ -2,7 +2,6 @@ services:
   db:
     image: mysql:8.4
     env_file: .runtime/openmir2/database.env
-    restart: unless-stopped
     volumes:
       - openmir2-db:/var/lib/mysql
       - ./.runtime/openmir2/sql:/docker-entrypoint-initdb.d:ro
@@ -11,41 +10,36 @@ services:
       interval: 3s
       timeout: 3s
       retries: 60
-    networks: [internal]
   engine:
     build:
       context: .
       dockerfile: server/Engine/Dockerfile
     env_file: .runtime/openmir2/database.env
+    environment:
+      MIR_PROTOCOL_TRACE: '1'
     depends_on:
       db:
         condition: service_healthy
-    init: true
-    restart: unless-stopped
-    stop_grace_period: 45s
     volumes:
       - openmir2-engine:/data
-    networks:
-      - internal
+    init: true
+    stop_grace_period: 45s
+    ports:
+      - '127.0.0.1:17700:7000'
+      - '127.0.0.1:17710:7100'
+      - '127.0.0.1:17720:7200'
+      - '127.0.0.1:18882:8081'
   web:
     build:
       context: .
-    init: true
-    restart: unless-stopped
-    environment:
-      GAME_HOST: engine
-    ports:
-      - "${MIR_BIND:-0.0.0.0}:${MIR_PORT:-18880}:8080"
     depends_on:
       engine:
         condition: service_healthy
-    networks:
-      - internal
-      - public
+    environment:
+      GAME_HOST: engine
+      MIR_PROTOCOL_TRACE: '1'
+    ports:
+      - '0.0.0.0:18883:8080'
 volumes:
   openmir2-db:
   openmir2-engine:
-networks:
-  internal:
-    internal: true
-  public:

@@ -1,0 +1,52 @@
+{
+  "verifiedAt": "2026-10-04T11:30:26.328Z",
+  "url": "http://172.30.0.16:18880",
+  "health": {
+    "status": "ok",
+    "engine": "OpenMir2"
+  },
+  "containers": [
+    {
+      "name": "/mir2-web-db-1",
+      "image": "mysql:8.4",
+      "imageID": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    {
+      "name": "/mir2-web-engine-1",
+      "image": "mir2-web-engine",
+      "imageID": "sha256:7d67e28ce67e13e0c887d18d88ab61644483d53a3662f870552381c419f9f043",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    {
+      "name": "/mir2-web-web-1",
+      "image": "mir2-web-web",
+      "imageID": "sha256:751f541cb4006899ab66a05c980dc94e188b5a595c69205d1faa7a0f52f934ac",
+      "restartCount": 0,
+      "health": "healthy"
+    }
+  ],
+  "engineSupervisorSHA256": "6341c054306bbdaa92de3676252fbae470c651a92bbafb8b03e13567cd33a89e",
+  "browser": {
+    "runner": "Playwright Chromium",
+    "durationSeconds": 48.9,
+    "passed": 1,
+    "failed": 0,
+    "desktopViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobileEmulationViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "canvasColorCountGreaterThan": 35,
+    "desktopDarkPixelFractionBelow": 0.75,
+    "scriptErrors": 0,
+    "assetHttpErrors": 0,
+    "horizontalOverflow": false
+  },
+  "oldCrystalContainersAndVolumesRemoved": true
+}

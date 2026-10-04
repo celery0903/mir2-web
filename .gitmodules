@@ -1,3 +1,3 @@
-[submodule "upstream/crystal"]
-	path = upstream/crystal
-	url = https://github.com/Suprcode/Crystal.git
+[submodule "upstream/openmir2"]
+	path = upstream/openmir2
+	url = https://github.com/mirbeta/OpenMir2.git

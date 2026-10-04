@@ -1,0 +1,83 @@
+{
+  "maps": [
+    {
+      "id": "0",
+      "name": "比奇省",
+      "width": 700,
+      "height": 700,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0102",
+      "name": "肉店",
+      "width": 15,
+      "height": 15,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0103",
+      "name": "铁器店",
+      "width": 27,
+      "height": 29,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0104",
+      "name": "技能书店",
+      "width": 13,
+      "height": 16,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0105",
+      "name": "首饰店",
+      "width": 27,
+      "height": 29,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0106",
+      "name": "衣服店",
+      "width": 27,
+      "height": 29,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0108",
+      "name": "药店",
+      "width": 15,
+      "height": 18,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0109",
+      "name": "炼药房",
+      "width": 10,
+      "height": 15,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0132",
+      "name": "边界书店",
+      "width": 22,
+      "height": 24,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0140",
+      "name": "边界仓库",
+      "width": 17,
+      "height": 20,
+      "collisionMismatches": 0
+    },
+    {
+      "id": "0141",
+      "name": "边界杂货店",
+      "width": 27,
+      "height": 32,
+      "collisionMismatches": 0
+    }
+  ],
+  "connections": 44,
+  "scope": "Bichon and ten interiors; not a complete 1.76 world"
+}

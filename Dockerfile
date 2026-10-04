@@ -1,3 +1,9 @@
+FROM node:22-bookworm-slim AS assets
+WORKDIR /src
+COPY scripts/fetch-classic.mjs scripts/fetch-classic.mjs
+COPY shared/classic-assets.lock.json shared/classic-assets.lock.json
+RUN node scripts/fetch-classic.mjs /assets/classic
+
 FROM node:22-bookworm-slim AS web-build
 WORKDIR /src
 COPY package.json package-lock.json ./
@@ -7,30 +13,18 @@ COPY web web
 COPY shared shared
 RUN npm run build
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS server-build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS gateway-build
 WORKDIR /src
-COPY upstream/crystal/Shared upstream/crystal/Shared
-COPY upstream/crystal/Server upstream/crystal/Server
-COPY server server
-COPY shared shared
-RUN dotnet publish server/MirHost/MirHost.csproj -c Release -o /out/game
-RUN dotnet publish server/WebGateway/WebGateway.csproj -c Release -o /out/web
+COPY upstream/openmir2 upstream/openmir2
+COPY server/WebGateway server/WebGateway
+RUN --mount=type=cache,target=/root/.nuget/packages dotnet publish server/WebGateway/WebGateway.csproj -c Release -o /gateway --nologo -v quiet
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS game
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=server-build /out/game .
-RUN mkdir /data && chown app:app /data
-USER app
-WORKDIR /data
-EXPOSE 7000 7001
-HEALTHCHECK --interval=10s --timeout=5s --start-period=20s CMD ["dotnet", "/app/MirHost.dll", "--health"]
-ENTRYPOINT ["dotnet", "/app/MirHost.dll"]
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS web
-WORKDIR /app
-COPY --from=server-build /out/web .
+COPY --from=gateway-build /gateway .
 COPY --from=web-build /src/web/dist wwwroot
+COPY --from=assets /assets/classic wwwroot/assets/classic
 USER app
 EXPOSE 8080
-HEALTHCHECK --interval=10s --timeout=6s --start-period=20s CMD ["dotnet", "WebGateway.dll", "--health"]
+HEALTHCHECK --interval=5s --timeout=4s --start-period=20s CMD ["dotnet", "WebGateway.dll", "--health"]
 ENTRYPOINT ["dotnet", "WebGateway.dll"]

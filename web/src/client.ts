@@ -1,6 +1,6 @@
 export type Data = Record<string, any>;
 export type Message = { type: string; data: Data };
-export type Entity = Data & { objectID: number; kind: 'player' | 'monster' | 'item' | 'gold'; location: { x: number; y: number } };
+export type Entity = Data & { objectID: number; kind: 'player' | 'monster' | 'npc' | 'item' | 'gold'; location: { x: number; y: number } };
 
 export class MirClient extends EventTarget {
   socket?: WebSocket;
@@ -18,7 +18,12 @@ export class MirClient extends EventTarget {
   pendingLogin?: { accountID: string; password: string };
   selected?: number;
   dead = false;
+  npcID?: number;
+  npcPage: string[] = [];
+  shop?: Data;
+  selling = false;
   lastLocationAt = 0;
+  loggingOut = false;
 
   connect() {
     this.socket?.close();
@@ -29,11 +34,15 @@ export class MirClient extends EventTarget {
     socket.onmessage = event => this.receive(JSON.parse(event.data));
     socket.onclose = () => {
       if (this.socket !== socket) return;
+      const normalLogout = this.loggingOut;
       this.connected = this.ready = false;
       this.pendingLogin = undefined;
-      if (this.phase !== 'login') this.error = '连接已断开，请重新登录';
+      if (this.phase !== 'login' && !this.loggingOut) this.error = '连接已断开，请重新登录';
+      this.loggingOut = false;
       this.phase = 'login';
+      this.closeNPC();
       this.changed();
+      if (normalLogout) setTimeout(() => { if (this.socket === socket) this.connect(); }, 750);
     };
     socket.onerror = () => { this.error = '暂时无法连接服务器'; this.changed(); };
   }
@@ -48,6 +57,7 @@ export class MirClient extends EventTarget {
     else if (this.ready) this.send('Login', this.pendingLogin);
   }
   logout() {
+    this.loggingOut = true;
     this.send('LogOut');
   }
   log(text: string, kind = 'system') {
@@ -67,13 +77,14 @@ export class MirClient extends EventTarget {
       case 'StartGame': if (d.result !== 4) this.error = ['暂不可进入游戏', '请先登录', '角色不存在', '进入游戏失败'][d.result] ?? ''; break;
       case 'UserInformation':
         this.user = d; this.dead = false; this.phase = 'game'; this.objects.clear(); this.selected = undefined; this.error = '';
-        this.log(`${d.name} 来到了青石镇`, 'notice'); break;
+        this.log(`${d.name} 来到了比奇省`, 'notice'); break;
       case 'MapInformation': case 'MapChanged':
-        if (this.user && d.location) { this.user.location = d.location; this.user.direction = d.direction; }
+        this.objects.clear(); this.selected = undefined;
+        if (this.user && d.location) { this.user.location = d.location; this.user.direction = d.direction; this.user.map = d.map; }
         break;
       case 'UserLocation': if (this.user) { this.user.location = d.location; this.user.direction = d.direction; this.lastLocationAt = performance.now(); } break;
-      case 'ObjectPlayer': case 'ObjectMonster': case 'ObjectItem': case 'ObjectGold': {
-        const kinds: Record<string, Entity['kind']> = { ObjectPlayer: 'player', ObjectMonster: 'monster', ObjectItem: 'item', ObjectGold: 'gold' };
+      case 'ObjectPlayer': case 'ObjectMonster': case 'ObjectNPC': case 'ObjectItem': case 'ObjectGold': {
+        const kinds: Record<string, Entity['kind']> = { ObjectPlayer: 'player', ObjectMonster: 'monster', ObjectNPC: 'npc', ObjectItem: 'item', ObjectGold: 'gold' };
         this.objects.set(d.objectID, { ...d, objectID: d.objectID, location: d.location, kind: kinds[message.type] }); break;
       }
       case 'ObjectWalk': case 'ObjectRun': case 'ObjectTurn': case 'ObjectAttack': {
@@ -85,11 +96,24 @@ export class MirClient extends EventTarget {
       case 'ObjectDied': { const entity = this.objects.get(d.objectID); if (entity) { entity.dead = true; entity.location = d.location; } break; }
       case 'ObjectRevived': { const entity = this.objects.get(d.objectID); if (entity) entity.dead = false; break; }
       case 'ObjectHealth': { const entity = this.objects.get(d.objectID); if (entity) entity.percent = d.percent; break; }
-      case 'HealthChanged': if (this.user) { this.user.hp = d.hp; this.user.mp = d.mp; } break;
+      case 'HealthChanged': if (this.user) { this.user.hp = d.hp; if (d.mp >= 0) this.user.mp = d.mp; } break;
+      case 'UserAbility': if (this.user) Object.assign(this.user, d); break;
+      case 'UserGold': if (this.user) this.user.gold = d.gold; break;
+      case 'UserMagics': if (this.user) this.user.magics = d.magics; break;
+      case 'UserExperience': if (this.user) this.user.experience = d.experience; this.log(`经验 +${d.amount}`, 'reward'); break;
       case 'BaseStatsInfo': this.baseStats = d.stats.stats; break;
       case 'GainExperience': if (this.user) this.user.experience += d.amount; this.log(`经验 +${d.amount}`, 'reward'); break;
       case 'LevelChanged': if (this.user) Object.assign(this.user, d); this.log(`升至 ${d.level} 级`, 'reward'); break;
       case 'NewItemInfo': this.items.set(d.info.index, d.info); break;
+      case 'NewMagic': if (this.user && !d.hero) { this.user.magics ??= []; const existing = this.user.magics.find((magic: Data) => magic.spell === d.magic.spell); if (existing) Object.assign(existing, d.magic); else { this.user.magics.push(d.magic); this.log(`学会了 ${d.magic.name}`, 'notice'); } } break;
+      case 'MagicLeveled': if (this.user) { const magic = this.user.magics?.find((magic: Data) => magic.spell === d.spell); if (magic) Object.assign(magic, d); } break;
+      case 'MagicKey': if (this.user) { const magic = this.user.magics?.find((magic: Data) => magic.spell === d.spell); if (magic) magic.key = d.key; } break;
+      case 'NPCResponse': this.npcPage = d.page; this.shop = undefined; this.selling = false; break;
+      case 'NPCGoods': this.shop = d; this.selling = false; break;
+      case 'NPCSell': this.selling = true; this.shop = undefined; break;
+      case 'NPCUpdate': if (d.type === 0) this.closeNPC(); break;
+      case 'TransactionFailed': this.log(d.message); break;
+      case 'SellItem': if (d.success && this.user) { const index = this.user.inventory.findIndex((item: Data | null) => item?.uniqueID === d.uniqueID); if (index >= 0) { this.user.inventory[index].count -= d.count; if (this.user.inventory[index].count <= 0) this.user.inventory[index] = null; } } break;
       case 'UserSlotsRefresh': if (this.user) { if (d.inventory) this.user.inventory = d.inventory; if (d.equipment) this.user.equipment = d.equipment; } break;
       case 'GainedItem':
         if (this.user) {
@@ -136,6 +160,8 @@ export class MirClient extends EventTarget {
   }
   maximum(type: number) {
     if (!this.user) return 1;
+    if (type === 0 && this.user.maxHP) return this.user.maxHP;
+    if (type === 1 && this.user.maxMP) return this.user.maxMP;
     const level = this.user.level, job = this.user.class;
     const stat = this.baseStats.find(s => s.type === type);
     if (!stat) return Math.max(1, type === 0 ? this.user.hp : this.user.mp);
@@ -149,14 +175,28 @@ export class MirClient extends EventTarget {
     return Math.max(1, Math.floor(result));
   }
   usePotion(mana = false) {
-    const item = this.user?.inventory.find((i: Data | null) => i && this.items.get(i.itemIndex)?.name === (mana ? '魔法药' : '金创药'));
+    const item = this.user?.inventory.find((i: Data | null) => i && this.items.get(i.itemIndex)?.name.startsWith(mana ? '魔法药' : '金创药'));
     if (item) this.send('UseItem', { uniqueID: item.uniqueID, grid: 1 });
+  }
+  setMagicKey(spell: number, key: number) {
+    const magic = this.user?.magics?.find((entry: Data) => entry.spell === spell);
+    if (!magic || !this.ready) return;
+    this.send('MagicKey', { spell, key, oldKey: magic.key });
+    for (const entry of this.user!.magics) if (entry.key === key && key) entry.key = 0;
+    magic.key = key;
+    this.changed();
   }
   equip(item: Data) {
     const info = this.items.get(item.itemIndex);
-    if (info?.type === 13) { this.send('UseItem', { uniqueID: item.uniqueID, grid: 1 }); return; }
+    if (info?.type === 13 || info?.type === 14) { this.send('UseItem', { uniqueID: item.uniqueID, grid: 1 }); return; }
     const slots: Record<number, number> = { 1: 0, 2: 1, 4: 2, 5: 4, 6: 5, 7: 7, 8: 9, 9: 10, 10: 11, 11: 12 };
-    if (info && slots[info.type] !== undefined) this.send('EquipItem', { uniqueID: item.uniqueID, grid: 1, to: slots[info.type] });
+    if (info && slots[info.type] !== undefined) {
+      let to = slots[info.type];
+      if ([6, 7].includes(info.type) && this.user?.equipment[to] && !this.user?.equipment[to + 1]) to++;
+      this.send('EquipItem', { uniqueID: item.uniqueID, grid: 1, to });
+    }
   }
+  callNPC(objectID: number, key = '') { this.npcID = objectID; this.send('CallNPC', { objectID, key }); }
+  closeNPC() { this.npcID = undefined; this.npcPage = []; this.shop = undefined; this.selling = false; }
 }
 export const client = new MirClient();

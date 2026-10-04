@@ -1,0 +1,48 @@
+{
+  "fixture": "Existing qa accounts raised offline to level 7 with 20000 gold; no spells or books injected.",
+  "evidence": [
+    {
+      "job": 0,
+      "skill": "基本剑术",
+      "learnedFromPurchasedBook": true,
+      "spell": 3,
+      "mapTransitions": [
+        "0",
+        "0132",
+        "0"
+      ],
+      "shopBoughtAndSold": true,
+      "loot": {
+        "monster": "多钩猫",
+        "drop": "金币",
+        "pickedUp": true
+      }
+    },
+    {
+      "job": 1,
+      "skill": "火球术",
+      "learnedFromPurchasedBook": true,
+      "spell": 1,
+      "effect": 1,
+      "mapTransitions": [
+        "0",
+        "0132",
+        "0"
+      ],
+      "shopBoughtAndSold": true
+    },
+    {
+      "job": 2,
+      "skill": "治愈术",
+      "learnedFromPurchasedBook": true,
+      "spell": 2,
+      "effect": 2,
+      "mapTransitions": [
+        "0",
+        "0132",
+        "0"
+      ],
+      "shopBoughtAndSold": true
+    }
+  ]
+}

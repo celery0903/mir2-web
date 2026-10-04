@@ -5,6 +5,7 @@
 **/obj
 .build
 .state
+.runtime
 test-results
 playwright-report
 web/dist

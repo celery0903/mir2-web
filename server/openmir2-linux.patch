@@ -1,0 +1,825 @@
+diff --git a/src/DBSrv/Services/Impl/UserService.cs b/src/DBSrv/Services/Impl/UserService.cs
+index 1b8d6e3e..46d1102f 100644
+--- a/src/DBSrv/Services/Impl/UserService.cs
++++ b/src/DBSrv/Services/Impl/UserService.cs
+@@ -59,7 +59,7 @@ namespace DBSrv.Services.Impl
+                 SelGateInfo gateInfo = _gateClients[i];
+                 if (gateInfo != null)
+                 {
+-                    for (int ii = 0; ii < gateInfo.UserList.Count; ii++)
++                    for (int ii = 0; gateInfo.UserList != null && ii < gateInfo.UserList.Count; ii++)
+                     {
+                         gateInfo.UserList[ii] = null;
+                     }
+@@ -811,4 +811,4 @@ namespace DBSrv.Services.Impl
+         public ServerDataMessage Packet;
+         public int ConnectionId;
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/GameSrv/AppService.cs b/src/GameSrv/AppService.cs
+index 2c615e00..a6ea823f 100644
+--- a/src/GameSrv/AppService.cs
++++ b/src/GameSrv/AppService.cs
+@@ -93,8 +93,9 @@ namespace GameSrv
+             }
+             catch (Exception ex)
+             {
+-                _exitCode = 1;
+-                LogService.Error("初始化游戏基础数据失败...", ex);
++                _exitCode = 1;
++                LogService.Error("初始化游戏基础数据失败...", ex);
++                throw;
+             }
+             return Task.CompletedTask;
+         }
+@@ -121,7 +122,8 @@ namespace GameSrv
+             LogService.Info("初始化游戏世界服务线程完成...");
+             LogService.Info("欢迎使用翎风系列游戏软件...");
+             LogService.Info("网站:http://www.gameofmir.com");
+-            LogService.Info("论坛:http://bbs.gameofmir.com");
++            LogService.Info("论坛:http://bbs.gameofmir.com");
++            _ = Task.Run(ProcessLoopAsync);
+         }
+ 
+         public Task StopAsync(CancellationToken stoppingToken)
+@@ -140,8 +142,14 @@ namespace GameSrv
+                 {
+                     WorldServer.SaveHumanRcd(play);
+                 }
+-                LogService.Debug("数据保存完毕.");
+-            }
++                LogService.Debug("数据保存完毕.");
++            }
++            long deadline = Environment.TickCount64 + 10000;
++            while (!M2Share.FrontEngine.IsIdle() && Environment.TickCount64 < deadline)
++                Thread.Sleep(50);
++            if (!M2Share.FrontEngine.IsIdle())
++                throw new TimeoutException("Player save acknowledgement timed out.");
++            LogService.Info("OPENMIR2_SAVE_COMPLETE");
+         }
+ 
+         private const string CloseTransferMessgae = "服务器关闭倒计时[{0}],无需下线或退出游戏,稍后自动回到安全区.";
+@@ -160,6 +168,6 @@
+             }
+             // 通知游戏网关暂停接收新的连接,发送消息后停止5秒,防止玩家在倒计时结束前进入游戏
+-            await Task.Factory.StartNew(async () =>
++            await Task.Run(async () =>
+             {
+                 int shutdownSeconds = SystemShare.Config.ShutdownSeconds;
+                 LogService.Debug("网关停止新玩家连接");
+@@ -203,6 +211,6 @@
+         }
+ 
+-        private async void OnShutdown()
++        private async Task OnShutdown()
+         {
+             LogService.Debug("Application is stopping");
+             M2Share.StartReady = false;
+@@ -237,7 +245,11 @@ namespace GameSrv
+         {
+             while (true)
+             {
+-                string cmdline = Console.ReadLine();
++                string cmdline = Console.ReadLine();
++                if (cmdline == null)
++                {
++                    return;
++                }
+                 if (string.IsNullOrEmpty(cmdline))
+                 {
+                     continue;
+@@ -349,8 +361,7 @@
+ 
+         public Task StoppingAsync(CancellationToken cancellationToken)
+         {
+-            OnShutdown();
+-            return Task.CompletedTask;
++            return OnShutdown();
+         }
+ 
+         public Task StoppedAsync(CancellationToken cancellationToken)
+@@ -358,4 +370,4 @@ namespace GameSrv
+             return Task.CompletedTask;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/GameSrv/Services/PlayerDataService.cs b/src/GameSrv/Services/PlayerDataService.cs
+--- a/src/GameSrv/Services/PlayerDataService.cs
++++ b/src/GameSrv/Services/PlayerDataService.cs
+@@ -123,7 +123,7 @@
+                 {
+                     if (nIdent == Messages.DBR_SAVEHUMANRCD && nRecog == 1)
+                     {
+-                        // M2Share.FrontEngine.RemoveSaveList(queryId);
++                        M2Share.FrontEngine.RemoveSaveList(queryId);
+                     }
+                     SaveProcessList.TryDequeue(out _);
+                 }
+@@ -154,7 +154,6 @@
+                         responsePacket.ChrName = EDCode.DeCodeString(responsePacket.ChrName);
+                         LoadPlayDataMap.TryAdd(queryData.QueryId, responsePacket);
+                     }
+-                    QueryProcessList.TryDequeue(out _);
+                 }
+                 else
+                 {
+diff --git a/src/GameSrv/Word/Threads/CharacterDataProcessor.cs b/src/GameSrv/Word/Threads/CharacterDataProcessor.cs
+--- a/src/GameSrv/Word/Threads/CharacterDataProcessor.cs
++++ b/src/GameSrv/Word/Threads/CharacterDataProcessor.cs
+@@ -135,7 +135,7 @@
+             if (M2Share.FrontEngine.InSaveRcdList(loadUser.ChrName))
+             {
+                 reTry = true;// 反回TRUE,则重新加入队列
+-                return false;
++                return true;
+             }
+             /*if (SystemShare.WorldEngine.GetPlayObjectEx(loadUser.ChrName) != null)
+             {
+diff --git a/src/GameSrv/GameApp.cs b/src/GameSrv/GameApp.cs
+index 8cb09b7c..b7591a9f 100644
+--- a/src/GameSrv/GameApp.cs
++++ b/src/GameSrv/GameApp.cs
+@@ -111,8 +111,8 @@ namespace GameSrv
+             int nCode = GameShare.DataSource.LoadItemsDB();
+             if (nCode < 0)
+             {
+-                LogService.Info($"物品数据库加载失败!!! Code: {nCode}");
+-                return;
++                LogService.Info($"物品数据库加载失败!!! Code: {nCode}");
++                throw new InvalidOperationException("Item database initialization failed.");
+             }
+             LogService.Info($"物品数据库加载成功...[{SystemShare.ItemSystem.ItemCount}]");
+             nCode = Map.LoadMinMap();
+@@ -124,8 +124,8 @@ namespace GameSrv
+             nCode = Map.LoadMapInfo();
+             if (nCode < 0)
+             {
+-                LogService.Info($"地图数据加载失败!!! Code: {nCode}");
+-                return;
++                LogService.Info($"地图数据加载失败!!! Code: {nCode}");
++                throw new InvalidOperationException("Map initialization failed.");
+             }
+             LogService.Info("正在加载怪物数据库...");
+             nCode = GameShare.DataSource.LoadMonsterDB();
+@@ -339,4 +339,4 @@ namespace GameSrv
+             return result;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/GameSrv/Maps/Maps.cs b/src/GameSrv/Maps/Maps.cs
+index b250ac05..8cf27ec3 100644
+--- a/src/GameSrv/Maps/Maps.cs
++++ b/src/GameSrv/Maps/Maps.cs
+@@ -343,12 +343,16 @@
+                         result = 1;
+                     }
+                     
+-                    Console.Write("\r正在读取地图数据...[{0}/{1}]", i, loadList.Count);
++                    if (!Console.IsOutputRedirected)
++                        Console.Write("\r正在读取地图数据...[{0}/{1}]", i, loadList.Count);
++                }
++                if (!Console.IsOutputRedirected)
++                {
++                    Console.Write("\n");
++                    Console.SetCursorPosition(0, Math.Max(0, Console.CursorTop - 1));
++                    Console.Write(new string(' ', Console.WindowWidth));
++                    Console.SetCursorPosition(0, Math.Max(0, Console.CursorTop - 1));
+                 }
+-                Console.Write("\n"); // 完成后换行
+-                Console.SetCursorPosition(0, Console.CursorTop - 1); // 将光标移动到上一行
+-                Console.Write(new string(' ', Console.WindowWidth)); // 使用空格覆盖这一行
+-                Console.SetCursorPosition(0, Console.CursorTop - 1); // 再次将光标移动到上一行
+                 
+                 // 加载地图连接点
+                 for (int i = 0; i < loadList.Count; i++)
+@@ -478,4 +482,4 @@
+             }
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/M2Server/Maps/Envirnoment.cs b/src/M2Server/Maps/Envirnoment.cs
+index 9915dc28..9657ef89 100644
+--- a/src/M2Server/Maps/Envirnoment.cs
++++ b/src/M2Server/Maps/Envirnoment.cs
+@@ -121,16 +121,20 @@
+-                                    if (string.Compare(mapItem.Name, Grobal2.StringGoldName, StringComparison.OrdinalIgnoreCase) == 0)
++                                    if (string.Compare(cellItem.Name, Grobal2.StringGoldName, StringComparison.OrdinalIgnoreCase) == 0 && cellItem.OfBaseObject == mapItem.OfBaseObject)
+                                     {
+-                                        int nGoldCount = mapItem.Count + mapItem.Count;
++                                        int nGoldCount = cellItem.Count + mapItem.Count;
+                                         if (nGoldCount <= 2000)
+                                         {
+                                             mapItem.Count = nGoldCount;
+                                             mapItem.Looks = M2Share.GetGoldShape(nGoldCount);
+                                             mapItem.AniCount = 0;
+                                             mapItem.Reserved = 0;
++                                            M2Share.CellObjectMgr.Remove(cellObject.CellObjId);
++                                            cellObject.CellObjId = mapItem.ItemId;
++                                            M2Share.CellObjectMgr.Add(mapItem.ItemId, mapItem);
+                                             result = true;
+                                             cellInfo.Update(i, ref cellObject);
+                                             addSuccess = true;
++                                            break;
+                                         }
+                                     }
+                                 }
+                             }
+@@ -169,5 +169,7 @@
+         public void AddMapRoute(int nX, int nY, MapRouteItem mapRoute)
+         {
++            if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
++                Console.WriteLine($"MAP_ROUTE map={MapName} x={nX} y={nY} dest={mapRoute.Envir?.MapName} valid={CellValid(nX, nY)}");
+             if (!CellMatch(nX, nY))
+             {
+                 return;
+@@ -922,7 +922,6 @@ namespace M2Server.Maps
+                     Height = binReader.ReadInt16();
+                     Initialize(Width, Height);
+                     fileStream.Position = 52;
+-                    bool isInitialize = true;
+ 
+                     MapUnitInfo mapUnitInfo = new MapUnitInfo();
+                     for (int nW = 0; nW < Width; nW++)
+@@ -930,6 +929,7 @@ namespace M2Server.Maps
+                         n24 = nW * Height;
+                         for (int nH = 0; nH < Height; nH++)
+                         {
++                            bool isInitialize = true;
+                             mapUnitInfo.wBkImg = binReader.ReadUInt16();
+                             mapUnitInfo.wMidImg = binReader.ReadUInt16();
+                             mapUnitInfo.wFrImg = binReader.ReadUInt16();
+@@ -1501,4 +1501,4 @@ namespace M2Server.Maps
+             public byte btLight;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/LoginGate/Services/ServerService.cs b/src/LoginGate/Services/ServerService.cs
+--- a/src/LoginGate/Services/ServerService.cs
++++ b/src/LoginGate/Services/ServerService.cs
+@@ -24,6 +24,7 @@
+     public void Start(GameGateInfo gateInfo)
+     {
+-        var config = new TouchSocketConfig().SetListenIPHosts(new IPHost(IPAddress.Parse(gateInfo.GateAddress), gateInfo.GatePort));
++        var config = new TouchSocketConfig().SetListenIPHosts(new IPHost(IPAddress.Parse(gateInfo.GateAddress), gateInfo.GatePort))
++            .SetTcpDataHandlingAdapter(() => new TerminatorPackageAdapter("!") { ReserveTerminatorCode = true, MaxPackageSize = 8192 });
+         _serverSocket.Setup(config);
+         _serverSocket.Start();
+         LogService.Info($"登录网关[{gateInfo.GateAddress}:{gateInfo.GatePort}]已启动...");
+@@ -42,11 +43,13 @@
+     public void SendMessage(string connectionId, byte[] data)
+     {
+-        _serverSocket.Send(connectionId, data);
++        if (_serverSocket.TryGetSocketClient(connectionId, out var client))
++            client.DefaultSend(data, 0, data.Length);
+     }
+ 
+     public void SendMessage(string connectionId, byte[] data, int len)
+     {
+-        _serverSocket.Send(connectionId, data, 0, len);
++        if (_serverSocket.TryGetSocketClient(connectionId, out var client))
++            client.DefaultSend(data, 0, len);
+     }
+ 
+     public void CloseClient(string connectionId)
+diff --git a/src/LoginSrv/Services/ClientSession.cs b/src/LoginSrv/Services/ClientSession.cs
+--- a/src/LoginSrv/Services/ClientSession.cs
++++ b/src/LoginSrv/Services/ClientSession.cs
+@@ -52,17 +52,17 @@
+                         string sMsg = string.Empty;
+                         if (!message.Msg.EndsWith("!"))
+                         {
+-                            return;
++                            continue;
+                         }
+                         HUtil32.ArrestStringEx(message.Msg, "#", "!", ref sMsg);
+                         if (string.IsNullOrEmpty(sMsg))
+                         {
+-                            return;
++                            continue;
+                         }
+ 
+                         if (sMsg.Length < Messages.DefBlockSize)
+                         {
+-                            return;
++                            continue;
+                         }
+ 
+                         sMsg = sMsg.AsSpan()[1..sMsg.Length].ToString();
+diff --git a/src/SelGate/Services/ServerService.cs b/src/SelGate/Services/ServerService.cs
+--- a/src/SelGate/Services/ServerService.cs
++++ b/src/SelGate/Services/ServerService.cs
+@@ -41,6 +41,7 @@
+         public void Start()
+         {
+-            _serverSocket.Setup(new TouchSocketConfig().SetListenIPHosts(new IPHost(IPAddress.Any, GateShare.GatePort)));
++            _serverSocket.Setup(new TouchSocketConfig().SetListenIPHosts(new IPHost(IPAddress.Any, GateShare.GatePort))
++                .SetTcpDataHandlingAdapter(() => new TerminatorPackageAdapter("!") { ReserveTerminatorCode = true, MaxPackageSize = 8192 }));
+             _serverSocket.Start();
+             LogService.Info($"登陆网关[127.0.0.1:{GateShare.GatePort}]已启动.");
+         }
+@@ -74,11 +75,13 @@
+         public void SendMessage(string connectionId, byte[] data)
+         {
+-            _serverSocket.Send(connectionId, data);
++            if (_serverSocket.TryGetSocketClient(connectionId, out var client))
++                client.DefaultSend(data, 0, data.Length);
+         }
+ 
+         public void SendMessage(string connectionId, byte[] data, int len)
+         {
+-            _serverSocket.Send(connectionId, data, 0, len);
++            if (_serverSocket.TryGetSocketClient(connectionId, out var client))
++                client.DefaultSend(data, 0, len);
+         }
+ 
+         public void CloseClient(string connectionId)
+diff --git a/src/M2Server/Player/PlayObject.cs b/src/M2Server/Player/PlayObject.cs
+--- a/src/M2Server/Player/PlayObject.cs
++++ b/src/M2Server/Player/PlayObject.cs
+@@ -1870,5 +1870,7 @@
+                                 if (mapRoute.Envir != null)
+                                 {
++                                    if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
++                                        Console.WriteLine($"MAP_ENTER map={MapName} x={CurrX} y={CurrY} dest={mapRoute.Envir.MapName} door={Envir.ArroundDoorOpened(CurrX, CurrY)}");
+                                     if (Envir.ArroundDoorOpened(CurrX, CurrY))
+                                     {
+                                         if ((!mapRoute.Envir.Flag.boNEEDHOLE) || (SystemShare.EventMgr.GetEvent(Envir, CurrX, CurrY, Grobal2.ET_DIGOUTZOMBI) != null))
+diff --git a/src/M2Server/Player/PlayObject.Attack.cs b/src/M2Server/Player/PlayObject.Attack.cs
+--- a/src/M2Server/Player/PlayObject.Attack.cs
++++ b/src/M2Server/Player/PlayObject.Attack.cs
+@@ -1339,5 +1339,10 @@
+             MoveTick = HUtil32.GetTickCount();
+             SpaceMoved = false;
++            // Open doors in the same action; the action queue precedes ordinary messages.
++            if (Math.Abs(nX - CurrX) <= 2 && Math.Abs(nY - CurrY) <= 2)
++            {
++                ClientOpenDoor(nX, nY);
++            }
+             nDir = M2Share.GetNextDirection(CurrX, CurrY, nX, nY);
+             if (RunTo(nDir, false, nX, nY))
+             {
+@@ -1415,5 +1420,10 @@
+             MoveTick = HUtil32.GetTickCount();
+             SpaceMoved = false;
++            // Keep permission checks and the door state change on the native game thread.
++            if (Math.Abs(nX - CurrX) <= 1 && Math.Abs(nY - CurrY) <= 1)
++            {
++                ClientOpenDoor(nX, nY);
++            }
+             byte nextDir = M2Share.GetNextDirection(CurrX, CurrY, nX, nY);
+             if (WalkTo(nextDir, false))
+             {
+diff --git a/src/Modules/SystemModule/Data/MapItem.cs b/src/Modules/SystemModule/Data/MapItem.cs
+--- a/src/Modules/SystemModule/Data/MapItem.cs
++++ b/src/Modules/SystemModule/Data/MapItem.cs
+@@ -40,5 +40,5 @@
+         public MapItem()
+         {
+-            // this.ItemId = M2Share.ActorMgr.GetNextIdentity();
++            ItemId = SystemShare.ActorMgr.GetNextIdentity();
+         }
+     }
+diff --git a/src/Modules/SystemModule/Data/MapDoor.cs b/src/Modules/SystemModule/Data/MapDoor.cs
+--- a/src/Modules/SystemModule/Data/MapDoor.cs
++++ b/src/Modules/SystemModule/Data/MapDoor.cs
+@@ -13,5 +13,5 @@
+         public MapDoor()
+         {
+-            // DoorId = M2Share.ActorMgr.GetNextIdentity();
++            DoorId = SystemShare.ActorMgr.GetNextIdentity();
+         }
+     }
+diff --git a/src/GameSrv/DB/MySqlDB.cs b/src/GameSrv/DB/MySqlDB.cs
+--- a/src/GameSrv/DB/MySqlDB.cs
++++ b/src/GameSrv/DB/MySqlDB.cs
+@@ -225,3 +225,5 @@
+                     monster.ItemList = null;
+                     GameShare.LocalDb.LoadMonitems(monster.Name, ref monster.ItemList);
++                    if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1" && (monster.Name == "稻草人" || monster.Name == "多钩猫" || monster.Name == "钉耙猫"))
++                        Console.WriteLine($"MON_LOOT_LOAD name={monster.Name} entries={monster.ItemList?.Count}");
+                     //if (SystemShare.WorldEngine.MonsterList.ContainsKey(monster.Name))
+diff --git a/src/M2Server/Actor/BaseObject.cs b/src/M2Server/Actor/BaseObject.cs
+--- a/src/M2Server/Actor/BaseObject.cs
++++ b/src/M2Server/Actor/BaseObject.cs
+@@ -2450,4 +2450,6 @@
+         private void DieDropItems(int actorId)
+         {
++            if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
++                Console.WriteLine($"MON_LOOT_DEATH name={ChrName} gold={Gold} items={ItemList?.Count} animal={Animal} noitem={NoItem} owner={actorId}");
+             if (!Envir.Flag.FightZone && !Envir.Flag.Fight3Zone && !this.Animal)
+             {
+diff --git a/src/GameSrv/Word/WorldServer.cs b/src/GameSrv/Word/WorldServer.cs
+--- a/src/GameSrv/Word/WorldServer.cs
++++ b/src/GameSrv/Word/WorldServer.cs
+@@ -233,8 +233,6 @@
+                 SwitchDataInfo switchDataInfo;
+                 if (!SystemShare.Config.VentureServer)
+                 {
+-                    userOpenInfo.ChrName = string.Empty;
+-                    userOpenInfo.LoadUser.SessionID = 0;
+                     switchDataInfo = GetSwitchData(userOpenInfo.ChrName, userOpenInfo.LoadUser.SessionID);
+                 }
+                 else
+@@ -712,6 +710,8 @@
+                             playObject.DealCancelA();
+                             SaveHumanRcd(playObject);
+                             M2Share.NetChannel.CloseUser(playObject.GateIdx, playObject.SocketId);
++                            if (!playObject.SwitchData && (!playObject.BoReconnection || playObject.BoEmergencyClose))
++                                M2Share.Authentication.SendHumanLogOutMsg(playObject.UserAccount, playObject.SessionId);
+                             SendServerGroupMsg(Messages.ISM_USERLOGOUT, M2Share.ServerIndex, playObject.ChrName);
+                             continue;
+                         }
+diff --git a/src/M2Server/Player/PlayObject.Message.cs b/src/M2Server/Player/PlayObject.Message.cs
+--- a/src/M2Server/Player/PlayObject.Message.cs
++++ b/src/M2Server/Player/PlayObject.Message.cs
+@@ -782,7 +782,7 @@
+                     ClientQueryUserName(processMsg.nParam1, processMsg.nParam2, processMsg.nParam3);
+                     break;
+                 case Messages.CM_QUERYBAGITEMS: //僵尸攻击：不断刷新包裹发送大量数据，导致网络阻塞
+-                    if ((HUtil32.GetTickCount() - QueryBagItemsTick) > 30 * 1000)
++                    if (QueryBagItemsTick == 0 || (HUtil32.GetTickCount() - QueryBagItemsTick) > 30 * 1000)
+                     {
+                         QueryBagItemsTick = HUtil32.GetTickCount();
+                         ClientQueryBagItems();
+diff --git a/src/M2Server/Player/PlayObject.Operate.cs b/src/M2Server/Player/PlayObject.Operate.cs
+--- a/src/M2Server/Player/PlayObject.Operate.cs
++++ b/src/M2Server/Player/PlayObject.Operate.cs
+@@ -704,5 +704,7 @@
+             dwDelayTime = 0;
+             IActor baseObject = SystemShare.ActorMgr.Get(charId);
++            if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
++                LogService.Info($"HARVEST target={charId} requested={nX},{nY} actual={baseObject?.CurrX},{baseObject?.CurrY} death={baseObject?.Death} animal={baseObject?.Animal} skeleton={baseObject?.Skeleton} leather={baseObject?.BodyLeathery} valid={(baseObject != null && Envir.IsValidObject(nX, nY, 2, baseObject))}");
+             if (!SystemShare.Config.CloseSpeedHackCheck)
+             {
+                 int dwCheckTime = HUtil32.GetTickCount() - TurnTick;
+@@ -724,8 +726,8 @@
+-                        baseObject.BodyLeathery -= n10;
+-                        ((AnimalObject)baseObject).MeatQuality -= meatQuality;//随机降低肉的品质
++                        baseObject.BodyLeathery = (byte)Math.Max(0, baseObject.BodyLeathery - n10);
++                        ((AnimalObject)baseObject).MeatQuality = (ushort)Math.Max(0, ((AnimalObject)baseObject).MeatQuality - meatQuality);
+                         if (((AnimalObject)baseObject).MeatQuality <= 0)
+                         {
+                             ((AnimalObject)baseObject).MeatQuality = 0;
+                         }
+                         if (baseObject.BodyLeathery <= 0)
+                         {
+diff --git a/src/GameGate/Services/ServerService.cs b/src/GameGate/Services/ServerService.cs
+--- a/src/GameGate/Services/ServerService.cs
++++ b/src/GameGate/Services/ServerService.cs
+@@ -38,7 +38,8 @@
+         public void Initialize()
+         {
+             _serverSocket.Setup(new TouchSocketConfig()
+-                .SetListenIPHosts(new IPHost(IPAddress.Parse(_gateInfo.ServerAdress), _gateInfo.GatePort))
++                .SetListenIPHosts(new IPHost(IPAddress.Parse(_gateInfo.GateAddress), _gateInfo.GatePort))
++                .SetTcpDataHandlingAdapter(() => new TerminatorPackageAdapter("!") { ReserveTerminatorCode = true, MaxPackageSize = 8192 })
+                 .ConfigureContainer(a =>
+                 {
+                     a.AddConsoleLogger();
+@@ -102,11 +103,11 @@
+         public Task Send(SessionMessage sessionMessage)
+         {
+             _networkMonitor.Send(sessionMessage.BuffLen);
+-            return _serverSocket.SendAsync(sessionMessage.ConnectionId, sessionMessage.Buffer, 0, sessionMessage.BuffLen);
++            return _serverSocket.TryGetSocketClient(sessionMessage.ConnectionId, out var client) ? client.DefaultSendAsync(sessionMessage.Buffer, 0, sessionMessage.BuffLen) : Task.CompletedTask;
+         }
+ 
+         public Task Send(string connectionId, byte[] data, int len)
+         {
+             _networkMonitor.Send(data.Length);
+-            return _serverSocket.SendAsync(connectionId, data, 0, len);
++            return _serverSocket.TryGetSocketClient(connectionId, out var client) ? client.DefaultSendAsync(data, 0, len) : Task.CompletedTask;
+         }
+@@ -151,7 +152,7 @@
+-                ushort sessionId = clientThread.GetSessionId(clientId);
++                ushort sessionId = userSession.SessionId;
+                 clientThread.UserEnter(sessionId, userSession.SckHandle, sRemoteAddress); //通知GameSvr有新玩家进入游戏
+                 SessionContainer.AddSession(GateInfo.ServiceId, sessionId, new ClientSession(GateInfo.ServiceId, userSession, clientThread, _messageSendQueue));
+                 sessionMap.TryAdd(clientId, sessionId);
+                 LogService.Info("开始连接: " + sRemoteAddress);
+                 LogService.Info($"ThreadId:{GateInfo.ServiceId} IP:[{sRemoteAddress}] SessionId:[{userSession.SessionId}] GameSrv:{clientThread.EndPoint}/{clientThread.ThreadId}");
+             }
+@@ -168,7 +168,7 @@
+         private Task ServerSocketClientDisconnect(ISocketClient client, DisconnectEventArgs e)
+         {
+-            if (!sessionMap.TryGetValue(client.Id, out int sessionId))
++            if (!sessionMap.TryRemove(client.Id, out int sessionId))
+             {
+                 return Task.CompletedTask;
+             }
+             string sRemoteAddress = client.IP;
+@@ -182,6 +182,7 @@
+             ClientThread clientThread = clientSession.ServerThread;
+             if (clientThread != null)
+             {
++                clientThread.UserLeave(clientSession.Session.SckHandle);
+                 for (int i = 0; i < clientThread.SessionArray.Length; i++)
+                 {
+                     if (clientThread.SessionArray[i] == null)
+@@ -205,7 +206,6 @@
+                 LogService.Info("断开链接: " + sRemoteAddress);
+             }
+-            _closeSession.Enqueue(client.MainSocket.Handle.ToInt32()); //等待通知GameSvr断开用户会话,否则会出现退出游戏后再次登陆游戏提示账号已经登陆
+             SessionContainer.CloseSession(GateInfo.ServiceId, sessionId);
+             LogService.Debug($"用户断开链接 Ip:[{sRemoteAddress}] ThreadId:{_gateInfo.ServiceId} SessionId:{sessionId}");
+             return Task.CompletedTask;
+         }
+diff --git a/src/LoginSrv/Services/SessionServer.cs b/src/LoginSrv/Services/SessionServer.cs
+--- a/src/LoginSrv/Services/SessionServer.cs
++++ b/src/LoginSrv/Services/SessionServer.cs
+@@ -12,6 +12,7 @@
+         private readonly IList<ServerSessionInfo> _serverList = null;
+         private readonly TcpService _serverSocket;
+         private readonly AccountStorage _accountStorage;
++        private readonly SessionManager _sessionManager;
+         private readonly Config _config;
+         private static readonly LimitServerUserInfo[] UserLimit = new LimitServerUserInfo[100];
+ 
+@@ -18,8 +19,9 @@
+-        public SessionServer(ConfigManager configManager, AccountStorage accountStorage)
++        public SessionServer(ConfigManager configManager, AccountStorage accountStorage, SessionManager sessionManager)
+         {
+             _config = configManager.Config;
+             _accountStorage = accountStorage;
++            _sessionManager = sessionManager;
+             _serverList = new List<ServerSessionInfo>();
+             _serverSocket = new TcpService();
+             _serverSocket.Connected += Connecting;
+             _serverSocket.Disconnected += Disconnected;
+@@ -313,6 +315,8 @@
+         private void CloseUser(ServerSessionInfo serverInfo, string account, int sessionId)
+         {
++            _sessionManager.Delete(account, sessionId);
++            SendServerMsg(Messages.SS_CLOSESESSION, serverInfo.ServerName, account + "/" + sessionId);
+             for (int i = serverInfo.SessionList.Count - 1; i >= 0; i--)
+             {
+                 SessionConnInfo connInfo = serverInfo.SessionList[i];
+                 if ((connInfo.Account == account) || (connInfo.SessionID == sessionId))
+diff --git a/src/Modules/SystemModule/SystemShare.cs b/src/Modules/SystemModule/SystemShare.cs
+--- a/src/Modules/SystemModule/SystemShare.cs
++++ b/src/Modules/SystemModule/SystemShare.cs
+@@ -449,11 +449,30 @@
++        private static readonly object ItemSequenceLock = new object();
++        private static int itemSequenceNext, itemSequenceEnd;
++
+         public static int GetItemNumber()
+         {
+-            Config.ItemNumber++;
+-            if (Config.ItemNumber > int.MaxValue / 2 - 1)
++            lock (ItemSequenceLock)
+             {
+-                Config.ItemNumber = 1;
++                if (itemSequenceNext == itemSequenceEnd)
++                {
++                    const string path = ".item-sequence";
++                    if (itemSequenceEnd == 0)
++                        itemSequenceEnd = File.Exists(path) ? int.Parse(File.ReadAllText(path)) : 1000000;
++                    itemSequenceNext = itemSequenceEnd;
++                    if (itemSequenceEnd > int.MaxValue - 1024)
++                        throw new InvalidOperationException("Item sequence exhausted.");
++                    itemSequenceEnd += 1024;
++                    // Persist the reserved range before issuing any ID, including across crashes.
++                    using (var file = new FileStream(path + ".tmp", FileMode.Create, FileAccess.Write, FileShare.None))
++                    {
++                        byte[] bytes = System.Text.Encoding.ASCII.GetBytes(itemSequenceEnd.ToString());
++                        file.Write(bytes);
++                        file.Flush(true);
++                    }
++                    File.Move(path + ".tmp", path, true);
++                }
++                return ++itemSequenceNext;
+             }
+-            return Config.ItemNumber + HUtil32.GetTickCount();
+         }
+ 
+         public static int GetItemNumberEx()
+@@ -472,7 +491,7 @@
+             {
+                 Config.ItemNumberEx = int.MaxValue / 2;
+             }
+-            return Config.ItemNumberEx + HUtil32.GetTickCount();
++            return GetItemNumber();
+         }
+ 
+         public static string FilterShowName(string sName)
+diff --git a/src/M2Server/M2Share.cs b/src/M2Server/M2Share.cs
+--- a/src/M2Server/M2Share.cs
++++ b/src/M2Server/M2Share.cs
+@@ -551,7 +551,7 @@
+             {
+                 SystemShare.Config.ItemNumber = 1;
+             }
+-            return SystemShare.Config.ItemNumber + HUtil32.GetTickCount();
++            return SystemShare.GetItemNumber();
+         }
+ 
+         public static int GetItemNumberEx()
+@@ -565,7 +565,7 @@
+             {
+                 SystemShare.Config.ItemNumberEx = int.MaxValue / 2;
+             }
+-            return SystemShare.Config.ItemNumberEx + HUtil32.GetTickCount();
++            return SystemShare.GetItemNumber();
+         }
+ 
+         public static string FilterShowName(string sName)
+diff --git a/src/OpenMir2/Base/SystemEnvironment.cs b/src/OpenMir2/Base/SystemEnvironment.cs
+--- a/src/OpenMir2/Base/SystemEnvironment.cs
++++ b/src/OpenMir2/Base/SystemEnvironment.cs
+@@ -211,7 +211,7 @@
+         /// <summary>
+         /// 虚拟内存使用率
+         /// </summary>
+-        public static ulong VirtualMemoryLoad => (memoryInfo.ullTotalVirtual - memoryInfo.ullAvailVirtual) * 100 / memoryInfo.ullTotalVirtual;
++        public static ulong VirtualMemoryLoad => memoryInfo.ullTotalVirtual == 0 ? 0 : (memoryInfo.ullTotalVirtual - memoryInfo.ullAvailVirtual) * 100 / memoryInfo.ullTotalVirtual;
+ 
+         public static bool IsWindows()
+         {
+diff --git a/src/M2Server/Castle/CastleConf.cs b/src/M2Server/Castle/CastleConf.cs
+--- a/src/M2Server/Castle/CastleConf.cs
++++ b/src/M2Server/Castle/CastleConf.cs
+@@ -265,7 +265,8 @@
+             }
+             for (int i = 0; i < userCastle.Archers.Length; i++)
+             {
+                 ArcherUnit objUnit = userCastle.Archers[i];
++                if (objUnit == null) continue;
+                 if (objUnit.nX != 0)
+                 {
+                     WriteInteger("Defense", $"Archer_{i + 1}_X", objUnit.nX);
+@@ -293,7 +294,8 @@
+             }
+             for (int i = 0; i < userCastle.Guards.Length; i++)
+             {
+                 ArcherUnit objUnit = userCastle.Guards[i];
++                if (objUnit == null) continue;
+                 if (objUnit.nX != 0)
+                 {
+                     WriteInteger("Defense", $"Guard_{i + 1}_X", objUnit.nX);
+diff --git a/src/GameSrv/Word/WorldServer.MonGen.cs b/src/GameSrv/Word/WorldServer.MonGen.cs
+--- a/src/GameSrv/Word/WorldServer.MonGen.cs
++++ b/src/GameSrv/Word/WorldServer.MonGen.cs
+@@ -438,7 +438,6 @@
+         /// <returns></returns>
+         private void MonGetRandomItems(IMonsterActor mon)
+         {
+-            string itemName = string.Empty;
+             if (MonsterList.TryGetValue(mon.ChrName, out MonsterInfo monster))
+             {
+                 IList<MonsterDropItem> itemList = monster.ItemList;
+@@ -460,8 +459,3 @@
+-                                if (string.IsNullOrEmpty(itemName))
+-                                {
+-                                    itemName = monItem.ItemName;
+-                                }
+-
+                                 UserItem userItem = null;
+-                                if (SystemShare.ItemSystem.CopyToUserItemFromName(itemName, ref userItem))
++                                if (SystemShare.ItemSystem.CopyToUserItemFromName(monItem.ItemName, ref userItem))
+                                 {
+diff --git a/src/GameSrv/Npc/Merchant.cs b/src/GameSrv/Npc/Merchant.cs
+--- a/src/GameSrv/Npc/Merchant.cs
++++ b/src/GameSrv/Npc/Merchant.cs
+@@ -217,7 +217,7 @@
+                 {
+                     goods = RefillGoodsList[i];
+                     int goodCout = goods.Count;
+-                    if ((HUtil32.GetTickCount() - goods.RefillTick) > (goods.RefillTime * 60 * 1000))
++                    if (goods.RefillTick == 0 || (HUtil32.GetTickCount() - goods.RefillTick) > (goods.RefillTime * 60 * 1000))
+                     {
+                         goods.RefillTick = HUtil32.GetTickCount();
+                         nIndex = SystemShare.ItemSystem.GetStdItemIdx(goods.ItemName);
+@@ -231,7 +231,7 @@
+                                 RefillGoodsItems(ref refillList, goods.ItemName, goods.Count - nRefillCount);
+                                 LocalDb.SaveGoodRecord(this, ScriptName + '-' + MapName);
+                                 LocalDb.SaveGoodPriceRecord(this, ScriptName + '-' + MapName);
+-                                return;
++                                continue;
+                             }
+                             if (goodCout < nRefillCount)
+                             {
+@@ -1060,6 +1060,8 @@
+             string sFile = ScriptName + '-' + MapName;
+             LocalDb.LoadGoodRecord(this, sFile);
+             LocalDb.LoadGoodPriceRecord(this, sFile);
++            RefillGoods();
++            RefillGoodsTick = HUtil32.GetTickCount();
+             LoadUpgradeList();
+         }
+ 
+@@ -1092,6 +1092,8 @@
+             Path = ScriptFlagConst.sMarket_Def;
+             string scriptPath = ScriptName + '-' + MapName;
+             M2Share.ScriptParsers.LoadScriptFile(this, "Market_Def", scriptPath, true);
++            if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
++                Console.WriteLine($"NPC_SCRIPT name={ChrName} path={SystemShare.GetEnvirFilePath("Market_Def", scriptPath + ".txt")} scripts={ScriptList.Count} buy={IsBuy} sell={IsSell}");
+         }
+ 
+         public override void Click(IPlayerActor playObject)
+diff --git a/src/M2Server/Player/PlayObject.Base.cs b/src/M2Server/Player/PlayObject.Base.cs
+--- a/src/M2Server/Player/PlayObject.Base.cs
++++ b/src/M2Server/Player/PlayObject.Base.cs
+@@ -689,6 +689,8 @@
+             {
+                 ClickNpcTime = HUtil32.GetTickCount();
+                 INormNpc normNpc = SystemShare.WorldEngine.FindMerchant(actorId) ?? SystemShare.WorldEngine.FindNpc(actorId);
++                if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
++                    Console.WriteLine($"NPC_CLICK id={actorId} found={normNpc != null} scripts={normNpc?.ScriptList.Count}");
+                 if (normNpc != null)
+                 {
+                     if (normNpc.Envir == Envir && Math.Abs(normNpc.CurrX - CurrX) <= 15 && Math.Abs(normNpc.CurrY - CurrY) <= 15)
+diff --git a/src/M2Server/Player/PlayObject.Operate.cs b/src/M2Server/Player/PlayObject.Operate.cs
+--- a/src/M2Server/Player/PlayObject.Operate.cs
++++ b/src/M2Server/Player/PlayObject.Operate.cs
+@@ -363,7 +363,7 @@
+         private void ClientOpenDoor(int nX, int nY)
+         {
+             MapDoor door = default;
+-            if (Envir.GetDoor(nX, nY, ref door))
++            if (!Envir.GetDoor(nX, nY, ref door))
+             {
+                 return;
+             }
+diff --git a/src/GameSrv/Program.cs b/src/GameSrv/Program.cs
+--- a/src/GameSrv/Program.cs
++++ b/src/GameSrv/Program.cs
+@@ -10,17 +10,7 @@
+             GCSettings.LatencyMode = GCSettings.IsServerGC ? GCLatencyMode.Batch : GCLatencyMode.Interactive;
+             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+             AppServer serviceRunner = new AppServer();
+-            CancellationTokenSource cts = new CancellationTokenSource();
+-            cts.Token.Register(() => _ = serviceRunner.StopAsync(cts.Token));
+-            // 监听 Ctrl+C 事件
+-            Console.CancelKeyPress += (sender, e) =>
+-            {
+-                Console.WriteLine("Ctrl+C pressed");
+-                cts.Cancel();
+-                // 阻止其他处理程序处理此事件，以及默认的操作（终止程序）
+-                e.Cancel = true;
+-            };
+-            await serviceRunner.StartAsync(cts.Token);
++            await serviceRunner.StartAsync(CancellationToken.None);
+         }
+     }
+ }
+diff --git a/src/OpenMir2/HUtil32.cs b/src/OpenMir2/HUtil32.cs
+--- a/src/OpenMir2/HUtil32.cs
++++ b/src/OpenMir2/HUtil32.cs
+@@ -33,9 +33,12 @@
+             return sequence;
+         }
+ 
++        // Zero-initialized cooldowns must not inherit a negative host uptime.
++        private static readonly long TickOrigin = Environment.TickCount64;
++
+         public static int GetTickCount()
+         {
+-            return Environment.TickCount;
++            return unchecked((int)(Environment.TickCount64 - TickOrigin));
+         }
+ 
+         public static long GetTimestamp()
+diff --git a/src/M2Server/Player/PlayObject.cs b/src/M2Server/Player/PlayObject.cs
+--- a/src/M2Server/Player/PlayObject.cs
++++ b/src/M2Server/Player/PlayObject.cs
+@@ -5450,7 +5450,7 @@
+             {
+                 return;
+             }
+-            visibleMapItem ??= new VisibleMapItem
++            visibleMapItem = new VisibleMapItem
+             {
+                 VisibleFlag = VisibleFlag.Show,
+                 nX = wX,
+diff --git a/src/OpenMir2/Common/StringList.cs b/src/OpenMir2/Common/StringList.cs
+index e2996c19..0467149f 100644
+--- a/src/OpenMir2/Common/StringList.cs
++++ b/src/OpenMir2/Common/StringList.cs
+@@ -259,7 +259,9 @@ namespace OpenMir2.Common
+         /// <param name="fileName"></param>
+         public void SaveToFile(string fileName)
+         {
+-            Encoding fs = GetEncoding(fileName, Encoding.GetEncoding("gb2312"));
++            Encoding fs = File.Exists(fileName)
++                ? GetEncoding(fileName, Encoding.GetEncoding("gb2312"))
++                : new UTF8Encoding(true);
+             StreamWriter sw2 = new StreamWriter(fileName, false, fs);
+             for (int i = 0; i < this.Count; i++)
+             {
+@@ -351,4 +353,4 @@ namespace OpenMir2.Common
+             _size = 0;
+         }
+     }
+-}
+\ No newline at end of file
++}

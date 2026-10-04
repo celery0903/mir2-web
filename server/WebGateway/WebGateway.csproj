@@ -1,4 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup><TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
-  <ItemGroup><ProjectReference Include="../../upstream/crystal/Shared/Shared.csproj" /></ItemGroup>
+  <ItemGroup><ProjectReference Include="../../upstream/openmir2/src/OpenMir2/OpenMir2.csproj" /></ItemGroup>
 </Project>

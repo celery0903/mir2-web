@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-04",
+  "freshDatabaseVolume": true,
+  "freshEngineVolume": true,
+  "databaseHealthUsesTCP": true,
+  "containers": [
+    {
+      "name": "/mir2-firstboot-db-1",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    {
+      "name": "/mir2-firstboot-engine-1",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    {
+      "name": "/mir2-firstboot-web-1",
+      "restartCount": 0,
+      "health": "healthy"
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "engine": "OpenMir2"
+  }
+}

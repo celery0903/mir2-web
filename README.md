@@ -1,96 +1,65 @@
-# 传奇 · 青石镇 / Mir2 Web
+# 热血传奇 Web / OpenMir2
 
-基于 [Suprcode/Crystal](https://github.com/Suprcode/Crystal) 服务端的可联机网页游戏初版，使用 Docker Compose 部署。浏览器客户端通过 WebSocket 网关接入 Crystal 原生 TCP 协议；移动、碰撞、战斗、经验、掉落、装备和存档由原服务端处理。
+采用 [OpenMir2](https://github.com/mirbeta/OpenMir2) 原生服务端、MySQL 和 TypeScript/Phaser 浏览器客户端。账号、角色、碰撞、战斗、经验、物品、装备、技能、NPC 和存档由原生服务端处理，WebSocket 网关转换传统协议。
 
-当前包含一张自带的青石镇地图、战士/法师/道士角色创建、基础近战、怪物、金币与物品拾取、背包、装备、药水、聊天、死亡复活和持久化存档。网页采用可分发的替代像素素材，不包含原版商业游戏资源。技能、NPC 商店、任务、行会和攻沙尚未移植到网页客户端。
+当前经典配置包含比奇省与十张店铺室内地图、44 个原始出入口，浏览器与服务端逐格碰撞一致。支持战士、法师、道士、多人移动和聊天、近战、掉落拾取、挖肉、药水、背包装备、NPC 买卖、买书学习，以及火球术和治愈术显示。一级、零金币开始，使用一倍经验；七级技能验收使用单独标注的测试数据。
 
-![桌面游戏](docs/desktop.png)
-
-桌面与手机截图、实际 Docker 验证记录见 [docs/VERIFICATION.md](docs/VERIFICATION.md)。
+这不是经过认证的完整原版 1.76 整包。沙巴克、其他野外与洞穴、仓库、行会、任务和更多技能尚未完成网页验收。服务端种子包含混合版本内容，实际开放范围经过过滤。来源、固定版本、许可证和已知边界见 [调研报告](docs/SOURCE_RESEARCH.md) 与 [第三方说明](THIRD_PARTY_NOTICES.md)。
 
 ## 启动
 
-需要 Git、Docker Engine 和 Docker Compose v2，无需在宿主机安装 .NET 或 Node.js。
+需要 Git 和 Docker Compose v2。先准备随机数据库密码与去除上游测试账号的初始化 SQL：
 
 ```bash
 git clone --recurse-submodules https://github.com/celery0903/mir2-web.git
 cd mir2-web
+docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/src" -w /src node:22-bookworm-slim node scripts/prepare-openmir2.mjs
 docker compose up -d --build --wait
 ```
 
-打开 **http://localhost:18880**，注册账号并创建角色。首次启动自动生成游戏数据库和地图，账号与角色保存到 Docker 数据卷 `mir2-web-data`。
+浏览器打开 **http://localhost:18880/**。默认绑定 `0.0.0.0`，也可设置 `MIR_BIND=127.0.0.1` 或 `MIR_PORT=18883`。网页与 WebSocket 使用同一端口，原生 TCP 和数据库端口不对宿主机开放。构建会下载并逐项校验锁文件里的资源；无需安装宿主机 .NET。
 
-已克隆仓库但遗漏子模块时，运行：
-
-```bash
-git submodule update --init --recursive
-```
-
-默认仅绑定宿主机 `127.0.0.1`。修改端口或用于局域网测试：
-
-```bash
-MIR_BIND=0.0.0.0 MIR_PORT=18881 docker compose up -d --wait
-```
-
-HTTP 网页和 WebSocket 使用同一个端口。游戏 TCP 端口和内部注册接口只在容器网络内开放。
+账号使用 3 至 10 位字母数字，密码使用 5 至 10 位字母数字，角色名最多 14 个 GBK 字节。上游账号库沿用传统密码存储。
 
 ## 操作
 
-- 点击地图移动，点击怪物靠近并持续攻击；方向键或 WASD 也可移动。
-- 攻击、拾取、药水、背包和聊天按钮位于底栏。空格攻击，E 拾取，1/2 使用药水。
-- 点击背包中的装备穿戴，点击已穿戴装备卸下；点击药水使用。
-- 手机提供方向按钮，点击地图同样可移动。
-- 战士、法师、道士使用原服务端各自的基础属性；本版网页只支持基础近战。
-
-## 数据与更新
-
-```bash
-docker compose ps
-docker compose logs -f
-docker compose down
-docker compose up -d --build --wait
-```
-
-`docker compose down` 保留数据卷。不要给它添加 `-v`，除非有意删除存档。停止服务时会通过 Crystal 的关闭流程保存账号和角色；Compose 预留 30 秒关闭时间。
-
-青石镇数据库只在空数据卷上初始化。`shared/world.json` 同时供浏览器渲染和服务端地图生成使用；修改起始内容后需要使用新的测试数据卷，例如：
-
-```bash
-MIR_DATA_VOLUME=mir2-web-new-world MIR_PORT=18881 docker compose -p mir2-new-world up -d --build --wait
-```
-
-当前账号文件沿用 Crystal 的保存方式，包括其传统密码存储方式。本版适合本地或受控测试；正式公开运营前需要改造账号安全、配置 HTTPS 并进行容量测试。
+- 点击地图移动，点击怪物靠近并攻击；方向键或 WASD 移动，空格攻击。
+- E 拾取，H 挖取附近尸体；也可使用底栏按钮。鹿肉需要连续挖取。
+- 背包中点击装备穿戴、药水或书使用；点击穿戴装备卸下。
+- 点击 NPC 对话、购买或进入出售界面。技能面板可以绑定 F1 至 F8。
+- 手机可点击地图、方向控制与底栏操作。退出后返回登录，角色存档保留。
 
 ## 验证
 
-先启动 Compose，再安装测试工具：
+实测结果和截图见 [测试报告](docs/VERIFICATION.md)。在独立 Compose 项目运行测试，避免修改玩家存档：
 
 ```bash
 npm ci
 npx playwright install chromium
-npm run test:protocol
-npm test
-docker compose stop game web
-docker compose up -d --wait
-npm run test:persistence
+MIR_PORT=18883 docker compose -p mir2-acceptance up -d --build --wait
+MIR_URL=http://127.0.0.1:18883 npm run test:protocol
+MIR_URL=http://127.0.0.1:18883 npm test
+MIR_URL=http://127.0.0.1:18883 MIR_TEST_FIXTURES=1 MIR_COMPOSE_PROJECT=mir2-acceptance npm run test:features
+MIR_URL=http://127.0.0.1:18883 MIR_BROWSER_FEATURES=1 MIR_COMPOSE_PROJECT=mir2-acceptance npx playwright test tests/browser/features.spec.ts
+MIR_URL=http://127.0.0.1:18883 MIR_HEALING_VISUAL=1 npx playwright test tests/browser/healing.spec.ts
+MIR_URL=http://127.0.0.1:18883 MIR_TEST_FIXTURES=1 MIR_COMPOSE_PROJECT=mir2-acceptance npm run test:restart
 ```
 
-协议测试连接真实 Crystal 服务，验证账号注册、并发连接、双人互相可见、移动同步、聊天、装备、战斗、经验与掉落拾取，以及上游默认 GM 密码拒绝和无效请求隔离。浏览器测试覆盖桌面和手机流程，并检查 canvas 非空、资源加载、页面异常和布局边界。重启测试验证账号、角色、位置、金币、经验、等级和装备。
+技能测试只把已创建的 `qa` 角色离线调整到七级和 20000 金币，随后实际买卖、进出书店、买书学习和施法。浏览器技能验收先清除这些测试角色的已学技能，再通过网页买书、使用和施法。不会注入技能或物品。重启验收包含在线未退出的移动保存和数据库重启。测试账号及即时存档预期保存在被 Git 忽略的 `.state/`。注册限流为每 IP 每小时 10 次，反复重跑时可重启测试项目的 `web` 服务。
 
-测试会创建独立账号；随机测试凭据只保存于被 Git 忽略的 `.state/`。注册接口每个来源 IP 限制 5 次/小时，频繁重跑测试时可重启 `web` 容器重置测试限流。
+`compose.rebuild.yaml` 提供固定的独立验收端口。在该测试栈运行协议测试时，设置 `MIR_NATIVE_LOGIN_PORT=17700` 可包含异常 TCP 分包回归；`MIR_FIXTURES_FILE=.state/final-protocol-fixtures.json` 可保留已有技能验收角色的预期文件。正式 Compose 不开放原生 TCP 端口。
 
-## 代码结构
+`docker compose down` 保留账号和引擎卷；`down -v` 会删除存档。引擎退出前等待数据库保存确认，并保留 45 秒停机宽限期以完成原生网关排空。更新地图配置时只替换受版本管理的世界配置，账号和角色保留。
+
+## 结构
 
 ```text
-web/                     TypeScript + Phaser 浏览器客户端
-server/MirHost/          Crystal 无界面启动、起始数据、内部注册 API
-server/WebGateway/      HTTP、WebSocket、原协议编解码、请求限制
-upstream/crystal/       固定提交的上游 Git 子模块，未修改
-shared/world.json       渲染与碰撞共用的地图定义
-scripts/build-world.mjs 地图生成工具
-tests/                  真实服务协议、浏览器和重启存档测试
+web/                     TypeScript + Phaser 原生浏览器客户端
+server/WebGateway/      HTTP、WebSocket 与传统协议适配
+server/Engine/          六个 OpenMir2 服务的 Docker 启动与保存监督
+server/openmir2-linux.patch  可审查的上游兼容与存档修复
+upstream/openmir2/      固定提交的 MIT 子模块
+shared/                 素材、服务端种子锁文件和经典经验表
+scripts/                下载校验、数据准备、地图转换与碰撞审计
+tests/                  原生联机、浏览器、技能与重启存档验收
 ```
-
-服务端与网关运行在不同进程，因为 Crystal 的协议解析器使用进程级 `Packet.IsServer` 标志。网关直接复用上游 C# 数据包定义，无需维护另一套二进制协议解析器。
-
-上游固定提交：`0e315fe327192afe52c3d7357ddd1f5b7e26c5b8`。代码与素材来源见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

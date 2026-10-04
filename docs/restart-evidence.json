@@ -1,0 +1,73 @@
+{
+  "preRestartBaselineCapturedForAllJobs": true,
+  "onlineCharacterSaved": true,
+  "location": {
+    "x": 297,
+    "y": 640
+  },
+  "saveAcknowledged": true,
+  "engineExitCode": 0,
+  "databaseRestarted": true,
+  "characters": [
+    {
+      "job": 0,
+      "characterPreserved": true,
+      "location": {
+        "x": 297,
+        "y": 640
+      },
+      "map": "0",
+      "gold": 16180,
+      "level": 7,
+      "experience": 203,
+      "equipmentIDsPreserved": true,
+      "inventoryIDsPreserved": true,
+      "inventoryCount": 27,
+      "magic": {
+        "spell": 3,
+        "key": 0
+      },
+      "skillAndKeyPreserved": true
+    },
+    {
+      "job": 1,
+      "characterPreserved": true,
+      "location": {
+        "x": 294,
+        "y": 640
+      },
+      "map": "0",
+      "gold": 18812,
+      "level": 7,
+      "experience": 12,
+      "equipmentIDsPreserved": true,
+      "inventoryIDsPreserved": true,
+      "inventoryCount": 2,
+      "magic": {
+        "spell": 1,
+        "key": 1
+      },
+      "skillAndKeyPreserved": true
+    },
+    {
+      "job": 2,
+      "characterPreserved": true,
+      "location": {
+        "x": 267,
+        "y": 596
+      },
+      "map": "0",
+      "gold": 18856,
+      "level": 7,
+      "experience": 0,
+      "equipmentIDsPreserved": true,
+      "inventoryIDsPreserved": true,
+      "inventoryCount": 2,
+      "magic": {
+        "spell": 2,
+        "key": 1
+      },
+      "skillAndKeyPreserved": true
+    }
+  ]
+}

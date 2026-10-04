@@ -3,10 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "world": "node scripts/build-world.mjs",
+    "assets:classic": "node scripts/fetch-classic.mjs",
     "build": "npm run build --workspace web",
     "test": "playwright test",
     "test:protocol": "node --test tests/protocol.test.mjs",
+    "test:features": "node tests/features.mjs",
+    "test:restart": "node tests/restart.mjs",
     "test:persistence": "node tests/persistence.mjs"
   },
   "workspaces": [
