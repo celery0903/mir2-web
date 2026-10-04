@@ -32,6 +32,7 @@ const world = await json('shared/world.json');
 const files = ['shared/world.json', 'shared/classic-storage.json', 'compose.yaml', 'scripts/prepare-classic-world.mjs', 'scripts/prepare-openmir2.mjs', 'scripts/prepare-source-client.mjs', 'scripts/prepare-source-assets.mjs', 'server/SourceClient/Dockerfile', 'server/SourceClient/nginx.conf', 'server/SourceProxy/Dockerfile', 'server/source-client.patch', 'server/source-proxy.patch', 'upstream/mir2-client/apps/web/src/play.ts', 'upstream/mir2-client/apps/web/src/classic-hud.ts', 'upstream/mir2-client/services/web-gateway/GatewaySession.cs', 'server/Engine/Dockerfile', 'server/Engine/run.mjs', 'server/openmir2-linux.patch'];
 files.push('server/source-tests.patch', 'scripts/verify-source-deployment.mjs', 'scripts/native-map.mjs');
 files.push('shared/classic-magic.json', 'server/source-magic.patch', 'scripts/prepare-source-magic.py', 'tests/source-magic-assets.py', 'tests/source-magic.test.mjs', 'tests/source-skills.mjs');
+files.push('tests/source-flight-reference.mjs', 'tests/flight-reference/Dockerfile');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);

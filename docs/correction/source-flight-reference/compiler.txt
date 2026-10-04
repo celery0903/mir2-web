@@ -1,0 +1,13 @@
+Free Pascal Compiler version 3.2.2+dfsg-20 [2023/03/30] for x86_64
+Copyright (c) 1993-2021 by Florian Klaempfl and others
+Target OS: Linux for x86-64
+Compiling /test/oracle.pas
+oracle.pas(123,4) Note: Local variable "i" not used
+oracle.pas(123,7) Note: Local variable "rrx" is assigned but never used
+oracle.pas(123,12) Note: Local variable "rry" is assigned but never used
+oracle.pas(123,35) Note: Local variable "newstepx" not used
+oracle.pas(123,45) Note: Local variable "newstepy" not used
+oracle.pas(123,55) Note: Local variable "nn" not used
+Linking /test/oracle
+5651 lines compiled, 0.6 sec
+6 note(s) issued

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T19:52:42.314Z",
+  "checkedAt": "2026-10-04T20:16:55.170Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -24,14 +24,16 @@
     "server/Engine/run.mjs": "808c44f7cd14495eea93a2f9070637c50e6d8c5f680147d38ae7b34165a79568",
     "server/openmir2-linux.patch": "7e63c0aba58c2fea7fe068d27350e21aa111cbeb5e59bacf9dd6a20b0a539ded",
     "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0",
-    "scripts/verify-source-deployment.mjs": "9333c8f5bf044dd1979c15048bea3cbc7448ce41a9bb150e50915566ae18ee1e",
+    "scripts/verify-source-deployment.mjs": "34a9b908d0f4316e12e5c8d5e04d9c0d7d21c9625a366bf27af7187bd70ebe14",
     "scripts/native-map.mjs": "4de77d86587a7000b70797154a4b58161ead689065685afa6833d8e95b3c47c0",
     "shared/classic-magic.json": "f8b2d5f58d5b1d626087b911819f59730dc9376e64d606b5e5481c2558e50e7a",
-    "server/source-magic.patch": "ea761db314b679f274f206e81bbeeb1abc4e9e3a0aea56240012dcb42a3c4476",
+    "server/source-magic.patch": "9841229c6e87db759d8965f40a0614628a3af27eb24359e7c12e2d374b516e45",
     "scripts/prepare-source-magic.py": "69b2700718366eb38b624abb9fd223561c853a9a324b6e9aa5af61b3007de43c",
     "tests/source-magic-assets.py": "be6c3465ab1658f45ae7c3b0a62412fa8631725fb61e9f6aad4abef8fa30cbf4",
-    "tests/source-magic.test.mjs": "22f783604f8910ff8eb6f2eb60d19cb0525bac2879e3697f8dde79920f220427",
-    "tests/source-skills.mjs": "477721cba05f12fdc911c6961d3e8c9cb345c4029e47df17f8e17277c87d65c6"
+    "tests/source-magic.test.mjs": "9441a9967771f27bcd933b205d23155e0ff7c96a9d94163ec46d38f9bfa7599d",
+    "tests/source-skills.mjs": "b6b5e0e32c6baa433f66588a117b4ae5d6230725e73424d6138f7f6d253ab099",
+    "tests/source-flight-reference.mjs": "24d5ce37f2311f062abf8d013ba7f2c213510724fde609873cc4819840e2187d",
+    "tests/flight-reference/Dockerfile": "61b63149f5f489a1bcdb78cb2999c3ae19116420a5ff3548fe6fe629bfa4555d"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",

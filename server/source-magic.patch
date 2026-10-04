@@ -1,9 +1,9 @@
 diff --git a/apps/web/src/classic-magic.ts b/apps/web/src/classic-magic.ts
 new file mode 100644
-index 0000000..f215554
+index 0000000..51bdfb8
 --- /dev/null
 +++ b/apps/web/src/classic-magic.ts
-@@ -0,0 +1,41 @@
+@@ -0,0 +1,116 @@
 +import rules from '../../../content/classic-176/magic-effects.json';
 +
 +export type Sequence={library:string;start:number;count:number;interval:number};
@@ -39,19 +39,94 @@ index 0000000..f215554
 +}
 +
 +export function projectileDirection(from:{x:number;y:number},to:{x:number;y:number}){
-+ const dx=(to.x-from.x)*48,dy=(to.y-from.y)*32;
++ return pixelDirection({x:from.x*48,y:from.y*32},{x:to.x*48,y:to.y*32});
++}
++
++type Point={x:number;y:number};
++function pixelDirection(from:Point,to:Point){
++ const dx=to.x-from.x,dy=to.y-from.y;
 + if(dx===0)return dy<0?0:8;
 + if(dy===0)return dx<0?12:4;
 + const ratio=Math.abs(dy/dx),sector=ratio>4?4:ratio>1.4?3:ratio>1/1.9?2:ratio>1/4?1:0;
 + return dx>0?(dy<0?4-sector:4+sector):(dy<0?(12+sector)%16:12-sector);
 +}
++
++export function legacyRound(value:number){
++ const low=Math.floor(value),fraction=value-low;
++ return fraction===.5?(low%2===0?low:low+1):Math.round(value);
++}
++
++export class SpellTimeline {
++ frame=0;reply:'pending'|'accepted'|'failed'='pending';
++ readonly interval:number;readonly timeout:number;private lastStep:number;
++ constructor(readonly visual:Sequence,readonly startedAt:number,local:boolean){
++  this.interval=local?visual.interval:legacyRound(visual.interval/1.8);
++  this.timeout=local?3000:2000;this.lastStep=startedAt;
++ }
++ get finished(){return this.frame>=this.visual.count;}
++ get released(){return this.reply==='accepted'&&this.frame>=this.visual.count-1;}
++ accept(now:number){if(now-this.startedAt>this.timeout)this.reply='failed';if(this.finished||this.reply==='failed')return false;this.reply='accepted';return true;}
++ reject(){this.reply='failed';}
++ advance(now:number){
++  if(this.finished)return;
++  if(this.reply==='pending'&&now-this.startedAt>this.timeout)this.reply='failed';
++  if(now-this.lastStep<=this.interval)return;
++  if(this.frame===this.visual.count-2&&this.reply==='pending')return;
++  this.frame++;this.lastStep=now;
++ }
++ bodyFrame(count:number){return this.frame>=this.visual.count-1?count-1:Math.min(count-2,this.frame);}
++}
++
++// Port of the traditional TMagicEff.Shift and TBujaukGroundEffect.Run branches.
++export class ProjectileFlight {
++ readonly direction:number;readonly from:Point;point:Point;target:Point;frame=0;hit=false;expired=false;
++ private floating:Point;private velocity:Point;private previous={x:99999,y:99999};private oldDirection:number;
++ private lastStep:number;private lastFrame:number;
++ constructor(from:Point,to:Point,readonly startedAt:number,private ground:boolean,private interval:number){
++  this.from={...from};this.point={...from};this.floating={...from};this.target={...to};this.velocity=this.aim(from,to);
++  this.direction=pixelDirection(from,to);this.oldDirection=this.direction;this.lastStep=startedAt;this.lastFrame=startedAt;
++ }
++ private aim(from:Point,to:Point){
++  const dx=to.x-from.x,dy=to.y-from.y,axis=Math.max(Math.abs(dx),Math.abs(dy),1);
++  return {x:legacyRound(dx*500/axis),y:legacyRound(dy*500/axis)};
++ }
++ advance(now:number,target:Point|undefined,count:number){
++  if(this.hit||this.expired)return;
++  if(now<this.lastStep)return;
++  if(now-this.lastFrame>this.interval){this.frame=(this.frame+1)%count;this.lastFrame=now;}
++  if(target&&!this.ground){
++   this.target={...target};const desired=this.aim(this.point,target);
++   for(const axis of ['x','y'] as const){
++    const difference=desired[axis]-this.velocity[axis];
++    if(difference)this.velocity[axis]+=Math.sign(difference)*Math.max(1,Math.trunc(Math.abs(difference)/10));
++    this.floating[axis]+=this.velocity[axis]/700*(now-this.lastStep);
++    this.point[axis]=legacyRound(this.floating[axis]);
++   }
++   this.lastStep=now;
++   const direction=pixelDirection(this.point,this.target),jump=Math.abs(direction-this.oldDirection);
++   const through=jump>=2&&!((direction===0&&this.oldDirection===15)||(direction===15&&this.oldDirection===0));
++   this.hit=this.arrived()||through;this.oldDirection=direction;
++   if(this.hit)this.point={...target};
++  }else{
++   this.point={x:this.from.x+legacyRound(this.velocity.x/900*(now-this.lastStep)),y:this.from.y+legacyRound(this.velocity.y/900*(now-this.lastStep))};
++   if(this.ground)this.hit=this.arrived();
++  }
++  if(this.hit)this.frame=0;
++  this.expired=now-this.startedAt>10000;
++ }
++ private arrived(){
++  const distance={x:Math.abs(this.target.x-this.point.x),y:Math.abs(this.target.y-this.point.y)};
++  const result=distance.x<=15&&distance.y<=15||distance.x>=this.previous.x&&distance.y>=this.previous.y;
++  this.previous=distance;return result;
++ }
++}
 diff --git a/apps/web/src/magic-effects.ts b/apps/web/src/magic-effects.ts
-index 5e0e76b..0bfd8c1 100644
+index 5e0e76b..97c1c00 100644
 --- a/apps/web/src/magic-effects.ts
 +++ b/apps/web/src/magic-effects.ts
 @@ -1,41 +1,10 @@
  import {Assets,Container,Sprite,Texture} from 'pixi.js';
-+import {castSequence,effectPlan,projectileDirection,type Projectile} from './classic-magic';
++import {castSequence,effectPlan,projectileDirection,ProjectileFlight,SpellTimeline,type Projectile} from './classic-magic';
 
  type EntityPosition={x:number;y:number};
  type Frame={file:string;offsetX:number;offsetY:number};
@@ -92,70 +167,125 @@ index 5e0e76b..0bfd8c1 100644
 
  const libraryCache=new Map<string,Promise<Library>>(),textureCache=new Map<string,Promise<Texture>>();
 
-@@ -57,39 +26,41 @@ async function frames(name:string,indices:number[]){
+@@ -57,49 +26,91 @@ async function frames(name:string,indices:number[]){
 
  export class MagicEffects {
   private generation=0;private sprites=new Set<Sprite>();
-+ private castEnds=new Map<number,number>();private errors:string[]=[];private recent:Array<{casterId:number;effect:number;library:string;start:number;count:number;x:number;y:number}>=[];
++ private casts=new Map<number,SpellTimeline>();private errors:string[]=[];private recent:Array<{casterId:number;effect:number;library:string;start:number;count:number;x:number;y:number}>=[];
++ private flights:Array<{targetId:number;effect:number;phase:string;targetMoves:number;initialTarget:EntityPosition;lastTarget:EntityPosition;impact?:EntityPosition;path:EntityPosition[]}>=[];
   constructor(private depth:Container,private position:(id:number)=>EntityPosition|undefined){}
 
 - clear(){this.generation++;for(const sprite of this.sprites)sprite.destroy();this.sprites.clear();}
-+ clear(){this.generation++;for(const sprite of this.sprites)sprite.destroy();this.sprites.clear();this.castEnds.clear();this.recent=[];this.errors=[];}
-+ debugState(){return {activeSprites:this.sprites.size,recent:this.recent.slice(),errors:this.errors.slice()};}
++ clear(){this.generation++;for(const sprite of this.sprites)sprite.destroy();this.sprites.clear();this.casts.clear();this.recent=[];this.flights=[];this.errors=[];}
++ debugState(){return {activeSprites:this.sprites.size,recent:this.recent.slice(),errors:this.errors.slice(),flights:this.flights.map(flight=>({...flight,path:flight.path.slice()})),casts:[...this.casts].map(([id,state])=>({id,frame:state.frame,reply:state.reply,interval:state.interval,finished:state.finished}))};}
++ casting(id:number,now:number){const state=this.casts.get(id);state?.advance(now);return Boolean(state&&!state.finished);}
++ fail(id:number){this.casts.get(id)?.reject();}
 
 -  cast(casterId:number,magicId:number){
-+  cast(casterId:number,effect:number){
++  cast(casterId:number,effect:number,local=true){
    const caster=this.position(casterId);if(!caster)return;
 -  const visual=Object.prototype.hasOwnProperty.call(coreSkillVisuals,magicId)
 -    ? coreSkillVisuals[magicId]
 -    : additionalSkillVisuals[magicId];
 +  const visual=castSequence(effect);
    if(!visual)return;
-+  this.castEnds.set(casterId,performance.now()+(visual.count-1)*visual.interval);
+-  this.run(this.sequence(visual.library,range(visual.start,visual.count),caster,visual.interval));
++  const now=performance.now(),state=new SpellTimeline(visual,now,local);
++  for(const [id,previous] of this.casts)if(now-previous.startedAt>15000)this.casts.delete(id);
++  this.casts.set(casterId,state);
 +  this.recent.push({casterId,effect,library:visual.library,start:visual.start,count:visual.count,x:caster.x,y:caster.y});
 +  if(this.recent.length>32)this.recent.shift();
-   this.run(this.sequence(visual.library,range(visual.start,visual.count),caster,visual.interval));
++  this.run(this.ready(casterId,state));return state;
  }
 
   resolve(packet:EffectPacket){
-   const caster=this.position(packet.casterId)??{x:packet.x,y:packet.y};
-   const target=this.position(packet.targetId)??{x:packet.x,y:packet.y};
+-  const caster=this.position(packet.casterId)??{x:packet.x,y:packet.y};
+-  const target=this.position(packet.targetId)??{x:packet.x,y:packet.y};
 -  if((packet.effectType===1&&(packet.effect===1||packet.effect===3))||
 -     (packet.effectType===8&&packet.effect===10))this.later(420,()=>this.projectile(caster,target));
 -  else if(packet.effectType===2&&(packet.effect===2||packet.effect===4||packet.effect===27))
 -   this.later(420,()=>this.sequence('Magic',range(370,10),target,80));
 -  else if(packet.effectType===7&&packet.effect===9)this.later(420,()=>this.sequence('Magic2',range(10,5),target,80));
 -  else if(packet.effectType===4)this.later(420,()=>this.sequence('Magic2',range(20,3),target,100));
++  const state=this.casts.get(packet.casterId);if(state&&!state.accept(performance.now()))return;
 +  const plan=effectPlan(packet.effectType,packet.effect);if(!plan)return;
-+  const delay=Math.max(0,(this.castEnds.get(packet.casterId)??performance.now())-performance.now());
-+  if(plan.kind==='projectile')this.later(delay,()=>this.projectile(caster,target,plan.sequence));
-+  else if(plan.kind==='beam')this.later(delay,()=>this.sequence(plan.sequence.library,range(plan.sequence.start+projectileDirection(caster,target)*plan.sequence.stride,plan.sequence.count),caster,plan.sequence.interval));
-+  else this.later(delay,()=>this.sequence(plan.sequence.library,range(plan.sequence.start,plan.sequence.count),target,plan.sequence.interval));
++  const launch=()=>{
++   const caster=this.position(packet.casterId)??{x:packet.x,y:packet.y},target=this.position(packet.targetId)??{x:packet.x,y:packet.y};
++   if(plan.kind==='projectile')return this.projectile(caster,target,packet,plan.sequence);
++   if(plan.kind==='beam')return this.sequence(plan.sequence.library,range(plan.sequence.start+projectileDirection(caster,target)*plan.sequence.stride,plan.sequence.count),caster,plan.sequence.interval);
++   return this.sequence(plan.sequence.library,range(plan.sequence.start,plan.sequence.count),target,plan.sequence.interval,()=>this.position(packet.targetId));
++  };
++  if(!state){this.later(0,launch);return;}
++  const generation=this.generation;
++  const wait=(now:number)=>{
++   if(generation!==this.generation||this.casts.get(packet.casterId)!==state||state.reply==='failed')return;
++   state.advance(now);if(state.released)this.run(launch());else if(!state.finished)requestAnimationFrame(wait);
++  };
++  requestAnimationFrame(wait);
  }
 
 - private async projectile(from:EntityPosition,to:EntityPosition){
 -  const generation=this.generation,direction=direction16(from,to),poses=await frames('Magic',range(10+direction*10,6));
-+ private async projectile(from:EntityPosition,to:EntityPosition,visual:Projectile){
++ private async projectile(from:EntityPosition,to:EntityPosition,packet:EffectPacket,visual:Projectile){
 +  const generation=this.generation,direction=projectileDirection(from,to),poses=await frames(visual.library,range(visual.start+direction*visual.stride,visual.count));
    if(generation!==this.generation)return;
 -  const sprite=this.makeSprite(from);const distance=Math.max(Math.abs(to.x-from.x),Math.abs(to.y-from.y)),duration=Math.max(120,distance*50),started=performance.now();
-+  const sprite=this.makeSprite(from);const distance=Math.max(Math.abs(to.x-from.x)*48,Math.abs(to.y-from.y)*32),duration=Math.max(50,distance*2),started=performance.now();
++  const sprite=this.makeSprite(from),started=performance.now();
++  const flight=new ProjectileFlight(pixel(from),pixel(to),started,packet.effectType===9,visual.interval);
++  const trace={targetId:packet.targetId,effect:packet.effect,phase:'flying',targetMoves:0,initialTarget:{...to},lastTarget:{...to},path:[] as EntityPosition[],impact:undefined as EntityPosition|undefined};
++  this.flights.push(trace);if(this.flights.length>16)this.flights.shift();
++  const tick=(now:number)=>{
++   if(generation!==this.generation||sprite.destroyed)return;
++   const actor=packet.effectType===9?undefined:this.position(packet.targetId);
++   if(actor&&(actor.x!==trace.lastTarget.x||actor.y!==trace.lastTarget.y)){trace.targetMoves++;trace.lastTarget={...actor};}
++   flight.advance(now,actor?pixel(actor):undefined,visual.count);
++   if(flight.expired){trace.phase='expired';this.remove(sprite);return;}
++   const at=gridPoint(flight.point);trace.path.push(at);if(trace.path.length>32)trace.path.shift();
++   sprite.position.set(flight.point.x,flight.point.y);sprite.zIndex=at.y*10000+at.x+4;
++   const pose=poses[flight.frame];if(pose){sprite.texture=pose.texture;sprite.pivot.set(-pose.x,-pose.y);}
++   sprite.visible=Math.abs(flight.point.x-flight.from.x)>(packet.effectType===1?15:30)||Math.abs(flight.point.y-flight.from.y)>(packet.effectType===1?15:30);
++   if(!flight.hit){requestAnimationFrame(tick);return;}
++   const impact=actor??gridPoint(flight.point);trace.phase='impact';trace.impact={...impact};this.remove(sprite);
++   this.run(this.sequence(visual.impact.library,range(visual.impact.start,visual.impact.count),impact,visual.impact.interval,()=>this.position(packet.targetId)??gridPoint(flight.target)));
++  };
++  requestAnimationFrame(tick);
++ }
++
++ private async ready(casterId:number,state:SpellTimeline){
++  const generation=this.generation,visual=state.visual,poses=await frames(visual.library,range(visual.start,visual.count));
++  const caster=this.position(casterId);if(generation!==this.generation||this.casts.get(casterId)!==state||!caster)return;
++  const sprite=this.makeSprite(caster);
    const tick=(now:number)=>{
     if(generation!==this.generation||sprite.destroyed)return;
 -   const progress=Math.min(1,(now-started)/duration),frame=Math.min(poses.length-1,Math.floor((now-started)/30)%poses.length),pose=poses[frame];
-+   const progress=Math.min(1,(now-started)/duration),frame=Math.floor((now-started)/visual.interval)%poses.length,pose=poses[frame];
-    sprite.position.set((from.x+(to.x-from.x)*progress)*48,(from.y+(to.y-from.y)*progress)*32);if(pose){sprite.texture=pose.texture;sprite.pivot.set(-pose.x,-pose.y);}
+-   sprite.position.set((from.x+(to.x-from.x)*progress)*48,(from.y+(to.y-from.y)*progress)*32);if(pose){sprite.texture=pose.texture;sprite.pivot.set(-pose.x,-pose.y);}
 -   if(progress<1)requestAnimationFrame(tick);else{this.remove(sprite);this.run(this.sequence('Magic',range(170,10),to,60));}
-+   if(progress<1)requestAnimationFrame(tick);else{this.remove(sprite);this.run(this.sequence(visual.impact.library,range(visual.impact.start,visual.impact.count),to,visual.impact.interval));}
++   const at=this.position(casterId);state.advance(now);
++   if(!at||state.finished||this.casts.get(casterId)!==state){this.remove(sprite);return;}
++   sprite.position.set(at.x*48,at.y*32);
++   const pose=poses[state.frame];if(pose){sprite.texture=pose.texture;sprite.pivot.set(-pose.x,-pose.y);}
++   requestAnimationFrame(tick);
    };
    requestAnimationFrame(tick);
   }
-@@ -108,11 +79,7 @@ export class MagicEffects {
+
+- private async sequence(name:string,indices:number[],at:EntityPosition,interval:number){
++ private async sequence(name:string,indices:number[],at:EntityPosition,interval:number,attachment?:()=>EntityPosition|undefined){
+   const generation=this.generation,poses=await frames(name,indices);if(generation!==this.generation)return;
+   const sprite=this.makeSprite(at),started=performance.now();
+   const tick=(now:number)=>{
+    if(generation!==this.generation||sprite.destroyed)return;
+    const frame=Math.floor((now-started)/interval);if(frame>=poses.length){this.remove(sprite);return;}
++   const current=attachment?.();if(current){sprite.position.set(current.x*48,current.y*32);sprite.zIndex=current.y*10000+current.x+4;}
+    const pose=poses[frame];if(pose){sprite.texture=pose.texture;sprite.pivot.set(-pose.x,-pose.y);}requestAnimationFrame(tick);
+   };
+   requestAnimationFrame(tick);
+@@ -108,11 +119,9 @@ export class MagicEffects {
    private makeSprite(at:EntityPosition){const sprite=new Sprite();sprite.blendMode='add';sprite.position.set(at.x*48,at.y*32);sprite.zIndex=at.y*10000+at.x+4;this.sprites.add(sprite);this.depth.addChild(sprite);return sprite;}
   private remove(sprite:Sprite){this.sprites.delete(sprite);sprite.destroy();}
   private later(delay:number,action:()=>Promise<void>){const generation=this.generation;window.setTimeout(()=>{if(generation===this.generation)this.run(action());},delay);}
 - private run(task:Promise<void>){void task.catch(()=>{});}
-+ private run(task:Promise<void>){void task.catch(error=>{this.errors.push(String(error));if(this.errors.length>16)this.errors.shift();});}
++ private run(task:Promise<void>){const generation=this.generation;void task.catch(error=>{if(generation!==this.generation)return;this.errors.push(String(error));if(this.errors.length>16)this.errors.shift();});}
  }
 
  function range(start:number,count:number){return Array.from({length:count},(_,index)=>start+index);}
@@ -163,12 +293,46 @@ index 5e0e76b..0bfd8c1 100644
 - const radians=Math.atan2(to.x-from.x,from.y-to.y),degrees=(radians*180/Math.PI+360+11.25)%360;
 - return Math.floor(degrees/22.5)%16;
 -}
++function pixel(at:EntityPosition){return {x:at.x*48,y:at.y*32};}
++function gridPoint(at:EntityPosition){return {x:at.x/48,y:at.y/32};}
 diff --git a/apps/web/src/online-actors.ts b/apps/web/src/online-actors.ts
-index 84cd17b..1073494 100644
+index 84cd17b..fc622d6 100644
 --- a/apps/web/src/online-actors.ts
 +++ b/apps/web/src/online-actors.ts
-@@ -119,7 +119,7 @@ export class OnlineActor {
+@@ -1,6 +1,7 @@
+ import {Assets,Container,Graphics,Sprite,Text,Texture} from 'pixi.js';
+ import {resolveMonsterVisual} from './monster-visuals';
+ import {MOVEMENT_DURATION_MS,MOVEMENT_SETTLE_MS,routeDirection,visualDirection} from './movement-visual';
++import type {SpellTimeline} from './classic-magic';
+ export type Entity={id:number;x:number;y:number;direction:number;feature:number;name:string;self:boolean;action:string;dead?:boolean;hp?:number;maxHp?:number;status?:number;hitSpeed?:number;nameColor?:number;kind?:string};
+ export type PlayerLayers={bodyName:string;offset:number;hairName?:string;weaponName?:string;weaponOffset:number};
+
+@@ -56,6 +57,8 @@ async function staticPose(name:string,index:number){
+  return {interval:1000,frames:[{texture:await task,x:entry.offsetX,y:entry.offsetY}]};
+ }
+ export class OnlineActor {
++ private spellTimeline:SpellTimeline|undefined;
++ setSpellTimeline(state:SpellTimeline|undefined){this.spellTimeline=state;}
+  readonly container=new Container();
+  private marker=new Graphics();private weapon=new Sprite();private body=new Sprite();private hair=new Sprite();private healthBack=new Graphics();private health=new Graphics();private label=new Text({text:'',style:{fontFamily:'SimSun, Songti SC, serif',fontSize:12,fill:0xffffff,stroke:{color:0x000000,width:3}}});
+  private sequence=0;private key='';private start=0;private frames:Pose[]=[];private weaponFrames:Pose[]=[];private hairFrames:Pose[]=[];private interval=500;private entity:Entity;private movement:{fromX:number;fromY:number;toX:number;toY:number;start:number;duration:number}|undefined;private movementQueue:Entity[]=[];private movementEndedAt:number|undefined;private labelBaseY=-64;private labelOffsetY=0;
+@@ -78,6 +81,7 @@ export class OnlineActor {
+   if(moving&&!sameDestination){this.movement={fromX:this.container.x,fromY:this.container.y,toX,toY,start:movementStart,duration:MOVEMENT_DURATION_MS};this.movementEndedAt=undefined;this.start=movementStart;}
+   else if(!moving&&!sameDestination){this.movement=undefined;this.movementEndedAt=undefined;this.container.position.set(toX,toY);}
+   this.entity=entity;this.container.zIndex=entity.y*10000+entity.x+.5;this.label.text=entity.name;this.label.style.fill=nameFill(entity.nameColor);this.labelOffsetY=0;this.applyLabelOffset();this.applyCursor();this.drawHealth();
++  if(entity.action!=='spell')this.spellTimeline=undefined;
+   const status=(entity.status??0)>>>0;
+   this.container.alpha=(status&0x00800000)!==0?.38:1;
+   this.body.tint=(status&0x00000001)!==0?0x8f8f8f:(status&0xC0000000)!==0?0x8aa86e:0xffffff;
+@@ -117,9 +121,14 @@ export class OnlineActor {
+   if(!this.frames.length)return;
+   const locomotion=this.entity.action==='walking'||this.entity.action==='running';
    let frame=locomotion&&movementProgress!==undefined?Math.min(this.frames.length-1,Math.floor(movementProgress*this.frames.length)):Math.floor((time-this.start)/this.interval);
++  if(this.entity.action==='spell'&&this.spellTimeline){
++   this.spellTimeline.advance(time);
++   if(this.spellTimeline.finished){this.update({...this.entity,action:'standing'});return;}
++   frame=this.spellTimeline.bodyFrame(this.frames.length);
++  }
    if(locomotion&&movementProgress===1)frame=this.frames.length-1;
    if(locomotion&&movementProgress===undefined&&this.movementEndedAt!==undefined){if(this.entity.self||time-this.movementEndedAt<MOVEMENT_SETTLE_MS)frame=this.frames.length-1;else{this.update({...this.entity,action:'standing'});return;}}
 -  if(['walking','running','attack','harvest','struck','dying'].includes(this.entity.action)&&frame>=this.frames.length){this.update({...this.entity,action:this.entity.action==='dying'?'dead':'standing'});return;}
@@ -177,7 +341,7 @@ index 84cd17b..1073494 100644
    for(const [sprite,pose] of [[this.body,this.frames[frame]],[this.weapon,this.weaponFrames[frame]],[this.hair,this.hairFrames[frame]]] as const){sprite.texture=pose?.texture??Texture.EMPTY;if(pose)sprite.position.set(pose.x,pose.y);}
   }
 diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
-index 8b44085..2067aec 100644
+index 8b44085..7c4f265 100644
 --- a/apps/web/src/play.ts
 +++ b/apps/web/src/play.ts
 @@ -12,6 +12,7 @@ import {SkillBar,skillUseOf,type MagicSkill} from './skills';
@@ -188,7 +352,19 @@ index 8b44085..2067aec 100644
  import {ClassicHud} from './classic-hud';
  import {ClassicAuth,type SelectCharacter} from './classic-auth';
  import {ClassicStage} from './classic-stage';
-@@ -327,7 +328,7 @@ function agentSnapshot(){
+@@ -181,7 +182,10 @@ new ClassicStage(document.querySelector<HTMLElement>('#game-stage')!,document.qu
+ const view=await createMapView(document.querySelector<HTMLElement>('#viewport')!,document.querySelector<HTMLOutputElement>('#status')!);
+ const minimap=new MiniMapController(document.querySelector<HTMLElement>('[data-hud-minimap-frame]')!,startMapRoute);
+ void minimap.setMap('0',view.width,view.height);
+-const magicEffects=new MagicEffects(view.depth,id=>entities.get(id));
++const magicEffects=new MagicEffects(view.depth,id=>{
++ const entity=entities.get(id);if(!entity)return;
++ const visual=visuals.get(id);return visual?{x:visual.container.x/48,y:visual.container.y/32}:entity;
++});
+ let ignoreCanvasPointerUntil=0;
+ let lastAttack=0;
+ const inventory=new InventoryView(document.querySelector<HTMLElement>('#inventory-items')!,{
+@@ -327,7 +331,7 @@ function agentSnapshot(){
    intentions:{held:held?{...held}:undefined,rightPointer:Boolean(rightPointer),clickDestination:clickDestination?{...clickDestination}:undefined,pursuitTarget,pursuitHarvest,pursuitGroundItem,combatTarget},
    attributes:characterPanel.debugState(),inventory:inventory.debugState(),itemQuickBar:itemQuickBar.debugState(),equipment:equipment.debugState(),paperdoll:paperdoll.debugState(),groundItems:groundItems.debugState(),skills:skillBar.debugState(),minimap:minimap.debugState(),
    dialogue:{visible:!dialogueElement.hidden,npc:dialogueTitle.textContent,text:dialogueText.textContent,options:Array.from(dialogueElement.querySelectorAll<HTMLButtonElement>('[data-dialogue-command]')).map(button=>({text:button.textContent,command:button.dataset.dialogueCommand}))},
@@ -197,7 +373,21 @@ index 8b44085..2067aec 100644
   };
  }
  agentObserver.attach(window as Window&{__mir2Agent?:AgentDebugApi},agentSnapshot);
-@@ -469,7 +470,15 @@ function continueCombat(){
+@@ -450,9 +454,13 @@ function finishMovement(time:number){
+ }
+ function finishNonMovementAction(time:number){
+  if(!pendingAction||pendingAction.kind==='move'||!pendingAction.acknowledged||time<pendingAction.startedAt+pendingAction.duration)return;
++ if(pendingAction.kind==='spell'&&self!==undefined&&magicEffects.casting(self,time))return;
+  const completed=pendingAction;pendingAction=undefined;agentObserver.event('action-finish',{actionId:completed.actionId,kind:completed.kind,elapsedMs:time-completed.startedAt});continueMovementIntent();
+ }
+ function stopCombat(){combatTarget=undefined;if(combatTimer!==undefined){clearTimeout(combatTimer);combatTimer=undefined;}}
++function startSpell(actor:Entity,target:{x:number;y:number},effect:number,local:boolean){
++ const state=magicEffects.cast(actor.id,effect,local);update(spellPose(actor,target));visuals.get(actor.id)?.setSpellTimeline(state);
++}
+ function scheduleCombat(){if(combatTimer===undefined)combatTimer=window.setTimeout(()=>{combatTimer=undefined;continueCombat();},620);}
+ function continueCombat(){
+  if(combatTarget===undefined)return;
+@@ -469,7 +477,15 @@ function continueCombat(){
  function interact(target:Entity,harvest=false){
   ignoreCanvasPointerUntil=performance.now()+100;
   stopCombat();pursuitGroundItem=undefined;const actor=self===undefined?undefined:entities.get(self);if(!actor||actor.dead||target.self||socket?.readyState!==WebSocket.OPEN)return;
@@ -208,29 +398,34 @@ index 8b44085..2067aec 100644
 +  if(distance>8){connection.textContent=`${target.name||'目标'} 超出施法距离`;return;}
 +  const skill=selectedMagic;selectedMagic=undefined;skillBar.setPending(skill.magicId);const action=createAction('spell');
 +  socket.send(JSON.stringify({type:'castMagic',magicId:skill.magicId,targetId:target.id,actionId:action.actionId,mapGeneration}));
-+  update(spellPose(actor,target));if(skill.effectType!==0)magicEffects.cast(actor.id,skill.effect);
++  if(skill.effectType!==0)startSpell(actor,target,skill.effect,true);
 +  connection.textContent=`正在对 ${target.name||'目标'} 施放 ${skill.name}…`;return;
 + }
   const race=target.feature&255,player=race===0&&Boolean(target.name);if(race===0&&!player){pursuitTarget=undefined;pursuitHarvest=false;connection.textContent=`${target.name||'该对象'} 暂不支持交互`;return;}
   if(target.dead&&!harvest){pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();connection.textContent='按住 Alt 并左键点击尸体挖肉';return;}
   const dx=Math.sign(target.x-actor.x),dy=Math.sign(target.y-actor.y),distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
-@@ -576,8 +585,8 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+@@ -574,11 +590,11 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+   else if(message.type==='skillAdded'){skillBar.add(message.skill);classicHud.addSkill(message.skill);connection.textContent=`学会 ${message.skill.name}`;}
+   else if(message.type==='skillRemoved'){skillBar.remove(message.magicId);classicHud.removeSkill(message.magicId);}
    else if(message.type==='skillProgress'){skillBar.progress(message.magicId,message.level,message.currentTrain);classicHud.progress(message.magicId,message.level,message.currentTrain);}
-   else if(message.type==='spellResult'){skillBar.resolve();connection.textContent=message.accepted?`${message.name} 已由服务端接受`:`${message.name} 施放失败`;}
+-  else if(message.type==='spellResult'){skillBar.resolve();connection.textContent=message.accepted?`${message.name} 已由服务端接受`:`${message.name} 施放失败`;}
++  else if(message.type==='spellResult'){skillBar.resolve();if(!message.accepted&&self!==undefined)magicEffects.fail(self);connection.textContent=message.accepted?`${message.name} 已由服务端接受`:`${message.name} 施放失败`;}
    else if(message.type==='warriorSkill'){const parts=[message.thrusting===true?'刺杀开启':message.thrusting===false?'刺杀关闭':'',message.halfMoon===true?'半月开启':message.halfMoon===false?'半月关闭':'',message.fireHit?'烈火蓄力':''].filter(Boolean);if(parts.length)combatStatus.textContent=parts.join(' · ');}
 -  else if(message.type==='magicEffect'){const caster=entities.get(message.casterId);if(caster)update({...caster,action:'spell'});magicEffects.resolve(message);combatStatus.textContent=`魔法效果 ${message.effectType}/${message.effect} · ${message.x},${message.y}`;}
 -  else if(message.type==='spellCast'){const caster=entities.get(message.casterId);if(caster)update({...caster,x:message.x,y:message.y,action:'spell'});magicEffects.cast(message.casterId,message.magicId);}
+-  else if(message.type==='magicFailed'){skillBar.resolve();combatStatus.textContent='魔法未产生效果';}
 +  else if(message.type==='magicEffect'){magicEffects.resolve(message);combatStatus.textContent=`魔法效果 ${message.effectType}/${message.effect} · ${message.x},${message.y}`;}
-+  else if(message.type==='spellCast'){const caster=entities.get(message.casterId);if(caster)update(spellPose(caster,{x:message.x,y:message.y}));magicEffects.cast(message.casterId,message.effect);}
-   else if(message.type==='magicFailed'){skillBar.resolve();combatStatus.textContent='魔法未产生效果';}
++  else if(message.type==='spellCast'){const caster=entities.get(message.casterId);if(caster)startSpell(caster,{x:message.x,y:message.y},message.effect,false);}
++  else if(message.type==='magicFailed'){magicEffects.fail(message.casterId);skillBar.resolve();combatStatus.textContent='魔法未产生效果';}
    else if(message.type==='groupMode'){groupEnabled=message.enabled;renderGroup();connection.textContent=message.enabled?'已允许其他玩家组队':'已关闭组队邀请';}
    else if(message.type==='attackMode'){attackMode=message.mode;renderAttackMode();connection.textContent=`攻击模式：${attackModeSelect.selectedOptions[0]?.textContent??'未知'}`;}
-@@ -777,7 +786,7 @@ function activateSkillSlot(index:number){
+   else if(message.type==='guildName'){guildName=message.guildName;guildRankName=message.rankName;renderGuild();}
+@@ -777,7 +793,7 @@ function activateSkillSlot(index:number){
  function castSelf(skill:MagicSkill){
   if(socket?.readyState!==WebSocket.OPEN||self===undefined||pendingAction){skillBar.resolve();if(pendingAction)connection.textContent='当前动作完成后再施放技能';return;}
   const action=createAction('spell');socket.send(JSON.stringify({type:'castMagic',magicId:skill.magicId,targetId:self,actionId:action.actionId,mapGeneration}));
 - const actor=entities.get(self);if(actor)update({...actor,action:'spell'});
-+ const actor=entities.get(self);if(actor){update({...actor,action:'spell'});if(skill.effectType!==0)magicEffects.cast(actor.id,skill.effect);}
++ const actor=entities.get(self);if(actor&&skill.effectType!==0)startSpell(actor,actor,skill.effect,true);
   const use=skillUseOf(skill.magicId);
   connection.textContent=use==='toggle'?`正在开关 ${skill.name}…`:use==='charge'?`正在蓄力 ${skill.name}…`:`正在施放 ${skill.name}…`;
  }

@@ -10,9 +10,11 @@ const url=(process.env.MIR_URL??'http://172.30.0.16:18880').replace(/\/$/,'');
 const project=process.env.MIR_PROJECT??'mir2-web';
 const destination=process.env.MIR_DEPLOYMENT_REPORT??'docs/correction/source-deployment-evidence.json';
 const expectedEngineImage=process.env.MIR_EXPECTED_ENGINE_IMAGE;
+const expectedWebImage=process.env.MIR_EXPECTED_WEB_IMAGE;
 const assets=process.env.MIR_SOURCE_ASSETS??'.runtime/source-assets';
 assert.match(project,/^[a-z0-9][a-z0-9_-]*$/);
 if(expectedEngineImage)assert.match(expectedEngineImage,/^sha256:[a-f0-9]{64}$/);
+if(expectedWebImage)assert.match(expectedWebImage,/^sha256:[a-f0-9]{64}$/);
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 let previous;
 try{previous=JSON.parse(await readFile(destination,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
@@ -21,6 +23,7 @@ const format='{"name":{{json .Name}},"id":{{json .Id}},"image":{{json .Image}},"
 const {stdout:inspection}=await execute('docker',['inspect',...names,'--format',format]);
 const containers=inspection.trim().split('\n').map(line=>JSON.parse(line));
 for(const container of containers)assert.equal(container.health,'healthy',`${container.name} health`);
+if(expectedWebImage)assert.equal(containers.find(container=>container.name===`/${names[2]}`).image,expectedWebImage,'Web does not match the declared tested image');
 const nativeContainers=containers.filter(container=>names.slice(0,2).includes(container.name.slice(1)));
 const hasPriorSnapshot=nativeContainers.every(container=>previous?.containers?.some(value=>value.name===container.name));
 const preservedInstance=container=>{
@@ -109,6 +112,6 @@ for(const map of integration.maps)assert.equal(nativeMapHashes.get(map.id),map.s
 const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch'].map(async file=>[file,digest(await readFile(file))])));
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesHash,patches,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesHash,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
 console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

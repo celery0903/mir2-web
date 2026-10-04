@@ -1,0 +1,109 @@
+{
+  "checkedAt": "2026-10-04T20:10:52.129Z",
+  "source": {
+    "repository": "lzxsz/MIR2",
+    "revision": "98711dad31567d9a7e272956f6c5a2487000848b",
+    "file": "GameOfMir/MirClient/magiceff.pas",
+    "sha256": "9d2fb0b7683bcdb4f0124e9e2f1f5793c89697046b96240fdaf2ee140d016dda",
+    "sections": [
+      "EffectBase",
+      "GetEffectBase",
+      "TMagicEff",
+      "TThuderEffect"
+    ],
+    "references": [
+      {
+        "file": "GameOfMir/MirClient/Actor.pas",
+        "sha256": "e1266ba6accd26457ae26b9cd2d8b13347a004cf7cc6114b7a7d985317b31b97"
+      },
+      {
+        "file": "GameOfMir/MirClient/ClFunc.pas",
+        "sha256": "3b6668759346fd299c72e04a5b547ccd986b375a6842b42088a35082f3f458b2"
+      },
+      {
+        "file": "GameOfMir/MirClient/PlayScn.pas",
+        "sha256": "4d41b5b539d2dffe5adcdc80f9443d6c9a3299fcdb321b1e3937cdf93ee96ae5"
+      }
+    ],
+    "notes": "The source contains later edits. Only the explicit 31-effect traditional table and separately listed sequences are used; this does not authenticate a 2003 asset package."
+  },
+  "passed": true,
+  "authenticated2003Client": false,
+  "full176Acceptance": false,
+  "scope": "Extracted Pascal velocity, Shift, Run, ground Run and direction methods; mocked actors and a static 48-by-32 camera transform. Compares every emitted pixel coordinate, hit, expiry, direction and animation counter. Does not verify graphical rendering or authenticate the 2003 client.",
+  "programSha256": "047d7e29075b59b624fefbb3e5f5ad9409d0775d2a852c0e14744721a93ec8d4",
+  "browserSourceSha256": "272e888413beeb62ac6c045b8b550e1043caf594e6deb3e8807929e365fc2a8c",
+  "extractedMethodHashes": {
+    "direction": "cf0886a5555093edfae2406b159adfefd68c344e4c9bfe810f4a018402c342ad",
+    "initialVelocity": "e0739e56f8f2505251e27ae7d0e36e019b63f0fa90b9014b11eff92ce9b7ade3",
+    "shift": "3641a61a3128b19b7451fbbc4ee0ceda7e5577f430b02a76bf70a3d65a8be421",
+    "run": "ede319eff2462a8e5f1b6737a54ea38006061c84d4e0ca77fd3e6548a430d5f6",
+    "groundRun": "f72ddaf7c0b25c662d15b7ed1d3b88d00e7116aed440fb97adee8eee8b7704b3"
+  },
+  "cases": [
+    {
+      "name": "stationary",
+      "frames": 24,
+      "nativeLastTime": 391,
+      "hit": true,
+      "expired": false
+    },
+    {
+      "name": "moving",
+      "frames": 25,
+      "nativeLastTime": 408,
+      "hit": true,
+      "expired": false
+    },
+    {
+      "name": "crossing",
+      "frames": 13,
+      "nativeLastTime": 204,
+      "hit": true,
+      "expired": false
+    },
+    {
+      "name": "lost-actor",
+      "frames": 590,
+      "nativeLastTime": 10013,
+      "hit": false,
+      "expired": true
+    },
+    {
+      "name": "talisman",
+      "frames": 13,
+      "nativeLastTime": 204,
+      "hit": true,
+      "expired": false
+    },
+    {
+      "name": "ground",
+      "frames": 20,
+      "nativeLastTime": 323,
+      "hit": true,
+      "expired": false
+    },
+    {
+      "name": "untargeted",
+      "frames": 590,
+      "nativeLastTime": 10013,
+      "hit": false,
+      "expired": true
+    },
+    {
+      "name": "north-wrap",
+      "frames": 29,
+      "nativeLastTime": 476,
+      "hit": true,
+      "expired": false
+    },
+    {
+      "name": "negative",
+      "frames": 40,
+      "nativeLastTime": 663,
+      "hit": true,
+      "expired": false
+    }
+  ],
+  "mismatches": []
+}

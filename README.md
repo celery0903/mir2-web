@@ -55,9 +55,13 @@ npm run audit:176 -- --check
 
 `test:source-login` 主动断开 50 个登录连接，每轮随后核对原生登录拒绝响应，检查 LoginGate 返回通道是否仍可工作。引擎镜像还直接编译上游返回通道代码，回归已释放 socket 和连接重置不会中断其他客户端的响应。
 
-`tests/source-skills.mjs` 只允许 localhost 的 `mir2-rebuild` 或 `mir2-skills-test` 独立项目，必须设置 `MIR_TEST_FIXTURES=1`。它注册新的专用账号，离线提升至七级并给予买书金币，然后通过网页购买、学习和施放火球；检查双方蓄力动画、旁观者坐标、扣蓝、原生伤害和动作结束。测试需要停止并重启独立引擎，不能用于生产数据库。实测与素材核对见 [施法证据](docs/correction/source-skills-isolated/evidence.json)，完整三职业技能仍未验收。
+投射物参照检查使用 `tests/source-flight-reference.mjs`：从固定 Pascal 源码提取速度初始化、方向和运动方法，编译后逐步比较浏览器实现；需先准备对应 `.runtime/legacy-source` 检出，并执行 `docker build -f tests/flight-reference/Dockerfile -t mir2-flight-reference:tools .`。检查覆盖运动算术和时序，不证明完整客户端画面或 2003 原包真实性。
+
+`tests/source-skills.mjs` 只允许 localhost 的 `mir2-rebuild` 或 `mir2-skills-test` 独立项目，必须设置 `MIR_TEST_FIXTURES=1`。它注册新的专用账号，离线提升至七级并给予买书金币，然后通过网页购买、学习和施放火球；检查双方蓄力动画、旁观者坐标、扣蓝、原生伤害、实际弹道、命中特效释放和动作结束。测试需要停止并重启独立引擎，不能用于生产数据库。最新实测见 [投射物证据](docs/correction/source-flight-skills-isolated/evidence.json)；这次真实目标未移动，移动追踪由上述编译参照及聚焦回归覆盖，完整三职业技能仍未验收。
 
 `npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希，以及地图清单、全部地图块、素材库清单和全部导出魔法 PNG 与准备产物的哈希；同时核对原生地图、容器健康和数据库/引擎/proxy 实例是否保持。首次记录没有可比较快照时会明确标为未证明实例保持。
+
+设置 `MIR_EXPECTED_WEB_IMAGE=sha256:...` 可要求网页镜像与声明的已实测镜像一致。报告中的补丁哈希来自当前工作树，单独的补丁哈希不能证明运行镜像已经应用它。
 
 需要更新引擎时，验证命令必须通过 `MIR_EXPECTED_ENGINE_IMAGE=sha256:...` 指定已实测镜像的完整 ID；核对该镜像、原数据库实例和原引擎存档卷后才接受更换。报告分别记录实例更换和存档卷保留。
 

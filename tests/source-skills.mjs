@@ -177,6 +177,18 @@ try {
   report.mana = { before: beforeMana, after: (await states(caster)).attributes.mp };
   report.readyAnimations = { caster: (await states(caster)).magicEffects, observer: (await states(observer)).magicEffects };
   await expect.poll(async () => (await states(caster)).magicEffects.activeSprites + (await states(observer)).magicEffects.activeSprites, { timeout: 15000 }).toBe(0);
+  report.nativeEffects = observerPackets.filter(packet => packet.type === 'magicEffect' && packet.casterId === before.id);
+  report.projectiles = { caster: (await states(caster)).magicEffects.flights, observer: (await states(observer)).magicEffects.flights };
+  for (const [name, traces] of Object.entries(report.projectiles)) {
+    const flight = traces.find(flight => flight.targetId === target.id && flight.effect === 1);
+    assert.ok(flight, `${name} did not launch its actual native fireball`);
+    assert.equal(flight.phase, 'impact');assert.ok(flight.path.length > 1);
+    if (flight.targetMoves === 0) {
+      const first = flight.path[0], aim = flight.initialTarget;
+      const forward = (first.x - before.x) * (aim.x - before.x) + (first.y - before.y) * (aim.y - before.y);
+      assert.ok(forward >= 0, `${name} projectile moved backward before its first frame`);
+    }
+  }
   await expect.poll(async () => (await states(observer)).actorActions[before.id], { timeout: 15000 }).not.toBe('spell');
   report.observerSpellActionEnded = true;
   report.views = [];
