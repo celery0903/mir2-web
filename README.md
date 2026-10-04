@@ -59,9 +59,15 @@ npm run audit:176 -- --check
 
 `tests/source-skills.mjs` 只允许 localhost 的 `mir2-rebuild` 或 `mir2-skills-test` 独立项目，必须设置 `MIR_TEST_FIXTURES=1`。它注册新的专用账号，离线提升至七级并给予买书金币，然后通过网页购买、学习和施放火球；检查双方蓄力动画、旁观者坐标、扣蓝、原生伤害、实际弹道、命中特效释放和动作结束。测试需要停止并重启独立引擎，不能用于生产数据库。最新实测见 [投射物证据](docs/correction/source-flight-skills-isolated/evidence.json)；这次真实目标未移动，移动追踪由上述编译参照及聚焦回归覆盖，完整三职业技能仍未验收。
 
+设置 `MIR_SKILL_SCOPE=shield` 可检查魔法盾。该流程在独立库设置 31 级，并临时给原生书店增加一本测试库存，仍通过实际购买和使用技能书学习；结束后恢复并校验书店原文件。原书店不出售魔法盾，当前未开放尸王地图，因此这个 fixture 不证明原版掉落获取流程。`tests/source-status.mjs` 另从声明的镜像提取实际 OpenMir2 DLL，核对加载哈希后执行毒、防御、魔法盾和隐身计时回归。
+
+`tests/source-empty-inventory.mjs` 用此前空背包登录失败的专用角色核对桌面/手机原生回包和装备存档。`tests/source-services.mjs` 的 `MIR_SERVICE_REPAIR_FIXTURE=1` 只允许 localhost 隔离栈，并要求 `MIR_TEST_FIXTURES=1` 及已有角色报告；它只离线调整测试角色到铁匠铺的位置，再执行真实修理，不验收此前失败的长途行走。需要停止或重启引擎的隔离测试必须串行运行。
+
 `npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希，以及地图清单、全部地图块、素材库清单和全部导出魔法 PNG 与准备产物的哈希；同时核对原生地图、容器健康和数据库/引擎/proxy 实例是否保持。首次记录没有可比较快照时会明确标为未证明实例保持。
 
 设置 `MIR_EXPECTED_WEB_IMAGE=sha256:...` 可要求网页镜像与声明的已实测镜像一致。报告中的补丁哈希来自当前工作树，单独的补丁哈希不能证明运行镜像已经应用它。
+
+更新魔法配置前，使用 `MIR_MAGIC_RULES_FILE=...` 指定旧部署对应的规则文件进行快照核对；报告保存所核对的路径和哈希。更新后默认校验当前 `shared/classic-magic.json`。
 
 需要更新引擎时，验证命令必须通过 `MIR_EXPECTED_ENGINE_IMAGE=sha256:...` 指定已实测镜像的完整 ID；核对该镜像、原数据库实例和原引擎存档卷后才接受更换。报告分别记录实例更换和存档卷保留。
 
@@ -81,6 +87,7 @@ server/source-*.patch   可审查的素材、跨图、原服务窗口及镜像�
 web/, server/WebGateway/  历史自写原型及网关
 server/Engine/          六个 OpenMir2 服务的 Docker 启动与保存监督
 server/openmir2-linux.patch  可审查的上游兼容与存档修复
+server/openmir2-status.patch 原生状态位、毒伤及技能计时修复
 upstream/openmir2/      固定提交的 MIT 子模块
 shared/                 素材、服务端种子锁文件和经典经验表
 scripts/                下载校验、数据准备、地图转换与碰撞审计

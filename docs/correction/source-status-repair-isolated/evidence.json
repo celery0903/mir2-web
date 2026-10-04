@@ -1,0 +1,158 @@
+{
+  "checkedAt": "2026-10-04T21:14:47.413Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "errors": [],
+  "missingResources": [],
+  "scope": "repair-continuation",
+  "continuedFrom": "docs/correction/source-status-empty-bag-login-failure.json",
+  "priorPartialChecks": {},
+  "fixture": "Only the dedicated isolated character position is set offline to the iron shop (0103 12,14); HP, gold, items, durability and merchant rules are unchanged. The failed long walking route is not accepted by this repair-only check.",
+  "nativeResume": {
+    "before": {
+      "id": 1581365818,
+      "name": "mer7780838\n平民",
+      "x": 287,
+      "y": 620,
+      "direction": 2,
+      "action": "standing",
+      "dead": false,
+      "hp": 19,
+      "maxHp": 19
+    },
+    "after": {
+      "id": 1934622768,
+      "name": "mer7780838\n平民",
+      "x": 12,
+      "y": 14,
+      "direction": 2,
+      "action": "standing",
+      "dead": false,
+      "hp": 19,
+      "maxHp": 19
+    },
+    "revived": false,
+    "sameWeaponMakeIndex": 1779383,
+    "storedDurabilityPreserved": true,
+    "goldPreserved": true
+  },
+  "walks": [
+    {
+      "x": 12,
+      "y": 14,
+      "map": "0103",
+      "running": true,
+      "avoidThreats": false,
+      "waypoints": 0,
+      "retries": 0,
+      "potionUsed": false,
+      "elapsedMs": 71
+    }
+  ],
+  "weaponWornByCombat": true,
+  "repair": {
+    "originalDimensions": true,
+    "dragSelection": true,
+    "price": 0,
+    "before": {
+      "name": "木剑",
+      "makeIndex": 1779383,
+      "durability": 3974,
+      "maxDurability": 4000,
+      "stdMode": 5,
+      "weight": 7,
+      "looks": 30,
+      "shape": 1,
+      "baseDurability": 4000,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 2,
+        "max": 5
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "need": 0,
+      "needLevel": 1,
+      "price": 50,
+      "attackSpeed": 0,
+      "agility": 0,
+      "accuracy": 0,
+      "magicAvoidance": 0,
+      "strong": 0,
+      "undead": 0,
+      "hpAdd": 0,
+      "mpAdd": 0,
+      "light": 0,
+      "slot": 0
+    },
+    "accepted": true,
+    "responseOrder": [
+      "npcDialogue",
+      "repairResult"
+    ],
+    "serverItem": {
+      "durability": 4000,
+      "maxDurability": 4000
+    },
+    "after": {
+      "name": "木剑",
+      "makeIndex": 1779383,
+      "durability": 4000,
+      "maxDurability": 4000,
+      "stdMode": 5,
+      "weight": 7,
+      "looks": 30,
+      "shape": 1,
+      "baseDurability": 4000,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 2,
+        "max": 5
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "need": 0,
+      "needLevel": 1,
+      "price": 50,
+      "attackSpeed": 0,
+      "agility": 0,
+      "accuracy": 0,
+      "magicAvoidance": 0,
+      "strong": 0,
+      "undead": 0,
+      "hpAdd": 0,
+      "mpAdd": 0,
+      "light": 0,
+      "slot": 0
+    },
+    "authoritativeDurability": true
+  },
+  "consumedItemsSynchronized": []
+}

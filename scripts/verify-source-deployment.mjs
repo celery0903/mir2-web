@@ -12,6 +12,7 @@ const destination=process.env.MIR_DEPLOYMENT_REPORT??'docs/correction/source-dep
 const expectedEngineImage=process.env.MIR_EXPECTED_ENGINE_IMAGE;
 const expectedWebImage=process.env.MIR_EXPECTED_WEB_IMAGE;
 const assets=process.env.MIR_SOURCE_ASSETS??'.runtime/source-assets';
+const rulesFile=process.env.MIR_MAGIC_RULES_FILE??'shared/classic-magic.json';
 assert.match(project,/^[a-z0-9][a-z0-9_-]*$/);
 if(expectedEngineImage)assert.match(expectedEngineImage,/^sha256:[a-f0-9]{64}$/);
 if(expectedWebImage)assert.match(expectedWebImage,/^sha256:[a-f0-9]{64}$/);
@@ -87,7 +88,7 @@ for(const name of libraryNames){
  await verifyResource(`libraries/${name}/library.json`);
 }
 const magicIntegration=JSON.parse(await verifyResource('effects/integration.json'));
-const rulesHash=digest(await readFile('shared/classic-magic.json'));
+const rulesHash=digest(await readFile(rulesFile));
 assert.equal(magicIntegration.rulesSha256,rulesHash,'Deployed spell rules');
 assert.deepEqual(integration.magicEffects,magicIntegration,'Top-level spell integration');
 const effectPins=JSON.parse(await readFile('upstream/mir2-client/content/classic-176/asset-sources.json')).effectFiles;
@@ -109,9 +110,15 @@ for(const entry of magicIntegration.libraries){
 const {stdout:mapHashes}=await execute('docker',['exec',names[1],'sha256sum',...integration.maps.map(map=>`/data/server/Mir200/Map/${map.id}.map`)]);
 const nativeMapHashes=new Map(mapHashes.trim().split('\n').map(line=>{const [hash,path]=line.trim().split(/\s+/);return [path.split('/').at(-1).replace(/\.map$/,''),hash];}));
 for(const map of integration.maps)assert.equal(nativeMapHashes.get(map.id),map.sourceSha256,`Native/browser map mismatch: ${map.id}`);
-const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch'].map(async file=>[file,digest(await readFile(file))])));
+const bookshopScript='/data/server/Mir200/Envir/Market_Def/比奇城/小书-0132.txt';
+const {stdout:bookshopHash}=await execute('docker',['exec',names[1],'sha256sum',bookshopScript]);
+const bookshopSha256=bookshopHash.trim().split(/\s+/)[0];
+assert.match(bookshopSha256,/^[a-f0-9]{64}$/);
+const preservedBookshopScript=previous?.bookshopSha256?previous.bookshopSha256===bookshopSha256:null;
+if(previous?.bookshopSha256)assert.equal(preservedBookshopScript,true,'Native bookshop script changed');
+const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch','server/openmir2-linux.patch','server/openmir2-status.patch'].map(async file=>[file,digest(await readFile(file))])));
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesHash,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
 console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

@@ -1,10 +1,13 @@
 using System.Buffers.Binary;
 using System.Text;
+using System.Reflection;
 using OpenMir2;
 using Serilog;
 using M2Server;
 using M2Server.Maps;
 using M2Server.Player;
+using M2Server.Net;
+using OpenMir2.Packets.ServerPackets;
 using SystemModule;
 using SystemModule.Data;
 
@@ -61,7 +64,36 @@ try
 }
 finally { File.Delete(path); }
 
+var channel = DispatchProxy.Create<INetChannel, GateCapture>();
+M2Share.NetChannel = channel;
+var capture = (GateCapture)channel;
+var emptyPlayer = new PlayObject { SocketId = 123, SocketIdx = 7, GateIdx = 2 };
+emptyPlayer.ClientQueryBagItems();
+emptyPlayer.ClientQueryBagItems();
+Check(capture.Packets.Count == 2, "Empty bag queries must each receive a native response");
+foreach (var (gate, packet) in capture.Packets)
+{
+    Check(gate == 2 && packet.Length == 32, "Empty inventory must use the normal gate header without a body");
+    Check(BinaryPrimitives.ReadInt32LittleEndian(packet.AsSpan(4)) == 123
+        && BinaryPrimitives.ReadUInt16LittleEndian(packet.AsSpan(8)) == 7, "Inventory response lost its socket/session routing");
+    Check(BinaryPrimitives.ReadInt32LittleEndian(packet.AsSpan(16)) == 12, "Empty inventory command length mismatch");
+    Check(BinaryPrimitives.ReadUInt16LittleEndian(packet.AsSpan(24)) == 201
+        && BinaryPrimitives.ReadUInt16LittleEndian(packet.AsSpan(30)) == 0, "Empty inventory must be SM_BAGITEMS with a zero item count");
+}
+Console.WriteLine("PASS: empty inventory sends a routed SM_BAGITEMS response with zero records.");
+
 class ItemObserver : PlayObject
 {
     public void Observe(short x, short y, MapItem item) => UpdateVisibleItem(x, y, item);
+}
+
+public class GateCapture : DispatchProxy
+{
+    public readonly List<(int gate, byte[] packet)> Packets = [];
+    protected override object Invoke(MethodInfo method, object[] args)
+    {
+        if (method.Name != nameof(INetChannel.AddGateBuffer)) throw new InvalidOperationException(method.Name);
+        Packets.Add(((int)args[0], (byte[])args[1]));
+        return null;
+    }
 }

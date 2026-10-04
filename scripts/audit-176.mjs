@@ -33,6 +33,8 @@ const files = ['shared/world.json', 'shared/classic-storage.json', 'compose.yaml
 files.push('server/source-tests.patch', 'scripts/verify-source-deployment.mjs', 'scripts/native-map.mjs');
 files.push('shared/classic-magic.json', 'server/source-magic.patch', 'scripts/prepare-source-magic.py', 'tests/source-magic-assets.py', 'tests/source-magic.test.mjs', 'tests/source-skills.mjs');
 files.push('tests/source-flight-reference.mjs', 'tests/flight-reference/Dockerfile');
+files.push('server/openmir2-status.patch', 'tests/source-status.mjs', 'tests/status/StatusChecks.csproj', 'tests/status/Program.cs');
+files.push('tests/source-services.mjs', 'tests/source-empty-inventory.mjs', 'tests/native/Program.cs');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);

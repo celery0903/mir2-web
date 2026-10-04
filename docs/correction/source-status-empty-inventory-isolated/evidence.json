@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-04T21:13:53.602Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Reuses the previously failing empty-bag character without database or item changes; verifies native empty inventory and preserved equipment on desktop/mobile login.",
+  "logins": [
+    {
+      "viewport": "desktop",
+      "map": "0",
+      "hp": 19,
+      "inventoryKnown": true,
+      "authoritativeEmptyPacket": true,
+      "equippedSword": {
+        "makeIndex": 1779383,
+        "durability": 3974,
+        "maxDurability": 4000
+      },
+      "gold": 6,
+      "screenshot": ".runtime/reports/source-status-empty-inventory/desktop.png",
+      "sampledColors": 775
+    },
+    {
+      "viewport": "mobile",
+      "map": "0",
+      "hp": 19,
+      "inventoryKnown": true,
+      "authoritativeEmptyPacket": true,
+      "equippedSword": {
+        "makeIndex": 1779383,
+        "durability": 3974,
+        "maxDurability": 4000
+      },
+      "gold": 6,
+      "screenshot": ".runtime/reports/source-status-empty-inventory/mobile.png",
+      "sampledColors": 429
+    }
+  ],
+  "errors": [],
+  "missingResources": []
+}

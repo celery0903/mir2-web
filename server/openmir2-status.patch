@@ -1,0 +1,411 @@
+diff --git a/src/M2Server/Actor/BaseObject.Abil.cs b/src/M2Server/Actor/BaseObject.Abil.cs
+index f33f636c..56377360 100644
+--- a/src/M2Server/Actor/BaseObject.Abil.cs
++++ b/src/M2Server/Actor/BaseObject.Abil.cs
+@@ -76,11 +76,11 @@ namespace M2Server.Actor
+ 
+             if (StatusTimeArr[PoisonState.DefenceUP] > 0)
+             {
+-                WAbil.AC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.AC), (ushort)HUtil32._MIN(255, HUtil32.HiByte(WAbil.AC) + (Abil.Level / 7) + M2Share.ActorBuffSystem.GetBuff(this, BuffType.DefensePower)));
++                WAbil.AC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.AC), (ushort)HUtil32._MIN(255, HUtil32.HiByte(WAbil.AC) + (Abil.Level / 7) + 2));
+             }
+             if (StatusTimeArr[PoisonState.MagDefenceUP] > 0)
+             {
+-                WAbil.MAC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.MAC), (ushort)HUtil32._MIN(255, HUtil32.HiByte(WAbil.MAC) + (Abil.Level / 7) + M2Share.ActorBuffSystem.GetBuff(this, BuffType.MagicDefensePower)));
++                WAbil.MAC = HUtil32.MakeWord(HUtil32.LoByte(WAbil.MAC), (ushort)HUtil32._MIN(255, HUtil32.HiByte(WAbil.MAC) + (Abil.Level / 7) + 2));
+             }
+             if (Race >= ActorRace.Animal)
+             {
+@@ -169,4 +169,4 @@ namespace M2Server.Actor
+             //AccuracyPoint = 15;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/M2Server/Actor/BaseObject.Base.cs b/src/M2Server/Actor/BaseObject.Base.cs
+index ec9e3af4..57e02033 100644
+--- a/src/M2Server/Actor/BaseObject.Base.cs
++++ b/src/M2Server/Actor/BaseObject.Base.cs
+@@ -6,6 +6,7 @@ using OpenMir2.Data;
+ using OpenMir2.Enums;
+ using SystemModule;
+ using SystemModule.Actors;
++using SystemModule.Enums;
+ 
+ namespace M2Server.Actor
+ {
+@@ -244,75 +245,74 @@ namespace M2Server.Actor
+                     HealthSpellChanged();
+                 }
+             }
+-            //bool boChg = false;
+-            //var boNeedRecalc = false;
+-            //for (int i = 0; i < StatusArrTick.Length; i++)
+-            //{
+-            //    if ((StatusTimeArr[i] > 0) && (StatusTimeArr[i] < 60000))
+-            //    {
+-            //        if ((HUtil32.GetTickCount() - StatusArrTick[i]) > 1000)
+-            //        {
+-            //            StatusTimeArr[i] -= 1;
+-            //            StatusArrTick[i] += 1000;
+-            //            if (StatusTimeArr[i] == 0)
+-            //            {
+-            //                boChg = true;
+-            //                switch (i)
+-            //                {
+-            //                    case PoisonState.DefenceUP:
+-            //                        boNeedRecalc = true;
+-            //                        SysMsg("防御力回复正常.", MsgColor.Green, MsgType.Hint);
+-            //                        break;
+-            //                    case PoisonState.MagDefenceUP:
+-            //                        boNeedRecalc = true;
+-            //                        SysMsg("魔法防御力回复正常.", MsgColor.Green, MsgType.Hint);
+-            //                        break;
+-            //                    case PoisonState.STATETRANSPARENT:
+-            //                        HideMode = false;
+-            //                        break;
+-            //                }
+-            //            }
+-            //            else if (StatusTimeArr[i] == 10)
+-            //            {
+-            //                if (i == PoisonState.DefenceUP)
+-            //                {
+-            //                    SysMsg($"防御力{StatusTimeArr[i]}秒后恢复正常。", MsgColor.Green, MsgType.Hint);
+-            //                    break;
+-            //                }
+-            //                if (i == PoisonState.MagDefenceUP)
+-            //                {
+-            //                    SysMsg($"魔法防御力{StatusTimeArr[i]}秒后恢复正常。", MsgColor.Green, MsgType.Hint);
+-            //                    break;
+-            //                }
+-            //            }
+-            //        }
+-            //    }
+-            //}
+-            //if (boChg)
+-            //{
+-            //    CharStatus = GetCharStatus();
+-            //    StatusChanged();
+-            //}
+-            //if (boNeedRecalc)
+-            //{
+-            //    RecalcAbilitys();
+-            //    SendMsg(Messages.RM_ABILITY, 0, 0, 0, 0);
+-            //}
+-            //if ((HUtil32.GetTickCount() - PoisoningTick) > SystemShare.Config.PosionDecHealthTime)
+-            //{
+-            //    PoisoningTick = HUtil32.GetTickCount();
+-            //    if (StatusTimeArr[PoisonState.DECHEALTH] > 0)
+-            //    {
+-            //        if (Animal)
+-            //        {
+-            //            ((AnimalObject)this).MeatQuality -= 1000;
+-            //        }
+-            //        DamageHealth(GreenPoisoningPoint + 1);
+-            //        HealthTick = 0;
+-            //        SpellTick = 0;
+-            //        HealthSpellChanged();
+-            //    }
+-            //}
++            ProcessStatus(HUtil32.GetTickCount());
++        }
++
++        protected void ProcessStatus(int now)
++        {
++            bool changed = false, recalculate = false;
++            for (int i = 0; i < StatusArrTick.Length; i++)
++            {
++                if (StatusTimeArr[i] == 0 || StatusTimeArr[i] >= 60000 || unchecked(now - StatusArrTick[i]) <= 1000)
++                {
++                    continue;
++                }
++                StatusTimeArr[i]--;
++                StatusArrTick[i] = unchecked(StatusArrTick[i] + 1000);
++                if (StatusTimeArr[i] == 0)
++                {
++                    changed = true;
++                    switch (i)
++                    {
++                        case PoisonState.DefenceUP:
++                            recalculate = true;
++                            SysMsg("防御力回复正常.", MsgColor.Green, MsgType.Hint);
++                            break;
++                        case PoisonState.MagDefenceUP:
++                            recalculate = true;
++                            SysMsg("魔法防御力回复正常.", MsgColor.Green, MsgType.Hint);
++                            break;
++                        case PoisonState.STATETRANSPARENT:
++                            HideMode = false;
++                            break;
++                        case PoisonState.BubbleDefenceUP:
++                            if (this is M2Server.Player.CharacterObject character)
++                            {
++                                character.AbilMagBubbleDefence = false;
++                            }
++                            break;
++                    }
++                }
++                else if (StatusTimeArr[i] == 10 && (i == PoisonState.DefenceUP || i == PoisonState.MagDefenceUP))
++                {
++                    SysMsg(i == PoisonState.DefenceUP ? "防御力10秒后恢复正常。" : "魔法防御力10秒后恢复正常。", MsgColor.Green, MsgType.Hint);
++                }
++            }
++            if (changed)
++            {
++                CharStatus = GetCharStatus();
++                StatusChanged();
++            }
++            if (recalculate)
++            {
++                RecalcAbilitys();
++                SendMsg(Messages.RM_ABILITY, 0, 0, 0, 0);
++            }
++            if (!Death && unchecked(now - PoisoningTick) > SystemShare.Config.PosionDecHealthTime)
++            {
++                PoisoningTick = now;
++                if (StatusTimeArr[PoisonState.DECHEALTH] > 0)
++                {
++                    if (Animal)
++                    {
++                        ((AnimalObject)this).MeatQuality -= 1000;
++                    }
++                    DamageHealth(GreenPoisoningPoint + 1);
++                    HealthTick = 0;
++                    SpellTick = 0;
++                    HealthSpellChanged();
++                }
++            }
+         }
+ 
+         public virtual void Die()
+@@ -928,4 +928,4 @@ namespace M2Server.Actor
+             return 0;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/M2Server/Actor/BaseObject.cs b/src/M2Server/Actor/BaseObject.cs
+index 6eca4fd5..561d2292 100644
+--- a/src/M2Server/Actor/BaseObject.cs
++++ b/src/M2Server/Actor/BaseObject.cs
+@@ -79,6 +79,7 @@ namespace M2Server.Actor
+         /// 7-冰冻(不能跑动，不能魔法) 8-隐身 9-防御力(神圣战甲术) 10-魔御力(幽灵盾) 11-魔法盾
+         /// </summary>
+         public ushort[] StatusTimeArr { get; set; }
++        public int[] StatusArrTick { get; } = new int[15];
+         /// <summary>
+         /// 防麻痹
+         /// </summary>
+@@ -1497,7 +1498,14 @@ namespace M2Server.Actor
+             //or 代表运算, 需要两个运算数，即两个数的位运算，只有其中一个是1就返回1; 都是0才返回0
+             //and 表示 当对应位均为1时返回1，其余为0
+             //从上面算法得到，最终 nStatus得到是1,
+-            int nStatus = M2Share.ActorBuffSystem.GetBuffStatus(this);
++            int nStatus = 0;
++            for (int i = 0; i < StatusTimeArr.Length; i++)
++            {
++                if (StatusTimeArr[i] > 0)
++                {
++                    nStatus |= unchecked((int)(0x80000000u >> i));
++                }
++            }
+             return nStatus | (CharStatusEx & 0x0000FFFF);
+         }
+ 
+@@ -1940,25 +1948,14 @@ namespace M2Server.Actor
+ 
+         public bool MakePosion(int nType, ushort nTime, int nPoint)
+         {
+-            if (nType >= Grobal2.MAX_STATUS_ATTRIBUTE)
++            if (nType < 0 || nType >= Grobal2.MAX_STATUS_ATTRIBUTE)
+             {
+                 return false;
+             }
+ 
+             int nOldCharStatus = CharStatus;
+-            M2Share.ActorBuffSystem.AddBuff(this, (BuffType)nType, nTime, nPoint);
+-            //if (StatusTimeArr[nType] > 0)
+-            //{
+-            //    if (StatusTimeArr[nType] < nTime)
+-            //    {
+-            //        StatusTimeArr[nType] = nTime;
+-            //    }
+-            //}
+-            //else
+-            //{
+-            //    StatusTimeArr[nType] = nTime;
+-            //}
+-            //StatusArrTick[nType] = HUtil32.GetTickCount();
++            StatusTimeArr[nType] = Math.Max(StatusTimeArr[nType], nTime);
++            StatusArrTick[nType] = HUtil32.GetTickCount();
+             CharStatus = GetCharStatus();
+             GreenPoisoningPoint = (byte)nPoint;
+             if (nOldCharStatus != CharStatus)
+@@ -2136,54 +2133,26 @@ namespace M2Server.Actor
+ 
+         public bool DefenceUp(int nSec)
+         {
+-            if (M2Share.ActorBuffSystem.HasBuff(this, BuffType.DefensePower))
+-            {
+-                M2Share.ActorBuffSystem.TryUpdate(this, BuffType.DefensePower, nSec);
+-                return true;
+-            }
+-            M2Share.ActorBuffSystem.AddBuff(this, BuffType.DefensePower, nSec, nSec);
+-            //if (StatusTimeArr[PoisonState.DefenceUP] > 0)
+-            //{
+-            //    if (StatusTimeArr[PoisonState.DefenceUP] < nSec)
+-            //    {
+-            //        StatusTimeArr[PoisonState.DefenceUP] = (ushort)nSec;
+-            //        result = true;
+-            //    }
+-            //}
+-            //else
+-            //{
+-            //    StatusTimeArr[PoisonState.DefenceUP] = (ushort)nSec;
+-            //    result = true;
+-            //}
+-            //StatusArrTick[PoisonState.DefenceUP] = HUtil32.GetTickCount();
++            ushort duration = (ushort)Math.Clamp(nSec, 0, ushort.MaxValue);
++            bool changed = duration > StatusTimeArr[PoisonState.DefenceUP];
++            StatusTimeArr[PoisonState.DefenceUP] = Math.Max(StatusTimeArr[PoisonState.DefenceUP], duration);
++            StatusArrTick[PoisonState.DefenceUP] = HUtil32.GetTickCount();
+             SysMsg(Format(MessageSettings.DefenceUpTime, nSec), MsgColor.Green, MsgType.Hint);
+             RecalcAbilitys();
+             SendMsg(Messages.RM_ABILITY, 0, 0, 0, 0);
+-            return true;
++            return changed;
+         }
+ 
+         public bool MagDefenceUp(int nSec)
+         {
+-            //bool result = false;
+-            M2Share.ActorBuffSystem.AddBuff(this, BuffType.MagicDefensePower, nSec, nSec);
+-            //if (StatusTimeArr[PoisonState.MagDefenceUP] > 0)
+-            //{
+-            //    if (StatusTimeArr[PoisonState.MagDefenceUP] < nSec)
+-            //    {
+-            //        StatusTimeArr[PoisonState.MagDefenceUP] = (ushort)nSec;
+-            //        result = true;
+-            //    }
+-            //}
+-            //else
+-            //{
+-            //    StatusTimeArr[PoisonState.MagDefenceUP] = (ushort)nSec;
+-            //    result = true;
+-            //}
+-            //StatusArrTick[PoisonState.MagDefenceUP] = HUtil32.GetTickCount();
++            ushort duration = (ushort)Math.Clamp(nSec, 0, ushort.MaxValue);
++            bool changed = duration > StatusTimeArr[PoisonState.MagDefenceUP];
++            StatusTimeArr[PoisonState.MagDefenceUP] = Math.Max(StatusTimeArr[PoisonState.MagDefenceUP], duration);
++            StatusArrTick[PoisonState.MagDefenceUP] = HUtil32.GetTickCount();
+             SysMsg(Format(MessageSettings.MagDefenceUpTime, nSec), MsgColor.Green, MsgType.Hint);
+             RecalcAbilitys();
+             SendMsg(Messages.RM_ABILITY, 0, 0, 0, 0);
+-            return true;
++            return changed;
+         }
+ 
+         public UserItem CheckItems(string sItemName)
+@@ -2855,4 +2824,4 @@ namespace M2Server.Actor
+             return string.Format(str, par);
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/M2Server/Magic/MagicManager.cs b/src/M2Server/Magic/MagicManager.cs
+index c17f5151..ec0a6117 100644
+--- a/src/M2Server/Magic/MagicManager.cs
++++ b/src/M2Server/Magic/MagicManager.cs
+@@ -691,6 +691,7 @@ namespace M2Server.Magic
+             }
+             objectList.Clear();
+             baseObject.StatusTimeArr[PoisonState.STATETRANSPARENT] = nHTime;
++            baseObject.StatusArrTick[PoisonState.STATETRANSPARENT] = HUtil32.GetTickCount();
+             baseObject.CharStatus = baseObject.GetCharStatus();
+             baseObject.StatusChanged();
+             baseObject.HideMode = true;
+@@ -1353,4 +1354,4 @@ namespace M2Server.Magic
+             return result;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/M2Server/Player/CharacterObject.cs b/src/M2Server/Player/CharacterObject.cs
+index a2af55a9..d015cc4a 100644
+--- a/src/M2Server/Player/CharacterObject.cs
++++ b/src/M2Server/Player/CharacterObject.cs
+@@ -100,9 +100,8 @@ namespace M2Server.Player
+                 return false;
+             }
+             int nOldStatus = CharStatus;
+-            M2Share.ActorBuffSystem.AddBuff(this, BuffType.MagicShield, nSec, nSec);
+-            //StatusTimeArr[PoisonState.BubbleDefenceUP] = nSec;
+-            //StatusArrTick[PoisonState.BubbleDefenceUP] = HUtil32.GetTickCount();
++            StatusTimeArr[PoisonState.BubbleDefenceUP] = nSec;
++            StatusArrTick[PoisonState.BubbleDefenceUP] = HUtil32.GetTickCount();
+             CharStatus = GetCharStatus();
+             if (nOldStatus != CharStatus)
+             {
+@@ -246,4 +245,4 @@ namespace M2Server.Player
+             }
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/M2Server/Player/PlayObject.Message.cs b/src/M2Server/Player/PlayObject.Message.cs
+index d6deaa0e..27378a0d 100644
+--- a/src/M2Server/Player/PlayObject.Message.cs
++++ b/src/M2Server/Player/PlayObject.Message.cs
+@@ -156,7 +156,7 @@ namespace M2Server.Player
+                     }
+                 }
+                 bool boNeedRecalc = false;
+-                if (StatusTimeArr[PoisonState.STATETRANSPARENT] == 0)
++                if (StatusTimeArr[PoisonState.BubbleDefenceUP] == 0)
+                 {
+                     AbilMagBubbleDefence = false;
+                 }
+@@ -2409,4 +2409,4 @@ namespace M2Server.Player
+             return result;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/M2Server/Player/PlayObject.cs b/src/M2Server/Player/PlayObject.cs
+index 3271e605..88868e0a 100644
+--- a/src/M2Server/Player/PlayObject.cs
++++ b/src/M2Server/Player/PlayObject.cs
+@@ -1297,13 +1297,13 @@ namespace M2Server.Player
+                         }
+                     }
+                 }
+-                //for (int i = 0; i < StatusArrTick.Length; i++)
+-                //{
+-                //    if (StatusTimeArr[i] > 0)
+-                //    {
+-                //        StatusArrTick[i] = HUtil32.GetTickCount();
+-                //    }
+-                //}
++                for (int i = 0; i < StatusArrTick.Length; i++)
++                {
++                    if (StatusTimeArr[i] > 0)
++                    {
++                        StatusArrTick[i] = HUtil32.GetTickCount();
++                    }
++                }
+                 CharStatus = GetCharStatus();
+                 RecalcLevelAbilitys();
+                 RecalcAbilitys();
+@@ -5487,4 +5487,4 @@ namespace M2Server.Player
+             VisibleEvents.Add(MapEvent);
+         }
+     }
+-}
+\ No newline at end of file
++}

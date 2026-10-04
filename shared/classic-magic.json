@@ -39,5 +39,6 @@
   },
   "thunder": {"library": "Magic2", "start": 10, "count": 6, "interval": 50},
   "beam": {"library": "Magic", "start": 970, "count": 6, "stride": 10, "interval": 50},
-  "remaining": ["Directional flame trails", "Persistent shields, poison and ground magic", "Warrior hit overlays", "Summon animations and complete skill workflows", "Authenticating all effect frames against the 2003 client"]
+  "shield": {"bit": 1048576, "library": "Magic", "start": 3890, "count": 3, "interval": 120, "struckStart": 3900, "struckCount": 3},
+  "remaining": ["Directional flame trails", "Poison palette effects and persistent ground magic", "Warrior hit overlays", "Summon animations and complete skill workflows", "Authenticating all effect frames against the 2003 client"]
 }

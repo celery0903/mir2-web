@@ -487,6 +487,17 @@ diff --git a/src/M2Server/Player/PlayObject.Message.cs b/src/M2Server/Player/Pla
 diff --git a/src/M2Server/Player/PlayObject.Operate.cs b/src/M2Server/Player/PlayObject.Operate.cs
 --- a/src/M2Server/Player/PlayObject.Operate.cs
 +++ b/src/M2Server/Player/PlayObject.Operate.cs
+@@ -59,6 +59,8 @@
+-            if (!string.IsNullOrEmpty(sSendMsg))
++            ClientMsg = Messages.MakeMessage(Messages.SM_BAGITEMS, ActorId, 0, 0, ItemList.Count);
++            if (sSendMsg.Length == 0)
++                SendSocket(ClientMsg);
++            else
+             {
+-                ClientMsg = Messages.MakeMessage(Messages.SM_BAGITEMS, ActorId, 0, 0, ItemList.Count);
+                 SendSocket(ClientMsg, sSendMsg);
+             }
+         }
 @@ -704,5 +704,7 @@
              dwDelayTime = 0;
              IActor baseObject = SystemShare.ActorMgr.Get(charId);

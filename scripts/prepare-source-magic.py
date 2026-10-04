@@ -27,6 +27,8 @@ def references(rules):
         sequence(value['impact'])
     sequence(rules['thunder'])
     sequence(rules['beam'], 16)
+    sequence(rules['shield'])
+    sequence(dict(rules['shield'], start=rules['shield']['struckStart'], count=rules['shield']['struckCount']))
     return result
 
 

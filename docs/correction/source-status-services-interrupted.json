@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-04T20:49:10.856Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": false,
+  "abortedByOperator": true,
+  "reason": "Stopped because this service test overlapped the isolated fireball fixture's engine restart. This run is not accepted as a service regression result.",
+  "full176Acceptance": false,
+  "errors": [],
+  "missingResources": [],
+  "initialItems": [
+    {
+      "name": "蜡烛",
+      "makeIndex": 1754769,
+      "durability": 8000,
+      "maxDurability": 8000
+    },
+    {
+      "name": "金创药(小量)",
+      "makeIndex": 1754770,
+      "durability": 1,
+      "maxDurability": 1
+    },
+    {
+      "name": "木剑",
+      "makeIndex": 1754771,
+      "durability": 4000,
+      "maxDurability": 4000
+    },
+    {
+      "name": "布衣(男)",
+      "makeIndex": 1754772,
+      "durability": 5000,
+      "maxDurability": 5000
+    }
+  ],
+  "error": "Error: locator.evaluate: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('#shop-panel .classic-service-slot').locator('img').first()\u001b[22m\n\u001b[2m    - locator resolved to visible <img alt=\"\" class=\"item-icon\" src=\"/items/Items/130.3e30607becece095.png\"/>\u001b[22m\n"
+}

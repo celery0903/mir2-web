@@ -23,6 +23,8 @@ WORKDIR /src
 COPY upstream/openmir2 upstream/openmir2
 COPY server/openmir2-linux.patch server/openmir2-linux.patch
 RUN git -C upstream/openmir2 apply --ignore-space-change /src/server/openmir2-linux.patch
+COPY server/openmir2-status.patch server/openmir2-status.patch
+RUN git -C upstream/openmir2 apply /src/server/openmir2-status.patch
 RUN --mount=type=cache,target=/root/.nuget/packages \
     for project in GameSrv DBSrv LoginSrv LoginGate SelGate GameGate Storeages/DBSvr.Storage.MySQL; do \
       dotnet publish upstream/openmir2/src/$project/${project##*/}.csproj \
@@ -31,6 +33,8 @@ RUN --mount=type=cache,target=/root/.nuget/packages \
     done
 COPY tests/native tests/native
 RUN dotnet run --project tests/native/NativeChecks.csproj -c Release --nologo
+COPY tests/status tests/status
+RUN dotnet run --project tests/status/StatusChecks.csproj -c Release --nologo
 COPY tests/login-channel tests/login-channel
 RUN dotnet run --project tests/login-channel/LoginChannelChecks.csproj -c Release --nologo
 

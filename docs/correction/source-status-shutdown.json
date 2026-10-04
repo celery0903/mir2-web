@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-04T21:21:20.491Z",
+  "stoppedAt": "2026-10-04T21:21:13.324Z",
+  "previousId": "d439241cf645e1c465375465e20e0b3fb2223f5d2b8fe30b72550967f11c49a0",
+  "previousImage": "sha256:3abd7135b4a3228fb673cc47efd2692e479627aa863f80653ec90c2ae4365ef0",
+  "nativeSaveCompleted": true,
+  "exitCode": 0,
+  "events": [
+    "[GameSrv] 21:21:13.664 [INF] OPENMIR2_SAVE_COMPLETE",
+    "[GameSrv] 21:21:13.862 [INF] OPENMIR2_SAVE_COMPLETE",
+    "OPENMIR2_GAME_EXIT=0"
+  ]
+}

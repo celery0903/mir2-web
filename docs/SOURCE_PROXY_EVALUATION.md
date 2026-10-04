@@ -121,3 +121,21 @@ npm run verify:deployment
 20:16 UTC 开始的 [正式入口浏览器回归](correction/source-flight-client-production/evidence.json) 全部通过三职业一级零金币注册、建角、换装、移动、桌面/手机与重登存档，以及原仓库跨图、手机存入、重登取回同一物品、金币保持及往返后本人可见。正式回归未使用离线等级或金币 fixture，也未注入技能。浏览器无异常或资源请求失败。
 
 `node scripts/audit-176.mjs --check` 仍返回退出码 1。完整世界只有 11 张图，仍有 71 个未解析地图引用和 108 个混合版本技能；持续效果、方向火焰、战士叠加、召唤及其他技能的完整浏览器工作流尚未验收，原始 2003 安装包也未取得。本轮运动参照通过及源码复用不改变完整 1.76 验收失败，goal 未完成。
+
+## 原生状态与魔法盾接入
+
+`server/openmir2-status.patch` 恢复原引擎已有状态数组与逐角色计时，修复 buff 插入顺序导致红毒、盾都误报绿毒，以及未运行的计时循环。防御恢复、绿毒伤害、盾减伤和隐身改为一致的原生状态路径。[真实程序集对照](correction/source-status-native/evidence.json) 以镜像 DLL 哈希验证测试加载对象，修复前 0/8、修复后 8/8，包含大于 40 秒的盾、受击扣时和到期清理；传统源码参照不构成 2003 数值认证。
+
+`server/source-magic.patch` 将盾 Sprite 挂在现成 actor 上，保留原偏移、加法混合、`0x00100000` 状态位及严格 120 毫秒三帧循环。盾随人物移动，由原生关闭状态隐藏；聚焦回归执行真实 actor 的受击序列和清理。镜像内 19 项魔法回归、39 项已有前端检查和构建通过。[素材核对](correction/source-status-magic-assets.json) 覆盖 746 帧及 20,318,916 个 RGBA 像素，无缺帧或偏移差异。
+
+[独立浏览器实测](correction/source-status-shield-isolated/evidence.json) 通过双方施盾、三帧循环、扣蓝、移动附着、自然到期及桌面/手机。实际当前零级参数对应 4 至 5 秒，收到关闭包用时 5.392 秒。测试使用离线 31 级、20,000 金币及临时原生书店库存，实际买书和使用后学习，随后恢复原脚本并核对哈希；未注入技能。原书店不卖魔法盾，当前未开放尸王地图，这个 fixture 不证明原版掉落获取流程。大于 40 秒的错误浏览器断言及库存诊断见纠正报告，未将其计为通过。真实受击联机画面、带盾跨图、原毒调色板和完整三职业技能仍未验收。
+
+[火球复验](correction/source-status-fireball-isolated/evidence.json) 的原生扣蓝 `65 -> 63`、伤害 3、双方弹道和动作清理通过，原生魔法值包保存在报告中。满蓝测试数据只在独立库离线设置，未修改技能表；当前值在拍图后受自然回蓝影响的旧检查失败单独保留。该次目标未移动，不构成真实移动目标验收。
+
+原生空背包查询不发回包，造成复活后背包一直未知。Linux 补丁改为发送数量 0、没有正文的原生 `SM_BAGITEMS`，配套 proxy 已能正确解析，无需合成背包数据。[程序集对照](correction/source-status-native/evidence.json) 的真实 gate 包检查旧镜像失败、新镜像通过；[浏览器复验](correction/source-status-empty-inventory-isolated/evidence.json) 用同一角色通过桌面/手机重登，保持装备实例、耐久和金币。
+
+本轮商人长途路线仍因角色死亡而失败。[修理续测](correction/source-status-repair-isolated/evidence.json) 只在隔离库调整专用角色位置到原铁匠铺，真实修理从 `3974/4000` 到 `4000/4000`，保持原生先对话、后确认的顺序，并核对桌面/手机。该 fixture 不改变正式规则，也不验收失败的长途路线。
+
+21:21 UTC 更新正式引擎、网页和素材，关闭前原生保存完成并正常退出。最终盾与火球检查分别保存在 [盾](correction/source-status-shield-final/evidence.json) 和 [火球](correction/source-status-fireball-final/evidence.json)。[部署核对](correction/source-status-deployment-evidence.json) 确认声明的实测镜像、30 个网页文件和 916 个资源文件，原数据库与 proxy 实例、存档卷和书店脚本保持；引擎实例已更换，旧资源及镜像保留。
+
+[正式入口回归](correction/source-status-client-production/evidence.json) 通过三职业一级零金币注册、装备、移动、桌面/手机及重登，以及仓库存取与往返；未修改正式账号的等级、金币或位置。完整审计仍失败，11 张地图、71 个未解析引用、108 个混合版本技能和原包缺口仍在，goal 未完成。

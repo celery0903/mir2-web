@@ -1,15 +1,23 @@
 import assert from 'node:assert/strict';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';
 import PF from 'pathfinding';
 import {PNG} from 'pngjs';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
 
 const base=(process.env.MIR_URL??'http://127.0.0.1:18883').replace(/\/$/,'');
 const destination=process.env.MIR_SERVICE_REPORT??'.runtime/reports/source-services';
 await mkdir(destination,{recursive:true});await mkdir('.state',{recursive:true});
-const credentials={account:`m${String(Date.now()).slice(-8)}`,password:'Source987',character:`mer${String(Date.now()).slice(-7)}`};
+const resumePath=process.env.MIR_SERVICE_RESUME_REPORT;
+const previous=resumePath?JSON.parse(await readFile(resumePath)):undefined;
+const repairFixture=process.env.MIR_SERVICE_REPAIR_FIXTURE==='1',project=process.env.MIR_PROJECT??'mir2-rebuild';
+const credentials=previous?JSON.parse(await readFile(process.env.MIR_SERVICE_RESUME_CREDENTIALS??'.state/source-services.json')):{account:`m${String(Date.now()).slice(-8)}`,password:'Source987',character:`mer${String(Date.now()).slice(-7)}`};
+if(previous){assert.equal(credentials.url,base);assert.equal(previous.url,base);assert.equal(previous.state.self.name.split('\n')[0],credentials.character);}
+if(repairFixture){assert.ok(previous);assert.equal(process.env.MIR_TEST_FIXTURES,'1');assert.match(project,/^mir2-(rebuild|skills-test)$/);assert.equal(new URL(base).hostname,'127.0.0.1');assert.match(credentials.account,/^m\d{8}$/);}
 await writeFile('.state/source-services.json',JSON.stringify({url:base,...credentials}),{mode:0o600});
 const report={checkedAt:new Date().toISOString(),url:base,passed:false,full176Acceptance:false,errors:[],missingResources:[]};
+if(previous){report.scope='repair-continuation';report.continuedFrom=resumePath;report.priorPartialChecks={sale:previous.sale,purchase:previous.purchase,combatPreparation:previous.combatPreparation};}
 const navigation=new Map();
 async function collision(map){
  if(navigation.has(map))return navigation.get(map);
@@ -49,7 +57,7 @@ async function select(panel,item,method='click'){
  await expect(slot).toHaveAttribute('data-service-item',String(item.makeIndex));
  await expect.poll(()=>slot.locator('img').first().evaluate(image=>image.complete&&image.naturalWidth>0),{timeout:15000}).toBe(true);
 }
-async function walk(x,y,map){
+async function walk(x,y,map,avoidThreats=false){
  const initial=await state(),initialMap=initial.map,sameMap=initialMap===map,started=Date.now();let retries=0,potionUsed=false,waypoints=0;
  // Only UI clicks perform movement. This grid plans nearby test waypoints.
  const nativeGrid=await collision(initialMap);
@@ -66,6 +74,15 @@ async function walk(x,y,map){
   if(sameMap&&Math.max(Math.abs(current.self.x-x),Math.abs(current.self.y-y))<=1&&!current.pending)break;
   const grid=nativeGrid.clone();
   for(const entity of current.nearby)if(!entity.dead&&(entity.x!==x||entity.y!==y))grid.setWalkableAt(entity.x,entity.y,false);
+  if(avoidThreats){
+   for(const entity of current.nearby.filter(entity=>!entity.dead&&['半兽人','森林雪人','毒蜘蛛','多钩猫','钉耙猫'].includes(entity.name))){
+    const radius=Math.max(0,Math.min(3,entity.distance-1));
+    for(let dx=-radius;dx<=radius;dx++)for(let dy=-radius;dy<=radius;dy++){
+     const px=entity.x+dx,py=entity.y+dy;
+     if(grid.isInside(px,py)&&(px!==current.self.x||py!==current.self.y)&&(px!==x||py!==y))grid.setWalkableAt(px,py,false);
+    }
+   }
+  }
   const path=finder.findPath(current.self.x,current.self.y,x,y,grid).slice(1);
   assert.ok(path.length,'No route through the served native collision map');
   const cell=path[Math.min(7,path.length-1)],point={x:cell[0],y:cell[1]};waypoints++;
@@ -80,20 +97,42 @@ async function walk(x,y,map){
   },{timeout:30000,intervals:[50,100,150]}).toBe(true);
  }
  if(!sameMap)await expect.poll(async()=>{const current=await state();return current.worldReady&&current.map===map&&current.render?.framesReady;},{timeout:15000}).toBe(true);
- (report.walks??=[]).push({x,y,map,running:true,waypoints,retries,potionUsed,elapsedMs:Date.now()-started});
+ (report.walks??=[]).push({x,y,map,running:true,avoidThreats,waypoints,retries,potionUsed,elapsedMs:Date.now()-started});
 }
 async function returnLink(){await page.locator('#npc-text [data-dialogue-command="@Main"],#npc-text [data-dialogue-command="@main"]').click();}
 try{
+ if(repairFixture){
+  const execute=promisify(execFile);
+  await execute('docker',['stop',`${project}-engine-1`],{timeout:65000});
+  try{
+   const sql=`UPDATE characters SET MapName='0103',CX=12,CY=14 WHERE LoginID='${credentials.account}'; SELECT ROW_COUNT();`;
+   const {stdout}=await execute('docker',['exec',`${project}-db-1`,'sh','-c','MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -N -uroot mir2_db -e "$1"','sh',sql]);
+   assert.equal(stdout.trim(),'1');
+  }finally{await execute('docker',['start',`${project}-engine-1`]);}
+  await expect.poll(async()=>(await execute('docker',['inspect',`${project}-engine-1`,'--format','{{.State.Health.Status}}'])).stdout.trim(),{timeout:60000}).toBe('healthy');
+  report.fixture='Only the dedicated isolated character position is set offline to the iron shop (0103 12,14); HP, gold, items, durability and merchant rules are unchanged. The failed long walking route is not accepted by this repair-only check.';
+ }
  await collision('0');
  await page.goto(`${base}/?agent=1`,{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>!!window.__mir2Agent,{},{timeout:60000});
- await page.locator('#account').fill(credentials.account);await page.locator('#password').fill(credentials.password);await page.locator('#register').click();
+ await page.locator('#account').fill(credentials.account);await page.locator('#password').fill(credentials.password);await page.locator(previous?'#auth-login-ok':'#register').click();
  await expect(page.locator('[data-auth-select]')).toBeVisible({timeout:30000});
+ if(!previous){
  await page.locator('[data-auth-new]').click();await page.locator('#character-name').fill(credentials.character);await page.locator('#auth-create-ok').click();
- await expect(page.locator('[data-auth-select]')).toBeVisible({timeout:30000});await page.waitForTimeout(1200);await page.locator('[data-auth-start]').click();
+ await expect(page.locator('[data-auth-select]')).toBeVisible({timeout:30000});
+ }
+ await page.waitForTimeout(1200);await page.locator('[data-auth-start]').click();
  await expect.poll(async()=>{const current=await state();return current.worldReady&&current.inventory.known&&current.render?.framesReady;},{timeout:60000}).toBe(true);
- const initial=await state();assert.equal(initial.attributes.level,1);assert.equal(initial.attributes.gold,0);
- const candle=initial.inventory.items.find(item=>item.name==='蜡烛');let weapon=initial.inventory.items.find(item=>item.name==='木剑');assert.ok(candle);assert.ok(weapon);
+ const initial=await state();assert.equal(initial.attributes.level,1);let weapon;
+ if(previous){
+  const stored=previous.state.equipment.slots.find(slot=>slot.item.name==='木剑').item;
+  weapon=initial.equipment.slots.find(slot=>slot.item.makeIndex===stored.makeIndex)?.item;
+  assert.ok(initial.self.hp>0,'Native login did not revive the dead character');assert.ok(weapon,'Native revival lost the combat-worn weapon');
+  assert.equal(weapon.durability,stored.durability);assert.equal(weapon.maxDurability,stored.maxDurability);assert.equal(initial.attributes.gold,previous.state.attributes.gold);
+  report.nativeResume={before:previous.state.self,after:initial.self,revived:previous.state.self.dead,sameWeaponMakeIndex:weapon.makeIndex,storedDurabilityPreserved:true,goldPreserved:true};
+ }else{
+ assert.equal(initial.attributes.gold,0);
+ const candle=initial.inventory.items.find(item=>item.name==='蜡烛');weapon=initial.inventory.items.find(item=>item.name==='木剑');assert.ok(candle);assert.ok(weapon);
  report.initialItems=initial.inventory.items.map(({name,makeIndex,durability,maxDurability})=>({name,makeIndex,durability,maxDurability}));
  await page.keyboard.press('F9');
  for(const name of ['木剑','布衣(男)']){await page.locator('#inventory-items').getByRole('button',{name,exact:true}).dblclick();await expect.poll(async()=>(await state()).equipment.slots.some(slot=>slot.item.name===name),{timeout:15000}).toBe(true);}
@@ -173,8 +212,11 @@ try{
  }
  assert.equal(matchingEmptyPixels,checkedEmptyPixels,'Injured low-level warrior orb exposes a split backdrop instead of the native frame');
  report.combatPreparation.grayBackdrop={originalFrame:5,checkedEmptyPixels,matchingEmptyPixels};
- console.log('PASS combat preparation: server confirmed weapon wear. Walking to iron shop.');
- await walk(335,299,'0103');await walk(12,14,'0103');
+ }
+ console.log('PASS combat preparation: server confirmed weapon wear.');
+ if(!repairFixture)await walk(335,299,'0103',true);
+ else assert.equal(initial.map,'0103');
+ await walk(12,14,'0103');
  await page.keyboard.press('F10');
  const weaponSlot=(await state()).equipment.slots.find(slot=>slot.item.makeIndex===weapon.makeIndex).slot;
  await page.locator(`#equipment-items [data-slot="${weaponSlot}"]`).click();await expect.poll(async()=>(await state()).inventory.items.some(item=>item.makeIndex===weapon.makeIndex),{timeout:15000}).toBe(true);weapon=(await state()).inventory.items.find(item=>item.makeIndex===weapon.makeIndex);
@@ -183,7 +225,7 @@ try{
  console.log(`PASS combat preparation: weapon durability ${weapon.durability}/${weapon.maxDurability}.`);
  await page.keyboard.press('F10');await page.keyboard.press('Escape');
  await npc('卫家店');await page.locator('#npc-text').getByRole('button',{name:'修理',exact:true}).click();
- console.log('PASS native walking to the original iron shop and opening repair.');
+ console.log('PASS opening the original iron shop repair service.');
  await expect(page.locator('#repair-panel')).toHaveCSS('width','140px');await expect(page.locator('#repair-panel')).toHaveCSS('height','181px');await expect(page.locator('#inventory-window')).toBeVisible();
  await select('#repair-panel',weapon,'drag');
  await expect.poll(async()=>(await events('repairQuote')).at(-1)?.item.makeIndex,{timeout:15000}).toBe(weapon.makeIndex);

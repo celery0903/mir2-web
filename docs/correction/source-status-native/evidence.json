@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-04T21:13:08.370Z",
+  "passed": true,
+  "authenticated2003Client": false,
+  "full176Acceptance": false,
+  "scope": "Executes the real built OpenMir2 assemblies. Uses controlled clocks through the live per-actor status method for deterministic timer checks; does not prove complete skill workflows or authenticate 2003 numbers.",
+  "reference": {
+    "repository": "lzxsz/MIR2",
+    "revision": "98711dad31567d9a7e272956f6c5a2487000848b",
+    "file": "GameOfMir/M2Server/ObjBase.pas",
+    "sha256": "622bc35df593801fce3f028497250fbf171d0c03a5dbecafd251b69045ed6148",
+    "methods": [
+      "GetCharStatus",
+      "MakePosion",
+      "DefenceUp",
+      "MagDefenceUp",
+      "MagBubbleDefenceUp",
+      "Run",
+      "DamageBubbleDefence"
+    ],
+    "additionalCorrection": "Initialize the existing invisibility timer at cast time; this corrects a missing clock rather than claiming historical numerical authenticity."
+  },
+  "tests": {
+    "tests/status/Program.cs": "f1eab647270ba0e5479e58f4c7bec4f2c4f02c24cd75216b0ad4590d240cfebd",
+    "tests/status/StatusChecks.csproj": "05834074755cb71a8d51f9837412a285a66a3b6c66b572752905a5a1b916d86c",
+    "tests/native/Program.cs": "9b8e2efef51b40e6acc014dcd7aa5c180081373d206c1843d04cdc18707f932f",
+    "server/openmir2-status.patch": "13d0a643a0802c9c57b99ccd34d374704492776c4910a2a9845295ac3dde0f8f",
+    "server/openmir2-linux.patch": "4616cb27725a879277985c909bc6f0134b5b1eecc55b8d705a7dfea1b8b30812"
+  },
+  "results": {
+    "before": {
+      "image": "sha256:3abd7135b4a3228fb673cc47efd2692e479627aa863f80653ec90c2ae4365ef0",
+      "assemblySha256": "9c8b412d2d2a7647a99f4da5326b1405f9af4d3bbadfd1375219401b1e301a85",
+      "loadedDeclaredAssembly": true,
+      "exitCode": 1,
+      "stdout": "Assembly SHA-256: 9c8b412d2d2a7647a99f4da5326b1405f9af4d3bbadfd1375219401b1e301a85\nFAIL: red and green poison use their native bits regardless of insertion order: Red poison reported 80000000\nFAIL: poison refresh preserves the longer remaining duration: Short poison replaced the remaining duration\nFAIL: shield initializes native duration and rejects an active recast: Shield reported 80000000\nFAIL: native timers expire both color bits independently and retain permanent states: Traditional status clocks are absent\nFAIL: shield survives forty seconds, loses lifetime on impact and clears at expiry: Traditional status clocks are absent\nFAIL: green poison actually drains health while red poison does not: Traditional status clocks are absent\nFAIL: defense statuses raise their original upper bounds and restore on expiry: Defense uses a buff-list index as its magnitude\nFAIL: invisibility starts its clock at cast time and clears its native state on expiry: Traditional status clocks are absent\nStatus checks: 0/8 passed.\n",
+      "stderr": "",
+      "nativeInventory": {
+        "exitCode": 134,
+        "stdout": "[21:13:21 INF] 初始化脚本编码定义...\nPASS: native wall isolation, door/item identities, gold conservation, ownership, stack cap and multiple visible drops.\n",
+        "stderr": "Unhandled exception. System.Exception: Empty bag queries must each receive a native response\n   at Program.<<Main>$>g__Check|0_0(Boolean condition, String message) in /tests/Program.cs:line 19\n   at Program.<Main>$(String[] args) in /tests/Program.cs:line 73\n"
+      }
+    },
+    "after": {
+      "image": "sha256:f7c5e768f1e8b141fe64eef6c368fce12b02433492bc8441e36b7989bbebe7d3",
+      "assemblySha256": "bfedca98efa691b03a8fb53571651ee753c643171ef8a154e5c07ce5c47bdf7f",
+      "loadedDeclaredAssembly": true,
+      "exitCode": 0,
+      "stdout": "Assembly SHA-256: bfedca98efa691b03a8fb53571651ee753c643171ef8a154e5c07ce5c47bdf7f\nPASS: red and green poison use their native bits regardless of insertion order\nPASS: poison refresh preserves the longer remaining duration\nPASS: shield initializes native duration and rejects an active recast\nPASS: native timers expire both color bits independently and retain permanent states\nPASS: shield survives forty seconds, loses lifetime on impact and clears at expiry\nPASS: green poison actually drains health while red poison does not\nPASS: defense statuses raise their original upper bounds and restore on expiry\nPASS: invisibility starts its clock at cast time and clears its native state on expiry\nStatus checks: 8/8 passed.\n",
+      "stderr": "",
+      "nativeInventory": {
+        "exitCode": 0,
+        "stdout": "[21:13:33 INF] 初始化脚本编码定义...\nPASS: native wall isolation, door/item identities, gold conservation, ownership, stack cap and multiple visible drops.\nPASS: empty inventory sends a routed SM_BAGITEMS response with zero records.\n",
+        "stderr": ""
+      }
+    }
+  }
+}

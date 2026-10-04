@@ -77,7 +77,7 @@ test('a remote player returns to standing after the spell body frames end', asyn
   vm.createContext(context);
   vm.runInContext(compile(await readFile(join(root, 'apps/web/src/online-actors.ts'), 'utf8')), context);
   const updates = [], sprite = () => ({ position: { set() {} } });
-  const actor = { entity: { id: 91, self: false, action: 'spell', dead: false }, start: 0, interval: 100,
+  const actor = { shieldAnimation: { advance() {} }, shield: { visible: false }, entity: { id: 91, self: false, action: 'spell', dead: false }, start: 0, interval: 100,
     frames: Array.from({ length: 6 }, () => ({ texture: {}, x: 0, y: 0 })), weaponFrames: [], hairFrames: [],
     body: sprite(), weapon: sprite(), hair: sprite(), update: entity => updates.push(entity) };
   context.exports.OnlineActor.prototype.tick.call(actor, 599);
@@ -184,7 +184,7 @@ test('the body holds its casting pose with the ready timeline and ends after rel
   vm.runInContext(compile(await readFile(join(root, 'apps/web/src/online-actors.ts'), 'utf8')), context);
   const timeline = new classic.exports.SpellTimeline(classic.exports.castSequence(1), 0, true);
   const updates = [], sprite = () => ({ position: { set() {} } });
-  const actor = { entity: { id: 91, self: true, action: 'spell', dead: false }, start: 0, interval: 100,
+  const actor = { shieldAnimation: { advance() {} }, shield: { visible: false }, entity: { id: 91, self: true, action: 'spell', dead: false }, start: 0, interval: 100,
     frames: Array.from({ length: 6 }, (_, index) => ({ texture: { index }, x: 0, y: 0 })), weaponFrames: [], hairFrames: [],
     body: sprite(), weapon: sprite(), hair: sprite(), spellTimeline: timeline, update: entity => updates.push(entity) };
   for (let time = 70; time <= 560; time += 70) context.exports.OnlineActor.prototype.tick.call(actor, time);
@@ -214,4 +214,44 @@ test('an observer discards a native result after its two-second timeout', async 
   assert.equal(effect.instance.debugState().activeSprites, 0);
   assert.equal(effect.instance.debugState().casts[0].reply, 'failed');
   assert.deepEqual(clean(effect.instance.debugState().flights), []);
+});
+
+test('shield cycles use the traditional strict 120 ms interval and three impact frames', () => {
+  const animation = new classic.exports.ShieldAnimation(1000);
+  assert.equal(animation.frame(false), 3890);
+  animation.advance(1120); assert.equal(animation.frame(false), 3890);
+  animation.advance(1121); assert.equal(animation.frame(false), 3891);
+  animation.struck(1200); assert.equal(animation.frame(true), 3900);
+  animation.advance(1321); assert.equal(animation.frame(true), 3901);
+  animation.advance(1442); assert.equal(animation.frame(true), 3902);
+  animation.advance(1563); assert.equal(animation.frame(true), 3891);
+  animation.struck(1600); assert.equal(animation.frame(true), 3900);
+  assert.equal(animation.frame(false), 3891);
+});
+
+test('the actual actor draws shield offsets on its moving parent and clears the native state', async () => {
+  class Sprite {
+    x = 0; y = 0; destroyed = false;
+    position = { set: (x, y) => { this.x = x; this.y = y; } };
+    anchor = { set() {} }; style = {};
+    destroy() { this.destroyed = true; }
+  }
+  class Graphics extends Sprite { clear() { return this; } circle() { return this; } fill() { return this; } stroke() { return this; } rect() { return this; } }
+  class Container extends Sprite { children = []; addChild(...children) { this.children.push(...children); } destroy() { super.destroy(); for (const child of this.children) child.destroy(); } }
+  const context = { exports: {}, performance: { now: () => 0 }, fetch: async () => ({ ok: true, json: async () => ({ frames: {}, actions: {} }) }),
+    require: name => name === './classic-magic' ? classic.exports : name === './magic-effects' ? { effectFrames: async (_, indices) => indices.map(index => ({ texture: { index }, x: -20, y: -40 })) }
+      : name === './movement-visual' ? { MOVEMENT_DURATION_MS: 600, MOVEMENT_SETTLE_MS: 100, visualDirection: direction => direction, routeDirection: (...values) => values.at(-1) }
+      : { Sprite, Graphics, Container, Text: Sprite, Texture: { EMPTY: {} } } };
+  vm.createContext(context); vm.runInContext(compile(await readFile(join(root, 'apps/web/src/online-actors.ts'), 'utf8')), context);
+  const entity = { id: 91, x: 288, y: 619, direction: 2, feature: 0, name: 'mage', self: true, action: 'standing', status: 0x00100000 };
+  const actor = new context.exports.OnlineActor(entity); actor.update(entity); await settle(); actor.tick(0);
+  assert.equal(actor.shield.texture.index, 3890); assert.equal(actor.shield.x, -20); assert.equal(actor.shield.y, -40);
+  assert.equal(actor.debugState().shield.ready, true);
+  actor.update({ ...entity, x: 289, action: 'walking' }, 0); actor.tick(300);
+  assert.equal(actor.debugState().shield.pixel.x, 288.5 * 48);
+  actor.struckEffect(300); actor.update({ ...entity, x: 289, action: 'struck' }, 300); actor.tick(300);
+  assert.equal(actor.shield.texture.index, 3900);
+  actor.update({ ...entity, x: 289, status: 0, action: 'standing' }); actor.tick(301);
+  assert.equal(actor.shield.visible, false);
+  actor.destroy(); assert.equal(actor.shield.destroyed, true);
 });

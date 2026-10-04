@@ -1,13 +1,14 @@
 diff --git a/apps/web/src/classic-magic.ts b/apps/web/src/classic-magic.ts
 new file mode 100644
-index 0000000..51bdfb8
+index 0000000..0ed4bf1
 --- /dev/null
 +++ b/apps/web/src/classic-magic.ts
-@@ -0,0 +1,116 @@
+@@ -0,0 +1,127 @@
 +import rules from '../../../content/classic-176/magic-effects.json';
 +
 +export type Sequence={library:string;start:number;count:number;interval:number};
 +export type Projectile=Sequence&{stride:number;impact:Sequence};
++export const shieldVisual=rules.shield;
 +type Plan={kind:'projectile';sequence:Projectile}|{kind:'sequence';sequence:Sequence}|{kind:'beam';sequence:Sequence&{stride:number}};
 +
 +export function castSequence(effect:number):Sequence|undefined{
@@ -54,6 +55,16 @@ index 0000000..51bdfb8
 +export function legacyRound(value:number){
 + const low=Math.floor(value),fraction=value-low;
 + return fraction===.5?(low%2===0?low:low+1):Math.round(value);
++}
++
++export class ShieldAnimation {
++ private animation=0;private impact=3;private lastStep:number;
++ constructor(now:number){this.lastStep=now;}
++ struck(now:number){this.lastStep=now;this.impact=0;}
++ advance(now:number){
++  if(now-this.lastStep>shieldVisual.interval){this.lastStep=now;this.animation++;if(this.animation>100000)this.animation=0;this.impact++;}
++ }
++ frame(struck:boolean){return struck&&this.impact<shieldVisual.struckCount?shieldVisual.struckStart+this.impact:shieldVisual.start+this.animation%shieldVisual.count;}
 +}
 +
 +export class SpellTimeline {
@@ -121,7 +132,7 @@ index 0000000..51bdfb8
 + }
 +}
 diff --git a/apps/web/src/magic-effects.ts b/apps/web/src/magic-effects.ts
-index 5e0e76b..97c1c00 100644
+index 5e0e76b..f0f9d64 100644
 --- a/apps/web/src/magic-effects.ts
 +++ b/apps/web/src/magic-effects.ts
 @@ -1,41 +1,10 @@
@@ -167,6 +178,15 @@ index 5e0e76b..97c1c00 100644
 
  const libraryCache=new Map<string,Promise<Library>>(),textureCache=new Map<string,Promise<Texture>>();
 
+@@ -45,7 +14,7 @@ async function library(name:string){
+  return pending;
+ }
+
+-async function frames(name:string,indices:number[]){
++export async function effectFrames(name:string,indices:number[]){
+  const source=await library(name);
+  return Promise.all(indices.map(async index=>{
+   const frame=source.frames[index];if(!frame)return undefined;
 @@ -57,49 +26,91 @@ async function frames(name:string,indices:number[]){
 
  export class MagicEffects {
@@ -227,7 +247,7 @@ index 5e0e76b..97c1c00 100644
 - private async projectile(from:EntityPosition,to:EntityPosition){
 -  const generation=this.generation,direction=direction16(from,to),poses=await frames('Magic',range(10+direction*10,6));
 + private async projectile(from:EntityPosition,to:EntityPosition,packet:EffectPacket,visual:Projectile){
-+  const generation=this.generation,direction=projectileDirection(from,to),poses=await frames(visual.library,range(visual.start+direction*visual.stride,visual.count));
++  const generation=this.generation,direction=projectileDirection(from,to),poses=await effectFrames(visual.library,range(visual.start+direction*visual.stride,visual.count));
    if(generation!==this.generation)return;
 -  const sprite=this.makeSprite(from);const distance=Math.max(Math.abs(to.x-from.x),Math.abs(to.y-from.y)),duration=Math.max(120,distance*50),started=performance.now();
 +  const sprite=this.makeSprite(from),started=performance.now();
@@ -252,7 +272,7 @@ index 5e0e76b..97c1c00 100644
 + }
 +
 + private async ready(casterId:number,state:SpellTimeline){
-+  const generation=this.generation,visual=state.visual,poses=await frames(visual.library,range(visual.start,visual.count));
++  const generation=this.generation,visual=state.visual,poses=await effectFrames(visual.library,range(visual.start,visual.count));
 +  const caster=this.position(casterId);if(generation!==this.generation||this.casts.get(casterId)!==state||!caster)return;
 +  const sprite=this.makeSprite(caster);
    const tick=(now:number)=>{
@@ -270,8 +290,9 @@ index 5e0e76b..97c1c00 100644
   }
 
 - private async sequence(name:string,indices:number[],at:EntityPosition,interval:number){
+-  const generation=this.generation,poses=await frames(name,indices);if(generation!==this.generation)return;
 + private async sequence(name:string,indices:number[],at:EntityPosition,interval:number,attachment?:()=>EntityPosition|undefined){
-   const generation=this.generation,poses=await frames(name,indices);if(generation!==this.generation)return;
++  const generation=this.generation,poses=await effectFrames(name,indices);if(generation!==this.generation)return;
    const sprite=this.makeSprite(at),started=performance.now();
    const tick=(now:number)=>{
     if(generation!==this.generation||sprite.destroyed)return;
@@ -296,35 +317,58 @@ index 5e0e76b..97c1c00 100644
 +function pixel(at:EntityPosition){return {x:at.x*48,y:at.y*32};}
 +function gridPoint(at:EntityPosition){return {x:at.x/48,y:at.y/32};}
 diff --git a/apps/web/src/online-actors.ts b/apps/web/src/online-actors.ts
-index 84cd17b..fc622d6 100644
+index 84cd17b..c40487a 100644
 --- a/apps/web/src/online-actors.ts
 +++ b/apps/web/src/online-actors.ts
-@@ -1,6 +1,7 @@
+@@ -1,6 +1,8 @@
  import {Assets,Container,Graphics,Sprite,Text,Texture} from 'pixi.js';
  import {resolveMonsterVisual} from './monster-visuals';
  import {MOVEMENT_DURATION_MS,MOVEMENT_SETTLE_MS,routeDirection,visualDirection} from './movement-visual';
-+import type {SpellTimeline} from './classic-magic';
++import {ShieldAnimation,shieldVisual,type SpellTimeline} from './classic-magic';
++import {effectFrames} from './magic-effects';
  export type Entity={id:number;x:number;y:number;direction:number;feature:number;name:string;self:boolean;action:string;dead?:boolean;hp?:number;maxHp?:number;status?:number;hitSpeed?:number;nameColor?:number;kind?:string};
  export type PlayerLayers={bodyName:string;offset:number;hairName?:string;weaponName?:string;weaponOffset:number};
 
-@@ -56,6 +57,8 @@ async function staticPose(name:string,index:number){
+@@ -56,10 +58,14 @@ async function staticPose(name:string,index:number){
   return {interval:1000,frames:[{texture:await task,x:entry.offsetX,y:entry.offsetY}]};
  }
  export class OnlineActor {
++ private shieldAnimation=new ShieldAnimation(performance.now());private shield=new Sprite();private shieldFrames=new Map<number,Pose>();private shieldLoading=false;
++ struckEffect(now:number){this.shieldAnimation.struck(now);}
 + private spellTimeline:SpellTimeline|undefined;
 + setSpellTimeline(state:SpellTimeline|undefined){this.spellTimeline=state;}
   readonly container=new Container();
   private marker=new Graphics();private weapon=new Sprite();private body=new Sprite();private hair=new Sprite();private healthBack=new Graphics();private health=new Graphics();private label=new Text({text:'',style:{fontFamily:'SimSun, Songti SC, serif',fontSize:12,fill:0xffffff,stroke:{color:0x000000,width:3}}});
   private sequence=0;private key='';private start=0;private frames:Pose[]=[];private weaponFrames:Pose[]=[];private hairFrames:Pose[]=[];private interval=500;private entity:Entity;private movement:{fromX:number;fromY:number;toX:number;toY:number;start:number;duration:number}|undefined;private movementQueue:Entity[]=[];private movementEndedAt:number|undefined;private labelBaseY=-64;private labelOffsetY=0;
-@@ -78,6 +81,7 @@ export class OnlineActor {
+- constructor(entity:Entity,interact?:(entity:Entity)=>void){this.entity=entity;this.container.sortableChildren=true;this.marker.zIndex=-2;this.body.zIndex=0;this.hair.zIndex=1;this.healthBack.zIndex=this.health.zIndex=8;this.label.zIndex=9;this.container.addChild(this.marker,this.weapon,this.body,this.hair,this.healthBack,this.health,this.label);this.label.anchor.set(.5,1);this.label.position.set(24,this.labelBaseY);if(interact)this.container.eventMode='static';this.applyCursor();}
++ constructor(entity:Entity,interact?:(entity:Entity)=>void){this.entity=entity;this.container.sortableChildren=true;this.marker.zIndex=-2;this.body.zIndex=0;this.hair.zIndex=1;this.shield.zIndex=3;this.shield.blendMode='add';this.shield.visible=false;this.healthBack.zIndex=this.health.zIndex=8;this.label.zIndex=9;this.container.addChild(this.marker,this.weapon,this.body,this.hair,this.shield,this.healthBack,this.health,this.label);this.label.anchor.set(.5,1);this.label.position.set(24,this.labelBaseY);if(interact)this.container.eventMode='static';this.applyCursor();}
+  update(entity:Entity,movementStart=performance.now(),fromQueue=false){
+   const origin=!fromQueue&&!entity.self&&this.movementQueue.length?this.movementQueue[this.movementQueue.length-1]:this.entity;
+   const toX=entity.x*48,toY=entity.y*32;let moving=(entity.action==='walking'||entity.action==='running')&&(origin.x!==entity.x||origin.y!==entity.y);const sameDestination=this.movement?.toX===toX&&this.movement?.toY===toY;
+@@ -78,7 +84,14 @@ export class OnlineActor {
    if(moving&&!sameDestination){this.movement={fromX:this.container.x,fromY:this.container.y,toX,toY,start:movementStart,duration:MOVEMENT_DURATION_MS};this.movementEndedAt=undefined;this.start=movementStart;}
    else if(!moving&&!sameDestination){this.movement=undefined;this.movementEndedAt=undefined;this.container.position.set(toX,toY);}
    this.entity=entity;this.container.zIndex=entity.y*10000+entity.x+.5;this.label.text=entity.name;this.label.style.fill=nameFill(entity.nameColor);this.labelOffsetY=0;this.applyLabelOffset();this.applyCursor();this.drawHealth();
 +  if(entity.action!=='spell')this.spellTimeline=undefined;
    const status=(entity.status??0)>>>0;
++  this.shield.visible=(entity.feature&255)===0&&(status&shieldVisual.bit)!==0;
++  if(this.shield.visible&&!this.shieldLoading){
++   this.shieldLoading=true;
++   const indices=[...Array.from({length:shieldVisual.count},(_,i)=>shieldVisual.start+i),...Array.from({length:shieldVisual.struckCount},(_,i)=>shieldVisual.struckStart+i)];
++   void effectFrames(shieldVisual.library,indices).then(poses=>{if(this.container.destroyed)return;poses.forEach((pose,i)=>{if(pose)this.shieldFrames.set(indices[i],pose);});}).catch(()=>{if(!this.container.destroyed)this.label.text=`${this.entity.name} · 素材待补齐`;});
++  }
    this.container.alpha=(status&0x00800000)!==0?.38:1;
    this.body.tint=(status&0x00000001)!==0?0x8f8f8f:(status&0xC0000000)!==0?0x8aa86e:0xffffff;
-@@ -117,9 +121,14 @@ export class OnlineActor {
+   const race=entity.feature&255,dress=(entity.feature>>>24)&255;
+@@ -111,15 +124,22 @@ export class OnlineActor {
+   }).catch(()=>{if(generation===this.sequence)this.label.text=`${entity.name} · 素材待补齐`;});
+  }
+  tick(time:number){
++  this.shieldAnimation.advance(time);
++  if(this.shield.visible){const pose=this.shieldFrames.get(this.shieldAnimation.frame(this.entity.action==='struck'));this.shield.texture=pose?.texture??Texture.EMPTY;if(pose)this.shield.position.set(pose.x,pose.y);}
+   const movement=this.movement;
+   const movementProgress=movement?Math.min(1,Math.max(0,(time-movement.start)/movement.duration)):undefined;
+   if(movement&&movementProgress!==undefined){this.container.position.set(movement.fromX+(movement.toX-movement.fromX)*movementProgress,movement.fromY+(movement.toY-movement.fromY)*movementProgress);if(movementProgress===1){this.movement=undefined;this.movementEndedAt=time;const next=this.movementQueue.shift();if(next){this.update(next,time,true);return;}}}
    if(!this.frames.length)return;
    const locomotion=this.entity.action==='walking'||this.entity.action==='running';
    let frame=locomotion&&movementProgress!==undefined?Math.min(this.frames.length-1,Math.floor(movementProgress*this.frames.length)):Math.floor((time-this.start)/this.interval);
@@ -340,8 +384,17 @@ index 84cd17b..fc622d6 100644
    frame%=this.frames.length;
    for(const [sprite,pose] of [[this.body,this.frames[frame]],[this.weapon,this.weaponFrames[frame]],[this.hair,this.hairFrames[frame]]] as const){sprite.texture=pose?.texture??Texture.EMPTY;if(pose)sprite.position.set(pose.x,pose.y);}
   }
+@@ -131,7 +151,7 @@ export class OnlineActor {
+  }
+  setLabelOffset(offset:number){if(offset===this.labelOffsetY)return;this.labelOffsetY=offset;this.applyLabelOffset();this.drawHealth();}
+  labelBounds(){return this.label.getBounds();}
+- debugState(){return {pixel:{x:this.container.x,y:this.container.y},movement:this.movement?{...this.movement}:undefined,queuedMovements:this.movementQueue.length,action:this.entity.action,direction:this.entity.direction,framesReady:this.frames.length>0,poseKey:this.key};}
++ debugState(){return {pixel:{x:this.container.x,y:this.container.y},movement:this.movement?{...this.movement}:undefined,queuedMovements:this.movementQueue.length,action:this.entity.action,direction:this.entity.direction,framesReady:this.frames.length>0,poseKey:this.key,shield:{active:this.shield.visible,ready:this.shieldFrames.size===shieldVisual.count+shieldVisual.struckCount,frame:this.shieldAnimation.frame(this.entity.action==='struck'),pixel:{x:this.container.x,y:this.container.y}}};}
+  hitTest(x:number,y:number){return actorHitTest(this.entity.self,this.container.getBounds(),x,y);}
+  private applyLabelOffset(){this.label.y=this.labelBaseY+this.labelOffsetY;}
+  private applyCursor(){
 diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
-index 8b44085..7c4f265 100644
+index 8b44085..67d8392 100644
 --- a/apps/web/src/play.ts
 +++ b/apps/web/src/play.ts
 @@ -12,6 +12,7 @@ import {SkillBar,skillUseOf,type MagicSkill} from './skills';
@@ -369,7 +422,7 @@ index 8b44085..7c4f265 100644
    attributes:characterPanel.debugState(),inventory:inventory.debugState(),itemQuickBar:itemQuickBar.debugState(),equipment:equipment.debugState(),paperdoll:paperdoll.debugState(),groundItems:groundItems.debugState(),skills:skillBar.debugState(),minimap:minimap.debugState(),
    dialogue:{visible:!dialogueElement.hidden,npc:dialogueTitle.textContent,text:dialogueText.textContent,options:Array.from(dialogueElement.querySelectorAll<HTMLButtonElement>('[data-dialogue-command]')).map(button=>({text:button.textContent,command:button.dataset.dialogueCommand}))},
 -  combatStatus:combatStatus.textContent,nearby, directions:directionsAvailable,entityCount:entities.size,
-+  combatStatus:combatStatus.textContent,nearby, directions:directionsAvailable,entityCount:entities.size,magicEffects:magicEffects.debugState(),actorActions:Object.fromEntries([...visuals].map(([id,visual])=>[id,visual.debugState().action])),
++  combatStatus:combatStatus.textContent,nearby, directions:directionsAvailable,entityCount:entities.size,magicEffects:magicEffects.debugState(),actorActions:Object.fromEntries([...visuals].map(([id,visual])=>[id,visual.debugState().action])),actorEffects:Object.fromEntries([...visuals].map(([id,visual])=>[id,visual.debugState().shield])),
   };
  }
  agentObserver.attach(window as Window&{__mir2Agent?:AgentDebugApi},agentSnapshot);
@@ -404,6 +457,15 @@ index 8b44085..7c4f265 100644
   const race=target.feature&255,player=race===0&&Boolean(target.name);if(race===0&&!player){pursuitTarget=undefined;pursuitHarvest=false;connection.textContent=`${target.name||'该对象'} 暂不支持交互`;return;}
   if(target.dead&&!harvest){pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();connection.textContent='按住 Alt 并左键点击尸体挖肉';return;}
   const dx=Math.sign(target.x-actor.x),dy=Math.sign(target.y-actor.y),distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
+@@ -561,7 +577,7 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+    const entity=entities.get(message.id);if(entity){const next={...entity,...(message.type==='appearance'?{feature:message.feature}:message.type==='entityName'?{name:message.name,nameColor:message.nameColor??entity.nameColor,kind:message.kind??entity.kind}:message.type==='nameColor'?{nameColor:message.color,kind:message.color===254?'slave':entity.kind}:message.type==='entityAlive'?{dead:false,action:'standing',x:message.x,y:message.y,direction:message.direction}:{dead:true,action:'dying',x:message.x,y:message.y,direction:message.direction,hp:0})};update(next);if(message.type==='entityDied'&&combatTarget===message.id)stopCombat();if(message.type==='entityDied'&&entity.self){held=undefined;pending=undefined;pendingAction=undefined;stopCombat();characterPanel.resources({hp:0});classicHud.skinWindow(revivePanel,'system');revivePanel.hidden=false;connection.textContent='角色已死亡';combatStatus.textContent='等待回城复活';}}
+   }
+   else if(message.type==='entityAction'){const entity=entities.get(message.id);if(entity){update({...entity,x:message.x,y:message.y,direction:message.direction,action:message.action});if(message.action==='attack'&&!entity.self&&((entity.feature>>>16)&0xffff)===20)audio.play('skeletonAttack');}}
+-  else if(message.type==='health'){const entity=entities.get(message.id);if(entity){update({...entity,hp:message.hp,maxHp:message.maxHp,action:entity.dead?'dead':'struck'});if(message.damage>0)audio.play('struck');if(entity.self)characterPanel.resources({hp:message.hp,maxHp:message.maxHp});if(combatTarget===message.id&&message.hp<=0)stopCombat();combatStatus.textContent=`${entity.name||'目标'} ${message.hp}/${message.maxHp} HP`;}}
++  else if(message.type==='health'){const entity=entities.get(message.id);if(entity){update({...entity,hp:message.hp,maxHp:message.maxHp,action:entity.dead?'dead':message.damage>0?'struck':entity.action});if(message.damage>0){visuals.get(message.id)?.struckEffect(performance.now());audio.play('struck');}if(entity.self)characterPanel.resources({hp:message.hp,maxHp:message.maxHp});if(combatTarget===message.id&&message.hp<=0)stopCombat();combatStatus.textContent=`${entity.name||'目标'} ${message.hp}/${message.maxHp} HP`;}}
+   else if(message.type==='attributes'){characterPanel.replace(message);classicHud.replaceAttributes(message);inventory.currency(message.gold);const entity=self===undefined?undefined:entities.get(self);if(entity)update({...entity,hp:message.hp,maxHp:message.maxHp});}
+   else if(message.type==='resources'){const entity=entities.get(message.id);if(entity){update({...entity,hp:message.hp,maxHp:message.maxHp});if(entity.self){characterPanel.resources({hp:message.hp,mp:message.mp,maxHp:message.maxHp});classicHud.resource({hp:message.hp,mp:message.mp,maxHp:message.maxHp});}}}
+   else if(message.type==='characterStatus'){const entity=entities.get(message.id);if(entity)update({...entity,status:message.status,hitSpeed:message.hitSpeed});if(self===message.id)classicHud.status(message.status);}
 @@ -574,11 +590,11 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
    else if(message.type==='skillAdded'){skillBar.add(message.skill);classicHud.addSkill(message.skill);connection.textContent=`学会 ${message.skill.name}`;}
    else if(message.type==='skillRemoved'){skillBar.remove(message.magicId);classicHud.removeSkill(message.magicId);}

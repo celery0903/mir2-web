@@ -1,0 +1,674 @@
+{
+  "checkedAt": "2026-10-04T20:43:16.967Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "scope": "shield",
+  "passed": false,
+  "full176Acceptance": false,
+  "fixture": "New isolated test accounts raised offline to level 31 with 20000 gold; skills learned from purchased books.",
+  "errors": [],
+  "missingResources": [],
+  "bookStockFixture": "One magic-shield book added to the isolated native bookshop for this test, then restored. Production stock is unchanged; obtaining the original Corpse King drop is not verified.",
+  "originalBookshopSha256": "6f246dbfb18dba4e95eb94c61311d63a2c7a751f34567fd1e6cc3831fc343602",
+  "fixtureBookshopSha256": "f12aa9cee6611d7a79be2692702a8ebb9c5f39288b7f980ef00e316741d06d80",
+  "shopPagesVisited": 2,
+  "learnedFromPurchasedBook": true,
+  "shield": {
+    "activation": {
+      "type": "characterStatus",
+      "id": 420734972,
+      "status": 1048576,
+      "hitSpeed": 0,
+      "receivedAt": 1791146693807
+    },
+    "mana": {
+      "before": 464,
+      "after": 429
+    },
+    "idleFrames": {
+      "caster": [
+        3890,
+        3891,
+        3892
+      ],
+      "observer": [
+        3890,
+        3891,
+        3892
+      ]
+    },
+    "movingAttachment": true,
+    "nativeExpiry": false,
+    "expiry": {
+      "type": "characterStatus",
+      "id": 420734972,
+      "status": 0,
+      "hitSpeed": 0,
+      "receivedAt": 1791146699180
+    },
+    "elapsedMs": 5373
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Unstruck shield ended at an invented forty-second limit",
+  "casterState": {
+    "now": 61939.599999427795,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": true,
+    "authScene": "select",
+    "connection": "已连接 · mc65969701\n平民 · 12, 12",
+    "map": "0132",
+    "mapGeneration": 2,
+    "lastSequence": 277,
+    "worldReady": true,
+    "self": {
+      "id": 420734972,
+      "name": "mc65969701\n平民",
+      "x": 12,
+      "y": 12,
+      "direction": 0,
+      "action": "standing",
+      "dead": false,
+      "hp": 134,
+      "maxHp": 134
+    },
+    "confirmedCell": {
+      "x": 12,
+      "y": 12
+    },
+    "render": {
+      "pixel": {
+        "x": 576,
+        "y": 384
+      },
+      "queuedMovements": 0,
+      "action": "standing",
+      "direction": 0,
+      "framesReady": true,
+      "poseKey": "CArmour00/CHair00/standing/0/0/0/undefined/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": true,
+        "frame": 3891,
+        "pixel": {
+          "x": 576,
+          "y": 384
+        }
+      },
+      "grid": {
+        "x": 12,
+        "y": 12
+      },
+      "screen": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    "camera": {
+      "x": -176,
+      "y": -84
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "attributes": {
+      "type": "weights",
+      "level": 31,
+      "job": 1,
+      "innerPowerLevel": 99,
+      "gold": 9000,
+      "gameGold": 20000,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 3,
+        "max": 4
+      },
+      "mc": {
+        "min": 3,
+        "max": 4
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 134,
+      "mp": 429,
+      "maxHp": 134,
+      "maxMp": 572,
+      "experience": 0,
+      "maxExperience": 2400000,
+      "weight": 14,
+      "maxWeight": 242,
+      "wearWeight": 0,
+      "maxWearWeight": 25,
+      "handWeight": 0,
+      "maxHandWeight": 23
+    },
+    "inventory": {
+      "known": true,
+      "items": [
+        {
+          "name": "蜡烛",
+          "makeIndex": 1705672,
+          "durability": 8000,
+          "maxDurability": 8000,
+          "stdMode": 30,
+          "weight": 1,
+          "looks": 130,
+          "shape": 0,
+          "baseDurability": 8000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 10,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 0
+        },
+        {
+          "name": "金创药(小量)",
+          "makeIndex": 1705673,
+          "durability": 1,
+          "maxDurability": 1,
+          "stdMode": 0,
+          "weight": 1,
+          "looks": 398,
+          "shape": 0,
+          "baseDurability": 1,
+          "ac": {
+            "min": 20,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 80,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 1
+        },
+        {
+          "name": "木剑",
+          "makeIndex": 1705674,
+          "durability": 4000,
+          "maxDurability": 4000,
+          "stdMode": 5,
+          "weight": 7,
+          "looks": 30,
+          "shape": 1,
+          "baseDurability": 4000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 2,
+            "max": 5
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 50,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 2
+        },
+        {
+          "name": "布衣(男)",
+          "makeIndex": 1705675,
+          "durability": 5000,
+          "maxDurability": 5000,
+          "stdMode": 10,
+          "weight": 5,
+          "looks": 60,
+          "shape": 1,
+          "baseDurability": 5000,
+          "ac": {
+            "min": 0,
+            "max": 2
+          },
+          "mac": {
+            "min": 0,
+            "max": 1
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 400,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 3
+        }
+      ],
+      "pending": [],
+      "gold": 9000
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "makeIndex": 1705673,
+          "item": "金创药(小量)",
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "feature": 0,
+      "layers": {
+        "bodyName": "CArmour00",
+        "offset": 0,
+        "hairName": "CHair00",
+        "weaponOffset": 0
+      },
+      "images": [
+        {
+          "src": "http://127.0.0.1:18883/actors/CArmour00/16.09808129407f41c5.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:18883/actors/CHair00/16.54655924870007eb.png",
+          "loaded": true
+        }
+      ],
+      "ready": true
+    },
+    "groundItems": [],
+    "skills": {
+      "known": true,
+      "skills": [
+        {
+          "key": 0,
+          "level": 0,
+          "currentTrain": 2,
+          "magicId": 31,
+          "name": "魔法盾",
+          "effectType": 4,
+          "effect": 29,
+          "spell": 20,
+          "power": 0,
+          "trainLevels": "HyImJg==",
+          "maxTrain": [
+            200,
+            300,
+            500,
+            500
+          ],
+          "job": 1,
+          "delay": 0,
+          "defSpell": 30,
+          "defPower": 0,
+          "maxPower": 0,
+          "defMaxPower": 0,
+          "description": "",
+          "use": "self"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": [
+        {
+          "magicId": 31,
+          "src": "http://127.0.0.1:18883/ui-national/magic-icons/31.3ba62863bfd964cb.png",
+          "loaded": true
+        }
+      ]
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0132",
+      "name": "地图 0132",
+      "world": {
+        "width": 22,
+        "height": 24
+      },
+      "position": {
+        "x": 12,
+        "y": 12
+      },
+      "imageReady": false,
+      "drawRect": {
+        "left": 7.125,
+        "top": 0,
+        "width": 145.75,
+        "height": 106
+      },
+      "markers": [
+        {
+          "id": "entity-420734972",
+          "x": 12,
+          "y": 12,
+          "kind": "self"
+        },
+        {
+          "id": "entity-713629174",
+          "x": 10,
+          "y": 11,
+          "kind": "npc"
+        },
+        {
+          "id": "entity-410111554",
+          "x": 13,
+          "y": 15,
+          "kind": "player"
+        }
+      ]
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "书店",
+      "text": "请选择你想要买的书。  返 回",
+      "options": [
+        {
+          "text": "返 回",
+          "command": "@Main"
+        }
+      ]
+    },
+    "combatStatus": "魔法效果 4/29 · 12,13",
+    "nearby": [
+      {
+        "type": "entity",
+        "id": 713629174,
+        "x": 10,
+        "y": 11,
+        "direction": 3,
+        "feature": 131122,
+        "status": 0,
+        "name": "书店",
+        "nameColor": 255,
+        "self": false,
+        "kind": "npc",
+        "action": "attack",
+        "dead": false,
+        "distance": 2
+      },
+      {
+        "type": "entity",
+        "id": 410111554,
+        "x": 13,
+        "y": 15,
+        "direction": 7,
+        "feature": 0,
+        "status": 0,
+        "name": "mc65969700\n平民",
+        "nameColor": 255,
+        "self": false,
+        "kind": "player",
+        "action": "standing",
+        "dead": false,
+        "distance": 3
+      }
+    ],
+    "directions": [
+      {
+        "direction": 0,
+        "dx": 0,
+        "dy": -1,
+        "clearSteps": 1
+      },
+      {
+        "direction": 1,
+        "dx": 1,
+        "dy": -1,
+        "clearSteps": 3
+      },
+      {
+        "direction": 2,
+        "dx": 1,
+        "dy": 0,
+        "clearSteps": 4
+      },
+      {
+        "direction": 3,
+        "dx": 1,
+        "dy": 1,
+        "clearSteps": 3
+      },
+      {
+        "direction": 4,
+        "dx": 0,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 5,
+        "dx": -1,
+        "dy": 1,
+        "clearSteps": 1
+      },
+      {
+        "direction": 6,
+        "dx": -1,
+        "dy": 0,
+        "clearSteps": 3
+      },
+      {
+        "direction": 7,
+        "dx": -1,
+        "dy": -1,
+        "clearSteps": 1
+      }
+    ],
+    "entityCount": 3,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [
+        {
+          "casterId": 420734972,
+          "effect": 29,
+          "library": "Magic",
+          "start": 3880,
+          "count": 10,
+          "x": 12,
+          "y": 13
+        }
+      ],
+      "errors": [],
+      "flights": [],
+      "casts": [
+        {
+          "id": 420734972,
+          "frame": 10,
+          "reply": "accepted",
+          "interval": 60,
+          "finished": true
+        }
+      ]
+    },
+    "actorActions": {
+      "410111554": "standing",
+      "420734972": "standing",
+      "713629174": "standing"
+    },
+    "actorEffects": {
+      "410111554": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 624,
+          "y": 480
+        }
+      },
+      "420734972": {
+        "active": false,
+        "ready": true,
+        "frame": 3891,
+        "pixel": {
+          "x": 576,
+          "y": 384
+        }
+      },
+      "713629174": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 480,
+          "y": 352
+        }
+      }
+    }
+  },
+  "bookStockFixtureRestored": true
+}

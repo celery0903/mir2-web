@@ -1,0 +1,692 @@
+{
+  "checkedAt": "2026-10-04T20:54:17.429Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": false,
+  "full176Acceptance": false,
+  "errors": [],
+  "missingResources": [],
+  "initialItems": [
+    {
+      "name": "蜡烛",
+      "makeIndex": 1779368,
+      "durability": 8000,
+      "maxDurability": 8000
+    },
+    {
+      "name": "金创药(小量)",
+      "makeIndex": 1779369,
+      "durability": 1,
+      "maxDurability": 1
+    },
+    {
+      "name": "木剑",
+      "makeIndex": 1779370,
+      "durability": 4000,
+      "maxDurability": 4000
+    },
+    {
+      "name": "布衣(男)",
+      "makeIndex": 1779371,
+      "durability": 5000,
+      "maxDurability": 5000
+    }
+  ],
+  "sale": {
+    "originalDimensions": true,
+    "dragAndCancel": true,
+    "mobileConfirmation": true,
+    "makeIndex": 1779368,
+    "price": 6,
+    "authoritativeGold": 6
+  },
+  "purchase": {
+    "insufficientGoldRejected": true,
+    "price": 11,
+    "goldPreserved": true
+  },
+  "combatPreparation": {
+    "target": "稻草人",
+    "authoritativeWear": true,
+    "grayBackdrop": {
+      "originalFrame": 5,
+      "checkedEmptyPixels": 608,
+      "matchingEmptyPixels": 608
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Player died while walking to the merchant",
+  "state": {
+    "now": 107389.29999923706,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": true,
+    "authScene": "select",
+    "connection": "角色已死亡",
+    "map": "0",
+    "mapGeneration": 1,
+    "lastSequence": 1257,
+    "worldReady": true,
+    "self": {
+      "id": 126941458,
+      "name": "mer7257428\n平民",
+      "x": 268,
+      "y": 422,
+      "direction": 7,
+      "action": "dead",
+      "dead": true,
+      "hp": 0,
+      "maxHp": 19
+    },
+    "confirmedCell": {
+      "x": 268,
+      "y": 422
+    },
+    "render": {
+      "pixel": {
+        "x": 12875.92,
+        "y": 13511.946666666667
+      },
+      "movement": {
+        "fromX": 12912,
+        "fromY": 13536,
+        "toX": 12864,
+        "toY": 13504,
+        "start": 106913.79999923706,
+        "duration": 600
+      },
+      "queuedMovements": 0,
+      "action": "dead",
+      "direction": 7,
+      "framesReady": true,
+      "poseKey": "CArmour01/CHair00/dead/7/0/1/CWeapon01/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 12875.92,
+          "y": 13511.946666666667
+        }
+      },
+      "grid": {
+        "x": 268.24833333333333,
+        "y": 422.24833333333333
+      },
+      "screen": {
+        "x": 399.9920000457769,
+        "y": 299.9946666971846
+      }
+    },
+    "camera": {
+      "x": -12475.927999954223,
+      "y": -13211.951999969482
+    },
+    "intentions": {
+      "rightPointer": false,
+      "clickDestination": {
+        "x": 268,
+        "y": 421,
+        "run": true
+      },
+      "pursuitHarvest": false
+    },
+    "attributes": {
+      "type": "weights",
+      "level": 1,
+      "job": 0,
+      "innerPowerLevel": 99,
+      "gold": 6,
+      "gameGold": 0,
+      "ac": {
+        "min": 0,
+        "max": 2
+      },
+      "mac": {
+        "min": 0,
+        "max": 1
+      },
+      "dc": {
+        "min": 3,
+        "max": 6
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 0,
+      "mp": 15,
+      "maxHp": 19,
+      "maxMp": 15,
+      "experience": 0,
+      "maxExperience": 100,
+      "weight": 0,
+      "maxWeight": 50,
+      "wearWeight": 5,
+      "maxWearWeight": 15,
+      "handWeight": 7,
+      "maxHandWeight": 12
+    },
+    "inventory": {
+      "known": true,
+      "items": [],
+      "pending": [],
+      "gold": 6
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [
+        {
+          "slot": 1,
+          "item": {
+            "name": "木剑",
+            "makeIndex": 1779370,
+            "durability": 3989,
+            "maxDurability": 4000,
+            "stdMode": 5,
+            "weight": 7,
+            "looks": 30,
+            "shape": 1,
+            "baseDurability": 4000,
+            "ac": {
+              "min": 0,
+              "max": 0
+            },
+            "mac": {
+              "min": 0,
+              "max": 0
+            },
+            "dc": {
+              "min": 2,
+              "max": 5
+            },
+            "mc": {
+              "min": 0,
+              "max": 0
+            },
+            "sc": {
+              "min": 0,
+              "max": 0
+            },
+            "need": 0,
+            "needLevel": 1,
+            "price": 50,
+            "attackSpeed": 0,
+            "agility": 0,
+            "accuracy": 0,
+            "magicAvoidance": 0,
+            "strong": 0,
+            "undead": 0,
+            "hpAdd": 0,
+            "mpAdd": 0,
+            "light": 0
+          }
+        },
+        {
+          "slot": 0,
+          "item": {
+            "name": "布衣(男)",
+            "makeIndex": 1779371,
+            "durability": 5000,
+            "maxDurability": 5000,
+            "stdMode": 10,
+            "weight": 5,
+            "looks": 60,
+            "shape": 1,
+            "baseDurability": 5000,
+            "ac": {
+              "min": 0,
+              "max": 2
+            },
+            "mac": {
+              "min": 0,
+              "max": 1
+            },
+            "dc": {
+              "min": 0,
+              "max": 0
+            },
+            "mc": {
+              "min": 0,
+              "max": 0
+            },
+            "sc": {
+              "min": 0,
+              "max": 0
+            },
+            "need": 0,
+            "needLevel": 1,
+            "price": 400,
+            "attackSpeed": 0,
+            "agility": 0,
+            "accuracy": 0,
+            "magicAvoidance": 0,
+            "strong": 0,
+            "undead": 0,
+            "hpAdd": 0,
+            "mpAdd": 0,
+            "light": 0
+          }
+        }
+      ],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 0,
+          "kind": "appearance",
+          "left": "92px",
+          "top": "93px"
+        },
+        {
+          "slot": 1,
+          "kind": "appearance",
+          "left": "76px",
+          "top": "84px"
+        },
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "feature": 33554944,
+      "layers": {
+        "bodyName": "CArmour01",
+        "offset": 0,
+        "hairName": "CHair00",
+        "weaponName": "CWeapon01",
+        "weaponOffset": 0
+      },
+      "images": [
+        {
+          "src": "http://127.0.0.1:18883/actors/CArmour01/16.19badb69064ea49f.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:18883/actors/CWeapon01/16.27d5b7d7d555208f.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:18883/actors/CHair00/16.54655924870007eb.png",
+          "loaded": true
+        }
+      ],
+      "ready": true
+    },
+    "groundItems": [],
+    "skills": {
+      "known": true,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 268,
+        "y": 422
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.87babc76f2fc8ae3.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": [
+        {
+          "id": "entity-126941458",
+          "x": 268,
+          "y": 422,
+          "kind": "self"
+        },
+        {
+          "id": "entity-785561390",
+          "x": 271,
+          "y": 527,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-26440183",
+          "x": 267,
+          "y": 483,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-801210605",
+          "x": 279,
+          "y": 431,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-680248857",
+          "x": 259,
+          "y": 430,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-649105566",
+          "x": 268,
+          "y": 423,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1830284102",
+          "x": 260,
+          "y": 416,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-661555007",
+          "x": 266,
+          "y": 411,
+          "kind": "monster"
+        }
+      ]
+    },
+    "combatStatus": "mer7257428\n平民 0/19 HP",
+    "nearby": [
+      {
+        "type": "entity",
+        "id": 649105566,
+        "x": 268,
+        "y": 423,
+        "direction": 2,
+        "feature": 65546,
+        "status": 0,
+        "name": "森林雪人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "attack",
+        "dead": false,
+        "distance": 1
+      },
+      {
+        "type": "entity",
+        "id": 1830284102,
+        "x": 260,
+        "y": 416,
+        "direction": 7,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 8
+      },
+      {
+        "type": "entity",
+        "id": 680248857,
+        "x": 259,
+        "y": 430,
+        "direction": 2,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 9
+      },
+      {
+        "type": "entity",
+        "id": 661555007,
+        "x": 266,
+        "y": 411,
+        "direction": 5,
+        "feature": 1638417,
+        "status": 0,
+        "name": "多钩猫",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 11
+      },
+      {
+        "type": "entity",
+        "id": 801210605,
+        "x": 279,
+        "y": 431,
+        "direction": 1,
+        "feature": 1703953,
+        "status": 0,
+        "name": "钉耙猫",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 11
+      }
+    ],
+    "directions": [
+      {
+        "direction": 0,
+        "dx": 0,
+        "dy": -1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 1,
+        "dx": 1,
+        "dy": -1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 2,
+        "dx": 1,
+        "dy": 0,
+        "clearSteps": 4
+      },
+      {
+        "direction": 3,
+        "dx": 1,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 4,
+        "dx": 0,
+        "dy": 1,
+        "clearSteps": 0
+      },
+      {
+        "direction": 5,
+        "dx": -1,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 6,
+        "dx": -1,
+        "dy": 0,
+        "clearSteps": 4
+      },
+      {
+        "direction": 7,
+        "dx": -1,
+        "dy": -1,
+        "clearSteps": 4
+      }
+    ],
+    "entityCount": 8,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {
+      "26440183": "standing",
+      "126941458": "dead",
+      "649105566": "attack",
+      "661555007": "standing",
+      "680248857": "standing",
+      "785561390": "standing",
+      "801210605": "standing",
+      "1830284102": "standing"
+    },
+    "actorEffects": {
+      "26440183": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 12816,
+          "y": 15456
+        }
+      },
+      "126941458": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 12875.92,
+          "y": 13511.946666666667
+        }
+      },
+      "649105566": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 12864,
+          "y": 13536
+        }
+      },
+      "661555007": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 12768,
+          "y": 13152
+        }
+      },
+      "680248857": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 12432,
+          "y": 13760
+        }
+      },
+      "785561390": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13008,
+          "y": 16864
+        }
+      },
+      "801210605": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13392,
+          "y": 13792
+        }
+      },
+      "1830284102": {
+        "active": false,
+        "ready": false,
+        "frame": 3890,
+        "pixel": {
+          "x": 12480,
+          "y": 13312
+        }
+      }
+    }
+  }
+}

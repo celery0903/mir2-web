@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-04T21:15:10.894Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "scope": "shield",
+  "passed": false,
+  "full176Acceptance": false,
+  "fixture": "New isolated test accounts raised offline to level 31 with 20000 gold and 400 MP, clamped to native limits on login; skills learned from purchased books.",
+  "errors": [],
+  "missingResources": [],
+  "error": "Error: page.waitForTimeout: Target page, context or browser has been closed"
+}

@@ -27,6 +27,12 @@ array = re.search(rb'EffectBase:\s*array\[0\.\.MAXEFFECT-1\]\s*of integer\s*=\s*
 assert array is not None
 values = [int(value.strip()) for value in re.sub(rb'//[^\r\n]*', b'', array[1]).split(b',')]
 assert len(values) == 31 and values == rules['readyBases']
+actor = (source_dir / next(entry['file'] for entry in rules['source']['references'] if entry['file'].endswith('/Actor.pas'))).read_bytes()
+assert int(re.search(rb'MAGBUBBLEBASE\s*=\s*(\d+)', actor)[1]) == rules['shield']['start']
+assert int(re.search(rb'MAGBUBBLESTRUCKBASE\s*=\s*(\d+)', actor)[1]) == rules['shield']['struckStart']
+assert b'm_nGenAniCount mod 3' in actor and b'm_nCurBubbleStruck < 3' in actor
+assert b'm_dwGenAnicountTime > 120' in actor
+assert rules['shield']['count'] == rules['shield']['struckCount'] == 3 and rules['shield']['interval'] == 120
 pins = json.loads((ROOT / 'upstream/mir2-client/content/classic-176/asset-sources.json').read_text())['effectFiles']
 integration = json.loads((assets / 'effects/integration.json').read_text())
 assert integration['rulesSha256'] == hashlib.sha256((ROOT / 'shared/classic-magic.json').read_bytes()).hexdigest()

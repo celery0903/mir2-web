@@ -152,3 +152,29 @@ PYTHONPATH=.runtime/client-archive-deps python3 scripts/inspect-client-archive.p
 20:16 UTC 开始的 [正式入口回归](correction/source-flight-client-production/evidence.json) 全部通过：三职业正常一级零金币注册、建角、装备、原生确认的移动、桌面/手机和重登保持装备坐标；仓库跨图、原服务窗口、手机存入、重登取回同一物品、金币保持与往返后本人可见。正式回归未离线修改等级、金币或技能，没有浏览器异常或资源请求失败。
 
 完整 1.76 审计仍返回退出码 1：11 张地图、108 个混合版本技能、71 个未解析地图引用。原投射物运动和等待回包的上述范围已修复，真实移动目标及其他技能仍未完成浏览器验收；持续效果、战士叠加、召唤、完整世界、纯净版本数据和原始安装包仍待完成。goal 保持未完成。
+
+## 原生状态与魔法盾
+
+本轮继续修改固定 H5 源码、配套 proxy 和 OpenMir2。原引擎的新 buff 系统按插入顺序计算状态位，单独红毒和魔法盾都误报为绿毒 `0x80000000`；其工作循环未执行，而伤害、防御和隐身仍读取旧状态数组。现恢复已有的状态数组与逐角色计时路径，修正盾的减伤开关索引，补上隐身施放时钟。传统方法参照固定 `lzxsz/MIR2` 的 `ObjBase.pas`，未将其后期源码或当前技能数值认证为 2003 原版。
+
+[实际程序集对照](correction/source-status-native/evidence.json) 核对镜像导出的 DLL 与实际加载哈希后执行八项检查：修复前 0/8，修复后 8/8。覆盖红绿毒独立状态位、最长时长刷新、周期毒伤、防御加成和恢复、盾重施拒绝、超过 40 秒的盾计时、受击扣时、到期关闭减伤与隐身清理。浏览器按原状态位 `0x00100000` 显示盾，采用原偏移、120 毫秒严格间隔和三帧循环；受击三帧由真实 actor 聚焦回归覆盖。镜像内 19 项特效回归、39 项既有前端检查和原生检查通过。[素材复核](correction/source-status-magic-assets.json) 的 746 帧、20,318,916 个 RGBA 像素及偏移与固定库一致。
+
+[独立盾流程](correction/source-status-shield-isolated/evidence.json) 通过网页购买、学习、施放、扣蓝 `496 -> 461`、双方状态位和循环帧、移动附着、自然到期以及桌面/手机画面。当前原生零级盾参数给出 4 至 5 秒，实测 5.392 秒收到关闭状态；先前要求浏览器盾超过 40 秒的断言错误，见 [时长检查失败](correction/source-status-shield-duration-failure.json)，没有修改正式技能数值来适配该断言。长期状态由上述受控原生计时回归验证。
+
+这次隔离流程离线设置 31 级和买书金币，并临时给原生书店增加一本明确标记的测试库存，结束后恢复并核对原文件哈希。原书店实际不售魔法盾，脚本注明尸王掉落；初次只检查第一页和随后确认库存缺失的报告分别保存在 [分页失败](correction/source-status-shield-pagination-failure.json) 与 [库存失败](correction/source-status-shield-stock-failure.json)。当前没有开放尸王地图，因此没有验收原版获取流程；真实联机受击画面、带盾跨图和毒的原调色板着色仍未验收，红绿毒目前仍共用近似 tint。
+
+[火球回归](correction/source-status-fireball-isolated/evidence.json) 通过买书、学习、双方弹道、命中伤害 3、扣蓝 `65 -> 63` 和动作/效果清理。原生魔法值回包单独保存，避免拍图期间自然回蓝掩盖消耗；隔离账号离线设为七级、20,000 金币和 400 MP，登录时由原生上限夹到 65，正式数值未修改。此前在拍图后只读当前值的 [魔法值失败](correction/source-status-fireball-mana-failure.json) 不计为通过。商人检查曾与火球 fixture 的重启重叠而主动结束，见 [中断记录](correction/source-status-services-interrupted.json)，该轮不作为商人回归结果。
+
+空背包登录另查实原生 `ClientQueryBagItems` 不发送空列表，导致复活后人物和装备已加载、背包却一直未知，见 [修复前失败](correction/source-status-empty-bag-login-failure.json)。`server/openmir2-linux.patch` 现在发送没有正文、数量为 0 的 `SM_BAGITEMS`。原生回归捕获真实 gate 字节，核对消息号 201、零条记录、包长度和 socket/session；旧镜像失败，新镜像通过。[同角色桌面/手机复验](correction/source-status-empty-inventory-isolated/evidence.json) 收到权威空列表，保持木剑实例 `1779383`、耐久 `3974/4000` 与 6 金币，未修改该流程的数据库或物品。
+
+商人长途测试已完成出售蜡烛取得 6 金币、拒绝 11 金币购买以及真实木剑损耗，但行走期间死亡，见 [路线失败](correction/source-status-services-native-route-death.json)。绕开危险怪物的测试路线仍未通过；未调整正式生命、金币、掉落或怪物规则。[隔离修理续测](correction/source-status-repair-isolated/evidence.json) 只离线将专用测试角色的位置改为铁匠铺 `0103 12,14`，保持等级、生命、金币、物品与耐久；真实拖入、询价和手机确认把 `3974/4000` 修为 `4000/4000`，原生报价为 0，NPC 对话先于修理确认时背包仍正确更新。这是修理检查，不能计为长途行走通过。
+
+[最终引擎盾复验](correction/source-status-shield-final/evidence.json) 再次通过双方原生状态位、三帧、扣蓝 `464 -> 429`、移动附着、桌面/手机与 5.437 秒自然关闭，随后恢复原书店脚本。一次过早启动、与修理准备重叠的检查已停止并保留 [中断报告](correction/source-status-shield-final-interrupted.json)；最终复验与其他需要重启隔离引擎的流程串行执行。
+
+[最终引擎火球复验](correction/source-status-fireball-final/evidence.json) 通过网页买书学习、双方蓄力与坐标保持、原生扣蓝 `65 -> 63`、伤害 4、弹道命中和动作/效果清理。桌面/手机非空、无溢出、无异常或资源失败；目标没有移动，未据此验收真实移动追踪。
+
+21:21 UTC 正式更新引擎、网页及配套素材。更新前原生服务输出保存完成并 exit 0，见 [关闭记录](correction/source-status-shutdown.json)；[更新前快照](correction/source-status-before-deployment.json) 与 [更新后核对](correction/source-status-deployment-evidence.json) 分别保存。运行引擎为已实测的 `sha256:f7c5e768f1e8b141fe64eef6c368fce12b02433492bc8441e36b7989bbebe7d3`，网页为 `sha256:19f73b86862742547304110a0c1bd989cb22623a4ee413668e1378d81fe181d1`。30 个网页文件、916 个资源文件及原生地图哈希匹配；四项服务健康，数据库和 proxy 实例、引擎存档卷及原书店脚本保持，旧镜像与素材留存。本轮实际更换了引擎实例。
+
+21:22 UTC 开始的 [正式入口回归](correction/source-status-client-production/evidence.json) 全部通过：三职业正常一级零金币注册、建角、换装、原生确认移动、桌面/手机和重登存档；仓库入口、空目录、手机存入、重登取回同一物品及往返后本人可见。正式测试未使用离线等级、金币或位置 fixture，无浏览器异常或资源失败。
+
+完整审计继续以退出码 1 失败：11 张地图、71 个未解析地图引用、108 个混合版本技能，2003 原包仍未取得。魔法盾真实受击及跨图、其余技能、完整世界、纯净版本数据和其他系统尚未完成，goal 保持未完成。功能修复部署不构成盛大 2003 原版认证。

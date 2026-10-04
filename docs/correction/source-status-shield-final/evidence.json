@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-10-04T21:15:28.442Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "scope": "shield",
+  "passed": true,
+  "full176Acceptance": false,
+  "fixture": "New isolated test accounts raised offline to level 31 with 20000 gold and 400 MP, clamped to native limits on login; skills learned from purchased books.",
+  "errors": [],
+  "missingResources": [],
+  "bookStockFixture": "One magic-shield book added to the isolated native bookshop for this test, then restored. Production stock is unchanged; obtaining the original Corpse King drop is not verified.",
+  "originalBookshopSha256": "6f246dbfb18dba4e95eb94c61311d63a2c7a751f34567fd1e6cc3831fc343602",
+  "fixtureBookshopSha256": "f12aa9cee6611d7a79be2692702a8ebb9c5f39288b7f980ef00e316741d06d80",
+  "shopPagesVisited": 2,
+  "learnedFromPurchasedBook": true,
+  "shield": {
+    "activation": {
+      "type": "characterStatus",
+      "id": 717908552,
+      "status": 1048576,
+      "hitSpeed": 0,
+      "receivedAt": 1791148625465
+    },
+    "mana": {
+      "before": 464,
+      "after": 429
+    },
+    "idleFrames": {
+      "caster": [
+        3890,
+        3891,
+        3892
+      ],
+      "observer": [
+        3890,
+        3891,
+        3892
+      ]
+    },
+    "movingAttachment": true,
+    "nativeExpiry": true,
+    "expectedDurationSeconds": [
+      4,
+      5
+    ],
+    "durationParameters": {
+      "maximumSkillLevel": 3,
+      "level": 0,
+      "mc": {
+        "min": 3,
+        "max": 4
+      },
+      "defPower": 0,
+      "defMaxPower": 0
+    },
+    "durationScope": "Current native GetPower/MagBubbleDefenceUp parameters, not authenticated 2003 numbers. Long-duration timers are covered by the separate real-assembly regression.",
+    "expiry": {
+      "type": "characterStatus",
+      "id": 717908552,
+      "status": 0,
+      "hitSpeed": 0,
+      "receivedAt": 1791148630902
+    },
+    "elapsedMs": 5437,
+    "mobileActiveOnBothClients": true
+  },
+  "views": [
+    {
+      "name": "caster",
+      "desktopColors": 596,
+      "mobileColors": 313,
+      "mobileOverflow": false
+    },
+    {
+      "name": "observer",
+      "desktopColors": 537,
+      "mobileColors": 309,
+      "mobileOverflow": false
+    }
+  ],
+  "effectTextures": [
+    "/effects/Magic/3881.ca8db3b262d5d602.png",
+    "/effects/Magic/3887.ff490ebb33d3db46.png",
+    "/effects/Magic/3885.596e2e3fed1caf60.png",
+    "/effects/Magic/3882.a844a294385b7d6d.png",
+    "/effects/Magic/3883.e667f7f125d339ec.png",
+    "/effects/Magic/3884.3150cced3eee8d0f.png",
+    "/effects/Magic/3886.d194cbbf63031f9b.png",
+    "/effects/Magic/3880.f069807ccb385054.png",
+    "/effects/Magic/3902.b1ea45eb45b92386.png",
+    "/effects/Magic/3901.ffad4fcb76915e68.png",
+    "/effects/Magic/3900.1b2dcc812e2e0fb3.png",
+    "/effects/Magic/3890.42e0afcd9aa3f1bb.png",
+    "/effects/Magic/3891.daf8aeca1272d70f.png",
+    "/effects/Magic/3892.75f09de3f50fc70b.png",
+    "/effects/Magic/3888.ad91f84918b35c75.png",
+    "/effects/Magic/3889.dc04cc57f81adf81.png"
+  ],
+  "bookStockFixtureRestored": true
+}
