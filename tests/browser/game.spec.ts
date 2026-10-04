@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { PNG } from 'pngjs';
+test.use({ actionTimeout: 10000, trace: 'off' });
 
 test('desktop and mobile play against the Docker server', async ({ browser, baseURL }) => {
   const errors: string[] = [];
@@ -17,22 +18,41 @@ test('desktop and mobile play against the Docker server', async ({ browser, base
   const account = `u${suffix}`, password = 'UiTest987';
   await page.locator('#account').fill(account);
   await page.locator('#password').fill(password);
+  await page.locator('#confirm-password').fill(password);
+  await page.locator('#userName').fill('界面测试');
+  await page.locator('#birthDay').fill('2000/01/01');
   await page.locator('#auth-submit').click();
   await expect(page.getByRole('heading', { name: '选择角色' })).toBeVisible();
+  await page.getByRole('button', { name: '创建角色', exact: true }).click();
   await page.locator('#character-name').fill(`青石${suffix.slice(-5)}`);
   await page.getByRole('button', { name: '道士', exact: true }).click();
   await page.getByRole('button', { name: '创建并进入' }).click();
   await expect(page.locator('#player-hud')).toBeVisible();
   await expect(page.locator('#player-level')).toContainText('道士');
-  await expect(page.locator('#inventory .filled')).toHaveCount(4);
-  await expect(page.locator('#world')).toHaveAttribute('data-map-ready', 'true');
-  await page.getByRole('button', { name: '打开背包', exact: true }).click();
-  await page.locator('#inventory').getByRole('button', { name: '木剑', exact: true }).click();
-  await expect(page.locator('#equipment').getByRole('button', { name: '木剑', exact: true })).toBeVisible();
   await expect(page.locator('#inventory .filled')).toHaveCount(3);
-  await page.getByRole('button', { name: '使用金创药', exact: true }).click();
-  await expect(page.locator('#health-count')).toHaveText('0');
+  await expect(page.locator('#belt .filled')).toHaveCount(1);
+  await expect(page.locator('#belt [data-item]')).toHaveCount(6);
+  await expect(page.locator('#world')).toHaveAttribute('data-map-ready', 'true');
+  expect(await page.locator('#world canvas').evaluate((canvas: HTMLCanvasElement) => [canvas.width, canvas.height])).toEqual([800, 600]);
+  const layout = await page.evaluate(() => {
+    const stage = document.querySelector('#app')!.getBoundingClientRect();
+    const hud = document.querySelector('.bottom-bar')!.getBoundingClientRect();
+    return { ratio: stage.width / stage.height, top: (hud.top - stage.top) * 800 / stage.width };
+  });
+  expect(layout.ratio).toBeCloseTo(4 / 3, 5);
+  expect(layout.top).toBeCloseTo(349, 5);
+  await page.getByRole('button', { name: '打开背包', exact: true }).click();
+  await page.locator('#inventory').getByRole('button', { name: '木剑', exact: true }).dblclick();
+  await page.keyboard.press('F10');
+  await expect(page.locator('#equipment').getByRole('button', { name: '木剑', exact: true })).toBeVisible();
+  await page.keyboard.press('F9');
+  await expect(page.locator('#sidepanel')).toBeHidden();
+  await expect(page.locator('#character-window')).toBeVisible();
+  await page.keyboard.press('F9');
   await expect(page.locator('#inventory .filled')).toHaveCount(2);
+  await page.locator('#belt').getByRole('button', { name: '金创药(小量)', exact: true }).click();
+  await expect(page.locator('#health-count')).toHaveText('0');
+  await expect(page.locator('#belt .filled')).toHaveCount(0);
   const initial = await page.locator('#coordinates').textContent();
   for (const key of ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp']) {
     await page.keyboard.down(key);
@@ -42,11 +62,12 @@ test('desktop and mobile play against the Docker server', async ({ browser, base
     if (await page.locator('#coordinates').textContent() !== initial) break;
   }
   await expect(page.locator('#coordinates')).not.toHaveText(initial!);
-  await page.getByRole('button', { name: '打开聊天', exact: true }).click();
+  await page.keyboard.press('Enter');
   await page.locator('#chat-input').fill('青石镇出发');
   await page.getByRole('button', { name: '发送', exact: true }).click();
   await expect(page.locator('#chat-log')).toContainText('青石镇出发');
-  await page.getByRole('button', { name: '打开背包', exact: true }).click();
+  await page.locator('#chat-input').blur();
+  await page.keyboard.press('F9');
   await page.screenshot({ path: 'test-results/desktop.png' });
   const png = PNG.sync.read(await page.locator('#world canvas').screenshot());
   const colors = new Set();
@@ -75,12 +96,15 @@ test('desktop and mobile play against the Docker server', async ({ browser, base
   await phone.locator('#auth-submit').click();
   await expect(phone.getByRole('heading', { name: '选择角色' })).toBeVisible();
   await phone.locator('.character').click();
+  await phone.locator('#start-character').click();
   await expect(phone.locator('#player-hud')).toBeVisible();
   await expect(phone.locator('#world')).toHaveAttribute('data-map-ready', 'true');
   await expect(phone.locator('#touch-pad')).toBeVisible();
-  await phone.getByRole('button', { name: '打开背包', exact: true }).click();
+  await phone.locator('#native-bag-toggle').tap();
+  await phone.locator('#character-toggle').tap();
   await expect(phone.locator('#equipment').getByRole('button', { name: '木剑', exact: true })).toBeVisible();
-  await phone.getByRole('button', { name: '收起', exact: true }).click();
+  await phone.locator('#close-bag').tap();
+  await phone.locator('#close-character').tap();
   await expect(phone.locator('#sidepanel')).toBeHidden();
   const beforeTouch = await phone.locator('#coordinates').textContent();
   for (const direction of [0, 2, 4, 6]) {
@@ -99,7 +123,7 @@ test('desktop and mobile play against the Docker server', async ({ browser, base
   }
   expect(mobileColors.size).toBeGreaterThan(35);
   expect(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  for (const selector of ['.topbar', '#player-hud', '.actions', '#touch-pad']) {
+  for (const selector of ['.bottom-bar', '#player-hud', '.actions', '#touch-pad']) {
     const box = await phone.locator(selector).boundingBox();
     expect(box!.x).toBeGreaterThanOrEqual(0);
     expect(box!.x + box!.width).toBeLessThanOrEqual(391);

@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-04T15:05:12.564Z",
+  "repository": "leiniaozl229/mir2",
+  "revision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
+  "gatewaySourceModified": false,
+  "engine": "isolated mir2-rebuild OpenMir2",
+  "passed": true,
+  "registration": true,
+  "login": true,
+  "characterCreation": true,
+  "map": "0",
+  "authoritativePlayerAndAttributes": true,
+  "originalStarterInventory": [
+    {
+      "name": "蜡烛",
+      "durability": 8000,
+      "maxDurability": 8000
+    },
+    {
+      "name": "金创药(小量)",
+      "durability": 1,
+      "maxDurability": 1
+    },
+    {
+      "name": "木剑",
+      "durability": 4000,
+      "maxDurability": 4000
+    },
+    {
+      "name": "布衣(男)",
+      "durability": 5000,
+      "maxDurability": 5000
+    }
+  ],
+  "movement": {
+    "from": {
+      "x": 289,
+      "y": 616
+    },
+    "to": {
+      "x": 289,
+      "y": 615
+    },
+    "serverAcknowledged": true
+  }
+}

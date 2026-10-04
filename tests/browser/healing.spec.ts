@@ -29,12 +29,12 @@ test('native healing animation through the browser skill button', async ({ page,
   await expect(page.locator('#connection-status')).toHaveText('已连接');
   await page.locator('#account').fill(fixture.accountID);
   await page.locator('#password').fill(fixture.password);
-  await page.locator('#auth-submit').click(); await page.locator('.character').click();
+  await page.locator('#auth-submit').click(); await page.locator('.character').click(); await page.locator('#start-character').click();
   await expect(page.locator('#world')).toHaveAttribute('data-map-ready','true');
   await expect.poll(()=>page.evaluate(()=>{
     const u=(window as any).healingEvidence.user; return u && u.hp>0 && u.hp<u.maxHP;
   }),{timeout:30000}).toBe(true);
-  await page.getByRole('button',{name:'施放治愈术',exact:true}).click();
+  await page.keyboard.press('F1');
   await expect.poll(()=>page.evaluate(()=>(window as any).healingEvidence.castAt)).toBeGreaterThan(0);
   await page.waitForTimeout(300);
   await page.screenshot({path:'test-results/healing.png'});

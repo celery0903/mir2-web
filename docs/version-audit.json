@@ -1,0 +1,338 @@
+{
+  "checkedAt": "2026-10-04T15:09:18.449Z",
+  "project": "mir2-web",
+  "target": "2003 Chinese 1.76",
+  "acceptance": "failed",
+  "goalComplete": false,
+  "contentHashes": {
+    "shared/world.json": "a615f733acf93dad86361fbf9c7d459cd99473f41303bd7c6c53bc4ba03c930d",
+    "shared/classic-storage.json": "63e861a3783a85d9a189b3c6216240a12a07703269890148b4b633d3dd47a844",
+    "scripts/prepare-classic-world.mjs": "9ec3028a6392f5190a89cc1420fc84b1f3462cbe644ca6c1d7e6edf59ddf962a",
+    "scripts/prepare-openmir2.mjs": "86d03fa62d633de7daefee6b8a60d886783d4e9ff7619e963a9648d1b969e078",
+    "web/src/main.ts": "84543169e4d9a03afe9089c53b65d6e77f3cbc5331f22fcb6d7b7b13966164ce",
+    "web/src/style.css": "a934a60e9b4d32f3d8f640e56bb29a3489746def63294124274587e92e0312d9",
+    "web/src/game.ts": "66eff9405cf666000c8e37383212ded76d80285b4e8a8c57e55189cbcf25d3c8",
+    "web/src/classic.ts": "d5d58ea628b7cac1646fa9cfd055fb3181de84962b4add43ffae903452f67f9b",
+    "web/src/client.ts": "7c189df8a3700c329762c8164b6b58af53fd93b63d2328b5c6f75a2e0949f255",
+    "web/src/audio.ts": "5350708864fadaf05976d4757d95433de9b3d6d5b73a6a8838e8044acc3b7be3",
+    "server/Engine/Dockerfile": "f2ec1428cca4b1c2ca7d5599d3b8f73c1c699c715dca25365aa5d23856081299",
+    "server/Engine/run.mjs": "77fe728931ab698a35d1f8dc90d2fbf93b66082a7f666ff15447c8ce0f171bc5",
+    "server/WebGateway/GatewaySession.cs": "99edbc31eed8e1587a02d977e0242072dc754c1b1412754103ae48468ce5e76d",
+    "server/WebGateway/Program.cs": "9d8e39bfd9fe1ef9b296867619c5792c57812bf568a7b4367335043be85d6a0d",
+    "server/openmir2-linux.patch": "5e4d1f8465d9e2752db1c487c44bf054cf2988e4a6fb4aefd90a3cc4a0ca69d9"
+  },
+  "world": {
+    "profile": "bichon-prototype",
+    "activatedMapIDs": [
+      "0",
+      "0102",
+      "0103",
+      "0104",
+      "0105",
+      "0106",
+      "0108",
+      "0109",
+      "0132",
+      "0140",
+      "0141"
+    ],
+    "enabledMaps": [
+      {
+        "id": "0",
+        "name": "比奇省",
+        "width": 700,
+        "height": 700,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0102",
+        "name": "肉店",
+        "width": 15,
+        "height": 15,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0103",
+        "name": "铁器店",
+        "width": 27,
+        "height": 29,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0104",
+        "name": "技能书店",
+        "width": 13,
+        "height": 16,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0105",
+        "name": "首饰店",
+        "width": 27,
+        "height": 29,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0106",
+        "name": "衣服店",
+        "width": 27,
+        "height": 29,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0108",
+        "name": "药店",
+        "width": 15,
+        "height": 18,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0109",
+        "name": "炼药房",
+        "width": 10,
+        "height": 15,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0132",
+        "name": "边界书店",
+        "width": 22,
+        "height": 24,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0140",
+        "name": "边界仓库",
+        "width": 17,
+        "height": 20,
+        "collisionMismatches": 0
+      },
+      {
+        "id": "0141",
+        "name": "边界杂货店",
+        "width": 27,
+        "height": 32,
+        "collisionMismatches": 0
+      }
+    ],
+    "installedMapIDsMatchCollisionAudit": true,
+    "connections": 44,
+    "scope": "Bichon and ten interiors; not a complete 1.76 world"
+  },
+  "database": {
+    "items": 1000,
+    "skills": 108,
+    "monsters": 705,
+    "laterItems": [
+      "雷霆战甲(男)",
+      "雷霆战甲(女)",
+      "天龙圣衣(男)",
+      "天龙圣衣(女)",
+      "天龙盔",
+      "开天",
+      "玄天",
+      "镇天",
+      "天龙圣剑",
+      "开天战廓",
+      "倚天剑",
+      "★内功书★",
+      "怒之内功剑法",
+      "静之内功剑法",
+      "玛法内功心法",
+      "★英雄书★",
+      "四级英雄盾",
+      "白日门开天斩",
+      "雷霆一击",
+      "开天斩",
+      "四级英雄剑术",
+      "四级英雄刺杀",
+      "四级英雄半月",
+      "四级英雄雷电术",
+      "四级英雄火雨",
+      "四级英雄施毒术",
+      "四级英雄噬血术",
+      "四级英雄神兽",
+      "四级雷霆一击",
+      "雷霆项链",
+      "雷霆护腕",
+      "雷霆战戒",
+      "雷霆腰带",
+      "雷霆战靴",
+      "强化雷霆项链",
+      "强化雷霆护腕",
+      "强化雷霆战戒",
+      "强化雷霆腰带",
+      "强化雷霆战靴",
+      "星王战盔",
+      "星王道盔",
+      "星王法冠",
+      "星王项链(战)",
+      "星王项链(道)",
+      "星王项链(法)",
+      "星王护腕(战)",
+      "星王护腕(道)",
+      "星王护腕(法)",
+      "星王战戒",
+      "星王道戒",
+      "星王法戒",
+      "星王腰带(战)",
+      "星王腰带(道)",
+      "星王腰带(法)",
+      "星王战靴",
+      "星王道靴",
+      "星王法靴"
+    ],
+    "laterSkills": [
+      "流星火雨",
+      "噬血术",
+      "白日门四级法盾",
+      "四级英雄神兽",
+      "逐日剑法",
+      "四级英雄剑术",
+      "四级英雄刺杀",
+      "四级英雄半月",
+      "四级英雄雷电术",
+      "四级流星火雨",
+      "四级英雄火雨",
+      "四级英雄施毒术",
+      "四级噬血术",
+      "四级英雄噬血术",
+      "血魄一击(战)",
+      "白日门血魄(战)",
+      "血魄一击(法)",
+      "白日门血魄(法)",
+      "血魄一击(道)",
+      "白日门血魄(道)",
+      "白日门强身术"
+    ]
+  },
+  "clientArchive": {
+    "file": "传奇1.76客户端.rar",
+    "sha256": "41372080474b00796c1d931946f162993f8b5d5b3078c2d2aab3800e065500b9",
+    "provenance": "User supplied Desktop archive; LOMCN collection 111907 links pan.baidu.com/s/1i5R41Hr. Repacked private-server candidate, not authenticated official 1.76.",
+    "officialVersionAuthenticated": false,
+    "rawArchiveAvailableHere": false
+  },
+  "originalFrameDimensions": {
+    "1": {
+      "width": 800,
+      "height": 251
+    },
+    "3": {
+      "width": 336,
+      "height": 270
+    },
+    "4": {
+      "width": 92,
+      "height": 90
+    },
+    "6": {
+      "width": 96,
+      "height": 92
+    },
+    "7": {
+      "width": 76,
+      "height": 13
+    },
+    "60": {
+      "width": 296,
+      "height": 254
+    },
+    "63": {
+      "width": 640,
+      "height": 473
+    },
+    "65": {
+      "width": 800,
+      "height": 600
+    },
+    "73": {
+      "width": 300,
+      "height": 417
+    },
+    "370": {
+      "width": 232,
+      "height": 325
+    },
+    "376": {
+      "width": 168,
+      "height": 199
+    },
+    "377": {
+      "width": 168,
+      "height": 199
+    },
+    "383": {
+      "width": 168,
+      "height": 199
+    },
+    "384": {
+      "width": 416,
+      "height": 176
+    },
+    "385": {
+      "width": 308,
+      "height": 205
+    },
+    "392": {
+      "width": 140,
+      "height": 181
+    },
+    "393": {
+      "width": 24,
+      "height": 13
+    }
+  },
+  "referenceCandidate": {
+    "repository": "mrzhqiang/mirserver-1.76",
+    "revision": "39e17246a32247a2c43c4cc481e97e88c692fa53",
+    "tableCounts": {
+      "skills": 78,
+      "items": 468,
+      "monsters": 285
+    },
+    "directImportAccepted": false,
+    "laterSkills": [
+      "开天斩",
+      "噬血术",
+      "逐日剑法",
+      "流星火雨",
+      "倚天辟地"
+    ],
+    "laterItems": [
+      "1元宝",
+      "5元宝",
+      "10元宝",
+      "20元宝",
+      "50元宝",
+      "100元宝",
+      "200元宝",
+      "500元宝",
+      "1000元宝",
+      "开天",
+      "镇天",
+      "玄天",
+      "雷霆战甲(男)",
+      "雷霆战甲(女)",
+      "━━天龙━━",
+      "天龙之剑",
+      "天龙之袍(男)",
+      "天龙之衣(女)",
+      "天龙之盔",
+      "天龙之链",
+      "天龙之镯",
+      "天龙之戒",
+      "天龙之腰",
+      "天龙之靴",
+      "副本药箱(雷炎)"
+    ]
+  },
+  "remainingRequirements": [
+    "Complete classic world, entrances and spawn tables verified against the chosen version",
+    "Version-specific item, monster, skill, drop and NPC data without later content",
+    "Complete three-job skill actions and effects, original login transitions and remaining client interactions",
+    "Warehouse capacity and failure regressions, trade, groups, guilds and siege browser workflows",
+    "Matched full client archive and historical gameplay reference for fidelity comparison"
+  ],
+  "interpretation": "Basic gameplay and original UI frames do not prove full 1.76 fidelity. Later data presence does not by itself prove player reachability."
+}

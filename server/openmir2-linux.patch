@@ -18,6 +18,20 @@ index 1b8d6e3e..46d1102f 100644
 -}
 \ No newline at end of file
 +}
+diff --git a/src/LoginSrv/Storage/AccountStorage.cs b/src/LoginSrv/Storage/AccountStorage.cs
+--- a/src/LoginSrv/Storage/AccountStorage.cs
++++ b/src/LoginSrv/Storage/AccountStorage.cs
+@@ -298,8 +298,8 @@
+                 command.Parameters.AddWithValue("@UserName", accountRecord.UserEntry.UserName);
+                 command.Parameters.AddWithValue("@IdCard", accountRecord.UserEntry.SSNo);
+                 command.Parameters.AddWithValue("@Birthday", accountRecord.UserEntryAdd.BirthDay);
+-                command.Parameters.AddWithValue("@Phone", accountRecord.UserEntryAdd.BirthDay);
+-                command.Parameters.AddWithValue("@MobilePhone", accountRecord.UserEntryAdd.BirthDay);
++                command.Parameters.AddWithValue("@Phone", accountRecord.UserEntry.Phone);
++                command.Parameters.AddWithValue("@MobilePhone", accountRecord.UserEntryAdd.MobilePhone);
+                 command.Parameters.AddWithValue("@ADDRESS1", "");
+                 command.Parameters.AddWithValue("@ADDRESS2", "");
+                 command.Parameters.AddWithValue("@EMail", accountRecord.UserEntry.EMail);
 diff --git a/src/GameSrv/AppService.cs b/src/GameSrv/AppService.cs
 index 2c615e00..a6ea823f 100644
 --- a/src/GameSrv/AppService.cs
@@ -363,7 +377,7 @@ diff --git a/src/M2Server/Player/PlayObject.Attack.cs b/src/M2Server/Player/Play
 +            // Open doors in the same action; the action queue precedes ordinary messages.
 +            if (Math.Abs(nX - CurrX) <= 2 && Math.Abs(nY - CurrY) <= 2)
 +            {
-+                ClientOpenDoor(nX, nY);
++                ClientOpenDoorsAround(nX, nY);
 +            }
              nDir = M2Share.GetNextDirection(CurrX, CurrY, nX, nY);
              if (RunTo(nDir, false, nX, nY))
@@ -374,7 +388,7 @@ diff --git a/src/M2Server/Player/PlayObject.Attack.cs b/src/M2Server/Player/Play
 +            // Keep permission checks and the door state change on the native game thread.
 +            if (Math.Abs(nX - CurrX) <= 1 && Math.Abs(nY - CurrY) <= 1)
 +            {
-+                ClientOpenDoor(nX, nY);
++                ClientOpenDoorsAround(nX, nY);
 +            }
              byte nextDir = M2Share.GetNextDirection(CurrX, CurrY, nX, nY);
              if (WalkTo(nextDir, false))
@@ -708,7 +722,15 @@ diff --git a/src/GameSrv/Npc/Merchant.cs b/src/GameSrv/Npc/Merchant.cs
                              }
                              if (goodCout < nRefillCount)
                              {
-@@ -1060,6 +1060,8 @@
+@@ -803,5 +803,7 @@
+                         playObject.ScriptLable = sData;
+                         bool boCanJmp = playObject.LableIsCanJmp(sLabel);
++                        if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
++                            Console.WriteLine($"NPC_SELECT name={ChrName} label={sLabel} allowed={boCanJmp} storage={IsStorage} getback={IsGetback}");
+                         if (string.Compare(sLabel, ScriptFlagConst.sSL_SENDMSG, StringComparison.OrdinalIgnoreCase) == 0)
+                         {
+                             if (string.IsNullOrEmpty(sMsg))
+@@ -1060,6 +1062,8 @@
              string sFile = ScriptName + '-' + MapName;
              LocalDb.LoadGoodRecord(this, sFile);
              LocalDb.LoadGoodPriceRecord(this, sFile);
@@ -717,12 +739,12 @@ diff --git a/src/GameSrv/Npc/Merchant.cs b/src/GameSrv/Npc/Merchant.cs
              LoadUpgradeList();
          }
  
-@@ -1092,6 +1092,8 @@
+@@ -1092,6 +1096,8 @@
              Path = ScriptFlagConst.sMarket_Def;
              string scriptPath = ScriptName + '-' + MapName;
              M2Share.ScriptParsers.LoadScriptFile(this, "Market_Def", scriptPath, true);
 +            if (Environment.GetEnvironmentVariable("MIR_PROTOCOL_TRACE") == "1")
-+                Console.WriteLine($"NPC_SCRIPT name={ChrName} path={SystemShare.GetEnvirFilePath("Market_Def", scriptPath + ".txt")} scripts={ScriptList.Count} buy={IsBuy} sell={IsSell}");
++                Console.WriteLine($"NPC_SCRIPT name={ChrName} path={SystemShare.GetEnvirFilePath("Market_Def", scriptPath + ".txt")} scripts={ScriptList.Count} buy={IsBuy} sell={IsSell} storage={IsStorage} getback={IsGetback}");
          }
  
          public override void Click(IPlayerActor playObject)
@@ -738,10 +760,39 @@ diff --git a/src/M2Server/Player/PlayObject.Base.cs b/src/M2Server/Player/PlayOb
                  if (normNpc != null)
                  {
                      if (normNpc.Envir == Envir && Math.Abs(normNpc.CurrX - CurrX) <= 15 && Math.Abs(normNpc.CurrY - CurrY) <= 15)
+@@ -1592,9 +1594,10 @@
+             string sSendMsg = string.Empty;
+             int maxCount = StorageItemList.Count;
+-            short page = (short)Math.Ceiling(maxCount / 50f);
++            short page = (short)Math.Max(1, Math.Ceiling(maxCount / 50f));
+
+             for (int p = 0; p < page; p++)
+             {
++                sSendMsg = string.Empty;
+                 int startCount = p * 50;
+                 int endCount = startCount + 50;
+                 if (endCount > maxCount)
+@@ -1620,6 +1623,7 @@
+                 ClientMsg = Messages.MakeMessage(Messages.SM_SAVEITEMLIST, merchantId, 0, p, (page - 1) < 0 ? 0 : page - 1);
+-                SendSocket(ClientMsg, sSendMsg);
++                if (sSendMsg.Length == 0) SendSocket(ClientMsg);
++                else SendSocket(ClientMsg, sSendMsg);
+             }
+         }
+
+         private void SendChangeGuildName()
 diff --git a/src/M2Server/Player/PlayObject.Operate.cs b/src/M2Server/Player/PlayObject.Operate.cs
 --- a/src/M2Server/Player/PlayObject.Operate.cs
 +++ b/src/M2Server/Player/PlayObject.Operate.cs
-@@ -363,7 +363,7 @@
+@@ -363,7 +363,15 @@
++        private void ClientOpenDoorsAround(int nX, int nY)
++        {
++            // A route tile can sit beside the door's image tiles.
++            for (int doorX = nX - 1; doorX <= nX + 1; doorX++)
++                for (int doorY = nY - 1; doorY <= nY + 1; doorY++)
++                    ClientOpenDoor(doorX, doorY);
++        }
++
          private void ClientOpenDoor(int nX, int nY)
          {
              MapDoor door = default;

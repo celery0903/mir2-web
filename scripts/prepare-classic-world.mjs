@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { legacyMap, collisionRows } from './native-map.mjs';
 
 const [seed, assets, output] = process.argv.slice(2).map(value => resolve(value));
@@ -9,6 +9,7 @@ const supported = new Set(mapIDs);
 const visibleMonsters = new Set(['鸡', '鹿', '稻草人', '多钩猫', '钉耙猫', '蛤蟆', '半兽人', '食人花', '森林雪人', '毒蜘蛛']);
 const readText = async file => new TextDecoder('gbk').decode(await readFile(join(seed, 'Mir200/Envir', file)));
 const writeText = (file, text) => writeFile(join(output, 'Envir', file), '\uFEFF' + text);
+const storage = JSON.parse(await readFile(new URL('../shared/classic-storage.json', import.meta.url)));
 await mkdir(join(output, 'Map'), { recursive: true });
 await mkdir(join(output, 'Envir'), { recursive: true });
 await mkdir(join(output, 'Envir/Market_Def'), { recursive: true });
@@ -40,8 +41,11 @@ for (const [file, mapColumn] of [['MonGen.txt', 0], ['MerChant.txt', 1], ['Npcs.
     if (file === 'MonGen.txt' && !visibleMonsters.has(fields[3])) return false;
     return file !== 'MerChant.txt' || /^(比奇城|边界村|银杏村)\//.test(fields[0]);
   });
+  if (file === 'MerChant.txt') lines.push(storage.merchant);
   await writeText(file === 'MerChant.txt' ? 'Merchant.txt' : file, lines.join('\n') + '\n');
 }
+await mkdir(join(output, 'Envir/Market_Def', dirname(storage.script)), { recursive: true });
+await writeText(`Market_Def/${storage.script}`, storage.dialogue.join('\n') + '\n');
 await writeText('StartPoint.txt', '0 289 618\n');
 await writeText('MapQuest.txt', '');
 await writeText('Robot.txt', '');

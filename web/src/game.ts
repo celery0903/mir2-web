@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import PF from 'pathfinding';
 import world from '../../shared/world.json';
 import { client, type Entity, type Message } from './client';
-import { manifest, currentMap, loadMap, walkable, localGrid, nativeFrame, type Action, type ActorFrames, type Chunk, type Cell } from './classic';
+import { manifest, currentMap, loadMap, walkable, localGrid, nativeFrame, hudBlocksWorld, classicLayout, type Action, type ActorFrames, type Chunk, type Cell } from './classic';
 
 const W = 48, H = 32;
 const DIRECTIONS = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]];
@@ -15,6 +15,9 @@ export class WorldScene extends Phaser.Scene {
   animations = new Map<number, Animation>();
   target?: { x: number; y: number };
   held?: number;
+  running = false;
+  pointerHeld = false;
+  pointerCell?: { x: number; y: number };
   pendingAt = 0;
   lastAction = 0;
   dirty = true;
@@ -41,25 +44,49 @@ export class WorldScene extends Phaser.Scene {
     this.marker = this.add.rectangle(0, 0, 46, 30).setStrokeStyle(1, 0xe3c76a, 0.7).setVisible(false);
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
       if (client.phase !== 'game' || client.dead) return;
+      if (hudBlocksWorld(pointer.x, pointer.y)) return;
       const point = pointer.positionToCamera(camera) as Phaser.Math.Vector2;
       const x = Math.floor(point.x / W), y = Math.floor(point.y / H);
       if (this.mapLoading || x < 0 || y < 0 || x >= currentMap.width || y >= currentMap.height) return;
-      const entity = [...client.objects.values()].find(e => e.location.x === x && e.location.y === y && !e.dead);
+      const entity = this.entityAt(point) ?? [...client.objects.values()].find(e => e.location.x === x && e.location.y === y && !e.dead);
       if (!entity && !walkable(x, y)) return;
-      client.selected = entity?.objectID;
+      const right = pointer.rightButtonDown();
+      client.selected = right ? undefined : entity?.objectID;
+      this.running = right;
+      this.pointerHeld = true;
+      this.pointerCell = { x, y };
       this.target = { x, y }; this.held = undefined; client.changed();
     });
+    this.input.on('pointermove', (pointer: Phaser.Input.Pointer) => {
+      if (!this.pointerHeld || hudBlocksWorld(pointer.x, pointer.y)) return;
+      const point = pointer.positionToCamera(camera) as Phaser.Math.Vector2;
+      this.pointerCell = { x: Math.floor(point.x / W), y: Math.floor(point.y / H) };
+      if (!client.selected && walkable(this.pointerCell.x, this.pointerCell.y)) this.target = this.pointerCell;
+    });
+    this.input.on('pointerup', () => { this.pointerHeld = false; });
+    this.game.canvas.addEventListener('contextmenu', event => event.preventDefault());
     this.cursors = this.input.keyboard!.createCursorKeys();
-    this.keys = this.input.keyboard!.addKeys('W,A,S,D,SPACE,E,H,ONE,TWO,B,I,F9,F10,F11,F1,F2,F3,F4,F5,F6,F7,F8') as typeof this.keys;
+    this.keys = this.input.keyboard!.addKeys('W,A,S,D,SPACE,E,H,ONE,TWO,THREE,FOUR,FIVE,SIX,SHIFT,B,I,F9,F10,F11,F1,F2,F3,F4,F5,F6,F7,F8') as typeof this.keys;
     this.keys.SPACE.on('down', () => { if (!this.typing()) this.attack(); });
     this.keys.E.on('down', () => { if (!this.typing()) this.pickup(); });
     this.keys.H.on('down', () => { if (!this.typing()) this.harvest(); });
-    this.keys.ONE.on('down', () => { if (!this.typing()) client.usePotion(); });
-    this.keys.TWO.on('down', () => { if (!this.typing()) client.usePotion(true); });
+    for (const [slot, key] of ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX'].entries()) this.keys[key].on('down', () => { if (!this.typing()) client.useBelt(slot); });
     for (let key = 1; key <= 8; key++) this.keys[`F${key}`].on('down', () => { if (!this.typing()) this.cast(key); });
     client.addEventListener('change', () => { this.dirty = true; });
     client.addEventListener('packet', event => this.effect((event as CustomEvent<Message>).detail));
     void this.loadTerrain();
+  }
+  entityAt(point: Phaser.Math.Vector2) {
+    const actors = [...this.actors.entries()].sort((a, b) => b[1].body.depth - a[1].body.depth);
+    for (const [id, actor] of actors) {
+      const entity = client.objects.get(id);
+      if (!entity || entity.dead) continue;
+      for (const layer of actor.layers) {
+        if (!layer.visible) continue;
+        const x = Math.floor(point.x - actor.body.x - layer.x), y = Math.floor(point.y - actor.body.y - layer.y);
+        if (x >= 0 && y >= 0 && x < layer.width && y < layer.height && this.textures.getPixelAlpha(x, y, layer.texture.key, layer.frame.name) > 0) return entity;
+      }
+    }
   }
   async ensureAtlas(index: number) {
     if (!this.atlasJobs.has(index)) this.atlasJobs.set(index, (async () => {
@@ -191,10 +218,15 @@ export class WorldScene extends Phaser.Scene {
       this.time.delayedCall(500, () => { void this.spriteEffect(manifest.spellFireBall.hit, end.x, end.y); });
     } else if (d.effect === 2) void this.spriteEffect(Array.from({ length: 10 }, (_, i) => `healing:${370 + i}`), point.x * W, point.y * H, 1000);
   }
-  step(direction: number) {
+  step(direction: number, running = false) {
     if (!client.ready || client.phase !== 'game' || client.dead || (this.pendingAt && performance.now() - this.pendingAt < 1200)) return;
     this.lastAction = this.time.now; this.pendingAt = performance.now();
-    client.send('Walk', { direction });
+    const [dx, dy] = DIRECTIONS[direction];
+    const point = client.user!.location;
+    const clear = (x: number, y: number) => walkable(x, y) && ![...client.objects.values()].some(entity => !entity.dead && ['player', 'monster', 'npc'].includes(entity.kind) && entity.location.x === x && entity.location.y === y);
+    const canRun = running && clear(point.x + dx, point.y + dy) && clear(point.x + dx * 2, point.y + dy * 2);
+    client.send(canRun ? 'Run' : 'Walk', { direction });
+    this.animate(client.user!.objectID, canRun ? 'run' : 'walk', 620);
   }
   effect(message: Message) {
     const d = message.data;
@@ -202,23 +234,17 @@ export class WorldScene extends Phaser.Scene {
       this.target = undefined; client.selected = undefined; this.marker.setVisible(false);
     }
     if (message.type === 'MapInformation') void this.changeMap(d.map);
-    if (message.type === 'ObjectWalk' || message.type === 'ObjectRun') this.animate(d.objectID, 'walk', 620);
+    if (message.type === 'ObjectWalk' || message.type === 'ObjectRun') this.animate(d.objectID, message.type === 'ObjectRun' ? 'run' : 'walk', 620);
     if (message.type === 'ObjectAttack') this.animate(d.objectID, 'attack', 550);
     if (message.type === 'ObjectMagic') this.animate(d.objectID, 'cast', 700);
     if (message.type === 'MagicEffect') this.magicEffect(d);
     if (message.type === 'ObjectHarvest') this.animate(d.objectID, 'harvest', 600);
     if (message.type === 'UserLocation') {
       this.pendingAt = 0;
-      if (client.user && (d.location.x !== client.user.location.x || d.location.y !== client.user.location.y)) this.animate(client.user.objectID, 'walk', 620);
+      if (client.user && (d.location.x !== client.user.location.x || d.location.y !== client.user.location.y)) this.animate(client.user.objectID, d.action === 'Run' ? 'run' : 'walk', 620);
     }
     if (message.type === 'UserInformation') { this.target = undefined; this.pendingAt = 0; this.animations.clear(); }
     if (message.type === 'Magic' && client.user) this.animate(client.user.objectID, 'cast', 700);
-    if (message.type === 'DamageIndicator') {
-      const actor = this.actors.get(d.objectID);
-      if (!actor) return;
-      const label = this.add.text(actor.x + 24, actor.y - 34, d.damage ? String(Math.abs(d.damage)) : 'MISS', { fontSize: '15px', color: d.objectID === client.user?.objectID ? '#ff5544' : '#ffff77', stroke: '#000000', strokeThickness: 2 }).setOrigin(0.5).setDepth(100000);
-      this.tweens.add({ targets: label, y: label.y - 30, alpha: 0, duration: 650, onComplete: () => label.destroy() });
-    }
   }
   frame(image: Phaser.GameObjects.Image, key: string) {
     const frame = manifest.frames[key];
@@ -261,7 +287,7 @@ export class WorldScene extends Phaser.Scene {
         actor.hp.fillStyle(0xce1919).fillRect(x + 5, y - 31, 38 * entity.percent / 100, 3);
       }
     }
-    if (client.user) { const actor = this.actors.get(client.user.objectID); if (actor) this.cameras.main.startFollow(actor.body, true, 0.2, 0.2, -24, -16); }
+    if (client.user) { const actor = this.actors.get(client.user.objectID); if (actor) this.cameras.main.startFollow(actor.body, true, 1, 1, -24, -78); }
   }
   drawActors() {
     for (const [id, actor] of this.actors) {
@@ -281,7 +307,7 @@ export class WorldScene extends Phaser.Scene {
         if (weapon) this.frame(actor.layers[2], this.actorFrame(`weapon${weapon}${female}`, action, direction, started, entity.dead));
         actor.body.bringToTop(actor.layers[0]); actor.body.bringToTop(actor.layers[1]);
         if (direction >= 2 && direction <= 6) actor.body.bringToTop(actor.layers[2]);
-      } else if (entity.kind === 'monster' || entity.kind === 'npc') this.frame(actor.layers[0], this.actorFrame(`${entity.kind}${entity.image}`, action, direction, started, entity.dead));
+      } else if (entity.kind === 'monster' || entity.kind === 'npc') this.frame(actor.layers[0], this.actorFrame(`${entity.kind}${entity.image}`, action, entity.kind === 'npc' ? direction % 3 : direction, started, entity.dead));
       else {
         const image = entity.kind === 'gold' ? 116 : entity.image;
         const key = `ground:${image}`;
@@ -291,8 +317,7 @@ export class WorldScene extends Phaser.Scene {
       }
     }
     const selected = client.selected && client.objects.get(client.selected);
-    this.ring.setVisible(!!selected && !selected.dead);
-    if (selected) this.ring.setPosition(selected.location.x * W + 24, selected.location.y * H + 25).setDepth(selected.location.y * 10 + 4);
+    this.ring.setVisible(false);
   }
   update(time: number) {
     if (this.input.keyboard) this.input.keyboard.enabled = !this.typing();
@@ -306,14 +331,14 @@ export class WorldScene extends Phaser.Scene {
     if (!this.typing()) {
       const dx = Number(this.cursors.right.isDown || this.keys.D.isDown) - Number(this.cursors.left.isDown || this.keys.A.isDown);
       const dy = Number(this.cursors.down.isDown || this.keys.S.isDown) - Number(this.cursors.up.isDown || this.keys.W.isDown);
-      if (dx || dy) { direction = directionTo(dx, dy); this.target = undefined; client.selected = undefined; }
+      if (dx || dy) { direction = directionTo(dx, dy); this.target = undefined; client.selected = undefined; this.running = this.keys.SHIFT.isDown; }
     }
     const selected = client.selected === undefined ? undefined : client.objects.get(client.selected);
     if (selected && !selected.dead) {
       this.target = selected.location;
       const distance = Math.max(Math.abs(selected.location.x - point.x), Math.abs(selected.location.y - point.y));
       if (selected.kind === 'monster' && distance <= 1) { this.lastAction = time; this.attack(); return; }
-      if (selected.kind === 'npc' && distance <= 3) { this.lastAction = time; client.callNPC(selected.objectID); this.target = undefined; client.selected = undefined; return; }
+      if (selected.kind === 'npc') { this.lastAction = time; client.callNPC(selected.objectID); this.target = undefined; client.selected = undefined; return; }
       if (['item', 'gold'].includes(selected.kind) && distance === 0) { this.lastAction = time; this.pickup(); return; }
     }
     if (direction === undefined && this.target) {
@@ -330,15 +355,14 @@ export class WorldScene extends Phaser.Scene {
       else this.target = undefined;
     }
     if (direction !== undefined && direction >= 0) {
-      this.step(direction); this.marker.setVisible(!!this.target);
-      if (this.target) this.marker.setPosition(this.target.x * W + 24, this.target.y * H + 16).setDepth(this.target.y * 10 + 1);
+      const distance = this.target ? Math.max(Math.abs(this.target.x - point.x), Math.abs(this.target.y - point.y)) : 2;
+      this.step(direction, this.running && distance >= 2); this.marker.setVisible(false);
     }
   }
 }
 
 export function startGame(parent: HTMLElement) {
   const scene = new WorldScene();
-  const game = new Phaser.Game({ type: Phaser.AUTO, parent, backgroundColor: '#121312', antialias: true, scale: { mode: Phaser.Scale.RESIZE, width: parent.clientWidth, height: parent.clientHeight }, scene, input: { keyboard: true } });
-  new ResizeObserver(() => game.scale.resize(parent.clientWidth, parent.clientHeight)).observe(parent);
+  new Phaser.Game({ type: Phaser.AUTO, parent, backgroundColor: '#121312', antialias: false, pixelArt: true, roundPixels: true, scale: { mode: Phaser.Scale.NONE, width: classicLayout.width, height: classicLayout.height }, scene, input: { keyboard: true } });
   return scene;
 }

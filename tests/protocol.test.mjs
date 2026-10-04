@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import WebSocket from 'ws';
 import { createConnection } from 'node:net';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { baseURL, register, Session, delay, directionTo, waitHealthy } from './session.mjs';
 
 await waitHealthy();
@@ -12,6 +14,10 @@ test('gateway rejects foreign origins and invalid credentials', async () => {
   assert.equal(foreign.status, 403);
   const invalid = await fetch(`${baseURL}/api/register`, { method: 'POST', headers: { Origin: new URL(baseURL).origin, 'Content-Type': 'application/json' }, body: JSON.stringify({ accountID: '!', password: 'x' }) });
   assert.equal(invalid.status, 400);
+  const longProfile = await fetch(`${baseURL}/api/register`, { method: 'POST', headers: { Origin: new URL(baseURL).origin, 'Content-Type': 'application/json' }, body: JSON.stringify({ accountID: 'profileqa', password: 'Valid987', userName: '汉'.repeat(11) }) });
+  assert.equal(longProfile.status, 400, 'Profile fields must fit the legacy byte width without silent truncation');
+  const longMobile = await fetch(`${baseURL}/api/register`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ accountID: 'mobileqa', password: 'Valid987', mobile: '130000000000' }) });
+  assert.equal(longMobile.status, 400, 'Mobile numbers must fit the native database column');
   const socket = new WebSocket(baseURL.replace('http', 'ws') + '/ws', { origin: 'https://other.example' });
   const status = await new Promise(resolve => { socket.once('unexpected-response', (_, response) => { response.resume(); resolve(response.statusCode); socket.terminate(); }); socket.on('error', () => {}); });
   assert.equal(status, 403);
@@ -21,6 +27,19 @@ test('eight simultaneous connections complete the OpenMir2 handshake', async () 
   const sessions = Array.from({ length: 8 }, () => new Session());
   try { await Promise.all(sessions.map(session => session.wait('Ready'))); }
   finally { await Promise.all(sessions.map(session => session.close())); }
+});
+
+test('registration profile reaches the native account database without field substitutions', { skip: !process.env.MIR_COMPOSE_PROJECT }, async () => {
+  const project = process.env.MIR_COMPOSE_PROJECT;
+  assert.match(project, /^mir2-rebuild$/);
+  const accountID = `p${String(Date.now()).slice(-8)}`;
+  const profile = { userName: '注册测试', identity: '', birthDay: '2000/01/01', question: '测试问题', answer: '测试答案', question2: '测试问题二', answer2: '测试答案二', phone: '01000000000', mobile: '13000000000', email: 'qa@example.test' };
+  const response = await fetch(`${baseURL}/api/register`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ accountID, password: 'Profile987', ...profile }) });
+  assert.equal(response.status, 200);
+  assert.equal((await response.json()).result, 8);
+  const sql = `SELECT JSON_OBJECT('userName',p.UserName,'identity',p.IdCard,'birthDay',p.Birthday,'question',p.Quiz1,'answer',p.Answer1,'question2',p.Quiz2,'answer2',p.Answer2,'phone',p.Phone,'mobile',p.MobilePhone,'email',p.EMail) FROM account_protection p JOIN account a ON p.AccountId=a.Id WHERE a.Account='${accountID}'`;
+  const { stdout } = await promisify(execFile)('docker', ['exec', `${project}-db-1`, 'sh', '-c', 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -uroot --batch --raw --skip-column-names mir2_account -e "$1"', 'sh', sql]);
+  assert.deepEqual(JSON.parse(stdout), profile);
 });
 
 test('fragmented malformed native frames leave the login worker available', { skip: !process.env.MIR_NATIVE_LOGIN_PORT }, async () => {
@@ -53,6 +72,8 @@ test('native three-job creation, multiplayer, equipment, combat, harvest and rel
       assert.equal(s.user.level, 1); assert.equal(s.user.gold, 0);
       assert.equal(s.user.maxExperience, 100, 'Classic level-one experience must not be accelerated');
       assert.equal(s.user.inventory.filter(Boolean).length, 4);
+      assert.ok(s.user.inventory.slice(0, 6).filter(Boolean).every(item => item.stdMode <= 3), 'The six shortcut cells must contain consumables');
+      assert.deepEqual(s.user.inventory.slice(6).filter(Boolean).map(item => item.name).sort(), ['布衣(男)', '木剑', '蜡烛'].map(name => name === '布衣(男)' && f.job % 2 ? '布衣(女)' : name).sort());
       await s.equipStarter(); await s.equipClothes();
     }
     const [one, two] = sessions;

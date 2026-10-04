@@ -22,6 +22,9 @@ export class MirClient extends EventTarget {
   npcPage: string[] = [];
   shop?: Data;
   selling = false;
+  storing = false;
+  storageSelected?: number;
+  storagePending = false;
   lastLocationAt = 0;
   loggingOut = false;
 
@@ -73,13 +76,16 @@ export class MirClient extends EventTarget {
       case 'Login': this.pendingLogin = undefined; this.error = ['登录暂不可用', '账号格式不正确', '密码格式不正确', '账号不存在', '密码不正确', '账号已在线，请稍后重试'][d.result] ?? '登录失败'; break;
       case 'LoginSuccess': this.pendingLogin = undefined; this.error = ''; this.characters = d.characters; this.phase = 'characters'; break;
       case 'NewCharacter': this.error = ['暂不可创建角色', '角色名格式不正确', '请选择性别', '请选择职业', '角色数量已满', '角色名已被使用'][d.result] ?? '创建失败'; break;
+      case 'DeleteCharacterFailed': this.error = d.message; break;
       case 'NewCharacterSuccess': this.characters.push(d.charInfo); this.error = ''; this.send('StartGame', { characterIndex: d.charInfo.index }); break;
       case 'StartGame': if (d.result !== 4) this.error = ['暂不可进入游戏', '请先登录', '角色不存在', '进入游戏失败'][d.result] ?? ''; break;
       case 'UserInformation':
         this.user = d; this.dead = false; this.phase = 'game'; this.objects.clear(); this.selected = undefined; this.error = '';
+        this.storagePending = false;
         this.log(`${d.name} 来到了比奇省`, 'notice'); break;
       case 'MapInformation': case 'MapChanged':
         this.objects.clear(); this.selected = undefined;
+        this.closeNPC();
         if (this.user && d.location) { this.user.location = d.location; this.user.direction = d.direction; this.user.map = d.map; }
         break;
       case 'UserLocation': if (this.user) { this.user.location = d.location; this.user.direction = d.direction; this.lastLocationAt = performance.now(); } break;
@@ -108,9 +114,12 @@ export class MirClient extends EventTarget {
       case 'NewMagic': if (this.user && !d.hero) { this.user.magics ??= []; const existing = this.user.magics.find((magic: Data) => magic.spell === d.magic.spell); if (existing) Object.assign(existing, d.magic); else { this.user.magics.push(d.magic); this.log(`学会了 ${d.magic.name}`, 'notice'); } } break;
       case 'MagicLeveled': if (this.user) { const magic = this.user.magics?.find((magic: Data) => magic.spell === d.spell); if (magic) Object.assign(magic, d); } break;
       case 'MagicKey': if (this.user) { const magic = this.user.magics?.find((magic: Data) => magic.spell === d.spell); if (magic) magic.key = d.key; } break;
-      case 'NPCResponse': this.npcPage = d.page; this.shop = undefined; this.selling = false; break;
-      case 'NPCGoods': this.shop = d; this.selling = false; break;
-      case 'NPCSell': this.selling = true; this.shop = undefined; break;
+      case 'NPCResponse': this.npcPage = d.page; this.shop = undefined; this.selling = this.storing = false; this.storageSelected = undefined; break;
+      case 'NPCGoods': this.shop = d; this.selling = this.storing = false; break;
+      case 'NPCSell': this.selling = true; this.storing = false; this.shop = undefined; break;
+      case 'NPCStorage': if (this.npcID === d.objectID) { this.storing = true; this.selling = false; this.shop = undefined; this.storageSelected = undefined; } break;
+      case 'NPCStorageList': if (this.npcID === d.objectID) { this.shop = { ...d, storage: true }; this.storing = this.selling = false; } break;
+      case 'StorageResult': this.storagePending = false; this.storageSelected = undefined; if (!d.success) this.log(d.message); break;
       case 'NPCUpdate': if (d.type === 0) this.closeNPC(); break;
       case 'TransactionFailed': this.log(d.message); break;
       case 'SellItem': if (d.success && this.user) { const index = this.user.inventory.findIndex((item: Data | null) => item?.uniqueID === d.uniqueID); if (index >= 0) { this.user.inventory[index].count -= d.count; if (this.user.inventory[index].count <= 0) this.user.inventory[index] = null; } } break;
@@ -178,6 +187,10 @@ export class MirClient extends EventTarget {
     const item = this.user?.inventory.find((i: Data | null) => i && this.items.get(i.itemIndex)?.name.startsWith(mana ? '魔法药' : '金创药'));
     if (item) this.send('UseItem', { uniqueID: item.uniqueID, grid: 1 });
   }
+  useBelt(slot: number) {
+    const item = this.user?.inventory[slot];
+    if (item && this.items.get(item.itemIndex)?.stdMode <= 3 && !this.dead) this.send('UseItem', { uniqueID: item.uniqueID, grid: 1 });
+  }
   setMagicKey(spell: number, key: number) {
     const magic = this.user?.magics?.find((entry: Data) => entry.spell === spell);
     if (!magic || !this.ready) return;
@@ -197,6 +210,12 @@ export class MirClient extends EventTarget {
     }
   }
   callNPC(objectID: number, key = '') { this.npcID = objectID; this.send('CallNPC', { objectID, key }); }
-  closeNPC() { this.npcID = undefined; this.npcPage = []; this.shop = undefined; this.selling = false; }
+  storageItem(uniqueID: number, deposit: boolean) {
+    if (!this.ready || this.dead || !this.npcID || this.storagePending) return;
+    this.storagePending = true;
+    this.send(deposit ? 'StoreItem' : 'WithdrawItem', { uniqueID });
+    this.changed();
+  }
+  closeNPC() { this.npcID = undefined; this.npcPage = []; this.shop = undefined; this.selling = this.storing = false; this.storageSelected = undefined; }
 }
 export const client = new MirClient();

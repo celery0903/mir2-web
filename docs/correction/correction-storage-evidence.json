@@ -1,0 +1,15 @@
+{
+  "setup": "Fresh account and native protocol movement through 0 -> 0140; no database or item injection",
+  "controls": "Browser clicks and drag/drop for all storage operations",
+  "emptyList": true,
+  "deposited": true,
+  "reloginPreservedStorage": true,
+  "withdrawnOnce": true,
+  "originalItemIDAndDurabilityPreserved": true,
+  "originalFrames": [
+    385,
+    392,
+    393
+  ],
+  "errors": []
+}

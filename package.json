@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "assets:classic": "node scripts/fetch-classic.mjs",
+    "audit:176": "node scripts/audit-176.mjs",
     "build": "npm run build --workspace web",
     "test": "playwright test",
     "test:protocol": "node --test tests/protocol.test.mjs",

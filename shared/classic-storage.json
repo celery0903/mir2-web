@@ -1,0 +1,28 @@
+{
+  "merchant": "比奇村/边界村保管员 0140 8 9 边界村保管员 0 9 1",
+  "script": "比奇村/边界村保管员-0140.txt",
+  "source": {
+    "repository": "mrzhqiang/mirserver-1.76",
+    "revision": "39e17246a32247a2c43c4cc481e97e88c692fa53",
+    "file": "Mir200/Envir/MerChant.txt",
+    "sha256": "b63c3335c8d4ecfb82abb0e57af7ee10e4cd4918238810c8f1a7bdfbb6362427",
+    "status": "NPC coordinates and appearance from a pinned candidate; not official version authentication"
+  },
+  "dialogue": [
+    "(@storage @getback)",
+    "[@main]",
+    "需要帮什么忙吗？\\",
+    "目前不收保管费，请多利用。\\ \\",
+    "<保管/@storage>东西\\",
+    "<找回/@getback>东西\\ \\",
+    "<关闭/@exit>",
+    "",
+    "[@storage]",
+    "需要保管什么东西？\\ \\",
+    "<返回/@Main>",
+    "",
+    "[@getback]",
+    "请看目录决定找什么东西。\\ \\",
+    "<返回/@Main>"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "originalAccountFrames": [
+    60,
+    63,
+    65,
+    73
+  ],
+  "femaleStarterEquipment": true,
+  "lowLevelWarriorRedOrb": true,
+  "rightClickRun": {
+    "distance": 2,
+    "serverAcknowledged": true
+  },
+  "opaqueHUDClickBlocked": true,
+  "transparentHUDClickReachesSameMapTile": true,
+  "ownedTestCharacterDeletion": true
+}

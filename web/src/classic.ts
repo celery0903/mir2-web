@@ -41,7 +41,12 @@ for (const extra of additions) {
   for (const [key, frame] of Object.entries(extra.frames)) manifest.frames[key] = { ...frame, atlas: frame.atlas + offset };
   Object.assign(manifest.actors, extra.actors);
 }
-const ui = await json<{ frames: Record<string, Frame>; atlases: Atlas[] }>('ui.json');
+const ui = await json<{ frames: Record<string, Frame>; atlases: Atlas[]; hudHitRows: string[] }>('ui.json');
+export const classicLayout = { width: 800, height: 600, hudTop: 349, mapBottom: 469 };
+export function hudBlocksWorld(x: number, y: number) {
+  if (x < 0 || x >= 800 || y < 0 || y >= 469) return true;
+  return y >= 349 && ui.hudHitRows[Math.floor(y) - 349]?.[Math.floor(x)] === '1';
+}
 const images = await Promise.all(ui.atlases.map(async atlas => {
   const image = new Image();
   image.src = world.assets + atlas.file;
@@ -58,6 +63,13 @@ await Promise.all(Object.entries(portraitManifest.portraits).map(async ([key, si
   portraits.set(key, canvas.toDataURL());
 }));
 export const portrait = (job: number, gender: number) => portraits.get(`portrait-${job}-${gender}`) ?? '';
+export function portraitSprite(job: number, gender: number, slot = 0, frozen = false) {
+  const key = `portrait-${job}-${gender}`;
+  const size = portraitManifest.portraits[key];
+  const [left, top] = [[71, 52], [65, 55], [77, 46], [141, 83], [85, 63], [141, 83]][job * 2 + gender];
+  const [dx, dy] = frozen && gender === 1 ? job === 1 ? [30, 14] : job === 2 ? [23, 20] : [0, 0] : [0, 0];
+  return { ...size, left: left + slot * 340 + dx, top: top + slot * 2 + dy, source: world.assets + `auth-web/${key}.png` };
+}
 export function nativeFrame(group: string, index: number) {
   const key = `ui:${group}:${index}`;
   if (icons.has(key)) return icons.get(key)!;
@@ -69,6 +81,10 @@ export function nativeFrame(group: string, index: number) {
   const url = canvas.toDataURL();
   icons.set(key, url);
   return url;
+}
+export function nativeFrameSize(group: string, index: number) {
+  const frame = ui.frames[`ui:${group}:${index}`];
+  return frame && { width: frame.w, height: frame.h, offsetX: frame.offsetX, offsetY: frame.offsetY };
 }
 export function itemImage(index: number, group = 'Items') {
   const url = nativeFrame(group, index);

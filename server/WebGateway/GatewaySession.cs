@@ -17,6 +17,7 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
     private readonly Dictionary<int, Dictionary<string, object?>> objects = [];
     private readonly Dictionary<int, Dictionary<string, object?>> itemInfos = [];
     private readonly Dictionary<int, (string Name, int Submenu, int NativeID)> shopItems = [];
+    private readonly Dictionary<int, Dictionary<string, object?>> storedItems = [];
     private readonly Dictionary<int, object> learnedMagics = [];
     private readonly object?[] inventory = new object?[46];
     private readonly object?[] equipment = new object?[14];
@@ -24,6 +25,7 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
     private string map = "0";
     private (int ID, int Slot)? pendingEquip, pendingRemove;
     private int pendingUse, pendingSell;
+    private (int ID, bool Deposit)? pendingStorage;
     private (int X, int Y, int Direction, string Type)? pendingAction;
     private readonly JsonSerializerOptions json = new(JsonSerializerDefaults.Web) { IncludeFields = true };
     private CancellationToken Token => lifetime.Token;
@@ -102,6 +104,15 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
                 (job, gender) = characterDetails[index];
                 await Send(Messages.CM_SELCHR, body: Encode(account + "/" + characterName));
             }
+            else if (type == "DeleteCharacter" && !connection.Game && certification != "")
+            {
+                var index = Number(data, "characterIndex", -1);
+                if (index >= 0 && index < characterNames.Count) {
+                    var name = characterNames[index];
+                    await Task.Delay(1200, Token);
+                    await Send(Messages.CM_DELCHR, body: Encode(name));
+                }
+            }
             else if (connection.Game && selfID != 0)
             {
                 var id = Number(data, "uniqueID");
@@ -136,6 +147,20 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
                         }
                         break;
                     case "SellItem": if (itemName != "" && pendingSell == 0) { pendingSell = id; await Send(Messages.CM_USERSELLITEM, npcID, id & 65535, (id >> 16) & 65535, body: Encode(itemName)); } break;
+                    case "StoreItem":
+                        if (itemName != "" && pendingStorage == null && inventory.Any(entry => entry is Dictionary<string, object?> values && Convert.ToInt32(values["uniqueID"]) == id)) {
+                            pendingStorage = (id, true);
+                            await Send(Messages.CM_USERSTORAGEITEM, npcID, id & 65535, (id >> 16) & 65535, body: Encode(itemName));
+                        }
+                        else if (pendingStorage == null) await Emit("StorageResult", new { success = false, message = "背包中没有这件物品" });
+                        break;
+                    case "WithdrawItem":
+                        if (pendingStorage == null && storedItems.TryGetValue(id, out var stored)) {
+                            pendingStorage = (id, false);
+                            await Send(Messages.CM_USERTAKEBACKSTORAGEITEM, npcID, id & 65535, (id >> 16) & 65535, body: Encode(stored["name"]!.ToString()!));
+                        }
+                        else if (pendingStorage == null) await Emit("StorageResult", new { success = false, message = "仓库中没有这件物品" });
+                        break;
                     case "LogOut": case "Revive": case "TownRevive":
                         await Send(Messages.CM_SOFTCLOSE, series: 1);
                         await Task.Delay(500, Token);
@@ -165,7 +190,7 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
             switch (h.Ident)
             {
                 case ushort.MaxValue:
-                    if (pendingAction is { } action) { if (body.StartsWith("+GD/")) { x = action.X; y = action.Y; direction = action.Direction; } pendingAction = null; await Emit("UserLocation", new { location = Location, direction }); }
+                    if (pendingAction is { } action) { if (body.StartsWith("+GD/")) { x = action.X; y = action.Y; direction = action.Direction; } pendingAction = null; await Emit("UserLocation", new { location = Location, direction, action = action.Type }); }
                     break;
                 case Messages.SM_PASSWD_FAIL: await Emit("Login", new { result = h.Recog switch { -1 => 4, -3 => 5, _ => 3 } }); break;
                 case Messages.SM_NEEDUPDATE_ACCOUNT: await Emit("Login", new { result = 0 }); break;
@@ -181,6 +206,8 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
                     break;
                 case Messages.SM_NEWCHR_SUCCESS: await Send(Messages.CM_QUERYCHR, body: Encode(account + "/" + certification)); break;
                 case Messages.SM_NEWCHR_FAIL: createdName = ""; await Emit("NewCharacter", new { result = h.Recog switch { 2 => 5, 3 => 4, _ => 1 } }); break;
+                case Messages.SM_DELCHR_SUCCESS: await Send(Messages.CM_QUERYCHR, body: Encode(account + "/" + certification)); break;
+                case Messages.SM_DELCHR_FAIL: await Emit("DeleteCharacterFailed", new { message = "删除失败，请重新选择角色" }); break;
                 case Messages.SM_STARTPLAY: await Switch(7200, true); await connection.Raw(Encode($"**{account}/{characterName}/{certification}/{Grobal2.ClientVersionNumber}/{Grobal2.ClientVersionNumber}"), Token); break;
                 case Messages.SM_STARTFAIL: await Emit("StartGame", new { result = 3 }); break;
                 case Messages.SM_SENDNOTICE: await Send(Messages.CM_LOGINNOTICEOK); break;
@@ -202,15 +229,15 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
                 case Messages.SM_WINEXP: await Emit("UserExperience", new { experience = h.Recog, amount = h.Param | (h.Tag << 16) }); break;
                 case Messages.SM_LEVELUP: await Emit("LevelChanged", new { level = h.Param, experience = h.Recog }); break;
                 case Messages.SM_BAGITEMS:
-                    Array.Clear(inventory); var slot = 0;
-                    foreach (var encoded in body.Split('/', StringSplitOptions.RemoveEmptyEntries)) { var item = await Item(encoded); if (slot < inventory.Length) inventory[slot++] = item; }
+                    Array.Clear(inventory);
+                    foreach (var encoded in body.Split('/', StringSplitOptions.RemoveEmptyEntries)) { var item = await Item(encoded); var slot = InventorySlot(item); if (slot >= 0) inventory[slot] = item; }
                     await Slots(); break;
                 case Messages.SM_ADDITEM: case Messages.SM_UPDATEITEM:
                     var added = await Item(body); var addID = Convert.ToInt32(added["uniqueID"]);
                     var equippedIndex = Array.FindIndex(equipment, item => item is Dictionary<string, object?> values && Convert.ToInt32(values["uniqueID"]) == addID);
                     if (h.Ident == Messages.SM_UPDATEITEM && equippedIndex >= 0) { equipment[equippedIndex] = added; await Slots(); break; }
                     var existing = Array.FindIndex(inventory, item => item is Dictionary<string, object?> values && Convert.ToInt32(values["uniqueID"]) == addID);
-                    if (existing < 0) existing = Array.FindIndex(inventory, item => item == null);
+                    if (existing < 0) existing = InventorySlot(added);
                     if (existing >= 0) inventory[existing] = added;
                     await Slots(); break;
                 case Messages.SM_DELITEM: Remove(h.Recog); await Slots(); break;
@@ -230,7 +257,7 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
                     else if (objects.TryGetValue(h.Recog, out var struck)) { struck["percent"] = h.Tag > 0 ? h.Param * 100 / h.Tag : 0; await Emit("ObjectHealth", new { objectID = h.Recog, percent = struck["percent"] }); }
                     await Emit("DamageIndicator", new { objectID = h.Recog, damage = h.Series }); break;
                 case Messages.SM_TURN: case Messages.SM_WALK: case Messages.SM_RUN: case Messages.SM_HIT: case Messages.SM_HEAVYHIT: case Messages.SM_MOVEFAIL: case Messages.SM_ALIVE:
-                    if (h.Recog == selfID) { pendingAction = null; x = h.Param; y = h.Tag; direction = h.Series & 255; await Emit("UserLocation", new { location = Location, direction }); }
+                    if (h.Recog == selfID) { pendingAction = null; x = h.Param; y = h.Tag; direction = h.Series & 255; await Emit("UserLocation", new { location = Location, direction, action = h.Ident == Messages.SM_RUN ? "Run" : "Walk" }); }
                     else await Actor(h, body);
                     break;
                 case Messages.SM_USERNAME:
@@ -258,6 +285,24 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
                     foreach (var encoded in (body.Length == 0 ? "" : EDCode.DeCodeString(body)).Split('/', StringSplitOptions.RemoveEmptyEntries)) { var detail = await Item(encoded); var key = Convert.ToInt32(detail["uniqueID"]); shopItems[key] = (detail["name"]!.ToString()!, 0, key); detail["price"] = detail["maxDurability"]; details.Add(detail); }
                     await Emit("NPCGoods", new { list = details, rate = 1 }); break;
                 case Messages.SM_MERCHANTDLGCLOSE: await Emit("NPCUpdate", new { type = 0 }); break;
+                case Messages.SM_SENDUSERSTORAGEITEM:
+                    npcID = h.Recog; await Emit("NPCStorage", new { objectID = npcID }); break;
+                case Messages.SM_SAVEITEMLIST:
+                    npcID = h.Recog;
+                    if (h.Tag == 0) storedItems.Clear();
+                    foreach (var encoded in body.Split('/', StringSplitOptions.RemoveEmptyEntries)) { var stored = await Item(encoded); storedItems[Convert.ToInt32(stored["uniqueID"])] = stored; }
+                    if (h.Tag >= h.Series) await Emit("NPCStorageList", new { objectID = npcID, list = storedItems.Values });
+                    break;
+                case Messages.SM_STORAGE_OK:
+                    if (pendingStorage is { Deposit: true } deposit) { Remove(deposit.ID); await Slots(); await Emit("StorageResult", new { success = true, uniqueID = deposit.ID }); }
+                    pendingStorage = null; break;
+                case Messages.SM_TAKEBACKSTORAGEITEM_OK:
+                    storedItems.Remove(h.Recog); pendingStorage = null;
+                    await Emit("NPCStorageList", new { objectID = npcID, list = storedItems.Values });
+                    await Emit("StorageResult", new { success = true, uniqueID = h.Recog }); break;
+                case Messages.SM_STORAGE_FULL: case Messages.SM_STORAGE_FAIL: case Messages.SM_TAKEBACKSTORAGEITEM_FAIL: case Messages.SM_TAKEBACKSTORAGEITEM_FULLBAG:
+                    pendingStorage = null;
+                    await Emit("StorageResult", new { success = false, message = h.Ident == Messages.SM_STORAGE_FULL ? "仓库已满" : h.Ident == Messages.SM_TAKEBACKSTORAGEITEM_FULLBAG ? "背包已满" : "存取失败，请检查负重并回到仓库保管员身边" }); break;
                 case Messages.SM_USERSELLITEM_OK:
                     Remove(pendingSell); pendingSell = 0; gold = h.Recog;
                     await Slots(); await Emit("UserGold", new { gold }); break;
@@ -293,6 +338,15 @@ public sealed class GatewaySession(WebSocket browser, string host, CancellationT
         return item;
     }
     private Task Slots() => Emit("UserSlotsRefresh", new { inventory, equipment });
+    private int InventorySlot(Dictionary<string, object?> item)
+    {
+        if (Convert.ToInt32(item["stdMode"]) <= 3)
+        {
+            for (var i = 0; i < 6; i++) if (inventory[i] == null) return i;
+        }
+        for (var i = 6; i < inventory.Length; i++) if (inventory[i] == null) return i;
+        return -1;
+    }
     private void Remove(int id) { var index = Array.FindIndex(inventory, item => item is Dictionary<string, object?> values && Convert.ToInt32(values["uniqueID"]) == id); if (index >= 0) inventory[index] = null; }
     private static int NativeSlot(int slot) => slot switch { 0 => 1, 1 => 0, 2 => 4, 4 => 3, 5 => 5, 6 => 6, 7 => 7, 8 => 8, _ => slot };
     private static int BrowserSlot(int slot) => slot switch { 0 => 1, 1 => 0, 3 => 4, 4 => 2, _ => slot };

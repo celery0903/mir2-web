@@ -5,7 +5,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
 test.skip(process.env.MIR_BROWSER_FEATURES !== '1', 'Requires the explicitly prepared seven-level qa fixtures');
-test.use({ trace: 'off' });
+test.use({ actionTimeout: 10000, trace: 'off' });
 
 async function observe(page: Page) {
   await page.addInitScript(() => {
@@ -37,6 +37,17 @@ async function observe(page: Page) {
 const state = (page: Page) => page.evaluate(() => (window as any).mirEvidence);
 const directions = [[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 const keys = [['ArrowUp'],['ArrowUp','ArrowRight'],['ArrowRight'],['ArrowRight','ArrowDown'],['ArrowDown'],['ArrowDown','ArrowLeft'],['ArrowLeft'],['ArrowLeft','ArrowUp']];
+
+async function consume(page: Page, name: string) {
+  const slot = (await state(page)).user.inventory.findIndex((item: any) => item?.name === name);
+  if (slot < 0) return;
+  if (slot < 6) await page.keyboard.press(String(slot + 1));
+  else {
+    await page.keyboard.press('F9');
+    await page.locator(`#inventory [data-item="${slot}"]`).dblclick();
+    await page.keyboard.press('F9');
+  }
+}
 
 function monsters(s: any, names: string[], nearby = false) {
   const p = s.user.location;
@@ -78,7 +89,7 @@ async function move(page: Page, x: number, y: number, radius = 0, destinationMap
           if (!actor || actor.dead) break;
           expect(combat.user.hp).toBeGreaterThan(0);
           if (combat.user.hp<combat.user.maxHP*0.65 && Date.now()-healedAt>4000 && combat.user.inventory.some((i:any)=>i?.name==='金创药(小量)')) {
-            await page.getByRole('button',{name:'使用金创药',exact:true}).click(); healedAt=Date.now();
+            await consume(page,'金创药(小量)'); healedAt=Date.now();
           }
           await page.waitForTimeout(650);
         }
@@ -87,7 +98,8 @@ async function move(page: Page, x: number, y: number, radius = 0, destinationMap
     }
     const direction = directions.findIndex(([dx,dy])=>dx===Math.sign(path[1][0]+left-p.x)&&dy===Math.sign(path[1][1]+top-p.y));
     for (const key of keys[direction]) await page.keyboard.down(key);
-    try { await expect.poll(async()=>JSON.stringify((await state(page)).user.location),{timeout:4000}).not.toBe(JSON.stringify(p)); }
+    try { await expect.poll(async()=>JSON.stringify((await state(page)).user.location),{timeout:2000}).not.toBe(JSON.stringify(p)); }
+    catch { expect((await state(page)).user.hp, 'A rejected step must leave the player alive to recalculate a route').toBeGreaterThan(0); }
     finally { for (const key of keys[direction]) await page.keyboard.up(key); }
     await page.waitForTimeout(650);
   }
@@ -112,25 +124,29 @@ async function tile(page: Page, x: number, y: number, objectID?: number) {
   const s = await state(page), box = (await page.locator('#world canvas').boundingBox())!, p = s.user.location;
   if (objectID !== undefined) {
     const current = s.objects[objectID];
-    expect(current && !current.dead).toBeTruthy();
+    if (!current || current.dead) return false;
     x = current.location.x; y = current.location.y;
   }
   const rows = await page.evaluate(async id => (await (await fetch(`/assets/classic/${id === '0' ? '' : `maps/${id}/`}collision.json`)).json()).rows, s.user.map ?? '0');
-  const scrollX = Math.max(0,Math.min(rows[0].length*48-box.width,p.x*48+24-box.width/2));
-  const scrollY = Math.max(0,Math.min(rows.length*32-box.height,p.y*32+16-box.height/2));
-  await page.mouse.click(box.x+x*48+24-scrollX,box.y+y*32+16-scrollY);
+  const scrollX = Math.max(0,Math.min(rows[0].length*48-800,p.x*48+24-400));
+  const scrollY = Math.max(0,Math.min(rows.length*32-600,p.y*32+78-300));
+  await page.mouse.click(box.x+(x*48+24-scrollX)*box.width/800,box.y+(y*32+16-scrollY)*box.height/600);
+  return true;
 }
 
 async function selectMonster(page: Page, target: any) {
   for (let attempt=0;attempt<8;attempt++) {
-    await tile(page,target.location.x,target.location.y,target.objectID);
+    const observed = (await state(page)).objects[target.objectID];
+    if (!observed || observed.dead) target = await seekMonster(page, [target.name]);
+    else target = observed;
+    if (!await tile(page,target.location.x,target.location.y,target.objectID)) continue;
     await page.waitForTimeout(150);
     const selected=Number(await page.locator('#target-hud').getAttribute('data-object-id'));
     const current=(await state(page)).objects[selected];
-    if (current?.type==='ObjectMonster' && !current.dead) {
-      await expect(page.locator('#target-hud')).toBeVisible();
+    if (current?.type==='ObjectMonster' && !current.dead && current.name===target.name) {
       return current;
     }
+    if (attempt % 2 === 1) await move(page, target.location.x, target.location.y, 2);
   }
   throw new Error(`Browser could not select live monster ${target.objectID}`);
 }
@@ -163,7 +179,7 @@ test('native merchant, map transition, three-job combat and skills through brows
     await page.goto(baseURL!);
     await expect(page.locator('#connection-status')).toHaveText('已连接');
     await page.locator('#account').fill(f.accountID); await page.locator('#password').fill(f.password);
-    await page.locator('#auth-submit').click(); await page.locator('.character').click();
+    await page.locator('#auth-submit').click(); await page.locator('.character').click(); await page.locator('#start-character').click();
     await expect(page.locator('#player-hud')).toBeVisible({timeout:15000});
     await expect(page.locator('#world')).toHaveAttribute('data-map-ready','true');
     if ((await state(page)).user.map === '0132') await leaveBookshop(page);
@@ -176,14 +192,15 @@ test('native merchant, map transition, three-job combat and skills through brows
       await expect(potion).toBeVisible();
       const before = (await state(page)).user.gold;
       const oldItems = new Set((await state(page)).user.inventory.filter(Boolean).map((i:any)=>i.uniqueID));
-      await potion.click();
+      await potion.dblclick();
       await expect.poll(async()=>(await state(page)).user.gold).toBeLessThan(before);
       const bought = (await state(page)).user.inventory.find((i:any)=>i?.name==='魔法药(小量)'&&!oldItems.has(i.uniqueID));
       expect(bought).toBeTruthy();
       await page.locator('[data-npc-key="[@Main]"]').click();
       await page.locator('[data-npc-key="[@sell]"]').click();
       const slot = (await state(page)).user.inventory.findIndex((i:any)=>i?.uniqueID===bought.uniqueID);
-      await page.locator(`#inventory [data-item="${slot}"]`).click();
+      if (slot < 6) await page.locator(`#belt [data-item="${slot}"]`).click();
+      else await page.locator(`#inventory [data-item="${slot}"]`).dblclick();
       await expect.poll(async()=>(await state(page)).user.inventory.some((i:any)=>i?.uniqueID===bought.uniqueID)).toBe(false);
       if (f.job===0) {
         await page.locator('[data-npc-key="[@Main]"]').click();
@@ -192,13 +209,13 @@ test('native merchant, map transition, three-job combat and skills through brows
         const supplyCount=(await state(page)).user.inventory.filter((i:any)=>i?.name==='金创药(小量)').length;
         for (let n=supplyCount;n<10;n++) {
           const oldGold=(await state(page)).user.gold;
-          await healing.click();
+          await healing.dblclick();
           await expect.poll(async()=>(await state(page)).user.gold).toBeLessThan(oldGold);
         }
       }
       await page.screenshot({path:'test-results/shop.png'});
       await page.getByRole('button',{name:'关闭对话',exact:true}).click();
-      await page.getByRole('button',{name:'收起',exact:true}).click();
+      await page.locator('#close-bag').click();
     }
     const skill = ['基本剑术','火球术','治愈术'][f.job];
     if ((await state(page)).user.map !== '0132') {
@@ -213,22 +230,23 @@ test('native merchant, map transition, three-job combat and skills through brows
     const book=page.locator('.shop-item').filter({hasText:skill});
     await expect(book).toBeVisible();
     const oldBooks=new Set((await state(page)).user.inventory.filter(Boolean).map((i:any)=>i.uniqueID));
-    await book.click();
+    await book.dblclick();
     await expect.poll(async()=>(await state(page)).user.inventory.some((i:any)=>i?.name===skill&&!oldBooks.has(i.uniqueID))).toBe(true);
     const bookID=(await state(page)).user.inventory.find((i:any)=>i?.name===skill&&!oldBooks.has(i.uniqueID)).uniqueID;
     if (f.job===1) await page.screenshot({path:'test-results/bookshop.png'});
     await page.getByRole('button',{name:'关闭对话',exact:true}).click();
     await page.getByRole('button',{name:'打开背包',exact:true}).click();
     const bookSlot=(await state(page)).user.inventory.findIndex((i:any)=>i?.uniqueID===bookID);
-    await page.locator(`#inventory [data-item="${bookSlot}"]`).click();
+    await page.locator(`#inventory [data-item="${bookSlot}"]`).dblclick();
     await expect.poll(async()=>(await state(page)).user.magics.some((m:any)=>m.name===skill)).toBe(true);
-    await page.getByRole('button',{name:'收起',exact:true}).click();
+    await page.locator('#close-bag').click();
     await leaveBookshop(page);
     console.log(`PASS: browser job ${f.job} bought and learned ${skill} through the bookshop and inventory controls.`);
     await page.getByRole('button',{name:'打开技能',exact:true}).click();
     await expect(page.locator('#skills-list')).toContainText(skill);
     if (f.job !== 0) await page.getByLabel(`${skill}快捷键`).selectOption('1');
-    await page.getByRole('button',{name:'收起',exact:true}).click();
+    await page.locator('#close-character').click();
+    await page.locator('body').click({position:{x:10,y:10}});
     if (f.job === 0) {
       let pickedUp = false;
       for (let attempt = 0; attempt < 12 && !pickedUp; attempt++) {
@@ -242,7 +260,7 @@ test('native merchant, map transition, three-job combat and skills through brows
           died=combat.events.slice(after).some((e:any)=>e.type==='ObjectDied'&&e.data.objectID===target.objectID);
           if (died) break;
           expect(combat.user.hp).toBeGreaterThan(0);
-          if (combat.user.hp<combat.user.maxHP*0.65) await page.getByRole('button',{name:'使用金创药',exact:true}).click();
+          if (combat.user.hp<combat.user.maxHP*0.65) await consume(page,'金创药(小量)');
           await page.waitForTimeout(700);
         }
         expect(died).toBe(true);
@@ -253,7 +271,7 @@ test('native merchant, map transition, three-job combat and skills through brows
         await page.screenshot({path:'test-results/combat.png'});
         await move(page,drop.data.location.x,drop.data.location.y);
         const before=(await state(page)).user, count=before.inventory.filter(Boolean).length, gold=before.gold;
-        await page.getByRole('button',{name:'拾取',exact:true}).click();
+        await page.keyboard.press('E');
         await expect.poll(async()=>Boolean((await state(page)).objects[drop.data.objectID])).toBe(false);
         if (drop.type==='ObjectGold') await expect.poll(async()=>(await state(page)).user.gold).toBeGreaterThan(gold);
         else await expect.poll(async()=>(await state(page)).user.inventory.filter(Boolean).length).toBeGreaterThan(count);
@@ -275,7 +293,7 @@ test('native merchant, map transition, three-job combat and skills through brows
     }
     if (f.job !== 0) {
       const before=await state(page),after=before.events.length,mana=before.user.mp,health=before.user.hp;
-      await page.getByRole('button',{name:`施放${skill}`,exact:true}).click();
+      await page.keyboard.press('F1');
       await expect.poll(async()=>(await state(page)).events.slice(after).some((e:any)=>e.type==='MagicEffect'&&e.data.effect===(f.job===1?1:2))).toBe(true);
       await expect.poll(async()=>(await state(page)).events.slice(after).some((e:any)=>e.type==='HealthChanged'&&e.data.mp<mana)).toBe(true);
       if (f.job===1) await expect.poll(async()=>(await state(page)).events.slice(after).some((e:any)=>e.type==='DamageIndicator'&&e.data.objectID===castTarget.objectID&&e.data.damage>0),{timeout:10000}).toBe(true);

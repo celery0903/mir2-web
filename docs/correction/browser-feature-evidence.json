@@ -1,0 +1,51 @@
+{
+  "controls": "Browser clicks and keyboard only; WebSocket observer is passive.",
+  "classificationErrors": [],
+  "errors": [],
+  "evidence": [
+    {
+      "job": 0,
+      "skill": "基本剑术",
+      "learnedFromPurchasedBook": true,
+      "mapTransitions": [
+        "0",
+        "0132",
+        "0"
+      ],
+      "shopBoughtAndSold": true,
+      "loot": {
+        "monster": "稻草人",
+        "drop": "金币",
+        "pickedUp": true
+      }
+    },
+    {
+      "job": 1,
+      "skill": "火球术",
+      "learnedFromPurchasedBook": true,
+      "mapTransitions": [
+        "0",
+        "0132",
+        "0"
+      ],
+      "shopBoughtAndSold": true,
+      "manaConsumed": true,
+      "targetDamaged": true,
+      "healthIncreased": false
+    },
+    {
+      "job": 2,
+      "skill": "治愈术",
+      "learnedFromPurchasedBook": true,
+      "mapTransitions": [
+        "0",
+        "0132",
+        "0"
+      ],
+      "shopBoughtAndSold": false,
+      "manaConsumed": true,
+      "targetDamaged": false,
+      "healthIncreased": true
+    }
+  ]
+}

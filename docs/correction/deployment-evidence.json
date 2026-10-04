@@ -1,0 +1,80 @@
+{
+  "verifiedAt": "2026-10-04T14:59:32.276Z",
+  "url": "http://172.30.0.16:18880",
+  "health": {
+    "status": "ok",
+    "engine": "OpenMir2"
+  },
+  "containers": [
+    {
+      "name": "/mir2-web-db-1",
+      "imageID": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "health": "healthy",
+      "restartCount": 0
+    },
+    {
+      "name": "/mir2-web-engine-1",
+      "imageID": "sha256:19aa65dc5557f2437f181b9659e927b4d3f933ced17acb98edd76b791fddd7df",
+      "health": "healthy",
+      "restartCount": 0
+    },
+    {
+      "name": "/mir2-web-web-1",
+      "imageID": "sha256:a88c274fd72a46053921c89b85d924fc4a6fff7080f1d7d0ab885f86605ba2a3",
+      "health": "healthy",
+      "restartCount": 0
+    }
+  ],
+  "frontendAssets": [
+    {
+      "file": "index.html",
+      "sha256": "454c3611c5779061c68f25f1730b96f110e30abb12a2ad7f4dc17304863dfd63",
+      "matchesCurrentBuild": true
+    },
+    {
+      "file": "assets/index-CzkODaHK.css",
+      "sha256": "6728cdb463d9e686531e13612bbb7b431d502258ee469a92222b373e0646b0ae",
+      "matchesCurrentBuild": true
+    },
+    {
+      "file": "assets/index-DGhQSLET.js",
+      "sha256": "2f0ffba29a330c4b00ce576af6f6fc343e1b33234454e7bbe31fe6dffb407b78",
+      "matchesCurrentBuild": true
+    }
+  ],
+  "engineSupervisorSHA256": "77fe728931ab698a35d1f8dc90d2fbf93b66082a7f666ff15447c8ce0f171bc5",
+  "engineSupervisorMatchesSource": true,
+  "browser": {
+    "runner": "Playwright Chromium",
+    "passed": 3,
+    "failed": 0,
+    "durationMinutes": 1.9,
+    "tests": [
+      {
+        "name": "classic account, layout and controls",
+        "durationSeconds": 31.4
+      },
+      {
+        "name": "desktop and mobile gameplay",
+        "durationSeconds": 36.1
+      },
+      {
+        "name": "warehouse deposit and relogin withdrawal",
+        "durationSeconds": 47.8
+      }
+    ],
+    "desktopViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobileViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "scriptErrors": 0,
+    "assetHttpErrors": 0,
+    "evidenceDirectory": "docs/correction/deployment"
+  },
+  "fidelityAcceptance": "failed",
+  "goalComplete": false
+}

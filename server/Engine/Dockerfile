@@ -14,6 +14,7 @@ FROM data AS profile
 COPY --from=classic /assets/classic /classic
 COPY scripts/native-map.mjs scripts/prepare-classic-world.mjs scripts/
 COPY shared/classic-experience.json shared/classic-experience.json
+COPY shared/classic-storage.json shared/classic-storage.json
 RUN node scripts/prepare-classic-world.mjs /seed /classic /profile
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build

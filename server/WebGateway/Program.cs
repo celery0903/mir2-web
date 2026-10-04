@@ -38,12 +38,14 @@ app.MapPost("/api/register", async (HttpContext context) => {
     try {
         var account = await context.Request.ReadFromJsonAsync<Registration>(context.RequestAborted);
         if (account == null || !Credentials.Valid(account.AccountID, account.Password)) return Results.BadRequest(new { message = "账号和密码格式不正确" });
+        var profileFields = new (string? Value, int Bytes)[] { (account.UserName, 20), (account.Identity, 14), (account.Phone, 14), (account.Question, 20), (account.Answer, 12), (account.Email, 40), (account.Question2, 20), (account.Answer2, 12), (account.BirthDay, 10), (account.Mobile, 11) };
+        if (profileFields.Any(field => Encoding.GetEncoding("gb2312").GetByteCount(field.Value ?? "") > field.Bytes)) return Results.BadRequest(new { message = "账号资料超过长度限制" });
         using var timeout = CancellationTokenSource.CreateLinkedTokenSource(context.RequestAborted); timeout.CancelAfter(TimeSpan.FromSeconds(8));
         using var connection = new LegacyConnection(); await connection.Connect(engineHost, 7000, timeout.Token);
         // LoginSrv ignores account creation during the first second of a connection.
         await Task.Delay(1100, timeout.Token);
-        var entry = new UserEntry { Account = account.AccountID, Password = account.Password, UserName = account.AccountID, SSNo = "", Phone = "", Quiz = "", Answer = "", EMail = "" };
-        var addition = new UserEntryAdd { Quiz2 = Guid.NewGuid().ToString("N"), Answer2 = Guid.NewGuid().ToString("N"), BirthDay = "2000-01-01", MobilePhone = "", Memo = "", Memo2 = "" };
+        var entry = new UserEntry { Account = account.AccountID, Password = account.Password, UserName = string.IsNullOrEmpty(account.UserName) ? account.AccountID : account.UserName, SSNo = account.Identity ?? "", Phone = account.Phone ?? "", Quiz = account.Question ?? "", Answer = account.Answer ?? "", EMail = account.Email ?? "" };
+        var addition = new UserEntryAdd { Quiz2 = string.IsNullOrEmpty(account.Question2) ? Guid.NewGuid().ToString("N")[..20] : account.Question2, Answer2 = string.IsNullOrEmpty(account.Answer2) ? Guid.NewGuid().ToString("N")[..12] : account.Answer2, BirthDay = string.IsNullOrEmpty(account.BirthDay) ? "2000-01-01" : account.BirthDay, MobilePhone = account.Mobile ?? "", Memo = "", Memo2 = "" };
         await connection.Send(Messages.CM_ADDNEWUSER, body: EDCode.EncodeBuffer(entry) + EDCode.EncodeBuffer(addition), token: timeout.Token);
         while (true) {
             var packet = await connection.Read(timeout.Token);
@@ -63,4 +65,4 @@ app.Map("/ws", async context => {
 await app.RunAsync(); return 0;
 
 static bool SameOrigin(HttpContext context) => !context.Request.Headers.TryGetValue("Origin", out var origin) || Uri.TryCreate(origin.ToString(), UriKind.Absolute, out var uri) && uri.Authority.Equals(context.Request.Host.Value, StringComparison.OrdinalIgnoreCase) && uri.Scheme == context.Request.Scheme;
-record Registration(string AccountID, string Password);
+record Registration(string AccountID, string Password, string? UserName = null, string? Identity = null, string? BirthDay = null, string? Question = null, string? Answer = null, string? Question2 = null, string? Answer2 = null, string? Phone = null, string? Mobile = null, string? Email = null);
