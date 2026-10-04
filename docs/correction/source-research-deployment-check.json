@@ -1,0 +1,302 @@
+{
+  "checkedAt": "2026-10-04T18:58:53.149Z",
+  "url": "http://172.30.0.16:18880",
+  "clientSource": "leiniaozl229/mir2",
+  "revision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
+  "containers": [
+    {
+      "name": "/mir2-web-db-1",
+      "id": "e2543ebcef06a518f4b3e4c54bfd1fe68cb943a25485f408c6b26ad3825e2f59",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "startedAt": "2026-10-04T10:27:41.001442121Z",
+      "restartCount": 0,
+      "health": "healthy",
+      "labels": {
+        "com.docker.compose.config-hash": "1cd1fef1efa9dbef6417bf59bf29c2d41683039404199c86e0e0c3485ddfcd7c",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "mir2-web",
+        "com.docker.compose.project.config_files": "/home/dev/workspace4/mir2-web/compose.yaml",
+        "com.docker.compose.project.working_dir": "/home/dev/workspace4/mir2-web",
+        "com.docker.compose.replace": "db-1",
+        "com.docker.compose.service": "db",
+        "com.docker.compose.version": "5.3.1"
+      },
+      "mounts": [
+        {
+          "Destination": "/var/lib/mysql",
+          "Driver": "local",
+          "Mode": "rw",
+          "Name": "mir2-web_openmir2-db",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/mir2-web_openmir2-db/_data",
+          "Type": "volume"
+        },
+        {
+          "Destination": "/docker-entrypoint-initdb.d",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "Type": "bind"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-engine-1",
+      "id": "7ceb80d932eef416360dcffecb545e120be86f95aa43f89a1b2d217f828280fb",
+      "image": "sha256:8c9f0354ef4a714056698dc6875cc3f8fc90f1ef3f0d99f07fdd43dd7340f9e7",
+      "startedAt": "2026-10-04T18:38:25.235322382Z",
+      "restartCount": 0,
+      "health": "healthy",
+      "labels": {
+        "com.docker.compose.config-hash": "c4fe173e3e14d3df6ad33d3f7b8d26ee4ae04e8dad516ecce000f5f8268772bc",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:8c9f0354ef4a714056698dc6875cc3f8fc90f1ef3f0d99f07fdd43dd7340f9e7",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "mir2-web",
+        "com.docker.compose.project.config_files": "/home/dev/workspace4/mir2-web/compose.yaml",
+        "com.docker.compose.project.working_dir": "/home/dev/workspace4/mir2-web",
+        "com.docker.compose.replace": "engine-1",
+        "com.docker.compose.service": "engine",
+        "com.docker.compose.version": "5.3.1"
+      },
+      "mounts": [
+        {
+          "Destination": "/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "Name": "mir2-web_openmir2-engine",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/mir2-web_openmir2-engine/_data",
+          "Type": "volume"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-web-1",
+      "id": "11dc58a59e15175074bda1abd947cb23c11328f0a6c410e4b5a09761d4ca9df4",
+      "image": "sha256:67c4266e4d1f7c02e1d981380769688c29d4cd83e6fa5947e76d05e323249dac",
+      "startedAt": "2026-10-04T18:23:29.481738138Z",
+      "restartCount": 0,
+      "health": "healthy",
+      "labels": {
+        "com.docker.compose.config-hash": "4d3d9e41162ed87d1fd96ba3434b63fd4d77a252f8a55e79715821ca0a4d8fa6",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:67c4266e4d1f7c02e1d981380769688c29d4cd83e6fa5947e76d05e323249dac",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "mir2-web",
+        "com.docker.compose.project.config_files": "/home/dev/workspace4/mir2-web/compose.yaml",
+        "com.docker.compose.project.working_dir": "/home/dev/workspace4/mir2-web",
+        "com.docker.compose.replace": "web-1",
+        "com.docker.compose.service": "web",
+        "com.docker.compose.version": "5.3.1",
+        "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>",
+        "org.opencontainers.image.revision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
+        "org.opencontainers.image.source": "https://github.com/leiniaozl229/mir2"
+      },
+      "mounts": [
+        {
+          "Destination": "/usr/share/nginx/resources",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/source-assets",
+          "Type": "bind"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-source-proxy-1",
+      "id": "393e3bb85562f087db058b1fc9159641091ebc2c0d390a961b37c768d0a9a4d3",
+      "image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
+      "startedAt": "2026-10-04T16:35:45.175254417Z",
+      "restartCount": 0,
+      "health": "healthy",
+      "labels": {
+        "com.docker.compose.config-hash": "2c615cd65c6326baa4af72cf11940f7a4baa80c3c2c639bc64a4468e531a7b4e",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "mir2-web",
+        "com.docker.compose.project.config_files": "/home/dev/workspace4/mir2-web/compose.yaml",
+        "com.docker.compose.project.working_dir": "/home/dev/workspace4/mir2-web",
+        "com.docker.compose.replace": "source-proxy-1",
+        "com.docker.compose.service": "source-proxy",
+        "com.docker.compose.version": "5.3.1",
+        "org.opencontainers.image.revision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
+        "org.opencontainers.image.source": "https://github.com/leiniaozl229/mir2"
+      },
+      "mounts": []
+    }
+  ],
+  "files": [
+    {
+      "path": "/",
+      "sha256": "3930090d2befffac2a1c929c5eb010c87d0cde70b16128e0828bd0204a70c608",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/50x.html",
+      "sha256": "876766b4e80133fd490603e073d3567425b88794828a9292104244c9e40875ed",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/index.html",
+      "sha256": "6de66c46fe2cd6000615ebbd3df19a41ca3bf07cc7870105b39cf034c83a5f71",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/resources.html",
+      "sha256": "07a3729443d742d9dbf660ba4bcabfc092ce0bf92b74620c1858116c3771d11b",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/play.html",
+      "sha256": "3930090d2befffac2a1c929c5eb010c87d0cde70b16128e0828bd0204a70c608",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/ui-calibration.html",
+      "sha256": "8eb3cd7446403293c889eaca312b995d6f5503cf4371535a663f9ce41d8da40d",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/perf.html",
+      "sha256": "1f5e1b0893c1e310903fb2c7b6ac0d551dbb8d405378895a2ec8893c9ad50b3b",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/ui-calibration-C81glTed.css",
+      "sha256": "cb716da6bf0eecf1024d5316d20ea534b1c76efe8302421f5ba7e326d02b82f2",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/browserAll-DKKRCLZR.js",
+      "sha256": "2cc7e67f1f563c32df4132e2cfb6d503cd22b2cdc5b11e4a102fc1ddff80a8d2",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/WebGLRenderer-CXrGBVTq.js",
+      "sha256": "9d24d80ffa325d6b81f800a69e142d562a7009f50f27e8f3760becd3044a1dd9",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/index-9QC40t9d.js",
+      "sha256": "b9a74374f1a15d36bef8581e545bed4cdc1030b49081fbb333c2ab917d4a0489",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/movement-visual-BA4H0vgC.js",
+      "sha256": "1957cfcfeb2e9ff2f8ed0d04ed225001d125e3b022dce92cfa51135e0ad950f8",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/resources-BGqz-Gqi.js",
+      "sha256": "a82c6c49088386825022d8359f0076b48fb0905db64b2d9227e06067ba06da64",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/online-actors-B77IBCpK.js",
+      "sha256": "c658c6744d266d67d397f4b41d1f6c05d37d3eeb26023157efec347ac60c4244",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/perf-Ciz2zLbl.js",
+      "sha256": "289dfbdeebd8c66674f290e71758c35dc0505c335357996707c46f46c30968f9",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/resources-BO7lXkar.css",
+      "sha256": "94cc24fb429b9150ba2060259b8e2c36c729973fb8f4498f8a18577cd477121d",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/style-RClpPuIH.css",
+      "sha256": "37d169b385a3e09c1800e71cff8e17776ba30f7aa90c661f9989a6e9a56c1478",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/WebGPURenderer-E_hziem7.js",
+      "sha256": "eef03c83f59915ff0af908f4e9a065d9b33a226667b43a46d269b6ab8977b022",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/modulepreload-polyfill-B5Qt9EMX.js",
+      "sha256": "d2a32840421496e872ade591618d2fa5c33797605d1aec04301717e5a90757d0",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/actors-Ca4lyFBK.js",
+      "sha256": "d7541ae0552c00ec220b715497fa7237d1b0f50f0edf412e9bb5ba9be90cfe80",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/colorToUniform-DmtBy-2V.js",
+      "sha256": "a7ebcea84e1ad064fb111a4160e321661d8a9a68263f72f2a1d606941e95456f",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/window-drag-DkOKI3tP.js",
+      "sha256": "196c76aebaa8a6a65ded2fe15c934a3af1cc50a840bcfbeb8e0543491a9e6ae0",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/map-view-CBZphtZk.js",
+      "sha256": "741ca0e05001872d2667ec7de967898f16a44314027aa4a9a72f50f9a1651e07",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/ui-calibration-Cw3sRDo-.js",
+      "sha256": "68d4da497550b247b60e02e7ab0a2728c02fa5caead0ff690fcf2e31a04e1904",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/play-BTlWD1U4.js",
+      "sha256": "baeb1383224ff09d52dcc6cec18e32b96ad42fce44cbd4de4b2296f65a9be66e",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/CanvasTextGenerator-CZ5I28qF.js",
+      "sha256": "0c667b83fee5e8446fcb6a77291c662b63ba08678d2110d44b095ee79c92191b",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/index-CjFm8B97.js",
+      "sha256": "b9cca0ad187c1f383267fb47af101d26a43ddb2ca2a3ac951b41f73597c93962",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/SharedSystems-zc6EXcJP.js",
+      "sha256": "1f29a9e95b2f8136c3eaf99071d417c0c8b39ebfd1443c8652f770fc5c9a714a",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/webworkerAll-DfoSzyLw.js",
+      "sha256": "50727894cc1cbb12bd37f06945ebc84fcdd1a6a445f0b4cc059829ff45167ada",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/actors.html",
+      "sha256": "5728a64a7f114f7d71e5ca653dd4b15d61962c6ee84a1a3b49fb56f099fa976d",
+      "matchesDeployedImage": true
+    }
+  ],
+  "patches": {
+    "server/source-client.patch": "88e4c31f46b2b97f58fbf019754c6e17448736edcc7b5a2490ea6bee78e33429",
+    "server/source-proxy.patch": "aebb91deeb043eff62c5cf801f89890155eac3c349edcfe7e7f44786c73f9a5a",
+    "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0"
+  },
+  "preservedNativeContainers": true,
+  "preservedDatabase": true,
+  "preservedEngine": true,
+  "preservedEngineStorage": true,
+  "full176Acceptance": false
+}

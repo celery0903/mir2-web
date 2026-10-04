@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T18:42:36.912Z",
+  "checkedAt": "2026-10-04T19:00:23.448Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -24,7 +24,8 @@
     "server/Engine/run.mjs": "77fe728931ab698a35d1f8dc90d2fbf93b66082a7f666ff15447c8ce0f171bc5",
     "server/openmir2-linux.patch": "7e63c0aba58c2fea7fe068d27350e21aa111cbeb5e59bacf9dd6a20b0a539ded",
     "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0",
-    "scripts/verify-source-deployment.mjs": "8c162ce3a6ac54cb2dec03b580179e16f695d8e436e4ac19dd12851a7affd647"
+    "scripts/verify-source-deployment.mjs": "8c162ce3a6ac54cb2dec03b580179e16f695d8e436e4ac19dd12851a7affd647",
+    "scripts/native-map.mjs": "83a9abe687ac7b5be901213b91f08134b2da9210fef4edd7dfda0d8f3c08226a"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",
@@ -266,7 +267,392 @@
         }
       ]
     },
-    "nativeMapsMatch": true
+    "nativeMapsMatch": true,
+    "mapConversion": {
+      "available": true,
+      "acceptance": "failed",
+      "sourceRepository": "fq393/mir2-web",
+      "sourceRevision": "7e5782118c78defb42d8ffb55ca3a3de199e90a6",
+      "sourceSha256": "ed4783215ffa989658f79892c2dd6720753fb111e1102cb14da8e6182d88d7f6",
+      "convertedSha256": "f073cd9fdc908e29cee32555d42196bf166df408ea7cd534b2f4ce5b6fc96d2b",
+      "matchesPreparedMap": true,
+      "matchesDeployedMap": true,
+      "dimensions": {
+        "width": 700,
+        "height": 700
+      },
+      "frontLibraries": {
+        "2": 25249,
+        "5": 118,
+        "6": 48,
+        "7": 332,
+        "21": 69,
+        "22": 3507,
+        "24": 2755,
+        "251": 1,
+        "253": 1,
+        "254": 2,
+        "255": 2,
+        "257": 16
+      },
+      "lostFrontLibraryCells": 6851,
+      "lostExamples": [
+        {
+          "x": 39,
+          "y": 111,
+          "sourceLibrary": 24,
+          "index": 310,
+          "convertedFileIndex": 0
+        },
+        {
+          "x": 39,
+          "y": 112,
+          "sourceLibrary": 24,
+          "index": 309,
+          "convertedFileIndex": 0
+        },
+        {
+          "x": 39,
+          "y": 113,
+          "sourceLibrary": 24,
+          "index": 308,
+          "convertedFileIndex": 0
+        },
+        {
+          "x": 39,
+          "y": 114,
+          "sourceLibrary": 24,
+          "index": 307,
+          "convertedFileIndex": 0
+        },
+        {
+          "x": 39,
+          "y": 115,
+          "sourceLibrary": 24,
+          "index": 306,
+          "convertedFileIndex": 0
+        },
+        {
+          "x": 40,
+          "y": 110,
+          "sourceLibrary": 24,
+          "index": 305,
+          "convertedFileIndex": 0
+        },
+        {
+          "x": 40,
+          "y": 111,
+          "sourceLibrary": 24,
+          "index": 304,
+          "convertedFileIndex": 0
+        },
+        {
+          "x": 40,
+          "y": 112,
+          "sourceLibrary": 24,
+          "index": 303,
+          "convertedFileIndex": 0
+        }
+      ],
+      "missingMiddleCells": 33,
+      "missingMiddleReferences": [
+        {
+          "index": 1791,
+          "cells": [
+            {
+              "x": 0,
+              "y": 1,
+              "sourceLibrary": 1,
+              "sourceImage": 1792
+            },
+            {
+              "x": 0,
+              "y": 149,
+              "sourceLibrary": 1,
+              "sourceImage": 1792
+            }
+          ]
+        },
+        {
+          "index": 2815,
+          "cells": [
+            {
+              "x": 0,
+              "y": 5,
+              "sourceLibrary": 1,
+              "sourceImage": 2816
+            },
+            {
+              "x": 0,
+              "y": 57,
+              "sourceLibrary": 1,
+              "sourceImage": 2816
+            },
+            {
+              "x": 0,
+              "y": 105,
+              "sourceLibrary": 1,
+              "sourceImage": 2816
+            },
+            {
+              "x": 0,
+              "y": 165,
+              "sourceLibrary": 1,
+              "sourceImage": 2816
+            }
+          ]
+        },
+        {
+          "index": 2302,
+          "cells": [
+            {
+              "x": 0,
+              "y": 9,
+              "sourceLibrary": 1,
+              "sourceImage": 2303
+            },
+            {
+              "x": 0,
+              "y": 33,
+              "sourceLibrary": 1,
+              "sourceImage": 2303
+            },
+            {
+              "x": 0,
+              "y": 81,
+              "sourceLibrary": 1,
+              "sourceImage": 2303
+            }
+          ]
+        },
+        {
+          "index": 31231,
+          "cells": [
+            {
+              "x": 0,
+              "y": 13,
+              "sourceLibrary": 1,
+              "sourceImage": -1536
+            },
+            {
+              "x": 0,
+              "y": 101,
+              "sourceLibrary": 1,
+              "sourceImage": -1536
+            }
+          ]
+        },
+        {
+          "index": 2047,
+          "cells": [
+            {
+              "x": 0,
+              "y": 17,
+              "sourceLibrary": 1,
+              "sourceImage": 2048
+            },
+            {
+              "x": 0,
+              "y": 21,
+              "sourceLibrary": 1,
+              "sourceImage": 2048
+            }
+          ]
+        },
+        {
+          "index": 2303,
+          "cells": [
+            {
+              "x": 0,
+              "y": 25,
+              "sourceLibrary": 1,
+              "sourceImage": 2304
+            }
+          ]
+        },
+        {
+          "index": 32255,
+          "cells": [
+            {
+              "x": 0,
+              "y": 29,
+              "sourceLibrary": 1,
+              "sourceImage": -512
+            }
+          ]
+        },
+        {
+          "index": 2559,
+          "cells": [
+            {
+              "x": 0,
+              "y": 41,
+              "sourceLibrary": 1,
+              "sourceImage": 2560
+            },
+            {
+              "x": 0,
+              "y": 65,
+              "sourceLibrary": 1,
+              "sourceImage": 2560
+            },
+            {
+              "x": 0,
+              "y": 89,
+              "sourceLibrary": 1,
+              "sourceImage": 2560
+            }
+          ]
+        },
+        {
+          "index": 2558,
+          "cells": [
+            {
+              "x": 0,
+              "y": 49,
+              "sourceLibrary": 1,
+              "sourceImage": 2559
+            },
+            {
+              "x": 0,
+              "y": 97,
+              "sourceLibrary": 1,
+              "sourceImage": 2559
+            }
+          ]
+        },
+        {
+          "index": 30975,
+          "cells": [
+            {
+              "x": 0,
+              "y": 53,
+              "sourceLibrary": 1,
+              "sourceImage": -1792
+            },
+            {
+              "x": 0,
+              "y": 85,
+              "sourceLibrary": 1,
+              "sourceImage": -1792
+            }
+          ]
+        },
+        {
+          "index": 3071,
+          "cells": [
+            {
+              "x": 0,
+              "y": 61,
+              "sourceLibrary": 1,
+              "sourceImage": 3072
+            },
+            {
+              "x": 0,
+              "y": 121,
+              "sourceLibrary": 1,
+              "sourceImage": 3072
+            },
+            {
+              "x": 0,
+              "y": 129,
+              "sourceLibrary": 1,
+              "sourceImage": 3072
+            }
+          ]
+        },
+        {
+          "index": 31999,
+          "cells": [
+            {
+              "x": 0,
+              "y": 69,
+              "sourceLibrary": 1,
+              "sourceImage": -768
+            }
+          ]
+        },
+        {
+          "index": 3070,
+          "cells": [
+            {
+              "x": 0,
+              "y": 73,
+              "sourceLibrary": 1,
+              "sourceImage": 3071
+            }
+          ]
+        },
+        {
+          "index": 2814,
+          "cells": [
+            {
+              "x": 0,
+              "y": 113,
+              "sourceLibrary": 1,
+              "sourceImage": 2815
+            }
+          ]
+        },
+        {
+          "index": 1535,
+          "cells": [
+            {
+              "x": 0,
+              "y": 117,
+              "sourceLibrary": 1,
+              "sourceImage": 1536
+            }
+          ]
+        },
+        {
+          "index": 3582,
+          "cells": [
+            {
+              "x": 0,
+              "y": 137,
+              "sourceLibrary": 1,
+              "sourceImage": 3583
+            }
+          ]
+        },
+        {
+          "index": 4350,
+          "cells": [
+            {
+              "x": 0,
+              "y": 145,
+              "sourceLibrary": 1,
+              "sourceImage": 4351
+            }
+          ]
+        },
+        {
+          "index": 4607,
+          "cells": [
+            {
+              "x": 0,
+              "y": 153,
+              "sourceLibrary": 1,
+              "sourceImage": 4608
+            }
+          ]
+        },
+        {
+          "index": 4606,
+          "cells": [
+            {
+              "x": 0,
+              "y": 161,
+              "sourceLibrary": 1,
+              "sourceImage": 4607
+            }
+          ]
+        }
+      ],
+      "parserReference": "Suprcode/Crystal@0e315fe327192afe52c3d7357ddd1f5b7e26c5b8 Client/MirObjects/MapCode.cs LoadMapType100",
+      "interpretation": "The conversion discards non-default front library indices. Matching collision cells and native map hashes do not prove visual fidelity. The unresolved middle references also exist in the pinned source map; no parsing defect is established for those references."
+    }
   },
   "world": {
     "profile": "bichon-prototype",
@@ -579,7 +965,8 @@
     "Version-specific item, monster, skill, drop and NPC data without later content",
     "Complete three-job skill actions and effects, original login transitions and remaining client interactions",
     "Warehouse capacity and failure regressions, trade, groups, guilds and siege browser workflows",
-    "Matched full client archive and historical gameplay reference for fidelity comparison"
+    "Matched full client archive and historical gameplay reference for fidelity comparison",
+    "Preserved map layer library indices and matching graphics libraries, with unresolved source references accounted for"
   ],
   "interpretation": "Basic gameplay and original UI frames do not prove full 1.76 fidelity. Later data presence does not by itself prove player reachability."
 }

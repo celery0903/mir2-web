@@ -40,6 +40,8 @@
 
 当前比奇仍有 19 个越界 SmTiles 引用。严格准备会拒绝缺项；明确使用 `--allow-missing-references` 才允许部署这一未完成版本，`integration.json` 的资源验收仍为 `failed`。这些候选素材未认证为 2003 原始客户端，未启用候选的 570 张混合版本地图。
 
+18:58 UTC 的逐单元审计还查实转换丢失了 6,851 个非默认前景素材库编号：例如原候选 `(39,111)` 使用库 24、帧 310，转换后文件编号为 0。原始格式已对照固定 Crystal 源码的 `LoadMapType100`；当前转换产物 SHA-256 与正式引擎一致。这一转换缺陷尚未修复，不能将“地图哈希和碰撞一致”视为画面一致。19 个 SmTiles 缺项对应原始候选的 33 个单元，均在 `x=0`、`y=1..165`，原始字节也包含这些值，尚无证据支持通过清零或猜测字节序修正。详细坐标、源哈希与库编号见 [版本审计](version-audit.json) 的 `clientImplementation.mapConversion`。
+
 ## 实测证据
 
 正式入口的 [外部浏览器验收](correction/source-original-ui-production/evidence.json) 于 2026-10-04 16:37 UTC 通过，截图包含三职业桌面、手机和原仓库窗口。`tests/source-client.mjs` 实际注册账号、建角和操作，不修改数据库或注入物品：

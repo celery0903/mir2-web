@@ -89,3 +89,22 @@
 `npm run verify:deployment` 校验正式响应的 30 个 HTML、JS、CSS 哈希、四项服务健康和数据库实例。需要更换引擎时必须指定已测试镜像完整 ID，再核对原存档卷；报告明确记录引擎实例更换。更新前实例记录见 [登录修复前部署](correction/source-login-before-deployment.json)。部署检查本身不证明版本还原完成。
 
 当前仍有 19 个未解析 SmTiles 引用，生产库仍包含 108 个混合版本技能，原始 2003 安装包尚未取得，完整世界和其余系统未验收。出售和修理已接入原 392/393 帧，其他工具窗口仍有通用源码布局；远距小地图寻路的视野碰撞限制尚未解决。公开查询 Mirfiles 的盛大目录、Internet Archive 和 GitHub 未取得可复核的 2003 安装包字节，现有百度分享仍仅为线索。源码复用不等于完成版本还原。接入差异、失败检查和具体限制见 [源码加 Proxy 接入](SOURCE_PROXY_EVALUATION.md)，部署文件及镜像见 [新入口部署证据](correction/source-deployment-evidence.json)。
+
+## 原包候选与转换复查
+
+18:53 UTC 通过 `rarfile==4.2` 和 HTTP Range 读取 [Vintage.rar](https://mirfiles.com/resources/mir2/clients/Vintage.rar) 的前 12 个文件头，共读取 49,160 字节，未下载整个 6,524,167,845 字节压缩包。目录出现 2023 年 `Client.exe`、配置/PDB 和 2015 至 2021 年 `Data/AArmour/*.Lib`，因此拒绝作为盛大 2003 整包直接导入。这里是目录抽样，未声称已经排除后续每个目录中存在旧文件，记录见 [Vintage 抽样](correction/source-vintage-archive-sample.json)。
+
+18:54 UTC 同样抽样 [Shanda Mir 2.rar](https://mirfiles.com/resources/mir2/clients/Shanda/Shanda%20Mir%202.rar) 的前 24 个文件头，共读取 65,544 字节。目录包含 2022 至 2023 年启动器、更新程序和 2019 年 DLL；尚未取得匹配的 `mir2setup2003.exe`，未据此认证或导入其整包。记录见 [Shanda 抽样](correction/source-shanda-archive-sample.json)。
+
+分段检查脚本为 `scripts/inspect-client-archive.py`，验证 `206`、实际 `Content-Range`、稳定 ETag/Last-Modified、响应长度及下载预算。服务端返回整包或归档变化时会拒绝继续。已用本地现有 RAR 与临时 HTTP 服务核对完整目录结果一致，并检查 seek、跨块读取、EOF、目录抽样、整包响应、错误范围、截断、归档变化和预算拒绝。
+
+```bash
+python3 -m pip install --target .runtime/client-archive-deps rarfile==4.2
+PYTHONPATH=.runtime/client-archive-deps python3 scripts/inspect-client-archive.py \
+  https://mirfiles.com/resources/mir2/clients/Vintage.rar --max-entries 12 \
+  --output .runtime/vintage-directory.json
+```
+
+18:58 UTC 地图审计查实 `scripts/native-map.mjs` 在转换时丢失 6,851 个非默认前景素材库编号。当前产物与正式引擎地图哈希一致，说明这个缺陷也存在于部署。审计现在记录源库、实际文件编号、例子和源/转换/部署哈希，资源验收继续为 `failed`。这是新增查实的缺陷，尚未完成修复；库编号保留还必须配套正确的素材库。19 个未解析 SmTiles 引用对应原始候选的 33 个边界单元，不能只删除引用来通过检查。
+
+本次未更新运行镜像；[18:58 UTC 部署复查](correction/source-research-deployment-check.json) 核对 30 个网页文件哈希、四项服务健康，以及相对 18:38 部署记录的数据库、引擎和存档卷保持。18:38 的实际引擎更换证据仍保留在原记录中。完整 1.76 审计仍返回退出码 1，goal 继续未完成。
