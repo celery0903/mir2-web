@@ -4,6 +4,8 @@
 
 最新地图更新已将比奇改为固定服务端种子的旧 12 字节格式地图和对应 WemadeMir2 库，严格资源检查通过，未解析引用为零；下文 71 个缺项和 Mir3 资源的记录属于此前转换图。世界范围仍为 11 张图，沃玛森林和毒蛇山谷只有候选资源检查，尚未正式开放。更新证据见本文末尾“原生比奇地图与素材库”。
 
+后续 [经典世界整理](CLASSIC_WORLD.md) 已将 249 张候选图固定到原始 Git blob，完成全部单元与 48,229 个可用帧的像素检查、36 处区域和边界画面，以及十张店铺画面。全目录仍因石墓四层的一帧缺项而失败，候选目录未整包开放。现有 11 张已开放地图统一使用 WemadeMir2 图库，继续沿用现成 H5 源码、配套 proxy 和原引擎。
+
 ## 运行链路与来源
 
 浏览器使用 [leiniaozl229/mir2](https://github.com/leiniaozl229/mir2/tree/77e3ff7506b1ca55cac15df247cb2fcedd69c535) 的 `apps/web` Pixi 客户端；同源 Nginx 转发 `/ws` 给它的 `services/web-gateway` .NET 10 proxy，再连接原有 OpenMir2 六个服务和 MySQL。源码作为 `upstream/mir2-client` 子模块固定在 `77e3ff7506b1ca55cac15df247cb2fcedd69c535`，上游检出保持干净。

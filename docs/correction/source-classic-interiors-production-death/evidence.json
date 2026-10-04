@@ -1,0 +1,848 @@
+{
+  "checkedAt": "2026-10-04T22:24:45.854Z",
+  "url": "http://172.30.0.16:18880",
+  "scope": "all",
+  "passed": false,
+  "full176Acceptance": false,
+  "jobs": [
+    {
+      "job": 0,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 906,
+      "mobileColors": 416,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 1,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(女)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 934,
+      "mobileColors": 447,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 2,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 935,
+      "mobileColors": 442,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    }
+  ],
+  "originRejected": true,
+  "error": "AssertionError [ERR_ASSERTION]: Warehouse walk killed the player\n    at expect.poll.timeout (file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:50:100)\n    at async /home/dev/workspace4/mir2-web/node_modules/playwright/lib/matchers/expect.js:13391:19\n    at async raceAgainstDeadline (/home/dev/workspace4/mir2-web/node_modules/playwright-core/lib/coreBundle.js:4602:10)\n    at async pollAgainstDeadline (/home/dev/workspace4/mir2-web/node_modules/playwright-core/lib/coreBundle.js:4623:22)\n    at async invokePollMatcher (/home/dev/workspace4/mir2-web/node_modules/playwright/lib/matchers/expect.js:13388:18)\n    at async walkToMap (file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:50:2)\n    at async file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:161:3",
+  "failureState": {
+    "map": "0",
+    "worldReady": true,
+    "attributes": {
+      "type": "attributes",
+      "level": 1,
+      "job": 0,
+      "innerPowerLevel": 99,
+      "gold": 0,
+      "gameGold": 0,
+      "ac": {
+        "min": 0,
+        "max": 2
+      },
+      "mac": {
+        "min": 0,
+        "max": 1
+      },
+      "dc": {
+        "min": 3,
+        "max": 6
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 0,
+      "mp": 15,
+      "maxHp": 19,
+      "maxMp": 15,
+      "experience": 0,
+      "maxExperience": 100,
+      "weight": 2,
+      "maxWeight": 50,
+      "wearWeight": 5,
+      "maxWearWeight": 15,
+      "handWeight": 7,
+      "maxHandWeight": 12
+    },
+    "render": {
+      "pixel": {
+        "x": 13824,
+        "y": 19680
+      },
+      "queuedMovements": 0,
+      "action": "dead",
+      "direction": 3,
+      "framesReady": true,
+      "poseKey": "CArmour01/CHair00/dead/3/0/1/CWeapon01/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13824,
+          "y": 19680
+        }
+      },
+      "grid": {
+        "x": 288,
+        "y": 615
+      },
+      "screen": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    "authScene": "select",
+    "connection": "角色已死亡"
+  },
+  "failureTimeline": [
+    {
+      "at": 4040.6000003814697,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 3,
+        "mapGeneration": 1,
+        "type": "map",
+        "map": "0"
+      }
+    },
+    {
+      "at": 4104.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 5,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "player",
+        "x": 287,
+        "y": 617,
+        "direction": 0,
+        "id": 1760820758,
+        "self": true,
+        "action": "standing",
+        "name": "src6860240"
+      }
+    },
+    {
+      "at": 4121.800000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 28,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 289,
+        "y": 617,
+        "direction": 4,
+        "id": 1082173558,
+        "self": false,
+        "action": "standing",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 4124.300000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 32,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 288,
+        "y": 609,
+        "direction": 3,
+        "id": 784760561,
+        "self": false,
+        "action": "standing",
+        "name": "边界杂货店"
+      }
+    },
+    {
+      "at": 4126,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 36,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 288,
+        "y": 606,
+        "direction": 2,
+        "id": 813344153,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 4127.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 40,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 621,
+        "direction": 0,
+        "id": 2013722286,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 4128.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 44,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 299,
+        "y": 621,
+        "direction": 4,
+        "id": 722756478,
+        "self": false,
+        "action": "standing",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 4129.300000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 48,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 288,
+        "y": 618,
+        "direction": 2,
+        "id": 2124927807,
+        "self": false,
+        "action": "standing",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 4130.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 52,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 620,
+        "direction": 4,
+        "id": 785181431,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 4131.800000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 56,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 284,
+        "y": 613,
+        "direction": 5,
+        "id": 1651989104,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 4132.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 60,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 288,
+        "y": 617,
+        "direction": 3,
+        "id": 1661040021,
+        "self": false,
+        "action": "standing",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 4648,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 81,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 288,
+        "y": 616,
+        "direction": 7,
+        "id": 1082173558,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 6387.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 91,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 621,
+        "direction": 6,
+        "id": 2013722286,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 6893.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 99,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 1,
+        "kind": "move",
+        "accepted": true,
+        "x": 287,
+        "y": 616,
+        "reason": 0
+      }
+    },
+    {
+      "at": 7377.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 101,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 2,
+        "kind": "move",
+        "accepted": true,
+        "x": 288,
+        "y": 615,
+        "reason": 0
+      }
+    },
+    {
+      "at": 7695.199999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 103,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 276,
+        "y": 604,
+        "direction": 7,
+        "id": 263698346,
+        "self": false,
+        "action": "standing",
+        "name": "卫士"
+      }
+    },
+    {
+      "at": 7733.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 107,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 300,
+        "y": 622,
+        "direction": 2,
+        "id": 657527587,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 7734.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 111,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 293,
+        "y": 604,
+        "direction": 7,
+        "id": 1138077881,
+        "self": false,
+        "action": "standing",
+        "name": "肉店老板"
+      }
+    },
+    {
+      "at": 7736.199999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 115,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 284,
+        "y": 603,
+        "direction": 1,
+        "id": 1490923064,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 7740.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 119,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 277,
+        "y": 604,
+        "direction": 6,
+        "id": 1915794349,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 7741.800000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 123,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 289,
+        "y": 617,
+        "direction": 1,
+        "id": 2124927807,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 7999.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 125,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 289,
+        "y": 616,
+        "direction": 1,
+        "id": 1661040021,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 8138.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 127,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 3,
+        "kind": "move",
+        "accepted": false,
+        "x": 288,
+        "y": 615,
+        "reason": 28
+      }
+    },
+    {
+      "at": 8449.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 129,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 284,
+        "y": 603,
+        "direction": 1,
+        "id": 1490923064,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 9050.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 133,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 299,
+        "y": 622,
+        "direction": 4,
+        "id": 722756478,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 9342.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 135,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 616,
+        "direction": 1,
+        "id": 2124927807,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 10797.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 149,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 289,
+        "y": 615,
+        "direction": 7,
+        "id": 2124927807,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 13341.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 165,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 621,
+        "direction": 4,
+        "id": 2013722286,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 13628.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 169,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 288,
+        "y": 609,
+        "direction": 6,
+        "id": 784760561,
+        "self": false,
+        "action": "standing",
+        "name": "边界杂货店"
+      }
+    },
+    {
+      "at": 17683.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 191,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 293,
+        "y": 604,
+        "direction": 0,
+        "id": 1138077881,
+        "self": false,
+        "action": "standing",
+        "name": "肉店老板"
+      }
+    },
+    {
+      "at": 17979.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 197,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 621,
+        "direction": 0,
+        "id": 2013722286,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 19125.699999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 205,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 620,
+        "direction": 7,
+        "id": 785181431,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 21733.199999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 221,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 290,
+        "y": 621,
+        "direction": 2,
+        "id": 2013722286,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 22948.199999809265,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 237,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 284,
+        "y": 613,
+        "direction": 6,
+        "id": 1651989104,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 23780.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 241,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 288,
+        "y": 609,
+        "direction": 2,
+        "id": 784760561,
+        "self": false,
+        "action": "standing",
+        "name": "边界杂货店"
+      }
+    },
+    {
+      "at": 25247.300000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 245,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 293,
+        "y": 604,
+        "direction": 6,
+        "id": 1138077881,
+        "self": false,
+        "action": "standing",
+        "name": "肉店老板"
+      }
+    },
+    {
+      "at": 27337.900000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 267,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1490923064
+      }
+    },
+    {
+      "at": 28187.800000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 269,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 284,
+        "y": 613,
+        "direction": 2,
+        "id": 1651989104,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 31703.900000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 297,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 288,
+        "y": 609,
+        "direction": 4,
+        "id": 784760561,
+        "self": false,
+        "action": "standing",
+        "name": "边界杂货店"
+      }
+    },
+    {
+      "at": 34826.900000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 313,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 293,
+        "y": 604,
+        "direction": 7,
+        "id": 1138077881,
+        "self": false,
+        "action": "standing",
+        "name": "肉店老板"
+      }
+    },
+    {
+      "at": 35731.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 333,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 291,
+        "y": 621,
+        "direction": 2,
+        "id": 2013722286,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    }
+  ]
+}

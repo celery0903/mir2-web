@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-04T22:10:26.878Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": false,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 249,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [],
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+}

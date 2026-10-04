@@ -45,6 +45,11 @@ const bichonAdapters = new Map();
 const dependencies = { Tiles: new Set(), SmTiles: new Set(), Objects: new Set() };
 const mapAuditFile = resolve(process.env.MIR_MAP_AUDIT ?? join(root, '.runtime/classic-profile/audit.json'));
 const mapAudit = await json(mapAuditFile);
+for (const map of mapAudit.maps) {
+  if (map.resourceNamespace !== 'WemadeMir2') continue;
+  if (!nativeLock.maps.some(pin => pin.id === map.id)) throw new Error(`Unpinned native map: ${map.id}`);
+  nativeMapIDs.add(map.id);
+}
 for (const { id } of mapAudit.maps) {
   const file = join(maps, `${id}.map`);
   execFileSync('python3', [join(source, 'tools/map_tool.py'), 'export', file, '--output', join(output, 'maps', id)], { stdio: 'inherit' });
@@ -278,6 +283,7 @@ for (const map of mapReport) {
   audit.browserCollisionVerification = 'all exported cells match native bytes';
 }
 await writeFile(mapAuditFile, JSON.stringify(mapAudit, null, 2) + '\n');
+await writeFile(join(output, 'maps/catalog.json'), JSON.stringify(mapReport.map(map => ({ ...map, name: mapAudit.maps.find(entry => entry.id === map.id).name })), null, 2) + '\n');
 execFileSync('python3', [join(root, 'scripts/prepare-source-magic.py'), output], { stdio: 'inherit' });
 report.magicEffects = await json(join(output, 'effects/integration.json'));
 await writeFile(join(output, 'integration.json'), JSON.stringify(report, null, 2) + '\n');

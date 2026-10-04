@@ -165,7 +165,11 @@ try {
   assert.ok(warehouseNpc.distance > 1 && warehouseNpc.distance <= 15, 'Counter NPC must be reachable from the entrance');
   await expect(storagePage.locator('#status')).toContainText('0 个未解析引用', { timeout: 15000 });
   const warehouseMap = await (await fetch(`${base}/maps/0140/map.json`)).json();
-  assert.deepEqual(warehouseMap.objectLibraries, { 1: 'Room0140Objects2', 2: 'Room0140Objects3' });
+  if (warehouseMap.resourceNamespace === 'WemadeMir2') {
+    const native = JSON.parse(await readFile('shared/native-world.lock.json'));
+    assert.equal(warehouseMap.sourceSha256, native.maps.find(map => map.id === '0140').sha256);
+    assert.deepEqual(warehouseMap.objectLibraries, { 1: 'WemadeObjects2', 2: 'WemadeObjects3' });
+  } else assert.deepEqual(warehouseMap.objectLibraries, { 1: 'Room0140Objects2', 2: 'Room0140Objects3' });
   await openWarehouse(storagePage);
   await expect(storagePage.locator('#npc-dialog')).toHaveClass(/inline-dialogue/);
   await expect(storagePage.locator('#npc-text .npc-line').filter({has:storagePage.getByRole('button',{name:'保管',exact:true})})).toHaveText('保管东西');

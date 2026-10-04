@@ -72,6 +72,16 @@ const integrationBytes=await readFile(join(assets,'integration.json'));
 const {stdout:integrationHash}=await execute('docker',['exec',names[2],'sha256sum','/usr/share/nginx/resources/integration.json']);
 assert.equal(integrationHash.trim().split(/\s+/)[0],digest(integrationBytes),'Mounted integration manifest');
 const integration=JSON.parse(integrationBytes);
+let hasMapCatalog=false;
+try{await readFile(join(assets,'maps/catalog.json'));hasMapCatalog=true;}catch(error){if(error.code!=='ENOENT')throw error;}
+if(hasMapCatalog){
+ const catalog=JSON.parse(await verifyResource('maps/catalog.json'));
+ assert.deepEqual(catalog.map(map=>map.id),integration.maps.map(map=>map.id),'Map catalog differs from the prepared profile');
+ for(const map of catalog){
+  const entry=integration.maps.find(entry=>entry.id===map.id);
+  for(const field of ['sourceSha256','width','height'])assert.equal(map[field],entry[field],`Map catalog ${map.id}/${field}`);
+ }
+}
 const libraryNames=new Set(['Tiles','SmTiles','Objects']);
 for(const map of integration.maps){
  assert.match(map.id,/^[A-Za-z0-9]+$/);
@@ -134,6 +144,6 @@ const patches=Object.fromEntries(await Promise.all(['server/source-client.patch'
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
 resourceFiles.sort((a,b)=>a.path.localeCompare(b.path));
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,mapCatalogVerified:hasMapCatalog,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
 console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

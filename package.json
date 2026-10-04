@@ -5,6 +5,9 @@
   "scripts": {
     "assets:classic": "node scripts/fetch-classic.mjs",
     "audit:176": "node scripts/audit-176.mjs",
+    "audit:classic-world": "node scripts/audit-classic-world.mjs",
+    "test:classic-world": "node --test tests/classic-world.test.mjs",
+    "test:classic-world-browser": "node tests/classic-world-browser.mjs",
     "verify:deployment": "node scripts/verify-source-deployment.mjs",
     "build": "docker build -f server/SourceClient/Dockerfile --target build .",
     "build:prototype": "npm run build --workspace web",

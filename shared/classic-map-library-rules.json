@@ -1,0 +1,12 @@
+{
+  "repository": "lzxsz/MIR2",
+  "revision": "98711dad31567d9a7e272956f6c5a2487000848b",
+  "file": "GameOfMir/MirClient/MShare.pas",
+  "sha256": "a9cdffe54266b44b88e473a9c1562026936789dca99bddf1d8749e6df2784be7",
+  "objectFileByteMinimum": 0,
+  "objectFileByteMaximum": 14,
+  "outsideRangeFallback": 0,
+  "methods": ["GetObjs", "GetObjsEx"],
+  "authenticated2003Client": false,
+  "interpretation": "The pinned traditional client declares g_WObjectArr[0..14] and explicitly resets out-of-range nUnit to 0. This rule applies to native classic-12 maps, not converted Crystal maps with Mir3 library namespaces. The reference contains later code and is not authentication of the complete 2003 client."
+}

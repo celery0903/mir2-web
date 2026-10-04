@@ -19,7 +19,7 @@ def checked_map(data):
     return world
 
 
-def references(world):
+def references(world, rules=None):
     dependencies = {'Tiles': set(), 'SmTiles': set(), 'Objects': set()}
     object_libraries = {}
     for x in range(world.width):
@@ -32,7 +32,10 @@ def references(world):
                 if not 0 < image < 0x7f00:
                     continue
                 if layer == 2:
-                    name = 'Objects' if not cell[7] else f'WemadeObjects{cell[7] + 1}'
+                    family = cell[7]
+                    if rules and family > rules['objectFileByteMaximum']:
+                        family = rules['outsideRangeFallback']
+                    name = 'Objects' if not family else f'WemadeObjects{family + 1}'
                     object_libraries[str(cell[7])] = name
                 count = max(1, cell[5] & 0x7f) if layer == 2 else 1
                 dependencies.setdefault(name, set()).update(range(image - 1, image - 1 + count))
@@ -55,22 +58,24 @@ def prepare(maps, libraries, output, ids, supplement=None):
     for ident in ids:
         pin = pins[ident]
         path = maps / f'{ident}.map'
+        if not path.exists() and pin.get('sourceFile'):
+            path = maps / pin['sourceFile']
         data = path.read_bytes()
         if len(data) != pin['bytes'] or hashlib.sha256(data).hexdigest() != pin['sha256']:
             raise ValueError(f'Native map checksum mismatch: {ident}')
         world = checked_map(data)
-        refs, object_libraries = references(world)
+        refs, object_libraries = references(world, lock.get('libraryRules'))
         manifest = export_map(path, output / 'maps' / ident)
-        manifest.update(resourceNamespace='WemadeMir2', objectLibraries=object_libraries,
+        manifest.update(id=ident, resourceNamespace='WemadeMir2', objectLibraries=object_libraries,
                         dependencies={name: sorted(values) for name, values in refs.items()},
                         authenticated2003Client=False)
         (output / 'maps' / ident / 'map.json').write_text(json.dumps(manifest, indent=2) + '\n')
         for name, values in refs.items():
             dependencies.setdefault(name, set()).update(values)
-        map_report.append({'id': ident, 'sourceSha256': pin['sha256'], 'width': world.width,
+        map_report.append({'id': ident, 'name': pin['name'], 'sourceSha256': pin['sha256'], 'width': world.width,
                            'height': world.height, 'objectLibraries': object_libraries,
                            'resourceNamespace': 'WemadeMir2', 'sourceRepository': lock['repository'],
-                           'sourceRevision': lock['revision']})
+                           'sourceRevision': lock['revision'], 'sourceFile': pin.get('sourceFile', f'{ident}.map')})
     if supplement:
         for name, values in supplement.items():
             if name in ('Tiles', 'SmTiles'):
@@ -99,7 +104,8 @@ def prepare(maps, libraries, output, ids, supplement=None):
         print(f'{name}: {len(manifest["frames"])} frames, {len(manifest["empty"])} empty, {len(manifest["missing"])} missing', flush=True)
     report = {'maps': map_report, 'libraries': library_report, 'missingMapReferences': missing,
               'mapResourceAcceptance': 'failed' if missing else 'passed',
-              'authenticated2003Client': False}
+              'full176Acceptance': False, 'authenticated2003Client': False}
+    (output / 'maps' / 'catalog.json').write_text(json.dumps(map_report, indent=2) + '\n')
     (output / 'native-world.json').write_text(json.dumps(report, indent=2) + '\n')
     return report
 
@@ -109,10 +115,14 @@ if __name__ == '__main__':
     parser.add_argument('--maps', type=Path, required=True)
     parser.add_argument('--libraries', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--ids', nargs='+', default=['0'])
+    selection = parser.add_mutually_exclusive_group()
+    selection.add_argument('--ids', nargs='+')
+    selection.add_argument('--all', action='store_true')
     parser.add_argument('--supplement', type=Path)
     args = parser.parse_args()
-    report = prepare(args.maps, args.libraries, args.output, args.ids,
+    lock = json.loads((ROOT / 'shared/native-world.lock.json').read_text())
+    ids = args.ids or ([entry['id'] for entry in lock['maps']] if args.all else ['0'])
+    report = prepare(args.maps, args.libraries, args.output, ids,
                      json.loads(args.supplement.read_text())['dependencies'] if args.supplement else None)
     if report['missingMapReferences']:
         raise SystemExit('Native map resources are incomplete: ' + json.dumps(report['missingMapReferences']))

@@ -22,7 +22,7 @@ for (const [index, id] of mapIDs.entries()) {
   let source;
   const pin = nativeMaps.get(id);
   if (pin) {
-    source = await readFile(join(seed, 'Mir200/Map', `${id}.map`));
+    source = await readFile(join(seed, 'Mir200/Map', pin.sourceFile ?? `${id}.map`));
     if (source.length !== pin.bytes || createHash('sha256').update(source).digest('hex') !== pin.sha256) throw new Error(`Native map checksum mismatch: ${id}`);
   } else {
     try { source = await readFile(join(assets, 'server-maps', `${id}.map`)); }

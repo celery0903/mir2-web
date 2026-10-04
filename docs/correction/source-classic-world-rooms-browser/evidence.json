@@ -1,0 +1,224 @@
+{
+  "checkedAt": "2026-10-04T22:16:34.449Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 249,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [
+    {
+      "id": "0102",
+      "name": "肉店",
+      "x": 3,
+      "y": 7,
+      "expectedUnresolved": 0,
+      "sourceSha256": "7e8985dbc634a02cc5c5ff6b92f7f62b8c1712829cc38c9ebadbd6e824332cda",
+      "desktopColors": 123,
+      "mobileColors": 94,
+      "desktopCanvasSha256": "a3826c5e0612c72ea752c7c8eedccb210816727b51fdd64564aed2173fe6c80b",
+      "mobileCanvasSha256": "ced575244bb3d27f920b9518390a03a23d83f33c9ebb358b1b4c03cd462792b2",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0103",
+      "name": "铁器店",
+      "x": 5,
+      "y": 12,
+      "expectedUnresolved": 0,
+      "sourceSha256": "d314a54fea40b85eb0bd68d6b18a3fef6fc9221499697feb81f003ad9713da79",
+      "desktopColors": 127,
+      "mobileColors": 88,
+      "desktopCanvasSha256": "76e01923ac1d80cc75949333f3caab2cd7c99b216c4b1cc775caa9b270f20c32",
+      "mobileCanvasSha256": "edc4d21251789f645b3070cf09b1f249543a0cdb87f71d59b6705ae9290dc685",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0104",
+      "name": "技能书店",
+      "x": 4,
+      "y": 10,
+      "expectedUnresolved": 0,
+      "sourceSha256": "adea6fad4e8d2bc1c603055e74b078790c88d0c08b46553517f997212d75bc45",
+      "desktopColors": 115,
+      "mobileColors": 78,
+      "desktopCanvasSha256": "b451f6e2efd0dc3191dd54593f6464b9e1064915a5455e369050d40b263e720a",
+      "mobileCanvasSha256": "2accb3ce30615012afc9e4437ab8230dd4081736966c3f22fde6aba4e98ca1d2",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0105",
+      "name": "首饰店",
+      "x": 8,
+      "y": 24,
+      "expectedUnresolved": 0,
+      "sourceSha256": "9de531bcf6f502482a809bcdbac50a38365f2c163202ba146b9f71b70519523e",
+      "desktopColors": 121,
+      "mobileColors": 85,
+      "desktopCanvasSha256": "38789756f7e501c7b9e4331fc28dfcc20f2efba6b58357590adec4079e7cbdf7",
+      "mobileCanvasSha256": "77411a551e134ea7511f5a6d215736b77f752c1acd251f62abf314147a9c4daa",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0106",
+      "name": "衣服店",
+      "x": 8,
+      "y": 24,
+      "expectedUnresolved": 0,
+      "sourceSha256": "eb5361adfcb1a7576759733386cff453d59e16388047fb32dbfa2c394c28a74c",
+      "desktopColors": 107,
+      "mobileColors": 82,
+      "desktopCanvasSha256": "9f27e14ec401db7f75ee226fe9a67205d6f11e3624eddeb4f427187b802f1f87",
+      "mobileCanvasSha256": "80d0cfbb8319d4595178e9fad859ffc9fb7f017dcfcabf5fe9ff4566f3addc7d",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0108",
+      "name": "药店",
+      "x": 10,
+      "y": 12,
+      "expectedUnresolved": 0,
+      "sourceSha256": "d6727ef204bf25df10c35a3c47d6a693827b8c1c3d0cac5a35d7cf1efb91b3b9",
+      "desktopColors": 114,
+      "mobileColors": 83,
+      "desktopCanvasSha256": "9803330b3b54d835ff30d0f32ace311ce56c643904ff202e113458c780c919e4",
+      "mobileCanvasSha256": "73671204407f3e97885ca8227de408fb7a415a6e06844a2bae3e436b88efb4ee",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0109",
+      "name": "炼药房",
+      "x": 7,
+      "y": 6,
+      "expectedUnresolved": 0,
+      "sourceSha256": "939d34628c5f93b51c372c90487ca390216492b8523717c8f15774786f0801d9",
+      "desktopColors": 130,
+      "mobileColors": 91,
+      "desktopCanvasSha256": "8c6bfbe112dc56d67f92858986139d742dd2440e8d77895ab2a79efa4e5cc969",
+      "mobileCanvasSha256": "1ce8fb824c49e69ff9039884670f086d6b2775edc1283379a1744702c95f0609",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0132",
+      "name": "房屋",
+      "x": 13,
+      "y": 15,
+      "expectedUnresolved": 0,
+      "sourceSha256": "7351bb29eb3a7ff3095f16dc99bcdd1ee66850eb365f69ee4a41ca24d2ffd5e1",
+      "desktopColors": 168,
+      "mobileColors": 131,
+      "desktopCanvasSha256": "6557832d57c8713a776107f92517c958b33522101575da5a195cde319d8bca1b",
+      "mobileCanvasSha256": "93b919c7adc0d95854cd394fae1ae0962cfbd2d598b4b4e18a6e77f22c564fad",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0140",
+      "name": "仓库",
+      "x": 2,
+      "y": 10,
+      "expectedUnresolved": 0,
+      "sourceSha256": "679ffed7be2e314494f2be87f614a679ff3bc2e4e9974859deba5ba47b1659bb",
+      "desktopColors": 102,
+      "mobileColors": 72,
+      "desktopCanvasSha256": "95572be543314a1c6683ef108c207e2f444f86c2abe2447f8e16ed2215bf1215",
+      "mobileCanvasSha256": "936c10cef0e5a08defb9033070230bd77af237271440135b411df210735b60a7",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2",
+        "WemadeObjects3"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0141",
+      "name": "杂货店",
+      "x": 2,
+      "y": 11,
+      "expectedUnresolved": 0,
+      "sourceSha256": "b7db75768cdb072cc2a7c3b916f2ec438a8762e396c9f463010d086996723ff2",
+      "desktopColors": 98,
+      "mobileColors": 70,
+      "desktopCanvasSha256": "7b30430704ffe0c9494ea46600910282bf86b1520af016ab326da6f4b3bc0eb5",
+      "mobileCanvasSha256": "412e619bb104526fb127178ea1bedcf8e41f9e0b9ac706c20d6bd207c120c830",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    }
+  ]
+}

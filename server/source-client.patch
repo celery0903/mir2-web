@@ -102,6 +102,48 @@ index 0000000..aa88ec4
 + const selected=entries.find(entry=>entry.key===state.selected),confirm=serviceButton(library,386,state.storage?'取回':'购买',215,171,()=>selected?.activate());confirm.disabled=state.busy||!selected||Boolean(selected.disabled);
 + const close=serviceButton(library,371,'关闭',291,0,state.close);close.classList.add('classic-window-close');element.append(previous,next,confirm,close);
 +}
+diff --git a/apps/web/index.html b/apps/web/index.html
+--- a/apps/web/index.html
++++ b/apps/web/index.html
+@@ -1,3 +1,3 @@
+ <!doctype html>
+ <html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>传奇 2 · 地图校验</title></head>
+-<body><main><header><span>THE LEGEND OF MIR II</span><h1>比奇省 · 地图校验</h1><p>原始地图与候选图库的浏览器渲染。拖动画面查看，方向键移动视野。</p></header><section id="viewport"></section><footer><form id="jump"><label>X <input id="x" type="number" value="296" min="0" max="699"></label><label>Y <input id="y" type="number" value="624" min="0" max="699"></label><button>前往坐标</button><label><input id="collision" type="checkbox"> 显示阻挡</label></form><output id="status">正在载入地图…</output><p>地图素材与阻挡校验器 · <a href="/play.html">联机页面</a> · <a href="/resources.html">游戏资源管理器</a></p></footer></main><script type="module" src="/src/main.ts"></script></body></html>
++<body class="classic-map-inspector"><main><header><span>THE LEGEND OF MIR II</span><h1>比奇省 · 地图校验</h1></header><section id="viewport-shell"><div id="viewport"></div></section><footer><form id="jump"><label>地图 <select id="map" disabled><option value="0">比奇省 · 0</option></select></label><label>X <input id="x" type="number" value="296" min="0" max="699"></label><label>Y <input id="y" type="number" value="624" min="0" max="699"></label><button>前往坐标</button><label><input id="collision" type="checkbox"> 显示阻挡</label></form><output id="status">正在载入地图…</output><p><a href="/play.html">联机页面</a> · <a href="/resources.html">游戏资源管理器</a></p></footer></main><script type="module" src="/src/main.ts"></script></body></html>
+diff --git a/apps/web/src/main.ts b/apps/web/src/main.ts
+--- a/apps/web/src/main.ts
++++ b/apps/web/src/main.ts
+@@ -3,11 +3,27 @@ import './style.css';
+ const status=document.querySelector<HTMLOutputElement>('#status')!;
+ const xInput=document.querySelector<HTMLInputElement>('#x')!,yInput=document.querySelector<HTMLInputElement>('#y')!;
+ const collision=document.querySelector<HTMLInputElement>('#collision')!;
++const mapSelect=document.querySelector<HTMLSelectElement>('#map')!;
++const jumpButton=document.querySelector<HTMLButtonElement>('#jump button')!;
+ const view=await createMapView(document.querySelector<HTMLElement>('#viewport')!,status);
++let changingMap=false;
++function updateCoordinates(){xInput.max=String(view.width-1);yInput.max=String(view.height-1);xInput.value=String(view.center.x);yInput.value=String(view.center.y);}
++const response=await fetch('/maps/catalog.json');
++if(!response.ok)throw new Error(`地图目录: ${response.status}`);
++const catalog=await response.json() as {id:string;name:string}[];
++mapSelect.replaceChildren(...catalog.map(map=>new Option(`${map.name} · ${map.id}`,map.id)));mapSelect.value='0';mapSelect.disabled=false;
++mapSelect.addEventListener('change',async()=>{
++ if(changingMap)return;changingMap=true;mapSelect.disabled=true;jumpButton.disabled=true;collision.disabled=true;
++ try{
++  await view.setMap(mapSelect.value);updateCoordinates();
++  document.querySelector('h1')!.textContent=`${catalog.find(map=>map.id===mapSelect.value)?.name??mapSelect.value} · 地图校验`;
++ }catch(error){status.textContent=String(error);}
++ finally{changingMap=false;mapSelect.disabled=false;jumpButton.disabled=false;collision.disabled=false;}
++});
+ async function move(x:number,y:number){try{await view.setCenter(x,y);xInput.value=String(view.center.x);yInput.value=String(view.center.y);}catch(error){status.textContent=String(error);}}
+-document.querySelector('#jump')!.addEventListener('submit',e=>{e.preventDefault();void move(Number(xInput.value),Number(yInput.value));});
++document.querySelector('#jump')!.addEventListener('submit',e=>{e.preventDefault();if(!changingMap)void move(Number(xInput.value),Number(yInput.value));});
+ collision.addEventListener('change',()=>{void view.setCollision(collision.checked);});
+ let drag:{x:number;y:number;cx:number;cy:number}|undefined;
+ view.app.canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,cx:view.center.x,cy:view.center.y};view.app.canvas.setPointerCapture(e.pointerId);});
+-view.app.canvas.addEventListener('pointerup',e=>{if(!drag)return;const scale=800/view.app.canvas.getBoundingClientRect().width;void move(drag.cx-(e.clientX-drag.x)*scale/48,drag.cy-(e.clientY-drag.y)*scale/32);drag=undefined;});
+-window.addEventListener('keydown',e=>{if(e.target instanceof HTMLInputElement)return;const d:Record<string,number[]>={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};if(d[e.key]){e.preventDefault();void move(view.center.x+d[e.key][0],view.center.y+d[e.key][1]);}});
++view.app.canvas.addEventListener('pointerup',e=>{if(!drag)return;if(!changingMap){const scale=800/view.app.canvas.getBoundingClientRect().width;void move(drag.cx-(e.clientX-drag.x)*scale/48,drag.cy-(e.clientY-drag.y)*scale/32);}drag=undefined;});
++window.addEventListener('keydown',e=>{if(changingMap||e.target instanceof HTMLInputElement||e.target instanceof HTMLSelectElement)return;const d:Record<string,number[]>={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};if(d[e.key]){e.preventDefault();void move(view.center.x+d[e.key][0],view.center.y+d[e.key][1]);}});
 diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
 index 9cdcfa3..e4f839a 100644
 --- a/apps/web/src/map-view.ts
@@ -130,7 +172,8 @@ index 9cdcfa3..e4f839a 100644
 @@ -62,7 +67,9 @@ async function render(){
     if(layer===0&&(x%2!==0||y%2!==0))continue;
     const index=(data.getUint16(offset+layer*2,true)&0x7fff)-1;
-    if(index<0)continue;
+-   if(index<0)continue;
++   if(index<0||index>=0x7eff)continue;
 -   const library=libraries[layer],frame=library.frames[index];
 +   const libraryName=layer===2?(activeWorld.objectLibraries?.[data.getUint8(offset+10)]??names[layer]):names[layer];
 +   const library=layer===2?objectLibraries.get(libraryName):libraries[layer];
@@ -592,10 +635,11 @@ index d58d058..6f81030 100644
  body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar{width:8px}
  body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar-track{background:#1a110b}
  body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar-thumb{background:#76552b;border:1px solid #2a1a0d}
-@@ -222,6 +222,28 @@ body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clr
+@@ -222,6 +222,29 @@ body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clr
  body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clblue{color:#8ab5e8}
  body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clgreen{color:#8fc77b}
  /* Modal service panels are hidden by the controller before they open. Character and inventory windows can remain visible beside a shop, repair or storage panel. */
++body.classic-map-inspector #viewport-shell{width:100%;height:auto;aspect-ratio:4/3;max-width:800px;margin:0;border:1px solid #8c7442}body.classic-map-inspector #map{max-width:260px}
 +body.classic-play #classic-modal-layer .npc-dialog>div:first-child{position:static;min-height:0;height:0}
 +body.classic-play #npc-title{display:none}
 +body.classic-play .npc-dialog.inline-dialogue #npc-options{display:none}

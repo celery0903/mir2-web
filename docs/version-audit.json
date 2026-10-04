@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T21:50:29.883Z",
+  "checkedAt": "2026-10-04T22:24:47.154Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -8,14 +8,14 @@
     "shared/world.json": "a615f733acf93dad86361fbf9c7d459cd99473f41303bd7c6c53bc4ba03c930d",
     "shared/classic-storage.json": "63e861a3783a85d9a189b3c6216240a12a07703269890148b4b633d3dd47a844",
     "compose.yaml": "cc5ad8b6bc9f049f9050aad5e1cd528494c195d57160044e3b307ae8076f3bab",
-    "scripts/prepare-classic-world.mjs": "7be3b280a6e49ccb22c8eda8d8f9fb2266e76d2f58350fa2394e0c94d39de96e",
+    "scripts/prepare-classic-world.mjs": "584c7c2d0526ed5ac394c77c36d78764fd6d089e44091e73d84a579bd4eebc21",
     "scripts/prepare-openmir2.mjs": "86d03fa62d633de7daefee6b8a60d886783d4e9ff7619e963a9648d1b969e078",
     "scripts/prepare-source-client.mjs": "708a3e49f850da50294cace414c1deb963c76a0f1007c6302e0725fe5a5094ba",
-    "scripts/prepare-source-assets.mjs": "08c0b311dbe280629d73bb29256e02e8e42fc02ff47db1889b8a87e968824547",
+    "scripts/prepare-source-assets.mjs": "c79210a8dce5fc1a69a49b51a0c672fac03e6b089efab2c9da029896cf969739",
     "server/SourceClient/Dockerfile": "e69029d9f7bb876a08849e17c15da99f8a8e47edaf1f60e7db115f9234c17b9a",
     "server/SourceClient/nginx.conf": "c7645f8022dbb1d1675862e65b4a7dd3535d5721f02d707f3849ec7c26cecea2",
     "server/SourceProxy/Dockerfile": "98e1136f4a2c648386ebb80b8d6bee0d8e29816fec9ce8f906985eb518c8dc74",
-    "server/source-client.patch": "88e4c31f46b2b97f58fbf019754c6e17448736edcc7b5a2490ea6bee78e33429",
+    "server/source-client.patch": "a49aae5f0cb9b3788edbbae564efe7a889014b7e7f3a5621521b4e5e176353b8",
     "server/source-proxy.patch": "aebb91deeb043eff62c5cf801f89890155eac3c349edcfe7e7f44786c73f9a5a",
     "upstream/mir2-client/apps/web/src/play.ts": "47681ebda2b8683431ec284b15fdb2304a9761fd6e93be430c3c6ec8e4f1e2e1",
     "upstream/mir2-client/apps/web/src/classic-hud.ts": "a9acc9220858066173af1552f48408a4bea81e86186d090a9693b9e792f66e4c",
@@ -24,7 +24,7 @@
     "server/Engine/run.mjs": "0f9a9016e1180a535cf428757ee090999973ade5e67e67121e36e888bcce10c9",
     "server/openmir2-linux.patch": "4616cb27725a879277985c909bc6f0134b5b1eecc55b8d705a7dfea1b8b30812",
     "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0",
-    "scripts/verify-source-deployment.mjs": "e96adfdfebefe5aa391232ebc01aaa4a315cc2fd2a9bf9fcb120064bceb883f5",
+    "scripts/verify-source-deployment.mjs": "40ce475f73ddc8db9829755d0817f2deb7a7e6e8b209b39f78b27777122a2581",
     "scripts/native-map.mjs": "4de77d86587a7000b70797154a4b58161ead689065685afa6833d8e95b3c47c0",
     "shared/classic-magic.json": "0ecf791c1e99c0f275baedcfa145b71272e608fe5e4713e253fedd95614e2b00",
     "server/source-magic.patch": "c74697f16991e20bb3b3cead027badbf7fd9bb1f68d28f70d874d94968c224e2",
@@ -41,11 +41,11 @@
     "tests/source-services.mjs": "930b8f9598db7f5f4063fababe2d2b712c45f8d8b32342b2cd5e785aa6e7b709",
     "tests/source-empty-inventory.mjs": "fab58f56bd76e6159ec5ee0d08fe75027cb7f967120e634a43b13421f071b640",
     "tests/native/Program.cs": "9b8e2efef51b40e6acc014dcd7aa5c180081373d206c1843d04cdc18707f932f",
-    "shared/native-world.lock.json": "f712f3a398ec6bf22a94b25ab482a7781ab504410cd4bc9d33cd806e8b4c28b4",
+    "shared/native-world.lock.json": "1f1b182c63f4eee9b8456bf6864f8c251a62bbab3a00f8de3cd4fd55486b8538",
     "scripts/fetch-native-map-libraries.mjs": "8917449f193972db56efedf19de128aa4195260d1a293c83934c8bc67cbef33f",
-    "scripts/prepare-native-map-assets.py": "e3417180942d877407f8f95f0134e61cb5035fea8051551e55ffce49d6445068",
+    "scripts/prepare-native-map-assets.py": "fbe3d1952d3355aa330e7a85551c5726a7b12748560b2815ca135635d77999b8",
     "scripts/check-native-world-positions.mjs": "eda68afa57b1f7dc9a2865426050aeae316bf971f363bfbf8629418e1b059a17",
-    "tests/native-world-assets.py": "6b33b3ae54f0dd49629a22578a831ce6a65ff4b5274675f9b233b84a171c3c7d",
+    "tests/native-world-assets.py": "483fe246b8ce1a6dda5a67938cf5d2e8a06f8db1571fdcddb44cf1ff6a3e6c69",
     "tests/source-native-world.mjs": "61788618e7b55a7b97904ba354cf644abf7abe92bb0684bffad741e3633defdd"
   },
   "clientImplementation": {
@@ -60,7 +60,7 @@
       "server/source-magic.patch"
     ],
     "sourceAssets": {
-      "checkedAt": "2026-10-04T21:40:03.838Z",
+      "checkedAt": "2026-10-04T22:17:23.126Z",
       "sourceRevision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
       "authenticated2003Client": false,
       "mapResourceAcceptance": "passed",
@@ -71,6 +71,7 @@
           "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
           "width": 700,
           "height": 700,
+          "name": "比奇省",
           "objectLibraries": {
             "0": "Objects",
             "3": "WemadeObjects4",
@@ -80,6 +81,7 @@
           "resourceNamespace": "WemadeMir2",
           "sourceRepository": "mirbeta/MirServer",
           "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0.map",
           "browserCellsMatchNative": true
         },
         {
@@ -87,9 +89,14 @@
           "sourceSha256": "7e8985dbc634a02cc5c5ff6b92f7f62b8c1712829cc38c9ebadbd6e824332cda",
           "width": 15,
           "height": 15,
+          "name": "肉店",
           "objectLibraries": {
-            "0": "Room0102Objects1"
+            "0": "Objects"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0102.map",
           "browserCellsMatchNative": true
         },
         {
@@ -97,9 +104,14 @@
           "sourceSha256": "d314a54fea40b85eb0bd68d6b18a3fef6fc9221499697feb81f003ad9713da79",
           "width": 27,
           "height": 29,
+          "name": "铁器店",
           "objectLibraries": {
-            "0": "Room0103Objects1"
+            "0": "Objects"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0103.map",
           "browserCellsMatchNative": true
         },
         {
@@ -107,9 +119,14 @@
           "sourceSha256": "adea6fad4e8d2bc1c603055e74b078790c88d0c08b46553517f997212d75bc45",
           "width": 13,
           "height": 16,
+          "name": "技能书店",
           "objectLibraries": {
-            "0": "Room0104Objects1"
+            "0": "Objects"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0104.map",
           "browserCellsMatchNative": true
         },
         {
@@ -117,9 +134,14 @@
           "sourceSha256": "9de531bcf6f502482a809bcdbac50a38365f2c163202ba146b9f71b70519523e",
           "width": 27,
           "height": 29,
+          "name": "首饰店",
           "objectLibraries": {
-            "0": "Room0105Objects1"
+            "0": "Objects"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0105.map",
           "browserCellsMatchNative": true
         },
         {
@@ -127,9 +149,14 @@
           "sourceSha256": "eb5361adfcb1a7576759733386cff453d59e16388047fb32dbfa2c394c28a74c",
           "width": 27,
           "height": 29,
+          "name": "衣服店",
           "objectLibraries": {
-            "0": "Room0106Objects1"
+            "0": "Objects"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0106.map",
           "browserCellsMatchNative": true
         },
         {
@@ -137,9 +164,14 @@
           "sourceSha256": "d6727ef204bf25df10c35a3c47d6a693827b8c1c3d0cac5a35d7cf1efb91b3b9",
           "width": 15,
           "height": 18,
+          "name": "药店",
           "objectLibraries": {
-            "0": "Room0108Objects1"
+            "0": "Objects"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0108.map",
           "browserCellsMatchNative": true
         },
         {
@@ -147,9 +179,14 @@
           "sourceSha256": "939d34628c5f93b51c372c90487ca390216492b8523717c8f15774786f0801d9",
           "width": 10,
           "height": 15,
+          "name": "炼药房",
           "objectLibraries": {
-            "0": "Room0109Objects1"
+            "0": "Objects"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0109.map",
           "browserCellsMatchNative": true
         },
         {
@@ -157,9 +194,14 @@
           "sourceSha256": "7351bb29eb3a7ff3095f16dc99bcdd1ee66850eb365f69ee4a41ca24d2ffd5e1",
           "width": 22,
           "height": 24,
+          "name": "房屋",
           "objectLibraries": {
-            "1": "Room0132Objects2"
+            "1": "WemadeObjects2"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0132.map",
           "browserCellsMatchNative": true
         },
         {
@@ -167,10 +209,15 @@
           "sourceSha256": "679ffed7be2e314494f2be87f614a679ff3bc2e4e9974859deba5ba47b1659bb",
           "width": 17,
           "height": 20,
+          "name": "仓库",
           "objectLibraries": {
-            "1": "Room0140Objects2",
-            "2": "Room0140Objects3"
+            "1": "WemadeObjects2",
+            "2": "WemadeObjects3"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0140.map",
           "browserCellsMatchNative": true
         },
         {
@@ -178,9 +225,14 @@
           "sourceSha256": "b7db75768cdb072cc2a7c3b916f2ec438a8762e396c9f463010d086996723ff2",
           "width": 27,
           "height": 32,
+          "name": "杂货店",
           "objectLibraries": {
-            "1": "Room0141Objects2"
+            "1": "WemadeObjects2"
           },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "sourceFile": "0141.map",
           "browserCellsMatchNative": true
         }
       ],
@@ -208,26 +260,6 @@
           "auth-web/portrait-2-0.png",
           "auth-web/portrait-2-1.png",
           "manifest.json",
-          "maps/0102/atlas-0.png",
-          "maps/0102/manifest.json",
-          "maps/0103/atlas-0.png",
-          "maps/0103/manifest.json",
-          "maps/0104/atlas-0.png",
-          "maps/0104/manifest.json",
-          "maps/0105/atlas-0.png",
-          "maps/0105/manifest.json",
-          "maps/0106/atlas-0.png",
-          "maps/0106/manifest.json",
-          "maps/0108/atlas-0.png",
-          "maps/0108/manifest.json",
-          "maps/0109/atlas-0.png",
-          "maps/0109/manifest.json",
-          "maps/0132/atlas-0.png",
-          "maps/0132/manifest.json",
-          "maps/0140/atlas-0.png",
-          "maps/0140/manifest.json",
-          "maps/0141/atlas-0.png",
-          "maps/0141/manifest.json",
           "ui-atlas-0.png",
           "ui-atlas-1.png",
           "ui.json",
