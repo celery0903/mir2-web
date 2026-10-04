@@ -1,0 +1,83 @@
+import { test, expect } from '@playwright/test';
+import { PNG } from 'pngjs';
+
+test('desktop and mobile play against the Docker server', async ({ browser, baseURL }) => {
+  const errors: string[] = [];
+  const desktop = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const page = await desktop.newPage();
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto(baseURL!);
+  await expect(page.locator('#connection-status')).toHaveText('已连接');
+  await expect(page.locator('#world canvas')).toBeVisible();
+  await expect(page.locator('#auth-submit')).toBeEnabled();
+  await page.getByRole('button', { name: '注册', exact: true }).click();
+  const suffix = Date.now().toString().slice(-9);
+  const account = `ui${suffix}`, password = 'UiTest987';
+  await page.locator('#account').fill(account);
+  await page.locator('#password').fill(password);
+  await page.locator('#auth-submit').click();
+  await expect(page.getByRole('heading', { name: '选择角色' })).toBeVisible();
+  await page.locator('#character-name').fill(`青石${suffix.slice(-5)}`);
+  await page.getByRole('button', { name: '道士', exact: true }).click();
+  await page.getByRole('button', { name: '创建并进入' }).click();
+  await expect(page.locator('#player-hud')).toBeVisible();
+  await expect(page.locator('#player-level')).toContainText('道士');
+  await expect(page.locator('#inventory .filled')).toHaveCount(4);
+  await page.locator('#inventory').getByRole('button', { name: '木剑', exact: true }).click();
+  await expect(page.locator('#equipment').getByRole('button', { name: '木剑', exact: true })).toBeVisible();
+  await expect(page.locator('#inventory .filled')).toHaveCount(3);
+  await page.getByRole('button', { name: '使用魔法药', exact: true }).click();
+  await expect(page.locator('#mana-count')).toHaveText('0');
+  await expect(page.locator('#inventory .filled')).toHaveCount(2);
+  const initial = await page.locator('#coordinates').textContent();
+  await page.keyboard.down('ArrowRight');
+  await expect(page.locator('#coordinates')).not.toHaveText(initial!);
+  await page.keyboard.up('ArrowRight');
+  await page.getByRole('button', { name: '打开聊天', exact: true }).click();
+  await page.locator('#chat-input').fill('青石镇出发');
+  await page.getByRole('button', { name: '发送', exact: true }).click();
+  await expect(page.locator('#chat-log')).toContainText('青石镇出发');
+  await page.getByRole('button', { name: '打开背包', exact: true }).click();
+  await page.screenshot({ path: 'test-results/desktop.png' });
+  const png = PNG.sync.read(await page.locator('#world canvas').screenshot());
+  const colors = new Set();
+  for (let y = 20; y < png.height - 20; y += 9) for (let x = 20; x < png.width - 20; x += 9) {
+    const i = (y * png.width + x) * 4;
+    colors.add(`${png.data[i]},${png.data[i + 1]},${png.data[i + 2]}`);
+  }
+  expect(colors.size).toBeGreaterThan(35);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await desktop.close();
+
+  const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
+  const phone = await mobile.newPage();
+  phone.on('pageerror', error => errors.push(error.message));
+  await phone.goto(baseURL!);
+  await expect(phone.locator('#auth-submit')).toBeEnabled();
+  await phone.locator('#account').fill(account);
+  await phone.locator('#password').fill(password);
+  await phone.waitForTimeout(1000);
+  await phone.locator('#auth-submit').click();
+  await expect(phone.getByRole('heading', { name: '选择角色' })).toBeVisible();
+  await phone.locator('.character').click();
+  await expect(phone.locator('#player-hud')).toBeVisible();
+  await expect(phone.locator('#touch-pad')).toBeVisible();
+  await phone.getByRole('button', { name: '打开背包', exact: true }).click();
+  await expect(phone.locator('#equipment').getByRole('button', { name: '木剑', exact: true })).toBeVisible();
+  await phone.getByRole('button', { name: '收起', exact: true }).click();
+  await expect(phone.locator('#sidepanel')).toBeHidden();
+  const beforeTouch = await phone.locator('#coordinates').textContent();
+  await phone.locator('[data-dir="0"]').tap();
+  await expect(phone.locator('#coordinates')).not.toHaveText(beforeTouch!);
+  await phone.screenshot({ path: 'test-results/mobile.png' });
+  expect(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  for (const selector of ['.topbar', '#player-hud', '.actions', '#touch-pad']) {
+    const box = await phone.locator(selector).boundingBox();
+    expect(box!.x).toBeGreaterThanOrEqual(0);
+    expect(box!.x + box!.width).toBeLessThanOrEqual(391);
+  }
+  await phone.getByRole('button', { name: '返回角色选择', exact: true }).click();
+  await expect(phone.getByRole('heading', { name: '选择角色' })).toBeVisible();
+  await mobile.close();
+  expect(errors).toEqual([]);
+});

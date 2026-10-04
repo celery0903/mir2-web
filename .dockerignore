@@ -1,0 +1,11 @@
+.git
+**/.git
+**/node_modules
+**/bin
+**/obj
+.build
+.state
+test-results
+playwright-report
+web/dist
+.env

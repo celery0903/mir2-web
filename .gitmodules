@@ -1,0 +1,3 @@
+[submodule "upstream/crystal"]
+	path = upstream/crystal
+	url = https://github.com/Suprcode/Crystal.git

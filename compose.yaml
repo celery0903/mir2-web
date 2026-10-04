@@ -1,0 +1,36 @@
+name: mir2-web
+services:
+  game:
+    build:
+      context: .
+      target: game
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+    volumes:
+      - game-data:/data
+    networks:
+      - internal
+  web:
+    build:
+      context: .
+      target: web
+    init: true
+    restart: unless-stopped
+    environment:
+      GAME_HOST: game
+    ports:
+      - "${MIR_BIND:-127.0.0.1}:${MIR_PORT:-18880}:8080"
+    depends_on:
+      game:
+        condition: service_healthy
+    networks:
+      - internal
+      - public
+volumes:
+  game-data:
+    name: ${MIR_DATA_VOLUME:-mir2-web-data}
+networks:
+  internal:
+    internal: true
+  public:

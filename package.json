@@ -1,0 +1,20 @@
+{
+  "name": "mir2-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "world": "node scripts/build-world.mjs",
+    "build": "npm run build --workspace web",
+    "test": "playwright test",
+    "test:protocol": "node --test tests/protocol.test.mjs",
+    "test:persistence": "node tests/persistence.mjs"
+  },
+  "workspaces": [
+    "web"
+  ],
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "pngjs": "^7.0.0",
+    "ws": "^8.22.0"
+  }
+}
