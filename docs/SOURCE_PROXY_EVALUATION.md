@@ -38,9 +38,17 @@
 
 采用与当前引擎一致的 11 张图、44 个原出入口。候选 `0.map` 与当前原始图虽同为 700×700，仍有 5761 个碰撞格、70846 个单元字节不同，因此未直接采用它的地图。新网页地图的源 SHA-256 与正式引擎全部一致，见 [版本审计](version-audit.json) 的 `clientImplementation.nativeMapsMatch`。
 
-当前比奇仍有 19 个越界 SmTiles 引用。严格准备会拒绝缺项；明确使用 `--allow-missing-references` 才允许部署这一未完成版本，`integration.json` 的资源验收仍为 `failed`。这些候选素材未认证为 2003 原始客户端，未启用候选的 570 张混合版本地图。
+当前比奇按正确素材库核对后有 71 个未解析引用：Objects 16 个、BichonObjects257 11 个、BichonObjects253 1 个、BichonObjects7 6 个、Tiles 18 个、SmTiles 19 个。严格准备会拒绝缺项；明确使用 `--allow-missing-references` 才允许部署这一未完成版本，`integration.json` 的资源验收仍为 `failed`。这些候选素材未认证为 2003 原始客户端，未启用候选的 570 张混合版本地图。
 
-18:58 UTC 的逐单元审计还查实转换丢失了 6,851 个非默认前景素材库编号：例如原候选 `(39,111)` 使用库 24、帧 310，转换后文件编号为 0。原始格式已对照固定 Crystal 源码的 `LoadMapType100`；当前转换产物 SHA-256 与正式引擎一致。这一转换缺陷尚未修复，不能将“地图哈希和碰撞一致”视为画面一致。19 个 SmTiles 缺项对应原始候选的 33 个单元，均在 `x=0`、`y=1..165`，原始字节也包含这些值，尚无证据支持通过清零或猜测字节序修正。详细坐标、源哈希与库编号见 [版本审计](version-audit.json) 的 `clientImplementation.mapConversion`。
+18:58 UTC 的逐单元审计查实旧转换丢失了 6,851 个非默认前景素材库编号。现已保留原库编号，并从固定候选的对应图集导出各库，而不再把不同库的同号帧合并为一套 Objects。还查实旧转换截断 835 格宽背景图像编号，涉及 291 种图像；现将这些编号确定性映射到未使用的传统格式槽位，并在浏览器清单保留原编号。771 格宽编号在固定图集中实际有帧。比奇原生地图 SHA-256 更新为 `34bdc4cef9233eda50588b0d05181f371279771c94774c7804e2053c019e6cc2`，49 万格的碰撞保持一致。
+
+19 个 SmTiles 缺项对应原始候选的 33 个单元，均在 `x=0`、`y=1..165`；这些引用继续保留。固定候选还把部分图像同时列为缺失和空帧，现以缺失记录为准。城南 `(336,358)` 的 Tiles 帧 434 属于这种情况，浏览器仍显示一个未解析引用。此前使用不同库的同号图像或只看空帧清单会掩盖这些缺口。详细坐标、源哈希与映射见 [版本审计](version-audit.json) 的 `clientImplementation.mapConversion`。保留候选的编号不构成盛大 2003 原版认证；该候选混有 Wemade/Mir3 素材族。
+
+`tests/source-map-libraries.mjs` 已核对 8,482 帧、54,646,044 个 RGBA 像素与固定源图集逐像素一致，并检查边界、城内、城南、西南、东北和宽编号地砖六处桌面/手机画布、库请求、错误与溢出。转换检查通过，城南资源检查和全图资源验收仍失败。首次要求所有场景零未解析引用的测试在城南失败，后续报告明确记录源缺口和资源失败，不将其计为完整通过。
+
+19:21 UTC 已将对应地图和素材更新到正式入口。详见 [转换证据](correction/source-map-libraries/evidence.json)、[独立仓库检查](correction/source-map-warehouse-isolated/evidence.json)、[独立商人检查](correction/source-map-services-isolated/evidence.json) 和 [部署检查](correction/source-map-deployment-evidence.json)。部署检查新增所有地图块与素材库清单的响应哈希，以及原生地图匹配；当前核对 30 个网页文件和 167 个资源文件。数据库实例和存档卷保留，引擎实例更换。
+
+19:22 UTC 开始的 [正式入口仓库回归](correction/source-map-warehouse-production/evidence.json) 通过，包含战士注册、装备、移动、重登存档、桌面/手机和跨图存取同一物品，无浏览器异常或资源请求失败。完整版本验收仍未通过。
 
 ## 实测证据
 

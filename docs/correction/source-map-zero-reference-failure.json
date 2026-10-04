@@ -1,0 +1,141 @@
+{
+  "checkedAt": "2026-10-04T19:15:36.990Z",
+  "before": "http://127.0.0.1:18880",
+  "after": "http://127.0.0.1:18884",
+  "passed": false,
+  "full176Acceptance": false,
+  "missingMapReferences": [
+    {
+      "library": "Objects",
+      "indices": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        17,
+        1159,
+        3071,
+        8637,
+        8638
+      ]
+    },
+    {
+      "library": "BichonObjects257",
+      "indices": [
+        7,
+        8,
+        9,
+        15,
+        16,
+        2302,
+        2303,
+        2558,
+        2766,
+        2814,
+        4606
+      ]
+    },
+    {
+      "library": "BichonObjects253",
+      "indices": [
+        2766
+      ]
+    },
+    {
+      "library": "BichonObjects7",
+      "indices": [
+        1040,
+        1047,
+        1051,
+        1053,
+        1054,
+        1055
+      ]
+    },
+    {
+      "library": "Tiles",
+      "indices": [
+        9,
+        424,
+        429,
+        434,
+        439,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        455,
+        456
+      ]
+    },
+    {
+      "library": "SmTiles",
+      "indices": [
+        1535,
+        1791,
+        2047,
+        2302,
+        2303,
+        2558,
+        2559,
+        2814,
+        2815,
+        3070,
+        3071,
+        3582,
+        4350,
+        4606,
+        4607,
+        30975,
+        31231,
+        31999,
+        32255
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "name": "boundary",
+      "x": 315,
+      "y": 645,
+      "library": "BichonObjects7",
+      "changedPixels": 637558,
+      "beforeCanvasSha256": "0bd7e9e58b32f6c325634110c3224b8d532bad29513f10c33d17a2b2d5992649",
+      "afterCanvasSha256": "694bba8581cb8ef4cfefbae7331d4f5f105dc6a9c5c2814bd510da6c34552843",
+      "originalLibraryTexturesLoaded": 2,
+      "desktopAndMobileCanvasNonblank": true,
+      "mobileOverflow": false
+    },
+    {
+      "name": "city",
+      "x": 282,
+      "y": 319,
+      "library": "BichonObjects24",
+      "changedPixels": 688553,
+      "beforeCanvasSha256": "51bdd1c5029d9aa39e13501857ea0be3fb331386e1047eb1156695313d3efb1b",
+      "afterCanvasSha256": "b13ea593aabfc2964677aff53f70f7b7a9bd44543b64d5e963989211880c7020",
+      "originalLibraryTexturesLoaded": 83,
+      "desktopAndMobileCanvasNonblank": true,
+      "mobileOverflow": false
+    }
+  ],
+  "pinnedAtlasComparison": {
+    "comparedFrames": 8482,
+    "comparedPixels": 54646044,
+    "allRgbaPixelsMatch": true
+  }
+}

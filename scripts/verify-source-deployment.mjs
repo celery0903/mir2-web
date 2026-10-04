@@ -3,12 +3,14 @@ import {createHash} from 'node:crypto';
 import {readFile,writeFile} from 'node:fs/promises';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
+import {join} from 'node:path';
 
 const execute=promisify(execFile);
 const url=(process.env.MIR_URL??'http://172.30.0.16:18880').replace(/\/$/,'');
 const project=process.env.MIR_PROJECT??'mir2-web';
 const destination=process.env.MIR_DEPLOYMENT_REPORT??'docs/correction/source-deployment-evidence.json';
 const expectedEngineImage=process.env.MIR_EXPECTED_ENGINE_IMAGE;
+const assets=process.env.MIR_SOURCE_ASSETS??'.runtime/source-assets';
 assert.match(project,/^[a-z0-9][a-z0-9_-]*$/);
 if(expectedEngineImage)assert.match(expectedEngineImage,/^sha256:[a-f0-9]{64}$/);
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -51,9 +53,41 @@ const files=await Promise.all(requests.map(async({path,file})=>{
  const sha256=digest(Buffer.from(await response.arrayBuffer()));assert.equal(sha256,imageHashes.get(file),path);
  return {path,sha256,matchesDeployedImage:true};
 }));
+const resourceFiles=[];
+async function verifyResource(path){
+ const expected=await readFile(join(assets,path));
+ const response=await fetch(`${url}/${path}`,{signal:AbortSignal.timeout(15000)});
+ assert.equal(response.status,200,path);
+ const bytes=Buffer.from(await response.arrayBuffer()),sha256=digest(bytes);
+ assert.equal(sha256,digest(expected),path);
+ resourceFiles.push({path,sha256,bytes:bytes.length,matchesPreparedAssets:true});
+ return expected;
+}
+const integrationBytes=await readFile(join(assets,'integration.json'));
+const {stdout:integrationHash}=await execute('docker',['exec',names[2],'sha256sum','/usr/share/nginx/resources/integration.json']);
+assert.equal(integrationHash.trim().split(/\s+/)[0],digest(integrationBytes),'Mounted integration manifest');
+const integration=JSON.parse(integrationBytes);
+const libraryNames=new Set(['Tiles','SmTiles','Objects']);
+for(const map of integration.maps){
+ assert.match(map.id,/^[A-Za-z0-9]+$/);
+ const manifest=JSON.parse(await verifyResource(`maps/${map.id}/map.json`));
+ assert.equal(manifest.sourceSha256,map.sourceSha256);
+ for(const name of Object.values(manifest.objectLibraries??{}))libraryNames.add(name);
+ for(const chunk of manifest.chunks){
+  assert.match(chunk.file,/^[A-Za-z0-9_.-]+$/);
+  await verifyResource(`maps/${map.id}/${chunk.file}`);
+ }
+}
+for(const name of libraryNames){
+ assert.match(name,/^[A-Za-z0-9]+$/);
+ await verifyResource(`libraries/${name}/library.json`);
+}
+const {stdout:mapHashes}=await execute('docker',['exec',names[1],'sha256sum',...integration.maps.map(map=>`/data/server/Mir200/Map/${map.id}.map`)]);
+const nativeMapHashes=new Map(mapHashes.trim().split('\n').map(line=>{const [hash,path]=line.trim().split(/\s+/);return [path.split('/').at(-1).replace(/\.map$/,''),hash];}));
+for(const map of integration.maps)assert.equal(nativeMapHashes.get(map.id),map.sourceSha256,`Native/browser map mismatch: ${map.id}`);
 const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch'].map(async file=>[file,digest(await readFile(file))])));
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,patches,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,patches,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
-console.log(`Verified ${files.length} served HTML/JS/CSS hashes; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);
+console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

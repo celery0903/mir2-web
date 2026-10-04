@@ -3,6 +3,7 @@ import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, join, basename } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { PNG } from 'pngjs';
+import { legacyMap, legacyTileRemap } from './native-map.mjs';
 
 const root = resolve(new URL('..', import.meta.url).pathname);
 const source = join(root, 'upstream/mir2-client');
@@ -36,6 +37,8 @@ for (const directory of ['actors', 'effects', 'items', 'ui', 'audio']) {
 }
 const mapReport = [];
 const rooms = [];
+const bichon = JSON.parse(await classicFile('manifest.json'));
+const bichonAdapters = new Map();
 const dependencies = { Tiles: new Set(), SmTiles: new Set(), Objects: new Set() };
 const mapAudit = await json(join(root, 'docs/map-audit.json'));
 for (const { id } of mapAudit.maps) {
@@ -43,7 +46,36 @@ for (const { id } of mapAudit.maps) {
   execFileSync('python3', [join(source, 'tools/map_tool.py'), 'export', file, '--output', join(output, 'maps', id)], { stdio: 'inherit' });
   const manifest = await json(join(output, 'maps', id, 'map.json'));
   if (manifest.id !== id) throw new Error(`Map ID mismatch: ${id}`);
-  if (id !== '0') {
+  if (id === '0') {
+    const sourceMap = await classicFile('server-maps/0.map');
+    const raw = await readFile(file);
+    if (!legacyMap(sourceMap).equals(raw)) throw new Error('Bichon does not match the pinned map conversion');
+    const tileSourceIndices = Object.fromEntries(Object.entries(legacyTileRemap(sourceMap)).map(([sourceImage, nativeImage]) => [nativeImage - 1, Number(sourceImage) - 1]));
+    const objectLibraries = {};
+    const tileIndices = new Set();
+    for (let offset = 52; offset < raw.length; offset += 12) {
+      const cell = (offset - 52) / 12, x = Math.floor(cell / manifest.height), y = cell % manifest.height;
+      const tileIndex = (raw.readUInt16LE(offset) & 0x7fff) - 1;
+      if (x % 2 === 0 && y % 2 === 0 && tileIndex >= 0 && tileIndex < 0x7eff) tileIndices.add(tileIndex);
+      const index = (raw.readUInt16LE(offset + 4) & 0x7fff) - 1;
+      if (index < 0 || index >= 0x7eff) continue;
+      const family = raw[offset + 10] + 2;
+      const name = family === 2 ? 'Objects' : `BichonObjects${family}`;
+      objectLibraries[raw[offset + 10]] = name;
+      const adapter = bichonAdapters.get(name) ?? { family, indices: new Set() };
+      const count = Math.max(1, raw[offset + 8] & 127);
+      for (let n = 0; n < count; n++) adapter.indices.add(index + n);
+      bichonAdapters.set(name, adapter);
+    }
+    manifest.dependencies.Tiles = [...tileIndices].sort((a, b) => a - b);
+    for (const [name, family] of [['Tiles', 0], ['SmTiles', 1]]) bichonAdapters.set(name, { family, indices: new Set(manifest.dependencies[name]) });
+    bichonAdapters.get('Tiles').sourceIndices = tileSourceIndices;
+    manifest.tileSourceIndices = tileSourceIndices;
+    manifest.objectLibraries = objectLibraries;
+    manifest.dependencies.Objects = [];
+    for (const [name, adapter] of bichonAdapters) manifest.dependencies[name] = [...adapter.indices].sort((a, b) => a - b);
+    await writeFile(join(output, 'maps', id, 'map.json'), JSON.stringify(manifest, null, 2) + '\n');
+  } else {
     const room = JSON.parse(await classicFile(`maps/${id}/manifest.json`));
     const objectLibraries = {};
     const raw = await readFile(file);
@@ -76,6 +108,7 @@ await writeFile(dependencyFile, JSON.stringify({ dependencies: Object.fromEntrie
 const sourceLock = await json(join(source, 'content/classic-176/asset-sources.json'));
 const missingMapReferences = [];
 for (const name of Object.keys(dependencies)) {
+  if (bichonAdapters.has(name)) continue;
   const entry = sourceLock.files.find(value => value.file.toLowerCase() === `${name}.lib`.toLowerCase());
   const file = join(source, 'assets/raw/crystal-shanda', entry.file);
   const raw = await readFile(file);
@@ -83,9 +116,6 @@ for (const name of Object.keys(dependencies)) {
   execFileSync('python3', [join(source, 'tools/crystal_lib.py'), file, '--map-manifest', dependencyFile, '--layer', name, '--output', join(output, 'libraries', name)], { stdio: 'inherit' });
   const manifest = await json(join(output, 'libraries', name, 'library.json'));
   if (manifest.missing.length) missingMapReferences.push({ library: name, indices: manifest.missing });
-}
-if (missingMapReferences.length && !process.argv.includes('--allow-missing-references')) {
-  throw new Error(`Source maps contain unresolved library references: ${JSON.stringify(missingMapReferences)}. Use --allow-missing-references only for the documented incomplete integration.`);
 }
 
 const imageCache = new Map();
@@ -107,6 +137,26 @@ async function frame(destination, index, file, rect) {
 async function library(destination, frames, extra = {}) {
   await mkdir(destination, { recursive: true });
   await writeFile(join(destination, 'library.json'), JSON.stringify({ schemaVersion: 1, format: 'atlas-adapter', frames, actions: {}, empty: [], missing: [], authenticated2003Client: false, ...extra }, null, 2) + '\n');
+}
+
+for (const [name, { family, indices, sourceIndices = {} }] of bichonAdapters) {
+  const directory = join(output, 'libraries', name), frames = {}, empty = [], missing = [];
+  const references = dependencies[name] ?? indices;
+  const emptyFrames = new Set(bichon.emptyFrames);
+  const knownMissing = new Set(bichon.missingReferences.map(entry => entry.key));
+  for (const index of references) {
+    const sourceIndex = sourceIndices[index] ?? index;
+    const key = `${family}:${sourceIndex}`, rect = bichon.frames[key];
+    if (rect) frames[index] = { ...await frame(directory, index, bichon.atlases[rect.atlas].file, rect), sourceIndex };
+    else if (emptyFrames.has(key) && !knownMissing.has(key)) empty.push(index);
+    else missing.push(index);
+  }
+  empty.sort((a, b) => a - b); missing.sort((a, b) => a - b);
+  if (missing.length) missingMapReferences.push({ library: name, indices: missing });
+  await library(directory, frames, { empty, missing, sourceManifest: 'manifest.json', sourceLibrary: family, sourceIndices });
+}
+if (missingMapReferences.length && !process.argv.includes('--allow-missing-references')) {
+  throw new Error(`Source maps contain unresolved library references: ${JSON.stringify(missingMapReferences)}. Use --allow-missing-references only for the documented incomplete integration.`);
 }
 
 for (const { id, room, references, objectLibraries } of rooms) {

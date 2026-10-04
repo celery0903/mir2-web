@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { resolve, join } from 'node:path';
-import { legacyMap } from './native-map.mjs';
+import { legacyMap, legacyTileRemap } from './native-map.mjs';
 
 const execute = promisify(execFile);
 const assets = resolve(process.env.MIR_CLASSIC_ASSETS ?? '.runtime/classic');
@@ -60,12 +60,23 @@ if (sourceAssets.maps) {
   const converted = legacyMap(raw);
   const convertedHash = createHash('sha256').update(converted).digest('hex');
   const width = raw.readUInt16LE(4), height = raw.readUInt16LE(6);
+  const tileRemap = legacyTileRemap(raw);
+  const browserMap = await json(join(process.env.MIR_SOURCE_ASSETS ?? '.runtime/source-assets', 'maps/0/map.json'));
   const frontLibraries = {}, lostExamples = [], missingMiddle = new Map();
   const missingIndices = new Set(sourceAssets.missingMapReferences?.find(entry => entry.library === 'SmTiles')?.indices ?? []);
-  let lostFrontLibraryCells = 0, missingMiddleCells = 0;
+  let lostFrontLibraryCells = 0, missingMiddleCells = 0, wideTileCells = 0, lostTileCells = 0;
+  const tileExamples = [];
   for (let cell = 0; cell < width * height; cell++) {
     const from = 8 + cell * 26, to = 52 + cell * 12;
     const x = Math.floor(cell / height), y = cell % height;
+    const sourceImage = raw.readUInt32LE(from + 2) & 0x1fffffff;
+    if (sourceImage >= 0x7f00) {
+      wideTileCells++;
+      const nativeIndex = (converted.readUInt16LE(to) & 0x7fff) - 1;
+      const browserSourceIndex = browserMap.tileSourceIndices?.[nativeIndex] ?? nativeIndex;
+      if (browserSourceIndex !== sourceImage - 1) lostTileCells++;
+      if (tileExamples.length < 8 && x > 0 && x % 2 === 0 && y % 2 === 0) tileExamples.push({ x, y, sourceImage, previousAliasedIndex: (sourceImage & 0x7fff) - 1, nativeIndex, browserSourceIndex });
+    }
     const library = raw.readInt16LE(from + 10), index = (raw.readUInt16LE(from + 12) & 0x7fff) - 1;
     if (index >= 0 && index < 0x7eff) {
       frontLibraries[library] = (frontLibraries[library] ?? 0) + 1;
@@ -85,14 +96,15 @@ if (sourceAssets.maps) {
   const matchesPreparedMap = sourceAssets.maps.find(map => map.id === '0')?.sourceSha256 === convertedHash;
   const matchesDeployedMap = hashes['0'] === convertedHash;
   mapConversion = {
-    available: true, acceptance: lostFrontLibraryCells || missingMiddleCells || !matchesPreparedMap || !matchesDeployedMap ? 'failed' : 'passed',
+    available: true, acceptance: lostFrontLibraryCells || lostTileCells || sourceAssets.missingMapReferences?.length || !matchesPreparedMap || !matchesDeployedMap ? 'failed' : 'passed',
     sourceRepository: lock.repository, sourceRevision: lock.revision,
     sourceSha256: createHash('sha256').update(raw).digest('hex'), convertedSha256: convertedHash,
     matchesPreparedMap, matchesDeployedMap,
     dimensions: { width, height }, frontLibraries, lostFrontLibraryCells, lostExamples,
+    wideTileCells, remappedTileImages: Object.keys(tileRemap).length, lostTileCells, tileExamples,
     missingMiddleCells, missingMiddleReferences: [...missingMiddle.values()],
     parserReference: 'Suprcode/Crystal@0e315fe327192afe52c3d7357ddd1f5b7e26c5b8 Client/MirObjects/MapCode.cs LoadMapType100',
-    interpretation: 'The conversion discards non-default front library indices. Matching collision cells and native map hashes do not prove visual fidelity. The unresolved middle references also exist in the pinned source map; no parsing defect is established for those references.'
+    interpretation: 'Front library indices and wide background image IDs are checked separately against the prepared browser mapping. Preserving these values and matching native map hashes do not authenticate the source as a 2003 client. Unresolved source references remain failed, including entries the source also labels empty.'
   };
 }
 const frameIndices = [1, 3, 4, 6, 7, 60, 63, 65, 73, 370, 376, 377, 383, 384, 385, 392, 393];

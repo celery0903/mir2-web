@@ -1,0 +1,17 @@
+{
+  "project": "mir2-web",
+  "stoppedAt": "2026-10-04T19:21:29Z",
+  "gracefulSaveConfirmed": true,
+  "saveLogMarkers": [
+    "[GameSrv] 19:21:28.601 [INF] OPENMIR2_SAVE_COMPLETE",
+    "[GameSrv] 19:21:28.804 [INF] OPENMIR2_SAVE_COMPLETE",
+    "OPENMIR2_GAME_EXIT=0"
+  ],
+  "previousEngineImage": "sha256:8c9f0354ef4a714056698dc6875cc3f8fc90f1ef3f0d99f07fdd43dd7340f9e7",
+  "testedEngineImage": "sha256:3abd7135b4a3228fb673cc47efd2692e479627aa863f80653ec90c2ae4365ef0",
+  "previousMapSha256": "f073cd9fdc908e29cee32555d42196bf166df408ea7cd534b2f4ce5b6fc96d2b",
+  "correctedMapSha256": "34bdc4cef9233eda50588b0d05181f371279771c94774c7804e2053c019e6cc2",
+  "rollbackAssets": ".runtime/source-assets-before-map-libraries",
+  "rollbackEngineTag": "mir2-map-libraries-engine:before",
+  "full176Acceptance": false
+}

@@ -1,0 +1,198 @@
+{
+  "checkedAt": "2026-10-04T19:17:39.187Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "errors": [],
+  "missingResources": [],
+  "initialItems": [
+    {
+      "name": "蜡烛",
+      "makeIndex": 1570477,
+      "durability": 8000,
+      "maxDurability": 8000
+    },
+    {
+      "name": "金创药(小量)",
+      "makeIndex": 1570478,
+      "durability": 1,
+      "maxDurability": 1
+    },
+    {
+      "name": "木剑",
+      "makeIndex": 1570479,
+      "durability": 4000,
+      "maxDurability": 4000
+    },
+    {
+      "name": "布衣(男)",
+      "makeIndex": 1570480,
+      "durability": 5000,
+      "maxDurability": 5000
+    }
+  ],
+  "walks": [
+    {
+      "x": 288,
+      "y": 609,
+      "map": "0",
+      "running": true,
+      "waypoints": 1,
+      "retries": 0,
+      "potionUsed": false,
+      "elapsedMs": 3441
+    },
+    {
+      "x": 335,
+      "y": 299,
+      "map": "0103",
+      "running": true,
+      "waypoints": 44,
+      "retries": 0,
+      "potionUsed": true,
+      "elapsedMs": 151537
+    },
+    {
+      "x": 12,
+      "y": 14,
+      "map": "0103",
+      "running": true,
+      "waypoints": 1,
+      "retries": 0,
+      "potionUsed": false,
+      "elapsedMs": 2739
+    }
+  ],
+  "sale": {
+    "originalDimensions": true,
+    "dragAndCancel": true,
+    "mobileConfirmation": true,
+    "makeIndex": 1570477,
+    "price": 6,
+    "authoritativeGold": 6
+  },
+  "purchase": {
+    "insufficientGoldRejected": true,
+    "price": 11,
+    "goldPreserved": true
+  },
+  "combatPreparation": {
+    "target": "鹿",
+    "authoritativeWear": true,
+    "grayBackdrop": {
+      "originalFrame": 5,
+      "checkedEmptyPixels": 532,
+      "matchingEmptyPixels": 532
+    }
+  },
+  "weaponWornByCombat": true,
+  "repair": {
+    "originalDimensions": true,
+    "dragSelection": true,
+    "price": 0,
+    "before": {
+      "name": "木剑",
+      "makeIndex": 1570479,
+      "durability": 3983,
+      "maxDurability": 4000,
+      "stdMode": 5,
+      "weight": 7,
+      "looks": 30,
+      "shape": 1,
+      "baseDurability": 4000,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 2,
+        "max": 5
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "need": 0,
+      "needLevel": 1,
+      "price": 50,
+      "attackSpeed": 0,
+      "agility": 0,
+      "accuracy": 0,
+      "magicAvoidance": 0,
+      "strong": 0,
+      "undead": 0,
+      "hpAdd": 0,
+      "mpAdd": 0,
+      "light": 0,
+      "slot": 0
+    },
+    "accepted": true,
+    "responseOrder": [
+      "npcDialogue",
+      "repairResult"
+    ],
+    "serverItem": {
+      "durability": 4000,
+      "maxDurability": 4000
+    },
+    "after": {
+      "name": "木剑",
+      "makeIndex": 1570479,
+      "durability": 4000,
+      "maxDurability": 4000,
+      "stdMode": 5,
+      "weight": 7,
+      "looks": 30,
+      "shape": 1,
+      "baseDurability": 4000,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 2,
+        "max": 5
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "need": 0,
+      "needLevel": 1,
+      "price": 50,
+      "attackSpeed": 0,
+      "agility": 0,
+      "accuracy": 0,
+      "magicAvoidance": 0,
+      "strong": 0,
+      "undead": 0,
+      "hpAdd": 0,
+      "mpAdd": 0,
+      "light": 0,
+      "slot": 0
+    },
+    "authoritativeDurability": true
+  },
+  "consumedItemsSynchronized": [
+    {
+      "makeIndex": 1570478,
+      "name": "金创药(小量)"
+    }
+  ]
+}
