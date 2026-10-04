@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T16:10:34.042Z",
+  "checkedAt": "2026-10-04T16:35:58.458Z",
   "url": "http://172.30.0.16:18880",
   "clientSource": "leiniaozl229/mir2",
   "revision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
@@ -26,6 +26,14 @@
       },
       "mounts": [
         {
+          "Destination": "/docker-entrypoint-initdb.d",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "Type": "bind"
+        },
+        {
           "Destination": "/var/lib/mysql",
           "Driver": "local",
           "Mode": "rw",
@@ -34,14 +42,6 @@
           "RW": true,
           "Source": "/var/lib/docker/volumes/mir2-web_openmir2-db/_data",
           "Type": "volume"
-        },
-        {
-          "Destination": "/docker-entrypoint-initdb.d",
-          "Mode": "ro",
-          "Propagation": "rprivate",
-          "RW": false,
-          "Source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
-          "Type": "bind"
         }
       ]
     },
@@ -80,16 +80,16 @@
     },
     {
       "name": "/mir2-web-web-1",
-      "id": "70ccd7b08301b8bef8507e6e8bdc0ff47a1b96095179d84e485dccd7758c7ed8",
-      "image": "sha256:2e1e9a5ec425adea1a0678324b52a09b0cbe7b592f235b96f5782aa9d8cf563f",
-      "startedAt": "2026-10-04T16:05:53.022622707Z",
+      "id": "7f49d4e6fc35cfb6d89066c15a20853c62bc0ab9d57f457ec8b374abf2089020",
+      "image": "sha256:f33cb2aadd4a1148af7647451bbdece2059369426a8c93c4305309984eb939df",
+      "startedAt": "2026-10-04T16:35:50.888110148Z",
       "restartCount": 0,
       "health": "healthy",
       "labels": {
         "com.docker.compose.config-hash": "4d3d9e41162ed87d1fd96ba3434b63fd4d77a252f8a55e79715821ca0a4d8fa6",
         "com.docker.compose.container-number": "1",
         "com.docker.compose.depends_on": "source-proxy:service_healthy:false",
-        "com.docker.compose.image": "sha256:2e1e9a5ec425adea1a0678324b52a09b0cbe7b592f235b96f5782aa9d8cf563f",
+        "com.docker.compose.image": "sha256:f33cb2aadd4a1148af7647451bbdece2059369426a8c93c4305309984eb939df",
         "com.docker.compose.oneoff": "False",
         "com.docker.compose.project": "mir2-web",
         "com.docker.compose.project.config_files": "/home/dev/workspace4/mir2-web/compose.yaml",
@@ -114,20 +114,21 @@
     },
     {
       "name": "/mir2-web-source-proxy-1",
-      "id": "1c9b51a1b18ed04c18ff86ec4d67c7537ebef18e5b3d103fcdd11b59d2c1b126",
-      "image": "sha256:ec954cfa18216d63b4b3902088a306dc061c13c2cc9fcb870586a8f69cd09593",
-      "startedAt": "2026-10-04T16:05:47.273041602Z",
+      "id": "393e3bb85562f087db058b1fc9159641091ebc2c0d390a961b37c768d0a9a4d3",
+      "image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
+      "startedAt": "2026-10-04T16:35:45.175254417Z",
       "restartCount": 0,
       "health": "healthy",
       "labels": {
         "com.docker.compose.config-hash": "2c615cd65c6326baa4af72cf11940f7a4baa80c3c2c639bc64a4468e531a7b4e",
         "com.docker.compose.container-number": "1",
         "com.docker.compose.depends_on": "",
-        "com.docker.compose.image": "sha256:ec954cfa18216d63b4b3902088a306dc061c13c2cc9fcb870586a8f69cd09593",
+        "com.docker.compose.image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
         "com.docker.compose.oneoff": "False",
         "com.docker.compose.project": "mir2-web",
         "com.docker.compose.project.config_files": "/home/dev/workspace4/mir2-web/compose.yaml",
         "com.docker.compose.project.working_dir": "/home/dev/workspace4/mir2-web",
+        "com.docker.compose.replace": "source-proxy-1",
         "com.docker.compose.service": "source-proxy",
         "com.docker.compose.version": "5.3.1",
         "org.opencontainers.image.revision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
@@ -139,32 +140,42 @@
   "files": [
     {
       "path": "/",
-      "sha256": "f55aa4d30c85f4aef9cac657977019b1000e27003fee2ec9ebfac0c7472fe351",
+      "sha256": "0b084d778e46312b4a7fc68d6ce7c1bd84699e32c18b75b4ff0fb85be1749c2f",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/CanvasTextGenerator-CZ5I28qF.js",
-      "sha256": "0c667b83fee5e8446fcb6a77291c662b63ba08678d2110d44b095ee79c92191b",
+      "path": "/50x.html",
+      "sha256": "876766b4e80133fd490603e073d3567425b88794828a9292104244c9e40875ed",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/SharedSystems-zc6EXcJP.js",
-      "sha256": "1f29a9e95b2f8136c3eaf99071d417c0c8b39ebfd1443c8652f770fc5c9a714a",
+      "path": "/index.html",
+      "sha256": "cff85641ef9f631d0faadc2d834aaf428f182483a1ddc52bd6a143bd6b475381",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/WebGLRenderer-CXrGBVTq.js",
-      "sha256": "9d24d80ffa325d6b81f800a69e142d562a7009f50f27e8f3760becd3044a1dd9",
+      "path": "/resources.html",
+      "sha256": "07a3729443d742d9dbf660ba4bcabfc092ce0bf92b74620c1858116c3771d11b",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/WebGPURenderer-E_hziem7.js",
-      "sha256": "eef03c83f59915ff0af908f4e9a065d9b33a226667b43a46d269b6ab8977b022",
+      "path": "/play.html",
+      "sha256": "0b084d778e46312b4a7fc68d6ce7c1bd84699e32c18b75b4ff0fb85be1749c2f",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/actors-BfkZ9Xq_.js",
-      "sha256": "d7541ae0552c00ec220b715497fa7237d1b0f50f0edf412e9bb5ba9be90cfe80",
+      "path": "/ui-calibration.html",
+      "sha256": "f980f29e84c220a00766532886a9c3d0a4cc1d5a063c7654319b32916a0a6abd",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/perf.html",
+      "sha256": "b781fd3629a09e381433fdf3538c189f7f35327d8fd9158d3338d9e77df3ad1a",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/ui-calibration-C81glTed.css",
+      "sha256": "cb716da6bf0eecf1024d5316d20ea534b1c76efe8302421f5ba7e326d02b82f2",
       "matchesDeployedImage": true
     },
     {
@@ -173,28 +184,13 @@
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/colorToUniform-DmtBy-2V.js",
-      "sha256": "a7ebcea84e1ad064fb111a4160e321661d8a9a68263f72f2a1d606941e95456f",
+      "path": "/assets/WebGLRenderer-CXrGBVTq.js",
+      "sha256": "9d24d80ffa325d6b81f800a69e142d562a7009f50f27e8f3760becd3044a1dd9",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/index-Bq6bHkmo.js",
-      "sha256": "b9a74374f1a15d36bef8581e545bed4cdc1030b49081fbb333c2ab917d4a0489",
-      "matchesDeployedImage": true
-    },
-    {
-      "path": "/assets/index-CjFm8B97.js",
-      "sha256": "b9cca0ad187c1f383267fb47af101d26a43ddb2ca2a3ac951b41f73597c93962",
-      "matchesDeployedImage": true
-    },
-    {
-      "path": "/assets/map-view-CBZphtZk.js",
-      "sha256": "741ca0e05001872d2667ec7de967898f16a44314027aa4a9a72f50f9a1651e07",
-      "matchesDeployedImage": true
-    },
-    {
-      "path": "/assets/modulepreload-polyfill-B5Qt9EMX.js",
-      "sha256": "d2a32840421496e872ade591618d2fa5c33797605d1aec04301717e5a90757d0",
+      "path": "/assets/play-Bwmc4Y2o.js",
+      "sha256": "c601e2238242a57998b092112616967b8df769ef78233ae2ab9ec3829a3a646b",
       "matchesDeployedImage": true
     },
     {
@@ -203,38 +199,33 @@
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/online-actors-B77IBCpK.js",
-      "sha256": "c658c6744d266d67d397f4b41d1f6c05d37d3eeb26023157efec347ac60c4244",
-      "matchesDeployedImage": true
-    },
-    {
-      "path": "/assets/perf-0vDYmSDH.js",
-      "sha256": "289dfbdeebd8c66674f290e71758c35dc0505c335357996707c46f46c30968f9",
-      "matchesDeployedImage": true
-    },
-    {
-      "path": "/assets/play-BhPXONF2.js",
-      "sha256": "8cb9543304e088d724fd94376325567e4d272d908a4cb773b767d97cd11d811e",
-      "matchesDeployedImage": true
-    },
-    {
       "path": "/assets/resources-BGqz-Gqi.js",
       "sha256": "a82c6c49088386825022d8359f0076b48fb0905db64b2d9227e06067ba06da64",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/ui-calibration-DgMEJruC.js",
-      "sha256": "b5bfd147addc6f28eec219aacfb96fcac7c63ca0fdc1d08d18720d35ca2ce4d1",
+      "path": "/assets/style-0biuvEF_.css",
+      "sha256": "7a989c3a6f6fa9c8a3fdfe91d04ce055da6e456be3bc604cfe0517c5fa9c9672",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/webworkerAll-DfoSzyLw.js",
-      "sha256": "50727894cc1cbb12bd37f06945ebc84fcdd1a6a445f0b4cc059829ff45167ada",
+      "path": "/assets/index-EKt9cxTN.js",
+      "sha256": "b9a74374f1a15d36bef8581e545bed4cdc1030b49081fbb333c2ab917d4a0489",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/window-drag-B0SqsrWP.js",
-      "sha256": "e69635fb1526286c5313aef285d3ea3fe01a3059cad639fd559c0dc6e3af0acc",
+      "path": "/assets/online-actors-B77IBCpK.js",
+      "sha256": "c658c6744d266d67d397f4b41d1f6c05d37d3eeb26023157efec347ac60c4244",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/window-drag-CFEjnK5G.js",
+      "sha256": "05cb761955c509a819d4e2cc4f716ad0f607660c37382959a9a5e9b4cf7f9838",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/perf--uTh6cYD.js",
+      "sha256": "289dfbdeebd8c66674f290e71758c35dc0505c335357996707c46f46c30968f9",
       "matchesDeployedImage": true
     },
     {
@@ -243,19 +234,66 @@
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/style-BHI8imqV.css",
-      "sha256": "81e81c8547f4d0697aeb1d79c36b99de51fb683a5e460c04767093ef96d319cf",
+      "path": "/assets/WebGPURenderer-E_hziem7.js",
+      "sha256": "eef03c83f59915ff0af908f4e9a065d9b33a226667b43a46d269b6ab8977b022",
       "matchesDeployedImage": true
     },
     {
-      "path": "/assets/ui-calibration-C81glTed.css",
-      "sha256": "cb716da6bf0eecf1024d5316d20ea534b1c76efe8302421f5ba7e326d02b82f2",
+      "path": "/assets/modulepreload-polyfill-B5Qt9EMX.js",
+      "sha256": "d2a32840421496e872ade591618d2fa5c33797605d1aec04301717e5a90757d0",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/colorToUniform-DmtBy-2V.js",
+      "sha256": "a7ebcea84e1ad064fb111a4160e321661d8a9a68263f72f2a1d606941e95456f",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/map-view-CBZphtZk.js",
+      "sha256": "741ca0e05001872d2667ec7de967898f16a44314027aa4a9a72f50f9a1651e07",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/ui-calibration-DcybKCNu.js",
+      "sha256": "08165fec6177a37deee40036e21c4b6e3d9f7db61fbe549471471bdfb10f1b57",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/CanvasTextGenerator-CZ5I28qF.js",
+      "sha256": "0c667b83fee5e8446fcb6a77291c662b63ba08678d2110d44b095ee79c92191b",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/index-CjFm8B97.js",
+      "sha256": "b9cca0ad187c1f383267fb47af101d26a43ddb2ca2a3ac951b41f73597c93962",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/SharedSystems-zc6EXcJP.js",
+      "sha256": "1f29a9e95b2f8136c3eaf99071d417c0c8b39ebfd1443c8652f770fc5c9a714a",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/actors-CKYDGkqM.js",
+      "sha256": "d7541ae0552c00ec220b715497fa7237d1b0f50f0edf412e9bb5ba9be90cfe80",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/assets/webworkerAll-DfoSzyLw.js",
+      "sha256": "50727894cc1cbb12bd37f06945ebc84fcdd1a6a445f0b4cc059829ff45167ada",
+      "matchesDeployedImage": true
+    },
+    {
+      "path": "/actors.html",
+      "sha256": "2cac72b0620d4f6788c8df04d464909ee4fdded4cea7c2e15726fa129892088b",
       "matchesDeployedImage": true
     }
   ],
-  "databaseAndEngineContainersPreserved": true,
-  "allElevenNativeMapHashesMatch": true,
-  "browserAcceptance": "passed",
-  "full176Acceptance": false,
-  "goalComplete": false
+  "patches": {
+    "server/source-client.patch": "a74bdccf1cd3876ab9e452fa5d80fb4faf4cda866fd73e564eb61b712467547c",
+    "server/source-proxy.patch": "aebb91deeb043eff62c5cf801f89890155eac3c349edcfe7e7f44786c73f9a5a",
+    "server/source-tests.patch": "772ce773c12a3d32059933e8eccea2b6bc635d6e09730e576a16bda6f728a1a5"
+  },
+  "preservedNativeContainers": true,
+  "full176Acceptance": false
 }

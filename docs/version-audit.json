@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T16:11:49.311Z",
+  "checkedAt": "2026-10-04T16:35:59.262Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -12,17 +12,19 @@
     "scripts/prepare-openmir2.mjs": "86d03fa62d633de7daefee6b8a60d886783d4e9ff7619e963a9648d1b969e078",
     "scripts/prepare-source-client.mjs": "22307f48f757ca2852fc4b80528e6a349c83c63690bc4334f0288c237933e89a",
     "scripts/prepare-source-assets.mjs": "fb1ab8bc211a2524ef6e58c281c6aa58c5f55b9131ec462d99985bc8a151d9f4",
-    "server/SourceClient/Dockerfile": "662938501da50ac5fd3992b024d70c307d7d9b857a22317187032899605e4195",
+    "server/SourceClient/Dockerfile": "66f08a286b0b22c0d3bf1e5de42e2387a4e824ddc070771e1ed41fe3649c70e9",
     "server/SourceClient/nginx.conf": "c7645f8022dbb1d1675862e65b4a7dd3535d5721f02d707f3849ec7c26cecea2",
-    "server/SourceProxy/Dockerfile": "b0d3d98a85fe7601eeeadc6a23b7da779c79871fc8ad21a34ee130988f81851b",
-    "server/source-client.patch": "0c09fd22bbbecfc134940574a1ed1f2490185b363c56de87844cacd1e7094e6f",
-    "server/source-proxy.patch": "e8adda0ab31643604ef6a5f3ad02694d061060155d3d3e241eae46d94505c5e6",
+    "server/SourceProxy/Dockerfile": "98e1136f4a2c648386ebb80b8d6bee0d8e29816fec9ce8f906985eb518c8dc74",
+    "server/source-client.patch": "a74bdccf1cd3876ab9e452fa5d80fb4faf4cda866fd73e564eb61b712467547c",
+    "server/source-proxy.patch": "aebb91deeb043eff62c5cf801f89890155eac3c349edcfe7e7f44786c73f9a5a",
     "upstream/mir2-client/apps/web/src/play.ts": "47681ebda2b8683431ec284b15fdb2304a9761fd6e93be430c3c6ec8e4f1e2e1",
     "upstream/mir2-client/apps/web/src/classic-hud.ts": "a9acc9220858066173af1552f48408a4bea81e86186d090a9693b9e792f66e4c",
     "upstream/mir2-client/services/web-gateway/GatewaySession.cs": "ea9e6d326d036d7ae8dfa7606a8f08eece20ede597236229bd1ae58d3d5ff2b6",
     "server/Engine/Dockerfile": "f2ec1428cca4b1c2ca7d5599d3b8f73c1c699c715dca25365aa5d23856081299",
     "server/Engine/run.mjs": "77fe728931ab698a35d1f8dc90d2fbf93b66082a7f666ff15447c8ce0f171bc5",
-    "server/openmir2-linux.patch": "5e4d1f8465d9e2752db1c487c44bf054cf2988e4a6fb4aefd90a3cc4a0ca69d9"
+    "server/openmir2-linux.patch": "5e4d1f8465d9e2752db1c487c44bf054cf2988e4a6fb4aefd90a3cc4a0ca69d9",
+    "server/source-tests.patch": "772ce773c12a3d32059933e8eccea2b6bc635d6e09730e576a16bda6f728a1a5",
+    "scripts/verify-source-deployment.mjs": "aebfa45c23c09baae0073382bf110e7cb5dc199ba34833d2f5ab3688bb45f6bf"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",

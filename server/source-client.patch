@@ -1,27 +1,32 @@
-diff --git a/apps/web/src/monster-visuals.ts b/apps/web/src/monster-visuals.ts
---- a/apps/web/src/monster-visuals.ts
-+++ b/apps/web/src/monster-visuals.ts
-@@ -32,6 +32,16 @@ export const monsterVisualRules:MonsterVisualRule[]=[
-  {raceImg:104,appr:47,library:'Monster047',quality:'candidate',names:['祖玛弓箭手']},
-  {raceImg:101,appr:61,library:'Monster061',quality:'exact',names:['祖玛雕像']},
-  {raceImg:101,appr:62,library:'Monster062',quality:'exact',names:['祖玛卫士']},
-+ {raceImg:11,appr:160,library:'BichonMonster3',quality:'candidate',names:['鸡']},
-+ {raceImg:11,appr:161,library:'BichonMonster4',quality:'candidate',names:['鹿']},
-+ {raceImg:18,appr:27,library:'BichonMonster5',quality:'candidate',names:['稻草人']},
-+ {raceImg:17,appr:25,library:'BichonMonster6',quality:'candidate',names:['多钩猫']},
-+ {raceImg:17,appr:26,library:'BichonMonster7',quality:'candidate',names:['钉耙猫']},
-+ {raceImg:19,appr:162,library:'BichonMonster8',quality:'candidate',names:['蛤蟆']},
-+ {raceImg:19,appr:100,library:'BichonMonster9',quality:'candidate',names:['半兽人']},
-+ {raceImg:13,appr:10,library:'BichonMonster10',quality:'candidate',names:['食人花']},
-+ {raceImg:10,appr:1,library:'BichonMonster11',quality:'candidate',names:['森林雪人']},
-+ {raceImg:19,appr:163,library:'BichonMonster12',quality:'candidate',names:['毒蜘蛛']},
- ];
-
- const byFeature=new Map(monsterVisualRules.map(rule=>[`${rule.raceImg}:${rule.appr}`,rule.library]));
 diff --git a/apps/web/src/classic-hud.ts b/apps/web/src/classic-hud.ts
+index bf6bfc2..54df2cb 100644
 --- a/apps/web/src/classic-hud.ts
 +++ b/apps/web/src/classic-hud.ts
-@@ -266,6 +266,20 @@ export class ClassicHud {
+@@ -179,10 +179,10 @@ export class ClassicHud {
+   const prguse=this.nationalLibraries.get('prguse');
+   const layout=classicUiLayout();
+   const specs:Record<string,{index:number;x:number;y:number;closeX:number;closeY:number;closeWidth:number;closeHeight:number;paintClose?:boolean}>={
+-   npc:{index:402,x:192,y:126,closeX:385,closeY:-37,closeWidth:17,closeHeight:23},
+-   shop:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
++   npc:{index:384,x:0,y:0,closeX:399,closeY:1,closeWidth:16,closeHeight:23,paintClose:true},
++   shop:{index:385,x:0,y:170,closeX:291,closeY:0,closeWidth:16,closeHeight:23,paintClose:true},
+    repair:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
+-   storage:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
++   storage:element.dataset.storageMode==='store'?{index:392,x:260,y:170,closeX:115,closeY:0,closeWidth:16,closeHeight:23,paintClose:true}:{index:385,x:0,y:170,closeX:291,closeY:0,closeWidth:16,closeHeight:23,paintClose:true},
+    quest:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
+    attack:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
+    targets:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
+@@ -215,7 +215,7 @@ export class ClassicHud {
+   }
+   if(kind==='inventory')applyNationalInventoryLayout(element);
+   const close=element.querySelector<HTMLButtonElement>('#classic-window-close, [data-window-close], #close-dialogue, .classic-window-close');
+-  if(close)skinNationalClose(close,prguse,spec);
++  if(close&&!element.classList.contains('classic-service'))skinNationalClose(close,prguse,spec);
+   return true;
+  }
+
+@@ -265,7 +265,21 @@ export class ClassicHud {
+   this.hpText.textContent=`${Math.max(0,hp)}/${Math.max(0,maxHp)}`;
    this.mpText.textContent=`${Math.max(0,mp)}/${Math.max(0,maxMp)}`;
    const orbHeight=this.nationalReady?nationalHudOrbMetrics().orbHeight:80,barWidth=this.nationalReady?nationalHudOrbMetrics().barWidth:784,weightWidth=this.nationalReady?nationalHudOrbMetrics().weightWidth:76;
 -  this.hpFill.style.height=`${ratio(hp,maxHp)*orbHeight}px`;
@@ -43,77 +48,52 @@ diff --git a/apps/web/src/classic-hud.ts b/apps/web/src/classic-hud.ts
    this.mpFill.style.height=`${ratio(mp,maxMp)*orbHeight}px`;
    this.expFill.style.width=`${ratio(experience,maxExperience)*barWidth}px`;
    this.expText.textContent=`${Math.max(0,experience)}/${Math.max(0,maxExperience)}`;
-diff --git a/content/classic-176/ui-layout.json b/content/classic-176/ui-layout.json
---- a/content/classic-176/ui-layout.json
-+++ b/content/classic-176/ui-layout.json
-@@ -93,7 +93,7 @@
-     "orbs": {
-       "relativeTo": "mainDialog",
--      "hp": {"x": 42, "y": 85, "width": 46, "height": 90, "imageOffsetX": 0, "evidence": "proposed"},
--      "mp": {"x": 88, "y": 85, "width": 46, "height": 90, "imageOffsetX": -46, "evidence": "proposed"},
-+      "hp": {"x": 39, "y": 91, "width": 46, "height": 90, "imageOffsetX": 0, "evidence": "bitmap-alignment"},
-+      "mp": {"x": 85, "y": 91, "width": 46, "height": 90, "imageOffsetX": -46, "evidence": "bitmap-alignment"},
-       "fillImageWidth": 92,
-       "fillImageHeight": 90
-     },
-diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
---- a/apps/web/src/play.ts
-+++ b/apps/web/src/play.ts
-@@ -338,7 +338,7 @@ function renderTargets(){
-  targetsElement.replaceChildren();const actor=self===undefined?undefined:entities.get(self);if(!actor){targetsElement.textContent='等待附近对象…';return;}
-  const targets=[...entities.values()].filter(entity=>{const race=entity.feature&255;return !entity.self&&(race!==0||Boolean(entity.name));}).map(entity=>({entity,distance:Math.max(Math.abs(entity.x-actor.x),Math.abs(entity.y-actor.y))})).filter(value=>value.distance<=8).sort((a,b)=>a.distance-b.distance||a.entity.id-b.entity.id);
-  if(!targets.length){targetsElement.textContent='附近没有可交互对象';return;}
-- for(const {entity,distance} of targets){const button=document.createElement('button');button.type='button';button.dataset.entityId=String(entity.id);const race=entity.feature&255,npc=race===50,player=race===0,slave=entity.kind==='slave'||entity.nameColor===254,health=entity.hp===undefined?'':` · ${entity.hp}/${entity.maxHp} HP`;button.textContent=`${slave?'召唤 · ':''}${entity.name||(npc?'NPC':'怪物')} · ${entity.x},${entity.y} · ${distance} 格${health} · ${npc?(distance===1?'对话':'接近'):player?(distance===1?'PK/行会战':'接近'):entity.dead?'Alt+左键挖肉':distance===1?'攻击':'接近'}`;button.onclick=event=>interact(entities.get(entity.id)??entity,requestsHarvest(event));targetsElement.append(button);}
-+ for(const {entity,distance} of targets){const button=document.createElement('button');button.type='button';button.dataset.entityId=String(entity.id);const race=entity.feature&255,npc=race===50,player=race===0,slave=entity.kind==='slave'||entity.nameColor===254,health=entity.hp===undefined?'':` · ${entity.hp}/${entity.maxHp} HP`;button.textContent=`${slave?'召唤 · ':''}${entity.name||(npc?'NPC':'怪物')} · ${entity.x},${entity.y} · ${distance} 格${health} · ${npc?'对话':player?(distance===1?'PK/行会战':'接近'):entity.dead?'Alt+左键挖肉':distance===1?'攻击':'接近'}`;button.onclick=event=>interact(entities.get(entity.id)??entity,requestsHarvest(event));targetsElement.append(button);}
- }
- function clickPath(actor:Entity,destination:{x:number;y:number}){
-  const start={x:actor.x,y:actor.y},goal={x:Math.round(destination.x),y:Math.round(destination.y)};
-@@ -451,6 +451,11 @@ function interact(target:Entity,harvest=false){
-  const race=target.feature&255,player=race===0&&Boolean(target.name);if(race===0&&!player){pursuitTarget=undefined;pursuitHarvest=false;connection.textContent=`${target.name||'该对象'} 暂不支持交互`;return;}
-  if(target.dead&&!harvest){pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();connection.textContent='按住 Alt 并左键点击尸体挖肉';return;}
-  const dx=Math.sign(target.x-actor.x),dy=Math.sign(target.y-actor.y),distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
-+ if(race===50&&distance<=15){
-+  held=undefined;clickDestination=undefined;pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();
-+  socket.send(JSON.stringify({type:'npc',targetId:target.id}));connection.textContent=`正在与 ${target.name} 交谈…`;
-+  return;
+diff --git a/apps/web/src/classic-service.ts b/apps/web/src/classic-service.ts
+new file mode 100644
+index 0000000..c666833
+--- /dev/null
++++ b/apps/web/src/classic-service.ts
+@@ -0,0 +1,35 @@
++import {applyNationalUiFrame,uiFrame,type Frame} from './classic-ui';
++
++export type ServiceLibrary={frames:Record<string,Frame>};
++export type MenuEntry={key:string;name:string;amount:string;durability?:string;disabled?:boolean;title?:string;activate:()=>void};
++type MenuState={top:number;selected:string|undefined;busy:boolean;storage?:boolean;empty:string;select:(key:string)=>void;page:(delta:number)=>void;close:()=>void;previous?:boolean;next?:boolean};
++
++export function serviceButton(library:ServiceLibrary,index:number,label:string,x:number,y:number,action:()=>void){
++ const button=document.createElement('button');button.type='button';button.className='classic-service-button';button.title=label;button.setAttribute('aria-label',label);
++ button.style.left=`${x}px`;button.style.top=`${y}px`;applyNationalUiFrame(button,'prguse',uiFrame(library,index));button.onclick=action;
++ return button;
++}
++
++export function serviceFrame(element:HTMLElement,library:ServiceLibrary,index:number,mode:'menu'|'slot'){
++ element.classList.add('classic-service','national-window');element.dataset.serviceMode=mode;
++ applyNationalUiFrame(element,'prguse',uiFrame(library,index));
++}
++
++export function renderServiceMenu(element:HTMLElement,library:ServiceLibrary,entries:MenuEntry[],state:MenuState){
++ element.replaceChildren();serviceFrame(element,library,385,'menu');
++ const heading=document.createElement('div');heading.className='classic-service-columns';
++ for(const label of state.storage?['保管物品','持久','']:['商品列表','价格','持久']){const span=document.createElement('span');span.textContent=label;heading.append(span);}
++ element.append(heading);
++ const list=document.createElement('div');list.className='classic-service-list';
++ if(!entries.length)list.textContent=state.empty;
++ for(const entry of entries.slice(state.top,state.top+10)){
++  const row=document.createElement('button');row.type='button';row.className='classic-service-row';row.dataset.serviceItem=entry.key;row.setAttribute('aria-label',entry.name);row.setAttribute('aria-pressed',String(entry.key===state.selected));row.disabled=state.busy||Boolean(entry.disabled);row.title=entry.title??entry.name;
++  for(const value of [entry.name,entry.amount,entry.durability??'']){const span=document.createElement('span');span.textContent=value;row.append(span);}
++  row.onclick=()=>state.select(entry.key);row.ondblclick=()=>{if(!row.disabled)entry.activate();};list.append(row);
 + }
-  if(distance>1){
-   held=undefined;clickDestination=undefined;if(pursuitTarget!==target.id)pursuitRejectedCells.clear();pursuitTarget=target.id;pursuitHarvest=Boolean(target.dead&&harvest);
-   const step=targetApproachStep(actor,target);
-@@ -460,7 +465,6 @@ function interact(target:Entity,harvest=false){
-  }
-  if(distance!==1)return;
-  pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();
-- if(race===50){socket.send(JSON.stringify({type:'npc',targetId:target.id}));connection.textContent=`正在与 ${target.name} 交谈…`;return;}
-  const direction=directions.findIndex(([x,y])=>x===dx&&y===dy);if(direction<0)return;
-  if(target.dead&&harvest){socket.send(JSON.stringify({type:'butch',targetId:target.id}));update({...actor,direction,action:'harvest'});connection.textContent=`正在挖取 ${target.name}…`;return;}
-  combatTarget=target.id;continueCombat();
-@@ -512,6 +512,7 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Credentials,automatic=false){
-    reconnectAttempts=0;
-    classicAuth.hide();document.body.classList.add('in-world');
-    doorRetry=undefined;currentMap=message.map;
-+   const player=self===undefined?undefined:entities.get(self);
-    clearWorld(true);worldReady=false;mapGeneration=envelope.mapGeneration;classicHud.position(message.map,0,0);connection.textContent=`正在载入地图 ${message.map}…`;
-    mapReady=view.setMap(message.map).then(()=>minimap.setMap(message.map,view.width,view.height)).then(()=>{worldReady=true;}).catch(error=>{
-     const detail=error instanceof Error?error.message:`地图 ${message.map} 载入失败`;
-@@ -521,6 +522,13 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Credentials,automatic=false){
-     connection.textContent=detail;
-     worldReady=true;
-   });
-+   if(player&&Number.isInteger(message.x)&&Number.isInteger(message.y)){
-+    const next={...player,x:message.x,y:message.y,direction:message.direction??player.direction,action:'standing'};
-+    self=next.id;initialSelfPending=false;update(next);
-+    classicHud.position(currentMap,next.x,next.y);minimap.setPosition(next.x,next.y);
-+    void mapReady.then(()=>view.setCenter(next.x,next.y));
-+    connection.textContent=`已连接 · ${next.name} · ${next.x}, ${next.y}`;
-+   }
-   }
-   else if(message.type==='entity'){
-    const prior=entities.get(message.id);const entity={...prior,...message,name:message.name??prior?.name??'',feature:message.feature??prior?.feature??0,self:message.self||prior?.self||false,kind:message.kind??prior?.kind} as Entity;
++ element.append(list);
++ const previous=serviceButton(library,388,'上一页',43,175,()=>state.page(-1));previous.disabled=state.busy||!(state.previous??state.top>0);
++ const next=serviceButton(library,387,'下一页',90,175,()=>state.page(1));next.disabled=state.busy||!(state.next??state.top+10<entries.length);
++ const selected=entries.find(entry=>entry.key===state.selected),confirm=serviceButton(library,386,state.storage?'取回':'购买',215,171,()=>selected?.activate());confirm.disabled=state.busy||!selected||Boolean(selected.disabled);
++ const close=serviceButton(library,371,'关闭',291,0,state.close);close.classList.add('classic-window-close');element.append(previous,next,confirm,close);
++}
 diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
+index 9cdcfa3..e4f839a 100644
 --- a/apps/web/src/map-view.ts
 +++ b/apps/web/src/map-view.ts
-@@ -2,7 +2,7 @@
+@@ -2,7 +2,7 @@ import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.
  import {FrameBudget} from './perf';
 
  type Chunk={x:number;y:number;width:number;height:number;file:string};
@@ -122,7 +102,7 @@ diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
  type Frame={width:number;height:number;file:string;offsetX:number;offsetY:number};
  type Library={frames:Record<string,Frame>;empty:number[];missing:number[]};
 
-@@ -16,6 +16,11 @@ export async function createMapView(viewport:HTMLElement,status:HTMLOutputElement){
+@@ -16,6 +16,11 @@ const getJSON=async<T>(url:string):Promise<T>=>{const response=await fetch(url);
  let mapId='0',world=await getJSON<World>('/maps/0/map.json');
  const names=['Tiles','SmTiles','Objects'];
  const libraries=await Promise.all(names.map(name=>getJSON<Library>(`/libraries/${name}/library.json`)));
@@ -134,7 +114,7 @@ diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
  const chunkCache=new Map<string,Promise<DataView>>();
  const textureCache=new Map<string,Promise<Texture>>();
  let centerX=296,centerY=624,generation=0,current:Container|undefined,showCollision=false;
-@@ -63,7 +68,9 @@ async function render(){
+@@ -62,7 +67,9 @@ async function render(){
     if(layer===0&&(x%2!==0||y%2!==0))continue;
     const index=(data.getUint16(offset+layer*2,true)&0x7fff)-1;
     if(index<0)continue;
@@ -145,7 +125,8 @@ diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
     if(!frame){if(!library.empty.includes(index))unresolved++;continue;}
     const animation=layer===2?data.getUint8(offset+8):0;
     const floorTile=layer===0||(!animation&&((frame.width===48&&frame.height===32)||(frame.width===96&&frame.height===64)));
-@@ -76,6 +83,6 @@ async function render(){
+@@ -73,7 +80,7 @@ async function render(){
+    for(let a=0;a<Math.max(1,animation&127);a++){
      const animatedFrame=library.frames[index+a];
      if(!animatedFrame){if(!library.empty.includes(index+a))unresolved++;frameJobs.push(Promise.resolve(Texture.EMPTY));continue;}
 -    const url=`/libraries/${names[layer]}/${animatedFrame.file}`;
@@ -153,7 +134,7 @@ diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
      let texture=textureCache.get(url);
      if(!texture){texture=Assets.load<Texture>(url).then(t=>{t.source.scaleMode='nearest';return t;});textureCache.set(url,texture);}
      frameJobs.push(texture);
-@@ -145,6 +152,7 @@ return {app,depth,frameBudget,get width(){return world.width;},get height(){return w
+@@ -137,6 +144,7 @@ return {app,depth,frameBudget,get width(){return world.width;},get height(){retu
   async setMap(id:string){
    if(!/^[A-Za-z0-9]{1,10}$/.test(id))throw new Error('地图编号无效');
    const next=await getJSON<World>(`/maps/${encodeURIComponent(id)}/map.json`);
@@ -161,20 +142,375 @@ diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
    collisionCells.clear();
    for(const key of doorStates.keys())if(key.startsWith(`${id}:`))doorStates.delete(key);
    cameraMotion=undefined;renderWindow=undefined;mapId=id;world=next;centerX=Math.max(0,Math.min(world.width-1,centerX));centerY=Math.max(0,Math.min(world.height-1,centerY));app.stage.position.set(400-centerX*48,300-centerY*32);await scheduleRender();
+diff --git a/apps/web/src/monster-visuals.ts b/apps/web/src/monster-visuals.ts
+index 0c99086..1755a6e 100644
+--- a/apps/web/src/monster-visuals.ts
++++ b/apps/web/src/monster-visuals.ts
+@@ -31,6 +31,16 @@ export const monsterVisualRules:MonsterVisualRule[]=[
+  {raceImg:104,appr:47,library:'Monster047',quality:'candidate',names:['祖玛弓箭手']},
+  {raceImg:101,appr:61,library:'Monster061',quality:'exact',names:['祖玛雕像']},
+  {raceImg:101,appr:62,library:'Monster062',quality:'exact',names:['祖玛卫士']},
++ {raceImg:11,appr:160,library:'BichonMonster3',quality:'candidate',names:['鸡']},
++ {raceImg:11,appr:161,library:'BichonMonster4',quality:'candidate',names:['鹿']},
++ {raceImg:18,appr:27,library:'BichonMonster5',quality:'candidate',names:['稻草人']},
++ {raceImg:17,appr:25,library:'BichonMonster6',quality:'candidate',names:['多钩猫']},
++ {raceImg:17,appr:26,library:'BichonMonster7',quality:'candidate',names:['钉耙猫']},
++ {raceImg:19,appr:162,library:'BichonMonster8',quality:'candidate',names:['蛤蟆']},
++ {raceImg:19,appr:100,library:'BichonMonster9',quality:'candidate',names:['半兽人']},
++ {raceImg:13,appr:10,library:'BichonMonster10',quality:'candidate',names:['食人花']},
++ {raceImg:10,appr:1,library:'BichonMonster11',quality:'candidate',names:['森林雪人']},
++ {raceImg:19,appr:163,library:'BichonMonster12',quality:'candidate',names:['毒蜘蛛']},
+ ];
+
+ const byFeature=new Map(monsterVisualRules.map(rule=>[`${rule.raceImg}:${rule.appr}`,rule.library]));
+diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
+index 98eaff4..862f58e 100644
+--- a/apps/web/src/play.ts
++++ b/apps/web/src/play.ts
+@@ -81,20 +81,30 @@ function updateQuest(value:QuestState){
+  const key=questStorageKey();if(key)window.localStorage.setItem(key,JSON.stringify(Object.fromEntries(quests)));
+  renderQuest();
+ }
+-function renderDialogueText(value:string){
+- dialogueText.replaceChildren();
++function renderDialogueText(value:string,target:HTMLElement=dialogueText){
++ target.replaceChildren();
+  const token=/COLOR=(cl[A-Za-z]+)\s*/gi;
+  let cursor=0,current='default',match:RegExpExecArray|null;
+  while((match=token.exec(value))){
+-  appendDialogueText(value.slice(cursor,match.index),current);
++  appendDialogueText(value.slice(cursor,match.index),current,target);
+   current=match[1].toLowerCase();
+   cursor=match.index+match[0].length;
+  }
+- appendDialogueText(value.slice(cursor),current);
++ appendDialogueText(value.slice(cursor),current,target);
+ }
+-function appendDialogueText(value:string,color:string){
++function appendDialogueText(value:string,color:string,target:HTMLElement=dialogueText){
+  if(!value)return;
+- const span=document.createElement('span');span.className=`dialogue-color-${color}`;span.textContent=value;dialogueText.append(span);
++ const span=document.createElement('span');span.className=`dialogue-color-${color}`;span.textContent=value;target.append(span);
++}
++function dialogueOption(option:{text:string;command:string;input?:boolean},npcId:number,active:WebSocket){
++ const button=document.createElement('button');button.type=option.input?'submit':'button';button.textContent=option.text;button.dataset.dialogueCommand=option.command;
++ if(!option.input){button.onclick=()=>active.send(JSON.stringify({type:'dialogueSelect',npcId,command:option.command}));return button;}
++ const form=document.createElement('form');form.className='dialogue-input';const input=document.createElement('input');input.type='text';input.maxLength=80;input.placeholder=option.text;input.required=true;
++ form.onsubmit=event=>{event.preventDefault();active.send(JSON.stringify({type:'dialogueSelect',npcId,command:option.command,input:input.value}));};form.append(input,button);return form;
++}
++function renderDialogueLines(lines:{text:string;command?:string;input?:boolean}[][],npcId:number,active:WebSocket){
++ dialogueText.replaceChildren();dialogueOptions.replaceChildren();dialogueElement.classList.add('inline-dialogue');
++ for(const parts of lines){const line=document.createElement('div');line.className='npc-line';for(const part of parts){if(part.command)line.append(dialogueOption({...part,command:part.command},npcId,active));else{const text=document.createElement('span');renderDialogueText(part.text,text);line.append(text);}}dialogueText.append(line);}
+ }
+ function loadQuest(){
+  quests=new Map();
+@@ -225,12 +235,16 @@ function hideClassicWindows(except:'character'|'inventory'|'classic'|undefined=u
+  if(except!=='classic'){classicWindow.hidden=true;dockChat();}
+ }
+ function hideServiceWindows(){
+- closeDialogue();
+  document.querySelector<HTMLElement>('#shop-panel')!.hidden=true;
+  document.querySelector<HTMLElement>('#repair-panel')!.hidden=true;
+  document.querySelector<HTMLElement>('#storage-panel')!.hidden=true;
+  classicWindow.hidden=true;dockChat();
+ }
++function showServiceInventory(){inventoryWindow.hidden=false;classicHud.skinWindow(inventoryWindow,'inventory');if(inventoryWindow.dataset.windowMoved!=='true'){inventoryWindow.style.left='464px';inventoryWindow.style.top='0px';}}
++for(const type of ['click','dblclick'])document.querySelector<HTMLElement>('#inventory-items')!.addEventListener(type,event=>{
++ const target=event.target as Element,cell=target.closest<HTMLElement>('[data-item-id]');
++ if(!document.querySelector<HTMLElement>('#storage-panel')!.hidden&&cell&&storage.selectItem(Number(cell.dataset.itemId))){event.preventDefault();event.stopImmediatePropagation();inventory.cancelSelection();}
++},true);
+ function closeDialogue(){
+  dialogueElement.hidden=true;
+  dialogueNpcId=undefined;
+@@ -282,6 +296,8 @@ const entities=new Map<number,Entity>(),visuals=new Map<number,OnlineActor>();
+ type PendingAction={actionId:number;kind:'move'|'attack'|'spell';startedAt:number;duration:number;acknowledged:boolean};
+ let socket:WebSocket|undefined,self:number|undefined,lastSequence=0,mapGeneration=0,currentMap='0',pending:MovementStep|undefined,pendingAction:PendingAction|undefined,nextActionId=1,doorRetry:{x:number;y:number;direction:number;run:boolean}|undefined,held:HeldMovement|undefined,rightPointer:{pointerId:number;clientX:number;clientY:number;direction?:number}|undefined,clickDestination:{x:number;y:number;run:boolean}|undefined,combatTimer:number|undefined,pursuitTarget:number|undefined,pursuitHarvest=false,pursuitRejectedCells=new Set<string>(),pursuitGroundItem:number|undefined,combatTarget:number|undefined,worldReady=true,initialSelfPending=true,reconnectTimer:number|undefined,reconnectAttempts=0,reconnectEnabled=false;
+ let mapReady:Promise<void>=Promise.resolve();
++// The native server can hide the player before sending the map's new position.
++let lastKnownSelf:Entity|undefined;
+ type Credentials={account:string;password:string};
+ let credentials:Credentials|undefined,selectedCharacter:string|undefined;
+ const agentObserver=new AgentObserver(agentObservationEnabled(location.href));
+@@ -304,14 +320,14 @@ function agentSnapshot(){
+   camera:{x:view.app.stage.position.x,y:view.app.stage.position.y},pending:pending?{...pending}:undefined,pendingAction:pendingAction?{...pendingAction}:undefined,
+   intentions:{held:held?{...held}:undefined,rightPointer:Boolean(rightPointer),clickDestination:clickDestination?{...clickDestination}:undefined,pursuitTarget,pursuitHarvest,pursuitGroundItem,combatTarget},
+   attributes:characterPanel.debugState(),inventory:inventory.debugState(),itemQuickBar:itemQuickBar.debugState(),equipment:equipment.debugState(),paperdoll:paperdoll.debugState(),groundItems:groundItems.debugState(),skills:skillBar.debugState(),minimap:minimap.debugState(),
+-  dialogue:{visible:!dialogueElement.hidden,npc:dialogueTitle.textContent,text:dialogueText.textContent,options:Array.from(dialogueOptions.querySelectorAll<HTMLButtonElement>('button')).map(button=>({text:button.textContent,command:button.dataset.dialogueCommand}))},
++  dialogue:{visible:!dialogueElement.hidden,npc:dialogueTitle.textContent,text:dialogueText.textContent,options:Array.from(dialogueElement.querySelectorAll<HTMLButtonElement>('[data-dialogue-command]')).map(button=>({text:button.textContent,command:button.dataset.dialogueCommand}))},
+   combatStatus:combatStatus.textContent,nearby, directions:directionsAvailable,entityCount:entities.size,
+  };
+ }
+ agentObserver.attach(window as Window&{__mir2Agent?:AgentDebugApi},agentSnapshot);
+ function appendChat(channel:string,text:string){const line=document.createElement('li');line.dataset.channel=channel;const labels:Record<string,string>={local:'附近',group:'组队',shout:'喊话',whisper:'私聊',guild:'行会',system:'系统'};line.textContent=`[${labels[channel]??channel}] ${text}`;chatLog.append(line);while(chatLog.children.length>100)chatLog.firstElementChild?.remove();chatLog.scrollTop=chatLog.scrollHeight;}
+-function clearWorld(preserveCharacter=false){magicEffects.clear();for(const visual of visuals.values())visual.destroy();visuals.clear();entities.clear();groundItems.clear();self=undefined;pending=undefined;pendingAction=undefined;doorRetry=undefined;held=undefined;rightPointer=undefined;clickDestination=undefined;initialSelfPending=true;pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();pursuitGroundItem=undefined;combatTarget=undefined;selectedMagic=undefined;groupEnabled=false;groupMemberNames=[];attackMode=0;guildName='';guildRankName='';guildNotice='';guildWarGuildNames=[];guildWarTimers=[];guildWarReceivedAt=0;guildAllyGuildNames=[];guildMemberNames=[];guildRanks=[];castleWarStatus=undefined;closeDialogue();classicWindow.hidden=true;dockChat();characterWindow.hidden=true;inventoryWindow.hidden=true;inventory.cancelSelection();inventory.rejectPending();itemQuickBar.rejectPending();equipment.rejectPending();shop.rejectPending();repair.rejectPending();storage.rejectPending();renderGroup();renderAttackMode();renderGuild();clearTrade();if(combatTimer!==undefined)clearTimeout(combatTimer);combatTimer=undefined;if(!preserveCharacter){inventory.clear();itemQuickBar.clear();equipment.clear();paperdoll.clear();characterPanel.clear();skillBar.clear();classicHud.clear();}revivePanel.hidden=true;returnToTown.disabled=false;shop.clear();storage.clear();repair.clear();renderTargets();refreshMiniMapMarkers();}
+-function update(entity:Entity,movementStart?:number){entities.set(entity.id,entity);let visual=visuals.get(entity.id);if(!visual){visual=new OnlineActor(entity,interact);visuals.set(entity.id,visual);view.depth.addChild(visual.container);}visual.update(entity,movementStart);if(entity.self)paperdoll.setFeature(entity.feature);renderTargets();refreshMiniMapMarkers();}
++function clearWorld(preserveCharacter=false){magicEffects.clear();for(const visual of visuals.values())visual.destroy();visuals.clear();entities.clear();groundItems.clear();self=undefined;pending=undefined;pendingAction=undefined;doorRetry=undefined;held=undefined;rightPointer=undefined;clickDestination=undefined;initialSelfPending=true;pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();pursuitGroundItem=undefined;combatTarget=undefined;selectedMagic=undefined;groupEnabled=false;groupMemberNames=[];attackMode=0;guildName='';guildRankName='';guildNotice='';guildWarGuildNames=[];guildWarTimers=[];guildWarReceivedAt=0;guildAllyGuildNames=[];guildMemberNames=[];guildRanks=[];castleWarStatus=undefined;closeDialogue();classicWindow.hidden=true;dockChat();characterWindow.hidden=true;inventoryWindow.hidden=true;inventory.cancelSelection();inventory.rejectPending();itemQuickBar.rejectPending();equipment.rejectPending();shop.rejectPending();repair.rejectPending();storage.rejectPending();renderGroup();renderAttackMode();renderGuild();clearTrade();if(combatTimer!==undefined)clearTimeout(combatTimer);combatTimer=undefined;if(!preserveCharacter){lastKnownSelf=undefined;inventory.clear();itemQuickBar.clear();equipment.clear();paperdoll.clear();characterPanel.clear();skillBar.clear();classicHud.clear();}revivePanel.hidden=true;returnToTown.disabled=false;shop.clear();storage.clear();repair.clear();renderTargets();refreshMiniMapMarkers();}
++function update(entity:Entity,movementStart?:number){entities.set(entity.id,entity);if(entity.self)lastKnownSelf=entity;let visual=visuals.get(entity.id);if(!visual){visual=new OnlineActor(entity,interact);visuals.set(entity.id,visual);view.depth.addChild(visual.container);}visual.update(entity,movementStart);if(entity.self)paperdoll.setFeature(entity.feature);renderTargets();refreshMiniMapMarkers();}
+ function refreshMiniMapMarkers(){
+  const markers:MiniMapMarker[]=[...entities.values()].map(entity=>{const race=entity.feature&255;return {id:`entity-${entity.id}`,x:entity.x,y:entity.y,kind:entity.self?'self':race===50?'npc':race===0?'player':'monster'} as MiniMapMarker;});
+  for(const item of groundItems.debugState())markers.push({id:`drop-${item.id}`,x:item.x,y:item.y,kind:'drop'});
+@@ -338,7 +354,7 @@ function renderTargets(){
+  targetsElement.replaceChildren();const actor=self===undefined?undefined:entities.get(self);if(!actor){targetsElement.textContent='等待附近对象…';return;}
+  const targets=[...entities.values()].filter(entity=>{const race=entity.feature&255;return !entity.self&&(race!==0||Boolean(entity.name));}).map(entity=>({entity,distance:Math.max(Math.abs(entity.x-actor.x),Math.abs(entity.y-actor.y))})).filter(value=>value.distance<=8).sort((a,b)=>a.distance-b.distance||a.entity.id-b.entity.id);
+  if(!targets.length){targetsElement.textContent='附近没有可交互对象';return;}
+- for(const {entity,distance} of targets){const button=document.createElement('button');button.type='button';button.dataset.entityId=String(entity.id);const race=entity.feature&255,npc=race===50,player=race===0,slave=entity.kind==='slave'||entity.nameColor===254,health=entity.hp===undefined?'':` · ${entity.hp}/${entity.maxHp} HP`;button.textContent=`${slave?'召唤 · ':''}${entity.name||(npc?'NPC':'怪物')} · ${entity.x},${entity.y} · ${distance} 格${health} · ${npc?(distance===1?'对话':'接近'):player?(distance===1?'PK/行会战':'接近'):entity.dead?'Alt+左键挖肉':distance===1?'攻击':'接近'}`;button.onclick=event=>interact(entities.get(entity.id)??entity,requestsHarvest(event));targetsElement.append(button);}
++ for(const {entity,distance} of targets){const button=document.createElement('button');button.type='button';button.dataset.entityId=String(entity.id);const race=entity.feature&255,npc=race===50,player=race===0,slave=entity.kind==='slave'||entity.nameColor===254,health=entity.hp===undefined?'':` · ${entity.hp}/${entity.maxHp} HP`;button.textContent=`${slave?'召唤 · ':''}${entity.name||(npc?'NPC':'怪物')} · ${entity.x},${entity.y} · ${distance} 格${health} · ${npc?'对话':player?(distance===1?'PK/行会战':'接近'):entity.dead?'Alt+左键挖肉':distance===1?'攻击':'接近'}`;button.onclick=event=>interact(entities.get(entity.id)??entity,requestsHarvest(event));targetsElement.append(button);}
+ }
+ function clickPath(actor:Entity,destination:{x:number;y:number}){
+  const start={x:actor.x,y:actor.y},goal={x:Math.round(destination.x),y:Math.round(destination.y)};
+@@ -451,6 +467,11 @@ function interact(target:Entity,harvest=false){
+  const race=target.feature&255,player=race===0&&Boolean(target.name);if(race===0&&!player){pursuitTarget=undefined;pursuitHarvest=false;connection.textContent=`${target.name||'该对象'} 暂不支持交互`;return;}
+  if(target.dead&&!harvest){pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();connection.textContent='按住 Alt 并左键点击尸体挖肉';return;}
+  const dx=Math.sign(target.x-actor.x),dy=Math.sign(target.y-actor.y),distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
++ if(race===50&&distance<=15){
++  held=undefined;clickDestination=undefined;pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();
++  socket.send(JSON.stringify({type:'npc',targetId:target.id}));connection.textContent=`正在与 ${target.name} 交谈…`;
++  return;
++ }
+  if(distance>1){
+   held=undefined;clickDestination=undefined;if(pursuitTarget!==target.id)pursuitRejectedCells.clear();pursuitTarget=target.id;pursuitHarvest=Boolean(target.dead&&harvest);
+   const step=targetApproachStep(actor,target);
+@@ -460,7 +481,6 @@ function interact(target:Entity,harvest=false){
+  }
+  if(distance!==1)return;
+  pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();
+- if(race===50){socket.send(JSON.stringify({type:'npc',targetId:target.id}));connection.textContent=`正在与 ${target.name} 交谈…`;return;}
+  const direction=directions.findIndex(([x,y])=>x===dx&&y===dy);if(direction<0)return;
+  if(target.dead&&harvest){socket.send(JSON.stringify({type:'butch',targetId:target.id}));update({...actor,direction,action:'harvest'});connection.textContent=`正在挖取 ${target.name}…`;return;}
+  combatTarget=target.id;continueCombat();
+@@ -511,6 +531,7 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+    reconnectAttempts=0;
+    classicAuth.hide();document.body.classList.add('in-world');
+    doorRetry=undefined;currentMap=message.map;
++   const player=(self===undefined?undefined:entities.get(self))??lastKnownSelf;
+    clearWorld(true);worldReady=false;mapGeneration=envelope.mapGeneration;classicHud.position(message.map,0,0);connection.textContent=`正在载入地图 ${message.map}…`;
+    mapReady=view.setMap(message.map).then(()=>minimap.setMap(message.map,view.width,view.height)).then(()=>{worldReady=true;}).catch(error=>{
+     const detail=error instanceof Error?error.message:`地图 ${message.map} 载入失败`;
+@@ -518,6 +539,13 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+     connection.textContent=detail;
+     worldReady=true;
+   });
++   if(player&&Number.isInteger(message.x)&&Number.isInteger(message.y)){
++    const next={...player,id:message.playerId??player.id,x:message.x,y:message.y,direction:player.direction,action:'standing'};
++    self=next.id;initialSelfPending=false;update(next);
++    classicHud.position(currentMap,next.x,next.y);minimap.setPosition(next.x,next.y);
++    void mapReady.then(()=>view.setCenter(next.x,next.y));
++    connection.textContent=`已连接 · ${next.name} · ${next.x}, ${next.y}`;
++   }
+   }
+   else if(message.type==='entity'){
+    const prior=entities.get(message.id);const entity={...prior,...message,name:message.name??prior?.name??'',feature:message.feature??prior?.feature??0,self:message.self||prior?.self||false,kind:message.kind??prior?.kind} as Entity;
+@@ -591,11 +619,12 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+    if(Array.isArray(message.quests))for(const quest of message.quests)updateQuest(quest as QuestState);else if(message.quest)updateQuest(message.quest as QuestState);
+    dialogueNpcId=String(message.npcName).includes('国王')?message.npcId:undefined;renderGuild();
+    shop.clear();storage.clear();repair.clear();hideClassicWindows();dialogueElement.hidden=false;classicHud.skinWindow(dialogueElement,'npc');dialogueTitle.textContent=message.npcName;renderDialogueText(message.text);dialogueOptions.replaceChildren();
+-   for(const option of message.options){if(option.input){const form=document.createElement('form');form.className='dialogue-input';const input=document.createElement('input');input.type='text';input.maxLength=80;input.placeholder=option.text;input.required=true;const button=document.createElement('button');button.type='submit';button.textContent=option.text;button.dataset.dialogueCommand=option.command;form.onsubmit=event=>{event.preventDefault();active.send(JSON.stringify({type:'dialogueSelect',npcId:message.npcId,command:option.command,input:input.value}));};form.append(input,button);dialogueOptions.append(form);}else{const button=document.createElement('button');button.type='button';button.textContent=option.text;button.dataset.dialogueCommand=option.command;button.onclick=()=>active.send(JSON.stringify({type:'dialogueSelect',npcId:message.npcId,command:option.command}));dialogueOptions.append(button);}}
++   if(Array.isArray(message.lines))renderDialogueLines(message.lines,message.npcId,active);
++   else{dialogueElement.classList.remove('inline-dialogue');for(const option of message.options)dialogueOptions.append(dialogueOption(option,message.npcId,active));}
+   }
+   else if(message.type==='dialogueMessage'&&worldReady){if(Array.isArray(message.quests))for(const quest of message.quests)updateQuest(quest as QuestState);else if(message.quest)updateQuest(message.quest as QuestState);hideClassicWindows();dialogueElement.hidden=false;classicHud.skinWindow(dialogueElement,'npc');renderDialogueText(message.text);dialogueOptions.replaceChildren();}
+   else if(message.type==='npcDialogueClosed'){closeDialogue();shop.clear();storage.clear();repair.clear();}
+-  else if(message.type==='shop'){dialogueElement.hidden=true;storage.clear();repair.clear();hideServiceWindows();shop.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');connection.textContent=`商店已打开 · ${message.items.length} 种商品`;}
++  else if(message.type==='shop'){storage.clear();repair.clear();hideServiceWindows();shop.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');showServiceInventory();connection.textContent=`商店已打开 · ${message.items.length} 种商品`;}
+   else if(message.type==='shopSell'){dialogueElement.hidden=true;storage.clear();repair.clear();hideServiceWindows();shop.openSell(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');connection.textContent='请选择要出售的背包物品';}
+   else if(message.type==='shopDetails'){if(shop.showDetails(message.npcId,message.items))connection.textContent=`已载入 ${message.items.length} 件具体商品`;}
+   else if(message.type==='shopPurchaseResult'){
+@@ -611,8 +640,8 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+   else if(message.type==='repairItems'){dialogueElement.hidden=true;shop.clear();storage.clear();hideServiceWindows();repair.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#repair-panel')!,'repair');connection.textContent='请选择要修理的背包物品';}
+   else if(message.type==='repairQuote'){if(repair.showQuote(message.npcId,message.item,message.price))connection.textContent=message.price>=0?`${message.item.name} 修理需要 ${message.price} 金币`:`${message.item.name} 无需或无法修理`;}
+   else if(message.type==='repairResult'){if(!repair.resolve(message.item,message.accepted))return;if(message.accepted){inventory.update(message.item);if(message.gold!==null)updateCurrency({gold:message.gold});}connection.textContent=message.accepted?`${message.item.name} 修理完成 · 当前 ${message.gold} 金币`:`${message.item.name} 修理失败`;}
+-  else if(message.type==='storageDeposit'){dialogueElement.hidden=true;shop.clear();repair.clear();hideServiceWindows();storage.openDeposit(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#storage-panel')!,'storage');connection.textContent='请选择要存入仓库的物品';}
+-  else if(message.type==='storageItems'){dialogueElement.hidden=true;shop.clear();repair.clear();hideServiceWindows();storage.openItems(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#storage-panel')!,'storage');connection.textContent=`仓库共 ${message.items.length} 件物品`;}
++  else if(message.type==='storageDeposit'){shop.clear();repair.clear();hideServiceWindows();storage.openDeposit(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#storage-panel')!,'storage');showServiceInventory();connection.textContent='请选择要存入仓库的物品';}
++  else if(message.type==='storageItems'){shop.clear();repair.clear();hideServiceWindows();storage.openItems(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#storage-panel')!,'storage');showServiceInventory();connection.textContent=`仓库共 ${message.items.length} 件物品`;}
+   else if(message.type==='storageResult'){
+    if(!storage.resolve(message.item,message.accepted))return;if(message.accepted&&message.kind==='store')inventory.remove(message.item.makeIndex);
+    const reasons:Record<number,string>={1:'服务端拒绝操作',2:'仓库已满',3:'背包空间或负重不足'};connection.textContent=message.accepted?(message.kind==='store'?`已存入 ${message.item.name}`:`已取回 ${message.item.name}`):`仓库操作失败 · ${reasons[message.reason]??`原因 ${message.reason}`}`;
+diff --git a/apps/web/src/shop.ts b/apps/web/src/shop.ts
+index 899ccf5..143b2e3 100644
+--- a/apps/web/src/shop.ts
++++ b/apps/web/src/shop.ts
+@@ -1,6 +1,7 @@
+ import type {InventoryItem} from './inventory';
+ import {attachItemTooltip,loadFallbackItemIcons} from './inventory';
+ import {loadNationalUiLibrary} from './classic-ui';
++import {renderServiceMenu,type ServiceLibrary} from './classic-service';
+
+ export type ShopGoods={name:string;subMenu:number;price:number;stock:number;looks?:number};
+ export type ShopDetail={name:string;makeIndex:number;price:number;durability:number;stdMode:number;weight:number;looks:number};
+@@ -12,10 +13,12 @@ export class ShopView {
+  constructor(private element:HTMLElement,private actions:ShopActions){
+   void loadFallbackItemIcons().then(icons=>{this.icons=icons;this.render();}).catch(()=>{});
+   void loadNationalUiLibrary('items').then(icons=>{this.nationalIcons=icons;this.render();}).catch(()=>{});
++  void loadNationalUiLibrary('prguse').then(library=>{this.serviceLibrary=library;this.render();}).catch(()=>{});
+  }
++ private serviceLibrary:ServiceLibrary|undefined;private selected:string|undefined;private top=0;private detailName:string|undefined;private detailPage=0;
+  clear(){this.clearPendingTimer();this.npcId=undefined;this.goods=[];this.details=[];this.sellItems=[];this.quote=undefined;this.pending=undefined;this.element.hidden=true;this.element.replaceChildren();}
+  rejectPending(){this.clearPendingTimer();this.pending=undefined;this.render();}
+- open(npcId:number,goods:ShopGoods[]){this.clearPendingTimer();this.npcId=npcId;this.mode='buy';this.goods=goods;this.details=[];this.sellItems=[];this.quote=undefined;this.pending=undefined;this.render();}
++ open(npcId:number,goods:ShopGoods[]){this.clearPendingTimer();this.npcId=npcId;this.mode='buy';this.goods=goods;this.details=[];this.sellItems=[];this.quote=undefined;this.pending=undefined;this.selected=undefined;this.top=0;this.detailName=undefined;this.detailPage=0;this.render();}
+  openSell(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='sell';this.goods=[];this.details=[];this.sellItems=items;this.quote=undefined;this.pending=undefined;this.render();}
+  showDetails(npcId:number,details:ShopDetail[]){if(this.npcId!==npcId||!this.pending?.startsWith('goods:'))return false;this.clearPendingTimer();this.details=details;this.pending=undefined;this.render();return true;}
+  resolve(name:string,makeIndex:number|undefined,accepted:boolean){
+@@ -31,6 +34,7 @@ export class ShopView {
+  private clearPendingTimer(){if(this.pendingTimer!==undefined){clearTimeout(this.pendingTimer);this.pendingTimer=undefined;}}
+  private render(){
+   this.element.hidden=this.npcId===undefined;if(this.npcId===undefined)return;this.element.replaceChildren();
++  if(this.mode==='buy'&&this.serviceLibrary){this.renderNational(this.serviceLibrary);return;}
+   const heading=document.createElement('div');heading.className='shop-heading';const title=document.createElement('strong');title.textContent=this.mode==='buy'?'商店':'出售物品';const close=document.createElement('button');close.type='button';close.className='classic-window-close';close.textContent='关闭';close.onclick=()=>this.clear();heading.append(title,close);this.element.append(heading);
+   if(this.mode==='sell'){this.renderSell();return;}
+   const list=document.createElement('div');list.className=`shop-goods shop-list--${this.mode}`;
+@@ -48,6 +52,16 @@ export class ShopView {
+    for(const item of this.details){const row=document.createElement('div');row.className='shop-row';row.dataset.shopDetail=String(item.makeIndex);const icon=this.icon(item);if(icon)row.append(icon);const label=document.createElement('span');label.innerHTML='<strong></strong><small></small>';label.querySelector('strong')!.textContent=`${item.name} #${item.makeIndex}`;label.querySelector('small')!.textContent=`${item.price.toLocaleString('zh-CN')} 金币 · 持久 ${(item.durability/1000).toFixed(1)}`;const button=document.createElement('button');button.type='button';const key=`detail:${item.makeIndex}`;button.disabled=Boolean(this.pending);button.textContent=this.pending===key?'等待服务端…':'购买';button.onclick=()=>this.begin(key,()=>this.actions.buy(this.npcId!,item.name,item.makeIndex));row.append(label,button);attachItemTooltip(row,{...item,maxDurability:item.durability,stdMode:item.stdMode,weight:item.weight,looks:item.looks},`${item.name} #${item.makeIndex}`);detailList.append(row);}this.element.append(detailHeading,detailList);
+   }
+  }
++ private renderNational(library:ServiceLibrary){
++  const entries=this.detailName===undefined?this.goods.map(item=>({key:`goods:${item.name}`,name:item.name,amount:String(item.price),durability:'-',disabled:item.stock<=0,title:`${item.name} ${item.price} 金币`,activate:()=>this.begin(`goods:${item.name}`,()=>{
++   if(item.subMenu>=1){this.detailName=item.name;this.detailPage=0;this.selected=undefined;this.top=0;this.actions.details(this.npcId!,item.name,0);}else this.actions.buy(this.npcId!,item.name);
++  })})):this.details.map(item=>({key:`detail:${item.makeIndex}`,name:item.name,amount:String(item.price),durability:String(Math.floor(item.durability/1000)),title:`${item.name} ${item.price} 金币 持久 ${Math.floor(item.durability/1000)}`,activate:()=>this.begin(`detail:${item.makeIndex}`,()=>this.actions.buy(this.npcId!,item.name,item.makeIndex))}));
++  renderServiceMenu(this.element,library,entries,{
++   top:this.top,selected:this.selected,busy:Boolean(this.pending),empty:this.detailName===undefined?'当前没有商品':'当前没有商品成色',select:key=>{this.selected=key;this.render();},
++   previous:this.detailName===undefined?this.top>0:this.detailPage>0,next:this.detailName===undefined?this.top+10<entries.length:this.details.length===10,
++   page:delta=>{this.selected=undefined;if(this.detailName===undefined){this.top=Math.max(0,this.top+delta*10);this.render();}else{const next=Math.max(0,this.detailPage+delta*10);this.begin(`goods:${this.detailName}`,()=>{this.detailPage=next;this.actions.details(this.npcId!,this.detailName!,next);});}},close:()=>this.clear()
++  });
++ }
+  private renderSell(){
+   const list=document.createElement('div');list.className='shop-goods shop-list--sell';if(!this.sellItems.length){list.textContent='背包中没有可出售物品';this.element.append(list);return;}
+   for(const item of this.sellItems){const row=document.createElement('div');row.className='shop-row';row.dataset.sellItem=String(item.makeIndex);const icon=this.icon(item);if(icon)row.append(icon);const label=document.createElement('span');label.innerHTML='<strong></strong><small></small>';label.querySelector('strong')!.textContent=item.name;label.querySelector('small')!.textContent=`持久 ${(item.durability/1000).toFixed(1)} / ${(item.maxDurability/1000).toFixed(1)}`;const button=document.createElement('button');button.type='button';const quoted=this.quote?.item.makeIndex===item.makeIndex,key=`sell:${item.makeIndex}`,unsellable=quoted&&this.quote!.price<=0;button.disabled=Boolean(this.pending)||unsellable;button.textContent=this.pending===key?'等待服务端…':unsellable?'无法出售':quoted?`卖出 · ${this.quote!.price.toLocaleString('zh-CN')} 金币`:'询价';button.onclick=()=>this.begin(key,()=>quoted?this.actions.sell(this.npcId!,item.makeIndex):this.actions.quote(this.npcId!,item.makeIndex));row.append(label,button);attachItemTooltip(row,item);list.append(row);}this.element.append(list);
+diff --git a/apps/web/src/storage.ts b/apps/web/src/storage.ts
+index 4dc2090..c7ea5b7 100644
+--- a/apps/web/src/storage.ts
++++ b/apps/web/src/storage.ts
+@@ -1,6 +1,7 @@
+ import type {InventoryItem} from './inventory';
+ import {attachItemTooltip,loadFallbackItemIcons} from './inventory';
+ import {loadNationalUiLibrary} from './classic-ui';
++import {renderServiceMenu,serviceButton,serviceFrame,type ServiceLibrary} from './classic-service';
+
+ type StorageActions={store:(npcId:number,makeIndex:number)=>void;take:(npcId:number,makeIndex:number)=>void};
+
+@@ -9,19 +10,46 @@ export class StorageView {
+  constructor(private element:HTMLElement,private actions:StorageActions){
+   void loadFallbackItemIcons().then(icons=>{this.icons=icons;this.render();}).catch(()=>{});
+   void loadNationalUiLibrary('items').then(icons=>{this.nationalIcons=icons;this.render();}).catch(()=>{});
++  void loadNationalUiLibrary('prguse').then(library=>{this.serviceLibrary=library;this.render();}).catch(()=>{});
+  }
++ private serviceLibrary:ServiceLibrary|undefined;private selected:number|undefined;private top=0;
++ selectItem(makeIndex:number){if(this.npcId===undefined||this.mode!=='store'||this.pending!==undefined||!this.items.some(item=>item.makeIndex===makeIndex))return false;this.selected=makeIndex;this.render();return true;}
+  clear(){this.clearPendingTimer();this.npcId=undefined;this.items=[];this.pending=undefined;this.element.hidden=true;this.element.replaceChildren();}
+  rejectPending(){this.clearPendingTimer();this.pending=undefined;this.render();}
+- openDeposit(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='store';this.items=items;this.pending=undefined;this.render();}
+- openItems(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='take';this.items=items;this.pending=undefined;this.render();}
++ openDeposit(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='store';this.items=items;this.pending=undefined;this.selected=undefined;this.top=0;this.render();}
++ openItems(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='take';this.items=items;this.pending=undefined;this.selected=undefined;this.top=0;this.render();}
+  resolve(item:InventoryItem,accepted:boolean){if(this.pending!==item.makeIndex)return false;this.clearPendingTimer();this.pending=undefined;if(accepted)this.items=this.items.filter(value=>value.makeIndex!==item.makeIndex);this.render();return true;}
+  private clearPendingTimer(){if(this.pendingTimer!==undefined){clearTimeout(this.pendingTimer);this.pendingTimer=undefined;}}
+  private render(){
+   this.element.hidden=this.npcId===undefined;if(this.npcId===undefined)return;this.element.replaceChildren();
++  if(this.serviceLibrary){this.renderNational(this.serviceLibrary);return;}
+   const heading=document.createElement('div');heading.className='shop-heading';const title=document.createElement('strong');title.textContent=this.mode==='store'?'存入仓库':'仓库物品';const close=document.createElement('button');close.type='button';close.className='classic-window-close';close.textContent='关闭';close.onclick=()=>this.clear();heading.append(title,close);this.element.append(heading);
+   const list=document.createElement('div');list.className=`storage-items storage-list--${this.mode}`;if(!this.items.length){list.textContent=this.mode==='store'?'背包为空':'仓库为空';this.element.append(list);return;}
+   for(const item of this.items){const row=document.createElement('div');row.className='shop-row';row.dataset.storageItem=String(item.makeIndex);const icon=this.icon(item);if(icon)row.append(icon);const label=document.createElement('span');label.innerHTML='<strong></strong><small></small>';label.querySelector('strong')!.textContent=item.name;label.querySelector('small')!.textContent=`#${item.makeIndex} · 持久 ${(item.durability/1000).toFixed(1)} / ${(item.maxDurability/1000).toFixed(1)}`;const button=document.createElement('button');button.type='button';button.disabled=this.pending!==undefined;button.textContent=this.pending===item.makeIndex?'等待服务端…':this.mode==='store'?'存入':'取回';button.onclick=()=>{if(this.pending!==undefined)return;this.pending=item.makeIndex;this.clearPendingTimer();this.pendingTimer=setTimeout(()=>{this.pendingTimer=undefined;this.pending=undefined;this.render();},8000);this.render();if(this.mode==='store')this.actions.store(this.npcId!,item.makeIndex);else this.actions.take(this.npcId!,item.makeIndex);};row.append(label,button);attachItemTooltip(row,item);list.append(row);}this.element.append(list);
+  }
++ private submit(makeIndex:number){
++  if(this.pending!==undefined||this.npcId===undefined||!this.items.some(item=>item.makeIndex===makeIndex))return;
++  this.pending=makeIndex;this.clearPendingTimer();this.pendingTimer=setTimeout(()=>{this.pendingTimer=undefined;this.pending=undefined;this.render();},8000);this.render();
++  if(this.mode==='store')this.actions.store(this.npcId,makeIndex);else this.actions.take(this.npcId,makeIndex);
++ }
++ private renderNational(library:ServiceLibrary){
++  if(this.selected!==undefined&&!this.items.some(item=>item.makeIndex===this.selected))this.selected=undefined;
++  this.element.dataset.storageMode=this.mode;
++  if(this.mode==='take'){
++   this.top=Math.min(this.top,Math.max(0,Math.ceil(this.items.length/10)-1)*10);
++   renderServiceMenu(this.element,library,this.items.map(item=>({key:String(item.makeIndex),name:item.name,amount:`${Math.floor(item.durability/1000)}/${Math.floor(item.maxDurability/1000)}`,title:`${item.name} 持久 ${Math.floor(item.durability/1000)}/${Math.floor(item.maxDurability/1000)}`,activate:()=>this.submit(item.makeIndex)})),{
++    top:this.top,selected:this.selected===undefined?undefined:String(this.selected),busy:this.pending!==undefined,storage:true,empty:'仓库为空',select:key=>{this.selected=Number(key);this.render();},page:delta=>{this.top=Math.max(0,this.top+delta*10);this.selected=undefined;this.render();},close:()=>this.clear()
++   });
++   return;
++  }
++  serviceFrame(this.element,library,392,'slot');
++  const title=document.createElement('span');title.className='classic-service-label';title.textContent='保管物品:';this.element.append(title);
++  const item=this.items.find(value=>value.makeIndex===this.selected),slot=document.createElement('button');slot.type='button';slot.className='classic-service-slot';slot.title=item?.name??'保管物品';slot.setAttribute('aria-label',slot.title);slot.disabled=this.pending!==undefined;
++  if(item){slot.dataset.storageItem=String(item.makeIndex);const icon=this.icon(item);if(icon)slot.append(icon);}
++  slot.onclick=()=>{this.selected=undefined;this.render();};slot.ondragover=event=>{if(this.pending===undefined)event.preventDefault();};slot.ondrop=event=>{event.preventDefault();this.selectItem(Number(event.dataTransfer?.getData('text/plain')));};
++  const confirm=serviceButton(library,393,'存入',85,150,()=>{if(item)this.submit(item.makeIndex);});confirm.disabled=!item||this.pending!==undefined;
++  const close=serviceButton(library,371,'关闭',115,0,()=>this.clear());close.classList.add('classic-window-close');this.element.append(slot,confirm,close);
++ }
+  private icon(item:InventoryItem){
+   const national=this.nationalIcons?.frames[String(item.looks)],fallback=this.icons?.frames[String(item.looks)],frame=national??fallback;if(!frame)return undefined;
+   const image=document.createElement('img');image.className='item-icon';image.src=national?`/ui-national/items/${national.file}`:`/items/Items/${frame.file}`;image.alt='';return image;
 diff --git a/apps/web/src/style.css b/apps/web/src/style.css
+index d58d058..b3002e8 100644
 --- a/apps/web/src/style.css
 +++ b/apps/web/src/style.css
-@@ -177,5 +177,5 @@
+@@ -176,7 +176,7 @@ body.classic-play .national-panel.system-panel small{color:#9c8c68;font:10px/15p
+ body.classic-play.in-world main{min-height:100vh;padding:0;display:grid;place-items:center}
  body.classic-play.in-world #game-stage{grid-area:1 / 1;margin:0}
  body.classic-play #classic-hud.national-ui .hud-exp-track i{height:9px;margin:2px 1px;background:linear-gradient(90deg,#745112,#e9c95e)}
 -body.classic-play #classic-window{left:192px!important;top:126px!important;width:416px!important;height:347px!important;padding:38px 14px 12px!important;background-image:url('/ui-national/prguse/402.2b8c83a121142363.png')!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
 +body.classic-play #classic-window{left:192px!important;top:126px!important;width:416px!important;height:347px!important;padding:38px 14px 12px!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
  body.classic-play #classic-window .classic-window-heading{position:absolute;left:0;right:0;top:8px;height:20px;color:#f4d67c;text-shadow:1px 1px #000}
  body.classic-play #classic-window .classic-window-heading button{left:390px!important;top:2px!important;width:22px!important;height:22px!important;background-image:none!important;color:transparent!important;font-size:0}
-@@ -191,5 +191,5 @@
+ body.classic-play #classic-window .classic-window-tabs{position:relative;gap:2px;padding:0;margin:0 0 8px;min-height:22px;max-width:388px}
+@@ -190,9 +190,9 @@ body.classic-play #classic-window .classic-window-body>.chat-panel form label:la
+ body.classic-play #classic-window .classic-window-body>.chat-panel form input,body.classic-play #classic-window .classic-window-body>.chat-panel form select{min-width:0;height:24px}
  body.classic-play #classic-window .classic-window-body>.chat-panel form button{grid-column:3;grid-row:1 / 3;padding:3px 8px}
  body.classic-play #classic-window .classic-window-body ol{margin:4px 0;padding-left:18px}
 -body.classic-play #classic-modal-layer .npc-dialog{width:416px!important;min-height:347px!important;height:347px!important;padding:38px 14px 12px!important;background-image:url('/ui-national/prguse/402.2b8c83a121142363.png')!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
-+body.classic-play #classic-modal-layer .npc-dialog{width:416px!important;min-height:347px!important;height:347px!important;padding:38px 14px 12px!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
++body.classic-play #classic-modal-layer .npc-dialog{width:416px!important;min-height:176px!important;height:176px!important;padding:18px 30px!important;color:#fff;font:12px SimSun,'Songti SC',serif}
  body.classic-play #classic-modal-layer .npc-dialog>div:first-child{min-height:20px;color:#f4d67c;text-shadow:1px 1px #000}
- body.classic-play #classic-modal-layer .npc-dialog #close-dialogue{top:2px;right:2px;width:22px;height:22px;background-image:none!important;color:transparent;font-size:0}
+-body.classic-play #classic-modal-layer .npc-dialog #close-dialogue{top:2px;right:2px;width:22px;height:22px;background-image:none!important;color:transparent;font-size:0}
++body.classic-play #classic-modal-layer .npc-dialog #close-dialogue{position:absolute;top:1px;left:399px;right:auto;width:16px;height:23px;color:transparent;font-size:0;padding:0;border:0;background-color:transparent}
+ body.classic-play .character-window.national-window #character-panel{overflow:hidden}
+ body.classic-play .character-window.national-window #character-panel .classic-stat{display:none}
+ body.classic-play .character-window.national-window #character-panel .classic-stat-value{text-align:center}
+@@ -212,7 +212,7 @@ body.classic-play #auth-overlay button:disabled,body.classic-play #auth-overlay
+ body.classic-play #auth-overlay[data-auth-busy="true"]{cursor:wait}
+ body.classic-play #auth-overlay [data-auth-login-dialog] button{appearance:none;color:transparent!important;font-size:0;line-height:0;text-indent:-9999px}
+ body.classic-play #classic-modal-layer .npc-dialog{overflow:hidden}
+-body.classic-play #classic-modal-layer .npc-dialog #npc-text{display:block;max-height:235px;margin:8px 0;overflow-x:hidden;overflow-y:auto;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;line-height:1.45;color:#e8d6a0}
++body.classic-play #classic-modal-layer .npc-dialog #npc-text{display:block;max-height:140px;margin:0;overflow-x:hidden;overflow-y:auto;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;line-height:18px;color:#fff}
+ body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar{width:8px}
+ body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar-track{background:#1a110b}
+ body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar-thumb{background:#76552b;border:1px solid #2a1a0d}
+@@ -222,6 +222,26 @@ body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clr
+ body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clblue{color:#8ab5e8}
+ body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clgreen{color:#8fc77b}
+ /* Modal service panels are hidden by the controller before they open. Character and inventory windows can remain visible beside a shop, repair or storage panel. */
++body.classic-play #classic-modal-layer .npc-dialog>div:first-child{position:static;min-height:0;height:0}
++body.classic-play #npc-title{display:none}
++body.classic-play .npc-dialog.inline-dialogue #npc-options{display:none}
++body.classic-play .npc-dialog .npc-line{min-height:18px;white-space:pre-wrap}
++body.classic-play .npc-dialog .npc-line button{display:inline;padding:0;border:0;background:transparent;color:#fff;text-decoration:underline;font:inherit;line-height:inherit}
++body.classic-play .npc-dialog .npc-line button:hover,body.classic-play .npc-dialog .npc-line button:focus{color:#f00}
++body.classic-play #classic-modal-layer .classic-service{box-sizing:border-box;padding:0;margin:0;border:0;overflow:hidden;background-color:transparent;background-repeat:no-repeat;color:#fff;font:12px SimSun,'Songti SC',serif}
++body.classic-play .classic-service-columns,body.classic-play .classic-service-row{display:grid;grid-template-columns:138px 84px 40px;align-items:center;box-sizing:border-box;line-height:13px;height:13px;text-align:left;color:#fff}
++body.classic-play .classic-service-columns{position:absolute;left:27px;top:11px;width:264px}
++body.classic-play .classic-service-list{position:absolute;left:27px;top:32px;width:264px;height:130px}
++body.classic-play .classic-service-row{position:relative;width:264px;padding:0;border:0;background:transparent;font:inherit;cursor:pointer}
++body.classic-play .classic-service-row span{overflow:hidden;white-space:nowrap}
++body.classic-play .classic-service-row[aria-pressed=true]{color:#f00}
++body.classic-play .classic-service-row:disabled{color:#888}
++body.classic-play .classic-service-row:focus-visible{outline:1px solid #aaa;outline-offset:0}
++body.classic-play .classic-service-button{position:absolute;padding:0;border:0;background-color:transparent;background-repeat:no-repeat;image-rendering:pixelated;cursor:pointer}
++body.classic-play .classic-service-button:disabled{opacity:.45}
++body.classic-play .classic-service-label{position:absolute;left:6px;top:6px}
++body.classic-play .classic-service-slot{position:absolute;left:27px;top:67px;width:61px;height:52px;display:grid;place-items:center;border:0;padding:0;background:transparent}
++body.classic-play .classic-service-slot img{max-width:61px;max-height:52px;object-fit:contain;image-rendering:pixelated}
+ /* The mmap.wil view is a standalone map panel. Its three modes intentionally override legacy HUD frame guesses. */
+ body.classic-play #classic-hud .hud-minimap-frame{position:absolute;left:614px!important;top:12px!important;right:auto;width:174px!important;height:148px!important;display:block;padding:5px;background:linear-gradient(145deg,rgba(43,35,25,.97),rgba(8,11,10,.98))!important;border:1px solid #a98a4c;outline:1px solid #20180e;box-shadow:0 2px 10px #000;opacity:1;z-index:16;pointer-events:auto;color:#e7d6a4;text-shadow:1px 1px #000;image-rendering:pixelated}
+ body.classic-play #classic-hud .minimap-heading{position:relative;display:grid;grid-template-columns:1fr auto 20px;align-items:center;gap:5px;width:auto;max-width:none;height:22px;min-height:0;padding:0 1px 3px;border-bottom:1px solid #66522c;font:11px SimSun,'Songti SC',serif}
+diff --git a/content/classic-176/ui-layout.json b/content/classic-176/ui-layout.json
+index ecab7f9..039dfc0 100644
+--- a/content/classic-176/ui-layout.json
++++ b/content/classic-176/ui-layout.json
+@@ -92,8 +92,8 @@
+     },
+     "orbs": {
+       "relativeTo": "mainDialog",
+-      "hp": {"x": 42, "y": 85, "width": 46, "height": 90, "imageOffsetX": 0, "evidence": "proposed"},
+-      "mp": {"x": 88, "y": 85, "width": 46, "height": 90, "imageOffsetX": -46, "evidence": "proposed"},
++      "hp": {"x": 39, "y": 91, "width": 46, "height": 90, "imageOffsetX": 0, "evidence": "bitmap-alignment"},
++      "mp": {"x": 85, "y": 91, "width": 46, "height": 90, "imageOffsetX": -46, "evidence": "bitmap-alignment"},
+       "fillImageWidth": 92,
+       "fillImageHeight": 90
+     },

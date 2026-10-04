@@ -6,8 +6,10 @@ RUN npm ci
 COPY upstream/mir2-client/apps apps
 COPY upstream/mir2-client/content content
 COPY upstream/mir2-client/tsconfig.json tsconfig.json
+COPY upstream/mir2-client/tests/frontend_regression.mjs tests/frontend_regression.mjs
 COPY server/source-client.patch /tmp/source-client.patch
-RUN git apply /tmp/source-client.patch && npm run build
+COPY server/source-tests.patch /tmp/source-tests.patch
+RUN git apply /tmp/source-client.patch && git apply --include=tests/frontend_regression.mjs /tmp/source-tests.patch && npm run test:web && npm run build
 
 FROM nginx:1.28-alpine
 COPY --from=build /src/dist/web /usr/share/nginx/html

@@ -49,6 +49,8 @@ MIR_URL=http://127.0.0.1:18883 npm test
 npm run audit:176 -- --check
 ```
 
+`npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希、容器健康和数据库/引擎实例是否保持；首次记录没有可比较快照时会明确标为未证明实例保持。
+
 此前原型的联机、技能、仓库和重启证据保留在 [历史测试报告](docs/VERIFICATION.md) 和 [交付纠正](docs/176_CORRECTION.md)。`test:prototype`、`test:protocol`、`test:features`、`test:restart` 等历史脚本使用旧协议，不能直接用于新的默认入口，也不能将历史结果视为现成客户端的验收。
 
 `compose.rebuild.yaml` 与主 Compose 合并使用时提供固定的独立验收配置。正式 Compose 只公开网页端口。
@@ -61,7 +63,7 @@ npm run audit:176 -- --check
 upstream/mir2-client/    固定提交的现成 Pixi 客户端与配套 proxy
 server/SourceClient/    客户端构建、同源资源及 WebSocket 转发
 server/SourceProxy/     原项目 proxy 的构建和运行
-server/source-*.patch   可审查的室内素材库、资源映射、血球、跨图与 NPC 接入修复
+server/source-*.patch   可审查的素材、跨图、原服务窗口及镜像构建回归补丁
 web/, server/WebGateway/  历史自写原型及网关
 server/Engine/          六个 OpenMir2 服务的 Docker 启动与保存监督
 server/openmir2-linux.patch  可审查的上游兼容与存档修复

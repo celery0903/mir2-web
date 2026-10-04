@@ -1,7 +1,8 @@
 diff --git a/GatewaySession.cs b/GatewaySession.cs
+index 5ac4481..536c1e5 100644
 --- a/GatewaySession.cs
 +++ b/GatewaySession.cs
-@@ -26,7 +26,8 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
+@@ -26,6 +26,7 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
      private long? pendingActionId;
      private string? pendingActionKind;
      private ItemAction? pendingItemAction;
@@ -9,17 +10,16 @@ diff --git a/GatewaySession.cs b/GatewaySession.cs
      private int? activeNpc;
      private int? activeShopNpc;
      private readonly Dictionary<string, ShopGoods> shopGoods = new(StringComparer.Ordinal);
-     private readonly Dictionary<int, ShopDetail> shopDetails = [];
-@@ -507,7 +507,7 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
+@@ -507,7 +508,7 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
                      }
                      phase = "world";
                      mapGeneration++;
 -                    await Send(new { type = "map", map = packet.Text }, lifetime.Token);
-+                    await Send(new { type = "map", map = packet.Text, x = packet.Param, y = packet.Tag, direction = packet.Series & 255 }, lifetime.Token);
++                    await Send(new { type = "map", map = packet.Text, playerId = packet.Recog, x = packet.Param, y = packet.Tag, brightness = packet.Series & 255 }, lifetime.Token);
                  }
                  if (packet.Id == 50)
                  {
-@@ -629,15 +630,18 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
+@@ -629,17 +630,20 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
      private async Task ClickNpc(JsonElement command, CancellationToken cancellation)
      {
          int targetId = command.GetProperty("targetId").GetInt32();
@@ -39,3 +39,41 @@ diff --git a/GatewaySession.cs b/GatewaySession.cs
          await game.Send(1010, cancellation, recog: targetId);
 +        nextNpcClickTick = Environment.TickCount64 + 1100;
      }
+
+     private async Task SelectDialogue(JsonElement command, CancellationToken cancellation)
+diff --git a/NpcProjection.cs b/NpcProjection.cs
+index b7c35e8..0bba11d 100644
+--- a/NpcProjection.cs
++++ b/NpcProjection.cs
+@@ -25,7 +25,30 @@ public static partial class NpcProjection
+         string text = Link().Replace(content, "");
+         text = Decoration().Replace(text, match => match.Groups[1].Value).Replace('\\', '\n').Trim();
+         text = CleanQuest(text, out var quest, out var quests).Trim();
+-        return new { type = "npcDialogue", npcId = packet.Recog, npcName, text, options, quest, quests = quests.Count == 0 ? null : quests };
++        return new { type = "npcDialogue", npcId = packet.Recog, npcName, text, options, lines = DialogueLines(content), quest, quests = quests.Count == 0 ? null : quests };
++    }
++
++    private sealed record DialoguePart(string text, string? command = null, bool input = false);
++
++    private static DialoguePart[][] DialogueLines(string content)
++    {
++        content = CleanQuest(content, out _, out _).Replace('\\', '\n');
++        return content.Split('\n').Select(line =>
++        {
++            var parts = new List<DialoguePart>();
++            int cursor = 0;
++            foreach (Match link in Link().Matches(line))
++            {
++                if (link.Index > cursor)
++                    parts.Add(new(Decoration().Replace(line[cursor..link.Index], match => match.Groups[1].Value)));
++                string command = link.Groups[2].Value;
++                parts.Add(new(link.Groups[1].Value, command, command.StartsWith("@@InPutString", StringComparison.OrdinalIgnoreCase)));
++                cursor = link.Index + link.Length;
++            }
++            if (cursor < line.Length)
++                parts.Add(new(Decoration().Replace(line[cursor..], match => match.Groups[1].Value)));
++            return parts.ToArray();
++        }).ToArray();
+     }
+
+     private static string CleanQuest(string text, out object? quest, out List<object> quests)

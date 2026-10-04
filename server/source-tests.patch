@@ -1,0 +1,113 @@
+diff --git a/tests/GatewayRegression/Program.cs b/tests/GatewayRegression/Program.cs
+index 3e1e145..c356d5d 100644
+--- a/tests/GatewayRegression/Program.cs
++++ b/tests/GatewayRegression/Program.cs
+@@ -292,6 +292,19 @@ using (var projected = JsonDocument.Parse(JsonSerializer.Serialize(NpcProjection
+     Require(dialogue.GetProperty("options").GetArrayLength() == 2
+         && dialogue.GetProperty("options")[0].GetProperty("command").GetString() == "@jiangli",
+         "NPC dialogue options projection");
++    var lines = dialogue.GetProperty("lines");
++    Require(lines.GetArrayLength() == 3 && lines[1][0].GetProperty("command").GetString() == "@jiangli"
++        && lines[2][0].GetProperty("text").GetString() == "返回", "NPC script line positions preserved");
++}
++var inlineDialoguePacket = new LegacyPacket(643, 77, 0, 0, 1,
++    LegacyCodec.Encode(LegacyCodec.Gbk.GetBytes("保管员/  <保管/@storage>东西\\ \\<找回/@getback>东西")));
++using (var projected = JsonDocument.Parse(JsonSerializer.Serialize(NpcProjection.Project(inlineDialoguePacket))))
++{
++    var lines = projected.RootElement.GetProperty("lines");
++    Require(lines.GetArrayLength() == 3 && lines[0][0].GetProperty("text").GetString() == "  "
++        && lines[0][1].GetProperty("command").GetString() == "@storage"
++        && lines[0][2].GetProperty("text").GetString() == "东西"
++        && lines[1][0].GetProperty("text").GetString() == " ", "NPC inline links, spacing and blank lines preserved");
+ }
+ var inputDialoguePacket = new LegacyPacket(643, 77, 0, 0, 1,
+     LegacyCodec.Encode(LegacyCodec.Gbk.GetBytes("衣服/请告诉我暗号\\<输入暗号/@@InPutString8>")));
+@@ -300,6 +313,7 @@ using (var projected = JsonDocument.Parse(JsonSerializer.Serialize(NpcProjection
+     var option = projected.RootElement.GetProperty("options")[0];
+     Require(option.GetProperty("input").GetBoolean() && option.GetProperty("command").GetString() == "@@InPutString8",
+         "NPC input dialogue option projection");
++    Require(projected.RootElement.GetProperty("lines")[1][0].GetProperty("input").GetBoolean(), "NPC inline input stays interactive");
+ }
+ var questDialogue = new LegacyPacket(772, 77, 0, 0, 1,
+     LegacyCodec.Encode(LegacyCodec.Gbk.GetBytes("任务标记QMARK|p0-trial|accepted|比奇试炼|收集 1 个鸡肉|击杀比奇省的鸡|试炼已开始。|END\\返回")));
+diff --git a/tests/frontend_regression.mjs b/tests/frontend_regression.mjs
+index bcaac3b..91b3f26 100644
+--- a/tests/frontend_regression.mjs
++++ b/tests/frontend_regression.mjs
+@@ -19,7 +19,7 @@ class Element{
+  removeEventListener(type,listener){this.listeners.set(type,(this.listeners.get(type)??[]).filter(value=>value!==listener));}
+  emit(type,event={}){for(const listener of this.listeners.get(type)??[])listener.call(this,event);}
+  remove(){}
+- setAttribute(){}
++ setAttribute(name,value){(this.attributes??={})[name]=value;}
+ }
+ const context={exports:{},document:mockDocument,fetch:()=>new Promise(()=>{}),loadNationalUiLibrary:()=>new Promise(()=>{})};
+ vm.createContext(context);
+@@ -174,7 +174,8 @@ if(!inventorySource.includes("'pointercancel'")||!inventorySource.includes("'vis
+ console.log('PASS inventory selection clears on pointer cancellation, blur and hidden tabs');
+ if(playSource.includes("if(id==='chat'){classicWindow.hidden=true;return;}"))throw new Error('chat tab still closes the classic window');
+ if(!playSource.includes("if(id==='chat')classicWindowBody.append(chatPanel)"))throw new Error('chat tab does not expose the complete chat form');
+-if(!playSource.includes('function closeDialogue()')||!playSource.includes('dialogueNpcId=undefined;')||!playSource.includes('function hideServiceWindows(){\n closeDialogue();')||!playSource.includes('inventory.rejectPending();itemQuickBar.rejectPending();equipment.rejectPending();shop.rejectPending();repair.rejectPending();storage.rejectPending();'))throw new Error('closing dialogue or changing maps can leave stale NPC and service pending state');
++if(!playSource.includes('function closeDialogue()')||!playSource.includes('dialogueNpcId=undefined;')||!playSource.includes('castleWarStatus=undefined;closeDialogue();')||!playSource.includes('inventory.rejectPending();itemQuickBar.rejectPending();equipment.rejectPending();shop.rejectPending();repair.rejectPending();storage.rejectPending();'))throw new Error('closing dialogue or changing maps can leave stale NPC and service pending state');
++if(playSource.includes('function hideServiceWindows(){\n closeDialogue();'))throw new Error('opening a merchant service discards the script return link');
+ if(playSource.includes('suppressNpcDialogsUntil'))throw new Error('valid NPC dialogue is discarded during the first seconds after map entry');
+ if(!playSource.includes('function targetApproachStep(')||!playSource.includes('pursuitRejectedCells.add(`${movement.x},${movement.y}`)')||!playSource.includes('pursuitTarget=retryTarget'))throw new Error('target pursuit does not reroute after a transient blocked move');
+ console.log('PASS target pursuit reroutes after a transient blocked move');
+@@ -276,6 +277,57 @@ if(!inventorySource.includes('if(!this.pending.has(id))return false;')||!invento
+ if(!playSource.includes("if(!shop.resolve(message.name,message.makeIndex,message.accepted))return;")||!playSource.includes("if(!shop.resolveSale(message.item,message.accepted))return;")||!playSource.includes("if(!repair.resolve(message.item,message.accepted))return;")||!playSource.includes("if(!storage.resolve(message.item,message.accepted))return;")||!playSource.includes('const quickBarHandled=itemQuickBar.resolve(message.makeIndex,message.accepted,true);')||!playSource.includes('if(!inventoryHandled&&!quickBarHandled)return;'))throw new Error('stale service or item responses still apply side effects after component rejection');
+ console.log('PASS shop, repair and storage pending states time out and unlock');
+
++const serviceSource=['classic-service','storage','shop'].map(name=>fs.readFileSync(path.join(root,`apps/web/src/${name}.ts`),'utf8').replace(/^import .*;\n/gm,'')).join('\n');
++const serviceContext={exports:{},document:mockDocument,loadFallbackItemIcons:()=>new Promise(()=>{}),loadNationalUiLibrary:()=>new Promise(()=>{}),setTimeout:()=>1,clearTimeout(){},uiFrame:(library,index)=>library.frames[index],nationalUiUrl:()=>'',applyNationalUiFrame:(element,name,frame)=>{element.style.width=`${frame.width}px`;element.style.height=`${frame.height}px`;},attachItemTooltip(){}};
++vm.createContext(serviceContext);vm.runInContext(ts.transpileModule(serviceSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,serviceContext);
++const serviceLibrary={frames:Object.fromEntries([371,385,386,387,388,392,393].map(index=>[index,{file:`${index}.png`,width:index===385?308:index===392?140:24,height:index===385?205:index===392?181:16}]))};
++const serviceRows=element=>element.children.find(child=>child.className==='classic-service-list').children;
++const serviceCommand=(element,label)=>element.children.find(child=>child.attributes?.['aria-label']===label);
++const storedItems=Array.from({length:23},(_,index)=>({...candle,name:`物品${index}`,makeIndex:500+index}));
++const storageElement=new Element(),storageSent=[];
++const storageView=new serviceContext.exports.StorageView(storageElement,{store:(npc,id)=>storageSent.push(['store',npc,id]),take:(npc,id)=>storageSent.push(['take',npc,id])});storageView.serviceLibrary=serviceLibrary;
++storageView.openItems(77,storedItems);
++if(serviceRows(storageElement).length!==10||storageElement.style.width!=='308px')throw new Error('warehouse menu does not display ten rows in the original frame');
++serviceCommand(storageElement,'下一页').onclick();
++if(serviceRows(storageElement)[0].dataset.serviceItem!=='510')throw new Error('warehouse next page skips or repeats the wrong item');
++serviceCommand(storageElement,'上一页').onclick();
++serviceRows(storageElement)[0].onclick();serviceCommand(storageElement,'取回').onclick();
++if(storageSent.length!==1||storageSent[0][2]!==500||!serviceCommand(storageElement,'取回').disabled)throw new Error('warehouse selection does not send exactly one pending withdrawal');
++if(storageView.resolve(storedItems[1],true)||storageView.items.length!==23)throw new Error('mismatched warehouse response removes an item');
++storageView.resolve(storedItems[0],false);
++if(serviceRows(storageElement).length!==10||serviceCommand(storageElement,'取回').disabled)throw new Error('rejected warehouse withdrawal does not restore the selection');
++serviceCommand(storageElement,'取回').onclick();storageView.resolve(storedItems[0],true);
++if(storageView.items.length!==22||serviceRows(storageElement)[0].dataset.serviceItem!=='501')throw new Error('confirmed warehouse withdrawal does not remove exactly one item');
++storageView.openDeposit(77,[candle]);
++if(storageView.selectItem(999)||!storageView.selectItem(100)||storageElement.style.width!=='140px')throw new Error('warehouse deposit does not validate its item and original frame');
++serviceCommand(storageElement,'存入').onclick();
++if(storageView.items.length!==1||!serviceCommand(storageElement,'存入').disabled||storageView.selectItem(100))throw new Error('warehouse deposit removes the item before server confirmation or allows another pending selection');
++storageView.resolve(candle,false);
++if(serviceCommand(storageElement,'存入').disabled||storageView.items.length!==1)throw new Error('rejected deposit loses the selected item');
++serviceCommand(storageElement,'存入').onclick();storageView.resolve(candle,true);
++if(storageView.items.length||!serviceCommand(storageElement,'存入').disabled||storageView.resolve(candle,true))throw new Error('confirmed deposit does not clear the slot or accepts a duplicate response');
++console.log('PASS original warehouse menu pagination, selection, acknowledgement and rejection');
++
++const shopElement=new Element(),shopSent=[];
++const shopView=new serviceContext.exports.ShopView(shopElement,{buy:(npc,name,id)=>shopSent.push(['buy',npc,name,id]),details:(npc,name,page)=>shopSent.push(['details',npc,name,page]),quote(){},sell(){}});shopView.serviceLibrary=serviceLibrary;
++const goods=Array.from({length:23},(_,index)=>({name:`商品${index}`,subMenu:0,price:50,stock:2}));
++shopView.open(77,goods);serviceCommand(shopElement,'下一页').onclick();
++if(serviceRows(shopElement)[0].dataset.serviceItem!=='goods:商品10')throw new Error('shop next page selects the wrong ten-row range');
++serviceRows(shopElement)[0].onclick();serviceCommand(shopElement,'购买').onclick();
++if(shopSent.length!==1||shopSent[0][2]!=='商品10'||!serviceCommand(shopElement,'购买').disabled)throw new Error('shop confirmation is not tied to the selected row');
++if(shopView.resolve('商品0',undefined,true))throw new Error('mismatched shop confirmation accepted');
++shopView.resolve('商品10',undefined,false);
++if(serviceCommand(shopElement,'购买').disabled||goods[10].stock!==2)throw new Error('shop rejection loses the selection or stock');
++serviceCommand(shopElement,'购买').onclick();shopView.resolve('商品10',undefined,true);
++if(goods[10].stock!==1)throw new Error('confirmed purchase does not decrement one stock unit');
++shopView.open(77,[{name:'木剑',subMenu:1,price:50,stock:20}]);serviceRows(shopElement)[0].onclick();serviceCommand(shopElement,'购买').onclick();
++const shopDetails=Array.from({length:10},(_,index)=>({name:'木剑',makeIndex:800+index,price:50,durability:10000,stdMode:5,weight:7,looks:30}));
++if(!shopView.showDetails(77,shopDetails)||serviceRows(shopElement).length!==10)throw new Error('shop submenu details do not replace the main list');
++serviceCommand(shopElement,'下一页').onclick();
++if(shopSent.at(-1)[0]!=='details'||shopSent.at(-1)[3]!==10||!serviceCommand(shopElement,'下一页').disabled)throw new Error('shop detail pagination does not request the native ten-item offset');
++shopView.clear();if(shopView.showDetails(77,shopDetails))throw new Error('closed shop accepts a late detail page');
++console.log('PASS original shop pagination, server detail pages and purchase acknowledgement');
++
+ const quickBarSource=`const uiLayout=${JSON.stringify(uiLayout)};\nfunction classicUiLayout(){return uiLayout;}\n`+fs.readFileSync(path.join(root,'apps/web/src/item-quickbar.ts'),'utf8').replace(/^import .*;\n/gm,'');
+ const quickBarContext={exports:{},document:mockDocument,HTMLElement:Element,setTimeout,clearTimeout,loadFallbackItemIcons:()=>new Promise(()=>{}),loadNationalUiLibrary:()=>new Promise(()=>{}),nationalUiUrl:()=>'',uiUrl:()=>'',iconIndexOf:item=>item.looks};
+ vm.createContext(quickBarContext);
