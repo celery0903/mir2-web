@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-04T21:46:13.679Z",
+  "project": "mir2-web",
+  "readOnly": true,
+  "savedPositionsOnly": true,
+  "checkAgainAfterNativeSaveBeforeDeployment": true,
+  "passed": true,
+  "maps": [
+    {
+      "id": "0",
+      "previousSha256": "34bdc4cef9233eda50588b0d05181f371279771c94774c7804e2053c019e6cc2",
+      "proposedSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+      "charactersChecked": 17,
+      "newlyBlocked": [],
+      "previouslyBlocked": 0
+    }
+  ]
+}

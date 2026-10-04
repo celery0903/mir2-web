@@ -1,0 +1,23 @@
+{
+  "repository": "mirbeta/MirServer",
+  "revision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+  "authenticated2003Client": false,
+  "defaultMapIDs": ["0"],
+  "maps": [
+    {"id": "0", "name": "比奇省", "bytes": 5880052, "sha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7"},
+    {"id": "1", "name": "沃玛森林", "bytes": 4320052, "sha256": "a60373a2e2bd1e982dcb614ea40a8aa86638b4d2680fdb2f2ed1640654c61793"},
+    {"id": "2", "name": "毒蛇山谷", "bytes": 4320052, "sha256": "6174b98752bb5a8464d6bcea979aeb4a7824ca36cc60d617fc58df0f48c88297"}
+  ],
+  "libraryBaseURL": "https://mirfiles.com/resources/mir2/crystal/patch/Data/Map/WemadeMir2/",
+  "libraries": [
+    {"file": "Tiles.Lib", "bytes": 450359772, "sha256": "6413c0e92281a1c796134a177de176a642c86b5eeb8873967afac2767ca4e64c"},
+    {"file": "SmTiles.Lib", "bytes": 659983, "sha256": "1a6389e666cf0579ed5721dc6f29e2d46d806d17350ff1bfcae857e5dffcc113"},
+    {"file": "Objects.Lib", "bytes": 44972450, "sha256": "1f72c19425ef402a842d3d64e9d199153d7ff610766d41bb91145d74e4411b64"},
+    {"file": "Objects2.Lib", "bytes": 19621227, "sha256": "5697f0c3a22230b1c2205988d1cdfe8a064e5f3b0862155ad9cc09d8e38fb938"},
+    {"file": "Objects3.Lib", "bytes": 21164807, "sha256": "814027a5d32aeaa5d21e5557284cd552a4a47f86e06e3ca643a9ebba2ba66196"},
+    {"file": "Objects4.Lib", "bytes": 20203938, "sha256": "f9c4920ff72b21ca1fb591c1987520ee691b26f2ee35649a722884b8c6ef593b"},
+    {"file": "Objects5.Lib", "bytes": 17504331, "sha256": "767281fdc864e56c9df9ecacc90b0d6171ab27a980b36e60cbdcfec906c10a66"},
+    {"file": "Objects6.Lib", "bytes": 15727931, "sha256": "d3511d75d5571d20b0946a70038af42a3b3ce564b05ef651bb98793895e80d5a"}
+  ],
+  "interpretation": "Classic-12 maps use the WemadeMir2 namespace. Public converted libraries are pinned for reproducibility, not authenticated as a complete 2003 Shanda client. Maps 1 and 2 are candidates and are not enabled by this lock."
+}

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T21:22:09.535Z",
+  "checkedAt": "2026-10-04T21:50:29.883Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -8,10 +8,10 @@
     "shared/world.json": "a615f733acf93dad86361fbf9c7d459cd99473f41303bd7c6c53bc4ba03c930d",
     "shared/classic-storage.json": "63e861a3783a85d9a189b3c6216240a12a07703269890148b4b633d3dd47a844",
     "compose.yaml": "cc5ad8b6bc9f049f9050aad5e1cd528494c195d57160044e3b307ae8076f3bab",
-    "scripts/prepare-classic-world.mjs": "9ec3028a6392f5190a89cc1420fc84b1f3462cbe644ca6c1d7e6edf59ddf962a",
+    "scripts/prepare-classic-world.mjs": "7be3b280a6e49ccb22c8eda8d8f9fb2266e76d2f58350fa2394e0c94d39de96e",
     "scripts/prepare-openmir2.mjs": "86d03fa62d633de7daefee6b8a60d886783d4e9ff7619e963a9648d1b969e078",
-    "scripts/prepare-source-client.mjs": "22307f48f757ca2852fc4b80528e6a349c83c63690bc4334f0288c237933e89a",
-    "scripts/prepare-source-assets.mjs": "27dd11ac2c2eacf1e837c26ba2516ddca2c47e30b2e6dfd22efc52ef15309deb",
+    "scripts/prepare-source-client.mjs": "708a3e49f850da50294cace414c1deb963c76a0f1007c6302e0725fe5a5094ba",
+    "scripts/prepare-source-assets.mjs": "08c0b311dbe280629d73bb29256e02e8e42fc02ff47db1889b8a87e968824547",
     "server/SourceClient/Dockerfile": "e69029d9f7bb876a08849e17c15da99f8a8e47edaf1f60e7db115f9234c17b9a",
     "server/SourceClient/nginx.conf": "c7645f8022dbb1d1675862e65b4a7dd3535d5721f02d707f3849ec7c26cecea2",
     "server/SourceProxy/Dockerfile": "98e1136f4a2c648386ebb80b8d6bee0d8e29816fec9ce8f906985eb518c8dc74",
@@ -20,11 +20,11 @@
     "upstream/mir2-client/apps/web/src/play.ts": "47681ebda2b8683431ec284b15fdb2304a9761fd6e93be430c3c6ec8e4f1e2e1",
     "upstream/mir2-client/apps/web/src/classic-hud.ts": "a9acc9220858066173af1552f48408a4bea81e86186d090a9693b9e792f66e4c",
     "upstream/mir2-client/services/web-gateway/GatewaySession.cs": "ea9e6d326d036d7ae8dfa7606a8f08eece20ede597236229bd1ae58d3d5ff2b6",
-    "server/Engine/Dockerfile": "8bc4c9038f0476906304c6385625f0f30ce816d7345c9af5b33091edb277a24f",
-    "server/Engine/run.mjs": "808c44f7cd14495eea93a2f9070637c50e6d8c5f680147d38ae7b34165a79568",
+    "server/Engine/Dockerfile": "7c5630194a85778560753e3f7cd6bb796f364fb0ba332aa4c6d7ab7c5d79e9bf",
+    "server/Engine/run.mjs": "0f9a9016e1180a535cf428757ee090999973ade5e67e67121e36e888bcce10c9",
     "server/openmir2-linux.patch": "4616cb27725a879277985c909bc6f0134b5b1eecc55b8d705a7dfea1b8b30812",
     "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0",
-    "scripts/verify-source-deployment.mjs": "26eb385565d5eba6f5a95eea3bb7347b0a35f048aed156a1bd58c7ecc6a3886c",
+    "scripts/verify-source-deployment.mjs": "e96adfdfebefe5aa391232ebc01aaa4a315cc2fd2a9bf9fcb120064bceb883f5",
     "scripts/native-map.mjs": "4de77d86587a7000b70797154a4b58161ead689065685afa6833d8e95b3c47c0",
     "shared/classic-magic.json": "0ecf791c1e99c0f275baedcfa145b71272e608fe5e4713e253fedd95614e2b00",
     "server/source-magic.patch": "c74697f16991e20bb3b3cead027badbf7fd9bb1f68d28f70d874d94968c224e2",
@@ -40,7 +40,13 @@
     "tests/status/Program.cs": "f1eab647270ba0e5479e58f4c7bec4f2c4f02c24cd75216b0ad4590d240cfebd",
     "tests/source-services.mjs": "930b8f9598db7f5f4063fababe2d2b712c45f8d8b32342b2cd5e785aa6e7b709",
     "tests/source-empty-inventory.mjs": "fab58f56bd76e6159ec5ee0d08fe75027cb7f967120e634a43b13421f071b640",
-    "tests/native/Program.cs": "9b8e2efef51b40e6acc014dcd7aa5c180081373d206c1843d04cdc18707f932f"
+    "tests/native/Program.cs": "9b8e2efef51b40e6acc014dcd7aa5c180081373d206c1843d04cdc18707f932f",
+    "shared/native-world.lock.json": "f712f3a398ec6bf22a94b25ab482a7781ab504410cd4bc9d33cd806e8b4c28b4",
+    "scripts/fetch-native-map-libraries.mjs": "8917449f193972db56efedf19de128aa4195260d1a293c83934c8bc67cbef33f",
+    "scripts/prepare-native-map-assets.py": "e3417180942d877407f8f95f0134e61cb5035fea8051551e55ffce49d6445068",
+    "scripts/check-native-world-positions.mjs": "eda68afa57b1f7dc9a2865426050aeae316bf971f363bfbf8629418e1b059a17",
+    "tests/native-world-assets.py": "6b33b3ae54f0dd49629a22578a831ce6a65ff4b5274675f9b233b84a171c3c7d",
+    "tests/source-native-world.mjs": "61788618e7b55a7b97904ba354cf644abf7abe92bb0684bffad741e3633defdd"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",
@@ -54,133 +60,27 @@
       "server/source-magic.patch"
     ],
     "sourceAssets": {
-      "checkedAt": "2026-10-04T19:37:43.055Z",
+      "checkedAt": "2026-10-04T21:40:03.838Z",
       "sourceRevision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
       "authenticated2003Client": false,
-      "mapResourceAcceptance": "failed",
-      "missingMapReferences": [
-        {
-          "library": "Objects",
-          "indices": [
-            0,
-            1,
-            3,
-            4,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            17,
-            1159,
-            3071,
-            8637,
-            8638
-          ]
-        },
-        {
-          "library": "BichonObjects257",
-          "indices": [
-            7,
-            8,
-            9,
-            15,
-            16,
-            2302,
-            2303,
-            2558,
-            2766,
-            2814,
-            4606
-          ]
-        },
-        {
-          "library": "BichonObjects253",
-          "indices": [
-            2766
-          ]
-        },
-        {
-          "library": "BichonObjects7",
-          "indices": [
-            1040,
-            1047,
-            1051,
-            1053,
-            1054,
-            1055
-          ]
-        },
-        {
-          "library": "Tiles",
-          "indices": [
-            9,
-            424,
-            429,
-            434,
-            439,
-            444,
-            445,
-            446,
-            447,
-            448,
-            449,
-            450,
-            451,
-            452,
-            453,
-            454,
-            455,
-            456
-          ]
-        },
-        {
-          "library": "SmTiles",
-          "indices": [
-            1535,
-            1791,
-            2047,
-            2302,
-            2303,
-            2558,
-            2559,
-            2814,
-            2815,
-            3070,
-            3071,
-            3582,
-            4350,
-            4606,
-            4607,
-            30975,
-            31231,
-            31999,
-            32255
-          ]
-        }
-      ],
+      "mapResourceAcceptance": "passed",
+      "missingMapReferences": [],
       "maps": [
         {
           "id": "0",
-          "sourceSha256": "34bdc4cef9233eda50588b0d05181f371279771c94774c7804e2053c019e6cc2",
+          "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
           "width": 700,
           "height": 700,
           "objectLibraries": {
             "0": "Objects",
-            "3": "BichonObjects5",
-            "4": "BichonObjects6",
-            "5": "BichonObjects7",
-            "19": "BichonObjects21",
-            "20": "BichonObjects22",
-            "22": "BichonObjects24",
-            "249": "BichonObjects251",
-            "251": "BichonObjects253",
-            "252": "BichonObjects254",
-            "253": "BichonObjects255",
-            "255": "BichonObjects257"
-          }
+            "3": "WemadeObjects4",
+            "4": "WemadeObjects5",
+            "5": "WemadeObjects6"
+          },
+          "resourceNamespace": "WemadeMir2",
+          "sourceRepository": "mirbeta/MirServer",
+          "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+          "browserCellsMatchNative": true
         },
         {
           "id": "0102",
@@ -189,7 +89,8 @@
           "height": 15,
           "objectLibraries": {
             "0": "Room0102Objects1"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0103",
@@ -198,7 +99,8 @@
           "height": 29,
           "objectLibraries": {
             "0": "Room0103Objects1"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0104",
@@ -207,7 +109,8 @@
           "height": 16,
           "objectLibraries": {
             "0": "Room0104Objects1"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0105",
@@ -216,7 +119,8 @@
           "height": 29,
           "objectLibraries": {
             "0": "Room0105Objects1"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0106",
@@ -225,7 +129,8 @@
           "height": 29,
           "objectLibraries": {
             "0": "Room0106Objects1"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0108",
@@ -234,7 +139,8 @@
           "height": 18,
           "objectLibraries": {
             "0": "Room0108Objects1"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0109",
@@ -243,7 +149,8 @@
           "height": 15,
           "objectLibraries": {
             "0": "Room0109Objects1"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0132",
@@ -252,7 +159,8 @@
           "height": 24,
           "objectLibraries": {
             "1": "Room0132Objects2"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0140",
@@ -262,7 +170,8 @@
           "objectLibraries": {
             "1": "Room0140Objects2",
             "2": "Room0140Objects3"
-          }
+          },
+          "browserCellsMatchNative": true
         },
         {
           "id": "0141",
@@ -271,7 +180,8 @@
           "height": 32,
           "objectLibraries": {
             "1": "Room0141Objects2"
-          }
+          },
+          "browserCellsMatchNative": true
         }
       ],
       "classicSource": {
@@ -287,34 +197,8 @@
           "actors/classic-wildlife-2.png",
           "actors/classic-wildlife-3.png",
           "actors/classic-wildlife.json",
-          "atlas-0.png",
-          "atlas-1.png",
-          "atlas-10.png",
-          "atlas-11.png",
-          "atlas-12.png",
-          "atlas-13.png",
-          "atlas-14.png",
-          "atlas-15.png",
-          "atlas-16.png",
-          "atlas-17.png",
-          "atlas-18.png",
-          "atlas-19.png",
-          "atlas-2.png",
-          "atlas-20.png",
-          "atlas-21.png",
-          "atlas-22.png",
-          "atlas-23.png",
-          "atlas-24.png",
-          "atlas-25.png",
-          "atlas-3.png",
           "atlas-33.png",
           "atlas-34.png",
-          "atlas-4.png",
-          "atlas-5.png",
-          "atlas-6.png",
-          "atlas-7.png",
-          "atlas-8.png",
-          "atlas-9.png",
           "auth-web/login.png",
           "auth-web/manifest.json",
           "auth-web/portrait-0-0.png",
@@ -344,7 +228,6 @@
           "maps/0140/manifest.json",
           "maps/0141/atlas-0.png",
           "maps/0141/manifest.json",
-          "server-maps/0.map",
           "ui-atlas-0.png",
           "ui-atlas-1.png",
           "ui.json",
@@ -462,400 +345,28 @@
     "nativeMapsMatch": true,
     "mapConversion": {
       "available": true,
-      "acceptance": "failed",
-      "sourceRepository": "fq393/mir2-web",
-      "sourceRevision": "7e5782118c78defb42d8ffb55ca3a3de199e90a6",
-      "sourceSha256": "ed4783215ffa989658f79892c2dd6720753fb111e1102cb14da8e6182d88d7f6",
-      "convertedSha256": "34bdc4cef9233eda50588b0d05181f371279771c94774c7804e2053c019e6cc2",
+      "conversionRequired": false,
+      "acceptance": "passed",
+      "sourceRepository": "mirbeta/MirServer",
+      "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+      "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+      "resourceNamespace": "WemadeMir2",
+      "objectLibraries": {
+        "0": "Objects",
+        "3": "WemadeObjects4",
+        "4": "WemadeObjects5",
+        "5": "WemadeObjects6"
+      },
+      "referencesCorrect": true,
       "matchesPreparedMap": true,
       "matchesDeployedMap": true,
+      "allBrowserCellsMatchNative": true,
       "dimensions": {
         "width": 700,
         "height": 700
       },
-      "frontLibraries": {
-        "2": 25249,
-        "5": 118,
-        "6": 48,
-        "7": 332,
-        "21": 69,
-        "22": 3507,
-        "24": 2755,
-        "251": 1,
-        "253": 1,
-        "254": 2,
-        "255": 2,
-        "257": 16
-      },
-      "lostFrontLibraryCells": 0,
-      "lostExamples": [],
-      "wideTileCells": 835,
-      "remappedTileImages": 291,
-      "lostTileCells": 0,
-      "tileExamples": [
-        {
-          "x": 548,
-          "y": 604,
-          "sourceImage": 72339,
-          "previousAliasedIndex": 6802,
-          "nativeIndex": 59,
-          "browserSourceIndex": 72338
-        },
-        {
-          "x": 548,
-          "y": 606,
-          "sourceImage": 72338,
-          "previousAliasedIndex": 6801,
-          "nativeIndex": 49,
-          "browserSourceIndex": 72337
-        },
-        {
-          "x": 550,
-          "y": 604,
-          "sourceImage": 72337,
-          "previousAliasedIndex": 6800,
-          "nativeIndex": 48,
-          "browserSourceIndex": 72336
-        },
-        {
-          "x": 550,
-          "y": 606,
-          "sourceImage": 72336,
-          "previousAliasedIndex": 6799,
-          "nativeIndex": 47,
-          "browserSourceIndex": 72335
-        },
-        {
-          "x": 552,
-          "y": 600,
-          "sourceImage": 72310,
-          "previousAliasedIndex": 6773,
-          "nativeIndex": 46,
-          "browserSourceIndex": 72309
-        },
-        {
-          "x": 552,
-          "y": 602,
-          "sourceImage": 72309,
-          "previousAliasedIndex": 6772,
-          "nativeIndex": 45,
-          "browserSourceIndex": 72308
-        },
-        {
-          "x": 556,
-          "y": 592,
-          "sourceImage": 72304,
-          "previousAliasedIndex": 6767,
-          "nativeIndex": 42,
-          "browserSourceIndex": 72303
-        },
-        {
-          "x": 556,
-          "y": 594,
-          "sourceImage": 72303,
-          "previousAliasedIndex": 6766,
-          "nativeIndex": 41,
-          "browserSourceIndex": 72302
-        }
-      ],
-      "missingMiddleCells": 33,
-      "missingMiddleReferences": [
-        {
-          "index": 1791,
-          "cells": [
-            {
-              "x": 0,
-              "y": 1,
-              "sourceLibrary": 1,
-              "sourceImage": 1792
-            },
-            {
-              "x": 0,
-              "y": 149,
-              "sourceLibrary": 1,
-              "sourceImage": 1792
-            }
-          ]
-        },
-        {
-          "index": 2815,
-          "cells": [
-            {
-              "x": 0,
-              "y": 5,
-              "sourceLibrary": 1,
-              "sourceImage": 2816
-            },
-            {
-              "x": 0,
-              "y": 57,
-              "sourceLibrary": 1,
-              "sourceImage": 2816
-            },
-            {
-              "x": 0,
-              "y": 105,
-              "sourceLibrary": 1,
-              "sourceImage": 2816
-            },
-            {
-              "x": 0,
-              "y": 165,
-              "sourceLibrary": 1,
-              "sourceImage": 2816
-            }
-          ]
-        },
-        {
-          "index": 2302,
-          "cells": [
-            {
-              "x": 0,
-              "y": 9,
-              "sourceLibrary": 1,
-              "sourceImage": 2303
-            },
-            {
-              "x": 0,
-              "y": 33,
-              "sourceLibrary": 1,
-              "sourceImage": 2303
-            },
-            {
-              "x": 0,
-              "y": 81,
-              "sourceLibrary": 1,
-              "sourceImage": 2303
-            }
-          ]
-        },
-        {
-          "index": 31231,
-          "cells": [
-            {
-              "x": 0,
-              "y": 13,
-              "sourceLibrary": 1,
-              "sourceImage": -1536
-            },
-            {
-              "x": 0,
-              "y": 101,
-              "sourceLibrary": 1,
-              "sourceImage": -1536
-            }
-          ]
-        },
-        {
-          "index": 2047,
-          "cells": [
-            {
-              "x": 0,
-              "y": 17,
-              "sourceLibrary": 1,
-              "sourceImage": 2048
-            },
-            {
-              "x": 0,
-              "y": 21,
-              "sourceLibrary": 1,
-              "sourceImage": 2048
-            }
-          ]
-        },
-        {
-          "index": 2303,
-          "cells": [
-            {
-              "x": 0,
-              "y": 25,
-              "sourceLibrary": 1,
-              "sourceImage": 2304
-            }
-          ]
-        },
-        {
-          "index": 32255,
-          "cells": [
-            {
-              "x": 0,
-              "y": 29,
-              "sourceLibrary": 1,
-              "sourceImage": -512
-            }
-          ]
-        },
-        {
-          "index": 2559,
-          "cells": [
-            {
-              "x": 0,
-              "y": 41,
-              "sourceLibrary": 1,
-              "sourceImage": 2560
-            },
-            {
-              "x": 0,
-              "y": 65,
-              "sourceLibrary": 1,
-              "sourceImage": 2560
-            },
-            {
-              "x": 0,
-              "y": 89,
-              "sourceLibrary": 1,
-              "sourceImage": 2560
-            }
-          ]
-        },
-        {
-          "index": 2558,
-          "cells": [
-            {
-              "x": 0,
-              "y": 49,
-              "sourceLibrary": 1,
-              "sourceImage": 2559
-            },
-            {
-              "x": 0,
-              "y": 97,
-              "sourceLibrary": 1,
-              "sourceImage": 2559
-            }
-          ]
-        },
-        {
-          "index": 30975,
-          "cells": [
-            {
-              "x": 0,
-              "y": 53,
-              "sourceLibrary": 1,
-              "sourceImage": -1792
-            },
-            {
-              "x": 0,
-              "y": 85,
-              "sourceLibrary": 1,
-              "sourceImage": -1792
-            }
-          ]
-        },
-        {
-          "index": 3071,
-          "cells": [
-            {
-              "x": 0,
-              "y": 61,
-              "sourceLibrary": 1,
-              "sourceImage": 3072
-            },
-            {
-              "x": 0,
-              "y": 121,
-              "sourceLibrary": 1,
-              "sourceImage": 3072
-            },
-            {
-              "x": 0,
-              "y": 129,
-              "sourceLibrary": 1,
-              "sourceImage": 3072
-            }
-          ]
-        },
-        {
-          "index": 31999,
-          "cells": [
-            {
-              "x": 0,
-              "y": 69,
-              "sourceLibrary": 1,
-              "sourceImage": -768
-            }
-          ]
-        },
-        {
-          "index": 3070,
-          "cells": [
-            {
-              "x": 0,
-              "y": 73,
-              "sourceLibrary": 1,
-              "sourceImage": 3071
-            }
-          ]
-        },
-        {
-          "index": 2814,
-          "cells": [
-            {
-              "x": 0,
-              "y": 113,
-              "sourceLibrary": 1,
-              "sourceImage": 2815
-            }
-          ]
-        },
-        {
-          "index": 1535,
-          "cells": [
-            {
-              "x": 0,
-              "y": 117,
-              "sourceLibrary": 1,
-              "sourceImage": 1536
-            }
-          ]
-        },
-        {
-          "index": 3582,
-          "cells": [
-            {
-              "x": 0,
-              "y": 137,
-              "sourceLibrary": 1,
-              "sourceImage": 3583
-            }
-          ]
-        },
-        {
-          "index": 4350,
-          "cells": [
-            {
-              "x": 0,
-              "y": 145,
-              "sourceLibrary": 1,
-              "sourceImage": 4351
-            }
-          ]
-        },
-        {
-          "index": 4607,
-          "cells": [
-            {
-              "x": 0,
-              "y": 153,
-              "sourceLibrary": 1,
-              "sourceImage": 4608
-            }
-          ]
-        },
-        {
-          "index": 4606,
-          "cells": [
-            {
-              "x": 0,
-              "y": 161,
-              "sourceLibrary": 1,
-              "sourceImage": 4607
-            }
-          ]
-        }
-      ],
-      "parserReference": "Suprcode/Crystal@0e315fe327192afe52c3d7357ddd1f5b7e26c5b8 Client/MirObjects/MapCode.cs LoadMapType100",
-      "interpretation": "Front library indices and wide background image IDs are checked separately against the prepared browser mapping. Preserving these values and matching native map hashes do not authenticate the source as a 2003 client. Unresolved source references remain failed, including entries the source also labels empty."
+      "parserReference": "Suprcode/Crystal@0e315fe327192afe52c3d7357ddd1f5b7e26c5b8 Client/MirObjects/MapCode.cs LoadMapType0",
+      "interpretation": "Exact classic-12 source bytes are exported without map conversion. Correct WemadeMir2 library routing and native/browser byte equality do not authenticate the source as the 2003 Shanda release."
     }
   },
   "world": {
@@ -879,77 +390,91 @@
         "name": "比奇省",
         "width": 700,
         "height": 700,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+        "resourceNamespace": "WemadeMir2",
+        "previousCollisionDifferences": 5761,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0102",
         "name": "肉店",
         "width": 15,
         "height": 15,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0103",
         "name": "铁器店",
         "width": 27,
         "height": 29,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0104",
         "name": "技能书店",
         "width": 13,
         "height": 16,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0105",
         "name": "首饰店",
         "width": 27,
         "height": 29,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0106",
         "name": "衣服店",
         "width": 27,
         "height": 29,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0108",
         "name": "药店",
         "width": 15,
         "height": 18,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0109",
         "name": "炼药房",
         "width": 10,
         "height": 15,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0132",
         "name": "边界书店",
         "width": 22,
         "height": 24,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0140",
         "name": "边界仓库",
         "width": 17,
         "height": 20,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       },
       {
         "id": "0141",
         "name": "边界杂货店",
         "width": 27,
         "height": 32,
-        "collisionMismatches": 0
+        "collisionMismatches": 0,
+        "browserCollisionVerification": "all exported cells match native bytes"
       }
     ],
     "installedMapIDsMatchCollisionAudit": true,

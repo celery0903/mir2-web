@@ -12,6 +12,7 @@
 - Published asset conversion: https://github.com/fq393/mir2-web at `7e5782118c78defb42d8ffb55ca3a3de199e90a6`.
 - All downloaded files have paths, sizes and Git blob SHA-1 values in `shared/classic-assets.lock.json`. Images originate from the commercial Legend of Mir client; the asset manifests retain their recorded source information. No application code from that repository is included.
 - Server environment and map seed: https://github.com/mirbeta/MirServer at `f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c`, archive SHA-256 `b3a9f10e96036aad7bd97b0f65fa221fae0457c1e5a9e6500720a09039916334`. Lock: `shared/server-data.lock.json`.
+- Native classic-12 map hashes and the corresponding public Crystal-converted WemadeMir2 library sizes/SHA-256 values are pinned in `shared/native-world.lock.json`. Library source: https://mirfiles.com/resources/mir2/crystal/patch/Data/Map/WemadeMir2/. These converted libraries and community maps are not authenticated as the 2003 Shanda client archive.
 - Monster, item and skill SQL comes from the pinned OpenMir2 repository. The seed contains mixed-version data; only the audited Bichon profile is enabled.
 - Experience sources and the Level18 discrepancy are recorded in `shared/classic-experience.json`. The tables are community references, not authenticated official server data.
 - Neither the source-code licenses nor this project grant rights to the original game's commercial images, maps, marks or audio. Asset rights are separate from the MIT server license.

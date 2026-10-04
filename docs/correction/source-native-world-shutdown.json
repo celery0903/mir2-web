@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-04T21:46:36.422Z",
+  "container": "mir2-web-engine-1",
+  "state": "exited",
+  "exitCode": 0,
+  "finishedAt": "2026-10-04T21:46:08.537098437Z",
+  "saveAcknowledged": true,
+  "nativeGameExit": 0,
+  "lines": [
+    "[GameSrv] 21:46:02.120 [INF] OPENMIR2_SAVE_COMPLETE",
+    "[GameSrv] 21:46:02.322 [INF] OPENMIR2_SAVE_COMPLETE",
+    "OPENMIR2_GAME_EXIT=0"
+  ]
+}

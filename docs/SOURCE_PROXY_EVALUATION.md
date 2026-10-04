@@ -2,6 +2,8 @@
 
 日期：2026-10-04。正式入口 <http://172.30.0.16:18880/> 已改用现成 H5 源码和配套 proxy。目标仍为 2003 年盛大原版 1.76，完整版本验收仍未通过。
 
+最新地图更新已将比奇改为固定服务端种子的旧 12 字节格式地图和对应 WemadeMir2 库，严格资源检查通过，未解析引用为零；下文 71 个缺项和 Mir3 资源的记录属于此前转换图。世界范围仍为 11 张图，沃玛森林和毒蛇山谷只有候选资源检查，尚未正式开放。更新证据见本文末尾“原生比奇地图与素材库”。
+
 ## 运行链路与来源
 
 浏览器使用 [leiniaozl229/mir2](https://github.com/leiniaozl229/mir2/tree/77e3ff7506b1ca55cac15df247cb2fcedd69c535) 的 `apps/web` Pixi 客户端；同源 Nginx 转发 `/ws` 给它的 `services/web-gateway` .NET 10 proxy，再连接原有 OpenMir2 六个服务和 MySQL。源码作为 `upstream/mir2-client` 子模块固定在 `77e3ff7506b1ca55cac15df247cb2fcedd69c535`，上游检出保持干净。
@@ -75,7 +77,7 @@
 
 ```bash
 npm ci
-npm run prepare:source -- --allow-missing-references
+npm run prepare:source
 docker compose up -d --build --wait
 MIR_URL=http://127.0.0.1:18880 npm test
 MIR_URL=http://127.0.0.1:18880 npm run test:source-services
@@ -139,3 +141,17 @@ npm run verify:deployment
 21:21 UTC 更新正式引擎、网页和素材，关闭前原生保存完成并正常退出。最终盾与火球检查分别保存在 [盾](correction/source-status-shield-final/evidence.json) 和 [火球](correction/source-status-fireball-final/evidence.json)。[部署核对](correction/source-status-deployment-evidence.json) 确认声明的实测镜像、30 个网页文件和 916 个资源文件，原数据库与 proxy 实例、存档卷和书店脚本保持；引擎实例已更换，旧资源及镜像保留。
 
 [正式入口回归](correction/source-status-client-production/evidence.json) 通过三职业一级零金币注册、装备、移动、桌面/手机及重登，以及仓库存取与往返；未修改正式账号的等级、金币或位置。完整审计仍失败，11 张地图、71 个未解析引用、108 个混合版本技能和原包缺口仍在，goal 未完成。
+
+## 原生比奇地图与素材库
+
+21:47 UTC 正式比奇改用 `mirbeta/MirServer@f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c` 的 `0.map`，SHA-256 `183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7`。保留原始 700×700、52 字节头与每格 12 字节，没有裁剪成其他格式。对应地图不再引用旧转换图中的 Mir3 snow 库；前景文件字节 0/3/4/5 分别使用 Objects/Objects4/Objects5/Objects6，背景与中景使用同一 WemadeMir2 命名空间。新锁文件记录地图、整库的大小与 SHA-256；公共 Crystal 转换库和社区地图仍未认证为 2003 盛大原包。
+
+[源文件检查](correction/source-native-world-assets.json) 核对 490,000 个地图单元、4,807 帧、40,668,892 个 RGBA 像素及偏移，含原库遮罩。新导入流程拒绝额外尾部，也拒绝可能被旧工具误判的 14 字节布局。所有 11 张网页地图块重组后与原生文件逐字节一致，严格资源准备通过，未解析引用从 71 降为零。[八处画面对照](correction/source-native-world-browser/evidence.json) 包含出生点、仓库、城内、城南、西南、东北与两个野外入口，桌面/手机均非空、零未解析引用，无异常、资源失败或横向溢出；这些是比奇内的入口画面，未验收未开放的野外跨图。
+
+新地图相对旧部署有 5,761 格碰撞变化。[保存后的位置检查](correction/source-native-world-positions.json) 核对 17 个已有比奇角色，没有新增阻挡，不调整坐标。现有 44 个店铺连接保留；[隔离浏览器验收](correction/source-native-world-client-isolated/evidence.json) 通过三职业一级零金币建角、装备、原生确认移动、桌面/手机、重登及仓库存取与往返。一次隔离栈端口冲突导致的连接失败单独保存在 [失败记录](correction/source-native-world-port-failure.json)，不计为游戏流程通过。
+
+[候选地图检查](correction/source-native-world-candidates-assets.json) 另外核对沃玛森林与毒蛇山谷，共 1,210,000 个单元、5,447 帧、44,733,724 个 RGBA 像素，无未解析引用；这不是正式开放、出入口/刷怪验收或官方版本认证。候选沃玛森林与另一份社区数据有 515 格碰撞差异，不能仅凭双方同名认定版本一致。
+
+引擎保存后正常退出，见 [关闭记录](correction/source-native-world-shutdown.json)。新引擎镜像 `sha256:62d10be31891bc4cac795ceda5eacbbfabc89105c3d316049e7347075e5095ea` 与隔离实测一致；网页镜像仍为 `sha256:19f73b86862742547304110a0c1bd989cb22623a4ee413668e1378d81fe181d1`，继续复用现成客户端和 proxy。更新前快照与新部署分别保存在 [更新前](correction/source-native-world-before-deployment.json) 和 [部署核对](correction/source-native-world-deployment-evidence.json)。新部署核对 30 个网页文件、7,155 个资源文件，其中 6,247 个为地图 PNG（含遮罩），原生地图匹配，四项服务健康。数据库与 proxy 实例、引擎存档卷、原书店脚本保持；引擎实例已更换，旧资源与镜像保留。
+
+21:47 UTC 开始的 [正式入口回归](correction/source-native-world-client-production/evidence.json) 全部通过：三职业一级零金币建角、装备、服务端确认移动、桌面/手机与重登存档，仓库原入口、手机存入、重登取回同一物品及往返后本人可见。正式测试没有使用离线等级、金币或位置 fixture，无浏览器异常或资源失败。地图资源检查通过不构成完整 1.76 验收；完整审计仍返回 1，11 张地图、108 个混合版本技能、纯净数据、其余技能和系统及原安装包仍未完成，goal 保持 active。

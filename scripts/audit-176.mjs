@@ -35,6 +35,7 @@ files.push('shared/classic-magic.json', 'server/source-magic.patch', 'scripts/pr
 files.push('tests/source-flight-reference.mjs', 'tests/flight-reference/Dockerfile');
 files.push('server/openmir2-status.patch', 'tests/source-status.mjs', 'tests/status/StatusChecks.csproj', 'tests/status/Program.cs');
 files.push('tests/source-services.mjs', 'tests/source-empty-inventory.mjs', 'tests/native/Program.cs');
+files.push('shared/native-world.lock.json', 'scripts/fetch-native-map-libraries.mjs', 'scripts/prepare-native-map-assets.py', 'scripts/check-native-world-positions.mjs', 'tests/native-world-assets.py', 'tests/source-native-world.mjs');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);
@@ -55,6 +56,25 @@ if (sourceAssets.maps) {
     return [file.split('/').at(-1).replace(/\.map$/, ''), hash];
   }));
   nativeMapsMatch = sourceAssets.maps.every(map => hashes[map.id] === map.sourceSha256);
+  if (sourceAssets.maps.find(map => map.id === '0')?.resourceNamespace === 'WemadeMir2') {
+    const lock = await json('shared/native-world.lock.json');
+    const pin = lock.maps.find(map => map.id === '0');
+    const browserMap = await json(join(process.env.MIR_SOURCE_ASSETS ?? '.runtime/source-assets', 'maps/0/map.json'));
+    const referencesCorrect = Object.entries(browserMap.objectLibraries ?? {}).every(([fileByte, name]) => name === (Number(fileByte) === 0 ? 'Objects' : `WemadeObjects${Number(fileByte) + 1}`));
+    const matchesPreparedMap = browserMap.sourceSha256 === pin.sha256;
+    const matchesDeployedMap = hashes['0'] === pin.sha256;
+    const allBrowserCellsMatchNative = sourceAssets.maps.every(map => map.browserCellsMatchNative === true);
+    mapConversion = {
+      available: true, conversionRequired: false,
+      acceptance: referencesCorrect && matchesPreparedMap && matchesDeployedMap && allBrowserCellsMatchNative && sourceAssets.mapResourceAcceptance === 'passed' ? 'passed' : 'failed',
+      sourceRepository: lock.repository, sourceRevision: lock.revision, sourceSha256: pin.sha256,
+      resourceNamespace: 'WemadeMir2', objectLibraries: browserMap.objectLibraries,
+      referencesCorrect, matchesPreparedMap, matchesDeployedMap, allBrowserCellsMatchNative,
+      dimensions: { width: browserMap.width, height: browserMap.height },
+      parserReference: 'Suprcode/Crystal@0e315fe327192afe52c3d7357ddd1f5b7e26c5b8 Client/MirObjects/MapCode.cs LoadMapType0',
+      interpretation: 'Exact classic-12 source bytes are exported without map conversion. Correct WemadeMir2 library routing and native/browser byte equality do not authenticate the source as the 2003 Shanda release.'
+    };
+  } else {
   const raw = await readFile(join(assets, 'server-maps/0.map'));
   const lock = await json('shared/classic-assets.lock.json');
   const pinned = lock.files.find(entry => entry.file === 'server-maps/0.map');
@@ -110,6 +130,7 @@ if (sourceAssets.maps) {
     parserReference: 'Suprcode/Crystal@0e315fe327192afe52c3d7357ddd1f5b7e26c5b8 Client/MirObjects/MapCode.cs LoadMapType100',
     interpretation: 'Front library indices and wide background image IDs are checked separately against the prepared browser mapping. Preserving these values and matching native map hashes do not authenticate the source as a 2003 client. Unresolved source references remain failed, including entries the source also labels empty.'
   };
+  }
 }
 const frameIndices = [1, 3, 4, 6, 7, 60, 63, 65, 73, 370, 376, 377, 383, 384, 385, 392, 393];
 const frames = Object.fromEntries(frameIndices.map(index => {

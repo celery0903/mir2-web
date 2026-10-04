@@ -6,7 +6,7 @@
 
 运行链路为 Pixi H5 客户端 → 同源 Nginx → 原项目的 .NET 10 WebSocket/TCP proxy → [OpenMir2](https://github.com/mirbeta/OpenMir2) 原生服务端 → MySQL。账号、角色、碰撞、战斗、经验、物品、装备、技能、NPC 和存档由原生服务端处理。此前的 Phaser 客户端及自写网关保留在 `web/`、`server/WebGateway/`，用于核对历史修正和测试；默认部署不构建它们。
 
-当前经典配置包含比奇省与十张店铺室内地图、44 个原始出入口，浏览器与服务端逐格碰撞一致。新入口已核验三职业注册建角、装备、移动和重连；联机、战斗、物品和技能接口复用现成源码，其余流程仍需重新进行浏览器验收。一级、零金币开始，使用一倍经验；历史七级技能验收使用单独标注的测试数据。
+当前经典配置包含比奇省与十张店铺室内地图、44 个原始出入口，浏览器与服务端逐格碰撞一致。比奇使用固定服务端种子的旧 12 字节格式地图和对应 WemadeMir2 库，已替换混有 Mir3 素材的转换图，地图资源未解析引用从 71 降到零。来源、逐像素检查和画面对照见 [原生地图核对](docs/correction/source-native-world-browser/evidence.json)。新入口已核验三职业注册建角、装备、移动和重连；一级、零金币开始，使用一倍经验。
 
 这不是经过认证的完整原版 1.76 整包。沙巴克、其他野外与洞穴、交易、组队、行会、任务和更多技能尚未完成网页验收。边界仓库已接通原生存取，校验结果见纠正报告。服务端种子包含混合版本内容，实际开放范围经过过滤。来源、固定版本、许可证和已知边界见 [调研报告](docs/SOURCE_RESEARCH.md) 与 [第三方说明](THIRD_PARTY_NOTICES.md)。
 
@@ -18,13 +18,13 @@
 git clone --recurse-submodules https://github.com/celery0903/mir2-web.git
 cd mir2-web
 npm ci
-npm run prepare:source -- --allow-missing-references
+npm run prepare:source
 docker compose up -d --build --wait
 ```
 
 浏览器打开 **http://localhost:18880/**，根路径直接进入游戏。默认绑定 `0.0.0.0`，也可设置 `MIR_BIND=127.0.0.1` 或 `MIR_PORT=18883`。网页与 WebSocket 使用同一端口，proxy、原生 TCP 和数据库保持私网访问。资源由锁文件校验；无需安装宿主机 .NET。其他域名通过 `MIR_SOURCE_ORIGINS` 设置精确的逗号分隔 Origin 列表。
 
-`--allow-missing-references` 仅允许启动已明确标为未完成的当前版本：按正确素材库核对后，源地图有 71 个未解析引用，其中 19 个属于 SmTiles，输出 `integration.json` 中的资源验收保持 `failed`。省略该选项时资源准备会拒绝这些缺项。该选项不改变完整 1.76 验收结果，也不启用候选的 570 张混合版本地图。
+默认准备严格检查地图及素材哈希、库编号和全部导出单元，当前 11 张图已无未解析引用。`--allow-missing-references` 保留用于明确标注的旧转换图适配，不能绕过原生地图的素材缺项或内容哈希检查，也不改变完整 1.76 验收结果。沃玛森林和毒蛇山谷已有单独的素材导出与验证，尚未在正式世界配置中开放；候选的混合版本地图未整包启用。
 
 账号使用 3 至 10 位字母数字，密码使用 5 至 10 位字母数字，角色名最多 14 个 GBK 字节。上游账号库沿用传统密码存储。
 
@@ -63,7 +63,9 @@ npm run audit:176 -- --check
 
 `tests/source-empty-inventory.mjs` 用此前空背包登录失败的专用角色核对桌面/手机原生回包和装备存档。`tests/source-services.mjs` 的 `MIR_SERVICE_REPAIR_FIXTURE=1` 只允许 localhost 隔离栈，并要求 `MIR_TEST_FIXTURES=1` 及已有角色报告；它只离线调整测试角色到铁匠铺的位置，再执行真实修理，不验收此前失败的长途行走。需要停止或重启引擎的隔离测试必须串行运行。
 
-`npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希，以及地图清单、全部地图块、素材库清单和全部导出魔法 PNG 与准备产物的哈希；同时核对原生地图、容器健康和数据库/引擎/proxy 实例是否保持。首次记录没有可比较快照时会明确标为未证明实例保持。
+`npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希，以及地图清单、全部地图块、素材库清单和全部导出地图与魔法 PNG（含地图遮罩）与准备产物的哈希；同时核对原生地图、容器健康和数据库/引擎/proxy 实例是否保持。首次记录没有可比较快照时会明确标为未证明实例保持。
+
+`tests/native-world-assets.py` 校验原生地图的全部导出单元、前景库路由、图像像素和偏移，并拒绝可能误判为尾部数据的 14 字节格式。`tests/source-native-world.mjs` 对照八处旧/新比奇画面与手机布局。`scripts/check-native-world-positions.mjs` 只读检查新地图是否阻挡已有角色位置；部署前须等待原生保存确认后再核对，检查不会调整角色坐标。
 
 设置 `MIR_EXPECTED_WEB_IMAGE=sha256:...` 可要求网页镜像与声明的已实测镜像一致。报告中的补丁哈希来自当前工作树，单独的补丁哈希不能证明运行镜像已经应用它。
 

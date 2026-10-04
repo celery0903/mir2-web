@@ -11,6 +11,9 @@ const classic = resolve(process.env.MIR_CLASSIC_ASSETS ?? join(root, '.runtime/c
 const maps = resolve(process.env.MIR_SOURCE_MAPS ?? join(root, '.runtime/classic-profile/Map'));
 const output = resolve(process.env.MIR_SOURCE_ASSETS ?? join(root, '.runtime/source-assets'));
 const sourceAssets = join(source, 'assets/web');
+const nativeLock = JSON.parse(await readFile(join(root, 'shared/native-world.lock.json')));
+const nativeMapIDs = new Set(nativeLock.defaultMapIDs);
+const nativeLibraries = resolve(process.env.MIR_NATIVE_MAP_LIBRARIES ?? join(root, '.runtime/wemade-mir2'));
 const revision = execFileSync('git', ['-C', source, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 if (revision !== '77e3ff7506b1ca55cac15df247cb2fcedd69c535') throw new Error('Unexpected source client revision');
 const json = async file => JSON.parse(await readFile(file, 'utf8'));
@@ -40,13 +43,18 @@ const rooms = [];
 const bichon = JSON.parse(await classicFile('manifest.json'));
 const bichonAdapters = new Map();
 const dependencies = { Tiles: new Set(), SmTiles: new Set(), Objects: new Set() };
-const mapAudit = await json(join(root, 'docs/map-audit.json'));
+const mapAuditFile = resolve(process.env.MIR_MAP_AUDIT ?? join(root, '.runtime/classic-profile/audit.json'));
+const mapAudit = await json(mapAuditFile);
 for (const { id } of mapAudit.maps) {
   const file = join(maps, `${id}.map`);
   execFileSync('python3', [join(source, 'tools/map_tool.py'), 'export', file, '--output', join(output, 'maps', id)], { stdio: 'inherit' });
   const manifest = await json(join(output, 'maps', id, 'map.json'));
   if (manifest.id !== id) throw new Error(`Map ID mismatch: ${id}`);
-  if (id === '0') {
+  if (nativeMapIDs.has(id)) {
+    const pin = nativeLock.maps.find(map => map.id === id);
+    const raw = await readFile(file);
+    if (raw.length !== pin.bytes || digest(raw) !== pin.sha256) throw new Error(`Native map checksum mismatch: ${id}`);
+  } else if (id === '0') {
     const sourceMap = await classicFile('server-maps/0.map');
     const raw = await readFile(file);
     if (!legacyMap(sourceMap).equals(raw)) throw new Error('Bichon does not match the pinned map conversion');
@@ -107,7 +115,14 @@ const dependencyFile = join(output, 'map-dependencies.json');
 await writeFile(dependencyFile, JSON.stringify({ dependencies: Object.fromEntries(Object.entries(dependencies).map(([name, indices]) => [name, [...indices].sort((a, b) => a - b)])) }));
 const sourceLock = await json(join(source, 'content/classic-176/asset-sources.json'));
 const missingMapReferences = [];
-for (const name of Object.keys(dependencies)) {
+const selectedNativeIDs = mapAudit.maps.filter(map => nativeMapIDs.has(map.id)).map(map => map.id);
+if (selectedNativeIDs.length) {
+  execFileSync('python3', [join(root, 'scripts/prepare-native-map-assets.py'), '--maps', maps, '--libraries', nativeLibraries, '--output', output, '--ids', ...selectedNativeIDs, '--supplement', dependencyFile], { stdio: 'inherit' });
+  const nativeReport = await json(join(output, 'native-world.json'));
+  missingMapReferences.push(...nativeReport.missingMapReferences);
+  for (const map of nativeReport.maps) Object.assign(mapReport.find(entry => entry.id === map.id), map);
+}
+for (const name of selectedNativeIDs.length ? [] : Object.keys(dependencies)) {
   if (bichonAdapters.has(name)) continue;
   const entry = sourceLock.files.find(value => value.file.toLowerCase() === `${name}.lib`.toLowerCase());
   const file = join(source, 'assets/raw/crystal-shanda', entry.file);
@@ -238,6 +253,31 @@ for (const [key, actor] of Object.entries(npc.actors)) {
 }
 await writeFile(join(npcDirectory, 'library.json'), JSON.stringify({ ...npcLibrary, adaptedNpcShapes, adaptedSourceManifest: 'actors/classic-npc.json', authenticated2003Client: false }, null, 2) + '\n');
 const report = { checkedAt: new Date().toISOString(), sourceRevision: revision, authenticated2003Client: false, mapResourceAcceptance: missingMapReferences.length ? 'failed' : 'passed', missingMapReferences, maps: mapReport, classicSource: { repository: lock.repository, revision: lock.revision, verifiedFiles: [...verified].sort() }, uiFamilies: Object.fromEntries([...families].map(([name, frames]) => [name, Object.keys(frames).length])), actors };
+for (const map of mapReport) {
+  const manifest = await json(join(output, 'maps', map.id, 'map.json'));
+  const raw = await readFile(join(maps, `${map.id}.map`));
+  const rebuilt = Buffer.alloc(raw.length);
+  raw.copy(rebuilt, 0, 0, 52);
+  const covered = new Uint8Array(manifest.width * manifest.height);
+  for (const chunk of manifest.chunks) {
+    const bytes = await readFile(join(output, 'maps', map.id, chunk.file));
+    if (bytes.length !== chunk.width * chunk.height * 12 || digest(bytes) !== chunk.sha256) throw new Error(`Invalid map chunk: ${map.id}/${chunk.file}`);
+    for (let x = 0; x < chunk.width; x++) {
+      const start = (chunk.x + x) * manifest.height + chunk.y;
+      for (let y = 0; y < chunk.height; y++) {
+        if (covered[start + y]) throw new Error(`Overlapping map chunks: ${map.id}`);
+        covered[start + y] = 1;
+      }
+      bytes.copy(rebuilt, 52 + start * 12, x * chunk.height * 12, (x + 1) * chunk.height * 12);
+    }
+  }
+  if (covered.some(value => !value) || !rebuilt.equals(raw)) throw new Error(`Browser/native map cells differ: ${map.id}`);
+  map.browserCellsMatchNative = true;
+  const audit = mapAudit.maps.find(entry => entry.id === map.id);
+  audit.collisionMismatches = 0;
+  audit.browserCollisionVerification = 'all exported cells match native bytes';
+}
+await writeFile(mapAuditFile, JSON.stringify(mapAudit, null, 2) + '\n');
 execFileSync('python3', [join(root, 'scripts/prepare-source-magic.py'), output], { stdio: 'inherit' });
 report.magicEffects = await json(join(output, 'effects/integration.json'));
 await writeFile(join(output, 'integration.json'), JSON.stringify(report, null, 2) + '\n');

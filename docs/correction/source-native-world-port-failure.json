@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-04T21:42:00Z",
+  "project": "mir2-rebuild",
+  "passed": false,
+  "full176Acceptance": false,
+  "cause": "Compose merged the production 18880 mapping into the isolated stack; Docker rejected it because the production port was already allocated.",
+  "browserResult": "Source-client fetch failed and map-view navigation returned ERR_CONNECTION_REFUSED on 18883. No gameplay flow passed in this attempt.",
+  "correction": "The isolated override replaces ports with 18883 and explicitly sets the proxy origins. The healthy stack was then tested in a separate run.",
+  "productionPortChanged": false
+}

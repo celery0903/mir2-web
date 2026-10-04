@@ -5,77 +5,91 @@
       "name": "比奇省",
       "width": 700,
       "height": 700,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+      "resourceNamespace": "WemadeMir2",
+      "previousCollisionDifferences": 5761,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0102",
       "name": "肉店",
       "width": 15,
       "height": 15,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0103",
       "name": "铁器店",
       "width": 27,
       "height": 29,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0104",
       "name": "技能书店",
       "width": 13,
       "height": 16,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0105",
       "name": "首饰店",
       "width": 27,
       "height": 29,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0106",
       "name": "衣服店",
       "width": 27,
       "height": 29,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0108",
       "name": "药店",
       "width": 15,
       "height": 18,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0109",
       "name": "炼药房",
       "width": 10,
       "height": 15,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0132",
       "name": "边界书店",
       "width": 22,
       "height": 24,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0140",
       "name": "边界仓库",
       "width": 17,
       "height": 20,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     },
     {
       "id": "0141",
       "name": "边界杂货店",
       "width": 27,
       "height": 32,
-      "collisionMismatches": 0
+      "collisionMismatches": 0,
+      "browserCollisionVerification": "all exported cells match native bytes"
     }
   ],
   "connections": 44,

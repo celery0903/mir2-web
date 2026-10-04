@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "rejectsAmbiguous14ByteMaps": true,
+  "cellsChecked": 1210000,
+  "framesChecked": 5447,
+  "rgbaPixelsChecked": 44733724,
+  "allMapCellsAndLibraryPixelsMatch": true,
+  "maps": [
+    {
+      "id": "0",
+      "cells": 490000,
+      "allCellsMatchNative": true,
+      "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+      "nonDefaultFrontCells": 498
+    },
+    {
+      "id": "1",
+      "cells": 360000,
+      "allCellsMatchNative": true,
+      "sourceSha256": "a60373a2e2bd1e982dcb614ea40a8aa86638b4d2680fdb2f2ed1640654c61793",
+      "nonDefaultFrontCells": 389
+    },
+    {
+      "id": "2",
+      "cells": 360000,
+      "allCellsMatchNative": true,
+      "sourceSha256": "6174b98752bb5a8464d6bcea979aeb4a7824ca36cc60d617fc58df0f48c88297",
+      "nonDefaultFrontCells": 0
+    }
+  ],
+  "libraries": [
+    {
+      "name": "Objects",
+      "sourceSha256": "1f72c19425ef402a842d3d64e9d199153d7ff610766d41bb91145d74e4411b64",
+      "frames": 3952,
+      "empty": 28,
+      "missing": 0
+    },
+    {
+      "name": "SmTiles",
+      "sourceSha256": "1a6389e666cf0579ed5721dc6f29e2d46d806d17350ff1bfcae857e5dffcc113",
+      "frames": 209,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "Tiles",
+      "sourceSha256": "6413c0e92281a1c796134a177de176a642c86b5eeb8873967afac2767ca4e64c",
+      "frames": 659,
+      "empty": 3,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects2",
+      "sourceSha256": "5697f0c3a22230b1c2205988d1cdfe8a064e5f3b0862155ad9cc09d8e38fb938",
+      "frames": 53,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects4",
+      "sourceSha256": "f9c4920ff72b21ca1fb591c1987520ee691b26f2ee35649a722884b8c6ef593b",
+      "frames": 338,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects5",
+      "sourceSha256": "767281fdc864e56c9df9ecacc90b0d6171ab27a980b36e60cbdcfec906c10a66",
+      "frames": 48,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects6",
+      "sourceSha256": "d3511d75d5571d20b0946a70038af42a3b3ce564b05ef651bb98793895e80d5a",
+      "frames": 188,
+      "empty": 6,
+      "missing": 0
+    }
+  ],
+  "missingMapReferences": []
+}

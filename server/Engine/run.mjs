@@ -100,7 +100,7 @@ try {
     await normalize(join(root, 'Mir200'));
     await writeFile(join(root, '.seed-version'), 'f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c\n');
   }
-  const profileVersion = 'classic-7e5782118c78defb42d8ffb55ca3a3de199e90a6-7';
+  const profileVersion = 'classic-7e5782118c78defb42d8ffb55ca3a3de199e90a6-8';
   let installedProfile = '';
   try { installedProfile = await readFile(join(root, '.profile-version'), 'utf8'); } catch {}
   if (installedProfile !== profileVersion) {

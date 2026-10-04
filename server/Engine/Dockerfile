@@ -15,6 +15,7 @@ COPY --from=classic /assets/classic /classic
 COPY scripts/native-map.mjs scripts/prepare-classic-world.mjs scripts/
 COPY shared/classic-experience.json shared/classic-experience.json
 COPY shared/classic-storage.json shared/classic-storage.json
+COPY shared/native-world.lock.json shared/native-world.lock.json
 COPY tests/native-map.test.mjs tests/native-map.test.mjs
 RUN node --test tests/native-map.test.mjs && node scripts/prepare-classic-world.mjs /seed /classic /profile
 
