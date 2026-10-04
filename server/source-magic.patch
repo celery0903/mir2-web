@@ -1,0 +1,236 @@
+diff --git a/apps/web/src/classic-magic.ts b/apps/web/src/classic-magic.ts
+new file mode 100644
+index 0000000..f215554
+--- /dev/null
++++ b/apps/web/src/classic-magic.ts
+@@ -0,0 +1,41 @@
++import rules from '../../../content/classic-176/magic-effects.json';
++
++export type Sequence={library:string;start:number;count:number;interval:number};
++export type Projectile=Sequence&{stride:number;impact:Sequence};
++type Plan={kind:'projectile';sequence:Projectile}|{kind:'sequence';sequence:Sequence}|{kind:'beam';sequence:Sequence&{stride:number}};
++
++export function castSequence(effect:number):Sequence|undefined{
++ if(!Number.isInteger(effect)||effect<1||effect>rules.readyBases.length)return;
++ const override=(rules.readyOverrides as Record<string,{count:number;interval:number}>)[effect];
++ return {library:rules.magic2ReadyEffects.includes(effect)?'Magic2':'Magic',start:rules.readyBases[effect-1],count:override?.count??rules.readyCount,interval:override?.interval??rules.readyInterval};
++}
++
++export function effectPlan(effectType:number,effect:number):Plan|undefined{
++ const projectile=(rules.projectiles as Record<number,Projectile>)[effect];
++ if(projectile&&((effectType===1&&(effect===1||effect===3))||(effectType===8&&(effect===10||effect===17))||(effectType===9&&(effect===11||effect===12))))return {kind:'projectile',sequence:projectile};
++ const impact=(rules.impactSequences as Record<number,Sequence>)[effect];
++ if(effectType===2&&impact)return {kind:'sequence',sequence:impact};
++ if(effectType===7&&effect===9)return {kind:'sequence',sequence:rules.thunder};
++ if(effectType===6&&effect===8)return {kind:'beam',sequence:rules.beam};
++}
++
++export function spellPose<T extends {x:number;y:number;direction:number}>(caster:T,target:{x:number;y:number}){
++ const dx=target.x-caster.x,dy=target.y-caster.y;
++ let direction=caster.direction;
++ if(dx||dy){
++  if(dx===0)direction=dy<0?0:4;
++  else if(dy===0)direction=dx<0?6:2;
++  else if(Math.abs(dy)>Math.abs(dx)*2.5)direction=dy<0?0:4;
++  else if(Math.abs(dy)<Math.abs(dx)/3)direction=dx<0?6:2;
++  else direction=dx>0?(dy<0?1:3):(dy<0?7:5);
++ }
++ return {...caster,direction,action:'spell' as const};
++}
++
++export function projectileDirection(from:{x:number;y:number},to:{x:number;y:number}){
++ const dx=(to.x-from.x)*48,dy=(to.y-from.y)*32;
++ if(dx===0)return dy<0?0:8;
++ if(dy===0)return dx<0?12:4;
++ const ratio=Math.abs(dy/dx),sector=ratio>4?4:ratio>1.4?3:ratio>1/1.9?2:ratio>1/4?1:0;
++ return dx>0?(dy<0?4-sector:4+sector):(dy<0?(12+sector)%16:12-sector);
++}
+diff --git a/apps/web/src/magic-effects.ts b/apps/web/src/magic-effects.ts
+index 5e0e76b..0bfd8c1 100644
+--- a/apps/web/src/magic-effects.ts
++++ b/apps/web/src/magic-effects.ts
+@@ -1,41 +1,10 @@
+ import {Assets,Container,Sprite,Texture} from 'pixi.js';
++import {castSequence,effectPlan,projectileDirection,type Projectile} from './classic-magic';
+
+ type EntityPosition={x:number;y:number};
+ type Frame={file:string;offsetX:number;offsetY:number};
+ type Library={frames:Record<string,Frame>};
+ type EffectPacket={casterId:number;targetId:number;x:number;y:number;effectType:number;effect:number};
+-type CastSequence={library:'Magic'|'Magic2';start:number;count:number;interval:number};
+-
+-// The pinned 1.76 core catalogue is explicit here. Passive sword skills do
+-// not emit a cast animation; their visible result is the server's melee action.
+-const coreSkillVisuals:Record<number,CastSequence|null>={
+-  1:{library:'Magic',start:0,count:10,interval:60},
+-  2:{library:'Magic',start:200,count:10,interval:60},
+-  3:null,
+-  5:{library:'Magic',start:0,count:10,interval:60},
+-  6:{library:'Magic2',start:20,count:3,interval:100},
+-  7:null,
+-  8:{library:'Magic2',start:20,count:3,interval:100},
+-  11:{library:'Magic2',start:20,count:3,interval:100},
+-  12:null,
+-  13:{library:'Magic',start:0,count:10,interval:60},
+-  14:{library:'Magic2',start:20,count:3,interval:100},
+-  17:{library:'Magic2',start:10,count:5,interval:80},
+-  25:null,
+-  26:null,
+-  31:{library:'Magic2',start:20,count:3,interval:100},
+-};
+-const additionalSkillVisuals:Record<number,CastSequence>={
+-  9:{library:'Magic2',start:10,count:5,interval:80},
+-  10:{library:'Magic2',start:10,count:5,interval:80},
+-  15:{library:'Magic2',start:20,count:3,interval:100},
+-  16:{library:'Magic2',start:10,count:5,interval:80},
+-  18:{library:'Magic2',start:10,count:5,interval:80},
+-  19:{library:'Magic2',start:10,count:5,interval:80},
+-  20:{library:'Magic2',start:10,count:5,interval:80},
+-  29:{library:'Magic',start:200,count:10,interval:60},
+-  37:{library:'Magic2',start:20,count:3,interval:100},
+-};
+
+ const libraryCache=new Map<string,Promise<Library>>(),textureCache=new Map<string,Promise<Texture>>();
+
+@@ -57,39 +26,41 @@ async function frames(name:string,indices:number[]){
+
+ export class MagicEffects {
+  private generation=0;private sprites=new Set<Sprite>();
++ private castEnds=new Map<number,number>();private errors:string[]=[];private recent:Array<{casterId:number;effect:number;library:string;start:number;count:number;x:number;y:number}>=[];
+  constructor(private depth:Container,private position:(id:number)=>EntityPosition|undefined){}
+
+- clear(){this.generation++;for(const sprite of this.sprites)sprite.destroy();this.sprites.clear();}
++ clear(){this.generation++;for(const sprite of this.sprites)sprite.destroy();this.sprites.clear();this.castEnds.clear();this.recent=[];this.errors=[];}
++ debugState(){return {activeSprites:this.sprites.size,recent:this.recent.slice(),errors:this.errors.slice()};}
+
+-  cast(casterId:number,magicId:number){
++  cast(casterId:number,effect:number){
+   const caster=this.position(casterId);if(!caster)return;
+-  const visual=Object.prototype.hasOwnProperty.call(coreSkillVisuals,magicId)
+-    ? coreSkillVisuals[magicId]
+-    : additionalSkillVisuals[magicId];
++  const visual=castSequence(effect);
+   if(!visual)return;
++  this.castEnds.set(casterId,performance.now()+(visual.count-1)*visual.interval);
++  this.recent.push({casterId,effect,library:visual.library,start:visual.start,count:visual.count,x:caster.x,y:caster.y});
++  if(this.recent.length>32)this.recent.shift();
+   this.run(this.sequence(visual.library,range(visual.start,visual.count),caster,visual.interval));
+ }
+
+  resolve(packet:EffectPacket){
+   const caster=this.position(packet.casterId)??{x:packet.x,y:packet.y};
+   const target=this.position(packet.targetId)??{x:packet.x,y:packet.y};
+-  if((packet.effectType===1&&(packet.effect===1||packet.effect===3))||
+-     (packet.effectType===8&&packet.effect===10))this.later(420,()=>this.projectile(caster,target));
+-  else if(packet.effectType===2&&(packet.effect===2||packet.effect===4||packet.effect===27))
+-   this.later(420,()=>this.sequence('Magic',range(370,10),target,80));
+-  else if(packet.effectType===7&&packet.effect===9)this.later(420,()=>this.sequence('Magic2',range(10,5),target,80));
+-  else if(packet.effectType===4)this.later(420,()=>this.sequence('Magic2',range(20,3),target,100));
++  const plan=effectPlan(packet.effectType,packet.effect);if(!plan)return;
++  const delay=Math.max(0,(this.castEnds.get(packet.casterId)??performance.now())-performance.now());
++  if(plan.kind==='projectile')this.later(delay,()=>this.projectile(caster,target,plan.sequence));
++  else if(plan.kind==='beam')this.later(delay,()=>this.sequence(plan.sequence.library,range(plan.sequence.start+projectileDirection(caster,target)*plan.sequence.stride,plan.sequence.count),caster,plan.sequence.interval));
++  else this.later(delay,()=>this.sequence(plan.sequence.library,range(plan.sequence.start,plan.sequence.count),target,plan.sequence.interval));
+ }
+
+- private async projectile(from:EntityPosition,to:EntityPosition){
+-  const generation=this.generation,direction=direction16(from,to),poses=await frames('Magic',range(10+direction*10,6));
++ private async projectile(from:EntityPosition,to:EntityPosition,visual:Projectile){
++  const generation=this.generation,direction=projectileDirection(from,to),poses=await frames(visual.library,range(visual.start+direction*visual.stride,visual.count));
+   if(generation!==this.generation)return;
+-  const sprite=this.makeSprite(from);const distance=Math.max(Math.abs(to.x-from.x),Math.abs(to.y-from.y)),duration=Math.max(120,distance*50),started=performance.now();
++  const sprite=this.makeSprite(from);const distance=Math.max(Math.abs(to.x-from.x)*48,Math.abs(to.y-from.y)*32),duration=Math.max(50,distance*2),started=performance.now();
+   const tick=(now:number)=>{
+    if(generation!==this.generation||sprite.destroyed)return;
+-   const progress=Math.min(1,(now-started)/duration),frame=Math.min(poses.length-1,Math.floor((now-started)/30)%poses.length),pose=poses[frame];
++   const progress=Math.min(1,(now-started)/duration),frame=Math.floor((now-started)/visual.interval)%poses.length,pose=poses[frame];
+    sprite.position.set((from.x+(to.x-from.x)*progress)*48,(from.y+(to.y-from.y)*progress)*32);if(pose){sprite.texture=pose.texture;sprite.pivot.set(-pose.x,-pose.y);}
+-   if(progress<1)requestAnimationFrame(tick);else{this.remove(sprite);this.run(this.sequence('Magic',range(170,10),to,60));}
++   if(progress<1)requestAnimationFrame(tick);else{this.remove(sprite);this.run(this.sequence(visual.impact.library,range(visual.impact.start,visual.impact.count),to,visual.impact.interval));}
+   };
+   requestAnimationFrame(tick);
+  }
+@@ -108,11 +79,7 @@ export class MagicEffects {
+   private makeSprite(at:EntityPosition){const sprite=new Sprite();sprite.blendMode='add';sprite.position.set(at.x*48,at.y*32);sprite.zIndex=at.y*10000+at.x+4;this.sprites.add(sprite);this.depth.addChild(sprite);return sprite;}
+  private remove(sprite:Sprite){this.sprites.delete(sprite);sprite.destroy();}
+  private later(delay:number,action:()=>Promise<void>){const generation=this.generation;window.setTimeout(()=>{if(generation===this.generation)this.run(action());},delay);}
+- private run(task:Promise<void>){void task.catch(()=>{});}
++ private run(task:Promise<void>){void task.catch(error=>{this.errors.push(String(error));if(this.errors.length>16)this.errors.shift();});}
+ }
+
+ function range(start:number,count:number){return Array.from({length:count},(_,index)=>start+index);}
+-function direction16(from:EntityPosition,to:EntityPosition){
+- const radians=Math.atan2(to.x-from.x,from.y-to.y),degrees=(radians*180/Math.PI+360+11.25)%360;
+- return Math.floor(degrees/22.5)%16;
+-}
+diff --git a/apps/web/src/online-actors.ts b/apps/web/src/online-actors.ts
+index 84cd17b..1073494 100644
+--- a/apps/web/src/online-actors.ts
++++ b/apps/web/src/online-actors.ts
+@@ -119,7 +119,7 @@ export class OnlineActor {
+   let frame=locomotion&&movementProgress!==undefined?Math.min(this.frames.length-1,Math.floor(movementProgress*this.frames.length)):Math.floor((time-this.start)/this.interval);
+   if(locomotion&&movementProgress===1)frame=this.frames.length-1;
+   if(locomotion&&movementProgress===undefined&&this.movementEndedAt!==undefined){if(this.entity.self||time-this.movementEndedAt<MOVEMENT_SETTLE_MS)frame=this.frames.length-1;else{this.update({...this.entity,action:'standing'});return;}}
+-  if(['walking','running','attack','harvest','struck','dying'].includes(this.entity.action)&&frame>=this.frames.length){this.update({...this.entity,action:this.entity.action==='dying'?'dead':'standing'});return;}
++  if(['walking','running','attack','spell','harvest','struck','dying'].includes(this.entity.action)&&frame>=this.frames.length){this.update({...this.entity,action:this.entity.action==='dying'?'dead':'standing'});return;}
+   frame%=this.frames.length;
+   for(const [sprite,pose] of [[this.body,this.frames[frame]],[this.weapon,this.weaponFrames[frame]],[this.hair,this.hairFrames[frame]]] as const){sprite.texture=pose?.texture??Texture.EMPTY;if(pose)sprite.position.set(pose.x,pose.y);}
+  }
+diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
+index 8b44085..2067aec 100644
+--- a/apps/web/src/play.ts
++++ b/apps/web/src/play.ts
+@@ -12,6 +12,7 @@ import {SkillBar,skillUseOf,type MagicSkill} from './skills';
+ import {GameAudio} from './game-audio';
+ import {RepairView} from './repair';
+ import {MagicEffects} from './magic-effects';
++import {spellPose} from './classic-magic';
+ import {ClassicHud} from './classic-hud';
+ import {ClassicAuth,type SelectCharacter} from './classic-auth';
+ import {ClassicStage} from './classic-stage';
+@@ -327,7 +328,7 @@ function agentSnapshot(){
+   intentions:{held:held?{...held}:undefined,rightPointer:Boolean(rightPointer),clickDestination:clickDestination?{...clickDestination}:undefined,pursuitTarget,pursuitHarvest,pursuitGroundItem,combatTarget},
+   attributes:characterPanel.debugState(),inventory:inventory.debugState(),itemQuickBar:itemQuickBar.debugState(),equipment:equipment.debugState(),paperdoll:paperdoll.debugState(),groundItems:groundItems.debugState(),skills:skillBar.debugState(),minimap:minimap.debugState(),
+   dialogue:{visible:!dialogueElement.hidden,npc:dialogueTitle.textContent,text:dialogueText.textContent,options:Array.from(dialogueElement.querySelectorAll<HTMLButtonElement>('[data-dialogue-command]')).map(button=>({text:button.textContent,command:button.dataset.dialogueCommand}))},
+-  combatStatus:combatStatus.textContent,nearby, directions:directionsAvailable,entityCount:entities.size,
++  combatStatus:combatStatus.textContent,nearby, directions:directionsAvailable,entityCount:entities.size,magicEffects:magicEffects.debugState(),actorActions:Object.fromEntries([...visuals].map(([id,visual])=>[id,visual.debugState().action])),
+  };
+ }
+ agentObserver.attach(window as Window&{__mir2Agent?:AgentDebugApi},agentSnapshot);
+@@ -469,7 +470,15 @@ function continueCombat(){
+ function interact(target:Entity,harvest=false){
+  ignoreCanvasPointerUntil=performance.now()+100;
+  stopCombat();pursuitGroundItem=undefined;const actor=self===undefined?undefined:entities.get(self);if(!actor||actor.dead||target.self||socket?.readyState!==WebSocket.OPEN)return;
+- if(selectedMagic&&(target.feature&255)!==50){if(pendingAction){connection.textContent='当前动作完成后再施放技能';return;}pursuitTarget=undefined;pursuitHarvest=false;const distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));if(distance>8){connection.textContent=`${target.name||'目标'} 超出施法距离`;return;}const skill=selectedMagic;selectedMagic=undefined;skillBar.setPending(skill.magicId);const action=createAction('spell');socket.send(JSON.stringify({type:'castMagic',magicId:skill.magicId,targetId:target.id,actionId:action.actionId,mapGeneration}));update({...actor,direction:directions.findIndex(([x,y])=>x===Math.sign(target.x-actor.x)&&y===Math.sign(target.y-actor.y)),action:'spell'});connection.textContent=`正在对 ${target.name||'目标'} 施放 ${skill.name}…`;return;}
++ if(selectedMagic&&(target.feature&255)!==50){
++  if(pendingAction){connection.textContent='当前动作完成后再施放技能';return;}
++  pursuitTarget=undefined;pursuitHarvest=false;const distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
++  if(distance>8){connection.textContent=`${target.name||'目标'} 超出施法距离`;return;}
++  const skill=selectedMagic;selectedMagic=undefined;skillBar.setPending(skill.magicId);const action=createAction('spell');
++  socket.send(JSON.stringify({type:'castMagic',magicId:skill.magicId,targetId:target.id,actionId:action.actionId,mapGeneration}));
++  update(spellPose(actor,target));if(skill.effectType!==0)magicEffects.cast(actor.id,skill.effect);
++  connection.textContent=`正在对 ${target.name||'目标'} 施放 ${skill.name}…`;return;
++ }
+  const race=target.feature&255,player=race===0&&Boolean(target.name);if(race===0&&!player){pursuitTarget=undefined;pursuitHarvest=false;connection.textContent=`${target.name||'该对象'} 暂不支持交互`;return;}
+  if(target.dead&&!harvest){pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();connection.textContent='按住 Alt 并左键点击尸体挖肉';return;}
+  const dx=Math.sign(target.x-actor.x),dy=Math.sign(target.y-actor.y),distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
+@@ -576,8 +585,8 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+   else if(message.type==='skillProgress'){skillBar.progress(message.magicId,message.level,message.currentTrain);classicHud.progress(message.magicId,message.level,message.currentTrain);}
+   else if(message.type==='spellResult'){skillBar.resolve();connection.textContent=message.accepted?`${message.name} 已由服务端接受`:`${message.name} 施放失败`;}
+   else if(message.type==='warriorSkill'){const parts=[message.thrusting===true?'刺杀开启':message.thrusting===false?'刺杀关闭':'',message.halfMoon===true?'半月开启':message.halfMoon===false?'半月关闭':'',message.fireHit?'烈火蓄力':''].filter(Boolean);if(parts.length)combatStatus.textContent=parts.join(' · ');}
+-  else if(message.type==='magicEffect'){const caster=entities.get(message.casterId);if(caster)update({...caster,action:'spell'});magicEffects.resolve(message);combatStatus.textContent=`魔法效果 ${message.effectType}/${message.effect} · ${message.x},${message.y}`;}
+-  else if(message.type==='spellCast'){const caster=entities.get(message.casterId);if(caster)update({...caster,x:message.x,y:message.y,action:'spell'});magicEffects.cast(message.casterId,message.magicId);}
++  else if(message.type==='magicEffect'){magicEffects.resolve(message);combatStatus.textContent=`魔法效果 ${message.effectType}/${message.effect} · ${message.x},${message.y}`;}
++  else if(message.type==='spellCast'){const caster=entities.get(message.casterId);if(caster)update(spellPose(caster,{x:message.x,y:message.y}));magicEffects.cast(message.casterId,message.effect);}
+   else if(message.type==='magicFailed'){skillBar.resolve();combatStatus.textContent='魔法未产生效果';}
+   else if(message.type==='groupMode'){groupEnabled=message.enabled;renderGroup();connection.textContent=message.enabled?'已允许其他玩家组队':'已关闭组队邀请';}
+   else if(message.type==='attackMode'){attackMode=message.mode;renderAttackMode();connection.textContent=`攻击模式：${attackModeSelect.selectedOptions[0]?.textContent??'未知'}`;}
+@@ -777,7 +786,7 @@ function activateSkillSlot(index:number){
+ function castSelf(skill:MagicSkill){
+  if(socket?.readyState!==WebSocket.OPEN||self===undefined||pendingAction){skillBar.resolve();if(pendingAction)connection.textContent='当前动作完成后再施放技能';return;}
+  const action=createAction('spell');socket.send(JSON.stringify({type:'castMagic',magicId:skill.magicId,targetId:self,actionId:action.actionId,mapGeneration}));
+- const actor=entities.get(self);if(actor)update({...actor,action:'spell'});
++ const actor=entities.get(self);if(actor){update({...actor,action:'spell'});if(skill.effectType!==0)magicEffects.cast(actor.id,skill.effect);}
+  const use=skillUseOf(skill.magicId);
+  connection.textContent=use==='toggle'?`正在开关 ${skill.name}…`:use==='charge'?`正在蓄力 ${skill.name}…`:`正在施放 ${skill.name}…`;
+ }

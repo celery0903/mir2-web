@@ -122,3 +122,17 @@ PYTHONPATH=.runtime/client-archive-deps python3 scripts/inspect-client-archive.p
 正式更新前原生引擎两次输出 `OPENMIR2_SAVE_COMPLETE`，并以 0 退出；见 [停机保存记录](correction/source-map-shutdown.json)。原数据库实例和引擎存档卷保留，仅替换引擎实例及资源挂载，旧资源和引擎镜像保留用于回退。[更新前快照](correction/source-map-before-deployment.json) 与 [本次部署检查](correction/source-map-deployment-evidence.json) 分开保存，原 18:38 更换记录未覆盖。正式入口 30 个网页文件、167 个地图清单/地图块/素材库清单哈希通过，11 张浏览器地图与原生地图一致，四项服务 healthy；完整 1.76 审计仍返回 1。
 
 19:22 UTC 开始的 [正式入口仓库验收](correction/source-map-warehouse-production/evidence.json) 通过：战士网页注册与建角、服务端确认移动、装备和位置重登保留、实际跨图、手机存入、重登取回同一物品、金币保持及往返后本人可见；桌面/手机无溢出，浏览器无异常或资源请求失败。goal 仍为未完成。
+
+## 源码客户端施法修复
+
+本轮仍使用现成 H5 源码、配套 proxy 和原 OpenMir2。实际 [修复前复现](correction/source-skills-before-fix/evidence.json) 查实：原生施法回包的目标坐标 `(294,618)` 被误当成施法者坐标，旁观者因此把仍在 `(288,619)` 的法师移走。补丁保留人物位置、按目标转向、按原生 effect 选择蓄力帧，并补上引擎不会回发给本人的蓄力动画；效果到达时不再重播人物动作，旁观者施法人物也不会无限循环。
+
+特效配置保存于 `shared/classic-magic.json`，31 个传统基址已与固定 Pascal 源码核对。火球、大火球、符、毒、雷电和部分落点改用各自序列。[素材检查](correction/source-magic-assets.json) 核对 740 帧、20,256,644 个 RGBA 像素与固定库逐像素一致，保留原尺寸和偏移。源码和素材均未据此认证为盛大 2003 整包。
+
+[最终独立火球流程](correction/source-skills-isolated/evidence.json) 通过：两个新账号仅在独立库离线升至七级并给予买书金币；通过网页买书、学习和施法，双方蓄力序列正确、旁观者坐标保持，原生扣蓝 `38 -> 36`、伤害 3，效果精灵释放和人物动作结束。桌面与手机画布非空、无横向溢出、无异常或资源请求失败。第一次复验因无适用近怪失败，保留 [失败记录](correction/source-skills-no-target-failure.json)；最终流程包含实际寻怪。镜像内 8 项特效回归、39 项既有前端检查和 TypeScript/Vite 构建通过。
+
+正式入口已更新网页及配套素材，旧网页镜像和资源保留用于回退。[更新前](correction/source-skills-before-deployment.json) 和 [更新后](correction/source-skills-deployment-evidence.json) 记录分开，数据库、引擎及 proxy 实例和启动时间均保持。正式响应 30 个网页文件、910 个资源文件哈希通过，11 张原生地图仍与网页一致。
+
+19:49 UTC 开始的 [正式入口浏览器回归](correction/source-skills-client-production/evidence.json) 通过三职业注册、建角、换装、移动、桌面/手机和重登持久化，以及仓库跨图、手机存入和重登取回同一件物品；金币保持、往返后本人可见，没有浏览器异常或资源请求失败。正式库的这次回归使用正常一级零金币新账号，未提升等级或注入技能；火球工作流证据来自上述独立栈。
+
+完整版本审计仍失败：11 张地图、108 个混合版本技能、71 个未解析地图引用。持续效果、战士叠加、召唤、原投射物追踪/时序、人物等待回包细节和完整技能流程尚未完成；行走后地图画面可能仍在加载，非空截图也不构成地图完整验收。原始安装包、完整世界、纯净版本数据及其余系统仍是目标内的未完成工作。

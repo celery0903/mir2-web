@@ -238,5 +238,7 @@ for (const [key, actor] of Object.entries(npc.actors)) {
 }
 await writeFile(join(npcDirectory, 'library.json'), JSON.stringify({ ...npcLibrary, adaptedNpcShapes, adaptedSourceManifest: 'actors/classic-npc.json', authenticated2003Client: false }, null, 2) + '\n');
 const report = { checkedAt: new Date().toISOString(), sourceRevision: revision, authenticated2003Client: false, mapResourceAcceptance: missingMapReferences.length ? 'failed' : 'passed', missingMapReferences, maps: mapReport, classicSource: { repository: lock.repository, revision: lock.revision, verifiedFiles: [...verified].sort() }, uiFamilies: Object.fromEntries([...families].map(([name, frames]) => [name, Object.keys(frames).length])), actors };
+execFileSync('python3', [join(root, 'scripts/prepare-source-magic.py'), output], { stdio: 'inherit' });
+report.magicEffects = await json(join(output, 'effects/integration.json'));
 await writeFile(join(output, 'integration.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(`Prepared ${mapReport.length} matched maps, ${actors.length} actor libraries and ${families.size + 2} UI families in ${basename(output)}.`);

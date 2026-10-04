@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "target": "2003-cn-1.76",
+  "authenticated2003Client": false,
+  "source": {
+    "repository": "lzxsz/MIR2",
+    "revision": "98711dad31567d9a7e272956f6c5a2487000848b",
+    "file": "GameOfMir/MirClient/magiceff.pas",
+    "sha256": "9d2fb0b7683bcdb4f0124e9e2f1f5793c89697046b96240fdaf2ee140d016dda",
+    "sections": ["EffectBase", "GetEffectBase", "TMagicEff", "TThuderEffect"],
+    "references": [
+      {"file": "GameOfMir/MirClient/Actor.pas", "sha256": "e1266ba6accd26457ae26b9cd2d8b13347a004cf7cc6114b7a7d985317b31b97"},
+      {"file": "GameOfMir/MirClient/ClFunc.pas", "sha256": "3b6668759346fd299c72e04a5b547ccd986b375a6842b42088a35082f3f458b2"},
+      {"file": "GameOfMir/MirClient/PlayScn.pas", "sha256": "4d41b5b539d2dffe5adcdc80f9443d6c9a3299fcdb321b1e3937cdf93ee96ae5"}
+    ],
+    "notes": "The source contains later edits. Only the explicit 31-effect traditional table and separately listed sequences are used; this does not authenticate a 2003 asset package."
+  },
+  "readyBases": [0, 200, 400, 600, 0, 900, 920, 940, 20, 940, 940, 940, 0, 1380, 1500, 1520, 940, 1560, 1590, 1620, 1650, 1680, 0, 0, 0, 3960, 1790, 0, 3880, 3920, 3840],
+  "magic2ReadyEffects": [9, 28],
+  "readyCount": 10,
+  "readyInterval": 60,
+  "readyOverrides": {"26": {"count": 20, "interval": 30}},
+  "impactSequences": {
+    "2": {"library": "Magic", "start": 370, "count": 10, "interval": 80},
+    "4": {"library": "Magic", "start": 770, "count": 10, "interval": 80},
+    "21": {"library": "Magic", "start": 1660, "count": 20, "interval": 80},
+    "26": {"library": "Magic", "start": 3990, "count": 10, "interval": 80},
+    "27": {"library": "Magic", "start": 1800, "count": 10, "interval": 80},
+    "30": {"library": "Magic", "start": 3930, "count": 16, "interval": 80},
+    "31": {"library": "Magic", "start": 3850, "count": 20, "interval": 80}
+  },
+  "projectiles": {
+    "1": {"library": "Magic", "start": 10, "count": 6, "stride": 10, "interval": 50, "impact": {"library": "Magic", "start": 170, "count": 10, "interval": 50}},
+    "3": {"library": "Magic", "start": 410, "count": 6, "stride": 10, "interval": 50, "impact": {"library": "Magic", "start": 570, "count": 10, "interval": 50}},
+    "10": {"library": "Magic", "start": 1160, "count": 3, "stride": 10, "interval": 50, "impact": {"library": "Magic", "start": 1360, "count": 10, "interval": 50}},
+    "11": {"library": "Magic", "start": 1160, "count": 3, "stride": 10, "interval": 50, "impact": {"library": "Magic", "start": 1320, "count": 16, "interval": 50}},
+    "12": {"library": "Magic", "start": 1160, "count": 3, "stride": 10, "interval": 50, "impact": {"library": "Magic", "start": 1340, "count": 16, "interval": 50}},
+    "17": {"library": "Magic", "start": 1160, "count": 3, "stride": 10, "interval": 50, "impact": {"library": "Magic", "start": 1540, "count": 10, "interval": 50}}
+  },
+  "thunder": {"library": "Magic2", "start": 10, "count": 6, "interval": 50},
+  "beam": {"library": "Magic", "start": 970, "count": 6, "stride": 10, "interval": 50},
+  "remaining": ["Directional flame trails", "Persistent shields, poison and ground magic", "Warrior hit overlays", "Summon animations and complete skill workflows", "Authenticating all effect frames against the 2003 client"]
+}

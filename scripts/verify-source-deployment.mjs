@@ -29,6 +29,7 @@ const preservedInstance=container=>{
 };
 const database=nativeContainers.find(container=>container.name===`/${names[0]}`),engine=nativeContainers.find(container=>container.name===`/${names[1]}`);
 const preservedDatabase=preservedInstance(database),preservedEngine=preservedInstance(engine);
+const preservedSourceProxy=preservedInstance(containers.find(container=>container.name===`/${names[3]}`));
 const preservedNativeContainers=hasPriorSnapshot?preservedDatabase&&preservedEngine:null;
 const storageMounts=container=>container.mounts.filter(mount=>mount.Type==='volume').map(({Name,Destination})=>({Name,Destination})).sort((a,b)=>a.Destination.localeCompare(b.Destination));
 const priorEngine=previous?.containers?.find(container=>container.name===engine.name);
@@ -82,12 +83,32 @@ for(const name of libraryNames){
  assert.match(name,/^[A-Za-z0-9]+$/);
  await verifyResource(`libraries/${name}/library.json`);
 }
+const magicIntegration=JSON.parse(await verifyResource('effects/integration.json'));
+const rulesHash=digest(await readFile('shared/classic-magic.json'));
+assert.equal(magicIntegration.rulesSha256,rulesHash,'Deployed spell rules');
+assert.deepEqual(integration.magicEffects,magicIntegration,'Top-level spell integration');
+const effectPins=JSON.parse(await readFile('upstream/mir2-client/content/classic-176/asset-sources.json')).effectFiles;
+for(const entry of magicIntegration.libraries){
+ assert.ok(['Magic','Magic2'].includes(entry.library),'Unexpected effect library');
+ const pin=effectPins.find(value=>value.file===`${entry.library}.Lib`);
+ assert.ok(pin,'Missing pinned effect library');
+ assert.equal(entry.sourceSha256,pin.sha256,'Effect source provenance');
+ assert.deepEqual(entry.missing,[]);assert.deepEqual(entry.empty,[]);
+ const manifest=JSON.parse(await verifyResource(`effects/${entry.library}/library.json`));
+ assert.equal(manifest.sourceSha256,pin.sha256);
+ assert.equal(Object.keys(manifest.frames).length,entry.frames);
+ for(const frame of Object.values(manifest.frames)){
+  assert.match(frame.file,/^[A-Za-z0-9_.-]+\.png$/);
+  const bytes=await verifyResource(`effects/${entry.library}/${frame.file}`);
+  assert.equal(digest(bytes),frame.sha256,'Effect PNG manifest hash');
+ }
+}
 const {stdout:mapHashes}=await execute('docker',['exec',names[1],'sha256sum',...integration.maps.map(map=>`/data/server/Mir200/Map/${map.id}.map`)]);
 const nativeMapHashes=new Map(mapHashes.trim().split('\n').map(line=>{const [hash,path]=line.trim().split(/\s+/);return [path.split('/').at(-1).replace(/\.map$/,''),hash];}));
 for(const map of integration.maps)assert.equal(nativeMapHashes.get(map.id),map.sourceSha256,`Native/browser map mismatch: ${map.id}`);
-const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch'].map(async file=>[file,digest(await readFile(file))])));
+const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch'].map(async file=>[file,digest(await readFile(file))])));
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,patches,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesHash,patches,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
 console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

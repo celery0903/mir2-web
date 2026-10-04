@@ -2,7 +2,7 @@
 
 **当前是尚未完成的传统中文 1.76 移植。** 原客户端位图、坐标、账号与角色界面已接入，完整世界、版本数据和其余系统仍未补齐。已核实的偏差、修正范围和实测结果见 [交付纠正](docs/176_CORRECTION.md)；生产数据审计见 [版本审计](docs/version-audit.json)。
 
-默认部署已经改用现成的 [leiniaozl229/mir2](https://github.com/leiniaozl229/mir2/tree/77e3ff7506b1ca55cac15df247cb2fcedd69c535) H5 源码及其配套 proxy。源码固定为 Git 子模块；接入补丁保存在 `server/source-client.patch`、`server/source-proxy.patch`，上游检出保持干净。地图差异、适配范围及实测结果见 [源码加 Proxy 核查](docs/SOURCE_PROXY_EVALUATION.md)。
+默认部署已经改用现成的 [leiniaozl229/mir2](https://github.com/leiniaozl229/mir2/tree/77e3ff7506b1ca55cac15df247cb2fcedd69c535) H5 源码及其配套 proxy。源码固定为 Git 子模块；接入补丁保存在 `server/source-client.patch`、`server/source-proxy.patch` 和 `server/source-magic.patch`，上游检出保持干净。地图差异、适配范围及实测结果见 [源码加 Proxy 核查](docs/SOURCE_PROXY_EVALUATION.md)。
 
 运行链路为 Pixi H5 客户端 → 同源 Nginx → 原项目的 .NET 10 WebSocket/TCP proxy → [OpenMir2](https://github.com/mirbeta/OpenMir2) 原生服务端 → MySQL。账号、角色、碰撞、战斗、经验、物品、装备、技能、NPC 和存档由原生服务端处理。此前的 Phaser 客户端及自写网关保留在 `web/`、`server/WebGateway/`，用于核对历史修正和测试；默认部署不构建它们。
 
@@ -55,7 +55,9 @@ npm run audit:176 -- --check
 
 `test:source-login` 主动断开 50 个登录连接，每轮随后核对原生登录拒绝响应，检查 LoginGate 返回通道是否仍可工作。引擎镜像还直接编译上游返回通道代码，回归已释放 socket 和连接重置不会中断其他客户端的响应。
 
-`npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希，以及地图清单、全部地图块和素材库清单与准备产物的哈希；同时核对原生地图、容器健康和数据库/引擎实例是否保持。首次记录没有可比较快照时会明确标为未证明实例保持。
+`tests/source-skills.mjs` 只允许 localhost 的 `mir2-rebuild` 或 `mir2-skills-test` 独立项目，必须设置 `MIR_TEST_FIXTURES=1`。它注册新的专用账号，离线提升至七级并给予买书金币，然后通过网页购买、学习和施放火球；检查双方蓄力动画、旁观者坐标、扣蓝、原生伤害和动作结束。测试需要停止并重启独立引擎，不能用于生产数据库。实测与素材核对见 [施法证据](docs/correction/source-skills-isolated/evidence.json)，完整三职业技能仍未验收。
+
+`npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希，以及地图清单、全部地图块、素材库清单和全部导出魔法 PNG 与准备产物的哈希；同时核对原生地图、容器健康和数据库/引擎/proxy 实例是否保持。首次记录没有可比较快照时会明确标为未证明实例保持。
 
 需要更新引擎时，验证命令必须通过 `MIR_EXPECTED_ENGINE_IMAGE=sha256:...` 指定已实测镜像的完整 ID；核对该镜像、原数据库实例和原引擎存档卷后才接受更换。报告分别记录实例更换和存档卷保留。
 

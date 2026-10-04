@@ -31,6 +31,7 @@ const reference = await json('docs/reference-176-audit.json');
 const world = await json('shared/world.json');
 const files = ['shared/world.json', 'shared/classic-storage.json', 'compose.yaml', 'scripts/prepare-classic-world.mjs', 'scripts/prepare-openmir2.mjs', 'scripts/prepare-source-client.mjs', 'scripts/prepare-source-assets.mjs', 'server/SourceClient/Dockerfile', 'server/SourceClient/nginx.conf', 'server/SourceProxy/Dockerfile', 'server/source-client.patch', 'server/source-proxy.patch', 'upstream/mir2-client/apps/web/src/play.ts', 'upstream/mir2-client/apps/web/src/classic-hud.ts', 'upstream/mir2-client/services/web-gateway/GatewaySession.cs', 'server/Engine/Dockerfile', 'server/Engine/run.mjs', 'server/openmir2-linux.patch'];
 files.push('server/source-tests.patch', 'scripts/verify-source-deployment.mjs', 'scripts/native-map.mjs');
+files.push('shared/classic-magic.json', 'server/source-magic.patch', 'scripts/prepare-source-magic.py', 'tests/source-magic-assets.py', 'tests/source-magic.test.mjs', 'tests/source-skills.mjs');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);
@@ -121,7 +122,7 @@ const report = {
     default: 'existing Pixi H5 source plus its WebSocket/TCP proxy',
     deployedSource: labels['org.opencontainers.image.source'] ?? null,
     deployedRevision: labels['org.opencontainers.image.revision'] ?? null,
-    patches: ['server/source-client.patch', 'server/source-proxy.patch'],
+    patches: ['server/source-client.patch', 'server/source-proxy.patch', 'server/source-magic.patch'],
     sourceAssets, nativeMapsMatch, mapConversion
   },
   world: { profile: world.profile, activatedMapIDs, enabledMaps: mapAudit.maps, installedMapIDsMatchCollisionAudit: JSON.stringify(activatedMapIDs.slice().sort()) === JSON.stringify(mapAudit.maps.map(map => map.id).sort()), connections: mapAudit.connections, scope: mapAudit.scope },

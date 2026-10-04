@@ -1,0 +1,29 @@
+{
+  "correctionChecksPassed": true,
+  "fullSkillAcceptance": false,
+  "authenticated2003Client": false,
+  "traditionalTableMatchesPinnedSource": true,
+  "readyEffects": 31,
+  "frames": 740,
+  "rgbaPixels": 20256644,
+  "allFramePixelsAndOffsetsMatch": true,
+  "libraries": [
+    {
+      "library": "Magic",
+      "frames": 714,
+      "sourceSha256": "75b52ee743b023aabd74cb5bad8a0577ffd82b13bb0a41e356c8dabd66d6048a"
+    },
+    {
+      "library": "Magic2",
+      "frames": 26,
+      "sourceSha256": "c93ee6186c4748751fb67825e1ce9f8b8933c8ec57e0d5aa4fc2237dcbcd2e01"
+    }
+  ],
+  "remaining": [
+    "Directional flame trails",
+    "Persistent shields, poison and ground magic",
+    "Warrior hit overlays",
+    "Summon animations and complete skill workflows",
+    "Authenticating all effect frames against the 2003 client"
+  ]
+}

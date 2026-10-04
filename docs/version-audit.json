@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T19:23:59.514Z",
+  "checkedAt": "2026-10-04T19:52:42.314Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -11,8 +11,8 @@
     "scripts/prepare-classic-world.mjs": "9ec3028a6392f5190a89cc1420fc84b1f3462cbe644ca6c1d7e6edf59ddf962a",
     "scripts/prepare-openmir2.mjs": "86d03fa62d633de7daefee6b8a60d886783d4e9ff7619e963a9648d1b969e078",
     "scripts/prepare-source-client.mjs": "22307f48f757ca2852fc4b80528e6a349c83c63690bc4334f0288c237933e89a",
-    "scripts/prepare-source-assets.mjs": "59e75835f32f4e6dff56fca77736ad4ca69e8d44bfd1a25e34291cd215216583",
-    "server/SourceClient/Dockerfile": "66f08a286b0b22c0d3bf1e5de42e2387a4e824ddc070771e1ed41fe3649c70e9",
+    "scripts/prepare-source-assets.mjs": "27dd11ac2c2eacf1e837c26ba2516ddca2c47e30b2e6dfd22efc52ef15309deb",
+    "server/SourceClient/Dockerfile": "e69029d9f7bb876a08849e17c15da99f8a8e47edaf1f60e7db115f9234c17b9a",
     "server/SourceClient/nginx.conf": "c7645f8022dbb1d1675862e65b4a7dd3535d5721f02d707f3849ec7c26cecea2",
     "server/SourceProxy/Dockerfile": "98e1136f4a2c648386ebb80b8d6bee0d8e29816fec9ce8f906985eb518c8dc74",
     "server/source-client.patch": "88e4c31f46b2b97f58fbf019754c6e17448736edcc7b5a2490ea6bee78e33429",
@@ -24,8 +24,14 @@
     "server/Engine/run.mjs": "808c44f7cd14495eea93a2f9070637c50e6d8c5f680147d38ae7b34165a79568",
     "server/openmir2-linux.patch": "7e63c0aba58c2fea7fe068d27350e21aa111cbeb5e59bacf9dd6a20b0a539ded",
     "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0",
-    "scripts/verify-source-deployment.mjs": "f76b67582a15d925f269e514909d127cb7eca2f8816468486f199ea8cc0e2b44",
-    "scripts/native-map.mjs": "4de77d86587a7000b70797154a4b58161ead689065685afa6833d8e95b3c47c0"
+    "scripts/verify-source-deployment.mjs": "9333c8f5bf044dd1979c15048bea3cbc7448ce41a9bb150e50915566ae18ee1e",
+    "scripts/native-map.mjs": "4de77d86587a7000b70797154a4b58161ead689065685afa6833d8e95b3c47c0",
+    "shared/classic-magic.json": "f8b2d5f58d5b1d626087b911819f59730dc9376e64d606b5e5481c2558e50e7a",
+    "server/source-magic.patch": "ea761db314b679f274f206e81bbeeb1abc4e9e3a0aea56240012dcb42a3c4476",
+    "scripts/prepare-source-magic.py": "69b2700718366eb38b624abb9fd223561c853a9a324b6e9aa5af61b3007de43c",
+    "tests/source-magic-assets.py": "be6c3465ab1658f45ae7c3b0a62412fa8631725fb61e9f6aad4abef8fa30cbf4",
+    "tests/source-magic.test.mjs": "22f783604f8910ff8eb6f2eb60d19cb0525bac2879e3697f8dde79920f220427",
+    "tests/source-skills.mjs": "477721cba05f12fdc911c6961d3e8c9cb345c4029e47df17f8e17277c87d65c6"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",
@@ -35,10 +41,11 @@
     "deployedRevision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
     "patches": [
       "server/source-client.patch",
-      "server/source-proxy.patch"
+      "server/source-proxy.patch",
+      "server/source-magic.patch"
     ],
     "sourceAssets": {
-      "checkedAt": "2026-10-04T19:14:36.114Z",
+      "checkedAt": "2026-10-04T19:37:43.055Z",
       "sourceRevision": "77e3ff7506b1ca55cac15df247cb2fcedd69c535",
       "authenticated2003Client": false,
       "mapResourceAcceptance": "failed",
@@ -383,7 +390,65 @@
           "source": "monster12",
           "frames": 224
         }
-      ]
+      ],
+      "magicEffects": {
+        "schemaVersion": 1,
+        "rulesSha256": "f8b2d5f58d5b1d626087b911819f59730dc9376e64d606b5e5481c2558e50e7a",
+        "source": {
+          "repository": "lzxsz/MIR2",
+          "revision": "98711dad31567d9a7e272956f6c5a2487000848b",
+          "file": "GameOfMir/MirClient/magiceff.pas",
+          "sha256": "9d2fb0b7683bcdb4f0124e9e2f1f5793c89697046b96240fdaf2ee140d016dda",
+          "sections": [
+            "EffectBase",
+            "GetEffectBase",
+            "TMagicEff",
+            "TThuderEffect"
+          ],
+          "references": [
+            {
+              "file": "GameOfMir/MirClient/Actor.pas",
+              "sha256": "e1266ba6accd26457ae26b9cd2d8b13347a004cf7cc6114b7a7d985317b31b97"
+            },
+            {
+              "file": "GameOfMir/MirClient/ClFunc.pas",
+              "sha256": "3b6668759346fd299c72e04a5b547ccd986b375a6842b42088a35082f3f458b2"
+            },
+            {
+              "file": "GameOfMir/MirClient/PlayScn.pas",
+              "sha256": "4d41b5b539d2dffe5adcdc80f9443d6c9a3299fcdb321b1e3937cdf93ee96ae5"
+            }
+          ],
+          "notes": "The source contains later edits. Only the explicit 31-effect traditional table and separately listed sequences are used; this does not authenticate a 2003 asset package."
+        },
+        "authenticated2003Client": false,
+        "fullSkillAcceptance": false,
+        "libraries": [
+          {
+            "library": "Magic",
+            "sourceSha256": "75b52ee743b023aabd74cb5bad8a0577ffd82b13bb0a41e356c8dabd66d6048a",
+            "requested": 714,
+            "frames": 714,
+            "empty": [],
+            "missing": []
+          },
+          {
+            "library": "Magic2",
+            "sourceSha256": "c93ee6186c4748751fb67825e1ce9f8b8933c8ec57e0d5aa4fc2237dcbcd2e01",
+            "requested": 26,
+            "frames": 26,
+            "empty": [],
+            "missing": []
+          }
+        ],
+        "remaining": [
+          "Directional flame trails",
+          "Persistent shields, poison and ground magic",
+          "Warrior hit overlays",
+          "Summon animations and complete skill workflows",
+          "Authenticating all effect frames against the 2003 client"
+        ]
+      }
     },
     "nativeMapsMatch": true,
     "mapConversion": {

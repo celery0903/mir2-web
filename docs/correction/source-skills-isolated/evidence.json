@@ -1,0 +1,126 @@
+{
+  "checkedAt": "2026-10-04T19:46:33.209Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "passed": true,
+  "full176Acceptance": false,
+  "fixture": "New isolated test accounts raised offline to level 7 with 20000 gold; skills learned from purchased books.",
+  "errors": [],
+  "missingResources": [],
+  "learnedFromPurchasedBook": true,
+  "observedSpell": {
+    "type": "spellCast",
+    "casterId": 1753243832,
+    "x": 283,
+    "y": 618,
+    "effect": 1,
+    "magicId": 1
+  },
+  "position": {
+    "before": {
+      "x": 288,
+      "y": 619
+    },
+    "observer": {
+      "x": 288,
+      "y": 619
+    },
+    "caster": {
+      "id": 1753243832,
+      "name": "mc31932111\n平民",
+      "x": 288,
+      "y": 619,
+      "direction": 6,
+      "action": "spell",
+      "dead": false,
+      "hp": 28,
+      "maxHp": 30
+    }
+  },
+  "damage": {
+    "type": "health",
+    "id": 1994424243,
+    "hp": 22,
+    "maxHp": 25,
+    "damage": 3
+  },
+  "mana": {
+    "before": 38,
+    "after": 36
+  },
+  "readyAnimations": {
+    "caster": {
+      "activeSprites": 1,
+      "recent": [
+        {
+          "casterId": 1753243832,
+          "effect": 1,
+          "library": "Magic",
+          "start": 0,
+          "count": 10,
+          "x": 288,
+          "y": 619
+        }
+      ],
+      "errors": []
+    },
+    "observer": {
+      "activeSprites": 1,
+      "recent": [
+        {
+          "casterId": 1753243832,
+          "effect": 1,
+          "library": "Magic",
+          "start": 0,
+          "count": 10,
+          "x": 288,
+          "y": 619
+        }
+      ],
+      "errors": []
+    }
+  },
+  "observerSpellActionEnded": true,
+  "views": [
+    {
+      "name": "caster",
+      "desktopColors": 882,
+      "mobileColors": 422,
+      "mobileOverflow": false
+    },
+    {
+      "name": "observer",
+      "desktopColors": 939,
+      "mobileColors": 455,
+      "mobileOverflow": false
+    }
+  ],
+  "effectTextures": [
+    "/effects/Magic/3.f36732a416a086cd.png",
+    "/effects/Magic/0.d8005d7bbef85c6f.png",
+    "/effects/Magic/6.d6cc00fe5b898c96.png",
+    "/effects/Magic/5.2948cd3edd284eec.png",
+    "/effects/Magic/1.f160a9972279ab00.png",
+    "/effects/Magic/4.fc06ad522445240a.png",
+    "/effects/Magic/7.1cc41bda87c945ae.png",
+    "/effects/Magic/2.57d2984bf6d87823.png",
+    "/effects/Magic/9.76e5d00ebf0e56a9.png",
+    "/effects/Magic/8.0bdac80e5494c88e.png",
+    "/effects/Magic/133.23f8c924ea71a32d.png",
+    "/effects/Magic/135.106bae093e8473c5.png",
+    "/effects/Magic/132.f28057b53aa9fa0b.png",
+    "/effects/Magic/131.7812d86c8ec90c91.png",
+    "/effects/Magic/134.0e5356a57ae1b5e8.png",
+    "/effects/Magic/130.1316578153887cf3.png",
+    "/effects/Magic/170.b1bf4ff295762ecc.png",
+    "/effects/Magic/172.865be8e80f77622b.png",
+    "/effects/Magic/173.d53318f3f7523d00.png",
+    "/effects/Magic/171.c8b47c6d03b64208.png",
+    "/effects/Magic/175.7742ec9f4e59dd6a.png",
+    "/effects/Magic/176.326f766f59dbfa3d.png",
+    "/effects/Magic/177.e0b3f9a0d50ee066.png",
+    "/effects/Magic/174.25331e2a8f160b8f.png",
+    "/effects/Magic/179.e0b3f9a0d50ee066.png",
+    "/effects/Magic/178.e0b3f9a0d50ee066.png"
+  ]
+}
