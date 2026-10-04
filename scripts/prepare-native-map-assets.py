@@ -12,10 +12,10 @@ from map_tool import ClassicMap, UnsupportedMap, export as export_map
 from crystal_lib import export as export_library
 
 
-def checked_map(data):
+def checked_map(data, trailing_bytes=0):
     world = ClassicMap(data)
-    if world.trailing_bytes:
-        raise UnsupportedMap('native world requires exact classic-12 cells; auxiliary/14-byte layouts are unsupported')
+    if world.trailing_bytes != trailing_bytes:
+        raise UnsupportedMap('native world requires exact classic-12 cells and a pinned auxiliary tail; 14-byte layouts are unsupported')
     return world
 
 
@@ -63,12 +63,17 @@ def prepare(maps, libraries, output, ids, supplement=None):
         data = path.read_bytes()
         if len(data) != pin['bytes'] or hashlib.sha256(data).hexdigest() != pin['sha256']:
             raise ValueError(f'Native map checksum mismatch: {ident}')
-        world = checked_map(data)
+        world = checked_map(data, pin.get('trailingBytes', 0))
         refs, object_libraries = references(world, lock.get('libraryRules'))
         manifest = export_map(path, output / 'maps' / ident)
         manifest.update(id=ident, resourceNamespace='WemadeMir2', objectLibraries=object_libraries,
                         dependencies={name: sorted(values) for name, values in refs.items()},
                         authenticated2003Client=False)
+        if world.trailing_bytes:
+            tail = data[52 + world.width * world.height * 12:]
+            (output / 'maps' / ident / 'auxiliary-tail.bin').write_bytes(tail)
+            manifest['auxiliaryTail'] = {'file': 'auxiliary-tail.bin', 'bytes': len(tail),
+                                         'sha256': hashlib.sha256(tail).hexdigest()}
         (output / 'maps' / ident / 'map.json').write_text(json.dumps(manifest, indent=2) + '\n')
         for name, values in refs.items():
             dependencies.setdefault(name, set()).update(values)

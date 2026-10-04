@@ -36,6 +36,7 @@ files.push('tests/source-flight-reference.mjs', 'tests/flight-reference/Dockerfi
 files.push('server/openmir2-status.patch', 'tests/source-status.mjs', 'tests/status/StatusChecks.csproj', 'tests/status/Program.cs');
 files.push('tests/source-services.mjs', 'tests/source-empty-inventory.mjs', 'tests/native/Program.cs');
 files.push('shared/native-world.lock.json', 'scripts/fetch-native-map-libraries.mjs', 'scripts/prepare-native-map-assets.py', 'scripts/check-native-world-positions.mjs', 'tests/native-world-assets.py', 'tests/source-native-world.mjs');
+files.push('server/openmir2-safezone.patch', 'tests/source-safezone.mjs', 'tests/safezone/Program.cs', 'tests/world-maps/Program.cs');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);

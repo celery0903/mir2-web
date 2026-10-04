@@ -39,7 +39,7 @@ function colors(bytes) {
   return values.size;
 }
 try {
-  assert.equal(native.maps.length, 249);
+  assert.equal(native.maps.length, audit.mapCount);
   for (const scene of scenes) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     const errors = [], missing = [], libraries = new Set();
@@ -53,7 +53,7 @@ try {
       await page.goto(`${base}/index.html`, { waitUntil: 'domcontentloaded' });
       const selector = page.locator('#map');
       await expect(selector).toBeEnabled({ timeout: 60000 });
-      assert.equal(await selector.locator('option').count(), 249);
+      assert.equal(await selector.locator('option').count(), audit.mapCount);
       if (scene.id !== '0') {
         await selector.selectOption(scene.id);
         await expect(selector).toBeEnabled({ timeout: 60000 });

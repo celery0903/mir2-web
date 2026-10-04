@@ -92,6 +92,12 @@ for(const map of integration.maps){
   assert.match(chunk.file,/^[A-Za-z0-9_.-]+$/);
   await verifyResource(`maps/${map.id}/${chunk.file}`);
  }
+ if(manifest.auxiliaryTail){
+  assert.match(manifest.auxiliaryTail.file,/^[A-Za-z0-9_.-]+$/);
+  const bytes=await verifyResource(`maps/${map.id}/${manifest.auxiliaryTail.file}`);
+  assert.equal(bytes.length,manifest.auxiliaryTail.bytes);
+  assert.equal(digest(bytes),manifest.auxiliaryTail.sha256);
+ }
 }
 const mapFrameRequests=[];
 for(const name of libraryNames){
@@ -140,7 +146,7 @@ const bookshopSha256=bookshopHash.trim().split(/\s+/)[0];
 assert.match(bookshopSha256,/^[a-f0-9]{64}$/);
 const preservedBookshopScript=previous?.bookshopSha256?previous.bookshopSha256===bookshopSha256:null;
 if(previous?.bookshopSha256)assert.equal(preservedBookshopScript,true,'Native bookshop script changed');
-const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch','server/openmir2-linux.patch','server/openmir2-status.patch'].map(async file=>[file,digest(await readFile(file))])));
+const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch','server/openmir2-linux.patch','server/openmir2-status.patch','server/openmir2-safezone.patch'].map(async file=>[file,digest(await readFile(file))])));
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
 resourceFiles.sort((a,b)=>a.path.localeCompare(b.path));

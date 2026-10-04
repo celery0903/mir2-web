@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-04T22:51:51.038Z",
+  "previousImage": "sha256:62d10be31891bc4cac795ceda5eacbbfabc89105c3d316049e7347075e5095ea",
+  "testedImage": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+  "saveAcknowledged": true,
+  "nativeGameExit": 0,
+  "previousContainerExit": 0,
+  "shutdownLog": "[GameSrv] 22:50:55.816 [INF] OPENMIR2_SAVE_COMPLETE\n[GameSrv] 22:50:56.018 [INF] OPENMIR2_SAVE_COMPLETE\n[GameSrv] 22:50:56.020 [INF] 没有玩家在线，游戏引擎服务已停止...Bye!\n[GameSrv] 22:50:56.025 [INF] Id生成器停止...\n[GameSrv] 22:50:56.029 [INF] 玩家管理线程停止ֹ...\n[GameSrv] 22:50:56.029 [INF] 商人管理线程停止ֹ...\n22:50:56.029 [INF] 事件管理线程停止ֹ...\n[GameSrv] 22:50:56.030 [INF] 玩家数据数据线程停止...\n[GameSrv] 22:50:56.030 [INF] 脚本机器人线程停止...\n22:50:56.030 [INF] 技能Buff处理器停止...\n[GameSrv] 22:50:56.049 [INF] 游戏世界服务线程停止...\n[GameSrv] 22:50:56.052 [INF] 后台服务停止\n[GameSrv] 22:50:56.055 [ERR] 数据库服务器[127.0.0.1:6000]断开连接...\n[GameGate] 22:50:56.063 [INF] 游戏网关[127.0.0.1:7200] 游戏引擎[127.0.0.1:5000]断开链接.\n[GameSrv] 22:50:56.067 [ERR] 游戏网关[127.0.0.1:37956]已关闭...\n[LoginSrv] 22:50:56.111 [WRN] [热血传奇]游戏服务器[127.0.0.1:33370]断开链接.\nOPENMIR2_GAME_EXIT=0\n[LoginSrv] 22:50:56.204 [INF] 账号登陆服务已停止.\n[LoginSrv] 22:50:56.205 [INF] 账号数据服务已关闭.\n[SelGate] 22:50:56.212 [INF] 正在停止服务...\n[DBSrv] 22:50:56.212 [ERR] 账号服务器[127.0.0.1:5600]断开链接.\n[LoginGate] 22:50:56.213 [INF] 正在停止服务...\n[LoginSrv] 22:50:56.213 [WRN] 登录网关[127.0.0.1:5500]断开链接.\n[LoginSrv] 22:50:56.214 [WRN] [热血传奇]数据库服务器[127.0.0.1:59970]断开链接.\n[SelGate] 22:50:56.215 [INF] 服务停止成功...\n[LoginGate] 22:50:56.215 [INF] 登录网关[TouchSocketServer]停止服务...\n22:50:56.216 [INF] 服务停止成功...\n22:50:56.216 [INF] 账号服务器[127.0.0.1:5500]断开链接.\n[SelGate] 22:50:56.220 [INF] 数据库服务器[127.0.0.1:5100]断开链接.\n[GameGate] 22:50:57.262 [WRN] 游戏网关[127.0.0.1:7200] 链接游戏引擎[127.0.0.1:5000]拒绝链接...\n",
+  "backup": ".runtime/safezone/backup/server",
+  "rollbackTag": "mir2-web-engine:before-safezone",
+  "deploymentOutput": " Container mir2-web-engine-1 Recreate \n Container mir2-web-engine-1 Recreated \n Container mir2-web-engine-1 Starting \n Container mir2-web-engine-1 Started \n Container mir2-web-engine-1 Waiting \n Container mir2-web-engine-1 Healthy \n",
+  "full176Acceptance": false
+}

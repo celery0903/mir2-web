@@ -13,8 +13,8 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 
 test('candidate maps match pinned source bytes and preserve lowercase files, aliases and maze routes', async () => {
   assert.equal(audit.sourceBytesMatchPinnedGitTree, true);
-  assert.equal(audit.mapCount, 249);
-  assert.equal(audit.recognizedMaps, 249);
+  assert.equal(audit.mapCount, 256);
+  assert.equal(audit.recognizedMaps, 256);
   assert.deepEqual(audit.unsupportedMaps, []);
   assert.equal(audit.maps.find(map => map.id === 'D421').sourceFile, 'd421.map');
   const alias = audit.maps.find(map => map.id === '0123A');
@@ -24,8 +24,22 @@ test('candidate maps match pinned source bytes and preserve lowercase files, ali
   assert.equal(audit.physicalConnectionIssues, 6);
   const lock = JSON.parse(await readFile(lockFile));
   assert.deepEqual(lock.defaultMapIDs, ['0', '0102', '0103', '0104', '0105', '0106', '0108', '0109', '0132', '0140', '0141']);
-  assert.equal(lock.maps.length, 249);
+  assert.equal(lock.maps.length, 256);
   assert.equal(lock.authenticated2003Client, false);
+});
+
+test('six armour areas retain source entrances, hole conditions and the exact death-temple auxiliary tail', async () => {
+  const ids = ['R001', 'T232', 'T218', 'T339', 'T219', 'T315', 'T140'];
+  assert.deepEqual(audit.maps.filter(map => map.group === 'six-armour-areas').map(map => map.id), ids);
+  const death = audit.maps.find(map => map.id === 'T218');
+  assert.equal(death.width, 30);
+  assert.equal(death.height, 30);
+  assert.equal(death.trailingBytes, 9840);
+  assert.equal(death.bytes, 52 + 30 * 30 * 12 + 9840);
+  assert.match(audit.maps.find(map => map.id === 'R001').flags, /NEEDHOLE/);
+  for (const id of ids.filter(id => id !== 'T140')) assert.ok(audit.connections.some(edge => edge.to === id), `No native entrance to ${id}`);
+  assert.ok(audit.connections.some(edge => edge.from === 'R001' && edge.to === 'T140'));
+  assert.deepEqual(Object.keys(death.spawnNames), ['暗之虹魔教主']);
 });
 
 test('audit refuses modified source declarations before deriving a world', async () => {

@@ -28,7 +28,7 @@ for (const [index, id] of mapIDs.entries()) {
     try { source = await readFile(join(assets, 'server-maps', `${id}.map`)); }
     catch { source = await readFile(join(seed, 'Mir200/Map', `${id}.map`)); }
   }
-  const map = legacyMap(source);
+  const map = legacyMap(source, { trailingBytes: pin?.trailingBytes ?? 0 });
   const rows = collisionRows(map);
   const browser = JSON.parse(await readFile(join(assets, id === '0' ? 'collision.json' : `maps/${id}/collision.json`)));
   let differences = 0;

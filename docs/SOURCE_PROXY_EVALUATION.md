@@ -6,6 +6,8 @@
 
 后续 [经典世界整理](CLASSIC_WORLD.md) 已将 249 张候选图固定到原始 Git blob，完成全部单元与 48,229 个可用帧的像素检查、36 处区域和边界画面，以及十张店铺画面。全目录仍因石墓四层的一帧缺项而失败，候选目录未整包开放。现有 11 张已开放地图统一使用 WemadeMir2 图库，继续沿用现成 H5 源码、配套 proxy 和原引擎。
 
+最新目录补上六件新衣服区域共 256 张图，通过实际原生引擎的全部碰撞格核对及新增区域桌面/手机图形检查；全目录资源仍缺石墓一帧。已另部署 [原生安全区修正](SAFE_ZONES.md)，数据库与存档保留，客户端与 proxy 继续使用上述现成源码。完整 1.76 尚未交付。
+
 ## 运行链路与来源
 
 浏览器使用 [leiniaozl229/mir2](https://github.com/leiniaozl229/mir2/tree/77e3ff7506b1ca55cac15df247cb2fcedd69c535) 的 `apps/web` Pixi 客户端；同源 Nginx 转发 `/ws` 给它的 `services/web-gateway` .NET 10 proxy，再连接原有 OpenMir2 六个服务和 MySQL。源码作为 `upstream/mir2-client` 子模块固定在 `77e3ff7506b1ca55cac15df247cb2fcedd69c535`，上游检出保持干净。

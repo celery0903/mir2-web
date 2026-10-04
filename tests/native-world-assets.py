@@ -71,6 +71,8 @@ for entry in report['maps']:
     assert manifest['sourceSha256'] == pin['sha256']
     assert manifest['resourceNamespace'] == 'WemadeMir2'
     height, width = manifest['height'], manifest['width']
+    assert manifest.get('trailingBytes', 0) == pin.get('trailingBytes', 0)
+    native.checked_map(raw, pin.get('trailingBytes', 0))
     rebuilt = bytearray(raw[:52]) + bytearray(len(raw) - 52)
     covered = bytearray(width * height)
     for chunk in manifest['chunks']:
@@ -84,9 +86,15 @@ for entry in report['maps']:
                 covered[cell] = 1
                 start = (x * chunk['height'] + y) * 12
                 rebuilt[52 + cell * 12:52 + (cell + 1) * 12] = data[start:start + 12]
+    if pin.get('trailingBytes', 0):
+        auxiliary = manifest['auxiliaryTail']
+        tail = (assets / 'maps' / ident / auxiliary['file']).read_bytes()
+        assert len(tail) == auxiliary['bytes'] == pin['trailingBytes']
+        assert hashlib.sha256(tail).hexdigest() == auxiliary['sha256']
+        rebuilt[52 + width * height * 12:] = tail
     assert all(covered) and rebuilt == raw
     non_default = 0
-    for offset in range(52, len(raw), 12):
+    for offset in range(52, 52 + width * height * 12, 12):
         image = struct.unpack_from('<H', raw, offset + 4)[0] & 0x7fff
         if 0 < image < 0x7f00:
             file_byte = raw[offset + 10]

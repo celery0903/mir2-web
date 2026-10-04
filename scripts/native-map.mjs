@@ -19,7 +19,8 @@ export function legacyTileRemap(source) {
   return remap;
 }
 
-export function legacyMap(source) {
+export function legacyMap(source, { trailingBytes = 0 } = {}) {
+  if (!Number.isSafeInteger(trailingBytes) || trailingBytes < 0) throw new Error('Invalid pinned auxiliary tail size');
   if (source.subarray(0, 4).equals(Buffer.from([1, 0, 67, 35]))) {
     const width = source.readUInt16LE(4), height = source.readUInt16LE(6);
     if (!width || !height || source.length !== 8 + width * height * 26) throw new Error('Invalid converted map');
@@ -42,7 +43,7 @@ export function legacyMap(source) {
     }
     return output;
   }
-  if (source.length < 52 || source.length !== 52 + source.readUInt16LE(0) * source.readUInt16LE(2) * 12) throw new Error('Invalid legacy map');
+  if (source.length < 52 || source.length !== 52 + source.readUInt16LE(0) * source.readUInt16LE(2) * 12 + trailingBytes) throw new Error('Invalid legacy map');
   return Buffer.from(source);
 }
 

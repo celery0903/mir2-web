@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T22:04:04.768Z",
+  "checkedAt": "2026-10-04T22:44:35.787Z",
   "sourceRepository": "mirbeta/MirServer",
   "sourceRevision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
   "sourceMapInfoSha256": "86a6a68ca3604171ab92a706a102f4083fce94bcd1449bc3a211bc5e983c0c06",
@@ -23,8 +23,8 @@
   },
   "full176Acceptance": false,
   "authenticated2003Client": false,
-  "mapCount": 249,
-  "recognizedMaps": 249,
+  "mapCount": 256,
+  "recognizedMaps": 256,
   "unsupportedMaps": [],
   "requiredLibraries": [
     "Objects",
@@ -39,7 +39,7 @@
     "SmTiles",
     "Tiles"
   ],
-  "graphReachableCount": 180,
+  "graphReachableCount": 185,
   "unreachableMapIDs": [
     "4",
     "5",
@@ -67,6 +67,8 @@
     "B354",
     "B355",
     "B356",
+    "T232",
+    "T218",
     "D10011",
     "D10012",
     "D10013",
@@ -9499,6 +9501,311 @@
         "蝎蛇": 1,
         "红野猪0": 1,
         "蝎蛇0": 1
+      }
+    },
+    {
+      "id": "R001",
+      "group": "six-armour-areas",
+      "graphicID": "R001",
+      "name": "桃源之门",
+      "flags": "NEEDHOLE NORECALL  NORECONNECT(D71601) DAY",
+      "declaration": "[R001\t桃源之门] NEEDHOLE NORECALL  NORECONNECT(D71601) DAY",
+      "sourceFile": "r001.map",
+      "bytes": 480052,
+      "sha256": "3e3b52fa584d5e9ab3806a61744475f77d5468614b815ce7dedfa0ecd6fd82c2",
+      "gitBlob": "3c4f896170384b62102c5b1a77bd1ae34bfee9b9",
+      "format": "classic-12",
+      "width": 200,
+      "height": 200,
+      "blockedCells": 25437,
+      "frontFileBytes": {
+        "0": 1254,
+        "5": 202,
+        "6": 191,
+        "255": 2
+      },
+      "libraryReferences": {
+        "Tiles": {
+          "count": 190,
+          "maxIndex": 5285
+        },
+        "SmTiles": {
+          "count": 102,
+          "maxIndex": 175
+        },
+        "Objects": {
+          "count": 537,
+          "maxIndex": 8836
+        },
+        "Objects7": {
+          "count": 143,
+          "maxIndex": 5626
+        },
+        "Objects6": {
+          "count": 202,
+          "maxIndex": 1425
+        }
+      },
+      "acceptance": "candidate-not-authenticated",
+      "graphReachableFromBichon": true,
+      "spawnNames": {
+        "蜜蜂": 1,
+        "变异骷髅0": 1,
+        "神兽10": 1
+      }
+    },
+    {
+      "id": "T232",
+      "group": "six-armour-areas",
+      "graphicID": "T232",
+      "name": "钳虫巢穴",
+      "flags": "NORECONNECT(1) NORANDOMMOVE DAY",
+      "declaration": "[T232 钳虫巢穴] NORECONNECT(1) NORANDOMMOVE DAY",
+      "sourceFile": "T232.map",
+      "bytes": 30052,
+      "sha256": "7b32d271a9558fff1b6f935323cb2c7c8b7cfa91aed502c10281f264c8b912de",
+      "gitBlob": "c62a07dac5e516341bd11c659ed5c251a46a39a4",
+      "format": "classic-12",
+      "width": 50,
+      "height": 50,
+      "blockedCells": 2271,
+      "frontFileBytes": {
+        "0": 1,
+        "3": 171
+      },
+      "libraryReferences": {
+        "Tiles": {
+          "count": 47,
+          "maxIndex": 5038
+        },
+        "SmTiles": {
+          "count": 0,
+          "maxIndex": null
+        },
+        "Objects4": {
+          "count": 203,
+          "maxIndex": 2691
+        },
+        "Objects": {
+          "count": 7,
+          "maxIndex": 1133
+        }
+      },
+      "acceptance": "candidate-not-authenticated",
+      "graphReachableFromBichon": false,
+      "spawnNames": {
+        "暗之沃玛教主": 1
+      }
+    },
+    {
+      "id": "T218",
+      "group": "six-armour-areas",
+      "graphicID": "T218",
+      "name": "死亡神殿",
+      "flags": "NORECONNECT(0) NORANDOMMOVE DAY",
+      "declaration": "[T218 死亡神殿] NORECONNECT(0) NORANDOMMOVE DAY",
+      "sourceFile": "T218.map",
+      "bytes": 20692,
+      "sha256": "c00357ccc1c561ec8f0b7dc631228dc736f297a7771024e2fb664d616e7f3b4b",
+      "gitBlob": "83a43b6aec4d2c90186f4a7115b10b3f06157ec5",
+      "format": "classic-12",
+      "width": 30,
+      "height": 30,
+      "trailingBytes": 9840,
+      "blockedCells": 720,
+      "frontFileBytes": {
+        "1": 92
+      },
+      "libraryReferences": {
+        "Tiles": {
+          "count": 11,
+          "maxIndex": 2004
+        },
+        "SmTiles": {
+          "count": 0,
+          "maxIndex": null
+        },
+        "Objects2": {
+          "count": 32,
+          "maxIndex": 3735
+        }
+      },
+      "acceptance": "candidate-not-authenticated",
+      "graphReachableFromBichon": false,
+      "spawnNames": {
+        "暗之虹魔教主": 1
+      }
+    },
+    {
+      "id": "T339",
+      "group": "six-armour-areas",
+      "graphicID": "T339",
+      "name": "地狱烈焰",
+      "flags": "NORECONNECT(0) NORANDOMMOVE DAY",
+      "declaration": "[T339 地狱烈焰] NORECONNECT(0) NORANDOMMOVE DAY",
+      "sourceFile": "T339.map",
+      "bytes": 19252,
+      "sha256": "c1c1992587adfa783ae869ba6b0c1e90f45a8b715252e53f40b98d9a9a2795c9",
+      "gitBlob": "3a64e99008c9d0b7d39bdc6dcdd1d1ed50872c59",
+      "format": "classic-12",
+      "width": 40,
+      "height": 40,
+      "blockedCells": 1144,
+      "frontFileBytes": {
+        "1": 17,
+        "5": 306
+      },
+      "libraryReferences": {
+        "Tiles": {
+          "count": 12,
+          "maxIndex": 2407
+        },
+        "SmTiles": {
+          "count": 0,
+          "maxIndex": null
+        },
+        "Objects6": {
+          "count": 223,
+          "maxIndex": 998
+        },
+        "Objects2": {
+          "count": 14,
+          "maxIndex": 4058
+        }
+      },
+      "acceptance": "candidate-not-authenticated",
+      "graphReachableFromBichon": true,
+      "spawnNames": {
+        "暗之骷髅精灵": 1
+      }
+    },
+    {
+      "id": "T219",
+      "group": "six-armour-areas",
+      "graphicID": "T219",
+      "name": "深渊魔域",
+      "flags": "NORECONNECT(1) NORANDOMMOVE DAY",
+      "declaration": "[T219 深渊魔域] NORECONNECT(1) NORANDOMMOVE DAY",
+      "sourceFile": "T219.map",
+      "bytes": 120052,
+      "sha256": "47dc4def356de8cddf309130b5d2d8752bdbe5e392d6b9e431527e0ab34cfa2f",
+      "gitBlob": "af65b00a65a3e8c4dc143ca489afe53432569083",
+      "format": "classic-12",
+      "width": 100,
+      "height": 100,
+      "blockedCells": 7914,
+      "frontFileBytes": {
+        "0": 39,
+        "1": 1806,
+        "5": 98
+      },
+      "libraryReferences": {
+        "Tiles": {
+          "count": 115,
+          "maxIndex": 3383
+        },
+        "SmTiles": {
+          "count": 0,
+          "maxIndex": null
+        },
+        "Objects2": {
+          "count": 532,
+          "maxIndex": 9117
+        },
+        "Objects6": {
+          "count": 49,
+          "maxIndex": 1219
+        },
+        "Objects": {
+          "count": 23,
+          "maxIndex": 4649
+        }
+      },
+      "acceptance": "candidate-not-authenticated",
+      "graphReachableFromBichon": true,
+      "spawnNames": {
+        "暗之双头金刚": 1
+      }
+    },
+    {
+      "id": "T315",
+      "group": "six-armour-areas",
+      "graphicID": "T315",
+      "name": "堕落坟场",
+      "flags": "NORECONNECT(1) NORANDOMMOVE DAY",
+      "declaration": "[T315 堕落坟场] NORECONNECT(1) NORANDOMMOVE DAY",
+      "sourceFile": "T315.map",
+      "bytes": 480052,
+      "sha256": "2d7f53ecee40a5e5527bb28fff78036f57dcb7eaa038770be35571ab5956d9c7",
+      "gitBlob": "35a980b046d3975825a40dd662ec6b66ed38bbd6",
+      "format": "classic-12",
+      "width": 200,
+      "height": 200,
+      "blockedCells": 31723,
+      "frontFileBytes": {
+        "0": 58,
+        "1": 3618
+      },
+      "libraryReferences": {
+        "Tiles": {
+          "count": 43,
+          "maxIndex": 3383
+        },
+        "SmTiles": {
+          "count": 0,
+          "maxIndex": null
+        },
+        "Objects2": {
+          "count": 658,
+          "maxIndex": 9194
+        },
+        "Objects": {
+          "count": 34,
+          "maxIndex": 7968
+        }
+      },
+      "acceptance": "candidate-not-authenticated",
+      "graphReachableFromBichon": true,
+      "spawnNames": {
+        "暗之黄泉教主": 1
+      }
+    },
+    {
+      "id": "T140",
+      "group": "six-armour-areas",
+      "graphicID": "T140",
+      "name": "困惑殿堂",
+      "flags": "NORECONNECT(3) NORANDOMMOVE DAY",
+      "declaration": "[T140 困惑殿堂] NORECONNECT(3) NORANDOMMOVE DAY",
+      "sourceFile": "T140.map",
+      "bytes": 10852,
+      "sha256": "28a9689df4ee4021c73baed4619441a19d5a083be844144ffa1066509fb96832",
+      "gitBlob": "0edab9b8092cd6048b25035e4062ae87b4932506",
+      "format": "classic-12",
+      "width": 30,
+      "height": 30,
+      "blockedCells": 700,
+      "frontFileBytes": {
+        "5": 105
+      },
+      "libraryReferences": {
+        "Tiles": {
+          "count": 11,
+          "maxIndex": 2404
+        },
+        "SmTiles": {
+          "count": 0,
+          "maxIndex": null
+        },
+        "Objects6": {
+          "count": 54,
+          "maxIndex": 429
+        }
+      },
+      "acceptance": "candidate-not-authenticated",
+      "graphReachableFromBichon": true,
+      "spawnNames": {
+        "暗之双头血魔": 1
       }
     },
     {
@@ -31075,6 +31382,28 @@
       "physicalIssue": false
     },
     {
+      "from": "D717",
+      "x": 80,
+      "y": 28,
+      "to": "R001",
+      "targetX": 162,
+      "targetY": 169,
+      "source": "D717       80,28                ->         R001      162,169",
+      "fromCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "toCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "physicalIssue": false
+    },
+    {
       "from": "3",
       "x": 305,
       "y": 324,
@@ -40115,6 +40444,138 @@
         "door": 0
       },
       "physicalIssue": false
+    },
+    {
+      "from": "11",
+      "x": 362,
+      "y": 325,
+      "to": "T232",
+      "targetX": 22,
+      "targetY": 24,
+      "source": "11         362,325              ->         T232       22,24",
+      "fromCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "toCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "physicalIssue": false
+    },
+    {
+      "from": "4",
+      "x": 205,
+      "y": 218,
+      "to": "T218",
+      "targetX": 14,
+      "targetY": 16,
+      "source": "4          205,218              ->         T218       14,16",
+      "fromCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "toCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "physicalIssue": false
+    },
+    {
+      "from": "0",
+      "x": 428,
+      "y": 474,
+      "to": "T339",
+      "targetX": 23,
+      "targetY": 24,
+      "source": "0          428,474              ->         T339       23,24",
+      "fromCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "toCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "physicalIssue": false
+    },
+    {
+      "from": "1",
+      "x": 215,
+      "y": 312,
+      "to": "T219",
+      "targetX": 20,
+      "targetY": 46,
+      "source": "1          215,312              ->         T219       20,46",
+      "fromCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "toCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "physicalIssue": false
+    },
+    {
+      "from": "1",
+      "x": 320,
+      "y": 56,
+      "to": "T315",
+      "targetX": 106,
+      "targetY": 51,
+      "source": "1          320,56               ->         T315       106,51",
+      "fromCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "toCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "physicalIssue": false
+    },
+    {
+      "from": "R001",
+      "x": 55,
+      "y": 94,
+      "to": "T140",
+      "targetX": 14,
+      "targetY": 15,
+      "source": "R001       55,94                ->         T140       14,15",
+      "fromCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "toCell": {
+        "available": true,
+        "inBounds": true,
+        "blocked": false,
+        "door": 0
+      },
+      "physicalIssue": false
     }
   ],
   "externalConnections": [
@@ -40173,15 +40634,6 @@
       "source": "DM011      6,10                 ->         D012       189,145"
     },
     {
-      "from": "D717",
-      "x": 80,
-      "y": 28,
-      "to": "R001",
-      "targetX": 162,
-      "targetY": 169,
-      "source": "D717       80,28                ->         R001      162,169"
-    },
-    {
       "from": "T1343",
       "x": 5,
       "y": 36,
@@ -40209,51 +40661,6 @@
       "source": "M100      288,284       ->         B341      11,29"
     },
     {
-      "from": "11",
-      "x": 362,
-      "y": 325,
-      "to": "T232",
-      "targetX": 22,
-      "targetY": 24,
-      "source": "11         362,325              ->         T232       22,24"
-    },
-    {
-      "from": "4",
-      "x": 205,
-      "y": 218,
-      "to": "T218",
-      "targetX": 14,
-      "targetY": 16,
-      "source": "4          205,218              ->         T218       14,16"
-    },
-    {
-      "from": "0",
-      "x": 428,
-      "y": 474,
-      "to": "T339",
-      "targetX": 23,
-      "targetY": 24,
-      "source": "0          428,474              ->         T339       23,24"
-    },
-    {
-      "from": "1",
-      "x": 215,
-      "y": 312,
-      "to": "T219",
-      "targetX": 20,
-      "targetY": 46,
-      "source": "1          215,312              ->         T219       20,46"
-    },
-    {
-      "from": "1",
-      "x": 320,
-      "y": 56,
-      "to": "T315",
-      "targetX": 106,
-      "targetY": 51,
-      "source": "1          320,56               ->         T315       106,51"
-    },
-    {
       "from": "D606",
       "x": 193,
       "y": 124,
@@ -40270,6 +40677,15 @@
       "targetX": 55,
       "targetY": 62,
       "source": "D5074\t48,18\t->\tF011\t55,62"
+    },
+    {
+      "from": "R001",
+      "x": 19,
+      "y": 83,
+      "to": "T3283",
+      "targetX": 13,
+      "targetY": 39,
+      "source": "R001\t19,83\t->\tT3283\t13,39"
     },
     {
       "from": "D2079",

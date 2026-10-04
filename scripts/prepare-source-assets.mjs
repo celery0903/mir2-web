@@ -276,6 +276,11 @@ for (const map of mapReport) {
       bytes.copy(rebuilt, 52 + start * 12, x * chunk.height * 12, (x + 1) * chunk.height * 12);
     }
   }
+  if (manifest.auxiliaryTail) {
+    const tail = await readFile(join(output, 'maps', map.id, manifest.auxiliaryTail.file));
+    if (tail.length !== manifest.auxiliaryTail.bytes || digest(tail) !== manifest.auxiliaryTail.sha256) throw new Error(`Auxiliary map tail differs: ${map.id}`);
+    tail.copy(rebuilt, 52 + manifest.width * manifest.height * 12);
+  }
   if (covered.some(value => !value) || !rebuilt.equals(raw)) throw new Error(`Browser/native map cells differ: ${map.id}`);
   map.browserCellsMatchNative = true;
   const audit = mapAudit.maps.find(entry => entry.id === map.id);

@@ -3,7 +3,17 @@
   "revision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
   "authenticated2003Client": false,
   "defaultMapIDs": [
-    "0", "0102", "0103", "0104", "0105", "0106", "0108", "0109", "0132", "0140", "0141"
+    "0",
+    "0102",
+    "0103",
+    "0104",
+    "0105",
+    "0106",
+    "0108",
+    "0109",
+    "0132",
+    "0140",
+    "0141"
   ],
   "maps": [
     {
@@ -2271,6 +2281,84 @@
       "graphicID": "E703",
       "group": "stone-tomb",
       "flags": "DAY"
+    },
+    {
+      "id": "R001",
+      "name": "桃源之门",
+      "bytes": 480052,
+      "sha256": "3e3b52fa584d5e9ab3806a61744475f77d5468614b815ce7dedfa0ecd6fd82c2",
+      "gitBlob": "3c4f896170384b62102c5b1a77bd1ae34bfee9b9",
+      "sourceFile": "r001.map",
+      "graphicID": "R001",
+      "group": "six-armour-areas",
+      "flags": "NEEDHOLE NORECALL  NORECONNECT(D71601) DAY"
+    },
+    {
+      "id": "T232",
+      "name": "钳虫巢穴",
+      "bytes": 30052,
+      "sha256": "7b32d271a9558fff1b6f935323cb2c7c8b7cfa91aed502c10281f264c8b912de",
+      "gitBlob": "c62a07dac5e516341bd11c659ed5c251a46a39a4",
+      "sourceFile": "T232.map",
+      "graphicID": "T232",
+      "group": "six-armour-areas",
+      "flags": "NORECONNECT(1) NORANDOMMOVE DAY"
+    },
+    {
+      "id": "T218",
+      "name": "死亡神殿",
+      "bytes": 20692,
+      "sha256": "c00357ccc1c561ec8f0b7dc631228dc736f297a7771024e2fb664d616e7f3b4b",
+      "gitBlob": "83a43b6aec4d2c90186f4a7115b10b3f06157ec5",
+      "sourceFile": "T218.map",
+      "graphicID": "T218",
+      "group": "six-armour-areas",
+      "flags": "NORECONNECT(0) NORANDOMMOVE DAY",
+      "trailingBytes": 9840
+    },
+    {
+      "id": "T339",
+      "name": "地狱烈焰",
+      "bytes": 19252,
+      "sha256": "c1c1992587adfa783ae869ba6b0c1e90f45a8b715252e53f40b98d9a9a2795c9",
+      "gitBlob": "3a64e99008c9d0b7d39bdc6dcdd1d1ed50872c59",
+      "sourceFile": "T339.map",
+      "graphicID": "T339",
+      "group": "six-armour-areas",
+      "flags": "NORECONNECT(0) NORANDOMMOVE DAY"
+    },
+    {
+      "id": "T219",
+      "name": "深渊魔域",
+      "bytes": 120052,
+      "sha256": "47dc4def356de8cddf309130b5d2d8752bdbe5e392d6b9e431527e0ab34cfa2f",
+      "gitBlob": "af65b00a65a3e8c4dc143ca489afe53432569083",
+      "sourceFile": "T219.map",
+      "graphicID": "T219",
+      "group": "six-armour-areas",
+      "flags": "NORECONNECT(1) NORANDOMMOVE DAY"
+    },
+    {
+      "id": "T315",
+      "name": "堕落坟场",
+      "bytes": 480052,
+      "sha256": "2d7f53ecee40a5e5527bb28fff78036f57dcb7eaa038770be35571ab5956d9c7",
+      "gitBlob": "35a980b046d3975825a40dd662ec6b66ed38bbd6",
+      "sourceFile": "T315.map",
+      "graphicID": "T315",
+      "group": "six-armour-areas",
+      "flags": "NORECONNECT(1) NORANDOMMOVE DAY"
+    },
+    {
+      "id": "T140",
+      "name": "困惑殿堂",
+      "bytes": 10852,
+      "sha256": "28a9689df4ee4021c73baed4619441a19d5a083be844144ffa1066509fb96832",
+      "gitBlob": "0edab9b8092cd6048b25035e4062ae87b4932506",
+      "sourceFile": "T140.map",
+      "graphicID": "T140",
+      "group": "six-armour-areas",
+      "flags": "NORECONNECT(3) NORANDOMMOVE DAY"
     },
     {
       "id": "D10011",

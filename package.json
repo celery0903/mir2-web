@@ -16,6 +16,7 @@
     "test:source": "node tests/source-client.mjs",
     "test:source-services": "node tests/source-services.mjs",
     "test:source-login": "node tests/source-login.mjs",
+    "test:source-safezone": "node tests/source-safezone.mjs",
     "test": "node tests/source-client.mjs",
     "test:prototype": "playwright test",
     "test:protocol": "node --test tests/protocol.test.mjs",

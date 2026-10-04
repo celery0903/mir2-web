@@ -1,0 +1,167 @@
+{
+  "checkedAt": "2026-10-04T22:51:38.960Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 256,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [
+    {
+      "id": "R001",
+      "name": "桃源之门",
+      "x": 162,
+      "y": 169,
+      "expectedUnresolved": 0,
+      "sourceSha256": "3e3b52fa584d5e9ab3806a61744475f77d5468614b815ce7dedfa0ecd6fd82c2",
+      "desktopColors": 89,
+      "mobileColors": 73,
+      "desktopCanvasSha256": "e90b396df120f2cfdf0b5c5a30f1cd8bdb90718f0a4f4f4dec15a257665d5073",
+      "mobileCanvasSha256": "cabf67fa61fbdb3f6fcf8a22d27fb993c4172e2ff416d75d13ad7c94c1506d62",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "T232",
+      "name": "钳虫巢穴",
+      "x": 22,
+      "y": 24,
+      "expectedUnresolved": 0,
+      "sourceSha256": "7b32d271a9558fff1b6f935323cb2c7c8b7cfa91aed502c10281f264c8b912de",
+      "desktopColors": 91,
+      "mobileColors": 72,
+      "desktopCanvasSha256": "fa2d8c1ad24e9dc996c39429ef93016c2731e723f35aa7548e2f12792369f6fb",
+      "mobileCanvasSha256": "a4e51de2927c51e20fcf786a8e9e267baf58e5fb4a2a2c18d702a50fedc07d97",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "T218",
+      "name": "死亡神殿",
+      "x": 14,
+      "y": 16,
+      "expectedUnresolved": 0,
+      "sourceSha256": "c00357ccc1c561ec8f0b7dc631228dc736f297a7771024e2fb664d616e7f3b4b",
+      "desktopColors": 116,
+      "mobileColors": 91,
+      "desktopCanvasSha256": "d1f5bd0d1bb2b96ce712a0ffc67750bd59ed763b2e1b353a36ad301ee8dd78f4",
+      "mobileCanvasSha256": "f15a8a378ecf74c1c742b5bbb3a08250896e74771ac8c8a09781afad811746b8",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "T339",
+      "name": "地狱烈焰",
+      "x": 23,
+      "y": 24,
+      "expectedUnresolved": 0,
+      "sourceSha256": "c1c1992587adfa783ae869ba6b0c1e90f45a8b715252e53f40b98d9a9a2795c9",
+      "desktopColors": 96,
+      "mobileColors": 77,
+      "desktopCanvasSha256": "e2cefda599a4259b0ba27d442bc47452689035a6ddb54d18e61f021191210c95",
+      "mobileCanvasSha256": "e7dafd1c3f56e107fb09700a8a61191ef6925f30fa44e6d886e9d661c7586d1e",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2",
+        "WemadeObjects6"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "T219",
+      "name": "深渊魔域",
+      "x": 20,
+      "y": 46,
+      "expectedUnresolved": 0,
+      "sourceSha256": "47dc4def356de8cddf309130b5d2d8752bdbe5e392d6b9e431527e0ab34cfa2f",
+      "desktopColors": 71,
+      "mobileColors": 50,
+      "desktopCanvasSha256": "f98cd7eed67765bfc7d27193f3cc67f34a7924a9ed6f26b423dcdca2b21faec8",
+      "mobileCanvasSha256": "1119ea5bf16c4fd30d9638a9acd0312a8a2a426bda8218df9c5c440cf4acd3d5",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "T315",
+      "name": "堕落坟场",
+      "x": 106,
+      "y": 51,
+      "expectedUnresolved": 0,
+      "sourceSha256": "2d7f53ecee40a5e5527bb28fff78036f57dcb7eaa038770be35571ab5956d9c7",
+      "desktopColors": 71,
+      "mobileColors": 47,
+      "desktopCanvasSha256": "7c52bd536a709abc779191c42bf65f141685fa40af000d97b503cab2f7f04cf3",
+      "mobileCanvasSha256": "a21efb12170c72f67924da37563b83d4a75f133fef41869c27b5f7f06463ff84",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "T140",
+      "name": "困惑殿堂",
+      "x": 14,
+      "y": 15,
+      "expectedUnresolved": 0,
+      "sourceSha256": "28a9689df4ee4021c73baed4619441a19d5a083be844144ffa1066509fb96832",
+      "desktopColors": 103,
+      "mobileColors": 88,
+      "desktopCanvasSha256": "aeac47602bb89edf22b1eea4625e8bc5c8c1539fdfc1cefa0d5ace9f3ae5c726",
+      "mobileCanvasSha256": "d4353a903844a373536b1b31134397abaddda602d61707db604910294685dbb8",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects6"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    }
+  ]
+}

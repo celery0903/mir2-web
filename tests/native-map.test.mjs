@@ -42,6 +42,14 @@ test('legacy maps preserve their library byte and all other cell bytes', () => {
   assert.deepEqual(legacyMap(map), map);
 });
 
+test('ambiguous 14-byte layouts are rejected unless a tail size is explicitly supplied', () => {
+  const map = Buffer.alloc(52 + 6 * 14);
+  map.writeUInt16LE(2, 0); map.writeUInt16LE(3, 2);
+  assert.throws(() => legacyMap(map), /Invalid legacy map/);
+  assert.throws(() => legacyMap(map, { trailingBytes: 24 }), /Invalid legacy map/);
+  assert.deepEqual(legacyMap(map, { trailingBytes: 12 }), map);
+});
+
 test('wide tile image ids receive distinct free slots without aliasing existing terrain', () => {
   const source = crystalMap(24);
   source.writeUInt32LE(0x20000000 | 72339, 10);

@@ -22,7 +22,7 @@ for (const existing of lock.maps) {
   const current = audit.maps.find(map => map.id === existing.id);
   assert.equal(current?.sha256, existing.sha256, `Pinned map changed: ${existing.id}`);
 }
-lock.maps = audit.maps.map(({ id, name, bytes, sha256, gitBlob, sourceFile, graphicID, group, flags }) => ({ id, name, bytes, sha256, gitBlob, sourceFile, graphicID, group, flags }));
+lock.maps = audit.maps.map(({ id, name, bytes, sha256, gitBlob, sourceFile, graphicID, group, flags, trailingBytes }) => ({ id, name, bytes, sha256, gitBlob, sourceFile, graphicID, group, flags, ...(trailingBytes ? { trailingBytes } : {}) }));
 for (const name of audit.requiredLibraries) {
   const file = name + '.Lib';
   const raw = await readFile(join(libraries, file));

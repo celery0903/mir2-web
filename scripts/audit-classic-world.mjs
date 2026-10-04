@@ -53,7 +53,8 @@ for (const group of catalog.groups) for (const id of group.ids) {
     const sourcePath = `Mir200/Map/${entry.sourceFile}`;
     const raw = await readVerified(sourcePath);
     entry.bytes = raw.length; entry.sha256 = digest(raw); entry.gitBlob = sourceBlobs.get(sourcePath);
-    const map = legacyMap(raw);
+    const trailingBytes = catalog.legacyAuxiliaryTails?.[id] ?? 0;
+    const map = legacyMap(raw, { trailingBytes });
     if (!map.equals(raw)) throw new Error('native catalog requires original classic-12 bytes');
     const width = map.readUInt16LE(0), height = map.readUInt16LE(2);
     const families = {}, refs = new Map([['Tiles', new Set()], ['SmTiles', new Set()]]);
@@ -74,7 +75,7 @@ for (const group of catalog.groups) for (const id of group.ids) {
         refs.set(name, indices);
       }
     }
-    Object.assign(entry, { format: 'classic-12', width, height, blockedCells, frontFileBytes: families,
+    Object.assign(entry, { format: 'classic-12', width, height, ...(trailingBytes ? { trailingBytes } : {}), blockedCells, frontFileBytes: families,
       libraryReferences: Object.fromEntries([...refs].map(([name, values]) => [name, { count: values.size, maxIndex: values.size ? Math.max(...values) : null }])),
       acceptance: 'candidate-not-authenticated' });
     parsed.set(id, map);
