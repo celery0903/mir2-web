@@ -1,0 +1,41 @@
+diff --git a/GatewaySession.cs b/GatewaySession.cs
+--- a/GatewaySession.cs
++++ b/GatewaySession.cs
+@@ -26,7 +26,8 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
+     private long? pendingActionId;
+     private string? pendingActionKind;
+     private ItemAction? pendingItemAction;
++    private long nextNpcClickTick;
+     private int? activeNpc;
+     private int? activeShopNpc;
+     private readonly Dictionary<string, ShopGoods> shopGoods = new(StringComparer.Ordinal);
+     private readonly Dictionary<int, ShopDetail> shopDetails = [];
+@@ -507,7 +507,7 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
+                     }
+                     phase = "world";
+                     mapGeneration++;
+-                    await Send(new { type = "map", map = packet.Text }, lifetime.Token);
++                    await Send(new { type = "map", map = packet.Text, x = packet.Param, y = packet.Tag, direction = packet.Series & 255 }, lifetime.Token);
+                 }
+                 if (packet.Id == 50)
+                 {
+@@ -629,15 +630,18 @@ public sealed class GatewaySession(WebSocket socket) : IDisposable
+     private async Task ClickNpc(JsonElement command, CancellationToken cancellation)
+     {
+         int targetId = command.GetProperty("targetId").GetInt32();
++        long remaining = nextNpcClickTick - Environment.TickCount64;
++        if (remaining > 0) await Task.Delay((int)remaining, cancellation);
+         lock (worldStateLock)
+         {
+             if (!entities.TryGetValue(targetId, out var target) || target.dead || (target.feature & 255) != 50)
+                 throw new InvalidOperationException("NPC is unavailable");
+             var position = confirmedPosition ?? throw new InvalidOperationException("Player position is not ready");
+-            if (Math.Max(Math.Abs(target.x - position.x), Math.Abs(target.y - position.y)) > 1)
++            if (Math.Max(Math.Abs(target.x - position.x), Math.Abs(target.y - position.y)) > 15)
+                 throw new InvalidOperationException("NPC is out of reach");
+             if (activeNpc != targetId) { ClearShop(); ClearStorage(); }
+             activeNpc = targetId;
+         }
+         await game.Send(1010, cancellation, recog: targetId);
++        nextNpcClickTick = Environment.TickCount64 + 1100;
+     }

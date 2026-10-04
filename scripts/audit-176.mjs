@@ -28,8 +28,27 @@ const { stdout: mapConfig } = await execute('docker', ['exec', `${project}-engin
 const activatedMapIDs = [...mapConfig.matchAll(/^\s*\[(\S+)\s/gm)].map(match => match[1]);
 const reference = await json('docs/reference-176-audit.json');
 const world = await json('shared/world.json');
-const files = ['shared/world.json', 'shared/classic-storage.json', 'scripts/prepare-classic-world.mjs', 'scripts/prepare-openmir2.mjs', 'web/src/main.ts', 'web/src/style.css', 'web/src/game.ts', 'web/src/classic.ts', 'web/src/client.ts', 'web/src/audio.ts', 'server/Engine/Dockerfile', 'server/Engine/run.mjs', 'server/WebGateway/GatewaySession.cs', 'server/WebGateway/Program.cs', 'server/openmir2-linux.patch'];
+const files = ['shared/world.json', 'shared/classic-storage.json', 'compose.yaml', 'scripts/prepare-classic-world.mjs', 'scripts/prepare-openmir2.mjs', 'scripts/prepare-source-client.mjs', 'scripts/prepare-source-assets.mjs', 'server/SourceClient/Dockerfile', 'server/SourceClient/nginx.conf', 'server/SourceProxy/Dockerfile', 'server/source-client.patch', 'server/source-proxy.patch', 'upstream/mir2-client/apps/web/src/play.ts', 'upstream/mir2-client/apps/web/src/classic-hud.ts', 'upstream/mir2-client/services/web-gateway/GatewaySession.cs', 'server/Engine/Dockerfile', 'server/Engine/run.mjs', 'server/openmir2-linux.patch'];
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
+const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
+const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);
+const labels = JSON.parse(webLabels) ?? {};
+let sourceAssets;
+try { sourceAssets = await json(join(process.env.MIR_SOURCE_ASSETS ?? '.runtime/source-assets', 'integration.json')); }
+catch { sourceAssets = { prepared: false }; }
+let nativeMapsMatch;
+if (sourceAssets.maps) {
+  const paths = sourceAssets.maps.map(map => {
+    if (!/^[A-Za-z0-9]+$/.test(map.id)) throw new Error('Invalid source map ID');
+    return `/data/server/Mir200/Map/${map.id}.map`;
+  });
+  const { stdout } = await execute('docker', ['exec', `${project}-engine-1`, 'sha256sum', ...paths]);
+  const hashes = Object.fromEntries(stdout.trim().split('\n').map(line => {
+    const [hash, file] = line.trim().split(/\s+/);
+    return [file.split('/').at(-1).replace(/\.map$/, ''), hash];
+  }));
+  nativeMapsMatch = sourceAssets.maps.every(map => hashes[map.id] === map.sourceSha256);
+}
 const frameIndices = [1, 3, 4, 6, 7, 60, 63, 65, 73, 370, 376, 377, 383, 384, 385, 392, 393];
 const frames = Object.fromEntries(frameIndices.map(index => {
   const frame = ui.frames[`ui:ClassicPrguse:${index}`];
@@ -39,6 +58,14 @@ const frames = Object.fromEntries(frameIndices.map(index => {
 const report = {
   checkedAt: new Date().toISOString(), project, target: '2003 Chinese 1.76',
   acceptance: 'failed', goalComplete: false, contentHashes,
+  clientImplementation: {
+    repository: 'leiniaozl229/mir2', revision: sourceRevision.trim(),
+    default: 'existing Pixi H5 source plus its WebSocket/TCP proxy',
+    deployedSource: labels['org.opencontainers.image.source'] ?? null,
+    deployedRevision: labels['org.opencontainers.image.revision'] ?? null,
+    patches: ['server/source-client.patch', 'server/source-proxy.patch'],
+    sourceAssets, nativeMapsMatch
+  },
   world: { profile: world.profile, activatedMapIDs, enabledMaps: mapAudit.maps, installedMapIDsMatchCollisionAudit: JSON.stringify(activatedMapIDs.slice().sort()) === JSON.stringify(mapAudit.maps.map(map => map.id).sort()), connections: mapAudit.connections, scope: mapAudit.scope },
   database,
   clientArchive: { file: ui.client176.archive, sha256: ui.client176.sha256, provenance: ui.client176.provenance, officialVersionAuthenticated: false, rawArchiveAvailableHere: false },

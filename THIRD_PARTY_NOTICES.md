@@ -18,9 +18,12 @@
 
 ## Client Libraries
 
+- Existing browser client and proxy: https://github.com/leiniaozl229/mir2 at `77e3ff7506b1ca55cac15df247cb2fcedd69c535`, included as `upstream/mir2-client`. The upstream repository does not provide a top-level license. Its code is not relabeled under this project's MIT license. Integration patches are retained separately in `server/source-client.patch` and `server/source-proxy.patch`.
+- PixiJS: https://github.com/pixijs/pixijs (MIT), version pinned by the upstream client's `package-lock.json`.
+
 - Phaser: https://github.com/phaserjs/phaser (MIT)
 - PathFinding.js: https://github.com/qiao/PathFinding.js (MIT)
 - Lucide: https://github.com/lucide-icons/lucide (ISC)
-- Versions are pinned in `package-lock.json`.
+- Phaser, PathFinding.js and Lucide are dependencies of the preserved prototype. Versions are pinned in the corresponding lock files.
 
 The previous Crystal engine and substitute Kenney demo assets have been removed. Candidate comparisons and actual research findings remain in `docs/SOURCE_RESEARCH.md`.

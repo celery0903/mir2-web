@@ -1,6 +1,8 @@
 .git
 **/.git
 **/node_modules
+**/assets/raw
+**/assets/web
 **/bin
 **/obj
 .build

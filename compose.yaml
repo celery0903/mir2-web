@@ -30,18 +30,37 @@ services:
   web:
     build:
       context: .
+      dockerfile: server/SourceClient/Dockerfile
     init: true
     restart: unless-stopped
     environment:
       GAME_HOST: engine
+    volumes:
+      - ./.runtime/source-assets:/usr/share/nginx/resources:ro
     ports:
       - "${MIR_BIND:-0.0.0.0}:${MIR_PORT:-18880}:8080"
     depends_on:
       engine:
         condition: service_healthy
+      source-proxy:
+        condition: service_healthy
     networks:
       - internal
       - public
+  source-proxy:
+    build:
+      context: .
+      dockerfile: server/SourceProxy/Dockerfile
+    init: true
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_URLS: http://0.0.0.0:8800
+      MIR2_ENGINE_HOST: engine
+      MIR2_WEB_ORIGINS: ${MIR_SOURCE_ORIGINS:-http://127.0.0.1:${MIR_PORT:-18880},http://localhost:${MIR_PORT:-18880},http://172.30.0.16:${MIR_PORT:-18880}}
+    depends_on:
+      engine:
+        condition: service_healthy
+    networks: [internal]
 volumes:
   openmir2-db:
   openmir2-engine:

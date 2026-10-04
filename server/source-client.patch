@@ -1,0 +1,180 @@
+diff --git a/apps/web/src/monster-visuals.ts b/apps/web/src/monster-visuals.ts
+--- a/apps/web/src/monster-visuals.ts
++++ b/apps/web/src/monster-visuals.ts
+@@ -32,6 +32,16 @@ export const monsterVisualRules:MonsterVisualRule[]=[
+  {raceImg:104,appr:47,library:'Monster047',quality:'candidate',names:['祖玛弓箭手']},
+  {raceImg:101,appr:61,library:'Monster061',quality:'exact',names:['祖玛雕像']},
+  {raceImg:101,appr:62,library:'Monster062',quality:'exact',names:['祖玛卫士']},
++ {raceImg:11,appr:160,library:'BichonMonster3',quality:'candidate',names:['鸡']},
++ {raceImg:11,appr:161,library:'BichonMonster4',quality:'candidate',names:['鹿']},
++ {raceImg:18,appr:27,library:'BichonMonster5',quality:'candidate',names:['稻草人']},
++ {raceImg:17,appr:25,library:'BichonMonster6',quality:'candidate',names:['多钩猫']},
++ {raceImg:17,appr:26,library:'BichonMonster7',quality:'candidate',names:['钉耙猫']},
++ {raceImg:19,appr:162,library:'BichonMonster8',quality:'candidate',names:['蛤蟆']},
++ {raceImg:19,appr:100,library:'BichonMonster9',quality:'candidate',names:['半兽人']},
++ {raceImg:13,appr:10,library:'BichonMonster10',quality:'candidate',names:['食人花']},
++ {raceImg:10,appr:1,library:'BichonMonster11',quality:'candidate',names:['森林雪人']},
++ {raceImg:19,appr:163,library:'BichonMonster12',quality:'candidate',names:['毒蜘蛛']},
+ ];
+
+ const byFeature=new Map(monsterVisualRules.map(rule=>[`${rule.raceImg}:${rule.appr}`,rule.library]));
+diff --git a/apps/web/src/classic-hud.ts b/apps/web/src/classic-hud.ts
+--- a/apps/web/src/classic-hud.ts
++++ b/apps/web/src/classic-hud.ts
+@@ -266,6 +266,20 @@ export class ClassicHud {
+   this.mpText.textContent=`${Math.max(0,mp)}/${Math.max(0,maxMp)}`;
+   const orbHeight=this.nationalReady?nationalHudOrbMetrics().orbHeight:80,barWidth=this.nationalReady?nationalHudOrbMetrics().barWidth:784,weightWidth=this.nationalReady?nationalHudOrbMetrics().weightWidth:76;
+-  this.hpFill.style.height=`${ratio(hp,maxHp)*orbHeight}px`;
++  const redOnly=this.nationalReady&&this.attributes?.job===0&&this.attributes.level<28;
++  if(this.nationalReady){
++   const hud=classicUiLayout().nationalHud,well=this.hpFill.parentElement!,mpWell=this.mpFill.parentElement!;
++   well.dataset.redOnly=String(redOnly);
++   well.style.left=`${redOnly?38:hud.orbs.hp.x}px`;well.style.top=`${redOnly?90:hud.orbs.hp.y}px`;
++   well.style.width=`${redOnly?96:hud.orbs.hp.width}px`;well.style.height=`${redOnly?92:hud.orbs.hp.height}px`;
++   mpWell.style.display=redOnly?'none':'block';this.hpFill.style.width=well.style.width;
++   const image=this.hpFill.querySelector<HTMLImageElement>('img'),library=this.nationalLibraries.get('prguse');
++   if(image&&library){
++    const index=redOnly?6:4;
++    if(image.dataset.orbFrame!==String(index)){image.src=nationalUiUrl('prguse',uiFrame(library,index));image.dataset.orbFrame=String(index);}
++    image.style.width=`${redOnly?96:hud.orbs.fillImageWidth}px`;image.style.height=`${redOnly?92:hud.orbs.fillImageHeight}px`;
++   }
++  }
++  this.hpFill.style.height=`${ratio(hp,maxHp)*(redOnly?92:orbHeight)}px`;
+   this.mpFill.style.height=`${ratio(mp,maxMp)*orbHeight}px`;
+   this.expFill.style.width=`${ratio(experience,maxExperience)*barWidth}px`;
+   this.expText.textContent=`${Math.max(0,experience)}/${Math.max(0,maxExperience)}`;
+diff --git a/content/classic-176/ui-layout.json b/content/classic-176/ui-layout.json
+--- a/content/classic-176/ui-layout.json
++++ b/content/classic-176/ui-layout.json
+@@ -93,7 +93,7 @@
+     "orbs": {
+       "relativeTo": "mainDialog",
+-      "hp": {"x": 42, "y": 85, "width": 46, "height": 90, "imageOffsetX": 0, "evidence": "proposed"},
+-      "mp": {"x": 88, "y": 85, "width": 46, "height": 90, "imageOffsetX": -46, "evidence": "proposed"},
++      "hp": {"x": 39, "y": 91, "width": 46, "height": 90, "imageOffsetX": 0, "evidence": "bitmap-alignment"},
++      "mp": {"x": 85, "y": 91, "width": 46, "height": 90, "imageOffsetX": -46, "evidence": "bitmap-alignment"},
+       "fillImageWidth": 92,
+       "fillImageHeight": 90
+     },
+diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
+--- a/apps/web/src/play.ts
++++ b/apps/web/src/play.ts
+@@ -338,7 +338,7 @@ function renderTargets(){
+  targetsElement.replaceChildren();const actor=self===undefined?undefined:entities.get(self);if(!actor){targetsElement.textContent='等待附近对象…';return;}
+  const targets=[...entities.values()].filter(entity=>{const race=entity.feature&255;return !entity.self&&(race!==0||Boolean(entity.name));}).map(entity=>({entity,distance:Math.max(Math.abs(entity.x-actor.x),Math.abs(entity.y-actor.y))})).filter(value=>value.distance<=8).sort((a,b)=>a.distance-b.distance||a.entity.id-b.entity.id);
+  if(!targets.length){targetsElement.textContent='附近没有可交互对象';return;}
+- for(const {entity,distance} of targets){const button=document.createElement('button');button.type='button';button.dataset.entityId=String(entity.id);const race=entity.feature&255,npc=race===50,player=race===0,slave=entity.kind==='slave'||entity.nameColor===254,health=entity.hp===undefined?'':` · ${entity.hp}/${entity.maxHp} HP`;button.textContent=`${slave?'召唤 · ':''}${entity.name||(npc?'NPC':'怪物')} · ${entity.x},${entity.y} · ${distance} 格${health} · ${npc?(distance===1?'对话':'接近'):player?(distance===1?'PK/行会战':'接近'):entity.dead?'Alt+左键挖肉':distance===1?'攻击':'接近'}`;button.onclick=event=>interact(entities.get(entity.id)??entity,requestsHarvest(event));targetsElement.append(button);}
++ for(const {entity,distance} of targets){const button=document.createElement('button');button.type='button';button.dataset.entityId=String(entity.id);const race=entity.feature&255,npc=race===50,player=race===0,slave=entity.kind==='slave'||entity.nameColor===254,health=entity.hp===undefined?'':` · ${entity.hp}/${entity.maxHp} HP`;button.textContent=`${slave?'召唤 · ':''}${entity.name||(npc?'NPC':'怪物')} · ${entity.x},${entity.y} · ${distance} 格${health} · ${npc?'对话':player?(distance===1?'PK/行会战':'接近'):entity.dead?'Alt+左键挖肉':distance===1?'攻击':'接近'}`;button.onclick=event=>interact(entities.get(entity.id)??entity,requestsHarvest(event));targetsElement.append(button);}
+ }
+ function clickPath(actor:Entity,destination:{x:number;y:number}){
+  const start={x:actor.x,y:actor.y},goal={x:Math.round(destination.x),y:Math.round(destination.y)};
+@@ -451,6 +451,11 @@ function interact(target:Entity,harvest=false){
+  const race=target.feature&255,player=race===0&&Boolean(target.name);if(race===0&&!player){pursuitTarget=undefined;pursuitHarvest=false;connection.textContent=`${target.name||'该对象'} 暂不支持交互`;return;}
+  if(target.dead&&!harvest){pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();connection.textContent='按住 Alt 并左键点击尸体挖肉';return;}
+  const dx=Math.sign(target.x-actor.x),dy=Math.sign(target.y-actor.y),distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
++ if(race===50&&distance<=15){
++  held=undefined;clickDestination=undefined;pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();
++  socket.send(JSON.stringify({type:'npc',targetId:target.id}));connection.textContent=`正在与 ${target.name} 交谈…`;
++  return;
++ }
+  if(distance>1){
+   held=undefined;clickDestination=undefined;if(pursuitTarget!==target.id)pursuitRejectedCells.clear();pursuitTarget=target.id;pursuitHarvest=Boolean(target.dead&&harvest);
+   const step=targetApproachStep(actor,target);
+@@ -460,7 +465,6 @@ function interact(target:Entity,harvest=false){
+  }
+  if(distance!==1)return;
+  pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();
+- if(race===50){socket.send(JSON.stringify({type:'npc',targetId:target.id}));connection.textContent=`正在与 ${target.name} 交谈…`;return;}
+  const direction=directions.findIndex(([x,y])=>x===dx&&y===dy);if(direction<0)return;
+  if(target.dead&&harvest){socket.send(JSON.stringify({type:'butch',targetId:target.id}));update({...actor,direction,action:'harvest'});connection.textContent=`正在挖取 ${target.name}…`;return;}
+  combatTarget=target.id;continueCombat();
+@@ -512,6 +512,7 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Credentials,automatic=false){
+    reconnectAttempts=0;
+    classicAuth.hide();document.body.classList.add('in-world');
+    doorRetry=undefined;currentMap=message.map;
++   const player=self===undefined?undefined:entities.get(self);
+    clearWorld(true);worldReady=false;mapGeneration=envelope.mapGeneration;classicHud.position(message.map,0,0);connection.textContent=`正在载入地图 ${message.map}…`;
+    mapReady=view.setMap(message.map).then(()=>minimap.setMap(message.map,view.width,view.height)).then(()=>{worldReady=true;}).catch(error=>{
+     const detail=error instanceof Error?error.message:`地图 ${message.map} 载入失败`;
+@@ -521,6 +522,13 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Credentials,automatic=false){
+     connection.textContent=detail;
+     worldReady=true;
+   });
++   if(player&&Number.isInteger(message.x)&&Number.isInteger(message.y)){
++    const next={...player,x:message.x,y:message.y,direction:message.direction??player.direction,action:'standing'};
++    self=next.id;initialSelfPending=false;update(next);
++    classicHud.position(currentMap,next.x,next.y);minimap.setPosition(next.x,next.y);
++    void mapReady.then(()=>view.setCenter(next.x,next.y));
++    connection.textContent=`已连接 · ${next.name} · ${next.x}, ${next.y}`;
++   }
+   }
+   else if(message.type==='entity'){
+    const prior=entities.get(message.id);const entity={...prior,...message,name:message.name??prior?.name??'',feature:message.feature??prior?.feature??0,self:message.self||prior?.self||false,kind:message.kind??prior?.kind} as Entity;
+diff --git a/apps/web/src/map-view.ts b/apps/web/src/map-view.ts
+--- a/apps/web/src/map-view.ts
++++ b/apps/web/src/map-view.ts
+@@ -2,7 +2,7 @@
+ import {FrameBudget} from './perf';
+
+ type Chunk={x:number;y:number;width:number;height:number;file:string};
+-type World={width:number;height:number;chunks:Chunk[]};
++type World={width:number;height:number;chunks:Chunk[];objectLibraries?:Record<string,string>};
+ type Frame={width:number;height:number;file:string;offsetX:number;offsetY:number};
+ type Library={frames:Record<string,Frame>;empty:number[];missing:number[]};
+
+@@ -16,6 +16,11 @@ export async function createMapView(viewport:HTMLElement,status:HTMLOutputElement){
+ let mapId='0',world=await getJSON<World>('/maps/0/map.json');
+ const names=['Tiles','SmTiles','Objects'];
+ const libraries=await Promise.all(names.map(name=>getJSON<Library>(`/libraries/${name}/library.json`)));
++const objectLibraries=new Map<string,Library>([['Objects',libraries[2]]]);
++async function loadObjectLibraries(next:World){
++ await Promise.all([...new Set(Object.values(next.objectLibraries??{}))].filter(name=>!objectLibraries.has(name)).map(async name=>objectLibraries.set(name,await getJSON<Library>(`/libraries/${name}/library.json`))));
++}
++await loadObjectLibraries(world);
+ const chunkCache=new Map<string,Promise<DataView>>();
+ const textureCache=new Map<string,Promise<Texture>>();
+ let centerX=296,centerY=624,generation=0,current:Container|undefined,showCollision=false;
+@@ -63,7 +68,9 @@ async function render(){
+    if(layer===0&&(x%2!==0||y%2!==0))continue;
+    const index=(data.getUint16(offset+layer*2,true)&0x7fff)-1;
+    if(index<0)continue;
+-   const library=libraries[layer],frame=library.frames[index];
++   const libraryName=layer===2?(activeWorld.objectLibraries?.[data.getUint8(offset+10)]??names[layer]):names[layer];
++   const library=layer===2?objectLibraries.get(libraryName):libraries[layer];
++   if(!library){unresolved++;continue;}const frame=library.frames[index];
+    if(!frame){if(!library.empty.includes(index))unresolved++;continue;}
+    const animation=layer===2?data.getUint8(offset+8):0;
+    const floorTile=layer===0||(!animation&&((frame.width===48&&frame.height===32)||(frame.width===96&&frame.height===64)));
+@@ -76,6 +83,6 @@ async function render(){
+     const animatedFrame=library.frames[index+a];
+     if(!animatedFrame){if(!library.empty.includes(index+a))unresolved++;frameJobs.push(Promise.resolve(Texture.EMPTY));continue;}
+-    const url=`/libraries/${names[layer]}/${animatedFrame.file}`;
++    const url=`/libraries/${libraryName}/${animatedFrame.file}`;
+     let texture=textureCache.get(url);
+     if(!texture){texture=Assets.load<Texture>(url).then(t=>{t.source.scaleMode='nearest';return t;});textureCache.set(url,texture);}
+     frameJobs.push(texture);
+@@ -145,6 +152,7 @@ return {app,depth,frameBudget,get width(){return world.width;},get height(){return w
+  async setMap(id:string){
+   if(!/^[A-Za-z0-9]{1,10}$/.test(id))throw new Error('地图编号无效');
+   const next=await getJSON<World>(`/maps/${encodeURIComponent(id)}/map.json`);
++  await loadObjectLibraries(next);
+   collisionCells.clear();
+   for(const key of doorStates.keys())if(key.startsWith(`${id}:`))doorStates.delete(key);
+   cameraMotion=undefined;renderWindow=undefined;mapId=id;world=next;centerX=Math.max(0,Math.min(world.width-1,centerX));centerY=Math.max(0,Math.min(world.height-1,centerY));app.stage.position.set(400-centerX*48,300-centerY*32);await scheduleRender();
+diff --git a/apps/web/src/style.css b/apps/web/src/style.css
+--- a/apps/web/src/style.css
++++ b/apps/web/src/style.css
+@@ -177,5 +177,5 @@
+ body.classic-play.in-world #game-stage{grid-area:1 / 1;margin:0}
+ body.classic-play #classic-hud.national-ui .hud-exp-track i{height:9px;margin:2px 1px;background:linear-gradient(90deg,#745112,#e9c95e)}
+-body.classic-play #classic-window{left:192px!important;top:126px!important;width:416px!important;height:347px!important;padding:38px 14px 12px!important;background-image:url('/ui-national/prguse/402.2b8c83a121142363.png')!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
++body.classic-play #classic-window{left:192px!important;top:126px!important;width:416px!important;height:347px!important;padding:38px 14px 12px!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
+ body.classic-play #classic-window .classic-window-heading{position:absolute;left:0;right:0;top:8px;height:20px;color:#f4d67c;text-shadow:1px 1px #000}
+ body.classic-play #classic-window .classic-window-heading button{left:390px!important;top:2px!important;width:22px!important;height:22px!important;background-image:none!important;color:transparent!important;font-size:0}
+@@ -191,5 +191,5 @@
+ body.classic-play #classic-window .classic-window-body>.chat-panel form button{grid-column:3;grid-row:1 / 3;padding:3px 8px}
+ body.classic-play #classic-window .classic-window-body ol{margin:4px 0;padding-left:18px}
+-body.classic-play #classic-modal-layer .npc-dialog{width:416px!important;min-height:347px!important;height:347px!important;padding:38px 14px 12px!important;background-image:url('/ui-national/prguse/402.2b8c83a121142363.png')!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
++body.classic-play #classic-modal-layer .npc-dialog{width:416px!important;min-height:347px!important;height:347px!important;padding:38px 14px 12px!important;color:#e8d6a0;font:12px SimSun,'Songti SC',serif}
+ body.classic-play #classic-modal-layer .npc-dialog>div:first-child{min-height:20px;color:#f4d67c;text-shadow:1px 1px #000}
+ body.classic-play #classic-modal-layer .npc-dialog #close-dialogue{top:2px;right:2px;width:22px;height:22px;background-image:none!important;color:transparent;font-size:0}
