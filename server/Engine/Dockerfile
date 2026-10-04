@@ -11,13 +11,15 @@ COPY shared/classic-assets.lock.json shared/classic-assets.lock.json
 RUN node scripts/fetch-classic.mjs /assets/classic
 
 FROM data AS profile
+ARG MIR_WORLD_SCOPE=default
 COPY --from=classic /assets/classic /classic
 COPY scripts/native-map.mjs scripts/prepare-classic-world.mjs scripts/
 COPY shared/classic-experience.json shared/classic-experience.json
 COPY shared/classic-storage.json shared/classic-storage.json
 COPY shared/native-world.lock.json shared/native-world.lock.json
+COPY shared/classic-world-services.lock.json shared/classic-world-services.lock.json
 COPY tests/native-map.test.mjs tests/native-map.test.mjs
-RUN node --test tests/native-map.test.mjs && node scripts/prepare-classic-world.mjs /seed /classic /profile
+RUN node --test tests/native-map.test.mjs && MIR_WORLD_SCOPE=$MIR_WORLD_SCOPE node scripts/prepare-classic-world.mjs /seed /classic /profile
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
@@ -28,6 +30,8 @@ COPY server/openmir2-status.patch server/openmir2-status.patch
 RUN git -C upstream/openmir2 apply /src/server/openmir2-status.patch
 COPY server/openmir2-safezone.patch server/openmir2-safezone.patch
 RUN git -C upstream/openmir2 apply --ignore-space-change /src/server/openmir2-safezone.patch
+COPY server/openmir2-script.patch server/openmir2-script.patch
+RUN git -C upstream/openmir2 apply /src/server/openmir2-script.patch
 RUN --mount=type=cache,target=/root/.nuget/packages \
     for project in GameSrv DBSrv LoginSrv LoginGate SelGate GameGate Storeages/DBSvr.Storage.MySQL; do \
       dotnet publish upstream/openmir2/src/$project/${project##*/}.csproj \
@@ -42,6 +46,8 @@ COPY tests/safezone tests/safezone
 RUN dotnet run --project tests/safezone/SafeZoneChecks.csproj -c Release --nologo
 COPY tests/login-channel tests/login-channel
 RUN dotnet run --project tests/login-channel/LoginChannelChecks.csproj -c Release --nologo
+COPY tests/script tests/script
+RUN dotnet run --project tests/script/ScriptChecks.csproj -c Release --nologo
 
 FROM mcr.microsoft.com/dotnet/runtime:8.0
 COPY --from=data /usr/local/bin/node /usr/local/bin/node

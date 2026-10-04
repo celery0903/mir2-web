@@ -1,0 +1,61 @@
+diff --git a/src/Modules/ScriptEngine/ScriptParsers.cs b/src/Modules/ScriptEngine/ScriptParsers.cs
+--- a/src/Modules/ScriptEngine/ScriptParsers.cs
++++ b/src/Modules/ScriptEngine/ScriptParsers.cs
+@@ -35,7 +35,8 @@
+                             LogService.Warn($"重复脚本检测编码[{codeField.CommandName}]定义");
+                             continue;
+                         }
+-                        ConditionCodeDefMap.Add(codeField.CommandName, i);
++                        ConditionCodeDefMap.Add(codeField.CommandName,
++                            (int)Enum.Parse<ConditionCode>(conditionFields[i].Name));
+                     }
+                 }
+             }
+@@ -54,7 +55,8 @@
+                             LogService.Warn($"重复脚本执行编码[{codeField.CommandName}]定义");
+                             continue;
+                         }
+-                        ExecutionCodeDefMap.Add(codeField.CommandName, i);
++                        ExecutionCodeDefMap.Add(codeField.CommandName,
++                            (int)Enum.Parse<ExecutionCode>(executionFields[i].Name));
+                     }
+                 }
+             }
+@@ -326,6 +328,6 @@
+                 }
+                 else
+                 {
+-                    nCMDCode = code - 1;
++                    nCMDCode = code;
+                 }
+             }
+@@ -498,6 +500,6 @@
+                 }
+                 else
+                 {
+-                    nCMDCode = code - 1;
++                    nCMDCode = code;
+                 }
+             }
+diff --git a/src/Modules/ScriptEngine/ScriptEngine.cs b/src/Modules/ScriptEngine/ScriptEngine.cs
+--- a/src/Modules/ScriptEngine/ScriptEngine.cs
++++ b/src/Modules/ScriptEngine/ScriptEngine.cs
+@@ -890,7 +890,11 @@
+                 if (ExecutionProcessing.IsRegister(questActionInfo.nCmdCode))
+                 {
+                     ExecutionProcessing.Execute(normNpc, playerActor, questActionInfo, ref result);
+-                    return result;
++                    if (!result)
++                    {
++                        return false;
++                    }
++                    continue;
+                 }
+                 ExecutionCode executionCode = (ExecutionCode)questActionInfo.nCmdCode;
+                 switch (executionCode)
+@@ -908,4 +912,3 @@
+                     case ExecutionCode.Break:
+-                        result = false;
+-                        break;
++                        return false;
+                     case ExecutionCode.Param1:

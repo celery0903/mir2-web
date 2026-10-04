@@ -1,0 +1,178 @@
+{
+  "checkedAt": "2026-10-04T23:23:47.487Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "passed": false,
+  "full176Acceptance": false,
+  "fixture": "New level-one, zero-gold accounts moved offline to original route approaches. No stats, skills, items, NPC scripts or route coordinates changed. This does not verify travelling from birth to these regions.",
+  "images": {
+    "engine": "sha256:78b5f9b19b431e56463dc69fc86d32a7c545e8f077e3318e94ab373d2414dd62",
+    "web": "sha256:b15558772eff8b8da396e44ffb7b4dbcbdc90b5370aa4430ee7eac60ab354615",
+    "proxy": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b"
+  },
+  "errors": [],
+  "missingResources": [],
+  "routes": [],
+  "candidateServiceAcceptance": "failed",
+  "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('[data-auth-select]')\nExpected: visible\nReceived: hidden\nTimeout:  30000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('[data-auth-select]') with timeout 30000ms\n  - waiting for locator('[data-auth-select]')\n    61 × locator resolved to <div hidden=\"\" class=\"auth-scene\" data-auth-select=\"\">…</div>\n       - unexpected value \"hidden\"\n",
+  "failedState": {
+    "now": 34449.300000190735,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": false,
+    "authScene": "create",
+    "connection": "角色创建失败 (4)",
+    "map": "0",
+    "mapGeneration": 0,
+    "lastSequence": 4,
+    "worldReady": true,
+    "confirmedCell": {},
+    "camera": {
+      "x": -13808,
+      "y": -19668
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "inventory": {
+      "known": false,
+      "items": [],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "images": [],
+      "ready": false
+    },
+    "groundItems": [],
+    "skills": {
+      "known": false,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.87babc76f2fc8ae3.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": []
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "等待战斗事件",
+    "nearby": [],
+    "directions": [],
+    "entityCount": 0,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {},
+    "actorEffects": {}
+  },
+  "failedPackets": []
+}

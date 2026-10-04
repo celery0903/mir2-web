@@ -1,0 +1,2245 @@
+{
+  "repository": "mirbeta/MirServer",
+  "revision": "f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c",
+  "authenticated2003Data": false,
+  "files": [
+    {
+      "file": "GuardList.txt",
+      "bytes": 1774,
+      "gitBlob": "884066d70e9c0da6dcded981faf84e29750fb6c4",
+      "sha256": "746d5d907097ef76f8511748bc1c018589699f26b63e04ff615adc04e47c74ba"
+    },
+    {
+      "file": "MapInfo.txt",
+      "bytes": 81772,
+      "gitBlob": "c697f70e01582b389577a2933aabe7de805bf9a0",
+      "sha256": "86a6a68ca3604171ab92a706a102f4083fce94bcd1449bc3a211bc5e983c0c06"
+    },
+    {
+      "file": "MapQuest.txt",
+      "bytes": 87,
+      "gitBlob": "80404594a6b162b50363e45c143def8eb176c86b",
+      "sha256": "b7288620ab95406fa905f3b49f630a0525a1e9d65de813fdca9f150c229ce2a1"
+    },
+    {
+      "file": "MapQuest_def/Q001.txt",
+      "bytes": 77,
+      "gitBlob": "ca1702bef13df6449886915a44ec0d51903bb657",
+      "sha256": "5906dc60a1c29f905df31f48241b19f8672d6ad2021c2fd82fd22ae14b38d3fe"
+    },
+    {
+      "file": "MapQuest_def/Q002.txt",
+      "bytes": 63,
+      "gitBlob": "14d59a7b03d4e5b66b35c4c37c6894d302765731",
+      "sha256": "302217ec711653a24211b6c66a59c951b441b47cf99359244066401122a449e0"
+    },
+    {
+      "file": "MapQuest_def/Q003.txt",
+      "bytes": 172,
+      "gitBlob": "7b2007ad2b571fc83f74f5e28621a8211e458e77",
+      "sha256": "0c6010ce6f4665d3d37a269208b16b45544df7062a1c5a86992dbc5047250850"
+    },
+    {
+      "file": "MapQuest_def/Q004.txt",
+      "bytes": 172,
+      "gitBlob": "b6b9d19553ddee06f5d80f6988802ee422d3227b",
+      "sha256": "92416d52d79f724e18cbd17844fe7f73e6ba39071db40b92b4876b34fcb827c8"
+    },
+    {
+      "file": "MapQuest_def/Q005.txt",
+      "bytes": 172,
+      "gitBlob": "3626ca1751f7107d38ea37ba4ce2d7cfe06e75e9",
+      "sha256": "b5476e3f1d19711c3e0bd6cb3c110e13f19e924e32a2335c445f92d63c08bcff"
+    },
+    {
+      "file": "MapQuest_def/Q006.txt",
+      "bytes": 172,
+      "gitBlob": "4495ffa26f1fc33ca9c49b2262e132e6c5aea0d4",
+      "sha256": "e173bf521f7d8ef8c5d5de10a31d5f24c44e6b5a18b08366cdf5d81dfce209c6"
+    },
+    {
+      "file": "MapQuest_def/Q007.txt",
+      "bytes": 172,
+      "gitBlob": "1413242164cf5fbdbe58ac959164224fa4f2331f",
+      "sha256": "3fc16e64a0cba5f23ec4b994436f4cf40fe7acf420362da12928fa0e8674e7c4"
+    },
+    {
+      "file": "MapQuest_def/Q008.txt",
+      "bytes": 172,
+      "gitBlob": "b874c5829a702b74e4284fe59f64101da0a18604",
+      "sha256": "5980a5b6d4db48ba68f248b4d02c67682f7cc5594236d136fb19e6b59e8b2a8e"
+    },
+    {
+      "file": "MapQuest_def/Q009.txt",
+      "bytes": 172,
+      "gitBlob": "c22920ffdb3987f49cce535f84b80ea4cc297bab",
+      "sha256": "3a936b99c0673ca708006f0e640caec5a3c6a743ce82931d39fd8a4064fbae6e"
+    },
+    {
+      "file": "MapQuest_def/Q010.txt",
+      "bytes": 172,
+      "gitBlob": "14a903d4b884a9b37a9db7d2dcf3e3f66d5eb78e",
+      "sha256": "9f5f6650a220f0612a7e69548e9710f0d56aea5d469ae7c48f53fb0d14c57aa2"
+    },
+    {
+      "file": "MapQuest_def/QManage - 副本.txt",
+      "bytes": 1140,
+      "gitBlob": "c861ea75f5dcb8e10a916c32c84a51ff0da2a0c4",
+      "sha256": "5b382c6ef476a5031290647503ca6e47a4f76788e9ef5d9216ea0d943dde52ec"
+    },
+    {
+      "file": "MapQuest_def/QManage.txt",
+      "bytes": 3596,
+      "gitBlob": "382d0e83b237e2135c9b71436b44e7c8457f9571",
+      "sha256": "dcbe89a72814421bba43b17d67cb22f2fe4760c401c3e60e4b8e80dd8a1f81eb"
+    },
+    {
+      "file": "Market_Def/LEGM2.CC假人NPC/假人上线NPC-jiaren.txt",
+      "bytes": 14329,
+      "gitBlob": "618146bccf2fa43883d119e8292bb9e41ad9cbe6",
+      "sha256": "07b050dbf0892164d734f879140ef3d1e67a000b2c5346b08bec23a212da19cf"
+    },
+    {
+      "file": "Market_Def/LEGM2.CC假人NPC/假人开始点我-jiaren.txt",
+      "bytes": 66,
+      "gitBlob": "65882a2384e2c13d2115616b00b5eb0910101da1",
+      "sha256": "965a671a22d0617c04cea267921745a8736a5fc12f7496d2abe0c1df2395601b"
+    },
+    {
+      "file": "Market_Def/QChatMission-0.txt",
+      "bytes": 37,
+      "gitBlob": "8cf61fb63448a4f1525806c3363afce730e56194",
+      "sha256": "4253e0af3e71bc4ad4849d074e9fc289346a509bd4e06223b55fd9392c3293c4"
+    },
+    {
+      "file": "Market_Def/QFunction-0 - 副本.txt",
+      "bytes": 6536,
+      "gitBlob": "b8ca7d1e850d40e38f5bb3e8f113e41909d1ef56",
+      "sha256": "ebf1d487b1d26507f2f67f465119a6834847690cec2ef8965cddd83a049aca8d"
+    },
+    {
+      "file": "Market_Def/QFunction-0.txt",
+      "bytes": 7528,
+      "gitBlob": "c1bb232b2242b6037a446495222f4d30e806ef6d",
+      "sha256": "9c8187bf5f90e17c2a423d27a30360828a1098da4cf8e2d670c7e7c0ed6b09df"
+    },
+    {
+      "file": "Market_Def/QMapEvent-0.txt",
+      "bytes": 53,
+      "gitBlob": "e40572276117c8aae8b429b22c0340dba4017b19",
+      "sha256": "5ba4fdcd0e82799f7848e877825848e7789f78222c00cafa48d2c66f565e1335"
+    },
+    {
+      "file": "Market_Def/QMission-0.txt",
+      "bytes": 115,
+      "gitBlob": "51401eff7bf8cbe24031a3d6d9eae50f50bf1a73",
+      "sha256": "4bcf948201893b6319a5f1ce215bffc28eed6a3d42cba6f3a244d3205d620a15"
+    },
+    {
+      "file": "Market_Def/举证-0.txt",
+      "bytes": 870,
+      "gitBlob": "43646b1c5520357b5c35054b91c8b583abc55dba",
+      "sha256": "cdfa6b9556fc5b6b2244bc700bad8915b9aa7664df7085eb65f8a5f38241edf7"
+    },
+    {
+      "file": "Market_Def/举证-3.txt",
+      "bytes": 870,
+      "gitBlob": "43646b1c5520357b5c35054b91c8b583abc55dba",
+      "sha256": "cdfa6b9556fc5b6b2244bc700bad8915b9aa7664df7085eb65f8a5f38241edf7"
+    },
+    {
+      "file": "Market_Def/举证-GA0.txt",
+      "bytes": 870,
+      "gitBlob": "43646b1c5520357b5c35054b91c8b583abc55dba",
+      "sha256": "cdfa6b9556fc5b6b2244bc700bad8915b9aa7664df7085eb65f8a5f38241edf7"
+    },
+    {
+      "file": "Market_Def/任务NPC/任务-3.txt",
+      "bytes": 2344,
+      "gitBlob": "e397d653575e78d6be93a8803ae924c03ed9d3f9",
+      "sha256": "83ff68467451a3f7b270474fc9f7764f89aac686be2452b381369b66cb05d915"
+    },
+    {
+      "file": "Market_Def/任务NPC/商店-Q016.txt",
+      "bytes": 2083,
+      "gitBlob": "54a327c181d67d3fd52aea34add98e8322595e2a",
+      "sha256": "5fbb5de06e50b544e27a4ab128f66b274b2182c083b5aadc46dca37c05b3980a"
+    },
+    {
+      "file": "Market_Def/任务NPC/客栈-0148.txt",
+      "bytes": 2012,
+      "gitBlob": "f9b4ee56742051623cd87044603c3d41bf36dc78",
+      "sha256": "062ddfb13fe2cd2d2cd8b62210e4c553ebb38ce88f5fe8fef444a28d8ceb876a"
+    },
+    {
+      "file": "Market_Def/任务NPC/打铁-0.txt",
+      "bytes": 1837,
+      "gitBlob": "78d87548a1ee5de9e398391133a3817a9a1e9e2b",
+      "sha256": "356b53dfa49aad7f4fe0d20b0b9a4f777d33be0e88271da7265f6298a5d8b86e"
+    },
+    {
+      "file": "Market_Def/任务NPC/武士-0114.txt",
+      "bytes": 2405,
+      "gitBlob": "2b2302a1482a5c0d41db35b0a60e881d288c8906",
+      "sha256": "ead2df9f212f8c70f1d047e1289e72e607e5039c697e8f0cdf4e6e698735bae7"
+    },
+    {
+      "file": "Market_Def/任务NPC/牢头-B346.txt",
+      "bytes": 357,
+      "gitBlob": "f36fe76770d82dac007739aeb28fad940a0d8ef3",
+      "sha256": "7f5d541854309732e9ba2d8c2aefbcd4eb95f9ab431ecc1762469046e570c700"
+    },
+    {
+      "file": "Market_Def/任务NPC/老人-1.txt",
+      "bytes": 1166,
+      "gitBlob": "9cfc141f36f51db63064c2eaa408c483bc607439",
+      "sha256": "5b53127ec8dac872de2ec34ecd25ef1b7ea84da3cd47d4eaf611c953eaad678f"
+    },
+    {
+      "file": "Market_Def/任务NPC/衣服-2.txt",
+      "bytes": 935,
+      "gitBlob": "9762d1287709dfe0f6b2814ebd41a466867afdfb",
+      "sha256": "829243359c7364e73e918fde809f72689b53c03a9c13463610d3afda12495426"
+    },
+    {
+      "file": "Market_Def/任务NPC/迷宫-Q011.txt",
+      "bytes": 193,
+      "gitBlob": "0200235a6f29278ef425f378e425a8bf7400c699",
+      "sha256": "7f8839606c30d93154beb03ce576f8e99e39f3dc9001f05d8d8d56611f93cd41"
+    },
+    {
+      "file": "Market_Def/任务NPC/铁匠-0120.txt",
+      "bytes": 501,
+      "gitBlob": "5f3d965b28d68363d6651c27ca4706090ea0ca40",
+      "sha256": "0cc70f4f9a4e3448c4d36a42417b76b2c8a5361b05ff740b2d0470d903aa05e1"
+    },
+    {
+      "file": "Market_Def/传送员/出封魔-4.txt",
+      "bytes": 126,
+      "gitBlob": "eaa0378e17b77160aabc05076d90e022bddaa601",
+      "sha256": "adf06d9a0e184803cb48cd5488d2ad8ec9330d166f45d6a771f4caa1e120f71a"
+    },
+    {
+      "file": "Market_Def/传送员/出白日门-11.txt",
+      "bytes": 125,
+      "gitBlob": "1088a7bda377623b1ee50b2f72de5122cda8a31a",
+      "sha256": "150d4f27ed52dbdb70bce10b41f38fb5bc30a28a7265a12385c46129322f1876"
+    },
+    {
+      "file": "Market_Def/传送员/封魔谷传送员-4.txt",
+      "bytes": 759,
+      "gitBlob": "11d621ab6fd7affe8078ca3514a638bc7d5ac49d",
+      "sha256": "37f474b1af728dd86e1947fe68f2f55a6662621ee92bab5b3a1837ced19c9eac"
+    },
+    {
+      "file": "Market_Def/传送员/庄园-GA0.txt",
+      "bytes": 1276,
+      "gitBlob": "9d36a8c2c4213ebe95e950328773a10cebb744f1",
+      "sha256": "381c3903b6337d681a97c6f209a714cce689f88f04699c63bd010cef07c52442"
+    },
+    {
+      "file": "Market_Def/传送员/来客-D701.txt",
+      "bytes": 203,
+      "gitBlob": "c69b37ac63bd3408505094618e6cf9c3bbf08d95",
+      "sha256": "40376da9839cc527ed4277e1530681d37fd894ff23d4fcaf6e238e53b2dda9cc"
+    },
+    {
+      "file": "Market_Def/传送员/比奇省传送员-0.txt",
+      "bytes": 2424,
+      "gitBlob": "5726560aca17eb59c1a935771b6c9f87f69b9688",
+      "sha256": "eb7ab28beb9c8da091fb7c6db966ba28d25f8906d1104326acaec91ed29aae30"
+    },
+    {
+      "file": "Market_Def/传送员/白日门传送员-11.txt",
+      "bytes": 697,
+      "gitBlob": "bd94368d669145db06df05693ec275d19a52a86c",
+      "sha256": "39e93ebcaa463a7651734864bf0bbfe7e98b557ae1920f2c0a5d4b996c7250f8"
+    },
+    {
+      "file": "Market_Def/传送员/盟重省传送员-3.txt",
+      "bytes": 2500,
+      "gitBlob": "5527a984957cd27261d4bf82b69920dffe63ab30",
+      "sha256": "b99b8843cdd8eb3adffacc772386fa6efcac4eb3695715d97a9d82039a03594b"
+    },
+    {
+      "file": "Market_Def/传送员/苍月岛传送员-5.txt",
+      "bytes": 662,
+      "gitBlob": "e16cae5aceb7c506b731374ef269ea8c8944d873",
+      "sha256": "ee39ed97ebb1f4e39b1718c58c1c07bcd4d450a0d510c4c6ec61dea6fe23761f"
+    },
+    {
+      "file": "Market_Def/传送员/进封魔-1.txt",
+      "bytes": 174,
+      "gitBlob": "7b230bf1197503a83e695d47a036fb5a5c93a661",
+      "sha256": "494b49585f38c80280dd179a13e6581841f95378f3e2a47971fb3a651b59aac4"
+    },
+    {
+      "file": "Market_Def/传送员/进白日门-1.txt",
+      "bytes": 174,
+      "gitBlob": "72fffa49fc4e08df67f7f90730e1d3535e9d7c52",
+      "sha256": "0cfde0ee7c69d65f1fb6a51c65b56f73afc24e22bbe524097f2ea33127b2ba99"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/出封魔-4.txt",
+      "bytes": 126,
+      "gitBlob": "eaa0378e17b77160aabc05076d90e022bddaa601",
+      "sha256": "adf06d9a0e184803cb48cd5488d2ad8ec9330d166f45d6a771f4caa1e120f71a"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/出白日门-11.txt",
+      "bytes": 125,
+      "gitBlob": "1088a7bda377623b1ee50b2f72de5122cda8a31a",
+      "sha256": "150d4f27ed52dbdb70bce10b41f38fb5bc30a28a7265a12385c46129322f1876"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/封魔谷传送员-4.txt",
+      "bytes": 759,
+      "gitBlob": "11d621ab6fd7affe8078ca3514a638bc7d5ac49d",
+      "sha256": "37f474b1af728dd86e1947fe68f2f55a6662621ee92bab5b3a1837ced19c9eac"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/庄园-GA0.txt",
+      "bytes": 788,
+      "gitBlob": "dc72a4470dda5ae84e8851a8dfa18ca6943cf401",
+      "sha256": "5412a0249c719a44eb7155153117a58b5b237fd4297c75e883ae32ae7e7f0688"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/来客-D701.txt",
+      "bytes": 149,
+      "gitBlob": "6b518d8c0390785c3ba9d117d719cc1111d0befe",
+      "sha256": "5b2ccef1c0f6de13e0844d42f66824b89f9d981099e75dd95a170f15f5ce9c70"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/比奇省传送员-0.txt",
+      "bytes": 2424,
+      "gitBlob": "5726560aca17eb59c1a935771b6c9f87f69b9688",
+      "sha256": "eb7ab28beb9c8da091fb7c6db966ba28d25f8906d1104326acaec91ed29aae30"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/白日门传送员-11.txt",
+      "bytes": 697,
+      "gitBlob": "bd94368d669145db06df05693ec275d19a52a86c",
+      "sha256": "39e93ebcaa463a7651734864bf0bbfe7e98b557ae1920f2c0a5d4b996c7250f8"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/盟重省传送员-3.txt",
+      "bytes": 2500,
+      "gitBlob": "5527a984957cd27261d4bf82b69920dffe63ab30",
+      "sha256": "b99b8843cdd8eb3adffacc772386fa6efcac4eb3695715d97a9d82039a03594b"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/苍月岛传送员-5.txt",
+      "bytes": 662,
+      "gitBlob": "e16cae5aceb7c506b731374ef269ea8c8944d873",
+      "sha256": "ee39ed97ebb1f4e39b1718c58c1c07bcd4d450a0d510c4c6ec61dea6fe23761f"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/进封魔-1.txt",
+      "bytes": 123,
+      "gitBlob": "74202e54a58cae34e43418e92a38b90aa821d893",
+      "sha256": "dcb03545b15221cb078d4078476d9759353097f1fb8801759cb402cc42b73db4"
+    },
+    {
+      "file": "Market_Def/传送员◆幻境/进白日门-1.txt",
+      "bytes": 123,
+      "gitBlob": "397f3cd94159c68d851837fe3c27855a76b79322",
+      "sha256": "a2fae885bfec94df68deaeb6c556272bc2d3c30ebe02a2913ae80713290e5ffc"
+    },
+    {
+      "file": "Market_Def/元宝充值-0.txt",
+      "bytes": 413,
+      "gitBlob": "3bcae1f57e592d0300c920a1ee63e69f23e824af",
+      "sha256": "def278e287f09e08f2fc0971a954f93960e41383d83c0652f0cf02d0a676072e"
+    },
+    {
+      "file": "Market_Def/元宝充值-3.txt",
+      "bytes": 413,
+      "gitBlob": "3bcae1f57e592d0300c920a1ee63e69f23e824af",
+      "sha256": "def278e287f09e08f2fc0971a954f93960e41383d83c0652f0cf02d0a676072e"
+    },
+    {
+      "file": "Market_Def/功能NPC/争霸-ZM6.txt",
+      "bytes": 414,
+      "gitBlob": "bb50f9362a5632316a4701e9894d43c98ffa4ce3",
+      "sha256": "8db28a6d2d4a4a77fcde3c69f0d4b350bf06d5c109b60ed5568be97a490cbc61"
+    },
+    {
+      "file": "Market_Def/功能NPC/会战-3.txt",
+      "bytes": 1506,
+      "gitBlob": "96a3ae3c41e94164db7b233f3dd8a468f1f2a3c2",
+      "sha256": "32e0d2d8fa449f2526ab79c5080978f5e44e4ce00608b28518745a4ab88654ab"
+    },
+    {
+      "file": "Market_Def/功能NPC/勋章-0146.txt",
+      "bytes": 9453,
+      "gitBlob": "1447caa4d1ba4c54600ace4354c248254bb9dd91",
+      "sha256": "372fd2b93146037db18689e58890590500f63d066b1b0d38152f1ff86c3c09b5"
+    },
+    {
+      "file": "Market_Def/功能NPC/回收-3.txt",
+      "bytes": 10995,
+      "gitBlob": "7507594bbb4b6b1fa90fc1becedcc25ddc4c9a38",
+      "sha256": "18609fa905616f8b36833bb0495f9f791cb6f06bf9155c5b3f8f3b1fff209cf3"
+    },
+    {
+      "file": "Market_Def/功能NPC/属性-H106.TXT",
+      "bytes": 4371,
+      "gitBlob": "589e49b793a2b33be30526edac5bbc0f724768d1",
+      "sha256": "8a89455ffc2df15e65ad7eadcfdc1c37bc2d5e395322e462a9c800f5037d0864"
+    },
+    {
+      "file": "Market_Def/功能NPC/担保-DB.txt",
+      "bytes": 240,
+      "gitBlob": "814a3eea8192e6056e4e7b6985fd95a8d367a709",
+      "sha256": "c0ef92ff22b3410813c13620a3913142294aa3e88fe5754944776f285f7ce912"
+    },
+    {
+      "file": "Market_Def/功能NPC/桃源-N109.txt",
+      "bytes": 6153,
+      "gitBlob": "e5b2e963eb78f13ab8912af5212c96fd81314f14",
+      "sha256": "a17a4ab6c22204978ea0603655593f75ee042d0bc73077bb44cb99277f8e239e"
+    },
+    {
+      "file": "Market_Def/功能NPC/比武-GA2.txt",
+      "bytes": 2451,
+      "gitBlob": "46c4355a62458df9bb62d1cf8fb6715b906e3d6f",
+      "sha256": "d153e9b8257a5276a61cda3d66e14c3f0defc6c7c6990f39d2f7001cbfd23d0a"
+    },
+    {
+      "file": "Market_Def/功能NPC/监狱-0147.txt",
+      "bytes": 498,
+      "gitBlob": "5dcc366a3f1f10bd96358e802cb8fb6a8b52c523",
+      "sha256": "73716f4340f8a7db900fed947a5d2ab8d797b9664941f81852bdae2d0dd7ad87"
+    },
+    {
+      "file": "Market_Def/功能NPC/真爱-G002.txt",
+      "bytes": 11504,
+      "gitBlob": "0a0e1c45381f3259b55e082a38c35612994299d1",
+      "sha256": "3e2aad84074d9d540e35405400620383abf9aa1f94f49dee5caa5af7ca369d4b"
+    },
+    {
+      "file": "Market_Def/功能NPC/真爱666-G002.txt",
+      "bytes": 11510,
+      "gitBlob": "a84a70ae0b335e573f69f6d8e3d3cf491d6918e3",
+      "sha256": "8e3bf2eb01bce1df16756174cbb3e7b62026b2df4d9a9d3b029256ece9f10ed9"
+    },
+    {
+      "file": "Market_Def/功能NPC/空白-3.txt",
+      "bytes": 0,
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "Market_Def/功能NPC/老人-E603.txt",
+      "bytes": 280,
+      "gitBlob": "c1d3ff7e1eb3bce0a1f65d16320f3102d2d028c5",
+      "sha256": "9ed279d65e8f2f8e04bac033a413847099ea953e7d9518db22e25d338f2ddc54"
+    },
+    {
+      "file": "Market_Def/功能NPC/赤血-R001.txt",
+      "bytes": 376,
+      "gitBlob": "9ec5a285119d4f3303d6c159a30d6d2fe4d45890",
+      "sha256": "53b8480d5c9bf0dfcddfcf09e1c10000b4308b8c83cfb2e56fdb8eebe2ac1f24"
+    },
+    {
+      "file": "Market_Def/功能NPC/铸造-B351.txt",
+      "bytes": 13067,
+      "gitBlob": "0545c8dc2a9020fca5928bc10d33a5caf4081207",
+      "sha256": "2f87270301802a5dbef7dc647ad28408b98bb98693bfd607bdfe6f1f11896d67"
+    },
+    {
+      "file": "Market_Def/封魔谷/恶魔保管员-b347.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/封魔谷/恶魔修理师-d2008.txt",
+      "bytes": 3803,
+      "gitBlob": "7214c83ddae56bb08e9fd5d7aaa1e08b7ac9a7d4",
+      "sha256": "14a3fd4d7c816bc31c0fce689a451bd15b2159736ea92c68e6b681c93fed7210"
+    },
+    {
+      "file": "Market_Def/封魔谷/恶魔布衣-B345.txt",
+      "bytes": 673,
+      "gitBlob": "c847ce8734e26ce3afe22aa3fec9edd009031a32",
+      "sha256": "0b433a8f5b7362f58da4448fd06fd4dcb942128155e0581fce9bc783bcacfaa0"
+    },
+    {
+      "file": "Market_Def/封魔谷/恶魔杂货匠-4.txt",
+      "bytes": 469,
+      "gitBlob": "46d9ed34db6147a17b8ec6df6b339da8c5fd15e8",
+      "sha256": "d7f332dbfcd3bf95bdc7bd388571a02bf4880526502dfc23f4c2d7360b269719"
+    },
+    {
+      "file": "Market_Def/封魔谷/恶魔武器-4.txt",
+      "bytes": 483,
+      "gitBlob": "575e41299fa9e4ea8bd6d239c6f7648ea3be6937",
+      "sha256": "c0eca76ef90ef06ab6ab88c60cd501a1def5d5527d92216e3020df8e0ac24dc9"
+    },
+    {
+      "file": "Market_Def/封魔谷/恶魔药剂师-b343.txt",
+      "bytes": 697,
+      "gitBlob": "bb265c5cc7f8db2d292c865bec38d88bf45fc606",
+      "sha256": "e2697efb6d3ba6146dbd22f0f3785d4567ef0256bacf6a203b0afee82ede6746"
+    },
+    {
+      "file": "Market_Def/封魔谷/恶魔首饰-B344.txt",
+      "bytes": 756,
+      "gitBlob": "33e77b39ec33c5508b671b4def9725b15312bf20",
+      "sha256": "951cef0693b663d14b5ee5d14785d2825bc36c837eac6164a6286c5bb326edbf"
+    },
+    {
+      "file": "Market_Def/封魔谷/月老-M101.txt",
+      "bytes": 6406,
+      "gitBlob": "3361b05f1df6ab52c157322a2a830d0c88fc8ced",
+      "sha256": "b69c3c8399887786c1d842421f198f6c62c2fb274eb2811b14ed185d671b855f"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/幻境_仓库管理员-H003.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/幻境_仓库管理员-H007.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/幻境_幻境向导-H003.txt",
+      "bytes": 148,
+      "gitBlob": "3b73454d86aa4636135f4b32ffa0fc2fc3265d61",
+      "sha256": "09d21f18e306bead1d334572505a7e57ff484694cce5dc3bea48deefbd4e6476"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/幻境_幻境小贩-H003.txt",
+      "bytes": 948,
+      "gitBlob": "4b0a062ba1a581016001bfbf2d5480d413e83e45",
+      "sha256": "1af9627ac90e12abb84808b72bb520dcfddcbb3a31a710f3a98a5b83e1be5f59"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/幻境_幻境小贩-H007.txt",
+      "bytes": 946,
+      "gitBlob": "5df88403b8083ca4e8bcca0e1568276d2249bf6d",
+      "sha256": "a80d5f89859f32f594ba2bb6c947b8ba8eb825e51fd85dc0320536eed06dca83"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/影之道_仓库保管员-H203.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/影之道_幻境小贩-H203.txt",
+      "bytes": 894,
+      "gitBlob": "c5b24b1e0f85f5588975fc982ef33d349bfce92e",
+      "sha256": "a91569771d2b14d3996dc9c2fa59fff3ffaa1d04f34ea8e01ec7360bd8de2071"
+    },
+    {
+      "file": "Market_Def/幻境-影之道/影传送-h001.txt",
+      "bytes": 595,
+      "gitBlob": "37225a593eb721ff106028665fcbbd61fe79997d",
+      "sha256": "e868a1083d949631a46f34cd5179280db629a4eebc30989cf3dc829c022a5f15"
+    },
+    {
+      "file": "Market_Def/新手接待员-0.txt",
+      "bytes": 1201,
+      "gitBlob": "c8d2c31e2c4192d5c7fd89a418035bd2fb2b937e",
+      "sha256": "d1da84fc5cd66b863c16e0c715445e62db14812e2d76687bfe98eeba2abbe0ea"
+    },
+    {
+      "file": "Market_Def/比奇城/万能-0.txt",
+      "bytes": 609,
+      "gitBlob": "09a8bd5699fdc756e5ee137ccf4f0e92775b7cc9",
+      "sha256": "2992cebe9a786acba0ba9532711669d75fa452eb760d49dbe92d9429a29abe8f"
+    },
+    {
+      "file": "Market_Def/比奇城/不法-DM001.txt",
+      "bytes": 1780,
+      "gitBlob": "3e408dbe2cfa9ee3140f026c209cf7d19fdb7f5d",
+      "sha256": "2de0f8fc4f1c0345d10f79223df0586f87ac1090f18882d0d440dfbcf776a299"
+    },
+    {
+      "file": "Market_Def/比奇城/不法-DM011.txt",
+      "bytes": 591,
+      "gitBlob": "3397d3f6db99538e1524af62fa7e7a8cb91a6495",
+      "sha256": "a6b0b65cb29abe10e82912c1002ca9ac465f4411795c8c26376e4eabbf564061"
+    },
+    {
+      "file": "Market_Def/比奇城/书店-0.txt",
+      "bytes": 4031,
+      "gitBlob": "edf46ec9915549d8fad29787f8e86eb6dca4391f",
+      "sha256": "9a645661a5dea2db0eb0b90bebf003fd3afc37b88ed285ae12ec90c4803f4297"
+    },
+    {
+      "file": "Market_Def/比奇城/卫家店-0103.txt",
+      "bytes": 871,
+      "gitBlob": "b938ee87f912d8ff065e2914e831088fb224de82",
+      "sha256": "73c8dec6c68f2a76c40dd1b85ef5ba28c1f7faaf51db0328deb98862a01cfc9b"
+    },
+    {
+      "file": "Market_Def/比奇城/夏家-0.txt",
+      "bytes": 699,
+      "gitBlob": "dd748f97c7c2729e531dda57099772cb55885557",
+      "sha256": "9917d5226684c8b0b2f331b175f1d1fcaa40582a4cca8586e6fae8cd321b926e"
+    },
+    {
+      "file": "Market_Def/比奇城/安家布衣-0106.txt",
+      "bytes": 673,
+      "gitBlob": "c847ce8734e26ce3afe22aa3fec9edd009031a32",
+      "sha256": "0b433a8f5b7362f58da4448fd06fd4dcb942128155e0581fce9bc783bcacfaa0"
+    },
+    {
+      "file": "Market_Def/比奇城/小书-0132.txt",
+      "bytes": 818,
+      "gitBlob": "eda2ce2f5d9e83148c9edcb330a4a45a0c5d3d9d",
+      "sha256": "e77f12f98c552b88fd7ba001c5a318944e24f89b2612b5592e4e4735e66ecea1"
+    },
+    {
+      "file": "Market_Def/比奇城/小药-0119.txt",
+      "bytes": 372,
+      "gitBlob": "ec2edcd9a5302b2224a9d76488b0ba0823fc3683",
+      "sha256": "1f15035182dbba323f5ae38762821757ed6de98785ff70bd10051d9a57c98008"
+    },
+    {
+      "file": "Market_Def/比奇城/戒指店-0105.txt",
+      "bytes": 488,
+      "gitBlob": "7084a565af41036e27be9b74948e7ccf5e48d6e3",
+      "sha256": "f5366c51227c2322651fd9d844f193e7a5fd519491df38bfec6e7ee8dbcc2a11"
+    },
+    {
+      "file": "Market_Def/比奇城/手镯店-0105.txt",
+      "bytes": 509,
+      "gitBlob": "15833d016b683cb15b910c6fb23122a5422687c0",
+      "sha256": "c83344dbe2e0d05789a65d4d5528a97be6516ff3bfd3101539eb70ec052cf54c"
+    },
+    {
+      "file": "Market_Def/比奇城/杂货-0.txt",
+      "bytes": 1194,
+      "gitBlob": "4bed85d7607d7c8727fcc225ed5af839f125ae12",
+      "sha256": "bf4170f9ef38b8275ba815e10ec0b3cf4ad1d38519433bb777f608c66d54d762"
+    },
+    {
+      "file": "Market_Def/比奇城/肉店-0.txt",
+      "bytes": 924,
+      "gitBlob": "a235bb23489896f7bde6d2d60fd0337b9685bc7e",
+      "sha256": "1e1d6da54c61813e7271f5288e5c434857b630e2737beff3399ca643db560203"
+    },
+    {
+      "file": "Market_Def/比奇城/蛇仓-2.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/比奇城/蛇杂-2.txt",
+      "bytes": 605,
+      "gitBlob": "8e6a69043fc19b15c35a41a78de8496ec4a68f48",
+      "sha256": "36e9440b1bd6c226e997c72aaf45ab224001632d9bc21ad1dc78b7d308060fa7"
+    },
+    {
+      "file": "Market_Def/比奇城/项链店-0105.txt",
+      "bytes": 1913,
+      "gitBlob": "c5f72bb2757de5517408bf242d209877485c039e",
+      "sha256": "1608272adb6e04f0e3a94092d2db6716b2b8ee63d9240b2ce42138aacb516cd9"
+    },
+    {
+      "file": "Market_Def/比奇城/麦家铺子-0125.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/沙巴克/仓库-0152.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/沙巴克/小贩-3.txt",
+      "bytes": 644,
+      "gitBlob": "e78f71f6d3d1d52811a49ed760c96cf9cd7f4d99",
+      "sha256": "84d3797259057783369bd4fa0bcfa68d9fa55adfa0a3bdab9e21a52c3d35a280"
+    },
+    {
+      "file": "Market_Def/沙巴克/布衣店-0155.txt",
+      "bytes": 785,
+      "gitBlob": "d5ba89e4eda1d066ccd0961b85cda68d77858f22",
+      "sha256": "59994b9f7446ab35311782fd44f8918c88b0b9c09c233b65b504d60d2593d151"
+    },
+    {
+      "file": "Market_Def/沙巴克/戒指店-0154.txt",
+      "bytes": 606,
+      "gitBlob": "83b600d4f51485a32dca5c2d34f6732bacb525c0",
+      "sha256": "f3fbb98ff265cb728704d31b24f2d4a4b78c090d14d3f81fc4d48837179e52ac"
+    },
+    {
+      "file": "Market_Def/沙巴克/手镯店-0154.txt",
+      "bytes": 630,
+      "gitBlob": "8364a4c62c46dd49affb1737f22f9a0c5973650f",
+      "sha256": "ae30a4be438b2a7c23b454745efe00343050848a47cfb1191d0ab31ceb0db278"
+    },
+    {
+      "file": "Market_Def/沙巴克/武器铺-0151.txt",
+      "bytes": 605,
+      "gitBlob": "00968dd01342f7d7b551e1328389ce4a9485514f",
+      "sha256": "b03281eca69f5f39f713474c670d0d40dd04dff5eb6e9442915a1c9a3c872b53"
+    },
+    {
+      "file": "Market_Def/沙巴克/药店-0153.txt",
+      "bytes": 805,
+      "gitBlob": "8e4f9ee6aa9016153a6a0a77bb75bc253602a8c4",
+      "sha256": "99f3f0fdf265ca590b5d012154136bfd4c0aabaad882cf03f2f6ce1aeb19052a"
+    },
+    {
+      "file": "Market_Def/沙巴克/项链店-0154.txt",
+      "bytes": 635,
+      "gitBlob": "2e579e974ee3168051a9481767d8e54ee8ca153f",
+      "sha256": "5ecfbcac5c9851ee8406f3bab64736065e1fa05438e32faa3a4797ccc4b04d56"
+    },
+    {
+      "file": "Market_Def/沙巴克铁匠-3.txt",
+      "bytes": 3197,
+      "gitBlob": "99e9845d3051e930a3558692e6ad7e7333c57aab",
+      "sha256": "ecc23cc9de1aff5e60446bcf13cfb0daa01d324d62cda729a100b65a962e4d88"
+    },
+    {
+      "file": "Market_Def/白日门/万能-12.txt",
+      "bytes": 893,
+      "gitBlob": "251f68733f03a29e57b22a92500fe852e4127f2d",
+      "sha256": "a1534300ca26c607a93b07f67215c18e68811276d439afd66bbc55a2671b0e78"
+    },
+    {
+      "file": "Market_Def/白日门/万能-D1004.txt",
+      "bytes": 3772,
+      "gitBlob": "c7f4c53a07ccb10d7e2e671008c7544dff8076c2",
+      "sha256": "bf729390a0a2491b79f9f4157e9b6b153431e8b70830dbe54bd5fa445dd3a5dc"
+    },
+    {
+      "file": "Market_Def/白日门/书店-1004.txt",
+      "bytes": 818,
+      "gitBlob": "eda2ce2f5d9e83148c9edcb330a4a45a0c5d3d9d",
+      "sha256": "e77f12f98c552b88fd7ba001c5a318944e24f89b2612b5592e4e4735e66ecea1"
+    },
+    {
+      "file": "Market_Def/白日门/仓库-11.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/白日门/服装-1003.txt",
+      "bytes": 673,
+      "gitBlob": "403c3442a0c28a844743fa8bf566313448e79ce0",
+      "sha256": "852497a6981d993d281c1d2891cd16c6ecd56d16f5885dc0cbff43bc015c2ff8"
+    },
+    {
+      "file": "Market_Def/白日门/杂货-1007.txt",
+      "bytes": 471,
+      "gitBlob": "a7fcc58eff35690bafc9faafcaac9fedc5ad0e94",
+      "sha256": "e429c0b079262ed7640e43c9b7fffbc2485700c7d271452cbaa82a8e215ea353"
+    },
+    {
+      "file": "Market_Def/白日门/武器-1001.txt",
+      "bytes": 813,
+      "gitBlob": "ba518aa77130d551fb2d7b8675602588088d8651",
+      "sha256": "87f41d55afc34c27cfcdef9ea014f80821b198762d2f2f4cbdad45a7e96d594d"
+    },
+    {
+      "file": "Market_Def/白日门/药店-1006.txt",
+      "bytes": 699,
+      "gitBlob": "dd748f97c7c2729e531dda57099772cb55885557",
+      "sha256": "9917d5226684c8b0b2f331b175f1d1fcaa40582a4cca8586e6fae8cd321b926e"
+    },
+    {
+      "file": "Market_Def/白日门/首饰-1005.txt",
+      "bytes": 756,
+      "gitBlob": "4ee00874f945639e2b68f3311f2b03d5b5a21fbb",
+      "sha256": "ba252c0e7454e711d3d5120c2fef2c7764cb512948a37ac416e0479e995a0db7"
+    },
+    {
+      "file": "Market_Def/盟重土城/书店-0161.txt",
+      "bytes": 818,
+      "gitBlob": "eda2ce2f5d9e83148c9edcb330a4a45a0c5d3d9d",
+      "sha256": "e77f12f98c552b88fd7ba001c5a318944e24f89b2612b5592e4e4735e66ecea1"
+    },
+    {
+      "file": "Market_Def/盟重土城/仓库-0145.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/盟重土城/头盔店-0149.txt",
+      "bytes": 442,
+      "gitBlob": "1b65a4287e986ceefbfd201a436c988e8a5206c8",
+      "sha256": "89e43291176475b5da38156cd090913318d3d2b7d18a6a83d8ac9b16a12ce7ce"
+    },
+    {
+      "file": "Market_Def/盟重土城/张家布衣-0149.txt",
+      "bytes": 669,
+      "gitBlob": "458d3d360ffac8c270ede00088a7708b9cef8dbf",
+      "sha256": "70088b9dc51767c7b2fdbcc1d0d7042ef2702ba5604722fadb38252d5851cd2a"
+    },
+    {
+      "file": "Market_Def/盟重土城/彩票-3.txt",
+      "bytes": 637,
+      "gitBlob": "c9524ebc1f4892052f541618cfc4dd579ed74145",
+      "sha256": "c43d691c1130409155fa26977abca8e9ce66a825bc87299177b8db7fc391e104"
+    },
+    {
+      "file": "Market_Def/盟重土城/悦来客栈-3.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/盟重土城/戒指店-0158.txt",
+      "bytes": 885,
+      "gitBlob": "2877db4eb4a1806bfeda6ee592d7c827681a59a4",
+      "sha256": "ee5741cb7def15a5c387da5f2bddd098f2c192582784a49427e825d8706e1c28"
+    },
+    {
+      "file": "Market_Def/盟重土城/手套店-0149.txt",
+      "bytes": 500,
+      "gitBlob": "4536c89c0065d7da06c4e3870dc6b3ed9a7ec562",
+      "sha256": "2c10077815ff6e4ceef404d91c2a9f80d7258fdad36fe7e2caba647b0e0c457b"
+    },
+    {
+      "file": "Market_Def/盟重土城/手镯店-0158.txt",
+      "bytes": 1038,
+      "gitBlob": "85108b38e1f46b49c1dc596e8e1514cf0c10b58a",
+      "sha256": "455bfd27ab24281e388b3b4f228bbc9c4565bae3a55b750fabe5318014dff004"
+    },
+    {
+      "file": "Market_Def/盟重土城/流浪汉-3.txt",
+      "bytes": 695,
+      "gitBlob": "b5632a17b0d5928617aa530fed4bcd967a93a2cd",
+      "sha256": "3c51f76254f5fe0af80ab865ade42c7ec88ca2e8aea7cf2443698eb30a01d351"
+    },
+    {
+      "file": "Market_Def/盟重土城/石墓阵-D71650.txt",
+      "bytes": 483,
+      "gitBlob": "e3cac126ce7a48ba1a8098256f263b1d8d9c6787",
+      "sha256": "62d27c4f4aa6ea4e82361c878a3f73bb6fb08060b5b54228762bde0c76905f36"
+    },
+    {
+      "file": "Market_Def/盟重土城/石墓阵-D71651.txt",
+      "bytes": 674,
+      "gitBlob": "9e62260a186cd61d1e197e5267fffa67a40e50b6",
+      "sha256": "b82b1b60fe9ffa7549b436332cc5270c26b5ab596b5998a71acd323beed188df"
+    },
+    {
+      "file": "Market_Def/盟重土城/石墓阵-D71652.txt",
+      "bytes": 1253,
+      "gitBlob": "e4204e4dc9242dbee7e3482d81cfe3555e16c775",
+      "sha256": "5b1ffb8fd7f51264d31caaf75a2dac917291f331974c129db4cfc2866fdc66f4"
+    },
+    {
+      "file": "Market_Def/盟重土城/石墓阵-D71653.txt",
+      "bytes": 701,
+      "gitBlob": "8b3e42085e70974f0c31e7f64f28e3a9714956c8",
+      "sha256": "34b3840f0e763ee99332f4850ed814850630b4fa48dbacb7318590a6b1cd3a70"
+    },
+    {
+      "file": "Market_Def/盟重土城/祖玛阁-D5063.txt",
+      "bytes": 370,
+      "gitBlob": "9075266de6a2474251248a0fdcb3b7879ae6c5d4",
+      "sha256": "67edde5d6d251ed4022bedfad16fdef3bdc3f0225a8dde5cde04eb6ffb3a9b5c"
+    },
+    {
+      "file": "Market_Def/盟重土城/罗家铺子-0160.txt",
+      "bytes": 701,
+      "gitBlob": "639eabc6fb8110e4d411a2c631bbf49fdf079f3a",
+      "sha256": "507fb3ff09ba2a1c9113ff837f43f845b1fb778cb3f70b2190bb258babe44453"
+    },
+    {
+      "file": "Market_Def/盟重土城/肉店-3.txt",
+      "bytes": 216,
+      "gitBlob": "515636cc415e05846bd88eece5c3ee6929cb3a6e",
+      "sha256": "f18d242fed1d8129bf5e502f3445454c8ec8921acabd6458406aa1ec70a65547"
+    },
+    {
+      "file": "Market_Def/盟重土城/药店-3.txt",
+      "bytes": 701,
+      "gitBlob": "639eabc6fb8110e4d411a2c631bbf49fdf079f3a",
+      "sha256": "507fb3ff09ba2a1c9113ff837f43f845b1fb778cb3f70b2190bb258babe44453"
+    },
+    {
+      "file": "Market_Def/盟重土城/裁判-G003.txt",
+      "bytes": 110,
+      "gitBlob": "e2c4e241e122d9dbcc1e114935a31ae075bbd0d2",
+      "sha256": "8cb7659334cd2d56a0d953207c94349ed07a84cd09ca9015cc6cb9c628ba5709"
+    },
+    {
+      "file": "Market_Def/盟重土城/足球-3.txt",
+      "bytes": 121,
+      "gitBlob": "31808922c8d7eb64077405e758968a0531e217b2",
+      "sha256": "de4f1af5ab09086fd4006339691de21ca8c714f9b9f78e28d7969a955e61542a"
+    },
+    {
+      "file": "Market_Def/盟重土城/铁匠铺-0159.txt",
+      "bytes": 2968,
+      "gitBlob": "3d3005ded619a865bdc6bef30845ae3283293c13",
+      "sha256": "4fdfa9c6d1e9d3509739f49a0a0c6e2b1f0a092d304201ae7cfa196110bea25c"
+    },
+    {
+      "file": "Market_Def/盟重土城/项链店-0158.txt",
+      "bytes": 514,
+      "gitBlob": "6f1061bbd07c448eab97ff17210cc1e36f9d1b37",
+      "sha256": "ca5608aa9f7996dd4905df93a8b121c5bc9107ee6608af8c3006b3fc0a05bc68"
+    },
+    {
+      "file": "Market_Def/苍月岛/书店-5.txt",
+      "bytes": 818,
+      "gitBlob": "eda2ce2f5d9e83148c9edcb330a4a45a0c5d3d9d",
+      "sha256": "e77f12f98c552b88fd7ba001c5a318944e24f89b2612b5592e4e4735e66ecea1"
+    },
+    {
+      "file": "Market_Def/苍月岛/仓库-5.txt",
+      "bytes": 4899,
+      "gitBlob": "6ff12b35757706dd1fe25a347d626748c4328348",
+      "sha256": "0e4f339b3febe4a7c3a4b6363fc8f0280e8b4b278030de117a8185a944844505"
+    },
+    {
+      "file": "Market_Def/苍月岛/布料店-5.txt",
+      "bytes": 674,
+      "gitBlob": "ffb53d35d000ea3c807b3e9bde0501795366cc98",
+      "sha256": "df420a2320413a22505e9395cf9db02a47c0760c4c3eb7b2ec4916625e6cf32e"
+    },
+    {
+      "file": "Market_Def/苍月岛/杂货店-5.txt",
+      "bytes": 471,
+      "gitBlob": "a7fcc58eff35690bafc9faafcaac9fedc5ad0e94",
+      "sha256": "e429c0b079262ed7640e43c9b7fffbc2485700c7d271452cbaa82a8e215ea353"
+    },
+    {
+      "file": "Market_Def/苍月岛/武器店-5.txt",
+      "bytes": 483,
+      "gitBlob": "575e41299fa9e4ea8bd6d239c6f7648ea3be6937",
+      "sha256": "c0eca76ef90ef06ab6ab88c60cd501a1def5d5527d92216e3020df8e0ac24dc9"
+    },
+    {
+      "file": "Market_Def/苍月岛/药店-5.txt",
+      "bytes": 701,
+      "gitBlob": "639eabc6fb8110e4d411a2c631bbf49fdf079f3a",
+      "sha256": "507fb3ff09ba2a1c9113ff837f43f845b1fb778cb3f70b2190bb258babe44453"
+    },
+    {
+      "file": "Market_Def/苍月岛/首饰店-5.txt",
+      "bytes": 1253,
+      "gitBlob": "abf9e52fca09189e92640bd20dfb12df916abe9b",
+      "sha256": "ff8f5964832a5a3fbe674fd2d31dec42f9d03a7c681b632baae718d3968a0bec"
+    },
+    {
+      "file": "Market_Def/赌博NPC/赌场-B013.txt",
+      "bytes": 8865,
+      "gitBlob": "7270d45ed5b63a39cbb69e7a3c274c2a252d172d",
+      "sha256": "3831568d6e4d58307b04368eed6c6bd2b2b65cfdacb3417acf21babd11f83e4f"
+    },
+    {
+      "file": "Market_Def/赌博NPC/赌庄-3.txt",
+      "bytes": 149,
+      "gitBlob": "8866947f25d430411ec66aa22574abb1d8e081bf",
+      "sha256": "67e746611caafdc2920d024db98bbe110eeab7ebf08b7d52d167c6217129a557"
+    },
+    {
+      "file": "MerChant.txt",
+      "bytes": 7448,
+      "gitBlob": "33dd028e3a3014f8e5d624f16f5f2d7dcc33c34d",
+      "sha256": "5e9c1274de6bd2586bfd2c26c1314595387a1d2dae06048855d3e1ae0191b3ad"
+    },
+    {
+      "file": "MonGen.txt",
+      "bytes": 126292,
+      "gitBlob": "3c12f0285a469579c2bcceb5912c1c414e42180e",
+      "sha256": "e5c39fb7eda66b70f82a61a5c2cea25df9cf0b6892b916fb6d579f88ff43748f"
+    },
+    {
+      "file": "MonItems/B/暗之牛魔王.txt",
+      "bytes": 1832,
+      "gitBlob": "bceb8a5772d923d13a495a358974ab0e6f16e02b",
+      "sha256": "45215e226fcf3843fd7772af6dbb55e4d55c119442b41f32dc9211460f12b57c"
+    },
+    {
+      "file": "MonItems/B/牛魔王.txt",
+      "bytes": 1832,
+      "gitBlob": "264e9ab42aade3919698a91684a7d602541ca3f3",
+      "sha256": "21037ec3ce915d9e72fa99ba071c532eef3fedeef78fe4d9d84b713f76575611"
+    },
+    {
+      "file": "MonItems/B/白野猪.txt",
+      "bytes": 1970,
+      "gitBlob": "d9366bc8a25cd1eb532808ecd2f15240cb0f8de4",
+      "sha256": "4776fc461632ef6d319f91393bc4372546b5de10aa539fb870de641b25e35072"
+    },
+    {
+      "file": "MonItems/B/白野猪0.txt",
+      "bytes": 1351,
+      "gitBlob": "572350ba8dc5be9bc92c6cbe6c4ce6b6422df259",
+      "sha256": "5fbc9a64d01f5f9bb3bb8b1e73c0d689ca7e5780a327c0f659435609da037787"
+    },
+    {
+      "file": "MonItems/B/祖玛卫士3.txt",
+      "bytes": 1203,
+      "gitBlob": "de299a84122a5476a952a34ce98395b9d3cec640",
+      "sha256": "06213cdf77779da2195f1410a64c5e4e210d7a58a9ccaa05105a998cc9250c9b"
+    },
+    {
+      "file": "MonItems/B/祖玛弓箭手3.txt",
+      "bytes": 1203,
+      "gitBlob": "53656a42580f1b9813747f2c4cb224fbc059f1e9",
+      "sha256": "4a97e56f6a25a46bf34e9b5adade1c5cf0eef37c55e8c22b4eed0c8906d3bb32"
+    },
+    {
+      "file": "MonItems/B/祖玛教主.txt",
+      "bytes": 1825,
+      "gitBlob": "cfeb31ab6757df7c593367087ebfbf7d9a514c70",
+      "sha256": "8cbacc605ce6ffec76809364c99fa54054c3407b6e2271c864d5e60177e1d1a4"
+    },
+    {
+      "file": "MonItems/B/祖玛雕像3.txt",
+      "bytes": 1203,
+      "gitBlob": "53656a42580f1b9813747f2c4cb224fbc059f1e9",
+      "sha256": "4a97e56f6a25a46bf34e9b5adade1c5cf0eef37c55e8c22b4eed0c8906d3bb32"
+    },
+    {
+      "file": "MonItems/B/血僵尸.txt",
+      "bytes": 725,
+      "gitBlob": "72ee5cb2162410bad02453318d31964c59f78435",
+      "sha256": "af8d9f1e34e0657a0fbdd30c29a3863be7ab003a2bf4a1963790ef1adb047bc6"
+    },
+    {
+      "file": "MonItems/B/血僵尸0.txt",
+      "bytes": 1609,
+      "gitBlob": "eaa72b969912dfe744f53434c23f6e2aa8b93595",
+      "sha256": "7dfb1f5d61ff70bcdd67898c7e569a12b0374a97be308859f2e8b3267deb6f65"
+    },
+    {
+      "file": "MonItems/B/邪恶毒蛇.txt",
+      "bytes": 1822,
+      "gitBlob": "c970d24790af0a22794547e8f745b5ba1727fc12",
+      "sha256": "2bd680c5e21321b2f73e1ecbf66c3229834ae20b11f36869260b66caebeae3cf"
+    },
+    {
+      "file": "MonItems/B/黄泉教主.txt",
+      "bytes": 1832,
+      "gitBlob": "bea0e754377c5c43c946da5c038e9f167ef084d0",
+      "sha256": "9f22a314b89212a64f2d6a24563f7815ec901f9d43d5257a2c59aa7dd4b66ec5"
+    },
+    {
+      "file": "MonItems/僵尸1.txt",
+      "bytes": 862,
+      "gitBlob": "d41c197050488e127ae4d6599430aec7ad21c5f1",
+      "sha256": "c9259749ed1cdeae9f19dd901b27e750cc9bb8268fb716b70eb3295e2d0a2f2a"
+    },
+    {
+      "file": "MonItems/僵尸10.txt",
+      "bytes": 61,
+      "gitBlob": "567c82ff7126bc0f419a7df2bed96997e3a4888f",
+      "sha256": "e82cf38f02fcd50b633fa63b62225aa58d51377bf159ee906b19f1a27f0d9f58"
+    },
+    {
+      "file": "MonItems/僵尸2.txt",
+      "bytes": 862,
+      "gitBlob": "d41c197050488e127ae4d6599430aec7ad21c5f1",
+      "sha256": "c9259749ed1cdeae9f19dd901b27e750cc9bb8268fb716b70eb3295e2d0a2f2a"
+    },
+    {
+      "file": "MonItems/僵尸20.txt",
+      "bytes": 530,
+      "gitBlob": "ecb97c4d61625bb1b5042e1c5e7ee6794e69517f",
+      "sha256": "74f04cab815831af07f82d485c11c27514c9c68d41607cc427c02f693135c7be"
+    },
+    {
+      "file": "MonItems/僵尸3.txt",
+      "bytes": 884,
+      "gitBlob": "dc08ced09d0da53ac332809ca037906007266d41",
+      "sha256": "9cd875fad09caa90adbe9fb912231831c8b26d72f8b57c3374f577cf7ad5f22d"
+    },
+    {
+      "file": "MonItems/僵尸30.txt",
+      "bytes": 530,
+      "gitBlob": "d3774f65972b29a2a60cec6184ffc4b67e2897cb",
+      "sha256": "712ab7deaa3ea22b16c975268aebe2d444e1c00be6f0de299598990876c431f1"
+    },
+    {
+      "file": "MonItems/僵尸4.txt",
+      "bytes": 862,
+      "gitBlob": "d41c197050488e127ae4d6599430aec7ad21c5f1",
+      "sha256": "c9259749ed1cdeae9f19dd901b27e750cc9bb8268fb716b70eb3295e2d0a2f2a"
+    },
+    {
+      "file": "MonItems/僵尸40.txt",
+      "bytes": 530,
+      "gitBlob": "d3774f65972b29a2a60cec6184ffc4b67e2897cb",
+      "sha256": "712ab7deaa3ea22b16c975268aebe2d444e1c00be6f0de299598990876c431f1"
+    },
+    {
+      "file": "MonItems/僵尸5.txt",
+      "bytes": 884,
+      "gitBlob": "dc08ced09d0da53ac332809ca037906007266d41",
+      "sha256": "9cd875fad09caa90adbe9fb912231831c8b26d72f8b57c3374f577cf7ad5f22d"
+    },
+    {
+      "file": "MonItems/僵尸50.txt",
+      "bytes": 530,
+      "gitBlob": "d3774f65972b29a2a60cec6184ffc4b67e2897cb",
+      "sha256": "712ab7deaa3ea22b16c975268aebe2d444e1c00be6f0de299598990876c431f1"
+    },
+    {
+      "file": "MonItems/千年树妖.txt",
+      "bytes": 1916,
+      "gitBlob": "20c9b28a3e0f60938c8983dd40995d72e7959be6",
+      "sha256": "a250457542383df9080268336d5a66a098c7470b381bec6640f6ad8e126a5120"
+    },
+    {
+      "file": "MonItems/半兽人.txt",
+      "bytes": 133,
+      "gitBlob": "ce222e4bbac128922a7c68a0911e940e73795c66",
+      "sha256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "file": "MonItems/半兽勇士.txt",
+      "bytes": 705,
+      "gitBlob": "7072bbe9ff0a467a47ab6128807c1551793f45d7",
+      "sha256": "54074f31b201fe640b87c5fb2f8318a58d7928a29494cce897fcb102201442bd"
+    },
+    {
+      "file": "MonItems/半兽勇士0.txt",
+      "bytes": 860,
+      "gitBlob": "6a6572b3d8cee57e632fb4aee9debf4f23eb01dc",
+      "sha256": "67a7a80210663801c322f8f5ad4df2e1f52c24a8e2846d73fd98faf6285587c1"
+    },
+    {
+      "file": "MonItems/半兽勇士1.txt",
+      "bytes": 875,
+      "gitBlob": "d3857326b8e7bb2b8e825f1e16a4662573be4eac",
+      "sha256": "4a8333dfe593470cb1061ac474671e811c6a5c6537fc3e19f8c5bda317ef48a0"
+    },
+    {
+      "file": "MonItems/半兽战士.txt",
+      "bytes": 86,
+      "gitBlob": "2ca207179f336a27b08229bb652b4c2703bf2c67",
+      "sha256": "cfaf9afd2363604d06c90cdb2b104a293ce34ea9818e1e5c9570635e3af73778"
+    },
+    {
+      "file": "MonItems/半兽统领.txt",
+      "bytes": 1108,
+      "gitBlob": "61bbdd3a087155cbe2c6515d7415fb09a78c4069",
+      "sha256": "0509a0424c286e1702a082616d2ed0560a188ca548fa94fee9d875f1db468c0e"
+    },
+    {
+      "file": "MonItems/双头血魔.txt",
+      "bytes": 1681,
+      "gitBlob": "b2d7662c10aee46d92ad84963540b8a2e3470e70",
+      "sha256": "d661390cea14d8954c80501ad9c803e793f933d9657a1196f32f6283bb999087"
+    },
+    {
+      "file": "MonItems/双头金刚.txt",
+      "bytes": 1658,
+      "gitBlob": "531399a4e6453f85b8e3739ba3e6295a12208fd1",
+      "sha256": "3d5e0e3ba97442d3e52423b55ac1a759bdf20c27c87c95f989b7fc83882cca40"
+    },
+    {
+      "file": "MonItems/命运教主.txt",
+      "bytes": 79,
+      "gitBlob": "d0c88c4e4a8e8a08fb7ac00b3e3044d651a9426a",
+      "sha256": "d2c36e0c04f7d5182034441d034a5df120b3d307cee432d07334471cc5b16942"
+    },
+    {
+      "file": "MonItems/地狱犬.txt",
+      "bytes": 154,
+      "gitBlob": "27142093d63d4727b94345644386c8d0956624b9",
+      "sha256": "3bc8c903ab4ae016c98aeefbc41c86822ea3cf7ae5a3ad108557a54886c9d9ae"
+    },
+    {
+      "file": "MonItems/地藏魔王.txt",
+      "bytes": 1711,
+      "gitBlob": "2c7c7acb306adb2b31e6004d7f4bf566c91830fa",
+      "sha256": "a5d6d0544db6ba25d4b15144635a808c720fb67de609a1cfdacd29fd961771ce"
+    },
+    {
+      "file": "MonItems/多钩猫.txt",
+      "bytes": 133,
+      "gitBlob": "ce222e4bbac128922a7c68a0911e940e73795c66",
+      "sha256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "file": "MonItems/多钩猫王.txt",
+      "bytes": 147,
+      "gitBlob": "a02525edcdfc93b72306d93ad65a61116c02fb18",
+      "sha256": "3722fbc86d442c6a9d99ffbd29712702048112c5dac063e7fd6f83f4a35637fe"
+    },
+    {
+      "file": "MonItems/大老鼠.txt",
+      "bytes": 545,
+      "gitBlob": "d4c927020acceb248602017ade559277fbb2b80a",
+      "sha256": "d2fba5e21462af52af44f000c245f1eff0217cfbd0312cc36756ab537824d019"
+    },
+    {
+      "file": "MonItems/大老鼠0.txt",
+      "bytes": 593,
+      "gitBlob": "e7ab0ce11183623f158531fb14e7497f43f8ee33",
+      "sha256": "dfe704c28e4da4b24ff469f25f4381e8908cefee6e067993f28fa1fc3b20af5a"
+    },
+    {
+      "file": "MonItems/天狼蜘蛛.txt",
+      "bytes": 758,
+      "gitBlob": "21d8e7ad7360ecf743451f14fca2c9512492cb62",
+      "sha256": "fb17312e347cfb536c1205f1d11a73ace5a517313cab7c5f4f5e2745471070e7"
+    },
+    {
+      "file": "MonItems/天狼蜘蛛0.txt",
+      "bytes": 764,
+      "gitBlob": "07c84cac678649a5978e2119817ef909fc1967ac",
+      "sha256": "1b8355954d43ed99a9ae0b2e1ff835e9a5685470dc34b51f1489e493af946d4b"
+    },
+    {
+      "file": "MonItems/宝箱.txt",
+      "bytes": 530,
+      "gitBlob": "e6be14eb63148d5bf5c473dba99c7adad2863aec",
+      "sha256": "d133481892e4fbe9382c399a6cc42f61d81ef579189a43ec1efb408a7a8d4757"
+    },
+    {
+      "file": "MonItems/宝箱0.txt",
+      "bytes": 1855,
+      "gitBlob": "6503946e3ce079bdd035a782881574c85fb9d9ef",
+      "sha256": "3cf788e50e8cda61ecbd423dc747e1666bc44d1728e90a77008777b7d1822d41"
+    },
+    {
+      "file": "MonItems/尸王.txt",
+      "bytes": 500,
+      "gitBlob": "23b2b82f9f15867b2c2e6282f86d35d45227acc5",
+      "sha256": "75fbfb38d3eb9ffcad26f231858ba2764e94eb8dfc8bb0ffdb81e3d8e130eb94"
+    },
+    {
+      "file": "MonItems/尸王1.txt",
+      "bytes": 144,
+      "gitBlob": "9b201e4d35dd0f831adad4eab9bff4d3e216635c",
+      "sha256": "d41e4b66245db28ac950a12a0055067902375d351a70f336df37d8a6dcdb4985"
+    },
+    {
+      "file": "MonItems/尸王2.txt",
+      "bytes": 487,
+      "gitBlob": "a6f8ec6d90abefedca6812a45107c1fc8f8b5548",
+      "sha256": "472624280d088634f0831f48a48ef4e53de705895c4d2abb16931fe69a1cc0d7"
+    },
+    {
+      "file": "MonItems/山洞蝙蝠.txt",
+      "bytes": 62,
+      "gitBlob": "695064b3cde025624bf7c17d385a58ca545ea4c0",
+      "sha256": "f24bf297b8133c6bf50ccb8c3f9dfcdf2f8c7e26c9d949946e48a3a5a1da35c3"
+    },
+    {
+      "file": "MonItems/山洞蝙蝠0.txt",
+      "bytes": 151,
+      "gitBlob": "c52582495ca93f652c65fcfa82f7393b8aa67896",
+      "sha256": "5dabc3aa9b8ef2e3c28562be6c9364eb803835e5c7c3c31a69c3411ea75ef305"
+    },
+    {
+      "file": "MonItems/巨型多角虫.txt",
+      "bytes": 608,
+      "gitBlob": "0d1e56cac1276cb81e18a6c818f8e7f1a545bfdb",
+      "sha256": "8c7a57e94ac16ecf3af72ce4c2d49c285c08ecaf192a900c6da9db8bf3755cdd"
+    },
+    {
+      "file": "MonItems/巨型蠕虫.txt",
+      "bytes": 706,
+      "gitBlob": "b272470369870822ecbdaf419595bbcf56ad5639",
+      "sha256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    {
+      "file": "MonItems/巨型蠕虫0.txt",
+      "bytes": 732,
+      "gitBlob": "3aa67bc0f22e0f87401d2ff2af211d6113b49862",
+      "sha256": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678"
+    },
+    {
+      "file": "MonItems/幻影蜘蛛.txt",
+      "bytes": 1799,
+      "gitBlob": "7358c3928e8b7cbe43aa9f78e2beec9ad598dd70",
+      "sha256": "c5fa9657360a01955ed9fa95cb62b05e6d1c634cd2ba0f65ec2dd8affe0abe20"
+    },
+    {
+      "file": "MonItems/恶灵僵尸.txt",
+      "bytes": 441,
+      "gitBlob": "bc02e3f7f78786b4b5b6bf84b338b356dfd3620c",
+      "sha256": "c90b1a75ee4a18189fbe66e161ef7b3b8168eaf483066459ed41c82ad5412dc6"
+    },
+    {
+      "file": "MonItems/恶灵僵尸0.txt",
+      "bytes": 513,
+      "gitBlob": "7a9d2f367c73bffd09967fd63d7c7236cf4c3066",
+      "sha256": "eb15b4299424f3c60eb4ef0aa4d868ebd2f7d3168a40c3ca7ca9648781a0693f"
+    },
+    {
+      "file": "MonItems/恶灵尸王.txt",
+      "bytes": 84,
+      "gitBlob": "e7b03a08c07820f3bbfd0fbdf704aa016289392a",
+      "sha256": "2f1b34565c4df09c75bd07578db9986390001730da60d5e0bda8715c3de6e083"
+    },
+    {
+      "file": "MonItems/恶灵尸王0.txt",
+      "bytes": 1041,
+      "gitBlob": "34ee5e59cb292f6af64843357b59bcdd3fad8924",
+      "sha256": "c2fdc41b32f591136e89c3355688b06f574fdb8752ed3c347549357396c09438"
+    },
+    {
+      "file": "MonItems/掷斧骷髅.txt",
+      "bytes": 691,
+      "gitBlob": "7818084e3501758d126c8b73992e80b28a106001",
+      "sha256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "file": "MonItems/掷斧骷髅0.txt",
+      "bytes": 752,
+      "gitBlob": "1009332b70bcb2dd2f537a0b60a753caffc7fbbb",
+      "sha256": "c7bf1020026b91b9e8f6c080f8cbdf865e54971702018b772436f601ea22e776"
+    },
+    {
+      "file": "MonItems/暗之双头血魔.txt",
+      "bytes": 1050,
+      "gitBlob": "b8b3e8a87425d12fd193bb619691ea8fe923cb4b",
+      "sha256": "c751220db6adccf45e6c6103b48cd493c9a0e3cf860cef2d14d908079ac9ec6a"
+    },
+    {
+      "file": "MonItems/暗之双头金刚.txt",
+      "bytes": 1027,
+      "gitBlob": "5f6a9afdf2275eddac6236623c358653eeaa0f3f",
+      "sha256": "898afa6e6409113f3ac95fd60f81f0f393efcecb26ec44bde9f38e78cc555e6c"
+    },
+    {
+      "file": "MonItems/暗之沃玛教主.txt",
+      "bytes": 1050,
+      "gitBlob": "bf10592e0645aaee20f07c046f32e53508e8c928",
+      "sha256": "e9672180e1116b27ce5992a34be244d345036180309098dc3e14a78d0e2d1041"
+    },
+    {
+      "file": "MonItems/暗之牛魔王.txt",
+      "bytes": 1832,
+      "gitBlob": "bceb8a5772d923d13a495a358974ab0e6f16e02b",
+      "sha256": "45215e226fcf3843fd7772af6dbb55e4d55c119442b41f32dc9211460f12b57c"
+    },
+    {
+      "file": "MonItems/暗之虹魔教主.txt",
+      "bytes": 1050,
+      "gitBlob": "969337d73c5e2793dae17d18c23811a25b8e0869",
+      "sha256": "fa3e1c0d03d2948b41c064ef57969bb72ba2ddc57ddcbe8d69b0b98874f32670"
+    },
+    {
+      "file": "MonItems/暗之触龙神.txt",
+      "bytes": 1735,
+      "gitBlob": "f7dd9cb5b44a9f990bd449e06ecbf4462e245f3e",
+      "sha256": "2260e751a461bb95536b4ac2510ab925a7534d671836168e8c169391f6c24245"
+    },
+    {
+      "file": "MonItems/暗之骷髅精灵.txt",
+      "bytes": 1050,
+      "gitBlob": "cee5288a3ff04139e9fc9498494f08483a005ffa",
+      "sha256": "0a596cf5909efe6705fdf0f4db4a876ce74d7112645c5def41164bf4a89c8ec9"
+    },
+    {
+      "file": "MonItems/暗之黄泉教主.txt",
+      "bytes": 1050,
+      "gitBlob": "7f319a66c2e9d684ce2869e74e2611ab389623fb",
+      "sha256": "8ec9f3d3e863a68c4df4b15327f1d064f005c9833547c2ce248095122b5827b9"
+    },
+    {
+      "file": "MonItems/暗黑战士.txt",
+      "bytes": 441,
+      "gitBlob": "31cb11a7b9d0894be2f9be1c06434e7d1ed0bf52",
+      "sha256": "0ef1b8d9ff9d7df12180ecefa7d0f5c6787a623c166781df5cd1ee6efee3bfb6"
+    },
+    {
+      "file": "MonItems/暗黑战士0.txt",
+      "bytes": 494,
+      "gitBlob": "cd03044163c2824538abf144c0cd9a8f17038f82",
+      "sha256": "d74415ea0e1239d13a555326b0de7c4ea9e048c40f986d69d3e9c1fde9d2cc7b"
+    },
+    {
+      "file": "MonItems/暴牙蜘蛛.txt",
+      "bytes": 747,
+      "gitBlob": "cfcb4060dbfaf68b64319d13d7acb9cf625b9ea8",
+      "sha256": "ece141147e942fc9166850f593fbc598e54046e8640b50b4cd2d863b21e59837"
+    },
+    {
+      "file": "MonItems/暴牙蜘蛛0.txt",
+      "bytes": 766,
+      "gitBlob": "15bafebfb695ee66b3ec9c951a424c29a031b064",
+      "sha256": "702d3742a00eb239ce09972d8f994c8a5e78c6abf412d1b211ec51eeb5772937"
+    },
+    {
+      "file": "MonItems/月魔蜘蛛.txt",
+      "bytes": 865,
+      "gitBlob": "89b19b00c7ae737b098e1a008140669a38c4e2eb",
+      "sha256": "5a5bee0fea9cec4c7f36766153f4779a477a34e3c2dfce101f4502c1977de119"
+    },
+    {
+      "file": "MonItems/森林雪人.txt",
+      "bytes": 134,
+      "gitBlob": "6df248f0b3027087887e3df924d18d1d34e60e7b",
+      "sha256": "6825ae723fc68af5a54c4d426f32e93cec7239fdfdc343f99fa0494699911666"
+    },
+    {
+      "file": "MonItems/楔蛾.txt",
+      "bytes": 40,
+      "gitBlob": "07429ea1f66bf5f310cb291e2c48051f023f3e74",
+      "sha256": "0fd06e464d7980644037a4ddb4efaab5780f46ff2118b031453280e669c117bd"
+    },
+    {
+      "file": "MonItems/楔蛾王.txt",
+      "bytes": 1648,
+      "gitBlob": "3844e3211ce7de4071cc59a0d8336cfd81fe0dfc",
+      "sha256": "ef65216e1d19f7181be3d01d75416ab3a19494df09837f9e0951cb158288b493"
+    },
+    {
+      "file": "MonItems/毒蜘蛛.txt",
+      "bytes": 17,
+      "gitBlob": "83be67909338aacfc213f8f6dd50132baab93b3a",
+      "sha256": "b29435319eb7f48592ae8739e8cb0b9710f49ab743b8e269d96711bad1657503"
+    },
+    {
+      "file": "MonItems/沃玛勇士.txt",
+      "bytes": 878,
+      "gitBlob": "00aa8ed0a26c8218f396d6140adcb2c47ef7f0e2",
+      "sha256": "235ca6a72a8f0becd907be9da6540f66757c36603ef38b2d4954c53074c9c824"
+    },
+    {
+      "file": "MonItems/沃玛勇士0.txt",
+      "bytes": 895,
+      "gitBlob": "79c1a370a15e0152e6c1fa3956a76d615a36408e",
+      "sha256": "7cf320e6fdd5bfa270a41c38978a83f1f2e1a41d9bb96085aa2f3a192c75d051"
+    },
+    {
+      "file": "MonItems/沃玛卫士.txt",
+      "bytes": 1635,
+      "gitBlob": "af48b44029aac813dac9c4d011edb9dcf8b21bfb",
+      "sha256": "5e563cd2b88f4eddc3194b20a4fb450be959ff946ef54c4e49f41e05f67cdf89"
+    },
+    {
+      "file": "MonItems/沃玛卫士1.txt",
+      "bytes": 143,
+      "gitBlob": "cb897e2a5b4816f99196d5218508fd24f8e5eb17",
+      "sha256": "9aae697fbdb2116a452212d189d2476a99dde4c0aa4b8689eb96a57975dedfe6"
+    },
+    {
+      "file": "MonItems/沃玛战士.txt",
+      "bytes": 706,
+      "gitBlob": "b272470369870822ecbdaf419595bbcf56ad5639",
+      "sha256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    {
+      "file": "MonItems/沃玛战士0.txt",
+      "bytes": 732,
+      "gitBlob": "b767daca4993f665d707841af775f94e63b0ab7c",
+      "sha256": "d76a2c3e14fe295a6b262414e394885b95656e58b31bafb3451b430f2a82cc29"
+    },
+    {
+      "file": "MonItems/沃玛战将.txt",
+      "bytes": 878,
+      "gitBlob": "00aa8ed0a26c8218f396d6140adcb2c47ef7f0e2",
+      "sha256": "235ca6a72a8f0becd907be9da6540f66757c36603ef38b2d4954c53074c9c824"
+    },
+    {
+      "file": "MonItems/沃玛战将0.txt",
+      "bytes": 895,
+      "gitBlob": "a887b7e4b4df12eac319e974dec0f3b51d91640d",
+      "sha256": "7bb069a08bfdbe52e1d3d0530fc88df93cedd778846b23e136372706daf11b04"
+    },
+    {
+      "file": "MonItems/沃玛教主.txt",
+      "bytes": 1910,
+      "gitBlob": "cfbff8394ebef3f681f75718533d548671a027f9",
+      "sha256": "5c8d6aac69436ec3778a7c87610c635eec2b14145f834f675f0e806d8da188e9"
+    },
+    {
+      "file": "MonItems/沃玛教主1.txt",
+      "bytes": 58,
+      "gitBlob": "a3ae665ba8c80e4aa1f26f4f79c04c44a39b9879",
+      "sha256": "8e4da212443e15a1f53c3cef8e250040a6e4e70170eaac34ecea2fdf824bb270"
+    },
+    {
+      "file": "MonItems/洞蛆.txt",
+      "bytes": 55,
+      "gitBlob": "4d98a586ea99b041349f58fc05db9a48c62b2f4b",
+      "sha256": "08d60436574408354fc7963119067d11bce1b97ba08b0f7254f58e80a424c888"
+    },
+    {
+      "file": "MonItems/火焰沃玛.txt",
+      "bytes": 878,
+      "gitBlob": "6ed810389297f52bf00d635d5d606904b370797d",
+      "sha256": "268b89e852ec2ac5cfa608400acec1ca82af759ec6130d9e0909c50b9bd56ec3"
+    },
+    {
+      "file": "MonItems/火焰沃玛0.txt",
+      "bytes": 895,
+      "gitBlob": "79c1a370a15e0152e6c1fa3956a76d615a36408e",
+      "sha256": "7cf320e6fdd5bfa270a41c38978a83f1f2e1a41d9bb96085aa2f3a192c75d051"
+    },
+    {
+      "file": "MonItems/牛头魔.txt",
+      "bytes": 922,
+      "gitBlob": "559a8819114e3399adb2c3d257611a06783ccf51",
+      "sha256": "916e286f65b05476adc44d7aaf9b755a92787aba607d888f78d0fde44b778515"
+    },
+    {
+      "file": "MonItems/牛头魔0.txt",
+      "bytes": 954,
+      "gitBlob": "f6853f6ed08fcf8073a8a5b6e68eef1c8ba6c6e2",
+      "sha256": "c0a2b58a24c95b45d45159479147a25cdc7d69f6a274d81f1dbce7785b9200e4"
+    },
+    {
+      "file": "MonItems/牛魔侍卫.txt",
+      "bytes": 959,
+      "gitBlob": "d32751d6aaf5625978ea1c8394846987618fa750",
+      "sha256": "3655cbb4670ac4dec0a3fc8ae8e161655a115a074e38123ddea1b46fd23cd8ae"
+    },
+    {
+      "file": "MonItems/牛魔侍卫0.txt",
+      "bytes": 1118,
+      "gitBlob": "d1bb493a86f9fc571ef8e5c0cbb2f2e878d8a9d1",
+      "sha256": "85a70368b12f0fcd50920bc82953ee7f6a2c96e4ccc91333bf17a6c67cd88728"
+    },
+    {
+      "file": "MonItems/牛魔将军.txt",
+      "bytes": 965,
+      "gitBlob": "bef4ccc163a320d77b102f4a3317d3e7d9e6c2aa",
+      "sha256": "b7833afd4aad7c36fb5698366e6f675f0b00c6166084ac690203ba51b01e0dcb"
+    },
+    {
+      "file": "MonItems/牛魔战士.txt",
+      "bytes": 959,
+      "gitBlob": "9647e0288263a9886642f9b8c5fa38734769309e",
+      "sha256": "c5affedae5cd15cabbd6450f07b048865ed7636346eb7ccff0ea1fab5c9fe1fc"
+    },
+    {
+      "file": "MonItems/牛魔战士0.txt",
+      "bytes": 1118,
+      "gitBlob": "d1bb493a86f9fc571ef8e5c0cbb2f2e878d8a9d1",
+      "sha256": "85a70368b12f0fcd50920bc82953ee7f6a2c96e4ccc91333bf17a6c67cd88728"
+    },
+    {
+      "file": "MonItems/牛魔斗士.txt",
+      "bytes": 963,
+      "gitBlob": "02959f905a88c4d79870b1d8f73fbd49f28d89d1",
+      "sha256": "098089bfa686694959235f01736df6df598e26e24db559015c2edfc82c52ed5b"
+    },
+    {
+      "file": "MonItems/牛魔斗士0.txt",
+      "bytes": 992,
+      "gitBlob": "89851d772c775bea0fea87ede376ffcfc9f79490",
+      "sha256": "3446411348f7b9d092e779e0467ac2293d45e39549892793be74cae260638919"
+    },
+    {
+      "file": "MonItems/牛魔法师.txt",
+      "bytes": 936,
+      "gitBlob": "bde0c2a758438b11641ae302ef7d0d44e4d1e163",
+      "sha256": "46b479480905ef6f923344471a62d8f7e324d9a180afe75b5b8dee3172714245"
+    },
+    {
+      "file": "MonItems/牛魔法师0.txt",
+      "bytes": 1080,
+      "gitBlob": "a611adb72c571fc334991adc1fe29ad186d4bf4e",
+      "sha256": "6cfed0125d574b2e4cf565b3ff3d7379a94ed00c1a53a8b05e072b9d93c14449"
+    },
+    {
+      "file": "MonItems/牛魔王.txt",
+      "bytes": 1832,
+      "gitBlob": "264e9ab42aade3919698a91684a7d602541ca3f3",
+      "sha256": "21037ec3ce915d9e72fa99ba071c532eef3fedeef78fe4d9d84b713f76575611"
+    },
+    {
+      "file": "MonItems/牛魔祭司.txt",
+      "bytes": 946,
+      "gitBlob": "4c74458f9c31ad0a4e0fb7ac39d98d7a3ec1a4d0",
+      "sha256": "7c37f0cf8691586d7da81cac85386f42b1cfbbd9b6fbdc4eda5e8864631214e1"
+    },
+    {
+      "file": "MonItems/牛魔祭司0.txt",
+      "bytes": 946,
+      "gitBlob": "4c74458f9c31ad0a4e0fb7ac39d98d7a3ec1a4d0",
+      "sha256": "7c37f0cf8691586d7da81cac85386f42b1cfbbd9b6fbdc4eda5e8864631214e1"
+    },
+    {
+      "file": "MonItems/狼.txt",
+      "bytes": 14,
+      "gitBlob": "56f0be052aa270d382f64c7418aba110f1ef7b5a",
+      "sha256": "2a7fa429733728385c7e480ddce43a5c801cc0545b1619a1ad84d629d011b68e"
+    },
+    {
+      "file": "MonItems/猎鹰.txt",
+      "bytes": 12,
+      "gitBlob": "9a013ff4aacffe602bf2e301f46e5d07e74efa4b",
+      "sha256": "96a71ebc5451c2cc6a5e1cb2265b3c28eaeab078e8edcb0107e58219c24cb1a7"
+    },
+    {
+      "file": "MonItems/电僵王.txt",
+      "bytes": 335,
+      "gitBlob": "459e39f9171ea1c5e771f74e39166428317b0e31",
+      "sha256": "677d1f907e9ec8de07fd7de94f37e8984e3d1f64d66aa8a38d21c9a4b82c7127"
+    },
+    {
+      "file": "MonItems/白野猪.txt",
+      "bytes": 1970,
+      "gitBlob": "d9366bc8a25cd1eb532808ecd2f15240cb0f8de4",
+      "sha256": "4776fc461632ef6d319f91393bc4372546b5de10aa539fb870de641b25e35072"
+    },
+    {
+      "file": "MonItems/白野猪0.txt",
+      "bytes": 1351,
+      "gitBlob": "572350ba8dc5be9bc92c6cbe6c4ce6b6422df259",
+      "sha256": "5fbc9a64d01f5f9bb3bb8b1e73c0d689ca7e5780a327c0f659435609da037787"
+    },
+    {
+      "file": "MonItems/白野猪1.txt",
+      "bytes": 282,
+      "gitBlob": "66ff21c13e5bb4ca859744ae82eb97ae2d1c8a43",
+      "sha256": "1d6096dbd8f61f75ffd9046b939af715250fed57de05764c0901096629c6073b"
+    },
+    {
+      "file": "MonItems/白野猪9.txt",
+      "bytes": 1309,
+      "gitBlob": "d062619f86ca6f644500470dc7e45fc452ce51e9",
+      "sha256": "00f2976e063dc329aeac3ea5ace385ea2e6b03dc0eb21b72eccd00c3ebfda03b"
+    },
+    {
+      "file": "MonItems/盔甲虫.txt",
+      "bytes": 19,
+      "gitBlob": "f6ea27a95b008de9db4b3eeba38f793c1b8f1438",
+      "sha256": "1757c93d6443bf14707aa4de00ef942b102f3bbcda2bdfe05092986ec394bf8a"
+    },
+    {
+      "file": "MonItems/石墓尸王.txt",
+      "bytes": 1905,
+      "gitBlob": "15c5f51107ef4668bd4d24ac5f2259790c7d7fbe",
+      "sha256": "7c19bd553f887a894d710b621bd5d8c634ffbc3edf4b177183e61a410f05ec02"
+    },
+    {
+      "file": "MonItems/祖玛卫士.txt",
+      "bytes": 737,
+      "gitBlob": "8fa18bdc92279bf73d2a9c02a5ba4dc47cde2aa2",
+      "sha256": "18bcf13dc044d7ab96c9b7d43708847c66c7ed373bdd8dd255fa66b98e995911"
+    },
+    {
+      "file": "MonItems/祖玛卫士0.txt",
+      "bytes": 775,
+      "gitBlob": "874a79dde6b4e588674bf3f21a08a867b8bcabb5",
+      "sha256": "87156c141a392e527ab974e27092a85c53941f41326559093da7d6a8d91825d3"
+    },
+    {
+      "file": "MonItems/祖玛卫士00.txt",
+      "bytes": 1726,
+      "gitBlob": "a0fcf0c778ae06a5a8af95199cdf77df43616e0f",
+      "sha256": "ddde11813f89635bc23e77b2c0f05a974931195cdcfc93ea0ede16c4c9094a91"
+    },
+    {
+      "file": "MonItems/祖玛卫士3.txt",
+      "bytes": 1203,
+      "gitBlob": "de299a84122a5476a952a34ce98395b9d3cec640",
+      "sha256": "06213cdf77779da2195f1410a64c5e4e210d7a58a9ccaa05105a998cc9250c9b"
+    },
+    {
+      "file": "MonItems/祖玛卫士9.txt",
+      "bytes": 1158,
+      "gitBlob": "719c8a5cc58437a625a6df1eae6ed766c8554470",
+      "sha256": "4e98b595f2f6d8e059822e5948ab7eacc5de69b53cbf8ed355e8f213c382961e"
+    },
+    {
+      "file": "MonItems/祖玛弓箭手.txt",
+      "bytes": 738,
+      "gitBlob": "fa70f3791d34cdf1b69b95112b835ae7fef6e896",
+      "sha256": "9f8670231612effd5a492864d91b0f1cf48de58217e3761a0de814bb5ba891cd"
+    },
+    {
+      "file": "MonItems/祖玛弓箭手0.txt",
+      "bytes": 775,
+      "gitBlob": "912d80354828bad98d404b1757a40e3a83c0be43",
+      "sha256": "f44d697a2c103fd26a86468910a75a6813e617a80a1e8fffcedb6815c8bef2f3"
+    },
+    {
+      "file": "MonItems/祖玛弓箭手3.txt",
+      "bytes": 1203,
+      "gitBlob": "53656a42580f1b9813747f2c4cb224fbc059f1e9",
+      "sha256": "4a97e56f6a25a46bf34e9b5adade1c5cf0eef37c55e8c22b4eed0c8906d3bb32"
+    },
+    {
+      "file": "MonItems/祖玛弓箭手9.txt",
+      "bytes": 1159,
+      "gitBlob": "a36df9c3408361c064d164e8888132dec549f24e",
+      "sha256": "7d0edae83abaa98f80fc3f769eecfea22707db18ef6ac88d7b8cfe314744daa6"
+    },
+    {
+      "file": "MonItems/祖玛教主.txt",
+      "bytes": 1825,
+      "gitBlob": "cfeb31ab6757df7c593367087ebfbf7d9a514c70",
+      "sha256": "8cbacc605ce6ffec76809364c99fa54054c3407b6e2271c864d5e60177e1d1a4"
+    },
+    {
+      "file": "MonItems/祖玛雕像.txt",
+      "bytes": 737,
+      "gitBlob": "8fa18bdc92279bf73d2a9c02a5ba4dc47cde2aa2",
+      "sha256": "18bcf13dc044d7ab96c9b7d43708847c66c7ed373bdd8dd255fa66b98e995911"
+    },
+    {
+      "file": "MonItems/祖玛雕像0.txt",
+      "bytes": 775,
+      "gitBlob": "874a79dde6b4e588674bf3f21a08a867b8bcabb5",
+      "sha256": "87156c141a392e527ab974e27092a85c53941f41326559093da7d6a8d91825d3"
+    },
+    {
+      "file": "MonItems/祖玛雕像3.txt",
+      "bytes": 1203,
+      "gitBlob": "53656a42580f1b9813747f2c4cb224fbc059f1e9",
+      "sha256": "4a97e56f6a25a46bf34e9b5adade1c5cf0eef37c55e8c22b4eed0c8906d3bb32"
+    },
+    {
+      "file": "MonItems/祖玛雕像9.txt",
+      "bytes": 1159,
+      "gitBlob": "c74dfd867f730e292272cf2ffe18e20fe539dd15",
+      "sha256": "153520843e1b384cd5b3f00db94fd958d8674a819918340f276800eba21b760f"
+    },
+    {
+      "file": "MonItems/神鹰.txt",
+      "bytes": 1599,
+      "gitBlob": "5819df58215dddc71dbf58ff803d3f875a5545ba",
+      "sha256": "72cfe19e812de250f9befd5c4ce15403cf14baa8d589ec64c5e9ec3aafc1c825"
+    },
+    {
+      "file": "MonItems/稻草人.txt",
+      "bytes": 133,
+      "gitBlob": "ce222e4bbac128922a7c68a0911e940e73795c66",
+      "sha256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "file": "MonItems/稻草人1.txt",
+      "bytes": 157,
+      "gitBlob": "8834726ea3e9f001212cf0b5bce64c4d886f9627",
+      "sha256": "658fb40fa5620febcb77807c67e48cf4485f8f5f186cb130acf6917df3e6e942"
+    },
+    {
+      "file": "MonItems/稻草人9.txt",
+      "bytes": 179,
+      "gitBlob": "0b2c4ca3497e9d5969162176ae62070b492f72c6",
+      "sha256": "310a745c44bf7a37eb81f503dcdde77837d4f1fe814669c930d2e935553ab6c4"
+    },
+    {
+      "file": "MonItems/粪虫.txt",
+      "bytes": 61,
+      "gitBlob": "1e18c453fcc7ccdb4785a50ebce8ab87341e748c",
+      "sha256": "55000e5d3191f4cb46bbfb29332e5d5f02f554b6f19a8e222a8ab0a0ebfdd475"
+    },
+    {
+      "file": "MonItems/红蛇.txt",
+      "bytes": 133,
+      "gitBlob": "ce222e4bbac128922a7c68a0911e940e73795c66",
+      "sha256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "file": "MonItems/红蛇王.txt",
+      "bytes": 309,
+      "gitBlob": "0ff1a91b51b1d9a75c0b98c70ab9c1e4f495b329",
+      "sha256": "3d3b2227ddae1ef1f029a2e9940451117bc816fdc56a0c1d8b0170272eea2339"
+    },
+    {
+      "file": "MonItems/红野猪.txt",
+      "bytes": 897,
+      "gitBlob": "42c3158351c02d7c498e8c7ac3a98bb8d19cfc3d",
+      "sha256": "7d838b1941a3357d2593af533a98e7d8fe73df9a7682a0d02cc5da687d0e48f9"
+    },
+    {
+      "file": "MonItems/红野猪0.txt",
+      "bytes": 895,
+      "gitBlob": "2bc8895efb4e52f3c631ca817223431b31c29085",
+      "sha256": "d73cb7078362f5760ce7b747fa7692b1a10eb6e9f0498e683419bbcf4c2735cc"
+    },
+    {
+      "file": "MonItems/红野猪3.txt",
+      "bytes": 897,
+      "gitBlob": "42c3158351c02d7c498e8c7ac3a98bb8d19cfc3d",
+      "sha256": "7d838b1941a3357d2593af533a98e7d8fe73df9a7682a0d02cc5da687d0e48f9"
+    },
+    {
+      "file": "MonItems/羊.txt",
+      "bytes": 12,
+      "gitBlob": "cdebc95e481a291ad9bd0a8263930b067e15f4d4",
+      "sha256": "e3d78b278ac8a8bc1b34dc1c2bae51a3a3907e8ef9dfd15a25436b7047292acd"
+    },
+    {
+      "file": "MonItems/花吻蜘蛛.txt",
+      "bytes": 728,
+      "gitBlob": "b2445e3f5e578f9a5883429122adb36448a26ea2",
+      "sha256": "d1ecd0cb8ce12f9a7703ceeacfb3b4b72d28e133bdeee3058901695ad1c16f47"
+    },
+    {
+      "file": "MonItems/花吻蜘蛛0.txt",
+      "bytes": 764,
+      "gitBlob": "3bb291f03bc08723c2b6a9dd2bc0b1fc1c8edf2a",
+      "sha256": "a79b28553b94df9e329c6c14be2f0b0ee32bce3d831d278151eaba64d8c2d15c"
+    },
+    {
+      "file": "MonItems/虎蛇.txt",
+      "bytes": 133,
+      "gitBlob": "ce222e4bbac128922a7c68a0911e940e73795c66",
+      "sha256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "file": "MonItems/虎蛇王.txt",
+      "bytes": 309,
+      "gitBlob": "0ff1a91b51b1d9a75c0b98c70ab9c1e4f495b329",
+      "sha256": "3d3b2227ddae1ef1f029a2e9940451117bc816fdc56a0c1d8b0170272eea2339"
+    },
+    {
+      "file": "MonItems/虹魔教主.txt",
+      "bytes": 1635,
+      "gitBlob": "0d153dcfb788c860e25d5717cc4cf0c8092f0167",
+      "sha256": "8f63283f4f77163b4d9b61f47f229f18f8f65069be1050d4b85573632f792c0f"
+    },
+    {
+      "file": "MonItems/虹魔教主0.txt",
+      "bytes": 1635,
+      "gitBlob": "0d153dcfb788c860e25d5717cc4cf0c8092f0167",
+      "sha256": "8f63283f4f77163b4d9b61f47f229f18f8f65069be1050d4b85573632f792c0f"
+    },
+    {
+      "file": "MonItems/虹魔猪卫.txt",
+      "bytes": 1652,
+      "gitBlob": "22dcebe5b5eb3e5127b5d792677684e58d2044d0",
+      "sha256": "1fc1b133e93353849bd4fc379fcfd42fe3cf2e212deddf87d25e45c42e454aec"
+    },
+    {
+      "file": "MonItems/虹魔猪卫0.txt",
+      "bytes": 842,
+      "gitBlob": "a3a147c8c03a1a70160445a807c53c3188392389",
+      "sha256": "d5d3d11776cdbc90e64dee44b1ed34ea4832db549f4b6122a42e6659792f17c6"
+    },
+    {
+      "file": "MonItems/虹魔蝎卫.txt",
+      "bytes": 1805,
+      "gitBlob": "deeffe653ec986264f2c09b6a84a78dbcbb59d65",
+      "sha256": "5eebd5fca3bd263a42a2211aae857f0c6edbaab8fd6f7725043dc8e72cdacf99"
+    },
+    {
+      "file": "MonItems/虹魔蝎卫0.txt",
+      "bytes": 843,
+      "gitBlob": "d0ff2fa8e3e43d617fec486f612959ef42f0a95c",
+      "sha256": "c58841a304b63f9cabe32184a295d11806813bc682f6f0398d9e2210cb9e25ec"
+    },
+    {
+      "file": "MonItems/蜈蚣.txt",
+      "bytes": 898,
+      "gitBlob": "735245d6d1411847792365a1272b87ba389e9168",
+      "sha256": "17727093b4b91d1dd33dfb18885902266a6af71246b1979faa187e6807a40473"
+    },
+    {
+      "file": "MonItems/蜈蚣0.txt",
+      "bytes": 895,
+      "gitBlob": "79c1a370a15e0152e6c1fa3956a76d615a36408e",
+      "sha256": "7cf320e6fdd5bfa270a41c38978a83f1f2e1a41d9bb96085aa2f3a192c75d051"
+    },
+    {
+      "file": "MonItems/蜈蚣王.txt",
+      "bytes": 267,
+      "gitBlob": "a357993f55f24dd80252d0f2061496e875e0775b",
+      "sha256": "0c3b723635d801cfd9a68cd7f4ffd2ee1d96c8e53630354ae8916d7de4cd3338"
+    },
+    {
+      "file": "MonItems/蝎子.txt",
+      "bytes": 59,
+      "gitBlob": "ea57e05596724c961661f9005e0ab9b383d41f9f",
+      "sha256": "1a7a538ba8f49417bee7503a870bea7b0e158cb9dadc73ecf4406e2255be4cd1"
+    },
+    {
+      "file": "MonItems/蝎子王.txt",
+      "bytes": 287,
+      "gitBlob": "71eb032eff61652013888f73080745bf97d44a2f",
+      "sha256": "455d941fcdfbe2dab12a77f52cfea2578e8ff4864a8cf574b85ced18930ba5a1"
+    },
+    {
+      "file": "MonItems/蝎蛇.txt",
+      "bytes": 898,
+      "gitBlob": "97df626d0161129894f13c4bd2080a15d65360cd",
+      "sha256": "a0fe0828cb11ec3d79560420f0c89c6cf94d89b759121762377bf4890ecae206"
+    },
+    {
+      "file": "MonItems/蝎蛇0.txt",
+      "bytes": 895,
+      "gitBlob": "a887b7e4b4df12eac319e974dec0f3b51d91640d",
+      "sha256": "7bb069a08bfdbe52e1d3d0530fc88df93cedd778846b23e136372706daf11b04"
+    },
+    {
+      "file": "MonItems/蝎蛇3.txt",
+      "bytes": 878,
+      "gitBlob": "00aa8ed0a26c8218f396d6140adcb2c47ef7f0e2",
+      "sha256": "235ca6a72a8f0becd907be9da6540f66757c36603ef38b2d4954c53074c9c824"
+    },
+    {
+      "file": "MonItems/蝙蝠.txt",
+      "bytes": 76,
+      "gitBlob": "34c2ed5fb3edd7592ce40f8f6e1fa1a1f6513161",
+      "sha256": "51badff810b5376bcad70720ecf4876f78e49cb1af2abe3411cd179ca873e3fa"
+    },
+    {
+      "file": "MonItems/血僵尸.txt",
+      "bytes": 725,
+      "gitBlob": "c26bdc9f7d89a1710098413c241ef921b5fd8776",
+      "sha256": "983d4f77b31d253ea92e95d317b7e826a8c1f74e5aa6cd31b6bcdaebd5c0a244"
+    },
+    {
+      "file": "MonItems/血僵尸0.txt",
+      "bytes": 1609,
+      "gitBlob": "a1a3a355f5098a265a1e3b8a443887c369214e3d",
+      "sha256": "f79c9020ca358c0f799c451181eddc793e8edbcb35b8763c07e8484ea47f1795"
+    },
+    {
+      "file": "MonItems/血僵尸9.txt",
+      "bytes": 724,
+      "gitBlob": "143500820749b8c0951e86d6bf4ae52555e26401",
+      "sha256": "97ef918d9c9ff26f4b1ff11ef55dc64b2fb5546f7713ea0edc17a126da3296e7"
+    },
+    {
+      "file": "MonItems/血巨人.txt",
+      "bytes": 736,
+      "gitBlob": "a5dbfdca497add654a1dcddf1016038b82134fe0",
+      "sha256": "62b7c7fc5b23c2262b2e1dc9659279b0f6598d35ebbcaa62f87edac0ae455d3f"
+    },
+    {
+      "file": "MonItems/血巨人0.txt",
+      "bytes": 1591,
+      "gitBlob": "bbed4af57e45e6a5c4a1db72f7568b9dba33e39b",
+      "sha256": "dc3924dd31b9a4b161d11f5c59453ac994134af41061fb4b10cb1724f4b738e7"
+    },
+    {
+      "file": "MonItems/触龙神.txt",
+      "bytes": 1870,
+      "gitBlob": "efdb56b8943e8bdf97179563c8b217b762cbb532",
+      "sha256": "bbeb7486aeacde3642bed1c2817380234908f69497997787bafd55c203afeae6"
+    },
+    {
+      "file": "MonItems/赤月恶魔.txt",
+      "bytes": 1542,
+      "gitBlob": "e1a6ec02dcef2710615cf795ae8f5d6a8aeee3a3",
+      "sha256": "fe486fb8c04462e9b4556187cf47c0f18c39f3019388c389091935ddb19da317"
+    },
+    {
+      "file": "MonItems/跳跳蜂.txt",
+      "bytes": 706,
+      "gitBlob": "b272470369870822ecbdaf419595bbcf56ad5639",
+      "sha256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    {
+      "file": "MonItems/跳跳蜂0.txt",
+      "bytes": 732,
+      "gitBlob": "3aa67bc0f22e0f87401d2ff2af211d6113b49862",
+      "sha256": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678"
+    },
+    {
+      "file": "MonItems/邪恶毒蛇.txt",
+      "bytes": 1822,
+      "gitBlob": "c970d24790af0a22794547e8f745b5ba1727fc12",
+      "sha256": "2bd680c5e21321b2f73e1ecbf66c3229834ae20b11f36869260b66caebeae3cf"
+    },
+    {
+      "file": "MonItems/邪恶毒蛇1.txt",
+      "bytes": 58,
+      "gitBlob": "a3ae665ba8c80e4aa1f26f4f79c04c44a39b9879",
+      "sha256": "8e4da212443e15a1f53c3cef8e250040a6e4e70170eaac34ecea2fdf824bb270"
+    },
+    {
+      "file": "MonItems/邪恶蜈蚣1.txt",
+      "bytes": 1844,
+      "gitBlob": "a89623182165ba4c0001b1a5080477876b5a209b",
+      "sha256": "bde5bba4e1c160fe583ca1aa22e1a0e3fd2a4d7bf02a7e858ba69afdda611544"
+    },
+    {
+      "file": "MonItems/邪恶蜈蚣2.txt",
+      "bytes": 1844,
+      "gitBlob": "a89623182165ba4c0001b1a5080477876b5a209b",
+      "sha256": "bde5bba4e1c160fe583ca1aa22e1a0e3fd2a4d7bf02a7e858ba69afdda611544"
+    },
+    {
+      "file": "MonItems/邪恶钳虫.txt",
+      "bytes": 1821,
+      "gitBlob": "3aaf0902d15ee2b53eb44ee26c7c7aa7a98125cb",
+      "sha256": "75da23eaeea3e5266d3efa4d7fa62aca5c8721b270d6c0390ea7d0c183d56127"
+    },
+    {
+      "file": "MonItems/邪恶钳虫1.txt",
+      "bytes": 259,
+      "gitBlob": "245873e994a1fb4cbfa8412e7d68411f577db736",
+      "sha256": "dd26da171800e44caac7fa20f0e8d63a3bdda81375c52f67bf953166c1af702f"
+    },
+    {
+      "file": "MonItems/重装使者.txt",
+      "bytes": 1614,
+      "gitBlob": "985141fcfed2ac3e88d8f49ea757e29d7d779523",
+      "sha256": "57f16f45640f05000aa2c1c3e1b13928713d17ddb9924aa182ef92191ca02e56"
+    },
+    {
+      "file": "MonItems/钉耙猫.txt",
+      "bytes": 133,
+      "gitBlob": "ce222e4bbac128922a7c68a0911e940e73795c66",
+      "sha256": "fd32d0d22a41a9dfebec2e57c99ad9ec35962b601cfdcc6099c6d2c9d4cf0b96"
+    },
+    {
+      "file": "MonItems/钉耙猫王.txt",
+      "bytes": 147,
+      "gitBlob": "da46ce193adbdd7243fd249184fdfb60f896676f",
+      "sha256": "fe34e21f7ae8801e27c3376f5d29b0e1a52779e9b0cbf4cd21b1fd7aec34b071"
+    },
+    {
+      "file": "MonItems/钢牙蜘蛛.txt",
+      "bytes": 729,
+      "gitBlob": "3c1f8c2aff8aa176f85efc7fe002a1f6c37413ed",
+      "sha256": "ccf100321a89a02fdf329de0696abe9f98570dcc84edfb14bd78e7dae0992806"
+    },
+    {
+      "file": "MonItems/钳虫.txt",
+      "bytes": 898,
+      "gitBlob": "97df626d0161129894f13c4bd2080a15d65360cd",
+      "sha256": "a0fe0828cb11ec3d79560420f0c89c6cf94d89b759121762377bf4890ecae206"
+    },
+    {
+      "file": "MonItems/钳虫0.txt",
+      "bytes": 895,
+      "gitBlob": "a887b7e4b4df12eac319e974dec0f3b51d91640d",
+      "sha256": "7bb069a08bfdbe52e1d3d0530fc88df93cedd778846b23e136372706daf11b04"
+    },
+    {
+      "file": "MonItems/雪人王.txt",
+      "bytes": 147,
+      "gitBlob": "6f621ac6f03e5fe3c6d10ca901bd6c7e74e2f75f",
+      "sha256": "439e6c936baf8c8113492019e0b41528a82d3e77eb9c23e408160acc22076fda"
+    },
+    {
+      "file": "MonItems/食人花.txt",
+      "bytes": 34,
+      "gitBlob": "f0913729eab67289c821e3b6bdac6183b215a6c9",
+      "sha256": "2cafa82c9dbcfd89781b2edcdf2012c2b8a39919663ba3b8f9ac9a1fdc9129e0"
+    },
+    {
+      "file": "MonItems/骷髅.txt",
+      "bytes": 691,
+      "gitBlob": "7818084e3501758d126c8b73992e80b28a106001",
+      "sha256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "file": "MonItems/骷髅0.txt",
+      "bytes": 752,
+      "gitBlob": "5d676b27e5b6a24ceff787ff8245c72cf3b79390",
+      "sha256": "6c5b9b2a3bc6290da1b4029ef3f8e6744e3e342904db3e79ebbf466f51e080c0"
+    },
+    {
+      "file": "MonItems/骷髅刀斧手.txt",
+      "bytes": 934,
+      "gitBlob": "696988801d8b5e2b5b2bd9a32b79687b12eadf1e",
+      "sha256": "4a40421a1acebf9e349e4b5aa4365f87083fbfd7557c1c89d255443d654553d5"
+    },
+    {
+      "file": "MonItems/骷髅刀斧手0.txt",
+      "bytes": 1059,
+      "gitBlob": "25b2e4e880b6ee829d67afa67da59e2cc5c6cd56",
+      "sha256": "f744679ecf4ec141a75b2441cd85b06acf0d9937f5566d21d658e95017b53491"
+    },
+    {
+      "file": "MonItems/骷髅弓箭手.txt",
+      "bytes": 934,
+      "gitBlob": "696988801d8b5e2b5b2bd9a32b79687b12eadf1e",
+      "sha256": "4a40421a1acebf9e349e4b5aa4365f87083fbfd7557c1c89d255443d654553d5"
+    },
+    {
+      "file": "MonItems/骷髅弓箭手0.txt",
+      "bytes": 1059,
+      "gitBlob": "25b2e4e880b6ee829d67afa67da59e2cc5c6cd56",
+      "sha256": "f744679ecf4ec141a75b2441cd85b06acf0d9937f5566d21d658e95017b53491"
+    },
+    {
+      "file": "MonItems/骷髅战士.txt",
+      "bytes": 691,
+      "gitBlob": "7818084e3501758d126c8b73992e80b28a106001",
+      "sha256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "file": "MonItems/骷髅战士0.txt",
+      "bytes": 752,
+      "gitBlob": "1009332b70bcb2dd2f537a0b60a753caffc7fbbb",
+      "sha256": "c7bf1020026b91b9e8f6c080f8cbdf865e54971702018b772436f601ea22e776"
+    },
+    {
+      "file": "MonItems/骷髅战将.txt",
+      "bytes": 691,
+      "gitBlob": "7818084e3501758d126c8b73992e80b28a106001",
+      "sha256": "e8929d79558df2eb1c3652775f0a958e95af43726de51c7f884c0381276887a3"
+    },
+    {
+      "file": "MonItems/骷髅战将0.txt",
+      "bytes": 752,
+      "gitBlob": "99dc1bba1131072fffaad6910b433cc200ac07a6",
+      "sha256": "85249442cbaebd7f2ddcb9f407e1213c2fb45e0a6d5648ae87acc09fcd52bf25"
+    },
+    {
+      "file": "MonItems/骷髅王.txt",
+      "bytes": 268,
+      "gitBlob": "e52bd5f1be7ddc90d3da991a1db6bd8a11923cbe",
+      "sha256": "b838cadc55879e9669975ad841bb664ff8b4488839d28a7de71471cd8183b566"
+    },
+    {
+      "file": "MonItems/骷髅精灵.txt",
+      "bytes": 852,
+      "gitBlob": "7ad9abf2900ee2b9ad78c0c54e56a0c09fdccb98",
+      "sha256": "7c80884ad6040ca12dd9bdae0371c77f47ad38624f682186b902add19170e335"
+    },
+    {
+      "file": "MonItems/骷髅精灵1.txt",
+      "bytes": 280,
+      "gitBlob": "daa8b6d3c07002eb88ad66ffd3fd2aa5d0ebdfa0",
+      "sha256": "8edcd5a2ef16398d36bb149062513d8cab4a6ecf28a430d032d995f2e0abe7e0"
+    },
+    {
+      "file": "MonItems/骷髅锤兵.txt",
+      "bytes": 934,
+      "gitBlob": "696988801d8b5e2b5b2bd9a32b79687b12eadf1e",
+      "sha256": "4a40421a1acebf9e349e4b5aa4365f87083fbfd7557c1c89d255443d654553d5"
+    },
+    {
+      "file": "MonItems/骷髅锤兵0.txt",
+      "bytes": 1059,
+      "gitBlob": "25b2e4e880b6ee829d67afa67da59e2cc5c6cd56",
+      "sha256": "f744679ecf4ec141a75b2441cd85b06acf0d9937f5566d21d658e95017b53491"
+    },
+    {
+      "file": "MonItems/骷髅长枪兵.txt",
+      "bytes": 934,
+      "gitBlob": "db3eb9b8ed9c3da25e30244840d60702bdec280c",
+      "sha256": "e90434d4ed6293de2f78a35f1fd692e8e782c7249527ed7219dca791c9bf0021"
+    },
+    {
+      "file": "MonItems/骷髅长枪兵0.txt",
+      "bytes": 1059,
+      "gitBlob": "109c3c3c381e21a6b8786df512b928dae832275c",
+      "sha256": "a22288d8c5e1fe8397a56a39d9944cc8406af586c6614cfbd90a3dae50736c2f"
+    },
+    {
+      "file": "MonItems/魔龙刀兵.txt",
+      "bytes": 63,
+      "gitBlob": "7fdc8d64354712f5897666c28fbe8ddc13e76b61",
+      "sha256": "4d408dd64781aa4fea58ed23dfc242f1c42c121b28a3f710377e3c7cfcc47bb3"
+    },
+    {
+      "file": "MonItems/魔龙射手.txt",
+      "bytes": 63,
+      "gitBlob": "7fdc8d64354712f5897666c28fbe8ddc13e76b61",
+      "sha256": "4d408dd64781aa4fea58ed23dfc242f1c42c121b28a3f710377e3c7cfcc47bb3"
+    },
+    {
+      "file": "MonItems/魔龙教主2.txt",
+      "bytes": 63,
+      "gitBlob": "253f83a49efd22d92ce536a4b1fa9a06c7eb49f3",
+      "sha256": "c3c1ef7305db049d21ebd1943c4a6265d540f480e30586491e38719079972e4b"
+    },
+    {
+      "file": "MonItems/魔龙破甲兵.txt",
+      "bytes": 63,
+      "gitBlob": "7fdc8d64354712f5897666c28fbe8ddc13e76b61",
+      "sha256": "4d408dd64781aa4fea58ed23dfc242f1c42c121b28a3f710377e3c7cfcc47bb3"
+    },
+    {
+      "file": "MonItems/鸡.txt",
+      "bytes": 10,
+      "gitBlob": "ff9fbb57e9e70a8802c109a9027c0819453e10f5",
+      "sha256": "1201fe6e7584e8ea2d4b2edaacfb2f83f818912e8601976e69152f0c9ee65a1a"
+    },
+    {
+      "file": "MonItems/鸡1.txt",
+      "bytes": 1778,
+      "gitBlob": "6ce724ffb6c430851480450ec4012ab18a860c16",
+      "sha256": "4d6f81177765ea42b0e9f079b01c62f317bdf78df1b66f1ea5f5d8982bd11214"
+    },
+    {
+      "file": "MonItems/鹿.txt",
+      "bytes": 44,
+      "gitBlob": "765e1bdaa4dbcd573dd2d8b1b4d53e69fa567302",
+      "sha256": "6ac514e9f0680d0cf35947038a9d8e4c5875f8fc3087edba7a5d0f1c02806a8a"
+    },
+    {
+      "file": "MonItems/鹿1.txt",
+      "bytes": 188,
+      "gitBlob": "99cb20faa4dcf62d4fa11caece61dca5acae7510",
+      "sha256": "2c59889dbc8393cd3eefff77b8f24f48b8dce2ea457c6ee969f6010804f1266f"
+    },
+    {
+      "file": "MonItems/黄泉教主.txt",
+      "bytes": 1832,
+      "gitBlob": "bea0e754377c5c43c946da5c038e9f167ef084d0",
+      "sha256": "9f22a314b89212a64f2d6a24563f7815ec901f9d43d5257a2c59aa7dd4b66ec5"
+    },
+    {
+      "file": "MonItems/黑色恶蛆.txt",
+      "bytes": 706,
+      "gitBlob": "b272470369870822ecbdaf419595bbcf56ad5639",
+      "sha256": "604a0f65d7c3b67b2f6ae29c567876d68b41eb9c92fe99c25992d465d0211946"
+    },
+    {
+      "file": "MonItems/黑色恶蛆0.txt",
+      "bytes": 732,
+      "gitBlob": "3aa67bc0f22e0f87401d2ff2af211d6113b49862",
+      "sha256": "cf836fe01971114745076a00e4f3bfac465aed59a437665e30a50bc50c7e1678"
+    },
+    {
+      "file": "MonItems/黑野猪.txt",
+      "bytes": 897,
+      "gitBlob": "bf35a5ed54a8046f3ca7d27dbf4175221210f2c4",
+      "sha256": "432f5c3c8f7436ab89346fb13b5c06d794360020f2d4765c06b1b7ac526ba20d"
+    },
+    {
+      "file": "MonItems/黑野猪0.txt",
+      "bytes": 895,
+      "gitBlob": "2bc8895efb4e52f3c631ca817223431b31c29085",
+      "sha256": "d73cb7078362f5760ce7b747fa7692b1a10eb6e9f0498e683419bbcf4c2735cc"
+    },
+    {
+      "file": "MonItems/黑野猪3.txt",
+      "bytes": 897,
+      "gitBlob": "bf35a5ed54a8046f3ca7d27dbf4175221210f2c4",
+      "sha256": "432f5c3c8f7436ab89346fb13b5c06d794360020f2d4765c06b1b7ac526ba20d"
+    },
+    {
+      "file": "MonItems/黑锷蜘蛛.txt",
+      "bytes": 706,
+      "gitBlob": "adfa7299d3e7ad249b8c5ef366f4e36ad7cd8c97",
+      "sha256": "25b5451c560d9455410b9932c5ca11511de510eb617fd31cb760fb450f4a0201"
+    },
+    {
+      "file": "Npc_Def/比奇国王-0122.txt",
+      "bytes": 4111,
+      "gitBlob": "15bac31f7501f7778bfbb62f2630d7e7b98bf617",
+      "sha256": "d3da627e30797757e3bf6f729b04621dedb2df7bdceb7ef86b70d4e1f057e24f"
+    },
+    {
+      "file": "Npc_Def/沙巴克城堡管理-0150.txt",
+      "bytes": 3085,
+      "gitBlob": "50d6f5edcab50b52cc573dae22abf0e047d5e483",
+      "sha256": "82f56eb9461a2639fed16564f162dd579c62aaba476fe8a6ec11f5cf21ff7860"
+    },
+    {
+      "file": "Npc_Def/老人-3.txt",
+      "bytes": 400,
+      "gitBlob": "f67204b14bd89fea5304eacac7045392af6df316",
+      "sha256": "259860b01325ab48e9bd6d54904e07a7b460b8e8eb030d78b2cceeefb038c41b"
+    },
+    {
+      "file": "Npcs.txt",
+      "bytes": 227,
+      "gitBlob": "c937dc3c3c7ce9069b80faf0634f0fd606a91d5c",
+      "sha256": "19c5f83f91fc902b0e0c7bc01b402a45833cffff5cd54a82afb6d6e3b7f16d23"
+    },
+    {
+      "file": "StartPoint.txt",
+      "bytes": 138,
+      "gitBlob": "2d96064adad834b254627bb2014302d4a94bb95e",
+      "sha256": "c067ff16811a81112380cec4cbc7a189473f6def0ef9acc37e6c73f11ef2ba4a"
+    }
+  ]
+}

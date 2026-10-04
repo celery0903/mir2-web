@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-04T23:27:29.003Z",
+  "archive": "https://archive.org/details/ChuanQi2005",
+  "entry": {
+    "name": "传奇3.iso",
+    "size": "714835968",
+    "md5": "a4720cda5ba84bfe7fd75b2ec17a90d5",
+    "sha1": "3ca4396c3fbef1e353015bb929f4d20f073afe66"
+  },
+  "download": {
+    "file": ".runtime/original-client-research/chuanqi2005.iso",
+    "bytes": 714835968,
+    "md5": "a4720cda5ba84bfe7fd75b2ec17a90d5",
+    "sha1": "3ca4396c3fbef1e353015bb929f4d20f073afe66",
+    "sha256": "246133266c9d2d129ab16491e9d4db3dd0d4d6c2e7633c9530568e210d46be1f"
+  },
+  "archiveHashesMatch": true,
+  "authenticated2003Client": false,
+  "full176Acceptance": false,
+  "coverClaim": "Legend of Mir (Chinese) 1.76 Reloaded client; disc also contains private servers and other Legend games, so the installer contents require independent review"
+}

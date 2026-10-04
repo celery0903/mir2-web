@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-04T23:35:25.423Z",
+  "scope": "Actual native parser and dispatcher, without database fixtures",
+  "passed": true,
+  "full176Acceptance": false,
+  "results": {
+    "before": {
+      "image": "sha256:519337af03c439c643ee45799c7f09e975bc292cb035915f0082ab148042f0ed",
+      "assemblySha256": "0e944e451725ebc4f53a378093304f02cacbfe136abb187e100816384aff52de",
+      "exitCode": 134,
+      "stdout": "Script assembly SHA-256: 0e944e451725ebc4f53a378093304f02cacbfe136abb187e100816384aff52de\n",
+      "stderr": "Unhandled exception. System.Exception: Action mapmove 11 47 477 became Exeaction, expected MapMove\n   at Program.<<Main>$>g__Action|0_0(String text, ExecutionCode expected, <>c__DisplayClass0_0&) in /tests/Program.cs:line 21\n   at Program.<Main>$(String[] args) in /tests/Program.cs:line 30\n"
+    },
+    "after": {
+      "image": "sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3",
+      "assemblySha256": "6d91b8af4881f9fdf1c464112172395ce50c7027374d4ea74d5aff10270479c0",
+      "stdout": "Script assembly SHA-256: 6d91b8af4881f9fdf1c464112172395ce50c7027374d4ea74d5aff10270479c0\nScript checks: original MAPMOVE parameters, action and condition identities, sequential actions and BREAK passed.\n",
+      "stderr": "",
+      "exitCode": 0
+    }
+  }
+}

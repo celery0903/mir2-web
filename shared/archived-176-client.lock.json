@@ -1,0 +1,27 @@
+{
+  "archive": "https://archive.org/details/ChuanQi2005",
+  "iso": {
+    "url": "https://archive.org/download/ChuanQi2005/%E4%BC%A0%E5%A5%873.iso",
+    "file": "chuanqi2005.iso",
+    "bytes": 714835968,
+    "sha256": "246133266c9d2d129ab16491e9d4db3dd0d4d6c2e7633c9530568e210d46be1f",
+    "archiveMD5": "a4720cda5ba84bfe7fd75b2ec17a90d5",
+    "archiveSHA1": "3ca4396c3fbef1e353015bb929f4d20f073afe66"
+  },
+  "installer": {
+    "file": "传奇热血1.76版重装上阵客户端.exe",
+    "bytes": 93450196,
+    "sha256": "3a8b815666a0263abddcff6dfb3bd3ee840c9196173744cad3d09f3cdeced698",
+    "appName": "热血传奇1.76完整版升级补丁",
+    "companyName": "上海盛大网络发展有限公司"
+  },
+  "embeddedFiles": [
+    {"file":"data1.hdr","offset":929635,"bytes":17650,"sha256":"a67d487e1b7f049fd1d935d5d512b681516e24ee10ac4e3e53fd6a9ec75981e8"},
+    {"file":"data1.cab","offset":947326,"bytes":309722,"sha256":"9480707ef9891b3d9c900a9f030bc4cf1a48c2b80bf4c3cfe9e470810449072d"},
+    {"file":"data2.cab","offset":1257091,"bytes":92084588,"sha256":"57d261ccf8a361aa543723c4eb37b334bb70d3644f6d65c5f1fbdb97ef603400"},
+    {"file":"setup.ini","offset":93449275,"bytes":443}
+  ],
+  "authenticated2003Client": false,
+  "full176Acceptance": false,
+  "interpretation": "Archived 2004 compilation containing a Shanda-labelled 1.76 upgrade, not a complete client. Pins establish repeatable source bytes, not official signature or original distribution authenticity."
+}

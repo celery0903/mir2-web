@@ -88,6 +88,8 @@ process.on('SIGTERM', () => void stop());
 process.on('SIGINT', () => void stop());
 
 try {
+  const profile = JSON.parse(await readFile('/profile/audit.json', 'utf8'));
+  if (profile.candidateServiceAcceptance && process.env.MIR_WORLD_CANDIDATE !== '1') throw new Error('Full world candidate is unverified. MIR_WORLD_CANDIDATE=1 is reserved for the isolated review stack.');
   await mkdir(root, { recursive: true });
   for (const [assembly, directory] of services) {
     await mkdir(join(root, directory), { recursive: true });
@@ -100,7 +102,8 @@ try {
     await normalize(join(root, 'Mir200'));
     await writeFile(join(root, '.seed-version'), 'f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c\n');
   }
-  const profileVersion = 'classic-7e5782118c78defb42d8ffb55ca3a3de199e90a6-8';
+  const profileVersion = (await readFile('/profile/profile.version', 'utf8')).trim();
+  if (!/^[a-f0-9]{64}$/.test(profileVersion)) throw new Error('Invalid prepared profile version');
   let installedProfile = '';
   try { installedProfile = await readFile(join(root, '.profile-version'), 'utf8'); } catch {}
   if (installedProfile !== profileVersion) {

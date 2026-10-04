@@ -1,0 +1,275 @@
+{
+  "checkedAt": "2026-10-04T23:36:44.150Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "passed": true,
+  "full176Acceptance": false,
+  "fixture": "New level-one, zero-gold accounts moved offline to original route approaches. No stats, skills, items, NPC scripts or route coordinates changed. This does not verify travelling from birth to these regions.",
+  "images": {
+    "engine": "sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3",
+    "web": "sha256:b15558772eff8b8da396e44ffb7b4dbcbdc90b5370aa4430ee7eac60ab354615",
+    "proxy": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b"
+  },
+  "errors": [],
+  "missingResources": [],
+  "routes": [
+    {
+      "flow": "border",
+      "passed": true,
+      "approach": {
+        "map": "0",
+        "x": 324,
+        "y": 36
+      },
+      "outward": {
+        "map": "1",
+        "x": 559,
+        "y": 553
+      },
+      "return": {
+        "map": "0",
+        "x": 324,
+        "y": 35
+      },
+      "screenshots": [
+        {
+          "sampledColors": 599,
+          "width": 800,
+          "height": 600
+        },
+        {
+          "sampledColors": 333,
+          "width": 391,
+          "height": 294
+        }
+      ],
+      "packets": [
+        {
+          "type": "map",
+          "map": "0"
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 324,
+          "y": 35,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 324,
+          "y": 34,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "1",
+          "playerId": 960149990,
+          "x": 559,
+          "y": 553,
+          "brightness": 0
+        },
+        {
+          "type": "actionResult",
+          "actionId": 3,
+          "kind": "move",
+          "accepted": true,
+          "x": 559,
+          "y": 554,
+          "reason": 0,
+          "mapGeneration": 2
+        },
+        {
+          "type": "map",
+          "map": "0",
+          "playerId": 960149990,
+          "x": 324,
+          "y": 35,
+          "brightness": 0
+        }
+      ]
+    },
+    {
+      "flow": "npc",
+      "passed": true,
+      "sourceScriptSha256": "4336d97d184883dd9095a7351bc8ac338b9d09599be0a4799e7439d3ea46e9ba",
+      "nativeTarget": {
+        "map": "11",
+        "x": 47,
+        "y": 477
+      },
+      "screenshot": {
+        "sampledColors": 666,
+        "width": 800,
+        "height": 600
+      },
+      "packets": [
+        {
+          "type": "map",
+          "map": "1"
+        },
+        {
+          "type": "npcDialogue",
+          "npcId": 70096182,
+          "npcName": "传送员",
+          "text": "年轻的勇士，你想进入白日门吗？",
+          "options": [
+            {
+              "text": "去[白日门]",
+              "command": "@br",
+              "input": false
+            },
+            {
+              "text": "离开",
+              "command": "@Exit",
+              "input": false
+            }
+          ],
+          "lines": [
+            [],
+            [
+              {
+                "text": "年轻的勇士，你想进入白日门吗？",
+                "command": null,
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": " ",
+                "command": null,
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": "去[白日门]",
+                "command": "@br",
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": " ",
+                "command": null,
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": "离开",
+                "command": "@Exit",
+                "input": false
+              }
+            ]
+          ],
+          "quest": null,
+          "quests": null
+        },
+        {
+          "type": "map",
+          "map": "11",
+          "playerId": 1287713661,
+          "x": 47,
+          "y": 477,
+          "brightness": 0
+        }
+      ]
+    },
+    {
+      "flow": "alias",
+      "passed": true,
+      "logicalMapSaved": "0123A",
+      "graphicMapReceived": "0123",
+      "reconnect": true,
+      "return": {
+        "map": "11",
+        "x": 205,
+        "y": 386
+      },
+      "screenshot": {
+        "sampledColors": 503,
+        "width": 800,
+        "height": 600
+      },
+      "packets": [
+        {
+          "type": "map",
+          "map": "11"
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 204,
+          "y": 386,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 204,
+          "y": 385,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "0123",
+          "playerId": 1105355728,
+          "x": 12,
+          "y": 18,
+          "brightness": 2
+        },
+        {
+          "type": "map",
+          "map": "0123"
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 12,
+          "y": 17,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 12,
+          "y": 18,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "11",
+          "playerId": 2081502801,
+          "x": 205,
+          "y": 386,
+          "brightness": 0
+        }
+      ]
+    }
+  ],
+  "candidateServiceAcceptance": "failed",
+  "fixtureShutdown": {
+    "nativeSaveAcknowledged": true,
+    "nativeExit": true
+  }
+}

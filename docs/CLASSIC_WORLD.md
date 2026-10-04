@@ -78,3 +78,9 @@ MIR_NATIVE_WORLD_REPORT=.runtime/reports/classic-world-assets.json \
 [本轮正式三职业及仓库](correction/source-safezone-client-production/evidence.json) 整套通过；之前因角色死亡失败的报告保留，不据此将野生怪物的攻击规则标为已修复。
 
 隔离栈合并当前已验证的角色、UI、物品和特效资源，根路径仍可进入 11 图游戏，地图校验页提供 256 图目录。[合并后根入口复验](correction/source-armour-preview-client/evidence.json) 通过新建战士、装备、桌面/手机、移动、重登及仓库存取，没有离线 fixture；候选地图的整包资源验收仍明确为 failed。
+
+## 后续原生联机
+
+隔离入口现已进一步加载 256 图的真实原生配置，并通过比奇/沃玛森林往返、原 NPC 到白日门、房屋别名的入内/重登/返回。配置来源、8 条未安装连接、脚本操作码修复、fixture 范围及保持失败的服务验收见 [隔离世界核验](WORLD_REVIEW.md)。正式 18880 仍为 11 图；上述较早的 11 图隔离记录保留为历史证据。
+
+网上找到并解包了 2004 光盘中的盛大标注 1.76 升级补丁。它的 39 图暴露苍月岛和候选目录差异，不能视为完整原客户端；来源、实际文件和图库抽样核对见 [归档补丁](ARCHIVED_CLIENT.md)。完整 2003 盛大原版 goal 继续保持未完成。

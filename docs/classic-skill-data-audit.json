@@ -1,0 +1,5519 @@
+{
+  "checkedAt": "2026-10-04T23:14:22.809Z",
+  "project": "mir2-web",
+  "readOnly": true,
+  "full176Acceptance": false,
+  "authenticated2003Data": false,
+  "sources": {
+    "running": {
+      "repository": "mirbeta/OpenMir2",
+      "revision": "184748310d00e611e5a2c7e70f1931b5b805e7e1",
+      "sqlSha256": "9b62084ab9caea16305f51568417ef272ddbaee673ed0b6521543df1600953ba"
+    },
+    "candidate": {
+      "repository": "mrzhqiang/mirserver-1.76",
+      "revision": "39e17246a32247a2c43c4cc481e97e88c692fa53",
+      "file": "mud2/db/Magic.DB",
+      "bytes": 30720,
+      "gitBlob": "a462ad95be7d952bbc2c41086164ce496da518b9",
+      "sha256": "66adbb098efdc236e7b4a96746113eaaf29512146d7abf4a434dfb582be5426c",
+      "directImportAccepted": false
+    },
+    "bookLearning": {
+      "file": "upstream/openmir2/src/M2Server/Player/PlayObject.Base.cs",
+      "sha256": "230eec7683e640ba42d690e0c20de365d5b688eb92b5fa2dcce3d22e94cbea6b",
+      "method": "ReadBook",
+      "mapping": "Book name to magic name; magic job and TrainLevel[0] gate learning. Item Shape and NeedLevel do not select the magic."
+    }
+  },
+  "skillRows": 108,
+  "bookRows": 202,
+  "agreeingIdentities": 33,
+  "skillsWithNumericalDifferences": 33,
+  "outsideCanonicalSkills": [
+    {
+      "Idx": 34,
+      "Job": 2,
+      "Delay": 40,
+      "MagID": 34,
+      "Power": 0,
+      "Spell": 16,
+      "Effect": 26,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "解毒术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 36,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 36,
+      "Power": 12,
+      "Spell": 14,
+      "Effect": 1,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "火焰冰",
+      "DefPower": 6,
+      "DefSpell": 10,
+      "MaxPower": 24,
+      "EffectType": 1,
+      "DefMaxPower": 6
+    },
+    {
+      "Idx": 37,
+      "Job": 1,
+      "Delay": 100,
+      "MagID": 37,
+      "Power": 14,
+      "Spell": 20,
+      "Effect": 9,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "雷神之怒",
+      "DefPower": 10,
+      "DefSpell": 6,
+      "MaxPower": 25,
+      "EffectType": 7,
+      "DefMaxPower": 12
+    },
+    {
+      "Idx": 38,
+      "Job": 2,
+      "Delay": 40,
+      "MagID": 48,
+      "Power": 10,
+      "Spell": 12,
+      "Effect": 27,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "群体施毒术",
+      "DefPower": 4,
+      "DefSpell": 30,
+      "MaxPower": 10,
+      "EffectType": 2,
+      "DefMaxPower": 4
+    },
+    {
+      "Idx": 39,
+      "Job": 99,
+      "Delay": 20,
+      "MagID": 39,
+      "Power": 8,
+      "Spell": 4,
+      "Effect": 1,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "乌龟跑步",
+      "DefPower": 2,
+      "DefSpell": 1,
+      "MaxPower": 8,
+      "EffectType": 1,
+      "DefMaxPower": 2
+    },
+    {
+      "Idx": 40,
+      "Job": 0,
+      "Delay": 20,
+      "MagID": 40,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 0,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "十方斩",
+      "DefPower": 0,
+      "DefSpell": 3,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 41,
+      "Job": 0,
+      "Delay": 30,
+      "MagID": 41,
+      "Power": 1,
+      "Spell": 8,
+      "Effect": 43,
+      "NeedL1": 38,
+      "NeedL2": 41,
+      "NeedL3": 44,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "狮子吼",
+      "DefPower": 0,
+      "DefSpell": 8,
+      "MaxPower": 1,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 42,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 42,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 0,
+      "NeedL1": 38,
+      "NeedL2": 41,
+      "NeedL3": 44,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "龙影剑法",
+      "DefPower": 0,
+      "DefSpell": 3,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 43,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 43,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 0,
+      "NeedL1": 37,
+      "NeedL2": 40,
+      "NeedL3": 43,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "开天斩",
+      "DefPower": 0,
+      "DefSpell": 20,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 44,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 44,
+      "Power": 14,
+      "Spell": 14,
+      "Effect": 39,
+      "NeedL1": 36,
+      "NeedL2": 39,
+      "NeedL3": 41,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "寒冰掌",
+      "DefPower": 10,
+      "DefSpell": 8,
+      "MaxPower": 25,
+      "EffectType": 1,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 45,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 45,
+      "Power": 21,
+      "Spell": 15,
+      "Effect": 34,
+      "NeedL1": 38,
+      "NeedL2": 41,
+      "NeedL3": 44,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "灭天火",
+      "DefPower": 12,
+      "DefSpell": 15,
+      "MaxPower": 30,
+      "EffectType": 14,
+      "DefMaxPower": 12
+    },
+    {
+      "Idx": 46,
+      "Job": 99,
+      "Delay": 50,
+      "MagID": 46,
+      "Power": 10,
+      "Spell": 14,
+      "Effect": 42,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "分身术",
+      "DefPower": 0,
+      "DefSpell": 5,
+      "MaxPower": 0,
+      "EffectType": 1,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 47,
+      "Job": 1,
+      "Delay": 120,
+      "MagID": 47,
+      "Power": 10,
+      "Spell": 32,
+      "Effect": 65,
+      "NeedL1": 46,
+      "NeedL2": 48,
+      "NeedL3": 50,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "地狱烈焰",
+      "DefPower": 10,
+      "DefSpell": 16,
+      "MaxPower": 30,
+      "EffectType": 7,
+      "DefMaxPower": 30
+    },
+    {
+      "Idx": 48,
+      "Job": 2,
+      "Delay": 30,
+      "MagID": 48,
+      "Power": 1,
+      "Spell": 8,
+      "Effect": 36,
+      "NeedL1": 36,
+      "NeedL2": 39,
+      "NeedL3": 41,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "气功波",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 1,
+      "EffectType": 7,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 49,
+      "Job": 2,
+      "Delay": 40,
+      "MagID": 49,
+      "Power": 4,
+      "Spell": 4,
+      "Effect": 40,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "云寂术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 50,
+      "Job": 2,
+      "Delay": 30,
+      "MagID": 50,
+      "Power": 1,
+      "Spell": 8,
+      "Effect": 35,
+      "NeedL1": 38,
+      "NeedL2": 41,
+      "NeedL3": 44,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "无极真气",
+      "DefPower": 0,
+      "DefSpell": 4,
+      "MaxPower": 1,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 51,
+      "Job": 2,
+      "Delay": 30,
+      "MagID": 51,
+      "Power": 12,
+      "Spell": 10,
+      "Effect": 47,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "月魂风暴",
+      "DefPower": 14,
+      "DefSpell": 30,
+      "MaxPower": 12,
+      "EffectType": 2,
+      "DefMaxPower": 14
+    },
+    {
+      "Idx": 52,
+      "Job": 2,
+      "Delay": 30,
+      "MagID": 52,
+      "Power": 0,
+      "Spell": 15,
+      "Effect": 46,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "神之诅咒",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 9,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 53,
+      "Job": 2,
+      "Delay": 30,
+      "MagID": 53,
+      "Power": 4,
+      "Spell": 4,
+      "Effect": 48,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "嗜血魔咒(保留)",
+      "DefPower": 3,
+      "DefSpell": 20,
+      "MaxPower": 10,
+      "EffectType": 2,
+      "DefMaxPower": 6
+    },
+    {
+      "Idx": 54,
+      "Job": 2,
+      "Delay": 30,
+      "MagID": 54,
+      "Power": 4,
+      "Spell": 4,
+      "Effect": 49,
+      "NeedL1": 18,
+      "NeedL2": 20,
+      "NeedL3": 22,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "召妖降魔",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 55,
+      "Job": 0,
+      "Delay": 40,
+      "MagID": 55,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 19,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "吸星狂杀",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 56,
+      "Job": 1,
+      "Delay": 30,
+      "MagID": 56,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 19,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "异形换位",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 57,
+      "Job": 2,
+      "Delay": 30,
+      "MagID": 57,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 40,
+      "NeedL1": 48,
+      "NeedL2": 50,
+      "NeedL3": 52,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "回生术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 58,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 58,
+      "Power": 30,
+      "Spell": 10,
+      "Effect": 51,
+      "NeedL1": 46,
+      "NeedL2": 48,
+      "NeedL3": 50,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "流星火雨",
+      "DefPower": 30,
+      "DefSpell": 20,
+      "MaxPower": 50,
+      "EffectType": 2,
+      "DefMaxPower": 30
+    },
+    {
+      "Idx": 59,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 59,
+      "Power": 15,
+      "Spell": 5,
+      "Effect": 48,
+      "NeedL1": 46,
+      "NeedL2": 48,
+      "NeedL3": 50,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "噬血术",
+      "DefPower": 10,
+      "DefSpell": 2,
+      "MaxPower": 28,
+      "EffectType": 2,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 66,
+      "Job": 1,
+      "Delay": 0,
+      "MagID": 66,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 52,
+      "NeedL1": 40,
+      "NeedL2": 41,
+      "NeedL3": 42,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级魔法盾",
+      "DefPower": 0,
+      "DefSpell": 30,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 158,
+      "Job": 1,
+      "Delay": 0,
+      "MagID": 66,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 52,
+      "NeedL1": 40,
+      "NeedL2": 41,
+      "NeedL3": 42,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "白日门四级法盾",
+      "DefPower": 0,
+      "DefSpell": 30,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 159,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 67,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 50,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "先天元力",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 160,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 68,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 66,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "酒气护体",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 161,
+      "Job": 99,
+      "Delay": 60,
+      "MagID": 69,
+      "Power": 75,
+      "Spell": 30,
+      "Effect": 55,
+      "NeedL1": 38,
+      "NeedL2": 41,
+      "NeedL3": 44,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "倚天辟地",
+      "DefPower": 25,
+      "DefSpell": 8,
+      "MaxPower": 90,
+      "EffectType": 2,
+      "DefMaxPower": 35
+    },
+    {
+      "Idx": 162,
+      "Job": 2,
+      "Delay": 120,
+      "MagID": 71,
+      "Power": 0,
+      "Spell": 16,
+      "Effect": 76,
+      "NeedL1": 50,
+      "NeedL2": 55,
+      "NeedL3": 60,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级召唤神兽",
+      "DefPower": 0,
+      "DefSpell": 24,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 163,
+      "Job": 2,
+      "Delay": 120,
+      "MagID": 71,
+      "Power": 0,
+      "Spell": 16,
+      "Effect": 76,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄神兽",
+      "DefPower": 0,
+      "DefSpell": 24,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 164,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 72,
+      "Power": 0,
+      "Spell": 12,
+      "Effect": 41,
+      "NeedL1": 45,
+      "NeedL2": 47,
+      "NeedL3": 50,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "召唤月灵",
+      "DefPower": 0,
+      "DefSpell": 8,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 165,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 74,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 53,
+      "NeedL1": 46,
+      "NeedL2": 48,
+      "NeedL3": 50,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "逐日剑法",
+      "DefPower": 0,
+      "DefSpell": 7,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 166,
+      "Job": 99,
+      "Delay": 60,
+      "MagID": 75,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 91,
+      "NeedL1": 39,
+      "NeedL2": 39,
+      "NeedL3": 39,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "护体神盾",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 167,
+      "Job": 0,
+      "Delay": 60,
+      "MagID": 76,
+      "Power": 10,
+      "Spell": 5,
+      "Effect": 102,
+      "NeedL1": 15,
+      "NeedL2": 15,
+      "NeedL3": 15,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "三绝杀",
+      "DefPower": 6,
+      "DefSpell": 5,
+      "MaxPower": 10,
+      "EffectType": 0,
+      "DefMaxPower": 6
+    },
+    {
+      "Idx": 168,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 77,
+      "Power": 10,
+      "Spell": 5,
+      "Effect": 103,
+      "NeedL1": 15,
+      "NeedL2": 15,
+      "NeedL3": 15,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "双龙破",
+      "DefPower": 6,
+      "DefSpell": 5,
+      "MaxPower": 10,
+      "EffectType": 1,
+      "DefMaxPower": 6
+    },
+    {
+      "Idx": 169,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 78,
+      "Power": 10,
+      "Spell": 5,
+      "Effect": 104,
+      "NeedL1": 15,
+      "NeedL2": 15,
+      "NeedL3": 15,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "虎啸诀",
+      "DefPower": 6,
+      "DefSpell": 5,
+      "MaxPower": 10,
+      "EffectType": 8,
+      "DefMaxPower": 6
+    },
+    {
+      "Idx": 170,
+      "Job": 0,
+      "Delay": 60,
+      "MagID": 79,
+      "Power": 15,
+      "Spell": 5,
+      "Effect": 105,
+      "NeedL1": 33,
+      "NeedL2": 33,
+      "NeedL3": 33,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "追心刺",
+      "DefPower": 8,
+      "DefSpell": 5,
+      "MaxPower": 15,
+      "EffectType": 0,
+      "DefMaxPower": 8
+    },
+    {
+      "Idx": 171,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 80,
+      "Power": 15,
+      "Spell": 5,
+      "Effect": 106,
+      "NeedL1": 33,
+      "NeedL2": 33,
+      "NeedL3": 33,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "凤舞祭",
+      "DefPower": 8,
+      "DefSpell": 5,
+      "MaxPower": 15,
+      "EffectType": 1,
+      "DefMaxPower": 8
+    },
+    {
+      "Idx": 172,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 81,
+      "Power": 15,
+      "Spell": 5,
+      "Effect": 107,
+      "NeedL1": 33,
+      "NeedL2": 33,
+      "NeedL3": 33,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "八卦掌",
+      "DefPower": 8,
+      "DefSpell": 5,
+      "MaxPower": 15,
+      "EffectType": 1,
+      "DefMaxPower": 8
+    },
+    {
+      "Idx": 173,
+      "Job": 0,
+      "Delay": 60,
+      "MagID": 82,
+      "Power": 20,
+      "Spell": 5,
+      "Effect": 108,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "断岳斩",
+      "DefPower": 10,
+      "DefSpell": 5,
+      "MaxPower": 20,
+      "EffectType": 0,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 174,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 83,
+      "Power": 20,
+      "Spell": 5,
+      "Effect": 109,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "惊雷爆",
+      "DefPower": 10,
+      "DefSpell": 5,
+      "MaxPower": 20,
+      "EffectType": 1,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 175,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 84,
+      "Power": 20,
+      "Spell": 5,
+      "Effect": 110,
+      "NeedL1": 50,
+      "NeedL2": 52,
+      "NeedL3": 55,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "三焰咒",
+      "DefPower": 10,
+      "DefSpell": 5,
+      "MaxPower": 20,
+      "EffectType": 8,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 176,
+      "Job": 0,
+      "Delay": 60,
+      "MagID": 85,
+      "Power": 30,
+      "Spell": 5,
+      "Effect": 111,
+      "NeedL1": 53,
+      "NeedL2": 55,
+      "NeedL3": 58,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "横扫千军",
+      "DefPower": 15,
+      "DefSpell": 5,
+      "MaxPower": 30,
+      "EffectType": 0,
+      "DefMaxPower": 15
+    },
+    {
+      "Idx": 177,
+      "Job": 1,
+      "Delay": 60,
+      "MagID": 86,
+      "Power": 30,
+      "Spell": 5,
+      "Effect": 112,
+      "NeedL1": 53,
+      "NeedL2": 55,
+      "NeedL3": 58,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "冰天雪地",
+      "DefPower": 15,
+      "DefSpell": 5,
+      "MaxPower": 30,
+      "EffectType": 2,
+      "DefMaxPower": 15
+    },
+    {
+      "Idx": 178,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 87,
+      "Power": 30,
+      "Spell": 5,
+      "Effect": 113,
+      "NeedL1": 53,
+      "NeedL2": 55,
+      "NeedL3": 58,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "万剑归宗",
+      "DefPower": 15,
+      "DefSpell": 5,
+      "MaxPower": 30,
+      "EffectType": 1,
+      "DefMaxPower": 15
+    },
+    {
+      "Idx": 179,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 88,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 0,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级基本剑术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 180,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 88,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 0,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄剑术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 181,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 89,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 54,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级刺杀剑术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 182,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 89,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 54,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄刺杀",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 183,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 90,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 56,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级半月弯刀",
+      "DefPower": 0,
+      "DefSpell": 3,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 184,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 90,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 56,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄半月",
+      "DefPower": 0,
+      "DefSpell": 3,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 185,
+      "Job": 1,
+      "Delay": 100,
+      "MagID": 91,
+      "Power": 14,
+      "Spell": 12,
+      "Effect": 75,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级雷电术",
+      "DefPower": 10,
+      "DefSpell": 6,
+      "MaxPower": 28,
+      "EffectType": 7,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 186,
+      "Job": 1,
+      "Delay": 100,
+      "MagID": 91,
+      "Power": 14,
+      "Spell": 12,
+      "Effect": 75,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄雷电术",
+      "DefPower": 10,
+      "DefSpell": 6,
+      "MaxPower": 28,
+      "EffectType": 7,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 187,
+      "Job": 1,
+      "Delay": 30,
+      "MagID": 92,
+      "Power": 40,
+      "Spell": 12,
+      "Effect": 80,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级流星火雨",
+      "DefPower": 12,
+      "DefSpell": 30,
+      "MaxPower": 80,
+      "EffectType": 2,
+      "DefMaxPower": 12
+    },
+    {
+      "Idx": 188,
+      "Job": 1,
+      "Delay": 30,
+      "MagID": 92,
+      "Power": 40,
+      "Spell": 12,
+      "Effect": 80,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄火雨",
+      "DefPower": 12,
+      "DefSpell": 30,
+      "MaxPower": 80,
+      "EffectType": 2,
+      "DefMaxPower": 12
+    },
+    {
+      "Idx": 189,
+      "Job": 2,
+      "Delay": 40,
+      "MagID": 93,
+      "Power": 0,
+      "Spell": 4,
+      "Effect": 77,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级施毒术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 190,
+      "Job": 2,
+      "Delay": 40,
+      "MagID": 93,
+      "Power": 0,
+      "Spell": 4,
+      "Effect": 77,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄施毒术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 191,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 94,
+      "Power": 50,
+      "Spell": 5,
+      "Effect": 74,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级噬血术",
+      "DefPower": 10,
+      "DefSpell": 2,
+      "MaxPower": 60,
+      "EffectType": 2,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 192,
+      "Job": 2,
+      "Delay": 60,
+      "MagID": 94,
+      "Power": 50,
+      "Spell": 5,
+      "Effect": 74,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "四级英雄噬血术",
+      "DefPower": 10,
+      "DefSpell": 2,
+      "MaxPower": 60,
+      "EffectType": 2,
+      "DefMaxPower": 10
+    },
+    {
+      "Idx": 193,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 95,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 114,
+      "NeedL1": 0,
+      "NeedL2": 0,
+      "NeedL3": 0,
+      "L1Train": 0,
+      "L2Train": 0,
+      "L3Train": 0,
+      "MagName": "斗转星移",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 194,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 96,
+      "Power": 75,
+      "Spell": 20,
+      "Effect": 81,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "血魄一击(战)",
+      "DefPower": 12,
+      "DefSpell": 10,
+      "MaxPower": 90,
+      "EffectType": 0,
+      "DefMaxPower": 20
+    },
+    {
+      "Idx": 195,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 96,
+      "Power": 75,
+      "Spell": 20,
+      "Effect": 81,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "白日门血魄(战)",
+      "DefPower": 12,
+      "DefSpell": 10,
+      "MaxPower": 90,
+      "EffectType": 0,
+      "DefMaxPower": 20
+    },
+    {
+      "Idx": 196,
+      "Job": 1,
+      "Delay": 30,
+      "MagID": 97,
+      "Power": 75,
+      "Spell": 20,
+      "Effect": 82,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "血魄一击(法)",
+      "DefPower": 12,
+      "DefSpell": 10,
+      "MaxPower": 90,
+      "EffectType": 1,
+      "DefMaxPower": 20
+    },
+    {
+      "Idx": 197,
+      "Job": 1,
+      "Delay": 30,
+      "MagID": 97,
+      "Power": 75,
+      "Spell": 20,
+      "Effect": 82,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "白日门血魄(法)",
+      "DefPower": 12,
+      "DefSpell": 10,
+      "MaxPower": 90,
+      "EffectType": 1,
+      "DefMaxPower": 20
+    },
+    {
+      "Idx": 198,
+      "Job": 2,
+      "Delay": 40,
+      "MagID": 98,
+      "Power": 75,
+      "Spell": 20,
+      "Effect": 83,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "血魄一击(道)",
+      "DefPower": 12,
+      "DefSpell": 10,
+      "MaxPower": 90,
+      "EffectType": 2,
+      "DefMaxPower": 20
+    },
+    {
+      "Idx": 199,
+      "Job": 2,
+      "Delay": 40,
+      "MagID": 98,
+      "Power": 75,
+      "Spell": 20,
+      "Effect": 83,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "白日门血魄(道)",
+      "DefPower": 12,
+      "DefSpell": 10,
+      "MaxPower": 90,
+      "EffectType": 2,
+      "DefMaxPower": 20
+    },
+    {
+      "Idx": 200,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 99,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 92,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "白日门强身术",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 201,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 100,
+      "Power": 0,
+      "Spell": 0,
+      "Effect": 95,
+      "NeedL1": 28,
+      "NeedL2": 35,
+      "NeedL3": 42,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "神秘解读",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 202,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 101,
+      "Power": 0,
+      "Spell": 50,
+      "Effect": 96,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "神龙附体",
+      "DefPower": 0,
+      "DefSpell": 50,
+      "MaxPower": 0,
+      "EffectType": 0,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 203,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 102,
+      "Power": 0,
+      "Spell": 100,
+      "Effect": 97,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "唯我独尊",
+      "DefPower": 0,
+      "DefSpell": 50,
+      "MaxPower": 0,
+      "EffectType": 2,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 204,
+      "Job": 99,
+      "Delay": 0,
+      "MagID": 103,
+      "Power": 0,
+      "Spell": 20,
+      "Effect": 76,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "召唤巨魔",
+      "DefPower": 0,
+      "DefSpell": 24,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 205,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 500,
+      "Power": 1,
+      "Spell": 20,
+      "Effect": 35,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "破血狂杀",
+      "DefPower": 0,
+      "DefSpell": 16,
+      "MaxPower": 1,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    },
+    {
+      "Idx": 206,
+      "Job": 0,
+      "Delay": 0,
+      "MagID": 501,
+      "Power": 0,
+      "Spell": 30,
+      "Effect": 66,
+      "NeedL1": 50,
+      "NeedL2": 53,
+      "NeedL3": 56,
+      "L1Train": 200,
+      "L2Train": 300,
+      "L3Train": 500,
+      "MagName": "迅影离魂",
+      "DefPower": 0,
+      "DefSpell": 0,
+      "MaxPower": 0,
+      "EffectType": 4,
+      "DefMaxPower": 0
+    }
+  ],
+  "outsideCanonicalBooks": [
+    {
+      "Id": 397,
+      "Name": "怒之攻杀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 398,
+      "Name": "静之攻杀",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 399,
+      "Name": "怒之半月",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 400,
+      "Name": "静之半月",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 401,
+      "Name": "怒之烈火",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 402,
+      "Name": "静之烈火",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 403,
+      "Name": "怒之逐日",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 404,
+      "Name": "静之逐日",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 405,
+      "Name": "怒之火球",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 406,
+      "Name": "静之火球",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 407,
+      "Name": "怒之大火球",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 408,
+      "Name": "静之大火球",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 409,
+      "Name": "怒之火墙",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 410,
+      "Name": "静之火墙",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 411,
+      "Name": "怒之地狱火",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 412,
+      "Name": "静之地狱火",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 413,
+      "Name": "怒之疾光电影",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 414,
+      "Name": "静之疾光电影",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 415,
+      "Name": "怒之爆裂火焰",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 416,
+      "Name": "静之爆裂火焰",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 417,
+      "Name": "怒之冰咆哮",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 418,
+      "Name": "静之冰咆哮",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 419,
+      "Name": "怒之雷电",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 420,
+      "Name": "静之雷电",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 421,
+      "Name": "怒之地狱雷光",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 422,
+      "Name": "静之地狱雷光",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 423,
+      "Name": "怒之寒冰掌",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 424,
+      "Name": "静之寒冰掌",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 425,
+      "Name": "怒之灭天火",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 426,
+      "Name": "静之灭天火",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 427,
+      "Name": "怒之施毒术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 239
+    },
+    {
+      "Id": 428,
+      "Name": "静之施毒术",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 240
+    },
+    {
+      "Id": 429,
+      "Name": "怒之月灵",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 241
+    },
+    {
+      "Id": 430,
+      "Name": "静之月灵",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 242
+    },
+    {
+      "Id": 431,
+      "Name": "怒之火符",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 432,
+      "Name": "静之火符",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 433,
+      "Name": "怒之噬血",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 434,
+      "Name": "静之噬血",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 435,
+      "Name": "怒之流星火雨",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 436,
+      "Name": "静之流星火雨",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 437,
+      "Name": "怒之内功剑法",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 438,
+      "Name": "静之内功剑法",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 1582,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 441,
+      "Name": "白日门火球术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 442,
+      "Name": "白日门治愈术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 443,
+      "Name": "白日门剑术",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 444,
+      "Name": "白日门战法",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 445,
+      "Name": "白日门抗拒",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 446,
+      "Name": "白日门诱惑术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 447,
+      "Name": "白日门施毒术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 448,
+      "Name": "白日门地狱火",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 449,
+      "Name": "白日门雷电术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 450,
+      "Name": "白日门火符",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 451,
+      "Name": "白日门大火球",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 452,
+      "Name": "白日门攻杀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 453,
+      "Name": "白日门骷髅术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 454,
+      "Name": "白日门瞬移",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 455,
+      "Name": "白日门隐身",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 456,
+      "Name": "白日门群隐",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 457,
+      "Name": "白日门幽灵盾",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 458,
+      "Name": "白日门爆裂",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 459,
+      "Name": "白日门火墙",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 460,
+      "Name": "白日门战甲术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 461,
+      "Name": "白日门刺杀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 462,
+      "Name": "白日门疾光",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 463,
+      "Name": "白日门困魔咒",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 464,
+      "Name": "白日门启示",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 465,
+      "Name": "白日门半月",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 466,
+      "Name": "白日门气功波",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 467,
+      "Name": "白日门野蛮",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 468,
+      "Name": "白日门雷光",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 469,
+      "Name": "白日门魔法盾",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 470,
+      "Name": "白日门圣言术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 471,
+      "Name": "白日门烈火",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 472,
+      "Name": "白日门群疗",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 473,
+      "Name": "白日门神兽术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 474,
+      "Name": "白日门冰咆哮",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 475,
+      "Name": "白日门真气",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 476,
+      "Name": "白日门寒冰掌",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 477,
+      "Name": "白日门灭天火",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 478,
+      "Name": "白日门狮子吼",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 480,
+      "Name": "白日门酒气",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 40
+    },
+    {
+      "Id": 481,
+      "Name": "白日门元力",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 1
+    },
+    {
+      "Id": 482,
+      "Name": "白日门逐日",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 483,
+      "Name": "白日门火雨",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 484,
+      "Name": "白日门噬血术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 485,
+      "Name": "白日门龙影剑",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 5
+    },
+    {
+      "Id": 486,
+      "Name": "白日门开天斩",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 487,
+      "Name": "白日门召唤月灵",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 488,
+      "Name": "白日门分身术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 489,
+      "Name": "白日门护体神盾",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 490,
+      "Name": "破魂斩",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 491,
+      "Name": "劈星斩",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 492,
+      "Name": "雷霆一击",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 493,
+      "Name": "噬魂沼泽",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 494,
+      "Name": "末日审判",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 495,
+      "Name": "火龙气焰",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 497,
+      "Name": "先天元力",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 498,
+      "Name": "酒气护体",
+      "Shape": 99,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 499,
+      "Name": "狮子吼",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 500,
+      "Name": "逐日剑法",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 5
+    },
+    {
+      "Id": 501,
+      "Name": "龙影剑法",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 5
+    },
+    {
+      "Id": 502,
+      "Name": "开天斩",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 5
+    },
+    {
+      "Id": 503,
+      "Name": "气功波",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 504,
+      "Name": "无极真气",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 505,
+      "Name": "护体神盾",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 5
+    },
+    {
+      "Id": 506,
+      "Name": "召唤月灵",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 5
+    },
+    {
+      "Id": 507,
+      "Name": "噬血术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 5
+    },
+    {
+      "Id": 508,
+      "Name": "寒冰掌",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 509,
+      "Name": "灭天火",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 510,
+      "Name": "流星火雨",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 511,
+      "Name": "四级基本剑术",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 88
+    },
+    {
+      "Id": 512,
+      "Name": "四级英雄剑术",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 88
+    },
+    {
+      "Id": 513,
+      "Name": "四级刺杀剑术",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 89
+    },
+    {
+      "Id": 514,
+      "Name": "四级英雄刺杀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 89
+    },
+    {
+      "Id": 515,
+      "Name": "四级半月弯刀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 90
+    },
+    {
+      "Id": 516,
+      "Name": "四级英雄半月",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 90
+    },
+    {
+      "Id": 518,
+      "Name": "四级雷电术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 91
+    },
+    {
+      "Id": 519,
+      "Name": "四级英雄雷电术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 91
+    },
+    {
+      "Id": 520,
+      "Name": "四级流星火雨",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 92
+    },
+    {
+      "Id": 521,
+      "Name": "四级英雄火雨",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 92
+    },
+    {
+      "Id": 522,
+      "Name": "四级施毒术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 93
+    },
+    {
+      "Id": 523,
+      "Name": "四级英雄施毒术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 93
+    },
+    {
+      "Id": 524,
+      "Name": "四级噬血术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 94
+    },
+    {
+      "Id": 525,
+      "Name": "四级英雄噬血术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 94
+    },
+    {
+      "Id": 526,
+      "Name": "四级召唤神兽",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 71
+    },
+    {
+      "Id": 527,
+      "Name": "四级英雄神兽",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 71
+    },
+    {
+      "Id": 528,
+      "Name": "四级烈火",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 26
+    },
+    {
+      "Id": 529,
+      "Name": "四级灭天火",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 45
+    },
+    {
+      "Id": 530,
+      "Name": "四级火符",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 13
+    },
+    {
+      "Id": 531,
+      "Name": "四级破魂斩",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 60
+    },
+    {
+      "Id": 532,
+      "Name": "四级火龙气焰",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 65
+    },
+    {
+      "Id": 533,
+      "Name": "四级噬魂沼泽",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 63
+    },
+    {
+      "Id": 534,
+      "Name": "四级雷霆一击",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 62
+    },
+    {
+      "Id": 535,
+      "Name": "四级劈星斩",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 61
+    },
+    {
+      "Id": 536,
+      "Name": "四级末日审判",
+      "Shape": 3,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 64
+    },
+    {
+      "Id": 537,
+      "Name": "血魄一击(战)",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 96
+    },
+    {
+      "Id": 538,
+      "Name": "血魄一击(法)",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 97
+    },
+    {
+      "Id": 539,
+      "Name": "血魄一击(道)",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 98
+    },
+    {
+      "Id": 540,
+      "Name": "白日门血魄(战)",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 96
+    },
+    {
+      "Id": 541,
+      "Name": "白日门血魄(法)",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 97
+    },
+    {
+      "Id": 542,
+      "Name": "白日门血魄(道)",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 0,
+      "NeedLevel": 98
+    },
+    {
+      "Id": 543,
+      "Name": "三绝杀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 544,
+      "Name": "双龙破",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 545,
+      "Name": "虎啸诀",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 546,
+      "Name": "追心刺",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 547,
+      "Name": "凤舞祭",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 548,
+      "Name": "八卦掌",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 549,
+      "Name": "断岳斩",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 550,
+      "Name": "惊雷爆",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 551,
+      "Name": "三焰咒",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 552,
+      "Name": "横扫千军",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 553,
+      "Name": "冰天雪地",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 554,
+      "Name": "万剑归宗",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 556,
+      "Name": "解毒术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 557,
+      "Name": "火焰冰",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 558,
+      "Name": "雷神之怒",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 559,
+      "Name": "群体施毒术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 560,
+      "Name": "破血狂杀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 561,
+      "Name": "十方斩",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 562,
+      "Name": "分身术",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 563,
+      "Name": "地狱烈焰",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 564,
+      "Name": "云寂术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 565,
+      "Name": "月魂风暴",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 566,
+      "Name": "神之诅咒",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 567,
+      "Name": "迅影离魂",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 568,
+      "Name": "召妖降魔",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 569,
+      "Name": "吸星狂杀",
+      "Shape": 0,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 570,
+      "Name": "异形换位",
+      "Shape": 1,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    },
+    {
+      "Id": 571,
+      "Name": "回生术",
+      "Shape": 2,
+      "StdMode": 4,
+      "ImgIndex": 1144,
+      "NeedLevel": 0
+    }
+  ],
+  "comparisons": [
+    {
+      "magicId": 1,
+      "name": "火球术",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 1,
+          "Job": 1,
+          "Delay": 60,
+          "MagID": 1,
+          "Power": 8,
+          "Spell": 4,
+          "Effect": 1,
+          "NeedL1": 7,
+          "NeedL2": 11,
+          "NeedL3": 16,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "火球术",
+          "DefPower": 2,
+          "DefSpell": 1,
+          "MaxPower": 8,
+          "EffectType": 1,
+          "DefMaxPower": 2
+        }
+      ],
+      "candidate": {
+        "MagID": 1,
+        "MagName": "火球术",
+        "EffectType": 1,
+        "Effect": 1,
+        "Spell": 4,
+        "Power": 8,
+        "MaxPower": 8,
+        "DefSpell": 1,
+        "DefPower": 2,
+        "DefMaxPower": 2,
+        "Job": 1,
+        "NeedL1": 7,
+        "L1Train": 300,
+        "NeedL2": 11,
+        "L2Train": 500,
+        "NeedL3": 16,
+        "L3Train": 800,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 382,
+          "Name": "火球术",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 2,
+      "name": "治愈术",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 2,
+          "Job": 2,
+          "Delay": 40,
+          "MagID": 2,
+          "Power": 14,
+          "Spell": 7,
+          "Effect": 2,
+          "NeedL1": 7,
+          "NeedL2": 11,
+          "NeedL3": 16,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "治愈术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 20,
+          "EffectType": 2,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 2,
+        "MagName": "治愈术",
+        "EffectType": 2,
+        "Effect": 2,
+        "Spell": 7,
+        "Power": 14,
+        "MaxPower": 20,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 7,
+        "L1Train": 500,
+        "NeedL2": 11,
+        "L2Train": 1000,
+        "NeedL3": 16,
+        "L3Train": 1500,
+        "Delay": 40
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 369,
+          "Name": "治愈术",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 3,
+      "name": "基本剑术",
+      "job": 0,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 3,
+          "Job": 0,
+          "Delay": 0,
+          "MagID": 3,
+          "Power": 0,
+          "Spell": 0,
+          "Effect": 0,
+          "NeedL1": 7,
+          "NeedL2": 11,
+          "NeedL3": 16,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "基本剑术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 0,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 3,
+        "MagName": "基本剑术",
+        "EffectType": 0,
+        "Effect": 0,
+        "Spell": 0,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 0,
+        "NeedL1": 7,
+        "L1Train": 500,
+        "NeedL2": 11,
+        "L2Train": 1000,
+        "NeedL3": 16,
+        "L3Train": 1500,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 363,
+          "Name": "基本剑术",
+          "Shape": 0,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 4,
+      "name": "精神力战法",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 4,
+          "Job": 2,
+          "Delay": 0,
+          "MagID": 4,
+          "Power": 0,
+          "Spell": 0,
+          "Effect": 0,
+          "NeedL1": 9,
+          "NeedL2": 13,
+          "NeedL3": 19,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "精神力战法",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 0,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 4,
+        "MagName": "精神力战法",
+        "EffectType": 0,
+        "Effect": 0,
+        "Spell": 0,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 9,
+        "L1Train": 500,
+        "NeedL2": 13,
+        "L2Train": 1000,
+        "NeedL3": 19,
+        "L3Train": 1500,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 370,
+          "Name": "精神力战法",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 5,
+      "name": "大火球",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 5,
+          "Job": 1,
+          "Delay": 60,
+          "MagID": 5,
+          "Power": 6,
+          "Spell": 3,
+          "Effect": 3,
+          "NeedL1": 19,
+          "NeedL2": 23,
+          "NeedL3": 25,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "大火球",
+          "DefPower": 10,
+          "DefSpell": 5,
+          "MaxPower": 6,
+          "EffectType": 1,
+          "DefMaxPower": 10
+        }
+      ],
+      "candidate": {
+        "MagID": 5,
+        "MagName": "大火球",
+        "EffectType": 1,
+        "Effect": 3,
+        "Spell": 3,
+        "Power": 6,
+        "MaxPower": 6,
+        "DefSpell": 5,
+        "DefPower": 10,
+        "DefMaxPower": 10,
+        "Job": 1,
+        "NeedL1": 19,
+        "L1Train": 500,
+        "NeedL2": 23,
+        "L2Train": 1000,
+        "NeedL3": 25,
+        "L3Train": 1500,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 388,
+          "Name": "大火球",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 6,
+      "name": "施毒术",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 6,
+          "Job": 2,
+          "Delay": 40,
+          "MagID": 6,
+          "Power": 0,
+          "Spell": 4,
+          "Effect": 4,
+          "NeedL1": 14,
+          "NeedL2": 17,
+          "NeedL3": 20,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "施毒术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 2,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 6,
+        "MagName": "施毒术",
+        "EffectType": 2,
+        "Effect": 4,
+        "Spell": 4,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 14,
+        "L1Train": 300,
+        "NeedL2": 17,
+        "L2Train": 500,
+        "NeedL3": 20,
+        "L3Train": 800,
+        "Delay": 40
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 371,
+          "Name": "施毒术",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 7,
+      "name": "攻杀剑术",
+      "job": 0,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 7,
+          "Job": 0,
+          "Delay": 0,
+          "MagID": 7,
+          "Power": 0,
+          "Spell": 0,
+          "Effect": 5,
+          "NeedL1": 19,
+          "NeedL2": 22,
+          "NeedL3": 24,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "攻杀剑术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 0,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 7,
+        "MagName": "攻杀剑术",
+        "EffectType": 0,
+        "Effect": 5,
+        "Spell": 0,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 0,
+        "NeedL1": 19,
+        "L1Train": 500,
+        "NeedL2": 22,
+        "L2Train": 1000,
+        "NeedL3": 24,
+        "L3Train": 1500,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 364,
+          "Name": "攻杀剑术",
+          "Shape": 0,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 8,
+      "name": "抗拒火环",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 8,
+          "Job": 1,
+          "Delay": 30,
+          "MagID": 8,
+          "Power": 1,
+          "Spell": 8,
+          "Effect": 6,
+          "NeedL1": 12,
+          "NeedL2": 15,
+          "NeedL3": 19,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "抗拒火环",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 1,
+          "EffectType": 4,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 8,
+        "MagName": "抗拒火环",
+        "EffectType": 4,
+        "Effect": 6,
+        "Spell": 8,
+        "Power": 1,
+        "MaxPower": 1,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 1,
+        "NeedL1": 12,
+        "L1Train": 300,
+        "NeedL2": 15,
+        "L2Train": 500,
+        "NeedL3": 19,
+        "L3Train": 800,
+        "Delay": 30
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 383,
+          "Name": "抗拒火环",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 9,
+      "name": "地狱火",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 9,
+          "Job": 1,
+          "Delay": 60,
+          "MagID": 9,
+          "Power": 14,
+          "Spell": 10,
+          "Effect": 7,
+          "NeedL1": 16,
+          "NeedL2": 21,
+          "NeedL3": 26,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "地狱火",
+          "DefPower": 6,
+          "DefSpell": 10,
+          "MaxPower": 14,
+          "EffectType": 5,
+          "DefMaxPower": 6
+        }
+      ],
+      "candidate": {
+        "MagID": 9,
+        "MagName": "地狱火",
+        "EffectType": 5,
+        "Effect": 7,
+        "Spell": 10,
+        "Power": 14,
+        "MaxPower": 14,
+        "DefSpell": 10,
+        "DefPower": 6,
+        "DefMaxPower": 6,
+        "Job": 1,
+        "NeedL1": 16,
+        "L1Train": 300,
+        "NeedL2": 21,
+        "L2Train": 500,
+        "NeedL3": 26,
+        "L3Train": 800,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 385,
+          "Name": "地狱火",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 10,
+      "name": "疾光电影",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 10,
+          "Job": 1,
+          "Delay": 100,
+          "MagID": 10,
+          "Power": 12,
+          "Spell": 25,
+          "Effect": 8,
+          "NeedL1": 26,
+          "NeedL2": 29,
+          "NeedL3": 32,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "疾光电影",
+          "DefPower": 12,
+          "DefSpell": 20,
+          "MaxPower": 12,
+          "EffectType": 6,
+          "DefMaxPower": 12
+        }
+      ],
+      "candidate": {
+        "MagID": 10,
+        "MagName": "疾光电影",
+        "EffectType": 6,
+        "Effect": 8,
+        "Spell": 25,
+        "Power": 12,
+        "MaxPower": 12,
+        "DefSpell": 20,
+        "DefPower": 12,
+        "DefMaxPower": 12,
+        "Job": 1,
+        "NeedL1": 26,
+        "L1Train": 300,
+        "NeedL2": 29,
+        "L2Train": 500,
+        "NeedL3": 32,
+        "L3Train": 800,
+        "Delay": 100
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 391,
+          "Name": "疾光电影",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 11,
+      "name": "雷电术",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 11,
+          "Job": 1,
+          "Delay": 100,
+          "MagID": 11,
+          "Power": 14,
+          "Spell": 12,
+          "Effect": 9,
+          "NeedL1": 17,
+          "NeedL2": 20,
+          "NeedL3": 23,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "雷电术",
+          "DefPower": 10,
+          "DefSpell": 6,
+          "MaxPower": 28,
+          "EffectType": 7,
+          "DefMaxPower": 10
+        }
+      ],
+      "candidate": {
+        "MagID": 11,
+        "MagName": "雷电术",
+        "EffectType": 7,
+        "Effect": 9,
+        "Spell": 12,
+        "Power": 14,
+        "MaxPower": 28,
+        "DefSpell": 6,
+        "DefPower": 10,
+        "DefMaxPower": 10,
+        "Job": 1,
+        "NeedL1": 17,
+        "L1Train": 500,
+        "NeedL2": 20,
+        "L2Train": 1000,
+        "NeedL3": 24,
+        "L3Train": 1500,
+        "Delay": 100
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "NeedL3",
+          "running": 23,
+          "candidate": 24
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 386,
+          "Name": "雷电术",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 12,
+      "name": "刺杀剑术",
+      "job": 0,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 12,
+          "Job": 0,
+          "Delay": 0,
+          "MagID": 12,
+          "Power": 0,
+          "Spell": 0,
+          "Effect": 13,
+          "NeedL1": 25,
+          "NeedL2": 27,
+          "NeedL3": 29,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "刺杀剑术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 0,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 12,
+        "MagName": "刺杀剑术",
+        "EffectType": 0,
+        "Effect": 13,
+        "Spell": 0,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 0,
+        "NeedL1": 25,
+        "L1Train": 500,
+        "NeedL2": 27,
+        "L2Train": 1000,
+        "NeedL3": 29,
+        "L3Train": 1500,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 365,
+          "Name": "刺杀剑术",
+          "Shape": 0,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 13,
+      "name": "灵魂火符",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 13,
+          "Job": 2,
+          "Delay": 60,
+          "MagID": 13,
+          "Power": 15,
+          "Spell": 5,
+          "Effect": 10,
+          "NeedL1": 18,
+          "NeedL2": 21,
+          "NeedL3": 24,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "灵魂火符",
+          "DefPower": 10,
+          "DefSpell": 2,
+          "MaxPower": 28,
+          "EffectType": 8,
+          "DefMaxPower": 10
+        }
+      ],
+      "candidate": {
+        "MagID": 13,
+        "MagName": "灵魂火符",
+        "EffectType": 8,
+        "Effect": 10,
+        "Spell": 5,
+        "Power": 15,
+        "MaxPower": 28,
+        "DefSpell": 2,
+        "DefPower": 10,
+        "DefMaxPower": 10,
+        "Job": 2,
+        "NeedL1": 18,
+        "L1Train": 500,
+        "NeedL2": 21,
+        "L2Train": 1000,
+        "NeedL3": 24,
+        "L3Train": 1500,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 372,
+          "Name": "灵魂火符",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 14,
+      "name": "幽灵盾",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 14,
+          "Job": 2,
+          "Delay": 40,
+          "MagID": 14,
+          "Power": 0,
+          "Spell": 15,
+          "Effect": 11,
+          "NeedL1": 22,
+          "NeedL2": 24,
+          "NeedL3": 26,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "幽灵盾",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 9,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 14,
+        "MagName": "幽灵盾",
+        "EffectType": 9,
+        "Effect": 11,
+        "Spell": 15,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 22,
+        "L1Train": 300,
+        "NeedL2": 24,
+        "L2Train": 500,
+        "NeedL3": 26,
+        "L3Train": 800,
+        "Delay": 40
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 376,
+          "Name": "幽灵盾",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 15,
+      "name": "神圣战甲术",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 15,
+          "Job": 2,
+          "Delay": 40,
+          "MagID": 15,
+          "Power": 0,
+          "Spell": 15,
+          "Effect": 12,
+          "NeedL1": 25,
+          "NeedL2": 27,
+          "NeedL3": 29,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "神圣战甲术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 9,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 15,
+        "MagName": "神圣战甲术",
+        "EffectType": 9,
+        "Effect": 12,
+        "Spell": 15,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 25,
+        "L1Train": 300,
+        "NeedL2": 27,
+        "L2Train": 500,
+        "NeedL3": 29,
+        "L3Train": 800,
+        "Delay": 40
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 377,
+          "Name": "神圣战甲术",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 16,
+      "name": "困魔咒",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 16,
+          "Job": 2,
+          "Delay": 50,
+          "MagID": 16,
+          "Power": 0,
+          "Spell": 10,
+          "Effect": 14,
+          "NeedL1": 28,
+          "NeedL2": 30,
+          "NeedL3": 32,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "困魔咒",
+          "DefPower": 0,
+          "DefSpell": 5,
+          "MaxPower": 0,
+          "EffectType": 10,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 16,
+        "MagName": "困魔咒",
+        "EffectType": 10,
+        "Effect": 14,
+        "Spell": 10,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 5,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 28,
+        "L1Train": 500,
+        "NeedL2": 30,
+        "L2Train": 1000,
+        "NeedL3": 32,
+        "L3Train": 1500,
+        "Delay": 50
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 379,
+          "Name": "困魔咒",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 17,
+      "name": "召唤骷髅",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 17,
+          "Job": 2,
+          "Delay": 50,
+          "MagID": 17,
+          "Power": 0,
+          "Spell": 16,
+          "Effect": 15,
+          "NeedL1": 19,
+          "NeedL2": 23,
+          "NeedL3": 26,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "召唤骷髅",
+          "DefPower": 0,
+          "DefSpell": 8,
+          "MaxPower": 0,
+          "EffectType": 4,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 17,
+        "MagName": "召唤骷髅",
+        "EffectType": 4,
+        "Effect": 15,
+        "Spell": 16,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 8,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 19,
+        "L1Train": 500,
+        "NeedL2": 23,
+        "L2Train": 1000,
+        "NeedL3": 26,
+        "L3Train": 1500,
+        "Delay": 50
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 373,
+          "Name": "召唤骷髅",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 19
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 18,
+      "name": "隐身术",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 18,
+          "Job": 2,
+          "Delay": 50,
+          "MagID": 18,
+          "Power": 0,
+          "Spell": 5,
+          "Effect": 16,
+          "NeedL1": 20,
+          "NeedL2": 23,
+          "NeedL3": 26,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "隐身术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 4,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 18,
+        "MagName": "隐身术",
+        "EffectType": 4,
+        "Effect": 16,
+        "Spell": 5,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 20,
+        "L1Train": 500,
+        "NeedL2": 23,
+        "L2Train": 1000,
+        "NeedL3": 26,
+        "L3Train": 1500,
+        "Delay": 50
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 374,
+          "Name": "隐身术",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 19,
+      "name": "集体隐身术",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 19,
+          "Job": 2,
+          "Delay": 50,
+          "MagID": 19,
+          "Power": 0,
+          "Spell": 10,
+          "Effect": 17,
+          "NeedL1": 21,
+          "NeedL2": 25,
+          "NeedL3": 29,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "集体隐身术",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 8,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 19,
+        "MagName": "集体隐身术",
+        "EffectType": 8,
+        "Effect": 17,
+        "Spell": 10,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 21,
+        "L1Train": 300,
+        "NeedL2": 25,
+        "L2Train": 500,
+        "NeedL3": 29,
+        "L3Train": 800,
+        "Delay": 50
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 375,
+          "Name": "集体隐身术",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 20,
+      "name": "诱惑之光",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 20,
+          "Job": 1,
+          "Delay": 60,
+          "MagID": 20,
+          "Power": 3,
+          "Spell": 3,
+          "Effect": 18,
+          "NeedL1": 13,
+          "NeedL2": 18,
+          "NeedL3": 24,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "诱惑之光",
+          "DefPower": 0,
+          "DefSpell": 3,
+          "MaxPower": 3,
+          "EffectType": 2,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 20,
+        "MagName": "诱惑之光",
+        "EffectType": 2,
+        "Effect": 18,
+        "Spell": 3,
+        "Power": 3,
+        "MaxPower": 3,
+        "DefSpell": 3,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 1,
+        "NeedL1": 13,
+        "L1Train": 300,
+        "NeedL2": 18,
+        "L2Train": 500,
+        "NeedL3": 24,
+        "L3Train": 800,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 384,
+          "Name": "诱惑之光",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 21,
+      "name": "瞬息移动",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 21,
+          "Job": 1,
+          "Delay": 50,
+          "MagID": 21,
+          "Power": 0,
+          "Spell": 10,
+          "Effect": 19,
+          "NeedL1": 19,
+          "NeedL2": 22,
+          "NeedL3": 25,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "瞬息移动",
+          "DefPower": 0,
+          "DefSpell": 8,
+          "MaxPower": 0,
+          "EffectType": 4,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 21,
+        "MagName": "瞬息移动",
+        "EffectType": 4,
+        "Effect": 19,
+        "Spell": 10,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 8,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 1,
+        "NeedL1": 19,
+        "L1Train": 300,
+        "NeedL2": 22,
+        "L2Train": 500,
+        "NeedL3": 25,
+        "L3Train": 800,
+        "Delay": 50
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 387,
+          "Name": "瞬息移动",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 22,
+      "name": "火墙",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 22,
+          "Job": 1,
+          "Delay": 120,
+          "MagID": 22,
+          "Power": 3,
+          "Spell": 20,
+          "Effect": 20,
+          "NeedL1": 24,
+          "NeedL2": 29,
+          "NeedL3": 33,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "火墙",
+          "DefPower": 3,
+          "DefSpell": 25,
+          "MaxPower": 3,
+          "EffectType": 4,
+          "DefMaxPower": 3
+        }
+      ],
+      "candidate": {
+        "MagID": 22,
+        "MagName": "火墙",
+        "EffectType": 4,
+        "Effect": 20,
+        "Spell": 20,
+        "Power": 3,
+        "MaxPower": 3,
+        "DefSpell": 25,
+        "DefPower": 3,
+        "DefMaxPower": 3,
+        "Job": 1,
+        "NeedL1": 24,
+        "L1Train": 500,
+        "NeedL2": 29,
+        "L2Train": 1000,
+        "NeedL3": 33,
+        "L3Train": 1500,
+        "Delay": 120
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 390,
+          "Name": "火墙",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 23,
+      "name": "爆裂火焰",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 23,
+          "Job": 1,
+          "Delay": 60,
+          "MagID": 23,
+          "Power": 8,
+          "Spell": 15,
+          "Effect": 21,
+          "NeedL1": 22,
+          "NeedL2": 27,
+          "NeedL3": 31,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "爆裂火焰",
+          "DefPower": 6,
+          "DefSpell": 10,
+          "MaxPower": 8,
+          "EffectType": 2,
+          "DefMaxPower": 6
+        }
+      ],
+      "candidate": {
+        "MagID": 23,
+        "MagName": "爆裂火焰",
+        "EffectType": 2,
+        "Effect": 21,
+        "Spell": 15,
+        "Power": 8,
+        "MaxPower": 8,
+        "DefSpell": 10,
+        "DefPower": 6,
+        "DefMaxPower": 6,
+        "Job": 1,
+        "NeedL1": 22,
+        "L1Train": 300,
+        "NeedL2": 27,
+        "L2Train": 500,
+        "NeedL3": 31,
+        "L3Train": 800,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 389,
+          "Name": "爆裂火焰",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 24,
+      "name": "地狱雷光",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 24,
+          "Job": 1,
+          "Delay": 60,
+          "MagID": 24,
+          "Power": 10,
+          "Spell": 35,
+          "Effect": 22,
+          "NeedL1": 30,
+          "NeedL2": 32,
+          "NeedL3": 34,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "地狱雷光",
+          "DefPower": 10,
+          "DefSpell": 20,
+          "MaxPower": 30,
+          "EffectType": 4,
+          "DefMaxPower": 30
+        }
+      ],
+      "candidate": {
+        "MagID": 24,
+        "MagName": "地狱雷光",
+        "EffectType": 4,
+        "Effect": 22,
+        "Spell": 35,
+        "Power": 10,
+        "MaxPower": 30,
+        "DefSpell": 20,
+        "DefPower": 10,
+        "DefMaxPower": 30,
+        "Job": 1,
+        "NeedL1": 30,
+        "L1Train": 500,
+        "NeedL2": 32,
+        "L2Train": 1000,
+        "NeedL3": 34,
+        "L3Train": 1500,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 392,
+          "Name": "地狱雷光",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 25,
+      "name": "半月弯刀",
+      "job": 0,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 25,
+          "Job": 0,
+          "Delay": 0,
+          "MagID": 25,
+          "Power": 0,
+          "Spell": 0,
+          "Effect": 23,
+          "NeedL1": 28,
+          "NeedL2": 31,
+          "NeedL3": 34,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "半月弯刀",
+          "DefPower": 0,
+          "DefSpell": 3,
+          "MaxPower": 0,
+          "EffectType": 0,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 25,
+        "MagName": "半月弯刀",
+        "EffectType": 0,
+        "Effect": 23,
+        "Spell": 0,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 4,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 0,
+        "NeedL1": 28,
+        "L1Train": 500,
+        "NeedL2": 31,
+        "L2Train": 1000,
+        "NeedL3": 34,
+        "L3Train": 1500,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "DefSpell",
+          "running": 3,
+          "candidate": 4
+        },
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 366,
+          "Name": "半月弯刀",
+          "Shape": 0,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 1
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 26,
+      "name": "烈火剑法",
+      "job": 0,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 26,
+          "Job": 0,
+          "Delay": 0,
+          "MagID": 26,
+          "Power": 0,
+          "Spell": 0,
+          "Effect": 24,
+          "NeedL1": 35,
+          "NeedL2": 37,
+          "NeedL3": 40,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "烈火剑法",
+          "DefPower": 0,
+          "DefSpell": 7,
+          "MaxPower": 0,
+          "EffectType": 0,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 26,
+        "MagName": "烈火剑法",
+        "EffectType": 0,
+        "Effect": 24,
+        "Spell": 0,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 7,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 0,
+        "NeedL1": 35,
+        "L1Train": 300,
+        "NeedL2": 37,
+        "L2Train": 500,
+        "NeedL3": 40,
+        "L3Train": 800,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 368,
+          "Name": "烈火剑法",
+          "Shape": 0,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 27,
+      "name": "野蛮冲撞",
+      "job": 0,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 27,
+          "Job": 0,
+          "Delay": 0,
+          "MagID": 27,
+          "Power": 0,
+          "Spell": 15,
+          "Effect": 25,
+          "NeedL1": 30,
+          "NeedL2": 34,
+          "NeedL3": 39,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "野蛮冲撞",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 0,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 27,
+        "MagName": "野蛮冲撞",
+        "EffectType": 0,
+        "Effect": 25,
+        "Spell": 15,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 0,
+        "NeedL1": 30,
+        "L1Train": 300,
+        "NeedL2": 34,
+        "L2Train": 500,
+        "NeedL3": 39,
+        "L3Train": 800,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 367,
+          "Name": "野蛮冲撞",
+          "Shape": 0,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 28,
+      "name": "心灵启示",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 28,
+          "Job": 2,
+          "Delay": 40,
+          "MagID": 28,
+          "Power": 0,
+          "Spell": 16,
+          "Effect": 26,
+          "NeedL1": 26,
+          "NeedL2": 30,
+          "NeedL3": 35,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "心灵启示",
+          "DefPower": 0,
+          "DefSpell": 0,
+          "MaxPower": 0,
+          "EffectType": 2,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 28,
+        "MagName": "心灵启示",
+        "EffectType": 2,
+        "Effect": 26,
+        "Spell": 16,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 0,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 26,
+        "L1Train": 300,
+        "NeedL2": 30,
+        "L2Train": 500,
+        "NeedL3": 35,
+        "L3Train": 800,
+        "Delay": 40
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 378,
+          "Name": "心灵启示",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 29,
+      "name": "群体治疗术",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 29,
+          "Job": 2,
+          "Delay": 40,
+          "MagID": 29,
+          "Power": 10,
+          "Spell": 12,
+          "Effect": 27,
+          "NeedL1": 33,
+          "NeedL2": 35,
+          "NeedL3": 38,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "群体治疗术",
+          "DefPower": 4,
+          "DefSpell": 25,
+          "MaxPower": 10,
+          "EffectType": 2,
+          "DefMaxPower": 4
+        }
+      ],
+      "candidate": {
+        "MagID": 29,
+        "MagName": "群体治疗术",
+        "EffectType": 2,
+        "Effect": 27,
+        "Spell": 12,
+        "Power": 10,
+        "MaxPower": 10,
+        "DefSpell": 25,
+        "DefPower": 4,
+        "DefMaxPower": 4,
+        "Job": 2,
+        "NeedL1": 33,
+        "L1Train": 500,
+        "NeedL2": 35,
+        "L2Train": 1000,
+        "NeedL3": 38,
+        "L3Train": 1500,
+        "Delay": 40
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 380,
+          "Name": "群体治疗术",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 30,
+      "name": "召唤神兽",
+      "job": 2,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 30,
+          "Job": 2,
+          "Delay": 120,
+          "MagID": 30,
+          "Power": 0,
+          "Spell": 16,
+          "Effect": 28,
+          "NeedL1": 35,
+          "NeedL2": 37,
+          "NeedL3": 40,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "召唤神兽",
+          "DefPower": 0,
+          "DefSpell": 24,
+          "MaxPower": 0,
+          "EffectType": 4,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 30,
+        "MagName": "召唤神兽",
+        "EffectType": 4,
+        "Effect": 28,
+        "Spell": 16,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 24,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 2,
+        "NeedL1": 35,
+        "L1Train": 300,
+        "NeedL2": 37,
+        "L2Train": 500,
+        "NeedL3": 40,
+        "L3Train": 800,
+        "Delay": 120
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 381,
+          "Name": "召唤神兽",
+          "Shape": 2,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 31,
+      "name": "魔法盾",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 31,
+          "Job": 1,
+          "Delay": 0,
+          "MagID": 31,
+          "Power": 0,
+          "Spell": 20,
+          "Effect": 29,
+          "NeedL1": 31,
+          "NeedL2": 34,
+          "NeedL3": 38,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "魔法盾",
+          "DefPower": 0,
+          "DefSpell": 30,
+          "MaxPower": 0,
+          "EffectType": 4,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 31,
+        "MagName": "魔法盾",
+        "EffectType": 4,
+        "Effect": 29,
+        "Spell": 20,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 30,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 1,
+        "NeedL1": 31,
+        "L1Train": 300,
+        "NeedL2": 34,
+        "L2Train": 500,
+        "NeedL3": 38,
+        "L3Train": 800,
+        "Delay": 0
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 393,
+          "Name": "魔法盾",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 32,
+      "name": "圣言术",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 32,
+          "Job": 1,
+          "Delay": 120,
+          "MagID": 32,
+          "Power": 0,
+          "Spell": 50,
+          "Effect": 30,
+          "NeedL1": 32,
+          "NeedL2": 35,
+          "NeedL3": 39,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "圣言术",
+          "DefPower": 0,
+          "DefSpell": 40,
+          "MaxPower": 0,
+          "EffectType": 2,
+          "DefMaxPower": 0
+        }
+      ],
+      "candidate": {
+        "MagID": 32,
+        "MagName": "圣言术",
+        "EffectType": 2,
+        "Effect": 30,
+        "Spell": 50,
+        "Power": 0,
+        "MaxPower": 0,
+        "DefSpell": 40,
+        "DefPower": 0,
+        "DefMaxPower": 0,
+        "Job": 1,
+        "NeedL1": 32,
+        "L1Train": 300,
+        "NeedL2": 35,
+        "L2Train": 500,
+        "NeedL3": 39,
+        "L3Train": 800,
+        "Delay": 120
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 300
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 500
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 800
+        }
+      ],
+      "books": [
+        {
+          "Id": 394,
+          "Name": "圣言术",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    },
+    {
+      "magicId": 33,
+      "name": "冰咆哮",
+      "job": 1,
+      "identityMatches": true,
+      "running": [
+        {
+          "Idx": 33,
+          "Job": 1,
+          "Delay": 60,
+          "MagID": 33,
+          "Power": 12,
+          "Spell": 12,
+          "Effect": 31,
+          "NeedL1": 35,
+          "NeedL2": 37,
+          "NeedL3": 40,
+          "L1Train": 200,
+          "L2Train": 300,
+          "L3Train": 500,
+          "MagName": "冰咆哮",
+          "DefPower": 12,
+          "DefSpell": 30,
+          "MaxPower": 12,
+          "EffectType": 2,
+          "DefMaxPower": 12
+        }
+      ],
+      "candidate": {
+        "MagID": 33,
+        "MagName": "冰咆哮",
+        "EffectType": 2,
+        "Effect": 31,
+        "Spell": 12,
+        "Power": 12,
+        "MaxPower": 12,
+        "DefSpell": 30,
+        "DefPower": 12,
+        "DefMaxPower": 12,
+        "Job": 1,
+        "NeedL1": 35,
+        "L1Train": 500,
+        "NeedL2": 37,
+        "L2Train": 1000,
+        "NeedL3": 40,
+        "L3Train": 1500,
+        "Delay": 60
+      },
+      "differences": [
+        {
+          "field": "L1Train",
+          "running": 200,
+          "candidate": 500
+        },
+        {
+          "field": "L2Train",
+          "running": 300,
+          "candidate": 1000
+        },
+        {
+          "field": "L3Train",
+          "running": 500,
+          "candidate": 1500
+        }
+      ],
+      "books": [
+        {
+          "Id": 395,
+          "Name": "冰咆哮",
+          "Shape": 1,
+          "StdMode": 4,
+          "ImgIndex": 0,
+          "NeedLevel": 0
+        }
+      ],
+      "numericalAcceptance": "unverified"
+    }
+  ],
+  "dataLayoutRisk": "Native items are addressed by a one-based list position. Deleting noncontiguous stditems rows shifts saved item references; a version migration must preserve or explicitly migrate item indices.",
+  "interpretation": "Agreement between two community tables identifies candidates, not official 2003 values. The running uniform training thresholds, the alternative training thresholds and other numerical differences require historical evidence. This audit does not filter or authenticate production data."
+}

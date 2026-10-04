@@ -1,0 +1,208 @@
+{
+  "checkedAt": "2026-10-04T23:35:59.984Z",
+  "scope": "Isolated native script opcode correction; production unchanged",
+  "before": {
+    "mir2-web-engine-1": {
+      "id": "2fe8a707789707a6f8411b54053bf1833a7a542e2fea342eff695e2ec3d13607",
+      "image": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mir2-web_openmir2-engine",
+          "source": "/var/lib/docker/volumes/mir2-web_openmir2-engine/_data",
+          "destination": "/data"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-web-web-1": {
+      "id": "06ebd65eee5ae5a961c2e6f4cd9621d1d139028ee93ad3c4158182690bfe56e6",
+      "image": "sha256:b15558772eff8b8da396e44ffb7b4dbcbdc90b5370aa4430ee7eac60ab354615",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/source-assets",
+          "destination": "/usr/share/nginx/resources"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-web-db-1": {
+      "id": "e2543ebcef06a518f4b3e4c54bfd1fe68cb943a25485f408c6b26ad3825e2f59",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mir2-web_openmir2-db",
+          "source": "/var/lib/docker/volumes/mir2-web_openmir2-db/_data",
+          "destination": "/var/lib/mysql"
+        },
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "destination": "/docker-entrypoint-initdb.d"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-web-source-proxy-1": {
+      "id": "393e3bb85562f087db058b1fc9159641091ebc2c0d390a961b37c768d0a9a4d3",
+      "image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
+      "mounts": [],
+      "health": "healthy"
+    },
+    "mir2-rebuild-engine-1": {
+      "id": "4b34a72b51768bb2f73f04f2d85c9fdc7c5899f5a23a1893bf2d981e4cad3b4a",
+      "image": "sha256:519337af03c439c643ee45799c7f09e975bc292cb035915f0082ab148042f0ed",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mir2-rebuild_openmir2-engine",
+          "source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-engine/_data",
+          "destination": "/data"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-rebuild-web-1": {
+      "id": "2a3abf73ba08d02da66e2c23e29888b193ec84a2f01b2fe3af8523ffa6e91885",
+      "image": "sha256:b15558772eff8b8da396e44ffb7b4dbcbdc90b5370aa4430ee7eac60ab354615",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/classic-world/assets",
+          "destination": "/usr/share/nginx/resources"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-rebuild-db-1": {
+      "id": "e093f989cfcf3dfea3a3e05207877311077ccc7847be5f16e166fb30ced5f2d4",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mir2-rebuild_openmir2-db",
+          "source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-db/_data",
+          "destination": "/var/lib/mysql"
+        },
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "destination": "/docker-entrypoint-initdb.d"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-rebuild-source-proxy-1": {
+      "id": "957f85b652eacba0fa1348888afa56d208cb470bca0a470559e2695ff95fb4f5",
+      "image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
+      "mounts": [],
+      "health": "healthy"
+    }
+  },
+  "passed": true,
+  "full176Acceptance": false,
+  "shutdownLog": "[GameSrv] 23:36:00.367 [INF] OPENMIR2_SAVE_COMPLETE\n[GameSrv] 23:36:00.564 [INF] OPENMIR2_SAVE_COMPLETE\n[GameSrv] 23:36:00.566 [INF] 没有玩家在线，游戏引擎服务已停止...Bye!\n[GameSrv] 23:36:00.570 [INF] Id生成器停止...\n[GameSrv] 23:36:00.574 [INF] 玩家管理线程停止ֹ...\n[GameSrv] 23:36:00.574 [INF] 商人管理线程停止ֹ...\n23:36:00.574 [INF] 事件管理线程停止ֹ...\n23:36:00.574 [INF] 玩家数据数据线程停止...\n23:36:00.574 [INF] 脚本机器人线程停止...\n23:36:00.574 [INF] 技能Buff处理器停止...\n[GameSrv] 23:36:00.597 [INF] 游戏世界服务线程停止...\n[GameSrv] 23:36:00.598 [INF] 后台服务停止\n[GameGate] 23:36:00.600 [INF] 游戏网关[127.0.0.1:7200] 游戏引擎[127.0.0.1:5000]断开链接.\n[GameSrv] 23:36:00.606 [ERR] 数据库服务器[127.0.0.1:6000]断开连接...\n[GameSrv] 23:36:00.610 [ERR] 游戏网关[127.0.0.1:33150]已关闭...\n[LoginSrv] 23:36:00.704 [WRN] [热血传奇]游戏服务器[127.0.0.1:44602]断开链接.\nOPENMIR2_GAME_EXIT=0\n[LoginSrv] 23:36:00.760 [INF] 账号登陆服务已停止.\n[LoginSrv] 23:36:00.761 [WRN] 登录网关[127.0.0.1:5500]断开链接.\n23:36:00.761 [INF] 账号数据服务已关闭.\n23:36:00.761 [WRN] [热血传奇]数据库服务器[127.0.0.1:44590]断开链接.\n[SelGate] 23:36:00.762 [INF] 正在停止服务...\n[SelGate] 23:36:00.765 [INF] 服务停止成功...\n[DBSrv] 23:36:00.767 [ERR] 账号服务器[127.0.0.1:5600]断开链接.\n[SelGate] 23:36:00.772 [INF] 数据库服务器[127.0.0.1:5100]断开链接.\n[LoginGate] 23:36:00.771 [INF] 正在停止服务...\n[LoginGate] 23:36:00.775 [INF] 登录网关[TouchSocketServer]停止服务...\n[LoginGate] 23:36:00.775 [INF] 服务停止成功...\n[LoginGate] 23:36:00.777 [INF] 账号服务器[127.0.0.1:5500]断开链接.\n[GameGate] 23:36:02.648 [WRN] 游戏网关[127.0.0.1:7200] 链接游戏引擎[127.0.0.1:5000]拒绝链接...\n",
+  "installOutput": " Container mir2-rebuild-engine-1 Recreate \n Container mir2-rebuild-engine-1 Recreated \n Container mir2-rebuild-engine-1 Starting \n Container mir2-rebuild-engine-1 Started \n Container mir2-rebuild-engine-1 Waiting \n Container mir2-rebuild-engine-1 Healthy \n",
+  "after": {
+    "mir2-web-engine-1": {
+      "id": "2fe8a707789707a6f8411b54053bf1833a7a542e2fea342eff695e2ec3d13607",
+      "image": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mir2-web_openmir2-engine",
+          "source": "/var/lib/docker/volumes/mir2-web_openmir2-engine/_data",
+          "destination": "/data"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-web-web-1": {
+      "id": "06ebd65eee5ae5a961c2e6f4cd9621d1d139028ee93ad3c4158182690bfe56e6",
+      "image": "sha256:b15558772eff8b8da396e44ffb7b4dbcbdc90b5370aa4430ee7eac60ab354615",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/source-assets",
+          "destination": "/usr/share/nginx/resources"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-web-db-1": {
+      "id": "e2543ebcef06a518f4b3e4c54bfd1fe68cb943a25485f408c6b26ad3825e2f59",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mir2-web_openmir2-db",
+          "source": "/var/lib/docker/volumes/mir2-web_openmir2-db/_data",
+          "destination": "/var/lib/mysql"
+        },
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "destination": "/docker-entrypoint-initdb.d"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-web-source-proxy-1": {
+      "id": "393e3bb85562f087db058b1fc9159641091ebc2c0d390a961b37c768d0a9a4d3",
+      "image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
+      "mounts": [],
+      "health": "healthy"
+    },
+    "mir2-rebuild-engine-1": {
+      "id": "8187db67c89d1a1ebec02c3c18df4aee995e10e18a994f1a0d92eb8cd2037691",
+      "image": "sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mir2-rebuild_openmir2-engine",
+          "source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-engine/_data",
+          "destination": "/data"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-rebuild-web-1": {
+      "id": "2a3abf73ba08d02da66e2c23e29888b193ec84a2f01b2fe3af8523ffa6e91885",
+      "image": "sha256:b15558772eff8b8da396e44ffb7b4dbcbdc90b5370aa4430ee7eac60ab354615",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/classic-world/assets",
+          "destination": "/usr/share/nginx/resources"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-rebuild-db-1": {
+      "id": "e093f989cfcf3dfea3a3e05207877311077ccc7847be5f16e166fb30ced5f2d4",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "destination": "/docker-entrypoint-initdb.d"
+        },
+        {
+          "type": "volume",
+          "name": "mir2-rebuild_openmir2-db",
+          "source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-db/_data",
+          "destination": "/var/lib/mysql"
+        }
+      ],
+      "health": "healthy"
+    },
+    "mir2-rebuild-source-proxy-1": {
+      "id": "957f85b652eacba0fa1348888afa56d208cb470bca0a470559e2695ff95fb4f5",
+      "image": "sha256:b266d99559f1c2973b8ba79e9295709a319b468dbf63186719b8730cebf73f5b",
+      "mounts": [],
+      "health": "healthy"
+    }
+  }
+}
