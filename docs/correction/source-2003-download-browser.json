@@ -1,0 +1,195 @@
+{
+  "checkedAt": "2026-10-04T17:02:59.859Z",
+  "followUp": {
+    "checkedAt": "2026-10-04T17:44:43.555Z",
+    "nativeClientProbe": "localhost.pan.baidu.com/guanjia",
+    "parameterNames": ["method", "t"],
+    "result": "net::ERR_CONNECTION_REFUSED",
+    "downloadResponse": {"errno": 0, "listType": "string", "listLength": 1920},
+    "fileDownloaded": false
+  },
+  "requests": [
+    {
+      "path": "/api/sharedownload",
+      "method": "POST"
+    }
+  ],
+  "downloads": [],
+  "failedRequests": [
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/ztbox",
+      "error": "net::ERR_BLOCKED_BY_ORB"
+    },
+    {
+      "path": "/403.html",
+      "error": "net::ERR_CONTENT_DECODING_FAILED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/guanjia",
+      "error": "net::ERR_CONNECTION_REFUSED"
+    }
+  ],
+  "pageErrors": [],
+  "verificationResult": 2,
+  "parser": {
+    "native": true,
+    "keys": [
+      "errno",
+      "request_id",
+      "server_time",
+      "list"
+    ],
+    "listType": "string",
+    "array": false,
+    "listLength": 1920
+  },
+  "before": "",
+  "after": "登录\n注册\n客户端下载\n会员中心\n5**机游\nmir2setup2003.exe\n加为好友\n311.6M\n2024-02-14 08:17\n过期时间：永久有效\n举报\n文件大小:311.6M\n最近保存路径：\n我的网盘\n下载\n保存到网盘\n©2026 Baidu 服务协议|权利声明|版本更新|帮助中心|问题反馈|版权投诉|企业认证\n文件下载\nmir2setup2003.exe\n下载内容超50mb，请使用百度网盘客户端保存\n下载Linux版（rpm格式）\n下载Linux版（deb格式）\n已有客户端，立即打开\n开通百度网盘超级会员，专项极速下载特权\n立即开通",
+  "clickable": [
+    {
+      "text": "登录",
+      "role": null
+    },
+    {
+      "text": "注册",
+      "role": null
+    },
+    {
+      "text": "客户端下载",
+      "role": null
+    },
+    {
+      "text": "会员中心",
+      "role": null
+    },
+    {
+      "text": "5**机游",
+      "role": null
+    },
+    {
+      "text": "加为好友",
+      "role": null
+    },
+    {
+      "text": "举报",
+      "role": null
+    },
+    {
+      "text": "订阅",
+      "role": null
+    },
+    {
+      "text": "电脑端看",
+      "role": null
+    },
+    {
+      "text": "下载",
+      "role": null
+    },
+    {
+      "text": "保存到网盘",
+      "role": null
+    },
+    {
+      "text": "服务协议",
+      "role": null
+    },
+    {
+      "text": "权利声明",
+      "role": null
+    },
+    {
+      "text": "版本更新",
+      "role": null
+    },
+    {
+      "text": "帮助中心",
+      "role": null
+    },
+    {
+      "text": "问题反馈",
+      "role": null
+    },
+    {
+      "text": "版权投诉",
+      "role": null
+    },
+    {
+      "text": "企业认证",
+      "role": null
+    },
+    {
+      "text": "下载Linux版（rpm格式）",
+      "role": null
+    },
+    {
+      "text": "下载Linux版（deb格式）",
+      "role": null
+    },
+    {
+      "text": "已有客户端，立即打开",
+      "role": null
+    },
+    {
+      "text": "立即开通",
+      "role": null
+    }
+  ],
+  "clientFilesDownloaded": false
+}

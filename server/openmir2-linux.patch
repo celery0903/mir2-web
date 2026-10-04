@@ -305,6 +305,25 @@ diff --git a/src/LoginGate/Services/ServerService.cs b/src/LoginGate/Services/Se
      }
  
      public void CloseClient(string connectionId)
+diff --git a/src/LoginGate/Services/ClientManager.cs b/src/LoginGate/Services/ClientManager.cs
+--- a/src/LoginGate/Services/ClientManager.cs
++++ b/src/LoginGate/Services/ClientManager.cs
+@@ -85,7 +85,14 @@
+                         continue;
+                     }
+
+-                    userSession.ProcessSvrData(message.Data);
++                    try
++                    {
++                        userSession.ProcessSvrData(message.Data);
++                    }
++                    catch (Exception error) when (error is ObjectDisposedException or System.Net.Sockets.SocketException)
++                    {
++                        LogService.Warn("Login response skipped for a disconnected client.");
++                    }
+                 }
+             }
+         }, stoppingToken, TaskCreationOptions.LongRunning, TaskScheduler.Current);
 diff --git a/src/LoginSrv/Services/ClientSession.cs b/src/LoginSrv/Services/ClientSession.cs
 --- a/src/LoginSrv/Services/ClientSession.cs
 +++ b/src/LoginSrv/Services/ClientSession.cs

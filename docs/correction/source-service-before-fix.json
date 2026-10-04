@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-04T17:17:33.500Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": false,
+  "full176Acceptance": false,
+  "repairHarnessFailure": "AssertionError [ERR_ASSERTION]: No route through the served native collision map",
+  "walks": [
+    {
+      "x": 335,
+      "y": 299,
+      "map": "0103",
+      "running": true,
+      "waypoints": 45,
+      "retries": 2,
+      "potionUsed": true,
+      "elapsedMs": 126327
+    }
+  ],
+  "itemViewMismatch": {
+    "inventory": [
+      {
+        "name": "金创药(小量)",
+        "makeIndex": 1521393
+      }
+    ],
+    "quickSlots": [
+      {
+        "slot": 0,
+        "pending": false
+      },
+      {
+        "slot": 1,
+        "pending": false
+      },
+      {
+        "slot": 2,
+        "pending": false
+      },
+      {
+        "slot": 3,
+        "pending": false
+      },
+      {
+        "slot": 4,
+        "pending": false
+      },
+      {
+        "slot": 5,
+        "pending": false
+      }
+    ],
+    "serverWeight": 0
+  },
+  "interpretation": "The merchant walk reached map 0103. Its next test coordinate was not walkable. Independently, an acknowledged potion use cleared the quick slot but left a stale bag item; the client acknowledgement handler needed to synchronize both views."
+}

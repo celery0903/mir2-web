@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-04T17:56:18.155Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": false,
+  "full176Acceptance": false,
+  "map": "0103",
+  "merchant": "卫家店",
+  "item": {"name": "木剑", "makeIndex": 1521434},
+  "quote": 0,
+  "nativeRepairResult": {"accepted": true, "durability": 4000, "maxDurability": 4000},
+  "clientBag": {"durability": 3997, "maxDurability": 4000},
+  "clientStatus": "木剑 修理需要 0 金币",
+  "cause": "The native repair follow-up NPC dialogue clears the client's pending repair before its authoritative result arrives. The proxy already preserves that pending operation."
+}

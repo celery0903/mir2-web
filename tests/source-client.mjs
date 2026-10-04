@@ -60,7 +60,7 @@ try {
   });
   assert.equal(forbidden, 403);
   report.originRejected = true;
-  for (const job of scope === 'all' ? [0, 1, 2] : []) {
+  for (const job of scope === 'all' ? [0, 1, 2] : [0]) {
     const credentials = { account: `s${String(Date.now()).slice(-7)}${job}`, password: 'Source987', character: `src${String(Date.now()).slice(-6)}${job}` };
     await writeFile(`.state/source-client-${job}.json`, JSON.stringify(credentials), { mode: 0o600 });
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });

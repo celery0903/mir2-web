@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-04T18:36:19.186Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "abortedHandshakes": 50,
+  "full176Acceptance": false,
+  "initial": {
+    "message": "Login rejected (503/0)",
+    "elapsedMs": 60
+  },
+  "responseChecks": [
+    {
+      "message": "Login rejected (503/0)",
+      "elapsedMs": 25
+    },
+    {
+      "message": "Login rejected (503/0)",
+      "elapsedMs": 36
+    },
+    {
+      "message": "Login rejected (503/0)",
+      "elapsedMs": 19
+    },
+    {
+      "message": "Login rejected (503/0)",
+      "elapsedMs": 20
+    },
+    {
+      "message": "Login rejected (503/0)",
+      "elapsedMs": 15
+    }
+  ]
+}

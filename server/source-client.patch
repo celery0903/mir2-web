@@ -1,5 +1,5 @@
 diff --git a/apps/web/src/classic-hud.ts b/apps/web/src/classic-hud.ts
-index bf6bfc2..54df2cb 100644
+index bf6bfc2..2a304cb 100644
 --- a/apps/web/src/classic-hud.ts
 +++ b/apps/web/src/classic-hud.ts
 @@ -179,10 +179,10 @@ export class ClassicHud {
@@ -8,10 +8,11 @@ index bf6bfc2..54df2cb 100644
    const specs:Record<string,{index:number;x:number;y:number;closeX:number;closeY:number;closeWidth:number;closeHeight:number;paintClose?:boolean}>={
 -   npc:{index:402,x:192,y:126,closeX:385,closeY:-37,closeWidth:17,closeHeight:23},
 -   shop:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
-+   npc:{index:384,x:0,y:0,closeX:399,closeY:1,closeWidth:16,closeHeight:23,paintClose:true},
-+   shop:{index:385,x:0,y:170,closeX:291,closeY:0,closeWidth:16,closeHeight:23,paintClose:true},
-    repair:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
+-   repair:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
 -   storage:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
++   npc:{index:384,x:0,y:0,closeX:399,closeY:1,closeWidth:16,closeHeight:23,paintClose:true},
++   shop:element.dataset.shopMode==='sell'?{index:392,x:260,y:170,closeX:115,closeY:0,closeWidth:16,closeHeight:23,paintClose:true}:{index:385,x:0,y:170,closeX:291,closeY:0,closeWidth:16,closeHeight:23,paintClose:true},
++   repair:{index:392,x:260,y:170,closeX:115,closeY:0,closeWidth:16,closeHeight:23,paintClose:true},
 +   storage:element.dataset.storageMode==='store'?{index:392,x:260,y:170,closeX:115,closeY:0,closeWidth:16,closeHeight:23,paintClose:true}:{index:385,x:0,y:170,closeX:291,closeY:0,closeWidth:16,closeHeight:23,paintClose:true},
     quest:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
     attack:{index:402,x:192,y:126,closeX:399,closeY:1,closeWidth:17,closeHeight:23},
@@ -25,7 +26,7 @@ index bf6bfc2..54df2cb 100644
    return true;
   }
 
-@@ -265,7 +265,21 @@ export class ClassicHud {
+@@ -265,7 +265,23 @@ export class ClassicHud {
    this.hpText.textContent=`${Math.max(0,hp)}/${Math.max(0,maxHp)}`;
    this.mpText.textContent=`${Math.max(0,mp)}/${Math.max(0,maxMp)}`;
    const orbHeight=this.nationalReady?nationalHudOrbMetrics().orbHeight:80,barWidth=this.nationalReady?nationalHudOrbMetrics().barWidth:784,weightWidth=this.nationalReady?nationalHudOrbMetrics().weightWidth:76;
@@ -38,6 +39,8 @@ index bf6bfc2..54df2cb 100644
 +   well.style.width=`${redOnly?96:hud.orbs.hp.width}px`;well.style.height=`${redOnly?92:hud.orbs.hp.height}px`;
 +   mpWell.style.display=redOnly?'none':'block';this.hpFill.style.width=well.style.width;
 +   const image=this.hpFill.querySelector<HTMLImageElement>('img'),library=this.nationalLibraries.get('prguse');
++   well.style.backgroundImage=redOnly&&library?`url("${nationalUiUrl('prguse',uiFrame(library,5))}")`:'none';
++   well.style.backgroundSize='96px 92px';well.style.backgroundRepeat='no-repeat';
 +   if(image&&library){
 +    const index=redOnly?6:4;
 +    if(image.dataset.orbFrame!==String(index)){image.src=nationalUiUrl('prguse',uiFrame(library,index));image.dataset.orbFrame=String(index);}
@@ -50,10 +53,10 @@ index bf6bfc2..54df2cb 100644
    this.expText.textContent=`${Math.max(0,experience)}/${Math.max(0,maxExperience)}`;
 diff --git a/apps/web/src/classic-service.ts b/apps/web/src/classic-service.ts
 new file mode 100644
-index 0000000..c666833
+index 0000000..aa88ec4
 --- /dev/null
 +++ b/apps/web/src/classic-service.ts
-@@ -0,0 +1,35 @@
+@@ -0,0 +1,45 @@
 +import {applyNationalUiFrame,uiFrame,type Frame} from './classic-ui';
 +
 +export type ServiceLibrary={frames:Record<string,Frame>};
@@ -69,6 +72,16 @@ index 0000000..c666833
 +export function serviceFrame(element:HTMLElement,library:ServiceLibrary,index:number,mode:'menu'|'slot'){
 + element.classList.add('classic-service','national-window');element.dataset.serviceMode=mode;
 + applyNationalUiFrame(element,'prguse',uiFrame(library,index));
++}
++
++export function renderServiceSlot(element:HTMLElement,library:ServiceLibrary,state:{label:string;item?:{makeIndex:number;name:string};image?:HTMLImageElement;busy:boolean;disabled:boolean;actionLabel:string;select:(id:number)=>void;cancel:()=>void;submit:()=>void;close:()=>void}){
++ element.replaceChildren();serviceFrame(element,library,392,'slot');
++ const label=document.createElement('span');label.className='classic-service-label';label.textContent=state.label;element.append(label);
++ const slot=document.createElement('button');slot.type='button';slot.className='classic-service-slot';slot.title=state.item?.name??`${state.actionLabel}物品`;slot.setAttribute('aria-label',slot.title);slot.disabled=state.busy;
++ if(state.item){slot.dataset.serviceItem=String(state.item.makeIndex);if(state.image)slot.append(state.image);}
++ slot.onclick=state.cancel;slot.ondragover=event=>{if(!state.busy)event.preventDefault();};slot.ondrop=event=>{event.preventDefault();if(!state.busy)state.select(Number(event.dataTransfer?.getData('text/plain')));};
++ const confirm=serviceButton(library,393,state.actionLabel,85,150,state.submit);confirm.disabled=state.busy||state.disabled;
++ const close=serviceButton(library,371,'关闭',115,0,state.close);close.classList.add('classic-window-close');element.append(slot,confirm,close);return slot;
 +}
 +
 +export function renderServiceMenu(element:HTMLElement,library:ServiceLibrary,entries:MenuEntry[],state:MenuState){
@@ -164,7 +177,7 @@ index 0c99086..1755a6e 100644
 
  const byFeature=new Map(monsterVisualRules.map(rule=>[`${rule.raceImg}:${rule.appr}`,rule.library]));
 diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
-index 98eaff4..862f58e 100644
+index 98eaff4..8b44085 100644
 --- a/apps/web/src/play.ts
 +++ b/apps/web/src/play.ts
 @@ -81,20 +81,30 @@ function updateQuest(value:QuestState){
@@ -204,7 +217,7 @@ index 98eaff4..862f58e 100644
  }
  function loadQuest(){
   quests=new Map();
-@@ -225,12 +235,16 @@ function hideClassicWindows(except:'character'|'inventory'|'classic'|undefined=u
+@@ -225,12 +235,22 @@ function hideClassicWindows(except:'character'|'inventory'|'classic'|undefined=u
   if(except!=='classic'){classicWindow.hidden=true;dockChat();}
  }
  function hideServiceWindows(){
@@ -217,12 +230,18 @@ index 98eaff4..862f58e 100644
 +function showServiceInventory(){inventoryWindow.hidden=false;classicHud.skinWindow(inventoryWindow,'inventory');if(inventoryWindow.dataset.windowMoved!=='true'){inventoryWindow.style.left='464px';inventoryWindow.style.top='0px';}}
 +for(const type of ['click','dblclick'])document.querySelector<HTMLElement>('#inventory-items')!.addEventListener(type,event=>{
 + const target=event.target as Element,cell=target.closest<HTMLElement>('[data-item-id]');
-+ if(!document.querySelector<HTMLElement>('#storage-panel')!.hidden&&cell&&storage.selectItem(Number(cell.dataset.itemId))){event.preventDefault();event.stopImmediatePropagation();inventory.cancelSelection();}
++ if(!cell)return;
++ const id=Number(cell.dataset.itemId),storagePanel=document.querySelector<HTMLElement>('#storage-panel')!,shopPanel=document.querySelector<HTMLElement>('#shop-panel')!,repairPanel=document.querySelector<HTMLElement>('#repair-panel')!;
++ if(!storagePanel.hidden&&storagePanel.dataset.storageMode==='store'){storage.selectItem(id);}
++ else if(!shopPanel.hidden&&shopPanel.dataset.shopMode==='sell'){shop.selectItem(id);}
++ else if(!repairPanel.hidden){repair.selectItem(id);}
++ else return;
++ event.preventDefault();event.stopImmediatePropagation();inventory.cancelSelection();
 +},true);
  function closeDialogue(){
   dialogueElement.hidden=true;
   dialogueNpcId=undefined;
-@@ -282,6 +296,8 @@ const entities=new Map<number,Entity>(),visuals=new Map<number,OnlineActor>();
+@@ -282,6 +302,8 @@ const entities=new Map<number,Entity>(),visuals=new Map<number,OnlineActor>();
  type PendingAction={actionId:number;kind:'move'|'attack'|'spell';startedAt:number;duration:number;acknowledged:boolean};
  let socket:WebSocket|undefined,self:number|undefined,lastSequence=0,mapGeneration=0,currentMap='0',pending:MovementStep|undefined,pendingAction:PendingAction|undefined,nextActionId=1,doorRetry:{x:number;y:number;direction:number;run:boolean}|undefined,held:HeldMovement|undefined,rightPointer:{pointerId:number;clientX:number;clientY:number;direction?:number}|undefined,clickDestination:{x:number;y:number;run:boolean}|undefined,combatTimer:number|undefined,pursuitTarget:number|undefined,pursuitHarvest=false,pursuitRejectedCells=new Set<string>(),pursuitGroundItem:number|undefined,combatTarget:number|undefined,worldReady=true,initialSelfPending=true,reconnectTimer:number|undefined,reconnectAttempts=0,reconnectEnabled=false;
  let mapReady:Promise<void>=Promise.resolve();
@@ -231,7 +250,7 @@ index 98eaff4..862f58e 100644
  type Credentials={account:string;password:string};
  let credentials:Credentials|undefined,selectedCharacter:string|undefined;
  const agentObserver=new AgentObserver(agentObservationEnabled(location.href));
-@@ -304,14 +320,14 @@ function agentSnapshot(){
+@@ -304,14 +326,14 @@ function agentSnapshot(){
    camera:{x:view.app.stage.position.x,y:view.app.stage.position.y},pending:pending?{...pending}:undefined,pendingAction:pendingAction?{...pendingAction}:undefined,
    intentions:{held:held?{...held}:undefined,rightPointer:Boolean(rightPointer),clickDestination:clickDestination?{...clickDestination}:undefined,pursuitTarget,pursuitHarvest,pursuitGroundItem,combatTarget},
    attributes:characterPanel.debugState(),inventory:inventory.debugState(),itemQuickBar:itemQuickBar.debugState(),equipment:equipment.debugState(),paperdoll:paperdoll.debugState(),groundItems:groundItems.debugState(),skills:skillBar.debugState(),minimap:minimap.debugState(),
@@ -249,7 +268,7 @@ index 98eaff4..862f58e 100644
  function refreshMiniMapMarkers(){
   const markers:MiniMapMarker[]=[...entities.values()].map(entity=>{const race=entity.feature&255;return {id:`entity-${entity.id}`,x:entity.x,y:entity.y,kind:entity.self?'self':race===50?'npc':race===0?'player':'monster'} as MiniMapMarker;});
   for(const item of groundItems.debugState())markers.push({id:`drop-${item.id}`,x:item.x,y:item.y,kind:'drop'});
-@@ -338,7 +354,7 @@ function renderTargets(){
+@@ -338,7 +360,7 @@ function renderTargets(){
   targetsElement.replaceChildren();const actor=self===undefined?undefined:entities.get(self);if(!actor){targetsElement.textContent='等待附近对象…';return;}
   const targets=[...entities.values()].filter(entity=>{const race=entity.feature&255;return !entity.self&&(race!==0||Boolean(entity.name));}).map(entity=>({entity,distance:Math.max(Math.abs(entity.x-actor.x),Math.abs(entity.y-actor.y))})).filter(value=>value.distance<=8).sort((a,b)=>a.distance-b.distance||a.entity.id-b.entity.id);
   if(!targets.length){targetsElement.textContent='附近没有可交互对象';return;}
@@ -258,7 +277,7 @@ index 98eaff4..862f58e 100644
  }
  function clickPath(actor:Entity,destination:{x:number;y:number}){
   const start={x:actor.x,y:actor.y},goal={x:Math.round(destination.x),y:Math.round(destination.y)};
-@@ -451,6 +467,11 @@ function interact(target:Entity,harvest=false){
+@@ -451,6 +473,11 @@ function interact(target:Entity,harvest=false){
   const race=target.feature&255,player=race===0&&Boolean(target.name);if(race===0&&!player){pursuitTarget=undefined;pursuitHarvest=false;connection.textContent=`${target.name||'该对象'} 暂不支持交互`;return;}
   if(target.dead&&!harvest){pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();connection.textContent='按住 Alt 并左键点击尸体挖肉';return;}
   const dx=Math.sign(target.x-actor.x),dy=Math.sign(target.y-actor.y),distance=Math.max(Math.abs(target.x-actor.x),Math.abs(target.y-actor.y));
@@ -270,7 +289,7 @@ index 98eaff4..862f58e 100644
   if(distance>1){
    held=undefined;clickDestination=undefined;if(pursuitTarget!==target.id)pursuitRejectedCells.clear();pursuitTarget=target.id;pursuitHarvest=Boolean(target.dead&&harvest);
    const step=targetApproachStep(actor,target);
-@@ -460,7 +481,6 @@ function interact(target:Entity,harvest=false){
+@@ -460,7 +487,6 @@ function interact(target:Entity,harvest=false){
   }
   if(distance!==1)return;
   pursuitTarget=undefined;pursuitHarvest=false;pursuitRejectedCells.clear();
@@ -278,7 +297,7 @@ index 98eaff4..862f58e 100644
   const direction=directions.findIndex(([x,y])=>x===dx&&y===dy);if(direction<0)return;
   if(target.dead&&harvest){socket.send(JSON.stringify({type:'butch',targetId:target.id}));update({...actor,direction,action:'harvest'});connection.textContent=`正在挖取 ${target.name}…`;return;}
   combatTarget=target.id;continueCombat();
-@@ -511,6 +531,7 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+@@ -511,6 +537,7 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
     reconnectAttempts=0;
     classicAuth.hide();document.body.classList.add('in-world');
     doorRetry=undefined;currentMap=message.map;
@@ -286,7 +305,7 @@ index 98eaff4..862f58e 100644
     clearWorld(true);worldReady=false;mapGeneration=envelope.mapGeneration;classicHud.position(message.map,0,0);connection.textContent=`正在载入地图 ${message.map}…`;
     mapReady=view.setMap(message.map).then(()=>minimap.setMap(message.map,view.width,view.height)).then(()=>{worldReady=true;}).catch(error=>{
      const detail=error instanceof Error?error.message:`地图 ${message.map} 载入失败`;
-@@ -518,6 +539,13 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+@@ -518,6 +545,13 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
      connection.textContent=detail;
      worldReady=true;
    });
@@ -300,23 +319,31 @@ index 98eaff4..862f58e 100644
    }
    else if(message.type==='entity'){
     const prior=entities.get(message.id);const entity={...prior,...message,name:message.name??prior?.name??'',feature:message.feature??prior?.feature??0,self:message.self||prior?.self||false,kind:message.kind??prior?.kind} as Entity;
-@@ -591,11 +619,12 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+@@ -590,13 +624,14 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+   else if(message.type==='npcDialogue'&&worldReady){
     if(Array.isArray(message.quests))for(const quest of message.quests)updateQuest(quest as QuestState);else if(message.quest)updateQuest(message.quest as QuestState);
     dialogueNpcId=String(message.npcName).includes('国王')?message.npcId:undefined;renderGuild();
-    shop.clear();storage.clear();repair.clear();hideClassicWindows();dialogueElement.hidden=false;classicHud.skinWindow(dialogueElement,'npc');dialogueTitle.textContent=message.npcName;renderDialogueText(message.text);dialogueOptions.replaceChildren();
+-   shop.clear();storage.clear();repair.clear();hideClassicWindows();dialogueElement.hidden=false;classicHud.skinWindow(dialogueElement,'npc');dialogueTitle.textContent=message.npcName;renderDialogueText(message.text);dialogueOptions.replaceChildren();
 -   for(const option of message.options){if(option.input){const form=document.createElement('form');form.className='dialogue-input';const input=document.createElement('input');input.type='text';input.maxLength=80;input.placeholder=option.text;input.required=true;const button=document.createElement('button');button.type='submit';button.textContent=option.text;button.dataset.dialogueCommand=option.command;form.onsubmit=event=>{event.preventDefault();active.send(JSON.stringify({type:'dialogueSelect',npcId:message.npcId,command:option.command,input:input.value}));};form.append(input,button);dialogueOptions.append(form);}else{const button=document.createElement('button');button.type='button';button.textContent=option.text;button.dataset.dialogueCommand=option.command;button.onclick=()=>active.send(JSON.stringify({type:'dialogueSelect',npcId:message.npcId,command:option.command}));dialogueOptions.append(button);}}
++   shop.clear();storage.clear();repair.clear(true);hideClassicWindows();dialogueElement.hidden=false;classicHud.skinWindow(dialogueElement,'npc');dialogueTitle.textContent=message.npcName;renderDialogueText(message.text);dialogueOptions.replaceChildren();
 +   if(Array.isArray(message.lines))renderDialogueLines(message.lines,message.npcId,active);
 +   else{dialogueElement.classList.remove('inline-dialogue');for(const option of message.options)dialogueOptions.append(dialogueOption(option,message.npcId,active));}
    }
    else if(message.type==='dialogueMessage'&&worldReady){if(Array.isArray(message.quests))for(const quest of message.quests)updateQuest(quest as QuestState);else if(message.quest)updateQuest(message.quest as QuestState);hideClassicWindows();dialogueElement.hidden=false;classicHud.skinWindow(dialogueElement,'npc');renderDialogueText(message.text);dialogueOptions.replaceChildren();}
    else if(message.type==='npcDialogueClosed'){closeDialogue();shop.clear();storage.clear();repair.clear();}
 -  else if(message.type==='shop'){dialogueElement.hidden=true;storage.clear();repair.clear();hideServiceWindows();shop.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');connection.textContent=`商店已打开 · ${message.items.length} 种商品`;}
+-  else if(message.type==='shopSell'){dialogueElement.hidden=true;storage.clear();repair.clear();hideServiceWindows();shop.openSell(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');connection.textContent='请选择要出售的背包物品';}
 +  else if(message.type==='shop'){storage.clear();repair.clear();hideServiceWindows();shop.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');showServiceInventory();connection.textContent=`商店已打开 · ${message.items.length} 种商品`;}
-   else if(message.type==='shopSell'){dialogueElement.hidden=true;storage.clear();repair.clear();hideServiceWindows();shop.openSell(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');connection.textContent='请选择要出售的背包物品';}
++  else if(message.type==='shopSell'){storage.clear();repair.clear();hideServiceWindows();shop.openSell(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#shop-panel')!,'shop');showServiceInventory();connection.textContent='请选择要出售的背包物品';}
    else if(message.type==='shopDetails'){if(shop.showDetails(message.npcId,message.items))connection.textContent=`已载入 ${message.items.length} 件具体商品`;}
    else if(message.type==='shopPurchaseResult'){
-@@ -611,8 +640,8 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
-   else if(message.type==='repairItems'){dialogueElement.hidden=true;shop.clear();storage.clear();hideServiceWindows();repair.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#repair-panel')!,'repair');connection.textContent='请选择要修理的背包物品';}
+    if(!shop.resolve(message.name,message.makeIndex,message.accepted))return;if(message.accepted&&message.gold!==null)updateCurrency({gold:message.gold});
+@@ -608,11 +643,11 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+    if(!shop.resolveSale(message.item,message.accepted))return;if(message.accepted){inventory.remove(message.item.makeIndex);if(message.gold!==null)updateCurrency({gold:message.gold});}
+    connection.textContent=message.accepted?`已卖出 ${message.item.name} · 当前 ${message.gold} 金币`:`出售 ${message.item.name} 失败`;
+   }
+-  else if(message.type==='repairItems'){dialogueElement.hidden=true;shop.clear();storage.clear();hideServiceWindows();repair.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#repair-panel')!,'repair');connection.textContent='请选择要修理的背包物品';}
++  else if(message.type==='repairItems'){shop.clear();storage.clear();hideServiceWindows();repair.open(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#repair-panel')!,'repair');showServiceInventory();connection.textContent='请选择要修理的背包物品';}
    else if(message.type==='repairQuote'){if(repair.showQuote(message.npcId,message.item,message.price))connection.textContent=message.price>=0?`${message.item.name} 修理需要 ${message.price} 金币`:`${message.item.name} 无需或无法修理`;}
    else if(message.type==='repairResult'){if(!repair.resolve(message.item,message.accepted))return;if(message.accepted){inventory.update(message.item);if(message.gold!==null)updateCurrency({gold:message.gold});}connection.textContent=message.accepted?`${message.item.name} 修理完成 · 当前 ${message.gold} 金币`:`${message.item.name} 修理失败`;}
 -  else if(message.type==='storageDeposit'){dialogueElement.hidden=true;shop.clear();repair.clear();hideServiceWindows();storage.openDeposit(message.npcId,message.items);classicHud.skinWindow(document.querySelector<HTMLElement>('#storage-panel')!,'storage');connection.textContent='请选择要存入仓库的物品';}
@@ -326,19 +353,96 @@ index 98eaff4..862f58e 100644
    else if(message.type==='storageResult'){
     if(!storage.resolve(message.item,message.accepted))return;if(message.accepted&&message.kind==='store')inventory.remove(message.item.makeIndex);
     const reasons:Record<number,string>={1:'服务端拒绝操作',2:'仓库已满',3:'背包空间或负重不足'};connection.textContent=message.accepted?(message.kind==='store'?`已存入 ${message.item.name}`:`已取回 ${message.item.name}`):`仓库操作失败 · ${reasons[message.reason]??`原因 ${message.reason}`}`;
+@@ -631,6 +666,10 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+      const retryTarget=pursuitTarget,retryHarvest=pursuitHarvest;agentObserver.event('action-rollback',{actionId:movement.actionId,kind:'move',accepted:false,x:message.x,y:message.y,reason:message.reason});pending=undefined;pendingAction=undefined;held=undefined;rightPointer=undefined;pursuitTarget=undefined;pursuitHarvest=false;pursuitGroundItem=undefined;
+      const entity=self===undefined?undefined:entities.get(self),x=Number.isInteger(message.x)?message.x:movement.fromX,y=Number.isInteger(message.y)?message.y:movement.fromY;
+      if(entity){update({...entity,x,y,action:'standing'});classicHud.position(view.map,x,y);minimap.setPosition(x,y);void view.setCenter(x,y);}
++     if(message.reason===28&&movement.run){
++      const actor=self===undefined?undefined:entities.get(self),[dx,dy]=directions[movement.direction];
++      if(actor&&sendMovement(actor,dx,dy,false,1)){connection.textContent='跑步受阻，尝试单步行走…';return;}
++     }
+      if(retryTarget!==undefined&&message.reason===28){pursuitRejectedCells.add(`${movement.x},${movement.y}`);pursuitTarget=retryTarget;pursuitHarvest=retryHarvest;connection.textContent='目标移动，正在重新接近…';window.setTimeout(()=>{if(pursuitTarget===retryTarget&&!pendingAction)continuePursuit();},350);}
+      else if(message.reason===28&&socket?.readyState===WebSocket.OPEN){const retry={x:movement.x,y:movement.y,direction:movement.direction,run:movement.run};doorRetry=retry;socket.send(JSON.stringify({type:'openDoor',x:movement.x,y:movement.y}));connection.textContent=`尝试打开门 · ${movement.x}, ${movement.y}`;window.setTimeout(()=>{if(doorRetry===retry&&!pendingAction){doorRetry=undefined;clickDestination=undefined;connection.textContent='该方向暂时无法通行';}},350);}else{clickDestination=undefined;connection.textContent='该方向暂时无法通行';}
+     }
+@@ -643,12 +682,12 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+   else if(message.type==='itemUpdated'){inventory.update(message.item);itemQuickBar.update(message.item);equipment.update(message.item);}
+   else if(message.type==='equipmentDurability'){equipment.set(message.slot,message.item);}
+   else if(message.type==='equipmentBroken'){equipment.remove(message.slot);connection.textContent=`${message.item.name} 已损坏`;}
+-  else if(message.type==='dropResult'){const inventoryHandled=inventory.resolve(message.makeIndex,message.accepted,true);const quickBarHandled=itemQuickBar.resolve(message.makeIndex,message.accepted,true);if(!inventoryHandled&&!quickBarHandled)return;connection.textContent=message.accepted?'物品已落到地面':'服务端拒绝丢弃物品';}
++  else if(message.type==='dropResult'){const inventoryHandled=inventory.resolve(message.makeIndex,message.accepted,true);const quickBarHandled=itemQuickBar.resolve(message.makeIndex,message.accepted,true);if(!inventoryHandled&&!quickBarHandled)return;if(message.accepted){inventory.remove(message.makeIndex);itemQuickBar.remove(message.makeIndex);}connection.textContent=message.accepted?'物品已落到地面':'服务端拒绝丢弃物品';}
+   else if(message.type==='itemActionResult'){
+    let handled=false;
+    if(message.kind==='equip'){handled=inventory.resolve(message.makeIndex,message.accepted,true);if(handled&&message.accepted)equipment.set(message.slot,message.item);}
+    else if(message.kind==='takeoff')handled=equipment.resolve(message.slot,message.accepted);
+-   else if(message.kind==='use'){const inventoryHandled=inventory.resolve(message.makeIndex,message.accepted,true);const quickBarHandled=itemQuickBar.resolve(message.makeIndex,message.accepted,true);handled=inventoryHandled||quickBarHandled;}
++   else if(message.kind==='use'){const inventoryHandled=inventory.resolve(message.makeIndex,message.accepted,true);const quickBarHandled=itemQuickBar.resolve(message.makeIndex,message.accepted,true);handled=inventoryHandled||quickBarHandled;if(handled&&message.accepted){inventory.remove(message.makeIndex);itemQuickBar.remove(message.makeIndex);}}
+    if(!handled)return;
+    if(message.accepted&&message.feature!==null&&self!==undefined){const actor=entities.get(self);if(actor)update({...actor,feature:message.feature});}
+    connection.textContent=message.accepted?message.kind==='equip'?`已装备 ${message.item.name}`:message.kind==='takeoff'?`已卸下 ${message.item.name}`:`已使用 ${message.item.name}`:`物品操作失败 (${message.reason})`;
+diff --git a/apps/web/src/repair.ts b/apps/web/src/repair.ts
+index 1a890bc..606f32b 100644
+--- a/apps/web/src/repair.ts
++++ b/apps/web/src/repair.ts
+@@ -1,6 +1,7 @@
+ import type {InventoryItem} from './inventory';
+ import {attachItemTooltip,loadFallbackItemIcons} from './inventory';
+ import {loadNationalUiLibrary} from './classic-ui';
++import {renderServiceSlot,type ServiceLibrary} from './classic-service';
+
+ type RepairActions={quote:(npcId:number,makeIndex:number)=>void;repair:(npcId:number,makeIndex:number)=>void};
+
+@@ -9,20 +10,32 @@ export class RepairView{
+  constructor(private element:HTMLElement,private actions:RepairActions){
+   void loadFallbackItemIcons().then(icons=>{this.icons=icons;this.render();}).catch(()=>{});
+   void loadNationalUiLibrary('items').then(icons=>{this.nationalIcons=icons;this.render();}).catch(()=>{});
++  void loadNationalUiLibrary('prguse').then(library=>{this.serviceLibrary=library;this.render();}).catch(()=>{});
+  }
+- clear(){this.clearPendingTimer();this.npcId=undefined;this.items=[];this.quote=undefined;this.pending=undefined;this.element.hidden=true;this.element.replaceChildren();}
+- rejectPending(){this.clearPendingTimer();this.pending=undefined;this.render();}
+- open(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.items=items;this.quote=undefined;this.pending=undefined;this.render();}
+- showQuote(npcId:number,item:InventoryItem,price:number){if(this.npcId!==npcId||this.pending!==item.makeIndex)return false;this.clearPendingTimer();this.quote={item,price};this.pending=undefined;this.render();return true;}
+- resolve(item:InventoryItem,accepted:boolean){if(this.pending!==item.makeIndex)return false;this.clearPendingTimer();this.pending=undefined;this.quote=undefined;if(accepted)this.items=this.items.map(value=>value.makeIndex===item.makeIndex?item:value);this.render();return true;}
+- private begin(item:InventoryItem,quoted:boolean){if(this.pending!==undefined||this.npcId===undefined)return;this.pending=item.makeIndex;this.clearPendingTimer();this.pendingTimer=setTimeout(()=>{this.pendingTimer=undefined;this.pending=undefined;this.render();},8000);this.render();if(quoted)this.actions.repair(this.npcId,item.makeIndex);else this.actions.quote(this.npcId,item.makeIndex);}
++ private serviceLibrary:ServiceLibrary|undefined;private selected:number|undefined;private pendingKind:'quote'|'repair'|undefined;
++ selectItem(makeIndex:number){if(this.npcId===undefined||this.pending!==undefined)return false;const item=this.items.find(value=>value.makeIndex===makeIndex);if(!item)return false;this.selected=makeIndex;this.quote=undefined;this.begin(item,false);return true;}
++ clear(preservePendingRepair=false){if(!preservePendingRepair||this.pendingKind!=='repair'){this.clearPendingTimer();this.pending=undefined;this.pendingKind=undefined;}this.npcId=undefined;this.items=[];this.quote=undefined;this.selected=undefined;this.element.hidden=true;this.element.replaceChildren();}
++ rejectPending(){this.clearPendingTimer();this.pending=undefined;this.pendingKind=undefined;this.render();}
++ open(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.items=items;this.quote=undefined;this.pending=undefined;this.pendingKind=undefined;this.selected=undefined;this.render();}
++ showQuote(npcId:number,item:InventoryItem,price:number){if(this.npcId!==npcId||this.pending!==item.makeIndex||this.pendingKind!=='quote')return false;this.clearPendingTimer();this.quote={item,price};this.pending=undefined;this.pendingKind=undefined;this.render();return true;}
++ resolve(item:InventoryItem,accepted:boolean){if(this.pending!==item.makeIndex||this.pendingKind!=='repair')return false;this.clearPendingTimer();this.pending=undefined;this.pendingKind=undefined;this.quote=undefined;if(accepted)this.items=this.items.map(value=>value.makeIndex===item.makeIndex?item:value);this.render();return true;}
++ private begin(item:InventoryItem,quoted:boolean){if(this.pending!==undefined||this.npcId===undefined)return;this.pending=item.makeIndex;this.pendingKind=quoted?'repair':'quote';this.clearPendingTimer();this.pendingTimer=setTimeout(()=>{this.pendingTimer=undefined;this.pending=undefined;this.pendingKind=undefined;this.render();},8000);this.render();if(quoted)this.actions.repair(this.npcId,item.makeIndex);else this.actions.quote(this.npcId,item.makeIndex);}
+  private clearPendingTimer(){if(this.pendingTimer!==undefined){clearTimeout(this.pendingTimer);this.pendingTimer=undefined;}}
+  private render(){
+   this.element.hidden=this.npcId===undefined;if(this.npcId===undefined)return;this.element.replaceChildren();
++  if(this.serviceLibrary){this.renderNational(this.serviceLibrary);return;}
+   const heading=document.createElement('div');heading.className='shop-heading';const title=document.createElement('strong');title.textContent='修理物品';const close=document.createElement('button');close.type='button';close.className='classic-window-close';close.textContent='关闭';close.onclick=()=>this.clear();heading.append(title,close);this.element.append(heading);
+   const list=document.createElement('div');list.className='shop-goods repair-list';if(!this.items.length){list.textContent='背包中没有可修理物品';this.element.append(list);return;}
+   for(const item of this.items){const row=document.createElement('div');row.className='shop-row';row.dataset.repairItem=String(item.makeIndex);const icon=this.icon(item);if(icon)row.append(icon);const label=document.createElement('span');label.innerHTML='<strong></strong><small></small>';label.querySelector('strong')!.textContent=item.name;label.querySelector('small')!.textContent=`持久 ${(item.durability/1000).toFixed(1)} / ${(item.maxDurability/1000).toFixed(1)}`;const quoted=this.quote?.item.makeIndex===item.makeIndex,keyPending=this.pending===item.makeIndex,unavailable=quoted&&this.quote!.price<0;const button=document.createElement('button');button.type='button';button.disabled=this.pending!==undefined||unavailable;button.textContent=keyPending?'等待服务端…':unavailable?'无需或无法修理':quoted?`修理 · ${this.quote!.price.toLocaleString('zh-CN')} 金币`:'询价';button.onclick=()=>this.begin(item,quoted);row.append(label,button);attachItemTooltip(row,item);list.append(row);}this.element.append(list);
+  }
++ private renderNational(library:ServiceLibrary){
++  const item=this.items.find(value=>value.makeIndex===this.selected),quote=this.quote?.item.makeIndex===item?.makeIndex?this.quote:undefined;
++  const slot=renderServiceSlot(this.element,library,{
++   label:`修理: ${quote?(quote.price>=0?String(quote.price):'无法修理'):''}`,item,image:item?this.icon(item):undefined,busy:this.pending!==undefined,disabled:!item||!quote||quote.price<0,actionLabel:'修理',
++   select:id=>{this.selectItem(id);},cancel:()=>{this.selected=undefined;this.quote=undefined;this.render();},submit:()=>{if(item&&quote&&quote.price>=0)this.begin(item,true);},close:()=>this.clear()
++  });
++  if(item)attachItemTooltip(slot,item);
++ }
+  private icon(item:InventoryItem){
+   const national=this.nationalIcons?.frames[String(item.looks)],fallback=this.icons?.frames[String(item.looks)],frame=national??fallback;if(!frame)return undefined;
+   const image=document.createElement('img');image.className='item-icon';image.src=national?`/ui-national/items/${national.file}`:`/items/Items/${frame.file}`;image.alt='';return image;
 diff --git a/apps/web/src/shop.ts b/apps/web/src/shop.ts
-index 899ccf5..143b2e3 100644
+index 899ccf5..c6b79c2 100644
 --- a/apps/web/src/shop.ts
 +++ b/apps/web/src/shop.ts
 @@ -1,6 +1,7 @@
  import type {InventoryItem} from './inventory';
  import {attachItemTooltip,loadFallbackItemIcons} from './inventory';
  import {loadNationalUiLibrary} from './classic-ui';
-+import {renderServiceMenu,type ServiceLibrary} from './classic-service';
++import {renderServiceMenu,renderServiceSlot,type ServiceLibrary} from './classic-service';
 
  export type ShopGoods={name:string;subMenu:number;price:number;stock:number;looks?:number};
  export type ShopDetail={name:string;makeIndex:number;price:number;durability:number;stdMode:number;weight:number;looks:number};
-@@ -12,10 +13,12 @@ export class ShopView {
+@@ -12,11 +13,17 @@ export class ShopView {
   constructor(private element:HTMLElement,private actions:ShopActions){
    void loadFallbackItemIcons().then(icons=>{this.icons=icons;this.render();}).catch(()=>{});
    void loadNationalUiLibrary('items').then(icons=>{this.nationalIcons=icons;this.render();}).catch(()=>{});
@@ -348,22 +452,38 @@ index 899ccf5..143b2e3 100644
   clear(){this.clearPendingTimer();this.npcId=undefined;this.goods=[];this.details=[];this.sellItems=[];this.quote=undefined;this.pending=undefined;this.element.hidden=true;this.element.replaceChildren();}
   rejectPending(){this.clearPendingTimer();this.pending=undefined;this.render();}
 - open(npcId:number,goods:ShopGoods[]){this.clearPendingTimer();this.npcId=npcId;this.mode='buy';this.goods=goods;this.details=[];this.sellItems=[];this.quote=undefined;this.pending=undefined;this.render();}
+- openSell(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='sell';this.goods=[];this.details=[];this.sellItems=items;this.quote=undefined;this.pending=undefined;this.render();}
 + open(npcId:number,goods:ShopGoods[]){this.clearPendingTimer();this.npcId=npcId;this.mode='buy';this.goods=goods;this.details=[];this.sellItems=[];this.quote=undefined;this.pending=undefined;this.selected=undefined;this.top=0;this.detailName=undefined;this.detailPage=0;this.render();}
-  openSell(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='sell';this.goods=[];this.details=[];this.sellItems=items;this.quote=undefined;this.pending=undefined;this.render();}
++ openSell(npcId:number,items:InventoryItem[]){this.clearPendingTimer();this.npcId=npcId;this.mode='sell';this.goods=[];this.details=[];this.sellItems=items;this.quote=undefined;this.pending=undefined;this.selected=undefined;this.render();}
++ selectItem(makeIndex:number){
++  if(this.npcId===undefined||this.mode!=='sell'||this.pending||!this.sellItems.some(item=>item.makeIndex===makeIndex))return false;
++  this.selected=`sell:${makeIndex}`;this.quote=undefined;this.begin(this.selected,()=>this.actions.quote(this.npcId!,makeIndex));return true;
++ }
   showDetails(npcId:number,details:ShopDetail[]){if(this.npcId!==npcId||!this.pending?.startsWith('goods:'))return false;this.clearPendingTimer();this.details=details;this.pending=undefined;this.render();return true;}
   resolve(name:string,makeIndex:number|undefined,accepted:boolean){
-@@ -31,6 +34,7 @@ export class ShopView {
+   const expected=makeIndex===undefined||makeIndex===0?`goods:${name}`:`detail:${makeIndex}`;
+@@ -31,6 +38,8 @@ export class ShopView {
   private clearPendingTimer(){if(this.pendingTimer!==undefined){clearTimeout(this.pendingTimer);this.pendingTimer=undefined;}}
   private render(){
    this.element.hidden=this.npcId===undefined;if(this.npcId===undefined)return;this.element.replaceChildren();
-+  if(this.mode==='buy'&&this.serviceLibrary){this.renderNational(this.serviceLibrary);return;}
++  this.element.dataset.shopMode=this.mode;
++  if(this.serviceLibrary){if(this.mode==='buy')this.renderNational(this.serviceLibrary);else this.renderNationalSell(this.serviceLibrary);return;}
    const heading=document.createElement('div');heading.className='shop-heading';const title=document.createElement('strong');title.textContent=this.mode==='buy'?'商店':'出售物品';const close=document.createElement('button');close.type='button';close.className='classic-window-close';close.textContent='关闭';close.onclick=()=>this.clear();heading.append(title,close);this.element.append(heading);
    if(this.mode==='sell'){this.renderSell();return;}
    const list=document.createElement('div');list.className=`shop-goods shop-list--${this.mode}`;
-@@ -48,6 +52,16 @@ export class ShopView {
+@@ -48,6 +57,25 @@ export class ShopView {
     for(const item of this.details){const row=document.createElement('div');row.className='shop-row';row.dataset.shopDetail=String(item.makeIndex);const icon=this.icon(item);if(icon)row.append(icon);const label=document.createElement('span');label.innerHTML='<strong></strong><small></small>';label.querySelector('strong')!.textContent=`${item.name} #${item.makeIndex}`;label.querySelector('small')!.textContent=`${item.price.toLocaleString('zh-CN')} 金币 · 持久 ${(item.durability/1000).toFixed(1)}`;const button=document.createElement('button');button.type='button';const key=`detail:${item.makeIndex}`;button.disabled=Boolean(this.pending);button.textContent=this.pending===key?'等待服务端…':'购买';button.onclick=()=>this.begin(key,()=>this.actions.buy(this.npcId!,item.name,item.makeIndex));row.append(label,button);attachItemTooltip(row,{...item,maxDurability:item.durability,stdMode:item.stdMode,weight:item.weight,looks:item.looks},`${item.name} #${item.makeIndex}`);detailList.append(row);}this.element.append(detailHeading,detailList);
    }
   }
++ private renderNationalSell(library:ServiceLibrary){
++  const item=this.sellItems.find(value=>`sell:${value.makeIndex}`===this.selected),quote=this.quote?.item.makeIndex===item?.makeIndex?this.quote:undefined;
++  if(!item)this.selected=undefined;
++  const slot=renderServiceSlot(this.element,library,{
++   label:`价格: ${quote?(quote.price>0?String(quote.price):'无法出售'):''}`,item,image:item?this.icon(item):undefined,busy:Boolean(this.pending),disabled:!item||!quote||quote.price<=0,actionLabel:'卖出',
++   select:id=>{this.selectItem(id);},cancel:()=>{this.selected=undefined;this.quote=undefined;this.render();},submit:()=>{if(item&&quote&&quote.price>0)this.begin(`sell:${item.makeIndex}`,()=>this.actions.sell(this.npcId!,item.makeIndex));},close:()=>this.clear()
++  });
++  if(item)attachItemTooltip(slot,item);
++ }
 + private renderNational(library:ServiceLibrary){
 +  const entries=this.detailName===undefined?this.goods.map(item=>({key:`goods:${item.name}`,name:item.name,amount:String(item.price),durability:'-',disabled:item.stock<=0,title:`${item.name} ${item.price} 金币`,activate:()=>this.begin(`goods:${item.name}`,()=>{
 +   if(item.subMenu>=1){this.detailName=item.name;this.detailPage=0;this.selected=undefined;this.top=0;this.actions.details(this.npcId!,item.name,0);}else this.actions.buy(this.npcId!,item.name);
@@ -439,7 +559,7 @@ index 4dc2090..c7ea5b7 100644
    const national=this.nationalIcons?.frames[String(item.looks)],fallback=this.icons?.frames[String(item.looks)],frame=national??fallback;if(!frame)return undefined;
    const image=document.createElement('img');image.className='item-icon';image.src=national?`/ui-national/items/${national.file}`:`/items/Items/${frame.file}`;image.alt='';return image;
 diff --git a/apps/web/src/style.css b/apps/web/src/style.css
-index d58d058..b3002e8 100644
+index d58d058..6f81030 100644
 --- a/apps/web/src/style.css
 +++ b/apps/web/src/style.css
 @@ -176,7 +176,7 @@ body.classic-play .national-panel.system-panel small{color:#9c8c68;font:10px/15p
@@ -472,7 +592,7 @@ index d58d058..b3002e8 100644
  body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar{width:8px}
  body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar-track{background:#1a110b}
  body.classic-play #classic-modal-layer .npc-dialog #npc-text::-webkit-scrollbar-thumb{background:#76552b;border:1px solid #2a1a0d}
-@@ -222,6 +222,26 @@ body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clr
+@@ -222,6 +222,28 @@ body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clr
  body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clblue{color:#8ab5e8}
  body.classic-play #classic-modal-layer .npc-dialog #npc-text .dialogue-color-clgreen{color:#8fc77b}
  /* Modal service panels are hidden by the controller before they open. Character and inventory windows can remain visible beside a shop, repair or storage panel. */
@@ -493,9 +613,11 @@ index d58d058..b3002e8 100644
 +body.classic-play .classic-service-row:focus-visible{outline:1px solid #aaa;outline-offset:0}
 +body.classic-play .classic-service-button{position:absolute;padding:0;border:0;background-color:transparent;background-repeat:no-repeat;image-rendering:pixelated;cursor:pointer}
 +body.classic-play .classic-service-button:disabled{opacity:.45}
-+body.classic-play .classic-service-label{position:absolute;left:6px;top:6px}
++body.classic-play .classic-service-label{position:absolute;left:6px;top:6px;max-width:128px;white-space:nowrap}
 +body.classic-play .classic-service-slot{position:absolute;left:27px;top:67px;width:61px;height:52px;display:grid;place-items:center;border:0;padding:0;background:transparent}
 +body.classic-play .classic-service-slot img{max-width:61px;max-height:52px;object-fit:contain;image-rendering:pixelated}
++body.classic-play #classic-modal-layer .classic-service[data-service-mode=slot]{overflow:visible}
++body.classic-play .classic-service-slot .service-item-tooltip{left:64px;top:0;width:180px;pointer-events:none}
  /* The mmap.wil view is a standalone map panel. Its three modes intentionally override legacy HUD frame guesses. */
  body.classic-play #classic-hud .hud-minimap-frame{position:absolute;left:614px!important;top:12px!important;right:auto;width:174px!important;height:148px!important;display:block;padding:5px;background:linear-gradient(145deg,rgba(43,35,25,.97),rgba(8,11,10,.98))!important;border:1px solid #a98a4c;outline:1px solid #20180e;box-shadow:0 2px 10px #000;opacity:1;z-index:16;pointer-events:auto;color:#e7d6a4;text-shadow:1px 1px #000;image-rendering:pixelated}
  body.classic-play #classic-hud .minimap-heading{position:relative;display:grid;grid-template-columns:1fr auto 20px;align-items:center;gap:5px;width:auto;max-width:none;height:22px;min-height:0;padding:0 1px 3px;border-bottom:1px solid #66522c;font:11px SimSun,'Songti SC',serif}

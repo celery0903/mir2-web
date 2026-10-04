@@ -38,7 +38,11 @@
 
 完整客户端线索仍来自 [LOMCN 客户端收藏](https://www.lomcn.net/forum/threads/collection-of-all-legend-of-mir-2-clients.111907/)，2003 客户端的固定哈希记录没有可复现直链；现有资料不足以完成全部地图、怪物外观和技能特效的同包校验。
 
-本轮进一步验证该帖的 [2003 客户端百度分享](https://pan.baidu.com/s/1oSZQGmHiA_bY46APPyWxCw)：公开提取码 `ckyo` 可通过验证，分享文件名为 `mir2setup2003.exe`，大小 326778386 字节，与另一个候选的安装包记录一致。修正分享参数后，下载参数接口与匿名下载接口均返回 0，但下载列表是 1920 字符的 Base64 编码密文；直接 JSON、URI 和 Base64 解码均未得到可用下载地址。真实浏览器也能进入该文件的分享页，尚未取得安装包字节。文件名和大小相同尚不构成内容哈希或官方来源认证。已有 SHA-256 记录为 `46e6cf029bd33f32b9977a4184b95d056a24ac32b60d03210a50e5251dcf4d42`，尚未在本机复核。
+本轮进一步验证该帖的 [2003 客户端百度分享](https://pan.baidu.com/s/1oSZQGmHiA_bY46APPyWxCw)：公开提取码 `ckyo` 可通过验证，分享文件名为 `mir2setup2003.exe`，大小 326778386 字节，与另一个候选的安装包记录一致。修正分享参数后，下载参数接口与匿名下载接口均返回 0，但下载列表是 1920 字符的 Base64 编码密文；直接 JSON、URI 和 Base64 解码均未得到可用下载地址。真实浏览器能够进入分享页；2026-10-04 17:03 UTC 正常点击下载后触发 `/api/sharedownload`，页面提示“下载内容超50mb，请使用百度网盘客户端保存”，未产生文件下载。尚未取得安装包字节。文件名和大小相同尚不构成内容哈希或官方来源认证。已有 SHA-256 记录为 `46e6cf029bd33f32b9977a4184b95d056a24ac32b60d03210a50e5251dcf4d42`，尚未在本机复核。
+
+网页下载的请求路径和页面结果保留在 [下载验证记录](correction/source-2003-download-browser.json)，不包含 Cookie、账号密码或签名下载参数。
+
+2026-10-04 17:55 UTC 又按 `Legend of Mir`、`热血传奇` 和 `mir2` 标题查询 Internet Archive，并核对四个软件条目的文件目录。`the-three-heroes-2001` 明确标为 2001；`the-legend-of-mir-1` 标为 1998；`the-legend-of-mir-2` 是 2022 年的 1 MB 启动包。另一个 [光盘压缩包](https://archive.org/download/the-legend-of-mir/The_Legend_of_Mir.zip/) 含 ISO 与封面，实际封面标为英文 The Three Heroes、Game Network 和 `legendofmir.net`，不符合盛大 2003 年国服目标，未导入。
 
 已经实际下载并解析 [mrzhqiang/mirserver-1.76](https://github.com/mrzhqiang/mirserver-1.76/tree/39e17246a32247a2c43c4cc481e97e88c692fa53) 的 Paradox 表并校验固定 Git blob：78 个技能、468 件物品、285 种怪物。候选仍有后期技能、开天/镇天/玄天、雷霆、天龙和元宝，也有被改写的装备名称，因此拒绝整库导入。结果见 [候选数据审计](reference-176-audit.json)，复现脚本为 `scripts/audit-176-reference.py`，依赖 `pypxlib==2.5`。其前 33 个技能仅用于交叉核对，尚未视为已认证数值。
 
@@ -66,12 +70,22 @@
 
 ## 源码加 Proxy 路线
 
-正式入口已经采用 `leiniaozl229/mir2@77e3ff7506b1ca55cac15df247cb2fcedd69c535` 的 Pixi 客户端和 .NET 10 proxy，源码固定为干净子模块，接入修复通过独立补丁应用。默认部署不再构建自写网页客户端或其网关，正式数据库和引擎容器及存档卷保持原实例。
+正式入口已经采用 `leiniaozl229/mir2@77e3ff7506b1ca55cac15df247cb2fcedd69c535` 的 Pixi 客户端和 .NET 10 proxy，源码固定为干净子模块，接入修复通过独立补丁应用。默认部署不再构建自写网页客户端或其网关，沿用原数据库和存档卷。本轮后续复验发现 LoginGate 故障，另更新引擎；不将这次更新记为引擎实例保持。
 
-复用客户端使用与运行引擎一致的 11 张图，三职业注册、建角、装备、移动、桌面/手机和重连已通过独立浏览器验收。2026-10-04 16:37 UTC 的正式入口测试还覆盖原 NPC 行内链接、384/385/392/393 服务窗口、仓库入口和空目录、背包拖入及取消选择、蜡烛图标加载、手机存入、重登取回同一物品和金币保持，以及仓库与比奇往返后的本人可见性。旧原型的技能和存档测试不算入新入口。最新结果见 [正式入口验收](correction/source-original-ui-production/evidence.json)，截图保存在同目录。
+复用客户端使用与运行引擎一致的 11 张图，三职业注册、建角、装备、移动、桌面/手机和重连已通过独立浏览器验收。2026-10-04 16:37 UTC 的正式入口测试还覆盖原 NPC 行内链接、384/385/392/393 服务窗口、仓库入口和空目录、背包拖入及取消选择、蜡烛图标加载、手机存入、重登取回同一物品和金币保持，以及仓库与比奇往返后的本人可见性。旧原型的技能和存档测试不算入新入口。该轮结果见 [正式入口验收](correction/source-original-ui-production/evidence.json)，截图保存在同目录。
 
-本轮修复了原生 `SM_CHANGEMAP` 前本人被隐藏时丢失外观的问题。proxy 发送权威人物 ID、坐标和亮度；客户端跨图保留本人外观，按新地图坐标恢复，保留原朝向，因为该消息的 Series 实际是亮度。真实修复前失败见 [跨图失败记录](correction/source-original-ui-before-fix.json)。镜像构建已执行 34 项前端回归及网关回归，新增检查包含商店与仓库分页、选择、拒绝和确认行为，以及 NPC 链接位置和空行。
+本轮修复了原生 `SM_CHANGEMAP` 前本人被隐藏时丢失外观的问题。proxy 发送权威人物 ID、坐标和亮度；客户端跨图保留本人外观，按新地图坐标恢复，保留原朝向，因为该消息的 Series 实际是亮度。真实修复前失败见 [跨图失败记录](correction/source-original-ui-before-fix.json)。镜像构建已执行 39 项前端回归及网关回归，新增检查包含商店与仓库分页、选择、拒绝和确认行为、出售询价及取消、修理拒绝和服务端最大耐久损耗、修理对话与回包顺序、跑步拒绝后的单步回退、物品视图同步，以及 NPC 链接位置和空行。
 
-`npm run verify:deployment` 校验了正式响应的 30 个 HTML、JS、CSS 哈希与运行中网页镜像一致，四项服务均 healthy；数据库和原生引擎 ID、启动时间与前次部署记录一致。只更新网页和 proxy 的镜像，未重建正式存档服务。部署检查本身不证明版本还原完成。
+商人测试实走进铁匠铺后，原测试坐标 `(16,19)` 不可达；按同一地图碰撞格改为柜台前可达的 `(12,14)`。测试中还查实用药确认只清空快捷槽、背包仍显示已消耗药品的问题，现已让已确认的用药和丢弃回包同步更新两个视图，拒绝及无待处理请求的迟到回包不改物品。修复前的独立现象保留在 [物品同步记录](correction/source-service-before-fix.json)。
 
-当前仍有 19 个未解析 SmTiles 引用，生产库仍包含 108 个混合版本技能，原始 2003 安装包尚未取得，完整世界和其余系统未验收。出售、修理及其他工具窗口仍有通用源码布局。公开查询 Mirfiles 的盛大目录、Internet Archive 和 GitHub 未取得可复核的 2003 安装包字节，现有百度分享仍仅为线索。源码复用不等于完成版本还原。接入差异、失败检查和具体限制见 [源码加 Proxy 接入](SOURCE_PROXY_EVALUATION.md)，部署文件及镜像见 [新入口部署证据](correction/source-deployment-evidence.json)。
+原生修理会先发送“已经修好了”的 NPC 对话，再返回修理确认。现成客户端原先在对话到达时清空待处理请求，导致服务端已修好、背包却仍显示损耗；修复后保留已提交的修理请求，按后续回包更新物品。另一次正式入口测试在 `(279,593)` 查实两格跑步被拒绝、单步行走可接受，原客户端却请求远处开门并停止。现已从权威位置尝试单步回退。修复前分别见 [修理记录](correction/source-repair-before-fix.json) 和 [跑步记录](correction/source-run-before-fix.json)。低级战士血球还补上原第 5 帧灰底，避免受伤时露出底栏的分色图案。
+
+登录复验还查实原生 LoginSrv 已发送响应，LoginGate 却不再转发。堆诊断证实其 `ClientManager.ProcessSendMessage` 在发送至已释放 socket 时抛出 `ObjectDisposedException` 后退出。现已逐条处理断连发送异常，使后续客户端回包继续转发。修复前的脱敏记录见 [登录失败记录](correction/source-login-before-fix.json)；编译实际上游消费循环的回归在未修复源码上超时，修复后通过。
+
+18:38 UTC 开始的正式入口 [登录断连检查](correction/source-login-fixed-production/evidence.json) 和 [仓库验收](correction/source-warehouse-login-fixed-production/evidence.json) 均通过，包含 50 次主动断连后的原生响应和战士网页注册、装备、移动、重登与仓库存取。桌面/手机截图保存在对应目录，浏览器没有异常或资源失败。引擎更新前已输出 `OPENMIR2_SAVE_COMPLETE`，数据库实例和存档卷保留，引擎实例已更换。
+
+18:42 UTC 开始的正式入口 [商人验收](correction/source-services-confirmed-production/evidence.json) 通过：出售蜡烛取得 6 金币、购买 11 金币商品被原生拒绝，正常战斗与行走后木剑由 `3978/4000` 修到 `4000/4000`，NPC 对话先于修理确认时背包仍更新，药品消耗同步两个视图。低级战士血球空白区 532 个像素与原第 5 帧一致，桌面/手机原出售和修理窗口无溢出、浏览器无异常或素材失败。路线使用 45 个短路段和两次重新点选；未将其视为长距寻路稳定性验收。前一次商人验证收到终止信号、未生成最终报告，不计为通过。
+
+`npm run verify:deployment` 校验正式响应的 30 个 HTML、JS、CSS 哈希、四项服务健康和数据库实例。需要更换引擎时必须指定已测试镜像完整 ID，再核对原存档卷；报告明确记录引擎实例更换。更新前实例记录见 [登录修复前部署](correction/source-login-before-deployment.json)。部署检查本身不证明版本还原完成。
+
+当前仍有 19 个未解析 SmTiles 引用，生产库仍包含 108 个混合版本技能，原始 2003 安装包尚未取得，完整世界和其余系统未验收。出售和修理已接入原 392/393 帧，其他工具窗口仍有通用源码布局；远距小地图寻路的视野碰撞限制尚未解决。公开查询 Mirfiles 的盛大目录、Internet Archive 和 GitHub 未取得可复核的 2003 安装包字节，现有百度分享仍仅为线索。源码复用不等于完成版本还原。接入差异、失败检查和具体限制见 [源码加 Proxy 接入](SOURCE_PROXY_EVALUATION.md)，部署文件及镜像见 [新入口部署证据](correction/source-deployment-evidence.json)。

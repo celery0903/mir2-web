@@ -33,7 +33,7 @@ docker compose up -d --build --wait
 - 左键行走/攻击，右键跑步；方向键或 WASD 移动，Shift+方向跑步，空格攻击。
 - 点击地面物品拾取，Alt+左键挖取尸体。鹿肉需要连续挖取。
 - F9 开关背包，F10 独立开关人物窗；背包双击使用或装备，人物窗点击装备卸下。数字 1–6 使用对应的快捷格。
-- 点击 NPC 对话，商店选中后确认或双击购买；出售界面双击背包物品或点击快捷格出售。F11 技能面板可以绑定 F1 至 F8，Enter 输入聊天。
+- 点击 NPC 对话，商店选中后确认或双击购买；出售和修理时点选背包物品或拖入圆形物品槽，显示报价后点击原确认按钮。点击槽内物品可取消选择。F11 技能面板可以绑定 F1 至 F8，Enter 输入聊天。
 - 边界仓库在比奇 `307,627` 入口。通过保管员的“保管”“找回”进行存取，物品操作等待原生服务端确认。
 - 手机整体等比适配，可点按地图和控件。重新登录后角色存档保留。
 
@@ -46,10 +46,18 @@ npm ci
 npx playwright install chromium
 MIR_PORT=18883 docker compose -p mir2-acceptance up -d --build --wait
 MIR_URL=http://127.0.0.1:18883 npm test
+MIR_URL=http://127.0.0.1:18883 npm run test:source-services
+MIR_URL=http://127.0.0.1:18883 npm run test:source-login
 npm run audit:176 -- --check
 ```
 
+`test:source-services` 创建独立一级、零金币账号，通过真实网页出售初始蜡烛、验证商品成色页及金币不足拒绝，并用正常战斗产生木剑耐久损耗，再到铁匠铺修理。地图行走使用现成寻路库按实际碰撞格规划短路段，通过 Shift+小地图点选执行；服务端确认物品和金币变化。截图和报告默认写入 `.runtime/reports/source-services/`。`MIR_SOURCE_SCOPE=warehouse npm test` 创建独立账号，只验收战士基础流程和仓库存取。
+
+`test:source-login` 主动断开 50 个登录连接，每轮随后核对原生登录拒绝响应，检查 LoginGate 返回通道是否仍可工作。引擎镜像还直接编译上游返回通道代码，回归已释放 socket 和连接重置不会中断其他客户端的响应。
+
 `npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希、容器健康和数据库/引擎实例是否保持；首次记录没有可比较快照时会明确标为未证明实例保持。
+
+需要更新引擎时，验证命令必须通过 `MIR_EXPECTED_ENGINE_IMAGE=sha256:...` 指定已实测镜像的完整 ID；核对该镜像、原数据库实例和原引擎存档卷后才接受更换。报告分别记录实例更换和存档卷保留。
 
 此前原型的联机、技能、仓库和重启证据保留在 [历史测试报告](docs/VERIFICATION.md) 和 [交付纠正](docs/176_CORRECTION.md)。`test:prototype`、`test:protocol`、`test:features`、`test:restart` 等历史脚本使用旧协议，不能直接用于新的默认入口，也不能将历史结果视为现成客户端的验收。
 

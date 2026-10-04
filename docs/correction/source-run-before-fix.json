@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-04T18:14:24.544Z",
+  "url": "http://172.30.0.16:18880",
+  "map": "0",
+  "initialCell": {"x": 279, "y": 593},
+  "runUp": {"accepted": false, "reason": 28, "x": 279, "y": 593},
+  "automaticDoorRequest": {"accepted": false, "message": "Door is out of reach"},
+  "walkUp": {"accepted": true, "x": 279, "y": 592},
+  "runRight": {"accepted": true, "x": 281, "y": 592},
+  "interpretation": "A rejected two-cell run does not imply that its first cell is blocked. The client requested an out-of-range door instead of attempting a native single step."
+}

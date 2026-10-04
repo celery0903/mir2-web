@@ -31,7 +31,7 @@ index 3e1e145..c356d5d 100644
  var questDialogue = new LegacyPacket(772, 77, 0, 0, 1,
      LegacyCodec.Encode(LegacyCodec.Gbk.GetBytes("任务标记QMARK|p0-trial|accepted|比奇试炼|收集 1 个鸡肉|击杀比奇省的鸡|试炼已开始。|END\\返回")));
 diff --git a/tests/frontend_regression.mjs b/tests/frontend_regression.mjs
-index bcaac3b..91b3f26 100644
+index bcaac3b..1526d75 100644
 --- a/tests/frontend_regression.mjs
 +++ b/tests/frontend_regression.mjs
 @@ -19,7 +19,7 @@ class Element{
@@ -53,11 +53,11 @@ index bcaac3b..91b3f26 100644
  if(playSource.includes('suppressNpcDialogsUntil'))throw new Error('valid NPC dialogue is discarded during the first seconds after map entry');
  if(!playSource.includes('function targetApproachStep(')||!playSource.includes('pursuitRejectedCells.add(`${movement.x},${movement.y}`)')||!playSource.includes('pursuitTarget=retryTarget'))throw new Error('target pursuit does not reroute after a transient blocked move');
  console.log('PASS target pursuit reroutes after a transient blocked move');
-@@ -276,6 +277,57 @@ if(!inventorySource.includes('if(!this.pending.has(id))return false;')||!invento
+@@ -276,6 +277,92 @@ if(!inventorySource.includes('if(!this.pending.has(id))return false;')||!invento
  if(!playSource.includes("if(!shop.resolve(message.name,message.makeIndex,message.accepted))return;")||!playSource.includes("if(!shop.resolveSale(message.item,message.accepted))return;")||!playSource.includes("if(!repair.resolve(message.item,message.accepted))return;")||!playSource.includes("if(!storage.resolve(message.item,message.accepted))return;")||!playSource.includes('const quickBarHandled=itemQuickBar.resolve(message.makeIndex,message.accepted,true);')||!playSource.includes('if(!inventoryHandled&&!quickBarHandled)return;'))throw new Error('stale service or item responses still apply side effects after component rejection');
  console.log('PASS shop, repair and storage pending states time out and unlock');
 
-+const serviceSource=['classic-service','storage','shop'].map(name=>fs.readFileSync(path.join(root,`apps/web/src/${name}.ts`),'utf8').replace(/^import .*;\n/gm,'')).join('\n');
++const serviceSource=['classic-service','storage','shop','repair'].map(name=>fs.readFileSync(path.join(root,`apps/web/src/${name}.ts`),'utf8').replace(/^import .*;\n/gm,'')).join('\n');
 +const serviceContext={exports:{},document:mockDocument,loadFallbackItemIcons:()=>new Promise(()=>{}),loadNationalUiLibrary:()=>new Promise(()=>{}),setTimeout:()=>1,clearTimeout(){},uiFrame:(library,index)=>library.frames[index],nationalUiUrl:()=>'',applyNationalUiFrame:(element,name,frame)=>{element.style.width=`${frame.width}px`;element.style.height=`${frame.height}px`;},attachItemTooltip(){}};
 +vm.createContext(serviceContext);vm.runInContext(ts.transpileModule(serviceSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,serviceContext);
 +const serviceLibrary={frames:Object.fromEntries([371,385,386,387,388,392,393].map(index=>[index,{file:`${index}.png`,width:index===385?308:index===392?140:24,height:index===385?205:index===392?181:16}]))};
@@ -108,6 +108,109 @@ index bcaac3b..91b3f26 100644
 +shopView.clear();if(shopView.showDetails(77,shopDetails))throw new Error('closed shop accepts a late detail page');
 +console.log('PASS original shop pagination, server detail pages and purchase acknowledgement');
 +
++const saleElement=new Element(),saleSent=[];
++const saleView=new serviceContext.exports.ShopView(saleElement,{buy(){},details(){},quote:(npc,id)=>saleSent.push(['quote',npc,id]),sell:(npc,id)=>saleSent.push(['sell',npc,id])});saleView.serviceLibrary=serviceLibrary;
++saleView.openSell(77,[candle,potion]);
++if(saleView.selectItem(999)||!saleView.selectItem(100)||saleView.selectItem(101)||saleElement.style.width!=='140px')throw new Error('sale selection accepts an unknown item or another pending quote');
++if(saleSent.length!==1||saleSent[0][0]!=='quote'||!serviceCommand(saleElement,'卖出').disabled)throw new Error('sale sends a command before receiving its server quote');
++if(saleView.showSellQuote(78,candle,50)||saleView.showSellQuote(77,potion,50))throw new Error('sale accepts a quote for another merchant or item');
++saleView.showSellQuote(77,candle,50);serviceCommand(saleElement,'卖出').onclick();
++if(saleSent[1][0]!=='sell'||saleView.sellItems.length!==2||!serviceCommand(saleElement,'卖出').disabled)throw new Error('pending sale removes its item or allows a duplicate submission');
++saleView.resolveSale(candle,false);
++if(saleView.sellItems.length!==2)throw new Error('rejected sale loses the item');
++saleView.selectItem(100);saleView.showSellQuote(77,candle,0);
++if(!serviceCommand(saleElement,'卖出').disabled)throw new Error('sale permits a rejected zero-price quote');
++saleView.selectItem(101);saleView.showSellQuote(77,potion,20);
++saleElement.children.find(child=>child.className==='classic-service-slot').onclick();
++if(!serviceCommand(saleElement,'卖出').disabled||saleView.sellItems.length!==2)throw new Error('sale slot cancellation removes the inventory item');
++saleView.selectItem(100);saleView.showSellQuote(77,candle,50);serviceCommand(saleElement,'卖出').onclick();saleView.resolveSale(candle,true);
++if(saleView.sellItems.length!==1||saleView.resolveSale(candle,true)||!serviceCommand(saleElement,'卖出').disabled)throw new Error('accepted sale does not remove exactly one item and clear its slot');
++saleView.selectItem(101);saleView.clear();if(saleView.showSellQuote(77,potion,20))throw new Error('closed sale accepts a delayed quote');
++console.log('PASS original sale slot, authoritative quotes, cancellation and acknowledgement');
++
++const repairElement=new Element(),repairSent=[],worn={...candle,stdMode:5,name:'木剑',durability:3000,maxDurability:10000};
++const repairView=new serviceContext.exports.RepairView(repairElement,{quote:(npc,id)=>repairSent.push(['quote',npc,id]),repair:(npc,id)=>repairSent.push(['repair',npc,id])});repairView.serviceLibrary=serviceLibrary;
++repairView.open(77,[worn,potion]);
++if(repairView.selectItem(999)||!repairView.selectItem(100)||repairView.selectItem(101)||repairElement.style.width!=='140px'||!serviceCommand(repairElement,'修理').disabled)throw new Error('repair selection accepts unknown items or submits without its quote');
++if(repairView.showQuote(78,worn,10)||repairView.showQuote(77,potion,10))throw new Error('repair accepts a quote for another merchant or item');
++repairView.showQuote(77,worn,-1);if(!serviceCommand(repairElement,'修理').disabled)throw new Error('repair allows a rejected quote');
++repairView.selectItem(100);repairView.showQuote(77,worn,10);serviceCommand(repairElement,'修理').onclick();
++if(repairSent.at(-1)[0]!=='repair'||repairView.items[0].durability!==3000||!serviceCommand(repairElement,'修理').disabled)throw new Error('repair changes durability before its server confirmation');
++repairView.resolve(worn,false);if(repairView.items[0].durability!==3000)throw new Error('rejected repair changes the item');
++repairView.selectItem(100);repairView.showQuote(77,worn,10);serviceCommand(repairElement,'修理').onclick();
++const repaired={...worn,durability:9000,maxDurability:9000};repairView.resolve(repaired,true);
++if(repairView.items[0].maxDurability!==9000||repairView.resolve(repaired,true))throw new Error('repair does not preserve server durability loss or rejects no duplicate response');
++repairView.selectItem(100);repairView.clear();if(repairView.showQuote(77,worn,10))throw new Error('closed repair accepts a delayed quote');
++console.log('PASS original repair slot, quote rejection and authoritative durability');
++
  const quickBarSource=`const uiLayout=${JSON.stringify(uiLayout)};\nfunction classicUiLayout(){return uiLayout;}\n`+fs.readFileSync(path.join(root,'apps/web/src/item-quickbar.ts'),'utf8').replace(/^import .*;\n/gm,'');
  const quickBarContext={exports:{},document:mockDocument,HTMLElement:Element,setTimeout,clearTimeout,loadFallbackItemIcons:()=>new Promise(()=>{}),loadNationalUiLibrary:()=>new Promise(()=>{}),nationalUiUrl:()=>'',uiUrl:()=>'',iconIndexOf:item=>item.looks};
  vm.createContext(quickBarContext);
+@@ -295,6 +382,67 @@ quickBar.bindSlot(2,401);if(quickBar.debugState().slots[0].makeIndex!==undefined
+ quickBar.clearSlot(2);if(quickBar.debugState().slots.some(slot=>slot.makeIndex!==undefined))throw new Error('item quickbar context clear leaves a bound slot');
+ console.log('PASS item quickbar exposes six consumable slots, key use and manual rebinding');
+
++const acknowledgementInventoryElement=new Element();
++const acknowledgementInventory=new context.exports.InventoryView(acknowledgementInventoryElement,{drop(){},use(){},equip(){}});
++const acknowledgementQuickBar=new quickBarContext.exports.ItemQuickBar(new Element(),{use:()=>true});
++const playAst=ts.createSourceFile('play.ts',playSource,ts.ScriptTarget.Latest,true);
++function acknowledgementHandler(type,bindings={}){
++ let body;
++ function visit(node){
++  if(ts.isIfStatement(node)){
++   const condition=node.expression,comparison=ts.isBinaryExpression(condition)&&condition.operatorToken.kind===ts.SyntaxKind.AmpersandAmpersandToken?condition.left:condition;
++   if(ts.isBinaryExpression(comparison)&&comparison.left.getText(playAst)==='message.type'&&ts.isStringLiteral(comparison.right)&&comparison.right.text===type)body=node.thenStatement.getText(playAst);
++  }
++  ts.forEachChild(node,visit);
++ }
++ visit(playAst);if(!body)throw new Error(`missing ${type} handler`);
++ const compiled=ts.transpileModule(`(message)=>${body}`,{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText;
++ return vm.runInNewContext(compiled,{inventory:acknowledgementInventory,itemQuickBar:acknowledgementQuickBar,connection:{},self:undefined,...bindings});
++}
++const receiveUse=acknowledgementHandler('itemActionResult'),receiveDrop=acknowledgementHandler('dropResult');
++const itemState=()=>[acknowledgementInventory.debugState().items.some(item=>item.makeIndex===101),acknowledgementQuickBar.debugState().slots.some(slot=>slot.makeIndex===101)];
++const resetItems=()=>{acknowledgementInventory.replace([potion]);acknowledgementQuickBar.replace([potion]);};
++const useMessage={type:'itemActionResult',kind:'use',makeIndex:101,item:potion,feature:null};
++resetItems();acknowledgementQuickBar.handleKey(keyEvent);receiveUse({...useMessage,accepted:false});
++if(itemState().some(value=>!value))throw new Error('rejected quick-slot use removes the item from a view');
++receiveUse({...useMessage,accepted:true});
++if(itemState().some(value=>!value))throw new Error('stale use acknowledgement removes an unrequested item');
++acknowledgementQuickBar.handleKey(keyEvent);receiveUse({...useMessage,accepted:true});
++if(itemState().some(Boolean))throw new Error('accepted quick-slot use leaves a consumed item in the bag');
++resetItems();acknowledgementInventoryElement.children.find(child=>child.dataset.itemId==='101').ondblclick({preventDefault(){},stopPropagation(){}});receiveUse({...useMessage,accepted:true});
++if(itemState().some(Boolean))throw new Error('accepted bag use leaves a consumed item in the quick slots');
++resetItems();acknowledgementInventory.requestDrop(101);receiveDrop({makeIndex:101,accepted:false});
++if(itemState().some(value=>!value))throw new Error('rejected drop removes the item from a view');
++receiveDrop({makeIndex:101,accepted:true});
++if(itemState().some(value=>!value))throw new Error('stale drop acknowledgement removes an unrequested item');
++acknowledgementInventory.requestDrop(101);receiveDrop({makeIndex:101,accepted:true});
++if(itemState().some(Boolean))throw new Error('accepted bag drop leaves an item in the quick slots');
++console.log('PASS item acknowledgements synchronize the bag and quick slots without accepting stale results');
++
++acknowledgementInventory.replace([worn]);repairView.open(77,[worn]);repairView.selectItem(worn.makeIndex);repairView.showQuote(77,worn,0);serviceCommand(repairElement,'修理').onclick();
++if(repairView.showQuote(77,worn,10))throw new Error('late repair quote consumes a submitted repair request');
++const repairConnection={},repairCurrencies=[];
++const receiveMerchantDialogue=acknowledgementHandler('npcDialogue',{repair:repairView,shop:{clear(){}},storage:{clear(){}},hideClassicWindows(){},dialogueElement:new Element(),classicHud:{skinWindow(){}},dialogueTitle:{},dialogueOptions:new Element(),renderGuild(){},renderDialogueText(){},renderDialogueLines(){},active:undefined});
++receiveMerchantDialogue({type:'npcDialogue',npcName:'卫家店',npcId:77,text:'已经修好了。',lines:[]});
++if(!repairElement.hidden||repairView.pending!==worn.makeIndex)throw new Error('native repair follow-up dialogue discards the outstanding receipt');
++const receiveRepair=acknowledgementHandler('repairResult',{repair:repairView,connection:repairConnection,updateCurrency:value=>repairCurrencies.push(value)});
++const repairedAfterDialogue={...worn,durability:3800,maxDurability:3800};
++receiveRepair({type:'repairResult',item:repairedAfterDialogue,accepted:true,gold:6});
++const repairedBagItem=acknowledgementInventory.debugState().items.find(item=>item.makeIndex===worn.makeIndex);
++if(repairedBagItem.durability!==3800||repairedBagItem.maxDurability!==3800||!repairConnection.textContent.includes('修理完成')||repairCurrencies.length!==1||!repairElement.hidden)throw new Error('repair receipt after dialogue does not update the bag and gold while leaving the service closed');
++receiveRepair({type:'repairResult',item:{...repairedAfterDialogue,durability:1},accepted:true,gold:0});
++if(acknowledgementInventory.debugState().items[0].durability!==3800||repairCurrencies.length!==1)throw new Error('duplicate repair receipt updates an already completed transaction');
++repairView.open(77,[worn]);repairView.selectItem(worn.makeIndex);repairView.clear(true);
++if(repairView.showQuote(77,worn,0)||repairView.resolve(repairedAfterDialogue,true))throw new Error('dialogue preserves an unsubmitted repair quote');
++console.log('PASS native repair dialogue preceding its receipt preserves authoritative bag durability and gold');
++
++const retryActor={id:42,x:279,y:591,direction:0,action:'running'},retryEntities=new Map([[42,retryActor]]),retriedMoves=[],retryPackets=[];
++const retryMovement={actionId:1,kind:'move',fromX:279,fromY:593,x:279,y:591,direction:0,run:true};
++const receiveBlockedRun=acknowledgementHandler('actionResult',{self:42,pending:retryMovement,pendingAction:{actionId:1,kind:'move'},entities:retryEntities,agentObserver:{event(){}},update:actor=>retryEntities.set(actor.id,actor),classicHud:{position(){}},minimap:{setPosition(){}},view:{map:'0',setCenter:()=>Promise.resolve()},directions:movement.DIRECTIONS,sendMovement:(actor,dx,dy,run,distance)=>{retriedMoves.push({x:actor.x,y:actor.y,dx,dy,run,distance});return true;},pursuitTarget:undefined,pursuitHarvest:false,pursuitGroundItem:undefined,held:undefined,rightPointer:undefined,clickDestination:{x:279,y:585,run:true},socket:{readyState:1,send:value=>retryPackets.push(JSON.parse(value))},WebSocket:{OPEN:1}});
++receiveBlockedRun({type:'actionResult',actionId:1,kind:'move',accepted:false,x:279,y:593,reason:28,mapGeneration:1});
++if(retriedMoves.length!==1||retriedMoves[0].x!==279||retriedMoves[0].y!==593||retriedMoves[0].dx!==0||retriedMoves[0].dy!==-1||retriedMoves[0].run!==false||retriedMoves[0].distance!==1||retryPackets.length)throw new Error('blocked run does not retry one step from the authoritative position before requesting a distant door');
++console.log('PASS rejected two-cell run retries a legal single step from the authoritative position');
++
+ const playPage=fs.readFileSync(path.join(root,'apps/web/play.html'),'utf8');
+ const calibrationPage=fs.readFileSync(path.join(root,'apps/web/ui-calibration.html'),'utf8');
+ if(!playPage.includes('data-hud-item-quickbar')||!calibrationPage.includes('data-hud-item-quickbar')||!playSource.includes("import {ItemQuickBar} from './item-quickbar';")||!playSource.includes("itemQuickBar.replace(message.items)"))throw new Error('production and calibration HUDs are missing the shared item quickbar wiring');

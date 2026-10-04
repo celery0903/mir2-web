@@ -30,6 +30,8 @@ RUN --mount=type=cache,target=/root/.nuget/packages \
     done
 COPY tests/native tests/native
 RUN dotnet run --project tests/native/NativeChecks.csproj -c Release --nologo
+COPY tests/login-channel tests/login-channel
+RUN dotnet run --project tests/login-channel/LoginChannelChecks.csproj -c Release --nologo
 
 FROM mcr.microsoft.com/dotnet/runtime:8.0
 COPY --from=data /usr/local/bin/node /usr/local/bin/node

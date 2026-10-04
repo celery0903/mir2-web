@@ -11,6 +11,8 @@
     "prepare:source": "node scripts/prepare-source-client.mjs",
     "assets:source": "node scripts/prepare-source-assets.mjs",
     "test:source": "node tests/source-client.mjs",
+    "test:source-services": "node tests/source-services.mjs",
+    "test:source-login": "node tests/source-login.mjs",
     "test": "node tests/source-client.mjs",
     "test:prototype": "playwright test",
     "test:protocol": "node --test tests/protocol.test.mjs",
@@ -23,6 +25,7 @@
   ],
   "devDependencies": {
     "@playwright/test": "^1.58.2",
+    "pathfinding": "^0.4.18",
     "pngjs": "^7.0.0",
     "ws": "^8.22.0"
   }

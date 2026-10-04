@@ -8,7 +8,9 @@ const execute=promisify(execFile);
 const url=(process.env.MIR_URL??'http://172.30.0.16:18880').replace(/\/$/,'');
 const project=process.env.MIR_PROJECT??'mir2-web';
 const destination=process.env.MIR_DEPLOYMENT_REPORT??'docs/correction/source-deployment-evidence.json';
+const expectedEngineImage=process.env.MIR_EXPECTED_ENGINE_IMAGE;
 assert.match(project,/^[a-z0-9][a-z0-9_-]*$/);
+if(expectedEngineImage)assert.match(expectedEngineImage,/^sha256:[a-f0-9]{64}$/);
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 let previous;
 try{previous=JSON.parse(await readFile(destination,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
@@ -19,11 +21,25 @@ const containers=inspection.trim().split('\n').map(line=>JSON.parse(line));
 for(const container of containers)assert.equal(container.health,'healthy',`${container.name} health`);
 const nativeContainers=containers.filter(container=>names.slice(0,2).includes(container.name.slice(1)));
 const hasPriorSnapshot=nativeContainers.every(container=>previous?.containers?.some(value=>value.name===container.name));
-const preservedNativeContainers=hasPriorSnapshot?nativeContainers.every(container=>{
+const preservedInstance=container=>{
  const prior=previous?.containers?.find(value=>value.name===container.name);
- return container.id===prior.id&&container.startedAt===prior.startedAt;
-}):null;
-if(hasPriorSnapshot)assert.equal(preservedNativeContainers,true,'Native engine/database instances changed');
+ return prior?container.id===prior.id&&container.startedAt===prior.startedAt:null;
+};
+const database=nativeContainers.find(container=>container.name===`/${names[0]}`),engine=nativeContainers.find(container=>container.name===`/${names[1]}`);
+const preservedDatabase=preservedInstance(database),preservedEngine=preservedInstance(engine);
+const preservedNativeContainers=hasPriorSnapshot?preservedDatabase&&preservedEngine:null;
+const storageMounts=container=>container.mounts.filter(mount=>mount.Type==='volume').map(({Name,Destination})=>({Name,Destination})).sort((a,b)=>a.Destination.localeCompare(b.Destination));
+const priorEngine=previous?.containers?.find(container=>container.name===engine.name);
+const preservedEngineStorage=priorEngine?JSON.stringify(storageMounts(engine))===JSON.stringify(storageMounts(priorEngine)):null;
+if(expectedEngineImage)assert.equal(engine.image,expectedEngineImage,'Engine does not match the declared tested image');
+if(hasPriorSnapshot){
+ assert.equal(preservedDatabase,true,'Database instance changed');
+ if(!preservedEngine){
+  assert.ok(expectedEngineImage,'Engine changed without a declared tested image');
+  assert.ok(storageMounts(engine).length>0,'Engine has no persistent storage');
+  assert.equal(preservedEngineStorage,true,'Engine storage volumes changed');
+ }
+}
 const {stdout:listing}=await execute('docker',['exec',names[2],'find','/usr/share/nginx/html','-type','f']);
 const paths=listing.trim().split('\n').filter(file=>/\.(html|js|css)$/.test(file));
 assert.ok(paths.length>20,'Incomplete frontend image');
@@ -37,6 +53,7 @@ const files=await Promise.all(requests.map(async({path,file})=>{
 }));
 const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch'].map(async file=>[file,digest(await readFile(file))])));
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,patches,preservedNativeContainers,full176Acceptance:false};
+const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,patches,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
-console.log(`Verified ${files.length} served HTML/JS/CSS hashes; all services healthy; ${hasPriorSnapshot?'native engine and database match the prior snapshot':'no prior native-container snapshot to compare'}.`);
+console.log(`Verified ${files.length} served HTML/JS/CSS hashes; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

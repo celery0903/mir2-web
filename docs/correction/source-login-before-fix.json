@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-04T18:32:00Z",
+  "url": "http://172.30.0.16:18880",
+  "browser": "Concurrent merchant and warehouse tests timed out before character selection; a sequential warehouse retry also failed.",
+  "nativeRequest": "LoginGate forwarded the login request to LoginSrv on TCP port 5500.",
+  "nativeResponse": "LoginSrv emitted a response; LoginGate did not forward it to the client.",
+  "heapDiagnosis": {
+    "service": "LoginGate",
+    "completedConsumer": "ClientManager.ProcessSendMessage",
+    "exception": "System.ObjectDisposedException",
+    "message": "Cannot access a disposed object.",
+    "stack": [
+      "System.Net.Sockets.Socket.SetSocketOption",
+      "TouchSocket.Sockets.TcpCore.Send",
+      "ClientManager.ProcessSendMessage"
+    ]
+  },
+  "credentialsOrHeapContentsIncluded": false,
+  "linkedSourceRegressionBeforeFix": "Unpatched ClientManager compiled successfully; the live client's response timed out after the disposed socket.",
+  "full176Acceptance": false
+}
