@@ -1,0 +1,843 @@
+{
+  "checkedAt": "2026-10-05T01:38:34.353Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "scope": "fireball",
+  "passed": false,
+  "full176Acceptance": false,
+  "fixture": "New isolated test accounts raised offline to level 7 with 20000 gold and 400 MP, clamped to native limits on login; skills learned from purchased books.",
+  "errors": [],
+  "missingResources": [],
+  "shopPagesVisited": 1,
+  "learnedFromPurchasedBook": true,
+  "error": "AssertionError [ERR_ASSERTION]: Skill preparation route exhausted",
+  "casterState": {
+    "now": 226555.9000005722,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": true,
+    "authScene": "select",
+    "connection": "角色已死亡",
+    "map": "0",
+    "mapGeneration": 3,
+    "lastSequence": 836,
+    "worldReady": true,
+    "self": {
+      "id": 21457617,
+      "name": "mc43143561\n平民",
+      "x": 288,
+      "y": 619,
+      "direction": 0,
+      "action": "dead",
+      "dead": true,
+      "hp": 0,
+      "maxHp": 30
+    },
+    "confirmedCell": {
+      "x": 288,
+      "y": 619
+    },
+    "render": {
+      "pixel": {
+        "x": 13824,
+        "y": 19808
+      },
+      "queuedMovements": 0,
+      "action": "dead",
+      "direction": 0,
+      "framesReady": true,
+      "poseKey": "CArmour00/CHair00/dead/0/0/0/undefined/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13824,
+          "y": 19808
+        }
+      },
+      "grid": {
+        "x": 288,
+        "y": 619
+      },
+      "screen": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    "camera": {
+      "x": -13424,
+      "y": -19508
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "attributes": {
+      "type": "weights",
+      "level": 7,
+      "job": 1,
+      "innerPowerLevel": 99,
+      "gold": 19450,
+      "gameGold": 20000,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 0,
+        "max": 1
+      },
+      "mc": {
+        "min": 0,
+        "max": 1
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 0,
+      "mp": 65,
+      "maxHp": 30,
+      "maxMp": 65,
+      "experience": 0,
+      "maxExperience": 1200,
+      "weight": 14,
+      "maxWeight": 60,
+      "wearWeight": 0,
+      "maxWearWeight": 15,
+      "handWeight": 0,
+      "maxHandWeight": 13
+    },
+    "inventory": {
+      "known": true,
+      "items": [
+        {
+          "name": "蜡烛",
+          "makeIndex": 2564978,
+          "durability": 8000,
+          "maxDurability": 8000,
+          "stdMode": 30,
+          "weight": 1,
+          "looks": 130,
+          "shape": 0,
+          "baseDurability": 8000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 10,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 0
+        },
+        {
+          "name": "金创药(小量)",
+          "makeIndex": 2564979,
+          "durability": 1,
+          "maxDurability": 1,
+          "stdMode": 0,
+          "weight": 1,
+          "looks": 398,
+          "shape": 0,
+          "baseDurability": 1,
+          "ac": {
+            "min": 20,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 80,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 1
+        },
+        {
+          "name": "木剑",
+          "makeIndex": 2564980,
+          "durability": 4000,
+          "maxDurability": 4000,
+          "stdMode": 5,
+          "weight": 7,
+          "looks": 30,
+          "shape": 1,
+          "baseDurability": 4000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 2,
+            "max": 5
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 50,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 2
+        },
+        {
+          "name": "布衣(男)",
+          "makeIndex": 2564981,
+          "durability": 5000,
+          "maxDurability": 5000,
+          "stdMode": 10,
+          "weight": 5,
+          "looks": 60,
+          "shape": 1,
+          "baseDurability": 5000,
+          "ac": {
+            "min": 0,
+            "max": 2
+          },
+          "mac": {
+            "min": 0,
+            "max": 1
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 400,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 3
+        }
+      ],
+      "pending": [],
+      "gold": 19450
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "makeIndex": 2564979,
+          "item": "金创药(小量)",
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "feature": 0,
+      "layers": {
+        "bodyName": "CArmour00",
+        "offset": 0,
+        "hairName": "CHair00",
+        "weaponOffset": 0
+      },
+      "images": [
+        {
+          "src": "http://127.0.0.1:18883/actors/CArmour00/16.09808129407f41c5.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:18883/actors/CHair00/16.54655924870007eb.png",
+          "loaded": true
+        }
+      ],
+      "ready": true
+    },
+    "groundItems": [],
+    "skills": {
+      "known": true,
+      "skills": [
+        {
+          "key": 0,
+          "level": 0,
+          "currentTrain": 0,
+          "magicId": 1,
+          "name": "火球术",
+          "effectType": 1,
+          "effect": 1,
+          "spell": 4,
+          "power": 8,
+          "trainLevels": "BwsQEA==",
+          "maxTrain": [
+            200,
+            300,
+            500,
+            500
+          ],
+          "job": 1,
+          "delay": 60,
+          "defSpell": 1,
+          "defPower": 2,
+          "maxPower": 8,
+          "defMaxPower": 2,
+          "description": "",
+          "use": "hostile"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": [
+        {
+          "magicId": 1,
+          "src": "http://127.0.0.1:18883/ui-national/magic-icons/1.34e35a49e440fc7b.png",
+          "loaded": true
+        }
+      ]
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 288,
+        "y": 619
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": [
+        {
+          "id": "entity-21457617",
+          "x": 288,
+          "y": 619,
+          "kind": "self"
+        },
+        {
+          "id": "entity-1393042747",
+          "x": 291,
+          "y": 618,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-725024989",
+          "x": 288,
+          "y": 619,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-138254818",
+          "x": 289,
+          "y": 619,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-317313004",
+          "x": 282,
+          "y": 617,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1987496708",
+          "x": 292,
+          "y": 613,
+          "kind": "npc"
+        },
+        {
+          "id": "entity-186374739",
+          "x": 290,
+          "y": 613,
+          "kind": "npc"
+        },
+        {
+          "id": "entity-38195481",
+          "x": 286,
+          "y": 607,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-463673365",
+          "x": 288,
+          "y": 609,
+          "kind": "npc"
+        },
+        {
+          "id": "entity-1333193851",
+          "x": 287,
+          "y": 607,
+          "kind": "monster"
+        }
+      ]
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "书店",
+      "text": "请选择你想要买的书。  返 回",
+      "options": [
+        {
+          "text": "返 回",
+          "command": "@Main"
+        }
+      ]
+    },
+    "combatStatus": "mc43143561\n平民 0/30 HP",
+    "nearby": [
+      {
+        "type": "entity",
+        "id": 725024989,
+        "x": 288,
+        "y": 619,
+        "direction": 4,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 0
+      },
+      {
+        "type": "entity",
+        "id": 138254818,
+        "x": 289,
+        "y": 619,
+        "direction": 6,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "attack",
+        "dead": false,
+        "distance": 1
+      },
+      {
+        "type": "entity",
+        "id": 1393042747,
+        "x": 291,
+        "y": 618,
+        "direction": 2,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 3
+      },
+      {
+        "type": "entity",
+        "id": 186374739,
+        "x": 290,
+        "y": 613,
+        "direction": 3,
+        "feature": 327730,
+        "status": 0,
+        "name": "官方举证制度",
+        "nameColor": 255,
+        "self": false,
+        "kind": "npc",
+        "action": "attack",
+        "dead": false,
+        "distance": 6
+      },
+      {
+        "type": "entity",
+        "id": 317313004,
+        "x": 282,
+        "y": 617,
+        "direction": 3,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 6
+      },
+      {
+        "type": "entity",
+        "id": 1987496708,
+        "x": 292,
+        "y": 613,
+        "direction": 5,
+        "feature": 65586,
+        "status": 0,
+        "name": "边界老兵",
+        "nameColor": 255,
+        "self": false,
+        "kind": "npc",
+        "action": "attack",
+        "dead": false,
+        "distance": 6
+      },
+      {
+        "type": "entity",
+        "id": 463673365,
+        "x": 288,
+        "y": 609,
+        "direction": 0,
+        "feature": 196658,
+        "status": 0,
+        "name": "边界杂货店",
+        "nameColor": 255,
+        "self": false,
+        "kind": "npc",
+        "action": "standing",
+        "dead": false,
+        "distance": 10
+      },
+      {
+        "type": "entity",
+        "id": 38195481,
+        "x": 286,
+        "y": 607,
+        "direction": 0,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 12
+      },
+      {
+        "type": "entity",
+        "id": 1333193851,
+        "x": 287,
+        "y": 607,
+        "direction": 0,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 12
+      }
+    ],
+    "directions": [
+      {
+        "direction": 0,
+        "dx": 0,
+        "dy": -1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 1,
+        "dx": 1,
+        "dy": -1,
+        "clearSteps": 3
+      },
+      {
+        "direction": 2,
+        "dx": 1,
+        "dy": 0,
+        "clearSteps": 0
+      },
+      {
+        "direction": 3,
+        "dx": 1,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 4,
+        "dx": 0,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 5,
+        "dx": -1,
+        "dy": 1,
+        "clearSteps": 3
+      },
+      {
+        "direction": 6,
+        "dx": -1,
+        "dy": 0,
+        "clearSteps": 4
+      },
+      {
+        "direction": 7,
+        "dx": -1,
+        "dy": -1,
+        "clearSteps": 4
+      }
+    ],
+    "entityCount": 10,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {
+      "21457617": "dead",
+      "38195481": "standing",
+      "138254818": "standing",
+      "186374739": "standing",
+      "317313004": "standing",
+      "463673365": "standing",
+      "725024989": "standing",
+      "1333193851": "standing",
+      "1393042747": "standing",
+      "1987496708": "standing"
+    },
+    "actorEffects": {
+      "21457617": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13824,
+          "y": 19808
+        }
+      },
+      "38195481": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 13728,
+          "y": 19424
+        }
+      },
+      "138254818": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13872,
+          "y": 19808
+        }
+      },
+      "186374739": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 13920,
+          "y": 19616
+        }
+      },
+      "317313004": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 13536,
+          "y": 19744
+        }
+      },
+      "463673365": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 13824,
+          "y": 19488
+        }
+      },
+      "725024989": {
+        "active": false,
+        "ready": false,
+        "frame": 3890,
+        "pixel": {
+          "x": 13824,
+          "y": 19808
+        }
+      },
+      "1333193851": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13776,
+          "y": 19424
+        }
+      },
+      "1393042747": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13968,
+          "y": 19776
+        }
+      },
+      "1987496708": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 14016,
+          "y": 19616
+        }
+      }
+    }
+  }
+}

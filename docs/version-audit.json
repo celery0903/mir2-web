@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-05T01:20:30.319Z",
+  "checkedAt": "2026-10-05T01:49:46.515Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -9,7 +9,7 @@
     "shared/classic-storage.json": "63e861a3783a85d9a189b3c6216240a12a07703269890148b4b633d3dd47a844",
     "compose.yaml": "cc5ad8b6bc9f049f9050aad5e1cd528494c195d57160044e3b307ae8076f3bab",
     "scripts/prepare-classic-world.mjs": "8abe128f9d5cd454255628f3ada549b8e94637fb140798c70a7b6bc9f8750f13",
-    "scripts/prepare-openmir2.mjs": "86d03fa62d633de7daefee6b8a60d886783d4e9ff7619e963a9648d1b969e078",
+    "scripts/prepare-openmir2.mjs": "e8aa67d8932228f0e6a11841dd5e5d33faff98abb5ae3ee93e25992616c43114",
     "scripts/prepare-source-client.mjs": "cd0e7d7f55d2293ef85ee034b978f063ebd3e96c6f8390f9b0c93840972a1afa",
     "scripts/prepare-source-assets.mjs": "c15201c76da478999ec3143891a100e277ca3dc94f90b6ef4f1584c341520c7d",
     "server/SourceClient/Dockerfile": "1146d2e08f0531224a815714326339bbf8eb623562da91729490f5e1e7d30f7a",
@@ -31,7 +31,7 @@
     "scripts/prepare-source-magic.py": "68e7b9842a9b910919fa08f8c4cb0d0324bd17d377d2aee3b4bc7f74ed0a49e9",
     "tests/source-magic-assets.py": "acbbd33c01be542df0c33efcc03833b2c5640365f6ab92cd8e5e7f4bc083877c",
     "tests/source-magic.test.mjs": "65a5cfc63970326ecbd3b470c34e181f9729cef175a3063d092379149cd97d4d",
-    "tests/source-skills.mjs": "3fcb043dbfd68ea0b3c107d7df8f783815f5e0c7c22a17e646ace0db92c866b0",
+    "tests/source-skills.mjs": "1374f29842c7aad2807aa4842613029384e872ccdb9798c8f6b0e543a9be4b6e",
     "tests/source-flight-reference.mjs": "24d5ce37f2311f062abf8d013ba7f2c213510724fde609873cc4819840e2187d",
     "tests/flight-reference/Dockerfile": "61b63149f5f489a1bcdb78cb2999c3ae19116420a5ff3548fe6fe629bfa4555d",
     "server/openmir2-status.patch": "13d0a643a0802c9c57b99ccd34d374704492776c4910a2a9845295ac3dde0f8f",
@@ -61,7 +61,13 @@
     "server/source-npc-receipt.patch": "b6c744d7e5962ed149987c86f794da642b99a9fa63192f1a2e5c90cc5cf05eed",
     "tests/source-client.mjs": "0ed7692bf1d8911bdc2b53dece63f7bcd2807f18f3b45b1618bf24b16e70c3d1",
     "tests/source-world-travel.mjs": "1af446b5fe001e0a6d23c690b1211b7d76d20bdea56693113c874a6ff9b15366",
-    "tests/classic-world-browser.mjs": "90edd6ed99c1ca57697791b8c69d02d105890686515211d9e8ab9c9c8871be6a"
+    "tests/classic-world-browser.mjs": "90edd6ed99c1ca57697791b8c69d02d105890686515211d9e8ab9c9c8871be6a",
+    "shared/classic-skills.json": "55c9bbf346fee54e292defdacb74af8d2267305d6b31741f8d817d3fba6332be",
+    "scripts/classic-skills.mjs": "3358d72bcf8f5cc64deb132555915bdb78b2d13a9ca0510a0e13a1dcbb7f755b",
+    "scripts/migrate-classic-skills.mjs": "dcb61ac91787f97b1b7832b92c1e6ae75a6e17382bc264fdf708ecbdc43bdf0c",
+    "tests/classic-skills-migration.mjs": "a95b986afb113b00e4eb94dc300030e54756e32ce0db140e0d95dd5014f12fd1",
+    "tests/classic-skill-references.mjs": "ea6275ca85d82c2a096eadabcc69e631910bc9ecd140e5cb8fcda102785afcec",
+    "scripts/audit-classic-skill-numbers.py": "1b85abd41714fb5941eff5e1d679fdd54423a3757c553e1bee7aa98cf4fae1ca"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",
@@ -619,7 +625,7 @@
   },
   "database": {
     "items": 1000,
-    "skills": 108,
+    "skills": 33,
     "monsters": 705,
     "laterItems": [
       "雷霆战甲(男)",
@@ -680,29 +686,14 @@
       "星王道靴",
       "星王法靴"
     ],
-    "laterSkills": [
-      "流星火雨",
-      "噬血术",
-      "白日门四级法盾",
-      "四级英雄神兽",
-      "逐日剑法",
-      "四级英雄剑术",
-      "四级英雄刺杀",
-      "四级英雄半月",
-      "四级英雄雷电术",
-      "四级流星火雨",
-      "四级英雄火雨",
-      "四级英雄施毒术",
-      "四级噬血术",
-      "四级英雄噬血术",
-      "血魄一击(战)",
-      "白日门血魄(战)",
-      "血魄一击(法)",
-      "白日门血魄(法)",
-      "血魄一击(道)",
-      "白日门血魄(道)",
-      "白日门强身术"
-    ]
+    "laterSkills": null,
+    "classicSkillIdentities": {
+      "acceptance": "passed",
+      "retained": 33,
+      "outsideScope": 0,
+      "outsideSkills": [],
+      "authenticated2003NumericalData": false
+    }
   },
   "clientArchive": {
     "file": "传奇1.76客户端.rar",

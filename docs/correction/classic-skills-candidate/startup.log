@@ -1,0 +1,1687 @@
+[LoginSrv]     ___                           __  __   _          ____          
+   / _ \   _ __     ___   _ __   |  \/  | (_)  _ __  |___ \         
+  | | | | | '_ \   / _ \ | '_ \  | |\/| | | | | '__|   __) |        
+  | |_| | | |_) | |  __/ | | | | | |  | | | | | |     / __/         
+   \___/  | .__/   \___| |_| |_| |_|  |_| |_| |_|    |_____|        
+          |_|                                                       
+   _                       _           ____                         
+  | |       ___     __ _  (_)  _ __   / ___|   _ __  __   __        
+  | |      / _ \   / _` | | | | '_ \  \___ \  | '__| \ \ / /        
+  | |___  | (_) | | (_| | | | | | | |  ___) | | |     \ V /         
+  |_____|  \___/   \__, | |_| |_| |_| |____/  |_|      \_/          
+                   |___/                                            
+                                                                    
+[LoginSrv] 01:38:19.495 [INF] 正在启动服务器...
+[LoginSrv] 01:38:19.751 [INF] 账号登陆服务[127.0.0.1:5500]已启动.
+[LoginSrv] 01:38:19.754 [INF] 账号数据服务[127.0.0.1:5600]已启动.
+[LoginSrv] 01:38:19.756 [INF] 正在连接SQL服务器...
+[DBSrv]                                                              
+   ___                           __  __   _          ____    
+  / _ \   _ __     ___   _ __   |  \/  | (_)  _ __  |___ \   
+ | | | | | '_ \   / _ \ | '_ \  | |\/| | | | | '__|   __) |  
+ | |_| | | |_) | |  __/ | | | | | |  | | | | | |     / __/   
+  \___/  | .__/   \___| |_| |_| |_|  |_| |_| |_|    |_____|  
+         |_|                                                 
+  ____    ____    ____                                       
+ |  _ \  | __ )  / ___|   _ __  __   __                      
+ | | | | |  _ \  \___ \  | '__| \ \ / /                      
+ | |_| | | |_) |  ___) | | |     \ V /                       
+ |____/  |____/  |____/  |_|      \_/                        
+                                                             
+                                                             
+[DBSrv] 01:38:20.089 [INF] [MySQL]数据存储初始化成功.
+[LoginSrv] 01:38:20.198 [INF] 连接SQL服务器成功...
+[DBSrv] 01:38:20.227 [INF] 正在读取基础配置信息...
+[DBSrv] 01:38:20.229 [INF] 加载IP授权文件列表成功...[1]
+01:38:20.229 [INF] 读取基础配置信息完成...
+[DBSrv] 01:38:20.239 [INF] 读取网关配置信息成功.[1]
+[DBSrv] 01:38:20.243 [INF] 配置文件读取完成...
+[LoginSrv] 01:38:20.246 [INF] 账号数据读取成功...[225]
+01:38:20.247 [INF] 服务已启动成功...
+[LoginSrv] 01:38:20.247 [INF] 欢迎使用翎风系列游戏软件...
+01:38:20.247 [INF] 网站:http://www.gameofmir.com
+01:38:20.247 [INF] 论坛:http://bbs.gameofmir.com
+[DBSrv] 01:38:20.871 [INF] 玩家数据网关服务[127.0.0.1:5100]已启动.等待链接...
+[DBSrv] 01:38:20.885 [INF] 玩家数据存储服务[127.0.0.1:6000]已启动.等待链接...
+01:38:20.885 [INF] 拍卖行数据库服务[127.0.0.1:5700]已启动.等待链接...
+[DBSrv] 01:38:20.900 [INF] 服务已启动成功...
+[DBSrv] 01:38:20.900 [INF] 欢迎使用翎风系列游戏软件...
+01:38:20.900 [INF] 网站:http://www.gameofmir.com
+01:38:20.900 [INF] 论坛:http://bbs.gameofmir.com
+[DBSrv] 01:38:20.911 [INF] 账号服务器[127.0.0.1:5600]链接成功.
+[SelGate]                                                                       
+   ___                           __  __   _          ____             
+  / _ \   _ __     ___   _ __   |  \/  | (_)  _ __  |___ \            
+ | | | | | '_ \   / _ \ | '_ \  | |\/| | | | | '__|   __) |           
+ | |_| | | |_) | |  __/ | | | | | |  | | | | | |     / __/            
+  \___/  | .__/   \___| |_| |_| |_|  |_| |_| |_|    |_____|           
+         |_|                                                          
+  ____           _    ____           _                                
+ / ___|    ___  | |  / ___|   __ _  | |_    ___                       
+ \___ \   / _ \ | | | |  _   / _` | | __|  / _ \                      
+  ___) | |  __/ | | | |_| | | (_| | | |_  |  __/                      
+ |____/   \___| |_|  \____|  \__,_|  \__|  \___|                      
+                                                                      
+[LoginGate]                                                                     
+   ___                           __  __   _          ____           
+  / _ \   _ __     ___   _ __   |  \/  | (_)  _ __  |___ \          
+ | | | | | '_ \   / _ \ | '_ \  | |\/| | | | | '__|   __) |         
+ | |_| | | |_) | |  __/ | | | | | |  | | | | | |     / __/          
+  \___/  | .__/   \___| |_| |_| |_|  |_| |_| |_|    |_____|         
+         |_|                                                        
+  _                       _            ____           _             
+ | |       ___     __ _  (_)  _ __    / ___|   __ _  | |_    ___    
+ | |      / _ \   / _` | | | | '_ \  | |  _   / _` | | __|  / _ \   
+ | |___  | (_) | | (_| | | | | | | | | |_| | | (_| | | |_  |  __/   
+ |_____|  \___/   \__, | |_| |_| |_|  \____|  \__,_|  \__|  \___|   
+[LoginGate]                   |___/                                             
+                                                                    
+[LoginGate] 01:38:21.544 [INF] 正在启动服务...
+[SelGate] 01:38:21.674 [INF] 正在启动服务...
+[SelGate] 01:38:21.805 [INF] 登陆网关[127.0.0.1:7100]已启动.
+[LoginGate] 01:38:21.816 [INF] 登录网关[0.0.0.0:7000]已启动...
+[SelGate] 01:38:21.818 [INF] 服务已启动成功...
+[SelGate] 01:38:21.819 [INF] 欢迎使用翎风系列游戏软件...
+01:38:21.819 [INF] 网站:http://www.gameofmir.com
+01:38:21.819 [INF] 论坛:http://bbs.gameofmir.com
+[DBSrv] 01:38:21.824 [INF] 角色网关[0](127.0.0.1:50372)已打开...
+[SelGate] 01:38:21.825 [INF] 数据库服务器[127.0.0.1:5100]链接成功.
+[LoginSrv] 01:38:21.828 [INF] 登录网关[127.0.0.1:51572]已链接...
+[LoginGate] 01:38:21.831 [INF] 服务已启动成功...
+01:38:21.831 [INF] 欢迎使用翎风系列游戏软件...
+[LoginGate] 01:38:21.831 [INF] 网站:http://www.gameofmir.com
+01:38:21.831 [INF] 论坛:http://bbs.gameofmir.com
+[LoginGate] 01:38:21.840 [INF] 账号服务器[127.0.0.1:5500]链接成功.
+[GameSrv] 01:38:21.935 [INF] 初始化脚本编码定义...
+[GameSrv] 01:38:22.088 [INF] 正在读取配置信息...
+01:38:22.089 [INF] 读取游戏引擎数据配置文件...
+[GameSrv] 01:38:22.195 [INF] 初始化游戏引擎数据配置文件完成...
+01:38:22.195 [INF] 初始化游戏基础数据...
+[GameSrv] 01:38:22.199 [INF] 读取游戏命令配置...
+[GameSrv] 01:38:22.231 [INF] 读取游戏命令配置完成...
+[GameSrv] 01:38:22.233 [INF] 正在加载物品数据库...
+[GameSrv] 01:38:22.897 [INF] 物品数据库加载成功...[1000]
+[GameSrv] 01:38:22.898 [INF] 正在加小地图数据文件...
+[GameSrv] 01:38:22.905 [INF] 小地图数据加载成功...
+[GameSrv] 01:38:22.918 [INF] 正在加载地图数据...
+[GameSrv] MAP_ROUTE map=0 x=346 y=186 dest=0122 valid=True
+[GameSrv] MAP_ROUTE map=0 x=347 y=186 dest=0122 valid=True
+MAP_ROUTE map=0 x=348 y=187 dest=0122 valid=True
+MAP_ROUTE map=0122 x=11 y=42 dest=0 valid=True
+MAP_ROUTE map=0122 x=12 y=43 dest=0 valid=True
+MAP_ROUTE map=0122 x=13 y=44 dest=0 valid=True
+MAP_ROUTE map=0 x=395 y=229 dest=0110 valid=True
+MAP_ROUTE map=0 x=396 y=229 dest=0110 valid=True
+MAP_ROUTE map=0 x=400 y=225 dest=0111 valid=True
+MAP_ROUTE map=0 x=399 y=225 dest=0111 valid=False
+MAP_ROUTE map=0 x=403 y=221 dest=0112 valid=False
+MAP_ROUTE map=0 x=404 y=221 dest=0112 valid=True
+MAP_ROUTE map=0110 x=12 y=15 dest=0 valid=True
+MAP_ROUTE map=0110 x=11 y=16 dest=0 valid=True
+MAP_ROUTE map=0111 x=12 y=15 dest=0 valid=True
+MAP_ROUTE map=0111 x=11 y=16 dest=0 valid=True
+MAP_ROUTE map=0112 x=11 y=16 dest=0 valid=True
+MAP_ROUTE map=0112 x=12 y=15 dest=0 valid=True
+MAP_ROUTE map=0 x=308 y=264 dest=0102 valid=True
+[GameSrv] MAP_ROUTE map=0102 x=3 y=8 dest=0 valid=True
+MAP_ROUTE map=0 x=326 y=288 dest=0108 valid=True
+MAP_ROUTE map=0108 x=10 y=13 dest=0 valid=True
+MAP_ROUTE map=0108 x=4 y=15 dest=0109 valid=True
+MAP_ROUTE map=0109 x=8 y=6 dest=0108 valid=True
+MAP_ROUTE map=0 x=323 y=247 dest=0104 valid=True
+MAP_ROUTE map=0104 x=4 y=11 dest=0 valid=True
+MAP_ROUTE map=0 x=354 y=319 dest=0107 valid=True
+MAP_ROUTE map=0107 x=10 y=13 dest=0 valid=True
+MAP_ROUTE map=0 x=295 y=250 dest=0125 valid=True
+[GameSrv] MAP_ROUTE map=0 x=296 y=250 dest=0125 valid=True
+MAP_ROUTE map=0 x=296 y=251 dest=0125 valid=True
+MAP_ROUTE map=0125 x=7 y=17 dest=0 valid=True
+MAP_ROUTE map=0125 x=8 y=17 dest=0 valid=False
+[GameSrv] MAP_ROUTE map=0125 x=4 y=10 dest=0126 valid=True
+MAP_ROUTE map=0126 x=3 y=10 dest=0125 valid=True
+MAP_ROUTE map=0 x=335 y=299 dest=0103 valid=True
+MAP_ROUTE map=0 x=335 y=300 dest=0103 valid=True
+MAP_ROUTE map=0103 x=4 y=13 dest=0 valid=True
+MAP_ROUTE map=0103 x=5 y=13 dest=0 valid=True
+MAP_ROUTE map=0 x=344 y=308 dest=0103 valid=True
+MAP_ROUTE map=0 x=345 y=308 dest=0103 valid=True
+MAP_ROUTE map=0103 x=16 y=25 dest=0 valid=True
+MAP_ROUTE map=0103 x=17 y=25 dest=0 valid=True
+MAP_ROUTE map=0 x=295 y=284 dest=0105 valid=True
+MAP_ROUTE map=0 x=295 y=285 dest=0105 valid=True
+MAP_ROUTE map=0105 x=9 y=25 dest=0 valid=True
+MAP_ROUTE map=0105 x=9 y=24 dest=0 valid=True
+MAP_ROUTE map=0 x=305 y=275 dest=0105 valid=True
+MAP_ROUTE map=0 x=305 y=276 dest=0105 valid=True
+MAP_ROUTE map=0105 x=21 y=12 dest=0 valid=True
+MAP_ROUTE map=0105 x=21 y=13 dest=0 valid=True
+MAP_ROUTE map=0 x=307 y=310 dest=0106 valid=True
+MAP_ROUTE map=0 x=307 y=311 dest=0106 valid=True
+MAP_ROUTE map=0106 x=9 y=25 dest=0 valid=True
+MAP_ROUTE map=0106 x=9 y=24 dest=0 valid=True
+MAP_ROUTE map=0 x=317 y=301 dest=0106 valid=True
+MAP_ROUTE map=0 x=317 y=302 dest=0106 valid=True
+MAP_ROUTE map=0106 x=21 y=13 dest=0 valid=True
+MAP_ROUTE map=0106 x=21 y=12 dest=0 valid=True
+MAP_ROUTE map=0 x=286 y=295 dest=0101 valid=True
+MAP_ROUTE map=0101 x=10 y=22 dest=0 valid=True
+MAP_ROUTE map=0 x=289 y=292 dest=0101 valid=True
+MAP_ROUTE map=0101 x=18 y=14 dest=0 valid=True
+[GameSrv] MAP_ROUTE map=0101 x=3 y=19 dest=0100 valid=True
+MAP_ROUTE map=0100 x=11 y=14 dest=0101 valid=True
+MAP_ROUTE map=0 x=278 y=239 dest=0128 valid=True
+MAP_ROUTE map=0128 x=6 y=9 dest=0 valid=True
+MAP_ROUTE map=0 x=285 y=236 dest=0129 valid=True
+MAP_ROUTE map=0129 x=2 y=7 dest=0 valid=True
+MAP_ROUTE map=0 x=271 y=256 dest=0123 valid=True
+MAP_ROUTE map=0123 x=12 y=18 dest=0 valid=True
+MAP_ROUTE map=0 x=283 y=268 dest=0124 valid=True
+MAP_ROUTE map=0124 x=6 y=13 dest=0 valid=True
+MAP_ROUTE map=0 x=107 y=316 dest=0114 valid=True
+MAP_ROUTE map=0114 x=15 y=17 dest=0 valid=True
+MAP_ROUTE map=0 x=314 y=474 dest=0115 valid=True
+[GameSrv] MAP_ROUTE map=0115 x=17 y=21 dest=0 valid=True
+MAP_ROUTE map=0 x=544 y=560 dest=0113 valid=True
+MAP_ROUTE map=0113 x=13 y=16 dest=0 valid=True
+MAP_ROUTE map=0 x=414 y=242 dest=0137 valid=True
+MAP_ROUTE map=0 x=415 y=241 dest=0137 valid=True
+MAP_ROUTE map=0 x=416 y=240 dest=0137 valid=True
+MAP_ROUTE map=0137 x=18 y=23 dest=0 valid=True
+MAP_ROUTE map=0137 x=19 y=22 dest=0 valid=True
+MAP_ROUTE map=0137 x=20 y=21 dest=0 valid=True
+MAP_ROUTE map=0 x=625 y=620 dest=0135 valid=True
+MAP_ROUTE map=0135 x=9 y=10 dest=0 valid=True
+MAP_ROUTE map=0 x=622 y=639 dest=0134 valid=True
+MAP_ROUTE map=0134 x=6 y=13 dest=0 valid=True
+[GameSrv] MAP_ROUTE map=0 x=629 y=645 dest=0133 valid=True
+MAP_ROUTE map=0133 x=2 y=8 dest=0 valid=True
+MAP_ROUTE map=0119 x=4 y=7 dest=0118 valid=True
+MAP_ROUTE map=0119 x=5 y=7 dest=0118 valid=True
+MAP_ROUTE map=0118 x=8 y=12 dest=0119 valid=True
+MAP_ROUTE map=0118 x=9 y=11 dest=0119 valid=True
+MAP_ROUTE map=0 x=650 y=616 dest=0118 valid=True
+MAP_ROUTE map=0118 x=2 y=14 dest=0 valid=True
+MAP_ROUTE map=0 x=309 y=613 dest=0121 valid=True
+MAP_ROUTE map=0121 x=2 y=16 dest=0 valid=True
+MAP_ROUTE map=0 x=266 y=630 dest=0130 valid=True
+MAP_ROUTE map=0130 x=8 y=12 dest=0 valid=True
+MAP_ROUTE map=0 x=272 y=621 dest=0131 valid=True
+[GameSrv] MAP_ROUTE map=0131 x=4 y=16 dest=0 valid=True
+MAP_ROUTE map=0 x=295 y=649 dest=0136 valid=True
+MAP_ROUTE map=0136 x=2 y=20 dest=0 valid=True
+MAP_ROUTE map=0 x=282 y=636 dest=0132 valid=True
+MAP_ROUTE map=0 x=282 y=635 dest=0132 valid=True
+MAP_ROUTE map=0 x=283 y=635 dest=0132 valid=True
+MAP_ROUTE map=0132 x=14 y=16 dest=0 valid=True
+MAP_ROUTE map=0132 x=15 y=15 dest=0 valid=True
+MAP_ROUTE map=0132 x=16 y=14 dest=0 valid=True
+MAP_ROUTE map=0 x=274 y=636 dest=0138 valid=True
+MAP_ROUTE map=0138 x=4 y=10 dest=0 valid=True
+MAP_ROUTE map=0 x=302 y=622 dest=0141 valid=True
+MAP_ROUTE map=0 x=311 y=631 dest=0141 valid=True
+MAP_ROUTE map=0141 x=2 y=12 dest=0 valid=True
+[GameSrv] MAP_ROUTE map=0141 x=17 y=27 dest=0 valid=True
+MAP_ROUTE map=0 x=307 y=627 dest=0140 valid=True
+MAP_ROUTE map=0140 x=2 y=11 dest=0 valid=True
+MAP_ROUTE map=0 x=147 y=33 dest=D001 valid=True
+MAP_ROUTE map=D001 x=149 y=364 dest=0 valid=True
+MAP_ROUTE map=D001 x=150 y=364 dest=0 valid=True
+MAP_ROUTE map=D001 x=148 y=366 dest=0 valid=True
+MAP_ROUTE map=D001 x=30 y=328 dest=D002 valid=True
+MAP_ROUTE map=D002 x=34 y=322 dest=D001 valid=True
+MAP_ROUTE map=D001 x=381 y=23 dest=D002 valid=True
+MAP_ROUTE map=D002 x=324 y=15 dest=D001 valid=True
+MAP_ROUTE map=D001 x=350 y=356 dest=D002 valid=True
+[GameSrv] MAP_ROUTE map=D002 x=367 y=350 dest=D001 valid=True
+MAP_ROUTE map=D002 x=117 y=95 dest=D003 valid=True
+MAP_ROUTE map=D003 x=106 y=82 dest=D002 valid=True
+MAP_ROUTE map=0 x=41 y=108 dest=D011 valid=True
+MAP_ROUTE map=0 x=41 y=109 dest=D011 valid=True
+MAP_ROUTE map=D011 x=155 y=368 dest=0 valid=True
+MAP_ROUTE map=D011 x=155 y=367 dest=0 valid=True
+MAP_ROUTE map=D011 x=330 y=115 dest=D012 valid=True
+MAP_ROUTE map=D012 x=337 y=104 dest=D011 valid=True
+MAP_ROUTE map=D011 x=127 y=201 dest=D012 valid=True
+MAP_ROUTE map=D012 x=77 y=197 dest=D011 valid=True
+MAP_ROUTE map=0 x=324 y=34 dest=1 valid=True
+[GameSrv] MAP_ROUTE map=0 x=325 y=34 dest=1 valid=True
+MAP_ROUTE map=0 x=325 y=35 dest=1 valid=True
+MAP_ROUTE map=0 x=326 y=35 dest=1 valid=True
+MAP_ROUTE map=0 x=326 y=36 dest=1 valid=True
+MAP_ROUTE map=0 x=327 y=36 dest=1 valid=True
+MAP_ROUTE map=0 x=327 y=37 dest=1 valid=True
+MAP_ROUTE map=0 x=328 y=37 dest=1 valid=True
+MAP_ROUTE map=0 x=328 y=38 dest=1 valid=True
+MAP_ROUTE map=0 x=325 y=33 dest=1 valid=True
+MAP_ROUTE map=0 x=326 y=33 dest=1 valid=True
+MAP_ROUTE map=0 x=326 y=34 dest=1 valid=True
+MAP_ROUTE map=0 x=327 y=34 dest=1 valid=True
+MAP_ROUTE map=0 x=327 y=35 dest=1 valid=True
+[GameSrv] MAP_ROUTE map=0 x=328 y=35 dest=1 valid=True
+MAP_ROUTE map=0 x=328 y=36 dest=1 valid=True
+MAP_ROUTE map=0 x=329 y=36 dest=1 valid=True
+MAP_ROUTE map=0 x=329 y=37 dest=1 valid=True
+MAP_ROUTE map=1 x=559 y=554 dest=0 valid=True
+MAP_ROUTE map=1 x=559 y=555 dest=0 valid=True
+MAP_ROUTE map=1 x=560 y=555 dest=0 valid=True
+MAP_ROUTE map=1 x=560 y=556 dest=0 valid=True
+MAP_ROUTE map=1 x=561 y=556 dest=0 valid=True
+MAP_ROUTE map=1 x=561 y=557 dest=0 valid=True
+MAP_ROUTE map=1 x=562 y=557 dest=0 valid=True
+MAP_ROUTE map=1 x=562 y=558 dest=0 valid=True
+[GameSrv] MAP_ROUTE map=1 x=563 y=558 dest=0 valid=True
+MAP_ROUTE map=1 x=558 y=555 dest=0 valid=True
+MAP_ROUTE map=1 x=558 y=556 dest=0 valid=True
+MAP_ROUTE map=1 x=559 y=556 dest=0 valid=True
+MAP_ROUTE map=1 x=559 y=557 dest=0 valid=True
+MAP_ROUTE map=1 x=560 y=557 dest=0 valid=True
+MAP_ROUTE map=1 x=560 y=558 dest=0 valid=True
+MAP_ROUTE map=1 x=561 y=558 dest=0 valid=True
+MAP_ROUTE map=1 x=561 y=559 dest=0 valid=True
+MAP_ROUTE map=1 x=562 y=559 dest=0 valid=True
+MAP_ROUTE map=1 x=84 y=277 dest=D021 valid=True
+[GameSrv] MAP_ROUTE map=1 x=84 y=278 dest=D021 valid=True
+MAP_ROUTE map=D021 x=77 y=75 dest=1 valid=True
+MAP_ROUTE map=D021 x=77 y=76 dest=1 valid=True
+MAP_ROUTE map=D021 x=26 y=27 dest=D022 valid=True
+MAP_ROUTE map=D021 x=26 y=26 dest=D022 valid=True
+MAP_ROUTE map=D022 x=338 y=355 dest=D021 valid=True
+MAP_ROUTE map=D022 x=338 y=354 dest=D021 valid=True
+MAP_ROUTE map=D022 x=251 y=207 dest=D023 valid=True
+MAP_ROUTE map=D022 x=251 y=206 dest=D023 valid=True
+MAP_ROUTE map=D023 x=198 y=194 dest=D022 valid=True
+MAP_ROUTE map=D023 x=198 y=193 dest=D022 valid=True
+MAP_ROUTE map=D023 x=52 y=366 dest=D024 valid=True
+MAP_ROUTE map=D024 x=16 y=18 dest=D023 valid=True
+MAP_ROUTE map=0 x=671 y=82 dest=2 valid=True
+[GameSrv] MAP_ROUTE map=0 x=672 y=82 dest=2 valid=True
+MAP_ROUTE map=0 x=672 y=83 dest=2 valid=True
+MAP_ROUTE map=0 x=673 y=83 dest=2 valid=True
+MAP_ROUTE map=0 x=673 y=84 dest=2 valid=True
+MAP_ROUTE map=0 x=674 y=84 dest=2 valid=True
+MAP_ROUTE map=0 x=674 y=85 dest=2 valid=True
+MAP_ROUTE map=0 x=675 y=85 dest=2 valid=True
+MAP_ROUTE map=0 x=675 y=86 dest=2 valid=True
+MAP_ROUTE map=0 x=672 y=81 dest=2 valid=True
+MAP_ROUTE map=0 x=673 y=81 dest=2 valid=True
+MAP_ROUTE map=0 x=673 y=82 dest=2 valid=True
+MAP_ROUTE map=0 x=674 y=82 dest=2 valid=True
+MAP_ROUTE map=0 x=674 y=83 dest=2 valid=True
+[GameSrv] MAP_ROUTE map=0 x=675 y=83 dest=2 valid=True
+MAP_ROUTE map=0 x=675 y=84 dest=2 valid=True
+MAP_ROUTE map=0 x=676 y=84 dest=2 valid=True
+MAP_ROUTE map=0 x=676 y=85 dest=2 valid=True
+MAP_ROUTE map=2 x=413 y=564 dest=0 valid=True
+MAP_ROUTE map=2 x=413 y=565 dest=0 valid=True
+MAP_ROUTE map=2 x=414 y=546 dest=0 valid=False
+MAP_ROUTE map=2 x=415 y=566 dest=0 valid=True
+MAP_ROUTE map=2 x=415 y=567 dest=0 valid=True
+MAP_ROUTE map=2 x=416 y=567 dest=0 valid=True
+MAP_ROUTE map=2 x=416 y=568 dest=0 valid=True
+MAP_ROUTE map=2 x=417 y=568 dest=0 valid=True
+MAP_ROUTE map=2 x=412 y=565 dest=0 valid=True
+[GameSrv] MAP_ROUTE map=2 x=412 y=566 dest=0 valid=True
+MAP_ROUTE map=2 x=413 y=547 dest=0 valid=False
+MAP_ROUTE map=2 x=414 y=567 dest=0 valid=True
+MAP_ROUTE map=2 x=414 y=568 dest=0 valid=True
+MAP_ROUTE map=2 x=415 y=568 dest=0 valid=True
+MAP_ROUTE map=2 x=415 y=569 dest=0 valid=True
+MAP_ROUTE map=2 x=416 y=569 dest=0 valid=True
+MAP_ROUTE map=2 x=523 y=473 dest=0116 valid=True
+MAP_ROUTE map=2 x=523 y=474 dest=0116 valid=True
+MAP_ROUTE map=0116 x=9 y=23 dest=2 valid=True
+MAP_ROUTE map=0116 x=10 y=24 dest=2 valid=True
+MAP_ROUTE map=2 x=504 y=498 dest=0117 valid=True
+[GameSrv] MAP_ROUTE map=0117 x=10 y=17 dest=2 valid=True
+MAP_ROUTE map=2 x=516 y=492 dest=0120 valid=True
+MAP_ROUTE map=0120 x=14 y=15 dest=2 valid=True
+MAP_ROUTE map=2 x=511 y=462 dest=0142 valid=True
+MAP_ROUTE map=0142 x=9 y=10 dest=2 valid=True
+MAP_ROUTE map=0 x=664 y=212 dest=D401 valid=True
+MAP_ROUTE map=0 x=664 y=213 dest=D401 valid=True
+MAP_ROUTE map=D401 x=24 y=182 dest=0 valid=True
+MAP_ROUTE map=D401 x=76 y=15 dest=D411 valid=True
+MAP_ROUTE map=D411 x=60 y=7 dest=D401 valid=True
+[GameSrv] MAP_ROUTE map=D401 x=179 y=109 dest=D413 valid=True
+MAP_ROUTE map=D413 x=10 y=7 dest=D401 valid=True
+MAP_ROUTE map=D413 x=86 y=9 dest=D402 valid=True
+MAP_ROUTE map=D402 x=8 y=147 dest=D413 valid=True
+MAP_ROUTE map=D402 x=195 y=81 dest=D414 valid=True
+MAP_ROUTE map=D414 x=14 y=79 dest=D402 valid=True
+MAP_ROUTE map=D403 x=10 y=106 dest=D414 valid=True
+MAP_ROUTE map=D414 x=71 y=19 dest=D403 valid=True
+MAP_ROUTE map=D403 x=121 y=191 dest=D412 valid=True
+MAP_ROUTE map=D412 x=54 y=23 dest=D403 valid=True
+[GameSrv] MAP_ROUTE map=D404 x=129 y=42 dest=D412 valid=True
+MAP_ROUTE map=D412 x=53 y=52 dest=D404 valid=True
+MAP_ROUTE map=D404 x=9 y=152 dest=D416 valid=True
+MAP_ROUTE map=D416 x=90 y=16 dest=D404 valid=True
+MAP_ROUTE map=D405 x=166 y=138 dest=D416 valid=True
+MAP_ROUTE map=D416 x=6 y=54 dest=D405 valid=True
+MAP_ROUTE map=D405 x=11 y=148 dest=D415 valid=True
+MAP_ROUTE map=D415 x=84 y=16 dest=D405 valid=True
+MAP_ROUTE map=D406 x=186 y=119 dest=D415 valid=True
+[GameSrv] MAP_ROUTE map=D415 x=8 y=86 dest=D406 valid=True
+MAP_ROUTE map=D406 x=23 y=15 dest=D411 valid=True
+MAP_ROUTE map=D411 x=95 y=49 dest=D406 valid=True
+MAP_ROUTE map=2 x=564 y=169 dest=D421 valid=True
+MAP_ROUTE map=D421 x=30 y=375 dest=2 valid=True
+MAP_ROUTE map=D421 x=361 y=19 dest=D422 valid=True
+MAP_ROUTE map=D422 x=22 y=42 dest=D421 valid=True
+MAP_ROUTE map=D402 x=138 y=107 dest=Q004 valid=True
+MAP_ROUTE map=D402 x=138 y=108 dest=Q004 valid=True
+MAP_ROUTE map=D402 x=137 y=107 dest=Q004 valid=True
+[GameSrv] MAP_ROUTE map=D402 x=137 y=108 dest=Q004 valid=True
+MAP_ROUTE map=2 x=296 y=58 dest=3 valid=True
+MAP_ROUTE map=2 x=297 y=58 dest=3 valid=True
+MAP_ROUTE map=2 x=297 y=59 dest=3 valid=True
+MAP_ROUTE map=2 x=298 y=59 dest=3 valid=True
+MAP_ROUTE map=2 x=298 y=50 dest=3 valid=False
+MAP_ROUTE map=2 x=299 y=50 dest=3 valid=False
+MAP_ROUTE map=2 x=299 y=61 dest=3 valid=True
+[GameSrv] MAP_ROUTE map=2 x=297 y=57 dest=3 valid=True
+MAP_ROUTE map=2 x=298 y=57 dest=3 valid=True
+MAP_ROUTE map=2 x=298 y=58 dest=3 valid=True
+MAP_ROUTE map=2 x=299 y=58 dest=3 valid=True
+MAP_ROUTE map=2 x=299 y=59 dest=3 valid=True
+MAP_ROUTE map=2 x=300 y=59 dest=3 valid=True
+MAP_ROUTE map=2 x=300 y=60 dest=3 valid=True
+MAP_ROUTE map=3 x=272 y=751 dest=2 valid=True
+MAP_ROUTE map=3 x=272 y=752 dest=2 valid=True
+MAP_ROUTE map=3 x=273 y=752 dest=2 valid=True
+[GameSrv] MAP_ROUTE map=3 x=273 y=753 dest=2 valid=True
+MAP_ROUTE map=3 x=274 y=753 dest=2 valid=True
+MAP_ROUTE map=3 x=274 y=754 dest=2 valid=True
+MAP_ROUTE map=3 x=275 y=754 dest=2 valid=True
+MAP_ROUTE map=3 x=271 y=752 dest=2 valid=True
+MAP_ROUTE map=3 x=271 y=753 dest=2 valid=True
+MAP_ROUTE map=3 x=272 y=753 dest=2 valid=True
+MAP_ROUTE map=3 x=272 y=754 dest=2 valid=True
+MAP_ROUTE map=3 x=273 y=754 dest=2 valid=True
+MAP_ROUTE map=3 x=273 y=755 dest=2 valid=True
+[GameSrv] MAP_ROUTE map=3 x=274 y=755 dest=2 valid=True
+MAP_ROUTE map=2 x=557 y=74 dest=3 valid=True
+MAP_ROUTE map=2 x=558 y=74 dest=3 valid=True
+MAP_ROUTE map=2 x=558 y=75 dest=3 valid=True
+MAP_ROUTE map=2 x=559 y=75 dest=3 valid=True
+MAP_ROUTE map=2 x=559 y=76 dest=3 valid=True
+MAP_ROUTE map=2 x=560 y=76 dest=3 valid=True
+MAP_ROUTE map=2 x=560 y=77 dest=3 valid=True
+MAP_ROUTE map=2 x=561 y=77 dest=3 valid=True
+MAP_ROUTE map=2 x=561 y=78 dest=3 valid=True
+MAP_ROUTE map=2 x=558 y=73 dest=3 valid=True
+MAP_ROUTE map=2 x=559 y=73 dest=3 valid=True
+MAP_ROUTE map=2 x=559 y=74 dest=3 valid=True
+MAP_ROUTE map=2 x=550 y=74 dest=3 valid=True
+MAP_ROUTE map=2 x=550 y=75 dest=3 valid=True
+MAP_ROUTE map=2 x=561 y=75 dest=3 valid=True
+MAP_ROUTE map=2 x=561 y=76 dest=3 valid=True
+MAP_ROUTE map=2 x=562 y=76 dest=3 valid=True
+MAP_ROUTE map=2 x=562 y=77 dest=3 valid=True
+MAP_ROUTE map=3 x=511 y=775 dest=2 valid=True
+MAP_ROUTE map=3 x=511 y=776 dest=2 valid=True
+MAP_ROUTE map=3 x=512 y=776 dest=2 valid=True
+MAP_ROUTE map=3 x=512 y=777 dest=2 valid=True
+MAP_ROUTE map=3 x=513 y=777 dest=2 valid=True
+[GameSrv] MAP_ROUTE map=3 x=513 y=778 dest=2 valid=True
+MAP_ROUTE map=3 x=514 y=778 dest=2 valid=True
+MAP_ROUTE map=3 x=514 y=779 dest=2 valid=True
+MAP_ROUTE map=3 x=515 y=779 dest=2 valid=True
+MAP_ROUTE map=3 x=510 y=776 dest=2 valid=True
+MAP_ROUTE map=3 x=510 y=777 dest=2 valid=True
+MAP_ROUTE map=3 x=511 y=777 dest=2 valid=True
+MAP_ROUTE map=3 x=511 y=778 dest=2 valid=True
+MAP_ROUTE map=3 x=512 y=778 dest=2 valid=True
+MAP_ROUTE map=3 x=512 y=779 dest=2 valid=True
+MAP_ROUTE map=3 x=513 y=779 dest=2 valid=True
+MAP_ROUTE map=3 x=513 y=780 dest=2 valid=True
+MAP_ROUTE map=3 x=514 y=780 dest=2 valid=True
+MAP_ROUTE map=3 x=276 y=320 dest=0143 valid=True
+MAP_ROUTE map=0143 x=16 y=20 dest=3 valid=True
+MAP_ROUTE map=3 x=255 y=335 dest=0144 valid=True
+MAP_ROUTE map=3 x=258 y=334 dest=0144 valid=True
+MAP_ROUTE map=0144 x=9 y=20 dest=3 valid=True
+MAP_ROUTE map=0144 x=16 y=18 dest=3 valid=True
+[GameSrv] MAP_ROUTE map=3 x=305 y=368 dest=0145 valid=True
+MAP_ROUTE map=3 x=306 y=369 dest=0145 valid=True
+MAP_ROUTE map=3 x=306 y=368 dest=0145 valid=True
+MAP_ROUTE map=0145 x=5 y=16 dest=3 valid=True
+MAP_ROUTE map=0145 x=6 y=17 dest=3 valid=True
+MAP_ROUTE map=0145 x=8 y=2 dest=0146 valid=True
+MAP_ROUTE map=0145 x=9 y=3 dest=0146 valid=True
+MAP_ROUTE map=0146 x=6 y=8 dest=0145 valid=True
+MAP_ROUTE map=0146 x=7 y=8 dest=0145 valid=True
+MAP_ROUTE map=3 x=290 y=367 dest=0148 valid=True
+MAP_ROUTE map=0148 x=10 y=15 dest=3 valid=True
+MAP_ROUTE map=3 x=311 y=292 dest=0149 valid=True
+MAP_ROUTE map=3 x=321 y=302 dest=0149 valid=True
+[GameSrv] MAP_ROUTE map=0149 x=2 y=10 dest=3 valid=True
+MAP_ROUTE map=0149 x=17 y=26 dest=3 valid=True
+MAP_ROUTE map=3 x=290 y=302 dest=0158 valid=True
+MAP_ROUTE map=3 x=300 y=293 dest=0158 valid=True
+MAP_ROUTE map=0158 x=7 y=28 dest=3 valid=True
+MAP_ROUTE map=0158 x=22 y=13 dest=3 valid=True
+MAP_ROUTE map=3 x=330 y=314 dest=0159 valid=True
+MAP_ROUTE map=0159 x=4 y=16 dest=3 valid=True
+MAP_ROUTE map=3 x=269 y=351 dest=0160 valid=True
+MAP_ROUTE map=0160 x=2 y=15 dest=3 valid=True
+[GameSrv] MAP_ROUTE map=3 x=410 y=321 dest=0161 valid=True
+MAP_ROUTE map=3 x=411 y=322 dest=0161 valid=True
+MAP_ROUTE map=0161 x=6 y=16 dest=3 valid=True
+MAP_ROUTE map=0161 x=7 y=17 dest=3 valid=True
+MAP_ROUTE map=3 x=564 y=287 dest=D701 valid=True
+MAP_ROUTE map=3 x=564 y=286 dest=D701 valid=True
+MAP_ROUTE map=D701 x=27 y=23 dest=3 valid=True
+MAP_ROUTE map=D701 x=171 y=132 dest=3 valid=True
+MAP_ROUTE map=D701 x=171 y=133 dest=3 valid=True
+MAP_ROUTE map=3 x=661 y=277 dest=D701 valid=True
+[GameSrv] MAP_ROUTE map=D701 x=31 y=128 dest=3 valid=True
+MAP_ROUTE map=3 x=578 y=296 dest=D701 valid=True
+MAP_ROUTE map=3 x=630 y=274 dest=0150 valid=True
+MAP_ROUTE map=3 x=631 y=273 dest=0150 valid=True
+MAP_ROUTE map=0150 x=15 y=20 dest=3 valid=True
+[GameSrv] MAP_ROUTE map=0150 x=16 y=19 dest=3 valid=True
+MAP_ROUTE map=0150 x=8 y=23 dest=3 valid=True
+MAP_ROUTE map=3 x=624 y=270 dest=0150 valid=True
+MAP_ROUTE map=3 x=624 y=278 dest=0150 valid=True
+MAP_ROUTE map=3 x=627 y=278 dest=0150 valid=True
+MAP_ROUTE map=3 x=634 y=271 dest=0150 valid=True
+MAP_ROUTE map=3 x=626 y=320 dest=0151 valid=True
+MAP_ROUTE map=3 x=634 y=312 dest=0151 valid=True
+MAP_ROUTE map=0151 x=7 y=23 dest=3 valid=True
+MAP_ROUTE map=0151 x=18 y=11 dest=3 valid=True
+[GameSrv] MAP_ROUTE map=0151 x=6 y=23 dest=3 valid=True
+MAP_ROUTE map=3 x=637 y=242 dest=0152 valid=True
+MAP_ROUTE map=0152 x=10 y=16 dest=3 valid=True
+MAP_ROUTE map=3 x=637 y=333 dest=0153 valid=True
+MAP_ROUTE map=3 x=645 y=325 dest=0153 valid=True
+MAP_ROUTE map=0153 x=6 y=22 dest=3 valid=True
+MAP_ROUTE map=0153 x=18 y=10 dest=3 valid=True
+MAP_ROUTE map=3 x=676 y=293 dest=0154 valid=True
+MAP_ROUTE map=3 x=683 y=285 dest=0154 valid=True
+MAP_ROUTE map=3 x=676 y=292 dest=0154 valid=True
+[GameSrv] MAP_ROUTE map=3 x=683 y=286 dest=0154 valid=True
+MAP_ROUTE map=0154 x=6 y=22 dest=3 valid=True
+MAP_ROUTE map=0154 x=17 y=11 dest=3 valid=True
+MAP_ROUTE map=3 x=664 y=282 dest=0155 valid=True
+MAP_ROUTE map=3 x=672 y=274 dest=0155 valid=True
+MAP_ROUTE map=0155 x=6 y=22 dest=3 valid=True
+MAP_ROUTE map=0155 x=18 y=10 dest=3 valid=True
+MAP_ROUTE map=3 x=600 y=282 dest=0156 valid=True
+MAP_ROUTE map=0156 x=10 y=16 dest=3 valid=True
+MAP_ROUTE map=D701 x=172 y=79 dest=E701 valid=True
+MAP_ROUTE map=E701 x=12 y=17 dest=D701 valid=True
+MAP_ROUTE map=E701 x=89 y=84 dest=E702 valid=True
+[GameSrv] MAP_ROUTE map=E702 x=60 y=68 dest=E701 valid=True
+MAP_ROUTE map=E702 x=64 y=94 dest=E703 valid=True
+MAP_ROUTE map=E703 x=49 y=45 dest=E702 valid=True
+MAP_ROUTE map=E703 x=58 y=84 dest=D712 valid=True
+MAP_ROUTE map=D712 x=206 y=223 dest=E703 valid=True
+MAP_ROUTE map=3 x=862 y=174 dest=0157 valid=True
+MAP_ROUTE map=3 x=863 y=174 dest=0157 valid=True
+MAP_ROUTE map=0157 x=8 y=26 dest=3 valid=True
+MAP_ROUTE map=0157 x=9 y=27 dest=3 valid=True
+MAP_ROUTE map=0157 x=20 y=15 dest=D501 valid=True
+MAP_ROUTE map=D501 x=165 y=217 dest=0157 valid=True
+[GameSrv] MAP_ROUTE map=D501 x=326 y=97 dest=D512 valid=True
+MAP_ROUTE map=D512 x=19 y=11 dest=D501 valid=True
+MAP_ROUTE map=D501 x=302 y=74 dest=D511 valid=True
+MAP_ROUTE map=D511 x=29 y=22 dest=D501 valid=True
+MAP_ROUTE map=D502 x=326 y=97 dest=D514 valid=True
+MAP_ROUTE map=D514 x=19 y=11 dest=D502 valid=True
+MAP_ROUTE map=D502 x=302 y=74 dest=D513 valid=True
+MAP_ROUTE map=D513 x=29 y=22 dest=D502 valid=True
+[GameSrv] MAP_ROUTE map=0157 x=20 y=5 dest=D501 valid=False
+MAP_ROUTE map=D501 x=165 y=217 dest=0157 valid=True
+[GameSrv] MAP_ROUTE map=D501 x=350 y=170 dest=D502 valid=True
+MAP_ROUTE map=D502 x=165 y=217 dest=D501 valid=True
+MAP_ROUTE map=D502 x=112 y=231 dest=D503 valid=True
+MAP_ROUTE map=D503 x=165 y=217 dest=D502 valid=True
+[GameSrv] MAP_ROUTE map=D503 x=295 y=146 dest=D504 valid=True
+MAP_ROUTE map=D504 x=165 y=217 dest=D503 valid=True
+MAP_ROUTE map=D504 x=51 y=173 dest=D505 valid=True
+MAP_ROUTE map=D505 x=95 y=102 dest=D504 valid=True
+MAP_ROUTE map=D505 x=123 y=10 dest=D5061 valid=True
+MAP_ROUTE map=D5061 x=7 y=17 dest=D505 valid=True
+MAP_ROUTE map=D5074 x=77 y=15 dest=D515 valid=True
+MAP_ROUTE map=D515 x=13 y=32 dest=D5074 valid=True
+MAP_ROUTE map=D5061 x=7 y=10 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=14 y=16 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=14 y=10 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=33 y=10 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=40 y=16 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=33 y=17 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=40 y=10 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=59 y=10 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=66 y=16 dest=D5071 valid=True
+MAP_ROUTE map=D5061 x=59 y=17 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=66 y=10 dest=D5069 valid=True
+MAP_ROUTE map=D5061 x=84 y=11 dest=D5069 valid=True
+[GameSrv] MAP_ROUTE map=D5061 x=91 y=17 dest=D5069 valid=True
+MAP_ROUTE map=D5061 x=84 y=18 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=91 y=11 dest=D5067 valid=True
+MAP_ROUTE map=D5061 x=7 y=38 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=14 y=44 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=7 y=45 dest=D5068 valid=True
+MAP_ROUTE map=D5061 x=14 y=38 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=33 y=38 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=40 y=44 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=33 y=45 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=40 y=38 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=59 y=38 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5061 x=66 y=44 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=59 y=45 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=66 y=38 dest=D5069 valid=True
+MAP_ROUTE map=D5061 x=85 y=38 dest=D5069 valid=True
+MAP_ROUTE map=D5061 x=92 y=44 dest=D5069 valid=True
+MAP_ROUTE map=D5061 x=85 y=45 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=92 y=38 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5061 x=8 y=71 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=15 y=77 dest=D5066 valid=True
+MAP_ROUTE map=D5061 x=8 y=78 dest=D5068 valid=True
+MAP_ROUTE map=D5061 x=15 y=71 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=33 y=70 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=40 y=76 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=33 y=77 dest=D5066 valid=True
+[GameSrv] MAP_ROUTE map=D5061 x=40 y=70 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=59 y=70 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=66 y=76 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=59 y=77 dest=D5064 valid=True
+MAP_ROUTE map=D5061 x=66 y=70 dest=D5069 valid=True
+MAP_ROUTE map=D5061 x=83 y=70 dest=D5069 valid=True
+[GameSrv] MAP_ROUTE map=D5061 x=90 y=76 dest=D5069 valid=True
+MAP_ROUTE map=D5061 x=83 y=77 dest=D5062 valid=True
+MAP_ROUTE map=D5061 x=90 y=70 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=7 y=10 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=14 y=16 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=7 y=17 dest=D5066 valid=True
+MAP_ROUTE map=D5062 x=14 y=10 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=33 y=10 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5062 x=40 y=16 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=33 y=17 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=40 y=10 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=59 y=10 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=66 y=16 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=59 y=17 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=66 y=10 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=84 y=11 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=91 y=17 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=84 y=18 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=91 y=11 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5062 x=7 y=38 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=14 y=44 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=7 y=45 dest=D5066 valid=True
+MAP_ROUTE map=D5062 x=14 y=38 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=33 y=38 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=40 y=44 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=33 y=45 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=40 y=38 dest=D5069 valid=True
+[GameSrv] MAP_ROUTE map=D5062 x=59 y=38 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=66 y=44 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=59 y=45 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=66 y=38 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=85 y=38 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=92 y=44 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=85 y=45 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=92 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5062 x=8 y=71 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=15 y=77 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=8 y=78 dest=D5066 valid=True
+MAP_ROUTE map=D5062 x=15 y=71 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5062 x=33 y=70 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=40 y=76 dest=D5062 valid=True
+MAP_ROUTE map=D5062 x=33 y=77 dest=D5064 valid=True
+MAP_ROUTE map=D5062 x=40 y=70 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=59 y=70 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=66 y=76 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=59 y=77 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5062 x=66 y=70 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=83 y=70 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=90 y=76 dest=D5067 valid=True
+MAP_ROUTE map=D5062 x=83 y=77 dest=D5069 valid=True
+MAP_ROUTE map=D5062 x=90 y=70 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=7 y=10 dest=D5062 valid=True
+MAP_ROUTE map=D5063 x=14 y=16 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=7 y=17 dest=D5064 valid=True
+MAP_ROUTE map=D5063 x=14 y=10 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=33 y=10 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=40 y=16 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=33 y=17 dest=D5062 valid=True
+MAP_ROUTE map=D5063 x=40 y=10 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=59 y=10 dest=D5067 valid=True
+MAP_ROUTE map=D5063 x=66 y=16 dest=D5067 valid=True
+MAP_ROUTE map=D5063 x=59 y=17 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=66 y=10 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=84 y=11 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=91 y=17 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=84 y=18 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=91 y=11 dest=D5063 valid=True
+MAP_ROUTE map=D5063 x=7 y=38 dest=D5062 valid=True
+MAP_ROUTE map=D5063 x=14 y=44 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=7 y=45 dest=D5064 valid=True
+MAP_ROUTE map=D5063 x=14 y=38 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=33 y=38 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=40 y=44 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=33 y=45 dest=D5062 valid=True
+MAP_ROUTE map=D5063 x=40 y=38 dest=D5067 valid=True
+MAP_ROUTE map=D5063 x=59 y=38 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=66 y=44 dest=D5067 valid=True
+MAP_ROUTE map=D5063 x=59 y=45 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=66 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=85 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=92 y=44 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=85 y=45 dest=D5067 valid=True
+MAP_ROUTE map=D5063 x=92 y=38 dest=D5063 valid=True
+MAP_ROUTE map=D5063 x=8 y=71 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=15 y=77 dest=D5062 valid=True
+MAP_ROUTE map=D5063 x=8 y=78 dest=D5064 valid=True
+MAP_ROUTE map=D5063 x=15 y=71 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=33 y=70 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=40 y=76 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=33 y=77 dest=D5062 valid=True
+MAP_ROUTE map=D5063 x=40 y=70 dest=D5067 valid=True
+MAP_ROUTE map=D5063 x=59 y=70 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=66 y=76 dest=D5067 valid=True
+MAP_ROUTE map=D5063 x=59 y=77 dest=D5069 valid=True
+MAP_ROUTE map=D5063 x=66 y=70 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=83 y=70 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=90 y=76 dest=D5065 valid=True
+MAP_ROUTE map=D5063 x=83 y=77 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5063 x=90 y=70 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=7 y=10 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=14 y=16 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=7 y=17 dest=D5062 valid=True
+MAP_ROUTE map=D5064 x=14 y=10 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=33 y=10 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=40 y=16 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=33 y=17 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=40 y=10 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=59 y=10 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=66 y=16 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=59 y=17 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=66 y=10 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=84 y=11 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=91 y=17 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=84 y=18 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=91 y=11 dest=D5061 valid=True
+MAP_ROUTE map=D5064 x=7 y=38 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=14 y=44 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=7 y=45 dest=D5062 valid=True
+MAP_ROUTE map=D5064 x=14 y=38 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=33 y=38 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=40 y=44 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=33 y=45 dest=D5069 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=40 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=59 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=66 y=44 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=59 y=45 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=66 y=38 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=85 y=38 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=92 y=44 dest=D5063 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=85 y=45 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=92 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5064 x=8 y=71 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=15 y=77 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=8 y=78 dest=D5062 valid=True
+MAP_ROUTE map=D5064 x=15 y=71 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=33 y=70 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=40 y=76 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=33 y=77 dest=D5069 valid=True
+MAP_ROUTE map=D5064 x=40 y=70 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=59 y=70 dest=D5065 valid=True
+MAP_ROUTE map=D5064 x=66 y=76 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=59 y=77 dest=D5067 valid=True
+MAP_ROUTE map=D5064 x=66 y=70 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=83 y=70 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=90 y=76 dest=D5063 valid=True
+MAP_ROUTE map=D5064 x=83 y=77 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5064 x=90 y=70 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=7 y=10 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=14 y=16 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=7 y=17 dest=D5069 valid=True
+MAP_ROUTE map=D5065 x=14 y=10 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=33 y=10 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=40 y=16 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5065 x=33 y=17 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=40 y=10 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=59 y=10 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=66 y=16 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=59 y=17 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=66 y=10 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=84 y=11 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=91 y=17 dest=D5061 valid=True
+[GameSrv] MAP_ROUTE map=D5065 x=84 y=18 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=91 y=11 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5065 x=7 y=38 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=14 y=44 dest=D5067 valid=True
+[GameSrv] MAP_ROUTE map=D5065 x=7 y=45 dest=D5069 valid=True
+MAP_ROUTE map=D5065 x=14 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=33 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=40 y=44 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=33 y=45 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=40 y=38 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=59 y=38 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=66 y=44 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=59 y=45 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=66 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=85 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=92 y=44 dest=D5061 valid=True
+[GameSrv] MAP_ROUTE map=D5065 x=85 y=45 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=92 y=38 dest=D5068 valid=True
+MAP_ROUTE map=D5065 x=8 y=71 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=15 y=77 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=8 y=78 dest=D5069 valid=True
+MAP_ROUTE map=D5065 x=15 y=71 dest=D5065 valid=True
+[GameSrv] MAP_ROUTE map=D5065 x=33 y=70 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=40 y=76 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=33 y=77 dest=D5067 valid=True
+MAP_ROUTE map=D5065 x=40 y=70 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=59 y=70 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=66 y=76 dest=D5063 valid=True
+MAP_ROUTE map=D5065 x=59 y=77 dest=D5065 valid=True
+MAP_ROUTE map=D5065 x=66 y=70 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=83 y=70 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=90 y=76 dest=D5061 valid=True
+MAP_ROUTE map=D5065 x=83 y=77 dest=D5063 valid=True
+[GameSrv] MAP_ROUTE map=D5065 x=90 y=70 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=7 y=10 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=14 y=16 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=7 y=17 dest=D5067 valid=True
+MAP_ROUTE map=D5066 x=14 y=10 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=33 y=10 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=40 y=16 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=33 y=17 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=40 y=10 dest=D5061 valid=True
+[GameSrv] MAP_ROUTE map=D5066 x=59 y=10 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=66 y=16 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=59 y=17 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=66 y=10 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=84 y=11 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=91 y=17 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5066 x=84 y=18 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=91 y=11 dest=D5066 valid=True
+MAP_ROUTE map=D5066 x=7 y=38 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=14 y=44 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=7 y=45 dest=D5067 valid=True
+MAP_ROUTE map=D5066 x=14 y=38 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=33 y=38 dest=D5063 valid=True
+[GameSrv] MAP_ROUTE map=D5066 x=40 y=44 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=33 y=45 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=40 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=59 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=66 y=44 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=59 y=45 dest=D5063 valid=True
+[GameSrv] MAP_ROUTE map=D5066 x=66 y=38 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=85 y=38 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=92 y=44 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=85 y=45 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=92 y=38 dest=D5066 valid=True
+[GameSrv] MAP_ROUTE map=D5066 x=8 y=71 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=15 y=77 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=8 y=78 dest=D5067 valid=True
+MAP_ROUTE map=D5066 x=15 y=71 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=33 y=70 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=40 y=76 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=33 y=77 dest=D5065 valid=True
+MAP_ROUTE map=D5066 x=40 y=70 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=59 y=70 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=66 y=76 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=59 y=77 dest=D5063 valid=True
+MAP_ROUTE map=D5066 x=66 y=70 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=83 y=70 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=90 y=76 dest=D5068 valid=True
+MAP_ROUTE map=D5066 x=83 y=77 dest=D5061 valid=True
+MAP_ROUTE map=D5066 x=90 y=70 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=7 y=10 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=14 y=16 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=7 y=17 dest=D5065 valid=True
+MAP_ROUTE map=D5067 x=14 y=10 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=33 y=10 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=40 y=16 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=33 y=17 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=40 y=10 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=59 y=10 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=66 y=16 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=59 y=17 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=66 y=10 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=84 y=11 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=91 y=17 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=84 y=18 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=91 y=11 dest=D5064 valid=True
+MAP_ROUTE map=D5067 x=7 y=38 dest=D5063 valid=True
+[GameSrv] MAP_ROUTE map=D5067 x=14 y=44 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=7 y=45 dest=D5065 valid=True
+MAP_ROUTE map=D5067 x=14 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=33 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=40 y=44 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=33 y=45 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=40 y=38 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=59 y=38 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5067 x=66 y=44 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=59 y=45 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=66 y=38 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=85 y=38 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=92 y=44 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=85 y=45 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5067 x=92 y=38 dest=D5064 valid=True
+MAP_ROUTE map=D5067 x=8 y=71 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=15 y=77 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=8 y=78 dest=D5065 valid=True
+MAP_ROUTE map=D5067 x=15 y=71 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=33 y=70 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=40 y=76 dest=D5061 valid=True
+[GameSrv] MAP_ROUTE map=D5067 x=33 y=77 dest=D5063 valid=True
+MAP_ROUTE map=D5067 x=40 y=70 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=59 y=70 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=66 y=76 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=59 y=77 dest=D5061 valid=True
+MAP_ROUTE map=D5067 x=66 y=70 dest=D5066 valid=True
+[GameSrv] MAP_ROUTE map=D5067 x=83 y=70 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=90 y=76 dest=D5066 valid=True
+MAP_ROUTE map=D5067 x=83 y=77 dest=D5068 valid=True
+MAP_ROUTE map=D5067 x=90 y=70 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=7 y=10 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=14 y=16 dest=D5061 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=7 y=17 dest=D5063 valid=True
+MAP_ROUTE map=D5068 x=14 y=10 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=33 y=10 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=40 y=16 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=33 y=17 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=40 y=10 dest=D5066 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=59 y=10 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=66 y=16 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=59 y=17 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=66 y=10 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=84 y=11 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=91 y=17 dest=D5064 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=84 y=18 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=91 y=11 dest=D5062 valid=True
+MAP_ROUTE map=D5068 x=7 y=38 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=14 y=44 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=7 y=45 dest=D5063 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=14 y=38 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=33 y=38 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=40 y=44 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=33 y=45 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=40 y=38 dest=D5066 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=59 y=38 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=66 y=44 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=59 y=45 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=66 y=38 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=85 y=38 dest=D5064 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=92 y=44 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=85 y=45 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=92 y=38 dest=D5062 valid=True
+MAP_ROUTE map=D5068 x=8 y=71 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=15 y=77 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=8 y=78 dest=D5063 valid=True
+MAP_ROUTE map=D5068 x=15 y=71 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=33 y=70 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=40 y=76 dest=D5068 valid=True
+MAP_ROUTE map=D5068 x=33 y=77 dest=D5061 valid=True
+MAP_ROUTE map=D5068 x=40 y=70 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=59 y=70 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=66 y=76 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=59 y=77 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5068 x=66 y=70 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=83 y=70 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=90 y=76 dest=D5064 valid=True
+MAP_ROUTE map=D5068 x=83 y=77 dest=D5066 valid=True
+MAP_ROUTE map=D5068 x=90 y=70 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=7 y=10 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=14 y=16 dest=D5068 valid=True
+MAP_ROUTE map=D5069 x=7 y=17 dest=D5061 valid=True
+MAP_ROUTE map=D5069 x=14 y=10 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=33 y=10 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=40 y=16 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=33 y=17 dest=D5068 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=40 y=10 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=59 y=10 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=66 y=16 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=59 y=17 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=66 y=10 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=84 y=11 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=91 y=17 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=84 y=18 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=91 y=11 dest=D5069 valid=True
+MAP_ROUTE map=D5069 x=7 y=38 dest=D5068 valid=True
+MAP_ROUTE map=D5069 x=14 y=44 dest=D5068 valid=True
+MAP_ROUTE map=D5069 x=7 y=45 dest=D5061 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=14 y=38 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=33 y=38 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=40 y=44 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=33 y=45 dest=D5068 valid=True
+MAP_ROUTE map=D5069 x=40 y=38 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=59 y=38 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=66 y=44 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=59 y=45 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=66 y=38 dest=D5062 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=85 y=38 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=92 y=44 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=85 y=45 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=92 y=38 dest=D5069 valid=True
+MAP_ROUTE map=D5069 x=8 y=71 dest=D5068 valid=True
+MAP_ROUTE map=D5069 x=15 y=77 dest=D5068 valid=True
+MAP_ROUTE map=D5069 x=8 y=78 dest=D5061 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=15 y=71 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=33 y=70 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=40 y=76 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=33 y=77 dest=D5068 valid=True
+MAP_ROUTE map=D5069 x=40 y=70 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=59 y=70 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=66 y=76 dest=D5064 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=59 y=77 dest=D5066 valid=True
+MAP_ROUTE map=D5069 x=66 y=70 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=83 y=70 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=90 y=76 dest=D5062 valid=True
+MAP_ROUTE map=D5069 x=83 y=77 dest=D5064 valid=True
+MAP_ROUTE map=D5069 x=90 y=70 dest=D5069 valid=True
+[GameSrv] MAP_ROUTE map=D5069 x=90 y=76 dest=D5071 valid=True
+MAP_ROUTE map=D5071 x=7 y=9 dest=D5069 valid=True
+MAP_ROUTE map=D5071 x=39 y=43 dest=D5072 valid=True
+MAP_ROUTE map=D5072 x=6 y=50 dest=D5071 valid=True
+[GameSrv] MAP_ROUTE map=D5072 x=90 y=20 dest=D5073 valid=True
+MAP_ROUTE map=D5073 x=9 y=70 dest=D5072 valid=True
+MAP_ROUTE map=D5073 x=60 y=9 dest=D5074 valid=True
+MAP_ROUTE map=D5074 x=48 y=91 dest=D5073 valid=True
+MAP_ROUTE map=D717 x=80 y=28 dest=R001 valid=True
+MAP_ROUTE map=3 x=305 y=324 dest=D710 valid=True
+MAP_ROUTE map=D710 x=27 y=22 dest=3 valid=True
+MAP_ROUTE map=D710 x=25 y=21 dest=D711 valid=True
+MAP_ROUTE map=D711 x=205 y=197 dest=D710 valid=True
+MAP_ROUTE map=D711 x=364 y=229 dest=D712 valid=True
+MAP_ROUTE map=D712 x=363 y=227 dest=D711 valid=True
+MAP_ROUTE map=D712 x=31 y=193 dest=D713 valid=True
+[GameSrv] MAP_ROUTE map=D713 x=30 y=192 dest=D712 valid=True
+MAP_ROUTE map=D713 x=350 y=244 dest=D714 valid=True
+MAP_ROUTE map=D714 x=381 y=191 dest=D713 valid=True
+MAP_ROUTE map=D714 x=16 y=200 dest=D715 valid=True
+MAP_ROUTE map=D715 x=28 y=345 dest=D714 valid=True
+MAP_ROUTE map=D715 x=83 y=81 dest=D71601 valid=True
+MAP_ROUTE map=D71601 x=25 y=12 dest=D715 valid=True
+[GameSrv] MAP_ROUTE map=D716 x=25 y=26 dest=D717 valid=True
+MAP_ROUTE map=D717 x=25 y=75 dest=D716 valid=True
+MAP_ROUTE map=D71601 x=17 y=12 dest=D71609 valid=True
+MAP_ROUTE map=D71602 x=17 y=12 dest=D71621 valid=True
+MAP_ROUTE map=D71603 x=17 y=12 dest=D71613 valid=True
+MAP_ROUTE map=D71604 x=17 y=12 dest=D71617 valid=True
+[GameSrv] MAP_ROUTE map=D71605 x=17 y=12 dest=D71625 valid=True
+MAP_ROUTE map=D71606 x=17 y=12 dest=D71602 valid=True
+MAP_ROUTE map=D71607 x=17 y=12 dest=D71608 valid=True
+MAP_ROUTE map=D71608 x=17 y=12 dest=D71611 valid=True
+MAP_ROUTE map=D71609 x=17 y=12 dest=D71614 valid=True
+[GameSrv] MAP_ROUTE map=D71610 x=17 y=12 dest=D71619 valid=True
+MAP_ROUTE map=D71611 x=17 y=12 dest=D71616 valid=True
+MAP_ROUTE map=D71612 x=17 y=12 dest=D71601 valid=True
+MAP_ROUTE map=D71613 x=17 y=12 dest=D71620 valid=True
+MAP_ROUTE map=D71614 x=17 y=12 dest=D71623 valid=True
+[GameSrv] MAP_ROUTE map=D71615 x=17 y=12 dest=D71605 valid=True
+MAP_ROUTE map=D71616 x=17 y=12 dest=D71618 valid=True
+MAP_ROUTE map=D71617 x=17 y=12 dest=D71607 valid=True
+MAP_ROUTE map=D71618 x=17 y=12 dest=D71604 valid=True
+MAP_ROUTE map=D71619 x=17 y=12 dest=D71624 valid=True
+MAP_ROUTE map=D71620 x=17 y=12 dest=D71610 valid=True
+[GameSrv] MAP_ROUTE map=D71621 x=17 y=12 dest=D71615 valid=True
+MAP_ROUTE map=D71622 x=17 y=12 dest=D71612 valid=True
+MAP_ROUTE map=D71623 x=17 y=12 dest=D71606 valid=True
+MAP_ROUTE map=D71624 x=17 y=12 dest=D71622 valid=True
+MAP_ROUTE map=D71625 x=17 y=12 dest=D71622 valid=True
+MAP_ROUTE map=D71601 x=37 y=35 dest=D71621 valid=True
+[GameSrv] MAP_ROUTE map=D71602 x=37 y=35 dest=D71613 valid=True
+MAP_ROUTE map=D71603 x=37 y=35 dest=D71617 valid=True
+MAP_ROUTE map=D71604 x=37 y=35 dest=D71625 valid=True
+MAP_ROUTE map=D71605 x=37 y=35 dest=D71602 valid=True
+MAP_ROUTE map=D71606 x=37 y=35 dest=D71608 valid=True
+MAP_ROUTE map=D71607 x=37 y=35 dest=D71611 valid=True
+MAP_ROUTE map=D71608 x=37 y=35 dest=D71614 valid=True
+[GameSrv] MAP_ROUTE map=D71609 x=37 y=35 dest=D71619 valid=True
+MAP_ROUTE map=D71610 x=37 y=35 dest=D71616 valid=True
+MAP_ROUTE map=D71611 x=37 y=35 dest=D71601 valid=True
+MAP_ROUTE map=D71612 x=37 y=35 dest=D71620 valid=True
+MAP_ROUTE map=D71613 x=37 y=35 dest=D71623 valid=True
+MAP_ROUTE map=D71614 x=37 y=35 dest=D71605 valid=True
+MAP_ROUTE map=D71615 x=37 y=35 dest=D71618 valid=True
+[GameSrv] MAP_ROUTE map=D71616 x=37 y=35 dest=D71607 valid=True
+MAP_ROUTE map=D71617 x=37 y=35 dest=D71604 valid=True
+MAP_ROUTE map=D71618 x=37 y=35 dest=D71609 valid=True
+MAP_ROUTE map=D71619 x=37 y=35 dest=D71610 valid=True
+MAP_ROUTE map=D71620 x=37 y=35 dest=D71624 valid=True
+[GameSrv] MAP_ROUTE map=D71622 x=37 y=35 dest=D71606 valid=True
+MAP_ROUTE map=D71624 x=37 y=35 dest=D71603 valid=True
+MAP_ROUTE map=D71625 x=37 y=35 dest=D71613 valid=True
+MAP_ROUTE map=D71601 x=13 y=37 dest=D71613 valid=True
+MAP_ROUTE map=D71602 x=13 y=37 dest=D71617 valid=True
+MAP_ROUTE map=D71603 x=13 y=37 dest=D71625 valid=True
+MAP_ROUTE map=D71604 x=13 y=37 dest=D71602 valid=True
+MAP_ROUTE map=D71605 x=13 y=37 dest=D71608 valid=True
+MAP_ROUTE map=D71606 x=13 y=37 dest=D71611 valid=True
+MAP_ROUTE map=D71607 x=13 y=37 dest=D71614 valid=True
+MAP_ROUTE map=D71608 x=13 y=37 dest=D71619 valid=True
+[GameSrv] MAP_ROUTE map=D71609 x=13 y=37 dest=D71616 valid=True
+MAP_ROUTE map=D71610 x=13 y=37 dest=D71601 valid=True
+MAP_ROUTE map=D71611 x=13 y=37 dest=D71620 valid=True
+MAP_ROUTE map=D71612 x=13 y=37 dest=D71623 valid=True
+MAP_ROUTE map=D71613 x=13 y=37 dest=D71605 valid=True
+[GameSrv] MAP_ROUTE map=D71614 x=13 y=37 dest=D71618 valid=True
+MAP_ROUTE map=D71615 x=13 y=37 dest=D71607 valid=True
+MAP_ROUTE map=D71616 x=13 y=37 dest=D71604 valid=True
+MAP_ROUTE map=D71617 x=13 y=37 dest=D71609 valid=True
+MAP_ROUTE map=D71618 x=13 y=37 dest=D71624 valid=True
+[GameSrv] MAP_ROUTE map=D71619 x=13 y=37 dest=D71615 valid=True
+MAP_ROUTE map=D71620 x=13 y=37 dest=D71621 valid=True
+MAP_ROUTE map=D71621 x=13 y=37 dest=D71610 valid=True
+MAP_ROUTE map=D71622 x=13 y=37 dest=D71612 valid=True
+MAP_ROUTE map=D71623 x=13 y=37 dest=D71606 valid=True
+MAP_ROUTE map=D71624 x=13 y=37 dest=D71622 valid=True
+[GameSrv] MAP_ROUTE map=D71601 x=37 y=16 dest=D71621 valid=True
+MAP_ROUTE map=D71602 x=37 y=16 dest=D71613 valid=True
+MAP_ROUTE map=D71603 x=37 y=16 dest=D71617 valid=True
+MAP_ROUTE map=D71604 x=37 y=16 dest=D71625 valid=True
+MAP_ROUTE map=D71605 x=37 y=16 dest=D71602 valid=True
+[GameSrv] MAP_ROUTE map=D71607 x=37 y=16 dest=D71611 valid=True
+MAP_ROUTE map=D71608 x=37 y=16 dest=D71614 valid=True
+MAP_ROUTE map=D71609 x=37 y=16 dest=D71619 valid=True
+MAP_ROUTE map=D71610 x=37 y=16 dest=D71616 valid=True
+MAP_ROUTE map=D71611 x=37 y=16 dest=D71601 valid=True
+MAP_ROUTE map=D71612 x=37 y=16 dest=D71620 valid=True
+MAP_ROUTE map=D71613 x=37 y=16 dest=D71623 valid=True
+[GameSrv] MAP_ROUTE map=D71614 x=37 y=16 dest=D71605 valid=True
+MAP_ROUTE map=D71615 x=37 y=16 dest=D71618 valid=True
+MAP_ROUTE map=D71616 x=37 y=16 dest=D71607 valid=True
+MAP_ROUTE map=D71618 x=37 y=16 dest=D71609 valid=True
+MAP_ROUTE map=D71619 x=37 y=16 dest=D71624 valid=True
+[GameSrv] MAP_ROUTE map=D71620 x=37 y=16 dest=D71610 valid=True
+MAP_ROUTE map=D71621 x=37 y=16 dest=D71615 valid=True
+MAP_ROUTE map=D71622 x=37 y=16 dest=D71606 valid=True
+MAP_ROUTE map=D71623 x=37 y=16 dest=D71612 valid=True
+MAP_ROUTE map=D71624 x=37 y=16 dest=D71603 valid=True
+[GameSrv] MAP_ROUTE map=D71625 x=37 y=16 dest=D71613 valid=True
+MAP_ROUTE map=D71625 x=13 y=37 dest=D716 valid=True
+MAP_ROUTE map=D716 x=37 y=16 dest=D71625 valid=True
+MAP_ROUTE map=D71606 x=37 y=16 dest=D71650 valid=True
+MAP_ROUTE map=D71616 x=37 y=16 dest=D71651 valid=True
+[GameSrv] MAP_ROUTE map=D71621 x=37 y=35 dest=D71652 valid=True
+MAP_ROUTE map=D71623 x=37 y=35 dest=D71653 valid=True
+MAP_ROUTE map=D71650 x=13 y=37 dest=D71603 valid=True
+MAP_ROUTE map=D71651 x=13 y=37 dest=D71610 valid=True
+MAP_ROUTE map=D71652 x=17 y=12 dest=D71602 valid=True
+MAP_ROUTE map=D71653 x=17 y=12 dest=D71603 valid=True
+MAP_ROUTE map=3 x=139 y=85 dest=D601 valid=True
+[GameSrv] MAP_ROUTE map=D601 x=208 y=238 dest=3 valid=True
+MAP_ROUTE map=D602 x=177 y=33 dest=D611 valid=True
+MAP_ROUTE map=D611 x=32 y=40 dest=D602 valid=True
+MAP_ROUTE map=D604 x=155 y=36 dest=D611 valid=True
+MAP_ROUTE map=D611 x=32 y=71 dest=D604 valid=True
+[GameSrv] MAP_ROUTE map=D609 x=14 y=34 dest=D605 valid=True
+MAP_ROUTE map=D605 x=42 y=124 dest=D609 valid=True
+MAP_ROUTE map=D605 x=42 y=19 dest=D608 valid=True
+MAP_ROUTE map=D608 x=32 y=32 dest=D605 valid=True
+MAP_ROUTE map=D603 x=41 y=194 dest=D608 valid=True
+[GameSrv] MAP_ROUTE map=D608 x=18 y=22 dest=D603 valid=True
+MAP_ROUTE map=D608 x=17 y=33 dest=D604 valid=True
+MAP_ROUTE map=D604 x=149 y=132 dest=D608 valid=True
+MAP_ROUTE map=D601 x=52 y=14 dest=D607 valid=True
+MAP_ROUTE map=D607 x=16 y=29 dest=D601 valid=True
+[GameSrv] MAP_ROUTE map=D601 x=149 y=55 dest=D610 valid=True
+MAP_ROUTE map=D610 x=30 y=30 dest=D601 valid=True
+MAP_ROUTE map=D602 x=110 y=86 dest=D607 valid=True
+MAP_ROUTE map=D607 x=31 y=8 dest=D602 valid=True
+MAP_ROUTE map=D603 x=81 y=81 dest=D610 valid=True
+[GameSrv] MAP_ROUTE map=D610 x=30 y=15 dest=D603 valid=True
+MAP_ROUTE map=D602 x=45 y=22 dest=D605 valid=True
+MAP_ROUTE map=D605 x=173 y=60 dest=D602 valid=True
+MAP_ROUTE map=D603 x=185 y=82 dest=D611 valid=True
+MAP_ROUTE map=D611 x=55 y=37 dest=D603 valid=True
+[GameSrv] MAP_ROUTE map=D609 x=22 y=13 dest=D612 valid=True
+MAP_ROUTE map=D612 x=199 y=51 dest=D609 valid=True
+MAP_ROUTE map=D611 x=59 y=70 dest=D612 valid=True
+MAP_ROUTE map=D612 x=11 y=15 dest=D611 valid=True
+[GameSrv] MAP_ROUTE map=D612 x=9 y=182 dest=D614 valid=True
+MAP_ROUTE map=D614 x=69 y=65 dest=D612 valid=True
+MAP_ROUTE map=D612 x=202 y=187 dest=D613 valid=True
+MAP_ROUTE map=D613 x=8 y=50 dest=D612 valid=True
+MAP_ROUTE map=D612 x=283 y=232 dest=D616 valid=True
+MAP_ROUTE map=D616 x=26 y=16 dest=D612 valid=True
+[GameSrv] MAP_ROUTE map=D614 x=13 y=19 dest=D615 valid=True
+MAP_ROUTE map=D615 x=64 y=82 dest=D614 valid=True
+MAP_ROUTE map=D616 x=86 y=17 dest=D617 valid=True
+[GameSrv] MAP_ROUTE map=D617 x=43 y=42 dest=D616 valid=True
+MAP_ROUTE map=D613 x=12 y=13 dest=D618 valid=True
+MAP_ROUTE map=D618 x=149 y=65 dest=D613 valid=True
+[GameSrv] MAP_ROUTE map=D615 x=88 y=75 dest=D618 valid=True
+MAP_ROUTE map=D618 x=13 y=83 dest=D615 valid=True
+MAP_ROUTE map=D617 x=90 y=11 dest=D618 valid=True
+MAP_ROUTE map=D618 x=53 y=21 dest=D617 valid=True
+[GameSrv] MAP_ROUTE map=D618 x=160 y=170 dest=D606 valid=True
+MAP_ROUTE map=D606 x=9 y=25 dest=D618 valid=True
+MAP_ROUTE map=D003 x=78 y=229 dest=E001 valid=True
+MAP_ROUTE map=E001 x=8 y=13 dest=D003 valid=True
+MAP_ROUTE map=E001 x=85 y=15 dest=E002 valid=True
+[GameSrv] MAP_ROUTE map=E002 x=84 y=9 dest=E001 valid=True
+MAP_ROUTE map=E002 x=36 y=81 dest=D012 valid=True
+MAP_ROUTE map=D012 x=377 y=64 dest=E002 valid=True
+MAP_ROUTE map=D003 x=290 y=293 dest=E401 valid=True
+MAP_ROUTE map=E401 x=15 y=9 dest=D003 valid=True
+[GameSrv] MAP_ROUTE map=E401 x=61 y=84 dest=E402 valid=True
+MAP_ROUTE map=E402 x=14 y=72 dest=E401 valid=True
+MAP_ROUTE map=E402 x=69 y=14 dest=E403 valid=True
+MAP_ROUTE map=E403 x=45 y=77 dest=E402 valid=True
+MAP_ROUTE map=E403 x=90 y=68 dest=E404 valid=True
+MAP_ROUTE map=E404 x=45 y=10 dest=E403 valid=True
+[GameSrv] MAP_ROUTE map=E404 x=69 y=56 dest=D404 valid=True
+MAP_ROUTE map=D404 x=152 y=19 dest=E404 valid=True
+MAP_ROUTE map=D422 x=331 y=383 dest=E601 valid=True
+MAP_ROUTE map=E601 x=134 y=20 dest=D422 valid=True
+[GameSrv] MAP_ROUTE map=E601 x=13 y=50 dest=E602 valid=True
+MAP_ROUTE map=E602 x=72 y=65 dest=E601 valid=True
+MAP_ROUTE map=E602 x=10 y=9 dest=E603 valid=True
+MAP_ROUTE map=E603 x=26 y=26 dest=E602 valid=True
+MAP_ROUTE map=E603 x=107 y=184 dest=E603 valid=True
+[GameSrv] MAP_ROUTE map=E603 x=110 y=182 dest=E603 valid=True
+MAP_ROUTE map=E603 x=10 y=69 dest=E604 valid=True
+MAP_ROUTE map=E604 x=90 y=44 dest=E603 valid=True
+MAP_ROUTE map=E604 x=10 y=9 dest=E605 valid=True
+MAP_ROUTE map=E605 x=13 y=10 dest=E604 valid=True
+[GameSrv] MAP_ROUTE map=E605 x=13 y=63 dest=D601 valid=True
+MAP_ROUTE map=D601 x=9 y=197 dest=E605 valid=True
+MAP_ROUTE map=11 x=347 y=241 dest=12 valid=True
+MAP_ROUTE map=11 x=348 y=240 dest=12 valid=True
+MAP_ROUTE map=11 x=349 y=239 dest=12 valid=True
+[GameSrv] MAP_ROUTE map=11 x=350 y=238 dest=12 valid=True
+MAP_ROUTE map=11 x=351 y=237 dest=12 valid=True
+MAP_ROUTE map=11 x=352 y=236 dest=12 valid=True
+MAP_ROUTE map=12 x=323 y=476 dest=11 valid=True
+MAP_ROUTE map=12 x=324 y=475 dest=11 valid=True
+MAP_ROUTE map=12 x=325 y=474 dest=11 valid=True
+[GameSrv] MAP_ROUTE map=12 x=326 y=473 dest=11 valid=True
+MAP_ROUTE map=12 x=327 y=472 dest=11 valid=True
+MAP_ROUTE map=12 x=328 y=471 dest=11 valid=True
+MAP_ROUTE map=11 x=145 y=324 dest=1005 valid=True
+MAP_ROUTE map=11 x=176 y=362 dest=1007 valid=True
+[GameSrv] MAP_ROUTE map=11 x=178 y=295 dest=1006 valid=True
+MAP_ROUTE map=11 x=207 y=318 dest=1003 valid=True
+MAP_ROUTE map=11 x=208 y=272 dest=1004 valid=True
+MAP_ROUTE map=11 x=225 y=300 dest=1001 valid=True
+MAP_ROUTE map=11 x=228 y=268 dest=1002 valid=True
+[GameSrv] MAP_ROUTE map=1005 x=12 y=16 dest=11 valid=True
+MAP_ROUTE map=1007 x=5 y=18 dest=11 valid=True
+MAP_ROUTE map=1006 x=8 y=16 dest=11 valid=True
+MAP_ROUTE map=1003 x=7 y=12 dest=11 valid=True
+MAP_ROUTE map=1004 x=12 y=16 dest=11 valid=True
+MAP_ROUTE map=1001 x=5 y=18 dest=11 valid=True
+MAP_ROUTE map=1002 x=9 y=18 dest=11 valid=True
+[GameSrv] MAP_ROUTE map=D10011 x=270 y=385 dest=12 valid=True
+MAP_ROUTE map=12 x=89 y=13 dest=D10011 valid=True
+MAP_ROUTE map=12 x=15 y=294 dest=D10012 valid=True
+MAP_ROUTE map=D10012 x=53 y=287 dest=12 valid=True
+MAP_ROUTE map=12 x=320 y=119 dest=D10013 valid=True
+[GameSrv] MAP_ROUTE map=D10013 x=289 y=288 dest=12 valid=True
+MAP_ROUTE map=D10011 x=123 y=24 dest=D1002 valid=True
+MAP_ROUTE map=D1002 x=61 y=289 dest=D10011 valid=True
+MAP_ROUTE map=D10012 x=290 y=76 dest=D1002 valid=True
+[GameSrv] MAP_ROUTE map=D1002 x=214 y=269 dest=D10012 valid=True
+MAP_ROUTE map=D10013 x=148 y=12 dest=D1002 valid=True
+MAP_ROUTE map=D1002 x=121 y=189 dest=D10013 valid=True
+MAP_ROUTE map=D1002 x=13 y=26 dest=D10031 valid=True
+MAP_ROUTE map=D10031 x=290 y=151 dest=D1002 valid=True
+[GameSrv] MAP_ROUTE map=D1002 x=289 y=138 dest=D10032 valid=True
+MAP_ROUTE map=D10032 x=9 y=156 dest=D1002 valid=True
+MAP_ROUTE map=D10032 x=201 y=148 dest=D1004 valid=True
+MAP_ROUTE map=D1004 x=170 y=89 dest=D10032 valid=True
+MAP_ROUTE map=D10031 x=149 y=103 dest=D1004 valid=True
+MAP_ROUTE map=D1004 x=121 y=38 dest=D10031 valid=True
+[GameSrv] MAP_ROUTE map=D1004 x=217 y=133 dest=D10052 valid=True
+MAP_ROUTE map=D10052 x=98 y=185 dest=D1004 valid=True
+MAP_ROUTE map=D1004 x=146 y=110 dest=D10051 valid=True
+MAP_ROUTE map=D10051 x=47 y=189 dest=D1004 valid=True
+MAP_ROUTE map=D10051 x=178 y=53 dest=D10061 valid=True
+MAP_ROUTE map=D10061 x=21 y=26 dest=D10051 valid=True
+[GameSrv] MAP_ROUTE map=D10052 x=140 y=23 dest=D10062 valid=True
+MAP_ROUTE map=D10062 x=11 y=25 dest=D10052 valid=True
+MAP_ROUTE map=0123A x=12 y=18 dest=11 valid=True
+MAP_ROUTE map=11 x=204 y=385 dest=0123A valid=True
+MAP_ROUTE map=4 x=219 y=196 dest=B341 valid=True
+[GameSrv] MAP_ROUTE map=4 x=218 y=197 dest=B341 valid=True
+MAP_ROUTE map=4 x=221 y=234 dest=B342 valid=True
+MAP_ROUTE map=4 x=217 y=238 dest=B342 valid=True
+MAP_ROUTE map=4 x=233 y=250 dest=B343 valid=True
+MAP_ROUTE map=4 x=226 y=252 dest=B343 valid=True
+[GameSrv] MAP_ROUTE map=4 x=233 y=234 dest=B344 valid=True
+MAP_ROUTE map=4 x=238 y=238 dest=B344 valid=True
+MAP_ROUTE map=4 x=258 y=204 dest=B345 valid=True
+MAP_ROUTE map=4 x=251 y=199 dest=B345 valid=True
+[GameSrv] MAP_ROUTE map=4 x=192 y=218 dest=B346 valid=True
+MAP_ROUTE map=4 x=236 y=181 dest=B347 valid=True
+MAP_ROUTE map=B341 x=26 y=30 dest=4 valid=True
+MAP_ROUTE map=B341 x=25 y=31 dest=4 valid=True
+MAP_ROUTE map=B342 x=18 y=13 dest=4 valid=True
+MAP_ROUTE map=B342 x=10 y=21 dest=4 valid=True
+MAP_ROUTE map=B343 x=18 y=13 dest=4 valid=True
+[GameSrv] MAP_ROUTE map=B343 x=10 y=21 dest=4 valid=True
+MAP_ROUTE map=B344 x=6 y=11 dest=4 valid=True
+MAP_ROUTE map=B344 x=13 y=18 dest=4 valid=True
+MAP_ROUTE map=B345 x=13 y=19 dest=4 valid=True
+MAP_ROUTE map=B345 x=5 y=11 dest=4 valid=True
+MAP_ROUTE map=B346 x=5 y=18 dest=4 valid=True
+MAP_ROUTE map=B347 x=14 y=15 dest=4 valid=True
+MAP_ROUTE map=D2010 x=218 y=42 dest=D10053 valid=True
+MAP_ROUTE map=D2010 x=67 y=53 dest=D10053 valid=True
+MAP_ROUTE map=D2010 x=60 y=150 dest=D10053 valid=True
+[GameSrv] MAP_ROUTE map=D10053 x=41 y=91 dest=D2008 valid=True
+MAP_ROUTE map=D2000 x=179 y=109 dest=4 valid=True
+MAP_ROUTE map=D2000 x=24 y=182 dest=4 valid=True
+MAP_ROUTE map=4 x=140 y=67 dest=D2000 valid=True
+MAP_ROUTE map=4 x=56 y=66 dest=D2000 valid=True
+[GameSrv] MAP_ROUTE map=D2000 x=76 y=15 dest=D2001 valid=True
+MAP_ROUTE map=D2001 x=258 y=270 dest=D2000 valid=True
+MAP_ROUTE map=D2001 x=18 y=97 dest=D2002 valid=True
+MAP_ROUTE map=D2002 x=33 y=39 dest=D2001 valid=True
+MAP_ROUTE map=D2002 x=29 y=11 dest=D2004 valid=True
+MAP_ROUTE map=D2004 x=77 y=77 dest=D2002 valid=True
+[GameSrv] MAP_ROUTE map=D2004 x=19 y=16 dest=D2005 valid=True
+MAP_ROUTE map=D2005 x=85 y=88 dest=D2004 valid=True
+MAP_ROUTE map=D2005 x=18 y=21 dest=D2006 valid=True
+[GameSrv] MAP_ROUTE map=D2006 x=74 y=81 dest=D2005 valid=True
+MAP_ROUTE map=D2006 x=15 y=21 dest=D2007 valid=True
+MAP_ROUTE map=D2007 x=183 y=180 dest=D2006 valid=True
+MAP_ROUTE map=D2007 x=38 y=26 dest=D2008 valid=True
+MAP_ROUTE map=D2008 x=84 y=85 dest=D2007 valid=True
+MAP_ROUTE map=D2007 x=95 y=23 dest=D10054 valid=True
+MAP_ROUTE map=D2007 x=20 y=86 dest=D10054 valid=True
+MAP_ROUTE map=D2007 x=35 y=59 dest=D10054 valid=True
+MAP_ROUTE map=D2010 x=218 y=42 dest=D10053 valid=True
+MAP_ROUTE map=D2010 x=67 y=53 dest=D10053 valid=True
+MAP_ROUTE map=D2010 x=60 y=150 dest=D10053 valid=True
+MAP_ROUTE map=D10053 x=41 y=91 dest=D2008 valid=True
+MAP_ROUTE map=D10054 x=79 y=20 dest=D2003 valid=True
+MAP_ROUTE map=D2008 x=26 y=23 dest=D2009 valid=True
+MAP_ROUTE map=D2009 x=18 y=21 dest=D2010 valid=True
+MAP_ROUTE map=D2009 x=19 y=20 dest=D2010 valid=True
+MAP_ROUTE map=D2010 x=170 y=36 dest=D2011 valid=True
+MAP_ROUTE map=D2011 x=19 y=20 dest=D2012 valid=True
+MAP_ROUTE map=D2012 x=18 y=21 dest=D2013 valid=True
+MAP_ROUTE map=D2012 x=19 y=20 dest=D2013 valid=True
+MAP_ROUTE map=D2009 x=85 y=88 dest=D2008 valid=True
+MAP_ROUTE map=D2010 x=286 y=281 dest=D2009 valid=True
+MAP_ROUTE map=D2010 x=287 y=280 dest=D2009 valid=True
+MAP_ROUTE map=D2011 x=86 y=91 dest=D2008 valid=True
+MAP_ROUTE map=D2012 x=84 y=85 dest=D2011 valid=True
+[GameSrv] MAP_ROUTE map=D2013 x=82 y=83 dest=D2012 valid=True
+MAP_ROUTE map=D2013 x=83 y=82 dest=D2012 valid=True
+MAP_ROUTE map=D2013 x=21 y=25 dest=D2008 valid=True
+MAP_ROUTE map=5 x=127 y=301 dest=B351 valid=True
+MAP_ROUTE map=B351 x=11 y=13 dest=5 valid=True
+MAP_ROUTE map=B351 x=11 y=14 dest=5 valid=True
+MAP_ROUTE map=5 x=158 y=336 dest=B352 valid=True
+[GameSrv] MAP_ROUTE map=B352 x=8 y=13 dest=5 valid=True
+MAP_ROUTE map=B352 x=7 y=13 dest=5 valid=True
+MAP_ROUTE map=B352 x=8 y=14 dest=5 valid=True
+MAP_ROUTE map=5 x=146 y=324 dest=B353 valid=True
+MAP_ROUTE map=B353 x=8 y=21 dest=5 valid=True
+MAP_ROUTE map=5 x=125 y=324 dest=B354 valid=True
+[GameSrv] MAP_ROUTE map=5 x=126 y=324 dest=B354 valid=True
+MAP_ROUTE map=B354 x=11 y=19 dest=5 valid=True
+MAP_ROUTE map=B354 x=12 y=19 dest=5 valid=True
+MAP_ROUTE map=5 x=152 y=294 dest=B355 valid=True
+MAP_ROUTE map=B355 x=9 y=16 dest=5 valid=True
+MAP_ROUTE map=B355 x=9 y=17 dest=5 valid=True
+[GameSrv] MAP_ROUTE map=B355 x=10 y=16 dest=5 valid=True
+MAP_ROUTE map=5 x=167 y=314 dest=B356 valid=True
+MAP_ROUTE map=B356 x=10 y=19 dest=5 valid=True
+MAP_ROUTE map=5 x=527 y=610 dest=D2051 valid=True
+MAP_ROUTE map=5 x=527 y=611 dest=D2051 valid=True
+MAP_ROUTE map=5 x=528 y=611 dest=D2051 valid=True
+MAP_ROUTE map=D2051 x=107 y=182 dest=5 valid=True
+[GameSrv] MAP_ROUTE map=D2051 x=108 y=183 dest=5 valid=True
+MAP_ROUTE map=D2051 x=109 y=183 dest=5 valid=True
+MAP_ROUTE map=D2051 x=50 y=24 dest=D2053 valid=True
+MAP_ROUTE map=D2051 x=49 y=24 dest=D2053 valid=True
+MAP_ROUTE map=D2051 x=50 y=25 dest=D2053 valid=True
+MAP_ROUTE map=D2053 x=193 y=279 dest=D2051 valid=True
+MAP_ROUTE map=D2053 x=192 y=279 dest=D2051 valid=True
+MAP_ROUTE map=D2053 x=193 y=280 dest=D2051 valid=True
+MAP_ROUTE map=D2053 x=36 y=225 dest=D2052 valid=True
+[GameSrv] MAP_ROUTE map=D2053 x=36 y=226 dest=D2052 valid=True
+MAP_ROUTE map=D2052 x=92 y=76 dest=D2053 valid=True
+MAP_ROUTE map=D2052 x=92 y=75 dest=D2053 valid=True
+MAP_ROUTE map=D2052 x=93 y=75 dest=D2053 valid=True
+MAP_ROUTE map=D2061 x=18 y=176 dest=5 valid=True
+[GameSrv] MAP_ROUTE map=D2061 x=17 y=175 dest=5 valid=True
+MAP_ROUTE map=5 x=549 y=126 dest=D2061 valid=True
+MAP_ROUTE map=5 x=550 y=127 dest=D2061 valid=True
+MAP_ROUTE map=D2061 x=153 y=187 dest=D2062 valid=True
+MAP_ROUTE map=D2061 x=152 y=186 dest=D2062 valid=True
+[GameSrv] MAP_ROUTE map=D2062 x=33 y=15 dest=D2061 valid=True
+MAP_ROUTE map=D2062 x=137 y=187 dest=D2063 valid=True
+MAP_ROUTE map=D2062 x=136 y=188 dest=D2063 valid=True
+MAP_ROUTE map=D2063 x=88 y=164 dest=D2062 valid=True
+MAP_ROUTE map=D2063 x=87 y=164 dest=D2062 valid=True
+MAP_ROUTE map=D2063 x=50 y=85 dest=D2064 valid=True
+MAP_ROUTE map=D2063 x=49 y=86 dest=D2064 valid=True
+[GameSrv] MAP_ROUTE map=D2064 x=13 y=29 dest=D2063 valid=True
+MAP_ROUTE map=D2064 x=12 y=30 dest=D2063 valid=True
+MAP_ROUTE map=D2064 x=9 y=183 dest=D2067 valid=True
+MAP_ROUTE map=D2064 x=10 y=184 dest=D2067 valid=True
+[GameSrv] MAP_ROUTE map=D2067 x=156 y=161 dest=D2064 valid=True
+MAP_ROUTE map=D2067 x=155 y=160 dest=D2064 valid=True
+MAP_ROUTE map=D2070 x=35 y=39 dest=5 valid=True
+MAP_ROUTE map=D2070 x=34 y=40 dest=5 valid=True
+MAP_ROUTE map=5 x=655 y=458 dest=D2070 valid=True
+[GameSrv] MAP_ROUTE map=5 x=655 y=459 dest=D2070 valid=True
+MAP_ROUTE map=D2070 x=32 y=19 dest=D2071 valid=True
+MAP_ROUTE map=D2070 x=33 y=19 dest=D2071 valid=True
+MAP_ROUTE map=D2071 x=219 y=225 dest=D2070 valid=True
+MAP_ROUTE map=D2071 x=220 y=226 dest=D2070 valid=True
+[GameSrv] MAP_ROUTE map=D2071 x=111 y=114 dest=D2072 valid=True
+MAP_ROUTE map=D2071 x=112 y=113 dest=D2072 valid=True
+MAP_ROUTE map=D2072 x=152 y=120 dest=D2071 valid=True
+MAP_ROUTE map=D2072 x=151 y=121 dest=D2071 valid=True
+MAP_ROUTE map=D2072 x=236 y=241 dest=D2073 valid=True
+MAP_ROUTE map=D2072 x=236 y=240 dest=D2073 valid=True
+[GameSrv] MAP_ROUTE map=D2073 x=155 y=156 dest=D2072 valid=True
+MAP_ROUTE map=D2073 x=155 y=155 dest=D2072 valid=True
+MAP_ROUTE map=D2073 x=371 y=377 dest=D2075 valid=True
+MAP_ROUTE map=D2073 x=371 y=376 dest=D2075 valid=True
+MAP_ROUTE map=D2075 x=38 y=110 dest=D2073 valid=True
+[GameSrv] MAP_ROUTE map=D2075 x=38 y=111 dest=D2073 valid=True
+MAP_ROUTE map=D2075 x=125 y=62 dest=D2076 valid=True
+MAP_ROUTE map=D2075 x=126 y=62 dest=D2076 valid=True
+MAP_ROUTE map=D2076 x=95 y=130 dest=D2075 valid=True
+MAP_ROUTE map=D2076 x=95 y=131 dest=D2075 valid=True
+[GameSrv] MAP_ROUTE map=D2076 x=22 y=29 dest=D2078 valid=True
+MAP_ROUTE map=D2076 x=22 y=29 dest=D2078 valid=True
+MAP_ROUTE map=D2078 x=161 y=165 dest=D2076 valid=True
+MAP_ROUTE map=D2078 x=161 y=164 dest=D2076 valid=True
+MAP_ROUTE map=D2078 x=255 y=256 dest=D2079 valid=True
+MAP_ROUTE map=D2078 x=255 y=255 dest=D2079 valid=True
+[GameSrv] MAP_ROUTE map=D2079 x=12 y=13 dest=D2078 valid=True
+MAP_ROUTE map=D2079 x=12 y=12 dest=D2078 valid=True
+MAP_ROUTE map=11 x=362 y=325 dest=T232 valid=True
+MAP_ROUTE map=4 x=205 y=218 dest=T218 valid=True
+MAP_ROUTE map=0 x=428 y=474 dest=T339 valid=True
+[GameSrv] MAP_ROUTE map=1 x=215 y=312 dest=T219 valid=True
+MAP_ROUTE map=1 x=320 y=56 dest=T315 valid=True
+MAP_ROUTE map=R001 x=55 y=94 dest=T140 valid=True
+[GameSrv] 01:38:26.138 [INF] 地图数据加载成功...[256]
+[GameSrv] 01:38:26.139 [INF] 正在加载怪物数据库...
+[GameSrv] MON_LOOT_LOAD name=稻草人 entries=7
+[GameSrv] MON_LOOT_LOAD name=多钩猫 entries=7
+[GameSrv] MON_LOOT_LOAD name=钉耙猫 entries=7
+[GameSrv] 01:38:26.253 [INF] 加载怪物数据库成功...[705]
+01:38:26.253 [INF] 正在加载技能数据库...
+[GameSrv] 01:38:26.258 [INF] 加载技能数据库成功...[33]
+01:38:26.258 [INF] 正在加载怪物刷新配置信息...
+[GameSrv] 01:38:26.271 [INF] 加载怪物刷新配置信息成功...[31741]
+01:38:26.271 [INF] 初始化怪物处理线程...
+[GameSrv] 01:38:26.280 [INF] 初始化怪物处理完成...
+01:38:26.280 [INF] 正加载怪物说话配置信息...
+[GameSrv] 01:38:26.281 [INF] 加载怪物说话配置信息成功...[0]
+[GameSrv] 01:38:26.290 [INF] 正在加载捆装物品信息...
+[GameSrv] 01:38:26.291 [INF] 加载捆装物品信息成功...
+01:38:26.291 [INF] 加载物品寄售系统...
+[GameSrv] 01:38:26.295 [INF] 读取物品寄售列表成功...[0]
+01:38:26.295 [INF] 正在加载任务地图信息...
+[GameSrv] 01:38:26.300 [INF] 加载任务地图信息成功...
+01:38:26.300 [INF] 正在加载任务说明信息...
+[GameSrv] 01:38:26.302 [INF] 加载任务说明信息成功...
+[GameSrv] 01:38:26.302 [INF] 正在加载公告提示信息...
+[GameSrv] 01:38:26.303 [INF] 加载公告提示信息失败!!!
+01:38:26.303 [INF] 加载公告提示信息成功...
+[GameSrv] 01:38:26.305 [INF] 管理员列表加载成功...
+[GameSrv] 01:38:26.326 [INF] 游戏网关初始化完成...
+01:38:26.326 [INF] 正在初始化网络服务...
+[GameSrv] 01:38:26.327 [INF] 初始化城堡服务...
+[GameSrv] 01:38:26.355 [WRN] [Error] UserCastle.Initialize MainDoor.UnitObj = nil
+[GameSrv] 01:38:26.356 [WRN] [错误信息] 城堡初始化城门失败，检查怪物数据库里有没城门的设置: MainDoor
+01:38:26.356 [WRN] [错误信息] 城堡初始化左城墙失败，检查怪物数据库里有没左城墙的设置: LeftWall
+01:38:26.356 [WRN] [错误信息] 城堡初始化中城墙失败，检查怪物数据库里有没中城墙的设置: CenterWall
+[GameSrv] 01:38:26.377 [INF] 城堡城初始完成...
+[GameSrv] 01:38:26.381 [INF] 初始化游戏基础数据完成...
+[GameSrv] 01:38:26.384 [INF] 初始化游戏世界服务...
+[GameSrv] 01:38:26.389 [INF] 地图环境加载成功...
+[GameSrv] 01:38:26.393 [INF] 交易NPC列表加载成功...
+[GameSrv] 01:38:26.395 [INF] 管理NPC列表加载成功...
+[GameSrv] 01:38:26.397 [INF] 炼制物品信息加载成功...
+[GameSrv] 01:38:26.400 [INF] 回城点配置加载成功...
+01:38:26.400 [INF] 正在初始安全区光圈...
+[GameSrv] 01:38:26.401 [INF] 安全区光圈初始化成功...
+[GameSrv] 01:38:26.405 [INF] 怪物线程初始化完成...[1]
+[GameSrv] 01:38:26.419 [INF] 守卫列表加载成功...
+[GameSrv] 01:38:26.419 [INF] 正在初始化NPC脚本...
+[GameSrv] NPC_SCRIPT name=边界村保管员 path=/data/server/Mir200/Envir/Market_Def/比奇村/边界村保管员-0140.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=元宝充值使者 path=/data/server/Mir200/Envir/Market_Def/元宝充值-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=元宝充值使者 path=/data/server/Mir200/Envir/Market_Def/元宝充值-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=监狱牢头 path=/data/server/Mir200/Envir/Market_Def/任务NPC/牢头-B346.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=高级武士 path=/data/server/Mir200/Envir/Market_Def/任务NPC/武士-0114.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=铁匠 path=/data/server/Mir200/Envir/Market_Def/任务NPC/打铁-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=老人 path=/data/server/Mir200/Envir/Market_Def/任务NPC/老人-1.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=林小姐 path=/data/server/Mir200/Envir/Market_Def/任务NPC/客栈-0148.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=米氏 path=/data/server/Mir200/Envir/Market_Def/任务NPC/衣服-2.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=铁匠 path=/data/server/Mir200/Envir/Market_Def/任务NPC/铁匠-0120.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=任务管理 path=/data/server/Mir200/Envir/Market_Def/任务NPC/任务-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=赌场 path=/data/server/Mir200/Envir/Market_Def/赌博NPC/赌庄-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=行会争霸 path=/data/server/Mir200/Envir/Market_Def/功能NPC/会战-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=除魔勇士 path=/data/server/Mir200/Envir/Market_Def/功能NPC/赤血-R001.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=荣誉勋章管理 path=/data/server/Mir200/Envir/Market_Def/功能NPC/勋章-0146.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=老人 path=/data/server/Mir200/Envir/Market_Def/功能NPC/老人-E603.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] 01:38:26.528 [ERR] 脚本错误: CHECKGAMEDIAMOND > 29999 第:25 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.528 [ERR] 脚本错误: GAMEDIAMOND - 30000 第:29 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.528 [ERR] 脚本错误: CHECKGAMEDIAMOND > 29999 第:55 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.528 [ERR] 脚本错误: GAMEDIAMOND - 30000 第:59 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.528 [ERR] 脚本错误: CHECKGAMEDIAMOND > 29999 第:85 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.528 [ERR] 脚本错误: GAMEDIAMOND - 30000 第:89 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 9999 第:115 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 10000 第:119 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 9999 第:145 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 10000 第:149 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 9999 第:175 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 10000 第:179 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 3999 第:205 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 4000 第:209 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 3999 第:235 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 4000 第:239 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 3999 第:265 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 4000 第:269 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 1999 第:289 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 2000 第:293 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 1999 第:330 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 2000 第:334 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 1999 第:371 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 2000 第:375 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 4999 第:412 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 5000 第:416 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 4999 第:453 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: GAMEDIAMOND - 5000 第:457 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.529 [ERR] 脚本错误: CHECKGAMEDIAMOND > 4999 第:494 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.530 [ERR] 脚本错误: GAMEDIAMOND - 5000 第:498 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+01:38:26.530 [ERR] 脚本错误: CHECKGAMEDIAMOND > 14999 第:535 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.530 [ERR] 脚本错误: GAMEDIAMOND - 15000 第:539 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.530 [ERR] 脚本错误: CHECKGAMEDIAMOND > 14999 第:576 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.530 [ERR] 脚本错误: GAMEDIAMOND - 15000 第:580 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.530 [ERR] 脚本错误: CHECKGAMEDIAMOND > 14999 第:617 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] 01:38:26.530 [ERR] 脚本错误: GAMEDIAMOND - 15000 第:621 行: /data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt
+[GameSrv] NPC_SCRIPT name=武器铸造师 path=/data/server/Mir200/Envir/Market_Def/功能NPC/铸造-B351.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=　 path=/data/server/Mir200/Envir/Market_Def/功能NPC/空白-3.txt scripts=0 buy=False sell=False storage=False getback=False
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:200 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:210 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:220 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:230 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:240 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:250 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:260 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:270 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:280 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:290 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:300 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:310 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:320 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:330 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:340 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:350 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:360 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:370 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:380 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.533 [ERR] 脚本错误: GAMEGIRD + 10 第:390 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEGIRD + 10 第:400 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+[GameSrv] 01:38:26.534 [ERR] 脚本错误: GAMEGIRD + 10 第:410 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEGIRD + 10 第:420 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 300 第:448 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 300 第:458 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 300 第:468 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 30 第:478 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:488 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:498 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:508 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 30 第:518 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 30 第:528 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 30 第:538 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:548 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:558 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:568 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:578 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:588 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:598 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:608 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:618 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+01:38:26.534 [ERR] 脚本错误: GAMEDIAMOND + 100 第:628 行: /data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt
+NPC_SCRIPT name=装备回收\　 path=/data/server/Mir200/Envir/Market_Def/功能NPC/回收-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=白日门勇士 path=/data/server/Mir200/Envir/Market_Def/白日门/万能-12.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=白日门勇士 path=/data/server/Mir200/Envir/Market_Def/白日门/万能-D1004.txt scripts=1 buy=True sell=True storage=True getback=True
+[GameSrv] NPC_SCRIPT name=杂货店老板 path=/data/server/Mir200/Envir/Market_Def/白日门/杂货-1007.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=药店老板 path=/data/server/Mir200/Envir/Market_Def/白日门/药店-1006.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=首饰店老板 path=/data/server/Mir200/Envir/Market_Def/白日门/首饰-1005.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=书店老板 path=/data/server/Mir200/Envir/Market_Def/白日门/书店-1004.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=服装店老板 path=/data/server/Mir200/Envir/Market_Def/白日门/服装-1003.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=武器店老板 path=/data/server/Mir200/Envir/Market_Def/白日门/武器-1001.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=仓库保管员 path=/data/server/Mir200/Envir/Market_Def/白日门/仓库-11.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=药店老板 path=/data/server/Mir200/Envir/Market_Def/苍月岛/药店-5.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=仓库保管员 path=/data/server/Mir200/Envir/Market_Def/苍月岛/仓库-5.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=布料店老板 path=/data/server/Mir200/Envir/Market_Def/苍月岛/布料店-5.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=首饰店老板 path=/data/server/Mir200/Envir/Market_Def/苍月岛/首饰店-5.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=书店老板 path=/data/server/Mir200/Envir/Market_Def/苍月岛/书店-5.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=武器店老板 path=/data/server/Mir200/Envir/Market_Def/苍月岛/武器店-5.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=杂货店老板 path=/data/server/Mir200/Envir/Market_Def/苍月岛/杂货店-5.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=药店 path=/data/server/Mir200/Envir/Market_Def/沙巴克/药店-0153.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=小贩 path=/data/server/Mir200/Envir/Market_Def/沙巴克/小贩-3.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=戒指店老板 path=/data/server/Mir200/Envir/Market_Def/沙巴克/戒指店-0154.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=项链店老板 path=/data/server/Mir200/Envir/Market_Def/沙巴克/项链店-0154.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=手镯店老板 path=/data/server/Mir200/Envir/Market_Def/沙巴克/手镯店-0154.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=布衣店老板 path=/data/server/Mir200/Envir/Market_Def/沙巴克/布衣店-0155.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=仓库管理员 path=/data/server/Mir200/Envir/Market_Def/沙巴克/仓库-0152.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=武器店老板 path=/data/server/Mir200/Envir/Market_Def/沙巴克/武器铺-0151.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] 01:38:26.651 [ERR] 脚本错误: CHECKGAMEGIRD > 0 第:55 行: /data/server/Mir200/Envir/Market_Def/沙巴克铁匠-3.txt
+[GameSrv] 01:38:26.651 [ERR] 脚本错误: GAMEGIRD - 1 第:57 行: /data/server/Mir200/Envir/Market_Def/沙巴克铁匠-3.txt
+01:38:26.651 [ERR] 脚本错误: CHECKGAMEGIRD > 0 第:72 行: /data/server/Mir200/Envir/Market_Def/沙巴克铁匠-3.txt
+[GameSrv] 01:38:26.651 [ERR] 脚本错误: GAMEGIRD - 1 第:74 行: /data/server/Mir200/Envir/Market_Def/沙巴克铁匠-3.txt
+01:38:26.652 [ERR] 脚本错误: CHECKGAMEGIRD > 0 第:89 行: /data/server/Mir200/Envir/Market_Def/沙巴克铁匠-3.txt
+[GameSrv] 01:38:26.652 [ERR] 脚本错误: GAMEGIRD - 1 第:91 行: /data/server/Mir200/Envir/Market_Def/沙巴克铁匠-3.txt
+[GameSrv] NPC_SCRIPT name=沙巴克铁匠 path=/data/server/Mir200/Envir/Market_Def/沙巴克铁匠-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=玛法足球场 path=/data/server/Mir200/Envir/Market_Def/盟重土城/足球-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=杂货店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/祖玛阁-D5063.txt scripts=1 buy=True sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=药店 path=/data/server/Mir200/Envir/Market_Def/盟重土城/石墓阵-D71653.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=首饰店 path=/data/server/Mir200/Envir/Market_Def/盟重土城/石墓阵-D71652.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=服装店 path=/data/server/Mir200/Envir/Market_Def/盟重土城/石墓阵-D71651.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=武器店 path=/data/server/Mir200/Envir/Market_Def/盟重土城/石墓阵-D71650.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=彩票员 path=/data/server/Mir200/Envir/Market_Def/盟重土城/彩票-3.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=铁匠铺老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/铁匠铺-0159.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=书店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/书店-0161.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=罗家铺子老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/罗家铺子-0160.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=药店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/药店-3.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=项链店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/项链店-0158.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=手镯店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/手镯店-0158.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=戒指店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/戒指店-0158.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=头盔店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/头盔店-0149.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=手套店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/手套店-0149.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=张家布衣老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/张家布衣-0149.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=悦来客栈老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/悦来客栈-3.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=仓库保管员 path=/data/server/Mir200/Envir/Market_Def/盟重土城/仓库-0145.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=流浪汉 path=/data/server/Mir200/Envir/Market_Def/盟重土城/流浪汉-3.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=肉店老板 path=/data/server/Mir200/Envir/Market_Def/盟重土城/肉店-3.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=封魔修理师 path=/data/server/Mir200/Envir/Market_Def/封魔谷/恶魔修理师-d2008.txt scripts=1 buy=True sell=True storage=True getback=True
+[GameSrv] NPC_SCRIPT name=封魔药剂师 path=/data/server/Mir200/Envir/Market_Def/封魔谷/恶魔药剂师-b343.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=封魔保管员 path=/data/server/Mir200/Envir/Market_Def/封魔谷/恶魔保管员-b347.txt scripts=1 buy=False sell=False storage=True getback=True
+NPC_SCRIPT name=封魔首饰 path=/data/server/Mir200/Envir/Market_Def/封魔谷/恶魔首饰-B344.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=封魔服装 path=/data/server/Mir200/Envir/Market_Def/封魔谷/恶魔布衣-B345.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=封魔铁匠 path=/data/server/Mir200/Envir/Market_Def/封魔谷/恶魔武器-4.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=封魔杂货匠 path=/data/server/Mir200/Envir/Market_Def/封魔谷/恶魔杂货匠-4.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=仓库 path=/data/server/Mir200/Envir/Market_Def/比奇城/蛇仓-2.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=杂货店 path=/data/server/Mir200/Envir/Market_Def/比奇城/蛇杂-2.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=书店 path=/data/server/Mir200/Envir/Market_Def/比奇城/小书-0132.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=银杏药店 path=/data/server/Mir200/Envir/Market_Def/比奇城/小药-0119.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=银杏杂货店 path=/data/server/Mir200/Envir/Market_Def/比奇城/万能-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=边界杂货店 path=/data/server/Mir200/Envir/Market_Def/比奇城/万能-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=屠夫 path=/data/server/Mir200/Envir/Market_Def/比奇城/肉店-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=肉店老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/肉店-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=肉店老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/肉店-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=项链店老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/项链店-0105.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=手镯店老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/手镯店-0105.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=戒指店老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/戒指店-0105.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=杂货铺老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/杂货-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=麦家铺子 path=/data/server/Mir200/Envir/Market_Def/比奇城/麦家铺子-0125.txt scripts=1 buy=False sell=False storage=True getback=True
+[GameSrv] NPC_SCRIPT name=书店老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/书店-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=夏家店老板 path=/data/server/Mir200/Envir/Market_Def/比奇城/夏家-0.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=安家布衣 path=/data/server/Mir200/Envir/Market_Def/比奇城/安家布衣-0106.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=卫家店 path=/data/server/Mir200/Envir/Market_Def/比奇城/卫家店-0103.txt scripts=1 buy=True sell=True storage=False getback=False
+[GameSrv] NPC_SCRIPT name=白日门来客 path=/data/server/Mir200/Envir/Market_Def/传送员/来客-D701.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=传送员 path=/data/server/Mir200/Envir/Market_Def/传送员/进白日门-1.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=传送员 path=/data/server/Mir200/Envir/Market_Def/传送员/出白日门-11.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=传送员 path=/data/server/Mir200/Envir/Market_Def/传送员/进封魔-1.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=传送员 path=/data/server/Mir200/Envir/Market_Def/传送员/出封魔-4.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=向导 path=/data/server/Mir200/Envir/Market_Def/传送员/白日门传送员-11.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=封魔老兵 path=/data/server/Mir200/Envir/Market_Def/传送员/封魔谷传送员-4.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=苍月老兵 path=/data/server/Mir200/Envir/Market_Def/传送员/苍月岛传送员-5.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=比奇老兵 path=/data/server/Mir200/Envir/Market_Def/传送员/比奇省传送员-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=盟重老兵 path=/data/server/Mir200/Envir/Market_Def/传送员/盟重省传送员-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=官方举证制度 path=/data/server/Mir200/Envir/Market_Def/举证-3.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=官方举证制度 path=/data/server/Mir200/Envir/Market_Def/举证-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=官方举证制度 path=/data/server/Mir200/Envir/Market_Def/举证-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=官方举证制度 path=/data/server/Mir200/Envir/Market_Def/举证-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=银杏老兵 path=/data/server/Mir200/Envir/Market_Def/新手接待员-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=边界老兵 path=/data/server/Mir200/Envir/Market_Def/新手接待员-0.txt scripts=1 buy=False sell=False storage=False getback=False
+[GameSrv] NPC_SCRIPT name=QFunction path=/data/server/Mir200/Envir/Market_Def/QFunction-0.txt scripts=0 buy=False sell=False storage=False getback=False
+[GameSrv] 01:38:26.901 [INF] 初始化NPC脚本完成...
+[GameSrv] 01:38:26.905 [INF] 已读取 [0] 个行会信息...
+[GameSrv] 01:38:26.909 [INF] 已读取 [2] 个城堡信息...
+[GameSrv] 01:38:26.909 [INF] 游戏处理引擎初始化成功...
+01:38:26.909 [INF] 初始化游戏世界服务完成...
+[GameSrv] 01:38:26.919 [INF] Id生成器启动...
+[GameSrv] 01:38:26.928 [INF] 玩家管理线程初始化完成...
+[GameSrv] 01:38:26.933 [INF] 商人管理线程初始化完成...
+[GameSrv] 01:38:26.940 [INF] 事件管理线程初始化完成...
+[GameSrv] 01:38:26.941 [INF] 玩家数据数据线程启动...
+[GameSrv] 01:38:26.948 [INF] 脚本机器人线程启动...
+[GameSrv] 01:38:26.949 [INF] 技能Buff处理器启动...
+[GameSrv] 01:38:26.952 [INF] 初始化地图矿物数据...[1]
+[DBSrv] 01:38:26.976 [INF] 服务器连接: 127.0.0.1
+[GameSrv] 01:38:26.995 [INF] 游戏网关[127.0.0.1:5000]已启动...
+[GameSrv] 01:38:26.996 [INF] 初始化游戏世界服务线程完成...
+01:38:26.996 [INF] 欢迎使用翎风系列游戏软件...
+01:38:26.996 [INF] 网站:http://www.gameofmir.com
+[GameSrv] 01:38:26.996 [INF] 论坛:http://bbs.gameofmir.com
+[GameSrv] 01:38:27.002 [INF] 数据库服务器[tcp://127.0.0.1:6000/]连接成功...
+[GameSrv] 01:38:27.002 [INF] 登录服务器[tcp://127.0.0.1:5600/]连接成功...
+[GameGate] 
+   ___                           __  __   _          ____                  
+  / _ \   _ __     ___   _ __   |  \/  | (_)  _ __  |___ \                 
+ | | | | | '_ \   / _ \ | '_ \  | |\/| | | | | '__|   __) |                
+ | |_| | | |_) | |  __/ | | | | | |  | | | | | |     / __/                 
+  \___/  | .__/   \___| |_| |_| |_|  |_| |_| |_|    |_____|                
+         |_|                                                               
+   ____                               ____           _                     
+  / ___|   __ _   _ __ ___     ___   / ___|   __ _  | |_    ___            
+ | |  _   / _` | | '_ ` _ \   / _ \ | |  _   / _` | | __|  / _ \           
+ | |_| | | (_| | | | | | | | |  __/ | |_| | | (_| | | |_  |  __/           
+  \____|  \__,_| |_| |_| |_|  \___|  \____|  \__,_|  \__|  \___|           
+                                                                           
+[GameGate] 01:38:27.723 [INF] 正在启动服务...
+01:38:27.748 [INF] 正在加载配置信息...
+[GameGate] 01:38:27.768 [INF] 配置信息加载完成...
+[GameGate] 01:38:27.811 [INF] 服务已启动成功...
+01:38:27.811 [INF] 欢迎使用翎风系列游戏软件...
+[GameGate] 01:38:27.811 [INF] 网站:http://www.gameofmir.com
+01:38:27.811 [INF] 论坛:http://bbs.gameofmir.com
+[GameGate] 01:38:27.830 [INF] 游戏网关[127.0.0.1:7200]已启动...
+[GameGate] 01:38:27.836 [INF] 游戏网关[127.0.0.1:7200] 游戏引擎[127.0.0.1:5000]链接成功.
+[GameGate] 01:38:27.836 [INF] ThreadPool.ThreadCount: 3 Minimum work threads: 8 Minimum completion port threads: 1
+[GameSrv] 01:38:27.847 [INF] 游戏网关[127.0.0.1:53258]已打开...
+OpenMir2 engine is ready.

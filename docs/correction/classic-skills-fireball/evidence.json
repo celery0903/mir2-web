@@ -1,0 +1,339 @@
+{
+  "checkedAt": "2026-10-05T01:44:12.058Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "scope": "fireball",
+  "passed": true,
+  "full176Acceptance": false,
+  "fixture": "New isolated test accounts positioned offline in boundary village and raised to level 7 with 20000 gold and 400 MP, clamped to native limits on login; initial equipment worn through the UI and skills learned from purchased books.",
+  "errors": [],
+  "missingResources": [],
+  "shopPagesVisited": 1,
+  "learnedFromPurchasedBook": true,
+  "initialItemsEquippedThroughUi": true,
+  "observedSpell": {
+    "type": "spellCast",
+    "casterId": 287925440,
+    "x": 284,
+    "y": 622,
+    "effect": 1,
+    "magicId": 1,
+    "receivedAt": 1791164754297
+  },
+  "position": {
+    "before": {
+      "x": 288,
+      "y": 619
+    },
+    "observer": {
+      "x": 288,
+      "y": 619
+    },
+    "caster": {
+      "id": 287925440,
+      "name": "mc46520611\n平民",
+      "x": 288,
+      "y": 619,
+      "direction": 5,
+      "action": "spell",
+      "dead": false,
+      "hp": 22,
+      "maxHp": 30
+    }
+  },
+  "damage": {
+    "type": "health",
+    "id": 1326309191,
+    "hp": 21,
+    "maxHp": 25,
+    "damage": 4,
+    "receivedAt": 1791164755406
+  },
+  "mana": {
+    "before": 65,
+    "after": 63,
+    "nativePacket": {
+      "type": "resources",
+      "id": 287925440,
+      "hp": 22,
+      "mp": 63,
+      "maxHp": 30,
+      "receivedAt": 1791164754248
+    }
+  },
+  "readyAnimations": {
+    "caster": {
+      "activeSprites": 0,
+      "recent": [
+        {
+          "casterId": 287925440,
+          "effect": 1,
+          "library": "Magic",
+          "start": 0,
+          "count": 10,
+          "x": 288,
+          "y": 619
+        }
+      ],
+      "errors": [],
+      "flights": [
+        {
+          "targetId": 1326309191,
+          "effect": 1,
+          "phase": "impact",
+          "targetMoves": 0,
+          "initialTarget": {
+            "x": 284,
+            "y": 622
+          },
+          "lastTarget": {
+            "x": 284,
+            "y": 622
+          },
+          "path": [
+            {
+              "x": 288,
+              "y": 619
+            },
+            {
+              "x": 287.2291666666667,
+              "y": 619.59375
+            },
+            {
+              "x": 286.2291666666667,
+              "y": 620.3125
+            },
+            {
+              "x": 285.25,
+              "y": 621.0625
+            },
+            {
+              "x": 284,
+              "y": 622
+            }
+          ],
+          "impact": {
+            "x": 284,
+            "y": 622
+          }
+        }
+      ],
+      "casts": [
+        {
+          "id": 287925440,
+          "frame": 10,
+          "reply": "accepted",
+          "interval": 60,
+          "finished": true
+        }
+      ]
+    },
+    "observer": {
+      "activeSprites": 1,
+      "recent": [
+        {
+          "casterId": 287925440,
+          "effect": 1,
+          "library": "Magic",
+          "start": 0,
+          "count": 10,
+          "x": 288,
+          "y": 619
+        }
+      ],
+      "errors": [],
+      "flights": [
+        {
+          "targetId": 1326309191,
+          "effect": 1,
+          "phase": "impact",
+          "targetMoves": 0,
+          "initialTarget": {
+            "x": 284,
+            "y": 622
+          },
+          "lastTarget": {
+            "x": 284,
+            "y": 622
+          },
+          "path": [
+            {
+              "x": 288,
+              "y": 619
+            },
+            {
+              "x": 287.2083333333333,
+              "y": 619.59375
+            },
+            {
+              "x": 286.2083333333333,
+              "y": 620.34375
+            },
+            {
+              "x": 284.9791666666667,
+              "y": 621.28125
+            },
+            {
+              "x": 284,
+              "y": 622
+            }
+          ],
+          "impact": {
+            "x": 284,
+            "y": 622
+          }
+        }
+      ],
+      "casts": [
+        {
+          "id": 287925440,
+          "frame": 10,
+          "reply": "accepted",
+          "interval": 33,
+          "finished": true
+        }
+      ]
+    }
+  },
+  "nativeEffects": [
+    {
+      "type": "magicEffect",
+      "casterId": 287925440,
+      "x": 284,
+      "y": 622,
+      "effectType": 1,
+      "effect": 1,
+      "targetId": 1326309191,
+      "receivedAt": 1791164754298
+    }
+  ],
+  "projectiles": {
+    "caster": [
+      {
+        "targetId": 1326309191,
+        "effect": 1,
+        "phase": "impact",
+        "targetMoves": 0,
+        "initialTarget": {
+          "x": 284,
+          "y": 622
+        },
+        "lastTarget": {
+          "x": 284,
+          "y": 622
+        },
+        "path": [
+          {
+            "x": 288,
+            "y": 619
+          },
+          {
+            "x": 287.2291666666667,
+            "y": 619.59375
+          },
+          {
+            "x": 286.2291666666667,
+            "y": 620.3125
+          },
+          {
+            "x": 285.25,
+            "y": 621.0625
+          },
+          {
+            "x": 284,
+            "y": 622
+          }
+        ],
+        "impact": {
+          "x": 284,
+          "y": 622
+        }
+      }
+    ],
+    "observer": [
+      {
+        "targetId": 1326309191,
+        "effect": 1,
+        "phase": "impact",
+        "targetMoves": 0,
+        "initialTarget": {
+          "x": 284,
+          "y": 622
+        },
+        "lastTarget": {
+          "x": 284,
+          "y": 622
+        },
+        "path": [
+          {
+            "x": 288,
+            "y": 619
+          },
+          {
+            "x": 287.2083333333333,
+            "y": 619.59375
+          },
+          {
+            "x": 286.2083333333333,
+            "y": 620.34375
+          },
+          {
+            "x": 284.9791666666667,
+            "y": 621.28125
+          },
+          {
+            "x": 284,
+            "y": 622
+          }
+        ],
+        "impact": {
+          "x": 284,
+          "y": 622
+        }
+      }
+    ]
+  },
+  "observerSpellActionEnded": true,
+  "views": [
+    {
+      "name": "caster",
+      "desktopColors": 882,
+      "mobileColors": 429,
+      "mobileOverflow": false
+    },
+    {
+      "name": "observer",
+      "desktopColors": 976,
+      "mobileColors": 438,
+      "mobileOverflow": false
+    }
+  ],
+  "effectTextures": [
+    "/effects/Magic/1.f160a9972279ab00.png",
+    "/effects/Magic/2.57d2984bf6d87823.png",
+    "/effects/Magic/0.d8005d7bbef85c6f.png",
+    "/effects/Magic/3.f36732a416a086cd.png",
+    "/effects/Magic/9.76e5d00ebf0e56a9.png",
+    "/effects/Magic/8.0bdac80e5494c88e.png",
+    "/effects/Magic/4.fc06ad522445240a.png",
+    "/effects/Magic/5.2948cd3edd284eec.png",
+    "/effects/Magic/6.d6cc00fe5b898c96.png",
+    "/effects/Magic/7.1cc41bda87c945ae.png",
+    "/effects/Magic/122.3db833d8c0db4f46.png",
+    "/effects/Magic/120.5b6515f62e39c70e.png",
+    "/effects/Magic/121.84e9f623c33b5bee.png",
+    "/effects/Magic/125.98774c3d163f5805.png",
+    "/effects/Magic/124.fc317a7a16feda35.png",
+    "/effects/Magic/123.c4882c66bd89c75c.png",
+    "/effects/Magic/174.25331e2a8f160b8f.png",
+    "/effects/Magic/175.7742ec9f4e59dd6a.png",
+    "/effects/Magic/173.d53318f3f7523d00.png",
+    "/effects/Magic/176.326f766f59dbfa3d.png",
+    "/effects/Magic/177.e0b3f9a0d50ee066.png",
+    "/effects/Magic/171.c8b47c6d03b64208.png",
+    "/effects/Magic/170.b1bf4ff295762ecc.png",
+    "/effects/Magic/172.865be8e80f77622b.png",
+    "/effects/Magic/178.e0b3f9a0d50ee066.png",
+    "/effects/Magic/179.e0b3f9a0d50ee066.png"
+  ]
+}

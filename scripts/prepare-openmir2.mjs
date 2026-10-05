@@ -1,6 +1,7 @@
 import { randomBytes } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { loadClassicSkills, classicSkillsSql } from './classic-skills.mjs';
 
 const output = resolve('.runtime/openmir2');
 await mkdir(output + '/sql', { recursive: true });
@@ -16,4 +17,5 @@ for (const [index, name] of ['mir2_account', 'mir2_db', 'mir2_data'].entries()) 
   if (name !== 'mir2_data' && /\bINSERT\s+INTO\b/i.test(sql)) throw new Error(`Unexpected account data in ${name} schema`);
   await writeFile(`${output}/sql/0${index}-${name}.sql`, `CREATE DATABASE IF NOT EXISTS ${name} CHARACTER SET utf8mb4;\nUSE ${name};\n${sql}`);
 }
+await writeFile(`${output}/sql/03-classic-skills.sql`, classicSkillsSql(await loadClassicSkills()));
 console.log('Prepared isolated OpenMir2 database schemas without upstream accounts or characters.');

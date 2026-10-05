@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-05T01:35:54.869Z",
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Real MySQL with pinned native schemas; exact skill-row and saved-reference preservation, transactional rejection and fresh initialization.",
+  "policySha256": "55c9bbf346fee54e292defdacb74af8d2267305d6b31741f8d817d3fba6332be",
+  "migrationSha256": "6cdb1384ced8bf51a37cf4ffb20406317518468a3dfd58ccad9f573dcea3f2af",
+  "cases": [
+    {
+      "label": "fresh initialization loads exactly 33 identities and no upstream characters",
+      "passed": true
+    },
+    {
+      "label": "all retained numerical rows, item indices and learned/equipped/bag/warehouse records survive",
+      "passed": true
+    },
+    {
+      "label": "second migration is idempotent",
+      "passed": true
+    },
+    {
+      "label": "missing classic identity rejects atomically",
+      "passed": true
+    },
+    {
+      "label": "wrong classic name rejects atomically",
+      "passed": true
+    },
+    {
+      "label": "wrong classic job rejects atomically",
+      "passed": true
+    },
+    {
+      "label": "duplicate classic identity rejects atomically",
+      "passed": true
+    },
+    {
+      "label": "conflicting row with a classic ID rejects atomically",
+      "passed": true
+    },
+    {
+      "label": "nonclassic learned skill rejects without deleting the saved skill",
+      "passed": true
+    },
+    {
+      "label": "nullable outside identities are removed and retained rows stay intact",
+      "passed": true
+    },
+    {
+      "label": "nontransactional skill table rejects before any deletion",
+      "passed": true
+    }
+  ],
+  "initSqlSha256": "6cdb1384ced8bf51a37cf4ffb20406317518468a3dfd58ccad9f573dcea3f2af",
+  "mysqlImage": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+  "retention": {
+    "beforeSkills": 108,
+    "afterSkills": 33,
+    "retainedRowsSha256": "a36774d9725f9cc805180d4bbf9d4a9db23c0fed54ee4cae410057bd5e0318c8",
+    "itemDefinitionsSha256": "083b12d113e0632ef537a4fae9b7872462ba49b77a3a773134aa575d4109bf5f",
+    "savedReferencesSha256": "b701bb011c5c6295f8831dcaee92d103776363e20fa5a3c351fe6c7b2f7a0667"
+  }
+}

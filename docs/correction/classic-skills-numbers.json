@@ -1,0 +1,1457 @@
+{
+  "authenticated2003Data": false,
+  "full176Acceptance": false,
+  "nativeSnapshot": ".runtime/reports/classic-skill-candidate-applied/evidence.json",
+  "nativeSnapshotSha256": "be1334c4cf3c7733a73cc285caecbc14fd1398ae12607c015ba0835542323a47",
+  "policySha256": "55c9bbf346fee54e292defdacb74af8d2267305d6b31741f8d817d3fba6332be",
+  "candidates": [
+    {
+      "repository": "mrzhqiang/mirserver-1.76",
+      "revision": "39e17246a32247a2c43c4cc481e97e88c692fa53",
+      "file": "mud2/db/Magic.DB",
+      "gitBlob": "a462ad95be7d952bbc2c41086164ce496da518b9",
+      "sha256": "66adbb098efdc236e7b4a96746113eaaf29512146d7abf4a434dfb582be5426c",
+      "bytes": 30720,
+      "rowCount": 78,
+      "directImportAccepted": false,
+      "duplicateMagicIds": {},
+      "classicRowsWithNumericalDifferences": 33,
+      "comparisons": [
+        {
+          "magicId": 1,
+          "name": "火球术",
+          "candidateName": "火球术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 2,
+          "name": "治愈术",
+          "candidateName": "治愈术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 3,
+          "name": "基本剑术",
+          "candidateName": "基本剑术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 4,
+          "name": "精神力战法",
+          "candidateName": "精神力战法",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 5,
+          "name": "大火球",
+          "candidateName": "大火球",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 6,
+          "name": "施毒术",
+          "candidateName": "施毒术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 7,
+          "name": "攻杀剑术",
+          "candidateName": "攻杀剑术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 8,
+          "name": "抗拒火环",
+          "candidateName": "抗拒火环",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 9,
+          "name": "地狱火",
+          "candidateName": "地狱火",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 10,
+          "name": "疾光电影",
+          "candidateName": "疾光电影",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 11,
+          "name": "雷电术",
+          "candidateName": "雷电术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "NeedL3": {
+              "native": 23,
+              "candidate": 24
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 12,
+          "name": "刺杀剑术",
+          "candidateName": "刺杀剑术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 13,
+          "name": "灵魂火符",
+          "candidateName": "灵魂火符",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 14,
+          "name": "幽灵盾",
+          "candidateName": "幽灵盾",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 15,
+          "name": "神圣战甲术",
+          "candidateName": "神圣战甲术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 16,
+          "name": "困魔咒",
+          "candidateName": "困魔咒",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 17,
+          "name": "召唤骷髅",
+          "candidateName": "召唤骷髅",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 18,
+          "name": "隐身术",
+          "candidateName": "隐身术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 19,
+          "name": "集体隐身术",
+          "candidateName": "集体隐身术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 20,
+          "name": "诱惑之光",
+          "candidateName": "诱惑之光",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 21,
+          "name": "瞬息移动",
+          "candidateName": "瞬息移动",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 22,
+          "name": "火墙",
+          "candidateName": "火墙",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 23,
+          "name": "爆裂火焰",
+          "candidateName": "爆裂火焰",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 24,
+          "name": "地狱雷光",
+          "candidateName": "地狱雷光",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 25,
+          "name": "半月弯刀",
+          "candidateName": "半月弯刀",
+          "differences": {
+            "DefSpell": {
+              "native": 3,
+              "candidate": 4
+            },
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 26,
+          "name": "烈火剑法",
+          "candidateName": "烈火剑法",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 27,
+          "name": "野蛮冲撞",
+          "candidateName": "野蛮冲撞",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 28,
+          "name": "心灵启示",
+          "candidateName": "心灵启示",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 29,
+          "name": "群体治疗术",
+          "candidateName": "群体治疗术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        },
+        {
+          "magicId": 30,
+          "name": "召唤神兽",
+          "candidateName": "召唤神兽",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 31,
+          "name": "魔法盾",
+          "candidateName": "魔法盾",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 32,
+          "name": "圣言术",
+          "candidateName": "圣言术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 300
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 500
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 800
+            }
+          }
+        },
+        {
+          "magicId": 33,
+          "name": "冰咆哮",
+          "candidateName": "冰咆哮",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 500
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 1000
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 1500
+            }
+          }
+        }
+      ]
+    },
+    {
+      "repository": "pangliang/MirServer-Delphi",
+      "revision": "f829679d24acb3a097d396d737ab067db2c88ca2",
+      "file": "MirServer/Mud2/DB/Magic.DB",
+      "gitBlob": "d9b09d565e9c84cf7fd651a0379db9e82098ecab",
+      "sha256": "7eb49b5efb4d41687ab1e1d20f27512e971c4c520817feeeca775328d98b2662",
+      "bytes": 59392,
+      "rowCount": 244,
+      "directImportAccepted": false,
+      "duplicateMagicIds": {
+        "1": 4,
+        "2": 2,
+        "3": 4,
+        "4": 2,
+        "5": 4,
+        "6": 2,
+        "7": 4,
+        "8": 2,
+        "9": 4,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 4,
+        "14": 2,
+        "15": 2,
+        "16": 2,
+        "17": 2,
+        "18": 2,
+        "19": 2,
+        "20": 2,
+        "21": 2,
+        "22": 4,
+        "23": 4,
+        "24": 4,
+        "25": 4,
+        "26": 4,
+        "27": 2,
+        "28": 2,
+        "29": 2,
+        "30": 2,
+        "31": 2,
+        "32": 2,
+        "33": 4,
+        "34": 2,
+        "37": 4,
+        "38": 2,
+        "39": 4,
+        "40": 4,
+        "41": 2,
+        "42": 4,
+        "43": 4,
+        "44": 4,
+        "45": 4,
+        "47": 2,
+        "48": 2,
+        "49": 2,
+        "50": 2,
+        "51": 2,
+        "55": 2,
+        "56": 4,
+        "57": 4,
+        "58": 4,
+        "66": 4,
+        "67": 2,
+        "68": 2,
+        "74": 2,
+        "75": 2,
+        "81": 2,
+        "82": 2,
+        "83": 2,
+        "84": 2,
+        "85": 2,
+        "86": 2,
+        "100": 2,
+        "101": 2,
+        "102": 2,
+        "103": 2,
+        "104": 2,
+        "105": 2,
+        "106": 2,
+        "107": 2,
+        "108": 2,
+        "109": 2,
+        "110": 2,
+        "111": 2,
+        "112": 2,
+        "113": 2,
+        "114": 2,
+        "115": 2,
+        "116": 2,
+        "117": 2,
+        "60": 3,
+        "61": 3,
+        "62": 3,
+        "63": 3,
+        "64": 3,
+        "65": 3,
+        "36": 2
+      },
+      "classicRowsWithNumericalDifferences": 33,
+      "comparisons": [
+        {
+          "magicId": 1,
+          "name": "火球术",
+          "candidateName": "火球术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 2,
+          "name": "治愈术",
+          "candidateName": "治愈术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            },
+            "Delay": {
+              "native": 40,
+              "candidate": 60
+            }
+          }
+        },
+        {
+          "magicId": 3,
+          "name": "基本剑术",
+          "candidateName": "基本剑术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 4,
+          "name": "精神力战法",
+          "candidateName": "精神力战法",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 5,
+          "name": "大火球",
+          "candidateName": "大火球",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 6,
+          "name": "施毒术",
+          "candidateName": "施毒术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 7,
+          "name": "攻杀剑术",
+          "candidateName": "攻杀剑术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 8,
+          "name": "抗拒火环",
+          "candidateName": "抗拒火环",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 9,
+          "name": "地狱火",
+          "candidateName": "地狱火",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 10,
+          "name": "疾光电影",
+          "candidateName": "疾光电影",
+          "differences": {
+            "Spell": {
+              "native": 25,
+              "candidate": 30
+            },
+            "Power": {
+              "native": 12,
+              "candidate": 16
+            },
+            "MaxPower": {
+              "native": 12,
+              "candidate": 16
+            },
+            "DefSpell": {
+              "native": 20,
+              "candidate": 10
+            },
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 11,
+          "name": "雷电术",
+          "candidateName": "雷电术",
+          "differences": {
+            "Power": {
+              "native": 14,
+              "candidate": 22
+            },
+            "MaxPower": {
+              "native": 28,
+              "candidate": 48
+            },
+            "DefPower": {
+              "native": 10,
+              "candidate": 18
+            },
+            "DefMaxPower": {
+              "native": 10,
+              "candidate": 18
+            },
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 12,
+          "name": "刺杀剑术",
+          "candidateName": "刺杀剑术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 13,
+          "name": "灵魂火符",
+          "candidateName": "灵魂火符",
+          "differences": {
+            "Power": {
+              "native": 15,
+              "candidate": 50
+            },
+            "MaxPower": {
+              "native": 28,
+              "candidate": 60
+            },
+            "DefPower": {
+              "native": 10,
+              "candidate": 20
+            },
+            "DefMaxPower": {
+              "native": 10,
+              "candidate": 20
+            },
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 14,
+          "name": "幽灵盾",
+          "candidateName": "幽灵盾",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 15,
+          "name": "神圣战甲术",
+          "candidateName": "神圣战甲术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 16,
+          "name": "困魔咒",
+          "candidateName": "困魔咒",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 17,
+          "name": "召唤骷髅",
+          "candidateName": "召唤骷髅",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 18,
+          "name": "隐身术",
+          "candidateName": "隐身术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 19,
+          "name": "集体隐身术",
+          "candidateName": "集体隐身术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 20,
+          "name": "诱惑之光",
+          "candidateName": "诱惑之光",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 21,
+          "name": "瞬息移动",
+          "candidateName": "瞬息移动",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 22,
+          "name": "火墙",
+          "candidateName": "火墙",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 23,
+          "name": "爆裂火焰",
+          "candidateName": "爆裂火焰",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 24,
+          "name": "地狱雷光",
+          "candidateName": "地狱雷光",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 25,
+          "name": "半月弯刀",
+          "candidateName": "半月弯刀",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 26,
+          "name": "烈火剑法",
+          "candidateName": "烈火剑法",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 27,
+          "name": "野蛮冲撞",
+          "candidateName": "野蛮冲撞",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 28,
+          "name": "心灵启示",
+          "candidateName": "心灵启示",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 29,
+          "name": "群体治疗术",
+          "candidateName": "群体治愈术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 30,
+          "name": "召唤神兽",
+          "candidateName": "召唤神兽",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 31,
+          "name": "魔法盾",
+          "candidateName": "魔法盾",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 32,
+          "name": "圣言术",
+          "candidateName": "圣言术",
+          "differences": {
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        },
+        {
+          "magicId": 33,
+          "name": "冰咆哮",
+          "candidateName": "冰咆哮",
+          "differences": {
+            "Power": {
+              "native": 12,
+              "candidate": 15
+            },
+            "MaxPower": {
+              "native": 12,
+              "candidate": 19
+            },
+            "DefPower": {
+              "native": 12,
+              "candidate": 16
+            },
+            "DefMaxPower": {
+              "native": 12,
+              "candidate": 16
+            },
+            "L1Train": {
+              "native": 200,
+              "candidate": 50
+            },
+            "L2Train": {
+              "native": 300,
+              "candidate": 100
+            },
+            "L3Train": {
+              "native": 500,
+              "candidate": 200
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "interpretation": "Both community tables contain later content. Agreement on identities or individual numbers does not authenticate either candidate as 2003 Shanda data. No running value is changed."
+}

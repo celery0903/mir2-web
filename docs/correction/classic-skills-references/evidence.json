@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-05T01:38:00.409Z",
+  "passed": true,
+  "authenticated2003Data": false,
+  "full176Acceptance": false,
+  "scope": "Cross-check exact skill identities and jobs only. Live legacy pages and a mixed community table are not authenticated 2003 numerical data.",
+  "policySha256": "55c9bbf346fee54e292defdacb74af8d2267305d6b31741f8d817d3fba6332be",
+  "guides": [
+    {
+      "job": 0,
+      "url": "https://mir.17173.com/skill/skill.htm",
+      "sha256": "9bf33f146cb1f568c064466c2781073634bc5bd4a92602c2db1a5114ec1f050b",
+      "file": "references/mir.17173.com_skill_skill_htm.html",
+      "names": [
+        "基础剑术",
+        "攻杀剑术",
+        "刺杀剑术",
+        "半月弯刀",
+        "野蛮冲撞",
+        "烈火剑法"
+      ],
+      "checkedNames": 6,
+      "authenticated2003Snapshot": false
+    },
+    {
+      "job": 2,
+      "url": "https://mir.17173.com/skill/skill2.htm",
+      "sha256": "e3f91621b2e2709e53ecf07f2079db22ce4584f634fab23481119d79b2574b47",
+      "file": "references/mir.17173.com_skill_skill2_htm.html",
+      "names": [
+        "治愈术",
+        "精神力战法",
+        "施毒术",
+        "灵魂火符",
+        "召唤骷髅",
+        "隐身术",
+        "集体隐身术",
+        "幽灵盾",
+        "神圣战甲术",
+        "心灵启示",
+        "困魔咒",
+        "群体治愈术",
+        "召唤神兽"
+      ],
+      "checkedNames": 13,
+      "authenticated2003Snapshot": false
+    },
+    {
+      "job": 1,
+      "url": "https://mir.17173.com/skill/skill3.htm",
+      "sha256": "b144b4a4c83889375ba873b4cc3fb36610e5cf0dab55458be48e8622851a6c58",
+      "file": "references/mir.17173.com_skill_skill3_htm.html",
+      "names": [
+        "火球术",
+        "抗拒火环",
+        "诱惑之光",
+        "地狱火",
+        "雷电术",
+        "瞬息移动",
+        "大火球",
+        "爆裂火焰",
+        "火墙",
+        "疾光电影",
+        "地狱雷光",
+        "魔法盾",
+        "圣言术",
+        "冰咆哮"
+      ],
+      "checkedNames": 14,
+      "authenticated2003Snapshot": false
+    }
+  ],
+  "candidate": {
+    "repository": "mrzhqiang/mirserver-1.76",
+    "revision": "39e17246a32247a2c43c4cc481e97e88c692fa53",
+    "file": "mud2/db/Magic.DB",
+    "sha256": "66adbb098efdc236e7b4a96746113eaaf29512146d7abf4a434dfb582be5426c",
+    "directImportAccepted": false,
+    "checkedIdentities": 33
+  }
+}

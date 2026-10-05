@@ -18,7 +18,7 @@ assert.equal(new URL(base).hostname, '127.0.0.1');
 const destination = process.env.MIR_SKILL_REPORT ?? '.runtime/reports/source-skills';
 const execute = promisify(execFile);
 const report = { checkedAt: new Date().toISOString(), url: base, project, scope, passed: false, full176Acceptance: false,
-  fixture: `New isolated test accounts raised offline to level ${fixtureLevel} with 20000 gold and 400 MP, clamped to native limits on login; skills learned from purchased books.`, errors: [], missingResources: [] };
+  fixture: `New isolated test accounts positioned offline in boundary village and raised to level ${fixtureLevel} with 20000 gold and 400 MP, clamped to native limits on login; initial equipment worn through the UI and skills learned from purchased books.`, errors: [], missingResources: [] };
 const bookshopScript = '/data/server/Mir200/Envir/Market_Def/比奇城/小书-0132.txt';
 let originalBookshop;
 await mkdir(destination, { recursive: true });
@@ -68,6 +68,7 @@ async function walk(page, x, y, destinationMap) {
   const finder = new PF.AStarFinder({ allowDiagonal: true, dontCrossCorners: false, heuristic: PF.Heuristic.chebyshev });
   for (let attempt = 0; attempt < 40; attempt++) {
     const current = await states(page);
+    assert.ok(current.self.hp > 0 && !current.self.dead, 'Test character died during skill preparation');
     if (changedMap && current.map === destinationMap || !changedMap && !current.pending && Math.max(Math.abs(current.self.x - x), Math.abs(current.self.y - y)) <= 1) return;
     const available = native.clone();
     for (const actor of current.nearby) if (!actor.dead && (actor.x !== x || actor.y !== y)) available.setWalkableAt(actor.x, actor.y, false);
@@ -84,6 +85,15 @@ async function walk(page, x, y, destinationMap) {
     }, { timeout: 30000 }).toBe(true);
   }
   assert.fail('Skill preparation route exhausted');
+}
+async function equipInitialItems(page) {
+  await page.keyboard.press('F9');
+  await expect(page.locator('#inventory-window')).toBeVisible();
+  for (const name of ['木剑', '布衣(男)']) {
+    await page.locator('#inventory-items').getByRole('button', { name, exact: true }).dblclick();
+    await expect.poll(async () => (await states(page)).equipment.slots.some(slot => slot.item.name === name), { timeout: 15000 }).toBe(true);
+  }
+  await page.keyboard.press('F9');
 }
 let caster, observer;
 const casterPackets = [], observerPackets = [], textures = new Set();
@@ -203,12 +213,14 @@ try {
     }
     for (const account of accounts) {
       assert.match(account.account, /^q[01]\d{7}$/);
-      const sql = `UPDATE characters c JOIN characters_ablity a ON a.PlayerId=c.Id SET c.Level=${fixtureLevel},c.Gold=20000,a.Level=${fixtureLevel},a.Hp=${scope === 'shield' ? 400 : 30},a.Mp=400,a.Exp=0 WHERE c.LoginID='${account.account}'`;
+      assert.equal((await grid('0')).isWalkableAt(288, 619 + account.job), true, 'Fixture birth cell is blocked');
+      const sql = `UPDATE characters c JOIN characters_ablity a ON a.PlayerId=c.Id SET c.MapName='0',c.CX=288,c.CY=${619 + account.job},c.Level=${fixtureLevel},c.Gold=20000,a.Level=${fixtureLevel},a.Hp=${scope === 'shield' ? 400 : 30},a.Mp=400,a.Exp=0 WHERE c.LoginID='${account.account}'`;
       await execute('docker', ['exec', `${project}-db-1`, 'sh', '-c', 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -uroot mir2_db -e "$1"', 'sh', sql]);
     }
   } finally { await execute('docker', ['start', `${project}-engine-1`]); }
   await expect.poll(async () => (await execute('docker', ['inspect', `${project}-engine-1`, '--format', '{{.State.Health.Status}}'])).stdout.trim(), { timeout: 60000 }).toBe('healthy');
   caster = await enter(accounts[1], false, page => watchSpells(page, casterPackets));
+  await equipInitialItems(caster);
   await walk(caster, 282, 636, '0132'); await walk(caster, 12, 13, '0132');
   await caster.locator('[data-window-open="targets"]').click();
   await caster.locator('#nearby-targets').getByRole('button', { name: /^书店/ }).click();
@@ -234,6 +246,8 @@ try {
   if (await caster.locator('#inventory-window').isVisible()) await caster.keyboard.press('F9');
   if(scope === 'fireball') { await walk(caster, 14, 16, '0'); await walk(caster, 287, 618, '0'); }
   observer = await enter(accounts[0], false, page => watchSpells(page, observerPackets));
+  await equipInitialItems(observer);
+  report.initialItemsEquippedThroughUi = true;
   if(scope === 'shield') await verifyShield();
   else {
   const target = await findMonster();

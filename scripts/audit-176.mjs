@@ -4,6 +4,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { resolve, join } from 'node:path';
 import { legacyMap, legacyTileRemap } from './native-map.mjs';
+import { loadClassicSkills, classifySkills } from './classic-skills.mjs';
 
 const execute = promisify(execFile);
 const assets = resolve(process.env.MIR_CLASSIC_ASSETS ?? '.runtime/classic');
@@ -22,6 +23,17 @@ const sql = `SELECT JSON_OBJECT(
 )`;
 const { stdout } = await execute('docker', ['exec', `${project}-db-1`, 'sh', '-c', 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -uroot --batch --raw --skip-column-names mir2_data -e "$1"', 'sh', sql]);
 const database = JSON.parse(stdout);
+const skillPolicy = await loadClassicSkills();
+const { stdout: skillRows } = await execute('docker', ['exec', `${project}-db-1`, 'sh', '-c',
+  'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -uroot --batch --raw --skip-column-names mir2_data -e "$1"', 'sh',
+  "SELECT JSON_OBJECT('MagID',MagID,'MagName',MagName,'Job',Job) FROM magics ORDER BY Idx"]);
+try {
+  const { retained, removed } = classifySkills(skillRows.trim().split('\n').filter(Boolean).map(line => JSON.parse(line)), skillPolicy);
+  database.classicSkillIdentities = { acceptance: removed.length ? 'failed' : 'passed', retained: retained.length,
+    outsideScope: removed.length, outsideSkills: removed, authenticated2003NumericalData: false };
+} catch (error) {
+  database.classicSkillIdentities = { acceptance: 'failed', error: String(error), authenticated2003NumericalData: false };
+}
 const json = async file => JSON.parse(await readFile(file, 'utf8'));
 const ui = await json(join(assets, 'ui.json'));
 const mapAudit = await json('docs/map-audit.json');
@@ -40,6 +52,8 @@ files.push('server/openmir2-safezone.patch', 'tests/source-safezone.mjs', 'tests
 files.push('shared/archived-176-client.lock.json', 'scripts/fetch-archived-176-client.mjs', 'scripts/prepare-archived-minimaps.py', 'tests/archived-map-assets.mjs', 'tests/archived-minimaps.mjs');
 files.push('server/source-minimap.patch', 'server/source-minimap-proxy.patch', 'server/source-npc-receipt.patch');
 files.push('tests/source-client.mjs', 'tests/source-world-travel.mjs', 'tests/classic-world-browser.mjs');
+files.push('shared/classic-skills.json', 'scripts/classic-skills.mjs', 'scripts/migrate-classic-skills.mjs', 'tests/classic-skills-migration.mjs', 'tests/classic-skill-references.mjs');
+files.push('scripts/audit-classic-skill-numbers.py');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);
@@ -169,5 +183,5 @@ const report = {
   interpretation: 'Basic gameplay and original UI frames do not prove full 1.76 fidelity. Later data presence does not by itself prove player reachability.'
 };
 await writeFile('docs/version-audit.json', JSON.stringify(report, null, 2) + '\n');
-console.log(`1.76 acceptance: FAILED; ${mapAudit.maps.length} maps, ${database.skills} mixed-version skills. See docs/version-audit.json.`);
+console.log(`1.76 acceptance: FAILED; ${activatedMapIDs.length} maps, ${database.skills} skills, ${database.classicSkillIdentities.outsideScope ?? 'unknown'} outside classic identity scope; numerical data unverified. See docs/version-audit.json.`);
 if (process.argv.includes('--check')) process.exitCode = 1;
