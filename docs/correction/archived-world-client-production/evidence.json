@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-05T00:37:11.407Z",
+  "url": "http://172.30.0.16:18880",
+  "scope": "all",
+  "passed": false,
+  "full176Acceptance": false,
+  "jobs": [],
+  "originRejected": true,
+  "error": "page.waitForFunction: Timeout 60000ms exceeded.\n    at enter (/home/dev/workspace4/mir2-web/tests/source-client.mjs:19:14)\n    at async file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:75:5"
+}

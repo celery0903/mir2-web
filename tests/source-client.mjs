@@ -12,22 +12,35 @@ await mkdir(destination, { recursive: true });
 await mkdir('.state', { recursive: true });
 const report = { checkedAt: new Date().toISOString(), url: base, scope, passed: false, full176Acceptance: false, jobs: [] };
 const browser = await chromium.launch({ headless: true });
+let closingBrowser = false;
+browser.on('disconnected', () => { if (!closingBrowser) report.unexpectedBrowserDisconnect = new Date().toISOString(); });
 const observed = page => page.evaluate(() => window.__mir2Agent.snapshot());
 let activePage;
+let activeDiagnostics;
 async function enter(page, credentials, register = false) {
+  const diagnostics = { stage: 'bootstrap', errors: [], missingResources: [], failedRequests: [], crashes: [] };
+  activeDiagnostics = diagnostics;
+  page.on('crash', () => diagnostics.crashes.push(new Date().toISOString()));
+  page.on('pageerror', error => diagnostics.errors.push(error.message));
+  page.on('requestfailed', request => diagnostics.failedRequests.push({ path: new URL(request.url()).pathname, error: request.failure()?.errorText }));
+  page.on('response', response => { if (response.status() >= 400) diagnostics.missingResources.push({ path: new URL(response.url()).pathname, status: response.status() }); });
   await page.goto(`${base}/?agent=1`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => !!window.__mir2Agent, {}, { timeout: 60000 });
+  diagnostics.stage = register ? 'registration' : 'login';
   await page.locator('#account').fill(credentials.account);
   await page.locator('#password').fill(credentials.password);
   await page.locator(register ? '#register' : '#auth-login-ok').click();
   await expect(page.locator('[data-auth-select]')).toBeVisible({ timeout: 30000 });
+  diagnostics.stage = 'character-selection';
 }
 async function world(page) {
+  activeDiagnostics.stage = 'world-entry';
   await page.locator('[data-auth-start]').click();
   await expect.poll(async () => {
     const state = await observed(page);
     return state.worldReady && state.inventory.known && state.attributes?.level === 1 && state.render?.framesReady && (state.map !== '0' || state.minimap.imageReady);
   }, { timeout: 60000 }).toBeTruthy();
+  activeDiagnostics.stage = 'gameplay';
 }
 function sampledColors(bytes) {
   const image = PNG.sync.read(bytes), colors = new Set();
@@ -238,6 +251,9 @@ try {
   report.passed = true;
 } catch (error) {
   report.error = error.stack;
+  report.failureDiagnostics = activeDiagnostics;
+  report.browserConnectedAtFailure = browser.isConnected();
+  report.pageClosedAtFailure = activePage?.isClosed();
   if (activePage && !activePage.isClosed()) {
     await activePage.screenshot({ path: `${destination}/failure.png` }).catch(() => {});
     const state = await observed(activePage).catch(() => undefined);
@@ -246,6 +262,7 @@ try {
   }
   process.exitCode = 1;
 } finally {
+  closingBrowser = true;
   await browser.close();
   await writeFile(`${destination}/evidence.json`, JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));

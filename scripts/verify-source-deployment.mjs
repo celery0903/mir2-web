@@ -103,9 +103,24 @@ for(const map of integration.maps){
  }
 }
 const mapFrameRequests=[];
+const archivedMapLibraries=[];
+const archiveLock=JSON.parse(await readFile('shared/archived-176-client.lock.json'));
 for(const name of libraryNames){
  assert.match(name,/^[A-Za-z0-9]+$/);
  const manifest=JSON.parse(await verifyResource(`libraries/${name}/library.json`));
+ const declared=integration.mapLibrarySources?.find(library=>library.name===name);
+ if(declared){
+  assert.equal(manifest.sourceSha256,declared.sourceSha256,'Declared map library source');
+  assert.equal(manifest.format,declared.format,'Declared map library format');
+ }
+ if(manifest.format==='wil-classic'){
+  const source=archiveLock.mapLibraries.find(library=>library.library===name);
+  assert.ok(source,'Unpinned archived map library');
+  assert.equal(manifest.sourceSha256,archiveLock.clientFiles.find(file=>file.file===source.file).sha256);
+  assert.equal(manifest.indexSha256,archiveLock.clientFiles.find(file=>file.file===source.index).sha256);
+  assert.equal(manifest.installerSha256,archiveLock.installer.sha256);
+  archivedMapLibraries.push({name,sourceSha256:manifest.sourceSha256,indexSha256:manifest.indexSha256,frames:Object.keys(manifest.frames).length});
+ }
  for(const frame of Object.values(manifest.frames))for(const layer of [frame,frame.mask]){
   if(!layer)continue;
   assert.match(layer.file,/^[A-Za-z0-9_.-]+\.png$/);
@@ -163,6 +178,6 @@ const patches=Object.fromEntries(await Promise.all(['server/source-client.patch'
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
 resourceFiles.sort((a,b)=>a.path.localeCompare(b.path));
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,mapCatalogVerified:hasMapCatalog,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,minimapFramesVerified:Object.keys(minimapManifest.frames).length,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,expectedProxyImage,proxyMatchesDeclaredTestImage:expectedProxyImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,mapCatalogVerified:hasMapCatalog,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,archivedMapLibraries,magicIntegration,minimapFramesVerified:Object.keys(minimapManifest.frames).length,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,expectedProxyImage,proxyMatchesDeclaredTestImage:expectedProxyImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
 console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

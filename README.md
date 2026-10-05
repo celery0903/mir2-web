@@ -12,7 +12,7 @@
 
 ## 启动
 
-需要 Git、Docker Compose v2、Node.js、Python 3 和 curl。准备随机数据库密码、空账号初始化 SQL、锁定资源及匹配的地图：
+需要 Git、Docker Compose v2、Node.js、Python 3、curl、7-Zip (`7z`) 和 `unshield`。准备随机数据库密码、空账号初始化 SQL、锁定资源及匹配的地图：
 
 ```bash
 git clone --recurse-submodules https://github.com/celery0903/mir2-web.git
@@ -26,7 +26,7 @@ docker compose up -d --build --wait
 
 默认准备严格检查地图及素材哈希、库编号和全部导出单元，当前 11 张图统一使用原始地图与 WemadeMir2 图库，无未解析引用。`--allow-missing-references` 保留用于明确标注的旧转换图适配，不能绕过原生地图的素材缺项或内容哈希检查，也不改变完整 1.76 验收结果。候选目录现包含六件新衣服区域共 256 张图，实际引擎已核对全部 9,919,082 格碰撞；石墓四层仍缺一帧，尚未在正式世界配置中开放。范围、画面对照和失败记录见 [经典世界进度](docs/CLASSIC_WORLD.md)。
 
-独立 18883 入口现加载 256 图候选配置，实际网页通过边界往返、原 NPC 传送和房屋别名存档/重登；正式 18880 保持 11 图。全连接与服务验收仍失败，见 [原生世界隔离核验](docs/WORLD_REVIEW.md)。另已在网上取得并固定一份盛大标注的 [1.76 升级补丁](docs/ARCHIVED_CLIENT.md)，它不包含完整基础客户端，尚未作为原版整包导入。隔离世界已接入其 189 帧[原始小地图](docs/ARCHIVED_MINIMAPS.md)，按配套 proxy 的原生回包选择帧，沃玛森林和白日门实测通过。
+独立 18883 入口现加载 256 图候选配置，实际网页通过边界往返、原 NPC 传送和房屋别名存档/重登；正式 18880 保持 11 图。全连接与服务验收仍失败，见 [原生世界隔离核验](docs/WORLD_REVIEW.md)。另已在网上取得并固定一份盛大标注的 [1.76 升级补丁](docs/ARCHIVED_CLIENT.md)，它不包含完整基础客户端，尚未作为原版整包导入。默认准备与两个入口现使用补丁的 Tiles、Objects3/4/5 原 WIL 及 189 帧原小地图；其余基础图库仍有社区来源。逐像素核对、原生回包与正式部署见 [原地图库接入](docs/ARCHIVED_MAP_ASSETS.md) 和 [原始小地图](docs/ARCHIVED_MINIMAPS.md)。
 
 账号使用 3 至 10 位字母数字，密码使用 5 至 10 位字母数字，角色名最多 14 个 GBK 字节。上游账号库沿用传统密码存储。
 

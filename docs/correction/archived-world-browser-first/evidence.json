@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-10-05T00:19:47.032Z",
+  "before": "http://127.0.0.1:18880",
+  "after": "http://127.0.0.1:18889",
+  "passed": false,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+  "scenes": [
+    {
+      "name": "start",
+      "x": 289,
+      "y": 618,
+      "changedPixels": 282728,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "4b8c826d28cf3e82c888fa9301cb0e074b4578bf3adf7e6b8039f8628c894418",
+      "afterCanvasSha256": "bfd1120ff75f0e98a42815d1cdee9fcef17ac0d9d13f5f552c9b3f25735ca017",
+      "desktopColors": 395,
+      "mobileColors": 197,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "warehouse",
+      "x": 307,
+      "y": 627,
+      "changedPixels": 194511,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "e437673f6afffced50ddb1ec3ba115682e81730b6dd421d9b9caa306949709b7",
+      "afterCanvasSha256": "915f8264fa41e95bb9bd05f40db7cbbec28092bd12406a0035bb786960f99a1e",
+      "desktopColors": 403,
+      "mobileColors": 194,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects6"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "city",
+      "x": 335,
+      "y": 299,
+      "changedPixels": 176491,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "56be30c886a0174251e51dff0ef22ae79c3d44a045fcd81330769453b950d59b",
+      "afterCanvasSha256": "5096c09a0cc91f4456ccfa9d3a2a92a818b907c13fe609f1d9a57e286f57cdda",
+      "desktopColors": 1589,
+      "mobileColors": 484,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "city-south",
+      "x": 329,
+      "y": 337,
+      "changedPixels": 237133,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "88dadfac4bbcb55ea1256971fe188e4a2f244d400c55c6fb96cdbc80b35505ad",
+      "afterCanvasSha256": "1272f5f4bbe17d78dba390b7626e46fca45aa2b1d76e7a6ef84d945f5709bd87",
+      "desktopColors": 1249,
+      "mobileColors": 465,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "southwest",
+      "x": 247,
+      "y": 664,
+      "changedPixels": 340480,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "989bb87089d9ef18858e37efd3c6dd26b16e09e36ff518028a7d45e3d19a57c0",
+      "afterCanvasSha256": "1a64ba50a287eb3da0f422322571e0204602d1915b1c10d6ae3ec56155330c13",
+      "desktopColors": 190,
+      "mobileColors": 144,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    }
+  ],
+  "error": "Error: locator.screenshot: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n"
+}

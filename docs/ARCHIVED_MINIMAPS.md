@@ -28,7 +28,7 @@
 
 ## 范围与缺项
 
-189 帧原始图库当前仅用于 18883 隔离候选；正式 18880 已接入原生小地图请求，但保持 11 图范围和既有比奇一帧素材，没有导入完整图库。升级补丁不是完整 2003 原客户端，不能认证全部资源与规则。牛魔寺庙大厅 `D2079` 在当前种子中请求原编号 190，而补丁仅有帧 0–188，该图小地图仍缺项。未给它复制或猜测其他帧。
+上述协议更新时，正式 18880 仍使用既有比奇一帧素材。后续[原地图库接入](ARCHIVED_MAP_ASSETS.md)已将 189 帧原小地图也用于正式资源，地图开放范围仍为 11 图。升级补丁不是完整 2003 原客户端，不能认证全部资源与规则。牛魔寺庙大厅 `D2079` 在当前种子中请求原编号 190，而补丁仅有帧 0–188，该图小地图仍缺项。未给它复制或猜测其他帧。
 
 [上游 Python 全套检查](correction/source-minimap-python/evidence.json)执行 92 项，6 个失败、8 个错误，包括该隔离源码检查目录缺少上游运行库、原始 UI 导出与规范化商人文件，以及内容、技能契约和任务检查失败。没有将这些检查标为通过，也不以小地图或基础联机通过替代完整原版验收。完整世界的 8 条连接、脚本、城堡和其他素材缺项仍见[世界核验](WORLD_REVIEW.md)。
 
@@ -37,11 +37,11 @@
 ```bash
 node scripts/fetch-archived-176-client.mjs
 npm run assets:archived-minimaps
-npm run test:archived-minimaps
+MIR_MINIMAP_ASSETS=.runtime/classic-world/assets npm run test:archived-minimaps
 docker build -f server/SourceClient/Dockerfile -t mir2-minimap-web:test .
 docker build -f server/SourceProxy/Dockerfile -t mir2-minimap-proxy:test .
 docker compose -p mir2-rebuild -f compose.yaml -f compose.rebuild.yaml -f compose.world-review.yaml up -d --no-deps --no-build --wait web source-proxy
 MIR_TEST_FIXTURES=1 MIR_WORLD_MINIMAPS=1 npm run test:source-world-travel
 ```
 
-准备基础资源时可给 `prepare-source-assets.mjs` 传入 `--archived-minimaps`，使用已下载的固定原文件覆盖小地图导出。默认准备继续使用比奇一帧，原始库导入必须显式选择。
+准备基础资源时可给 `prepare-source-assets.mjs` 传入 `--archived-minimaps`，使用已下载的固定原文件覆盖小地图导出。后续 `npm run prepare:source` 与 `npm run assets:source` 已默认启用此选项及四个原地图库；`test:archived-minimaps` 默认核对正式准备目录 `.runtime/source-assets`。

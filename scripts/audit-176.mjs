@@ -37,6 +37,9 @@ files.push('server/openmir2-status.patch', 'tests/source-status.mjs', 'tests/sta
 files.push('tests/source-services.mjs', 'tests/source-empty-inventory.mjs', 'tests/native/Program.cs');
 files.push('shared/native-world.lock.json', 'scripts/fetch-native-map-libraries.mjs', 'scripts/prepare-native-map-assets.py', 'scripts/check-native-world-positions.mjs', 'tests/native-world-assets.py', 'tests/source-native-world.mjs');
 files.push('server/openmir2-safezone.patch', 'tests/source-safezone.mjs', 'tests/safezone/Program.cs', 'tests/world-maps/Program.cs');
+files.push('shared/archived-176-client.lock.json', 'scripts/fetch-archived-176-client.mjs', 'scripts/prepare-archived-minimaps.py', 'tests/archived-map-assets.mjs', 'tests/archived-minimaps.mjs');
+files.push('server/source-minimap.patch', 'server/source-minimap-proxy.patch', 'server/source-npc-receipt.patch');
+files.push('tests/source-client.mjs', 'tests/source-world-travel.mjs', 'tests/classic-world-browser.mjs');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);
@@ -147,7 +150,7 @@ const report = {
     default: 'existing Pixi H5 source plus its WebSocket/TCP proxy',
     deployedSource: labels['org.opencontainers.image.source'] ?? null,
     deployedRevision: labels['org.opencontainers.image.revision'] ?? null,
-    patches: ['server/source-client.patch', 'server/source-proxy.patch', 'server/source-magic.patch'],
+    patches: ['server/source-client.patch', 'server/source-proxy.patch', 'server/source-magic.patch', 'server/source-minimap.patch', 'server/source-minimap-proxy.patch', 'server/source-npc-receipt.patch'],
     sourceAssets, nativeMapsMatch, mapConversion
   },
   world: { profile: world.profile, activatedMapIDs, enabledMaps: mapAudit.maps, installedMapIDsMatchCollisionAudit: JSON.stringify(activatedMapIDs.slice().sort()) === JSON.stringify(mapAudit.maps.map(map => map.id).sort()), connections: mapAudit.connections, scope: mapAudit.scope },

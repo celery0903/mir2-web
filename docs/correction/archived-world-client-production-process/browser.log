@@ -1,0 +1,216 @@
+2026-10-05T00:44:15.059Z pw:browser <launching> /home/dev/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-qoyQUr --remote-debugging-pipe --no-startup-window
+2026-10-05T00:44:15.070Z pw:browser <launched> pid=1132020
+2026-10-05T00:44:15.285Z pw:browser [pid=1132020][err] [1005/004415.284554:WARNING:media/gpu/vaapi/vaapi_wrapper.cc:1660] drmGetDevices2() has not found any devices
+2026-10-05T00:44:15.290Z pw:browser [pid=1132020][err] [1005/004415.286990:WARNING:sandbox/policy/linux/sandbox_linux.cc:405] InitializeSandbox() called with multiple threads in process gpu-process.
+2026-10-05T00:44:15.625Z pw:browser [pid=1132020][err] [1005/004415.621872:WARNING:media/audio/linux/audio_manager_linux.cc:53] Falling back to ALSA for audio output. PulseAudio is not available or could not be initialized.
+2026-10-05T00:44:15.640Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] [1005/004415.641287:ERROR:media/audio/alsa/alsa_util.cc:204] PcmOpen: default,No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+2026-10-05T00:44:15.642Z pw:browser [pid=1132020][err] [1005/004415.641518:ERROR:media/audio/alsa/alsa_util.cc:204] PcmOpen: plug:default,No such file or directory
+2026-10-05T00:44:15.647Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+2026-10-05T00:44:15.647Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] [1005/004415.647188:ERROR:media/audio/alsa/alsa_util.cc:204] PcmOpen: default,No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+2026-10-05T00:44:15.648Z pw:browser [pid=1132020][err] ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+2026-10-05T00:44:15.649Z pw:browser [pid=1132020][err] [1005/004415.648299:ERROR:media/audio/alsa/alsa_util.cc:204] PcmOpen: plug:default,No such file or directory
+2026-10-05T00:44:15.697Z pw:browser [pid=1132020][err] [1005/004415.697295:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+2026-10-05T00:44:15.712Z pw:browser [pid=1132020][err] [1005/004415.712164:INFO:CONSOLE:0] "[.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels", source: http://172.30.0.16:18880/?agent=1 (0)
+2026-10-05T00:44:15.717Z pw:browser [pid=1132020][err] [1005/004415.716890:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+2026-10-05T00:44:15.731Z pw:browser [pid=1132020][err] [1005/004415.730925:INFO:CONSOLE:0] "[.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels", source: http://172.30.0.16:18880/?agent=1 (0)
+2026-10-05T00:44:15.732Z pw:browser [pid=1132020][err] [1005/004415.732244:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+2026-10-05T00:44:15.742Z pw:browser [pid=1132020][err] [1005/004415.741499:INFO:CONSOLE:0] "[.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels", source: http://172.30.0.16:18880/?agent=1 (0)
+2026-10-05T00:44:15.742Z pw:browser [pid=1132020][err] [1005/004415.742107:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+2026-10-05T00:44:15.744Z pw:browser [pid=1132020][err] [1005/004415.744843:INFO:CONSOLE:0] "[.WebGL-0x1d1c00be7200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)", source: http://172.30.0.16:18880/?agent=1 (0)
+PASS source client job 0: registration, rendering, equipment, movement and reconnect persistence.
+PASS source client job 1: registration, rendering, equipment, movement and reconnect persistence.
+PASS source client job 2: registration, rendering, equipment, movement and reconnect persistence.
+2026-10-05T00:46:04.076Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+2026-10-05T00:46:04.076Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+2026-10-05T00:46:04.076Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] [1005/004604.074739:ERROR:media/audio/alsa/alsa_util.cc:204] PcmOpen: default,No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+2026-10-05T00:46:04.077Z pw:browser [pid=1132020][err] [1005/004604.075027:ERROR:media/audio/alsa/alsa_util.cc:204] PcmOpen: plug:default,No such file or directory
+PASS source client warehouse: entrance, empty list, deposit and withdrawal after reconnect.
+2026-10-05T00:46:13.113Z pw:browser [pid=1132020] <gracefully close start>
+2026-10-05T00:46:13.174Z pw:browser [pid=1132020] <process did exit: exitCode=0, signal=null>
+2026-10-05T00:46:13.174Z pw:browser [pid=1132020] starting temporary directories cleanup
+2026-10-05T00:46:13.184Z pw:browser [pid=1132020] finished temporary directories cleanup
+2026-10-05T00:46:13.184Z pw:browser [pid=1132020] <gracefully close end>
+{
+  "checkedAt": "2026-10-05T00:44:15.029Z",
+  "url": "http://172.30.0.16:18880",
+  "scope": "all",
+  "passed": true,
+  "full176Acceptance": false,
+  "jobs": [
+    {
+      "job": 0,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 871,
+      "mobileColors": 412,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 1,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(女)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 887,
+      "mobileColors": 425,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 2,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 881,
+      "mobileColors": 429,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    }
+  ],
+  "originRejected": true,
+  "warehouse": {
+    "browserEntrance": true,
+    "counterNpcDistance": 6,
+    "objectLibraries": {
+      "1": "WemadeObjects2",
+      "2": "WemadeObjects3"
+    },
+    "inlineScriptLinks": true,
+    "originalPanelDimensions": true,
+    "emptyList": true,
+    "dragSelectionAndCancel": true,
+    "selectedItemImageLoaded": true,
+    "mobileDeposit": true,
+    "mobileOverflow": false,
+    "deposit": true,
+    "reconnectWithdrawal": true,
+    "sameItemInstance": true,
+    "goldPreserved": true,
+    "visiblePlayerAfterRoundTrip": true,
+    "mapTransitions": [
+      {
+        "sequence": 3,
+        "mapGeneration": 1,
+        "type": "map",
+        "map": "0140"
+      },
+      {
+        "sequence": 70,
+        "mapGeneration": 2,
+        "type": "map",
+        "x": 306,
+        "y": 628,
+        "map": "0"
+      },
+      {
+        "sequence": 84,
+        "mapGeneration": 3,
+        "type": "map",
+        "x": 2,
+        "y": 10,
+        "map": "0140"
+      }
+    ],
+    "errors": [],
+    "missingResources": []
+  }
+}

@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'upstream/mir2-client/tools'))
 from map_tool import ClassicMap, UnsupportedMap, export as export_map
 from crystal_lib import export as export_library
+from wil_lib import export as export_wil
 
 
 def checked_map(data, trailing_bytes=0):
@@ -50,7 +51,7 @@ def sha256(path):
     return digest.hexdigest()
 
 
-def prepare(maps, libraries, output, ids, supplement=None):
+def prepare(maps, libraries, output, ids, supplement=None, archived_client=None):
     lock = json.loads((ROOT / 'shared/native-world.lock.json').read_text())
     pins = {entry['id']: entry for entry in lock['maps']}
     dependencies = {}
@@ -86,24 +87,41 @@ def prepare(maps, libraries, output, ids, supplement=None):
             if name in ('Tiles', 'SmTiles'):
                 dependencies.setdefault(name, set()).update(values)
     library_pins = {entry['file']: entry for entry in lock['libraries']}
+    archive = json.loads((ROOT / 'shared/archived-176-client.lock.json').read_text()) if archived_client else None
+    archive_libraries = {entry['library']: entry for entry in archive['mapLibraries']} if archive else {}
+    if archive:
+        for entry in archive['clientFiles']:
+            path = archived_client / entry['file']
+            if path.stat().st_size != entry['bytes'] or sha256(path) != entry['sha256']:
+                raise ValueError('Archived client checksum mismatch: ' + entry['file'])
     library_report = []
     missing = []
     for name, indices in sorted(dependencies.items()):
         if not indices:
             continue
-        filename = name.removeprefix('Wemade') + '.Lib'
-        pin = library_pins[filename]
-        path = libraries / filename
-        if path.stat().st_size != pin['bytes'] or sha256(path) != pin['sha256']:
-            raise ValueError(f'Native library checksum mismatch: {filename}')
         destination = output / 'libraries' / name
-        manifest = export_library(path, destination, indices)
-        manifest.update(resourceNamespace='WemadeMir2', sourceURL=lock['libraryBaseURL'] + filename,
-                        authenticated2003Client=False)
+        if name in archive_libraries:
+            source = archive_libraries[name]
+            manifest = export_wil(archived_client / source['file'], destination, indices,
+                                  index=archived_client / source['index'])
+            manifest.update(sourceFile=source['file'], indexSourceFile=source['index'],
+                            sourceURL=archive['archive'], installerSha256=archive['installer']['sha256'])
+        else:
+            filename = name.removeprefix('Wemade') + '.Lib'
+            pin = library_pins[filename]
+            path = libraries / filename
+            if path.stat().st_size != pin['bytes'] or sha256(path) != pin['sha256']:
+                raise ValueError(f'Native library checksum mismatch: {filename}')
+            manifest = export_library(path, destination, indices)
+            manifest.update(sourceFile=filename, sourceURL=lock['libraryBaseURL'] + filename)
+        manifest.update(resourceNamespace='WemadeMir2', authenticated2003Client=False)
         (destination / 'library.json').write_text(json.dumps(manifest, indent=2) + '\n')
         if manifest['missing']:
             missing.append({'library': name, 'indices': manifest['missing']})
-        library_report.append({'name': name, 'sourceSha256': pin['sha256'],
+        library_report.append({'name': name, 'sourceSha256': manifest['sourceSha256'],
+                               'format': manifest['format'], 'sourceFile': manifest['sourceFile'],
+                               **({'indexSha256': manifest['indexSha256'], 'indexSourceFile': manifest['indexSourceFile'],
+                                   'installerSha256': manifest['installerSha256']} if name in archive_libraries else {}),
                                'frames': len(manifest['frames']), 'empty': len(manifest['empty']),
                                'missing': len(manifest['missing'])})
         print(f'{name}: {len(manifest["frames"])} frames, {len(manifest["empty"])} empty, {len(manifest["missing"])} missing', flush=True)
@@ -124,10 +142,12 @@ if __name__ == '__main__':
     selection.add_argument('--ids', nargs='+')
     selection.add_argument('--all', action='store_true')
     parser.add_argument('--supplement', type=Path)
+    parser.add_argument('--archived-client', type=Path)
     args = parser.parse_args()
     lock = json.loads((ROOT / 'shared/native-world.lock.json').read_text())
     ids = args.ids or ([entry['id'] for entry in lock['maps']] if args.all else ['0'])
     report = prepare(args.maps, args.libraries, args.output, ids,
-                     json.loads(args.supplement.read_text())['dependencies'] if args.supplement else None)
+                     json.loads(args.supplement.read_text())['dependencies'] if args.supplement else None,
+                     args.archived_client)
     if report['missingMapReferences']:
         raise SystemExit('Native map resources are incomplete: ' + json.dumps(report['missingMapReferences']))

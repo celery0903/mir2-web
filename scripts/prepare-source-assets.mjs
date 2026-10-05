@@ -120,10 +120,13 @@ const dependencyFile = join(output, 'map-dependencies.json');
 await writeFile(dependencyFile, JSON.stringify({ dependencies: Object.fromEntries(Object.entries(dependencies).map(([name, indices]) => [name, [...indices].sort((a, b) => a - b)])) }));
 const sourceLock = await json(join(source, 'content/classic-176/asset-sources.json'));
 const missingMapReferences = [];
+let mapLibrarySources = [];
 const selectedNativeIDs = mapAudit.maps.filter(map => nativeMapIDs.has(map.id)).map(map => map.id);
 if (selectedNativeIDs.length) {
-  execFileSync('python3', [join(root, 'scripts/prepare-native-map-assets.py'), '--maps', maps, '--libraries', nativeLibraries, '--output', output, '--ids', ...selectedNativeIDs, '--supplement', dependencyFile], { stdio: 'inherit' });
+  const archiveArgs = process.argv.includes('--archived-map-libraries') ? ['--archived-client', resolve(process.env.MIR_ARCHIVED_CLIENT ?? join(root, '.runtime/original-client-research/extracted/App_Executables'))] : [];
+  execFileSync('python3', [join(root, 'scripts/prepare-native-map-assets.py'), '--maps', maps, '--libraries', nativeLibraries, '--output', output, '--ids', ...selectedNativeIDs, '--supplement', dependencyFile, ...archiveArgs], { stdio: 'inherit' });
   const nativeReport = await json(join(output, 'native-world.json'));
+  mapLibrarySources = nativeReport.libraries;
   missingMapReferences.push(...nativeReport.missingMapReferences);
   for (const map of nativeReport.maps) Object.assign(mapReport.find(entry => entry.id === map.id), map);
 }
@@ -257,7 +260,7 @@ for (const [key, actor] of Object.entries(npc.actors)) {
   adaptedNpcShapes.push(index);
 }
 await writeFile(join(npcDirectory, 'library.json'), JSON.stringify({ ...npcLibrary, adaptedNpcShapes, adaptedSourceManifest: 'actors/classic-npc.json', authenticated2003Client: false }, null, 2) + '\n');
-const report = { checkedAt: new Date().toISOString(), sourceRevision: revision, authenticated2003Client: false, mapResourceAcceptance: missingMapReferences.length ? 'failed' : 'passed', missingMapReferences, maps: mapReport, classicSource: { repository: lock.repository, revision: lock.revision, verifiedFiles: [...verified].sort() }, uiFamilies: Object.fromEntries([...families].map(([name, frames]) => [name, Object.keys(frames).length])), actors };
+const report = { checkedAt: new Date().toISOString(), sourceRevision: revision, authenticated2003Client: false, mapResourceAcceptance: missingMapReferences.length ? 'failed' : 'passed', missingMapReferences, maps: mapReport, mapLibrarySources, classicSource: { repository: lock.repository, revision: lock.revision, verifiedFiles: [...verified].sort() }, uiFamilies: Object.fromEntries([...families].map(([name, frames]) => [name, Object.keys(frames).length])), actors };
 for (const map of mapReport) {
   const manifest = await json(join(output, 'maps', map.id, 'map.json'));
   const raw = await readFile(join(maps, `${map.id}.map`));

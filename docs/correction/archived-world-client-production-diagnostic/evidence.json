@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-05T00:41:07.823Z",
+  "url": "http://172.30.0.16:18880",
+  "scope": "all",
+  "passed": false,
+  "full176Acceptance": false,
+  "jobs": [],
+  "originRejected": true,
+  "error": "page.evaluate: Target page, context or browser has been closed\n    at observed (/home/dev/workspace4/mir2-web/tests/source-client.mjs:15:31)\n    at expect.poll.timeout (/home/dev/workspace4/mir2-web/tests/source-client.mjs:34:25)\n    at async world (/home/dev/workspace4/mir2-web/tests/source-client.mjs:33:3)\n    at async file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:91:5",
+  "failureDiagnostics": {
+    "errors": [],
+    "missingResources": [],
+    "failedRequests": []
+  }
+}

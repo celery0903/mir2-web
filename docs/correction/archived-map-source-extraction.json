@@ -1,0 +1,180 @@
+{
+  "checkedAt": "2026-10-05T00:17:06.530Z",
+  "lock": {
+    "archive": "https://archive.org/details/ChuanQi2005",
+    "iso": {
+      "url": "https://archive.org/download/ChuanQi2005/%E4%BC%A0%E5%A5%873.iso",
+      "file": "chuanqi2005.iso",
+      "bytes": 714835968,
+      "sha256": "246133266c9d2d129ab16491e9d4db3dd0d4d6c2e7633c9530568e210d46be1f",
+      "archiveMD5": "a4720cda5ba84bfe7fd75b2ec17a90d5",
+      "archiveSHA1": "3ca4396c3fbef1e353015bb929f4d20f073afe66"
+    },
+    "installer": {
+      "file": "传奇热血1.76版重装上阵客户端.exe",
+      "bytes": 93450196,
+      "sha256": "3a8b815666a0263abddcff6dfb3bd3ee840c9196173744cad3d09f3cdeced698",
+      "appName": "热血传奇1.76完整版升级补丁",
+      "companyName": "上海盛大网络发展有限公司"
+    },
+    "embeddedFiles": [
+      {
+        "file": "data1.hdr",
+        "offset": 929635,
+        "bytes": 17650,
+        "sha256": "a67d487e1b7f049fd1d935d5d512b681516e24ee10ac4e3e53fd6a9ec75981e8"
+      },
+      {
+        "file": "data1.cab",
+        "offset": 947326,
+        "bytes": 309722,
+        "sha256": "9480707ef9891b3d9c900a9f030bc4cf1a48c2b80bf4c3cfe9e470810449072d"
+      },
+      {
+        "file": "data2.cab",
+        "offset": 1257091,
+        "bytes": 92084588,
+        "sha256": "57d261ccf8a361aa543723c4eb37b334bb70d3644f6d65c5f1fbdb97ef603400"
+      },
+      {
+        "file": "setup.ini",
+        "offset": 93449275,
+        "bytes": 443
+      }
+    ],
+    "clientFiles": [
+      {
+        "file": "DATA/Tiles.wil",
+        "bytes": 29150159,
+        "sha256": "92dc40c4ed6ed4417daf1ae7ad753624f992a9a24e493d651cc2eebd11963f27"
+      },
+      {
+        "file": "DATA/Tiles.WIX",
+        "bytes": 31688,
+        "sha256": "d19435d0996b8d386bf709da1748a68b96105535d420a05b36eae715dab4e146"
+      },
+      {
+        "file": "DATA/Objects3.wil",
+        "bytes": 28091046,
+        "sha256": "03662dce4b451535a4be91e94745bda57c10f4aa33735033e84c34346ef50163"
+      },
+      {
+        "file": "DATA/Objects3.WIX",
+        "bytes": 36964,
+        "sha256": "a00a376b60a79c0fc55e875424cc31e376ed5aa6f7f74b0030bc6cf6d298874f"
+      },
+      {
+        "file": "DATA/Objects4.wil",
+        "bytes": 32968914,
+        "sha256": "63383c8ed6e77bbee9ac6db91a9de00207b1f70cc42dd83d23f19c3d77ae7ce7"
+      },
+      {
+        "file": "DATA/Objects4.WIX",
+        "bytes": 40296,
+        "sha256": "8baea3402617ffb53ded0d3cf758800c6b3a1a68df04c9d30b1945faa93d4897"
+      },
+      {
+        "file": "DATA/Objects5.wil",
+        "bytes": 25021166,
+        "sha256": "48ce0f6de481f67925b5f35774da84e8ec64436510e7581e641b77f205c45bac"
+      },
+      {
+        "file": "DATA/Objects5.WIX",
+        "bytes": 39724,
+        "sha256": "3fe2cbb819d1db73ea4f1a414d6694506418e403b8738dab4a4f33d37f864cf0"
+      },
+      {
+        "file": "DATA/mmap.wil",
+        "bytes": 17396799,
+        "sha256": "4bab9e49fb4b0c82ee0c90b264c7918e392907d46dd6fe9b3048ca47501895ee"
+      },
+      {
+        "file": "DATA/mmap.WIX",
+        "bytes": 808,
+        "sha256": "fface5fd53c83b2bc70085b618af3908ef6a61b98e680394d3111fd8deb80eb6"
+      }
+    ],
+    "mapLibraries": [
+      {
+        "library": "Tiles",
+        "file": "DATA/Tiles.wil",
+        "index": "DATA/Tiles.WIX"
+      },
+      {
+        "library": "WemadeObjects3",
+        "file": "DATA/Objects3.wil",
+        "index": "DATA/Objects3.WIX"
+      },
+      {
+        "library": "WemadeObjects4",
+        "file": "DATA/Objects4.wil",
+        "index": "DATA/Objects4.WIX"
+      },
+      {
+        "library": "WemadeObjects5",
+        "file": "DATA/Objects5.wil",
+        "index": "DATA/Objects5.WIX"
+      }
+    ],
+    "authenticated2003Client": false,
+    "full176Acceptance": false,
+    "interpretation": "Archived 2004 compilation containing a Shanda-labelled 1.76 upgrade, not a complete client. Pins establish repeatable source bytes, not official signature or original distribution authenticity."
+  },
+  "installerExecuted": false,
+  "extractionTool": "Unshield version 1.5.1. MIT License. (C) 2003-2021 David Eriksson.",
+  "stdout": "Cabinet: /home/dev/workspace4/mir2-web/.runtime/original-client-research/cabinets/data1.cab\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Support_Non-SelfRegistering/isrt.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Support_Non-SelfRegistering/default.pal\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Support_Script/setup.inx\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/Mir.update\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/region.dat\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/mir.set\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/mir2.set\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/mmap.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/mmap.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon15.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon15.wix\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon17.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon17.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon18.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon18.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Objects3.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Objects3.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Objects4.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Objects4.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Objects5.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Objects5.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Tile.Atr\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Tiles.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Tiles.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Weapon.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Weapon.wix\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/stateitem.wix\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/DnItems.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Hum.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Hum.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Items.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Items.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon2.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/Mon2.WIX\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/stateitem.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/DATA/DnItems.wil\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/5.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/B351.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/B352.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/B353.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/B354.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/B355.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/B356.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2031.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2032.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2033.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2034.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2041.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2042.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2043.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2044.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2051.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2052.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2053.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2054.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2055.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2056.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2061.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2062.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2063.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2064.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2065.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2066.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2067.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2070.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2071.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2072.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2073.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2074.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2075.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2076.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2077.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2078.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D2079.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/App_Executables/map/D505.map\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_EngineCommonPlaceHolder/IsProBE.tlb\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_EngineCommonPlaceHolder/objectps.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Support_Chinese_(Simplified)_String_Tables/StringTable-0804-Chinese (Simplified).ips\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Support_Misc_Support_Files/corecomp.ini\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Support_Language_Independent_OS_Independent_Files/license.txt\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Support_Chinese_(Simplified)_Files/_IsRes.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_Kernel_Placeholder/iKernel.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_Kernel_Placeholder/Setup.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_Kernel_Placeholder/DotNetInstaller.exe\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_Kernel_Placeholder/iscript.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_Kernel_Placeholder/ctor.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_Kernel_Placeholder/iuser.dll\n  extracting: /home/dev/workspace4/mir2-web/.runtime/original-client-research/extracted/_Engine_Kernel_Placeholder/IGDI.dll\n --------  -------\n          88 files\n",
+  "verifiedClientFiles": [
+    {
+      "file": "DATA/Tiles.wil",
+      "bytes": 29150159,
+      "sha256": "92dc40c4ed6ed4417daf1ae7ad753624f992a9a24e493d651cc2eebd11963f27"
+    },
+    {
+      "file": "DATA/Tiles.WIX",
+      "bytes": 31688,
+      "sha256": "d19435d0996b8d386bf709da1748a68b96105535d420a05b36eae715dab4e146"
+    },
+    {
+      "file": "DATA/Objects3.wil",
+      "bytes": 28091046,
+      "sha256": "03662dce4b451535a4be91e94745bda57c10f4aa33735033e84c34346ef50163"
+    },
+    {
+      "file": "DATA/Objects3.WIX",
+      "bytes": 36964,
+      "sha256": "a00a376b60a79c0fc55e875424cc31e376ed5aa6f7f74b0030bc6cf6d298874f"
+    },
+    {
+      "file": "DATA/Objects4.wil",
+      "bytes": 32968914,
+      "sha256": "63383c8ed6e77bbee9ac6db91a9de00207b1f70cc42dd83d23f19c3d77ae7ce7"
+    },
+    {
+      "file": "DATA/Objects4.WIX",
+      "bytes": 40296,
+      "sha256": "8baea3402617ffb53ded0d3cf758800c6b3a1a68df04c9d30b1945faa93d4897"
+    },
+    {
+      "file": "DATA/Objects5.wil",
+      "bytes": 25021166,
+      "sha256": "48ce0f6de481f67925b5f35774da84e8ec64436510e7581e641b77f205c45bac"
+    },
+    {
+      "file": "DATA/Objects5.WIX",
+      "bytes": 39724,
+      "sha256": "3fe2cbb819d1db73ea4f1a414d6694506418e403b8738dab4a4f33d37f864cf0"
+    },
+    {
+      "file": "DATA/mmap.wil",
+      "bytes": 17396799,
+      "sha256": "4bab9e49fb4b0c82ee0c90b264c7918e392907d46dd6fe9b3048ca47501895ee"
+    },
+    {
+      "file": "DATA/mmap.WIX",
+      "bytes": 808,
+      "sha256": "fface5fd53c83b2bc70085b618af3908ef6a61b98e680394d3111fd8deb80eb6"
+    }
+  ],
+  "authenticated2003Client": false,
+  "full176Acceptance": false
+}

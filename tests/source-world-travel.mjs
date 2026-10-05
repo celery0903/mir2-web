@@ -26,7 +26,7 @@ assert.equal(audit.maps.length, 256);
 const report = { checkedAt: new Date().toISOString(), url: base, project, passed: false, full176Acceptance: false,
   fixture: 'New level-one, zero-gold accounts moved offline to original route approaches. No stats, skills, items, NPC scripts or route coordinates changed. This does not verify travelling from birth to these regions.',
   images: { engine: engine.Image, web: (await inspect('web')).Image, proxy: (await inspect('source-proxy')).Image },
-  errors: [], missingResources: [], routes: [], candidateServiceAcceptance: audit.candidateServiceAcceptance };
+  errors: [], missingResources: [], failedRequests: [], browserCrashes: [], routes: [], candidateServiceAcceptance: audit.candidateServiceAcceptance };
 await mkdir(destination, { recursive: true });
 await mkdir('.state', { recursive: true });
 const suffix = String(Date.now()).slice(-7);
@@ -37,12 +37,17 @@ const fixtures = [
 ].map((fixture, index) => ({ ...fixture, account: `w${index}${suffix}`, password: 'Source987', character: `wr${suffix}${index}` }));
 await writeFile(`.state/source-world-travel-${suffix}.json`, JSON.stringify(fixtures), { mode: 0o600 });
 const browser = await chromium.launch({ headless: true });
+let closingBrowser = false;
+browser.on('disconnected', () => { if (!closingBrowser) report.unexpectedBrowserDisconnect = new Date().toISOString(); });
 let activePage;
 const packets = new Map();
 const state = page => page.evaluate(() => window.__mir2Agent.snapshot());
 async function enter(fixture, register = false) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   activePage = page;
+  report.activeFlow = fixture.flow;
+  page.on('crash', () => report.browserCrashes.push({ flow: fixture.flow, at: new Date().toISOString() }));
+  page.on('requestfailed', request => report.failedRequests.push({ flow: fixture.flow, path: new URL(request.url()).pathname, error: request.failure()?.errorText }));
   const received = [];
   packets.set(page, received);
   page.on('pageerror', error => report.errors.push(error.message));
@@ -210,9 +215,13 @@ try {
   await saved(fixtures[2], '11', 205, 386);
   assert.deepEqual(report.errors, []);
   assert.deepEqual(report.missingResources, []);
+  assert.deepEqual(report.failedRequests, []);
+  assert.deepEqual(report.browserCrashes, []);
   report.passed = true;
 } catch (error) {
   report.error = String(error);
+  report.browserConnectedAtFailure = browser.isConnected();
+  report.pageClosedAtFailure = activePage?.isClosed();
   if (activePage && !activePage.isClosed()) {
     report.failedState = await state(activePage).catch(() => null);
     report.failedPackets = packets.get(activePage);
@@ -220,6 +229,7 @@ try {
   }
   process.exitCode = 1;
 } finally {
+  closingBrowser = true;
   await browser.close();
   await writeFile(`${destination}/evidence.json`, JSON.stringify(report, null, 2) + '\n');
 }

@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 native = import_module('prepare-native-map-assets')
 from crystal_lib import CrystalLibrary, png_rgba
 from map_tool import ClassicMap, UnsupportedMap
+from wil_lib import WeMadeLibrary
 
 rules = json.loads((ROOT / 'shared/classic-map-library-rules.json').read_text())
 reference = ROOT / os.environ.get('MIR_LEGACY_SOURCE', '.runtime/legacy-source') / rules['file']
@@ -53,6 +54,8 @@ else:
 assets = ROOT / os.environ.get('MIR_SOURCE_ASSETS', '.runtime/native-world-fix/assets')
 maps = ROOT / os.environ.get('MIR_SOURCE_MAPS', '.runtime/native-world-profile/Map')
 libraries = ROOT / os.environ.get('MIR_NATIVE_MAP_LIBRARIES', '.runtime/wemade-mir2')
+archived_client = ROOT / os.environ.get('MIR_ARCHIVED_CLIENT', '.runtime/original-client-research/extracted/App_Executables')
+archive = json.loads((ROOT / 'shared/archived-176-client.lock.json').read_text())
 destination = ROOT / os.environ.get('MIR_NATIVE_WORLD_REPORT', '.runtime/reports/native-world-assets.json')
 report = json.loads((assets / 'native-world.json').read_text())
 lock = json.loads((ROOT / 'shared/native-world.lock.json').read_text())
@@ -108,12 +111,25 @@ for entry in report['maps']:
 
 for entry in report['libraries']:
     name = entry['name']
-    filename = name.removeprefix('Wemade') + '.Lib'
-    pin = next(pin for pin in lock['libraries'] if pin['file'] == filename)
-    path = libraries / filename
-    assert path.stat().st_size == pin['bytes'] and native.sha256(path) == pin['sha256']
-    library = CrystalLibrary(path.read_bytes())
     exported = json.loads((assets / 'libraries' / name / 'library.json').read_text())
+    if entry.get('format') == 'wil-classic':
+        source = next(source for source in archive['mapLibraries'] if source['library'] == name)
+        pin = next(pin for pin in archive['clientFiles'] if pin['file'] == source['file'])
+        index_pin = next(pin for pin in archive['clientFiles'] if pin['file'] == source['index'])
+        path, index_path = archived_client / source['file'], archived_client / source['index']
+        assert path.stat().st_size == pin['bytes'] and native.sha256(path) == pin['sha256']
+        assert index_path.stat().st_size == index_pin['bytes'] and native.sha256(index_path) == index_pin['sha256']
+        library = WeMadeLibrary(path, index_path)
+        assert exported['format'] == 'wil-classic'
+        assert exported['indexSha256'] == entry['indexSha256'] == index_pin['sha256']
+        assert exported['sourceFile'] == entry['sourceFile'] == source['file']
+        assert exported['installerSha256'] == archive['installer']['sha256']
+    else:
+        filename = name.removeprefix('Wemade') + '.Lib'
+        pin = next(pin for pin in lock['libraries'] if pin['file'] == filename)
+        path = libraries / filename
+        assert path.stat().st_size == pin['bytes'] and native.sha256(path) == pin['sha256']
+        library = CrystalLibrary(path.read_bytes())
     assert exported['sourceSha256'] == pin['sha256']
     assert all(index >= library.count for index in exported['missing'])
     if exported['missing']:

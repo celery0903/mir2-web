@@ -18,7 +18,7 @@ const scenes = ids.map(id => {
   assert.ok(entrance, `No valid entrance for ${id}`);
   return { id, name: map.name, x: entrance.targetX, y: entrance.targetY, expectedUnresolved: 0 };
 });
-if (!process.env.MIR_WORLD_IDS) scenes.push(
+if (!process.env.MIR_WORLD_IDS || process.env.MIR_WORLD_BOUNDARIES === '1') scenes.push(
   { id: '4', name: 'fengmo-boundary', x: 8, y: 76, expectedUnresolved: 0 },
   { id: '5', name: 'cangyue-boundary', x: 8, y: 22, expectedUnresolved: 0 },
   { id: '11', name: 'white-sun-boundary', x: 8, y: 12, expectedUnresolved: 0 },
@@ -42,8 +42,9 @@ try {
   assert.equal(native.maps.length, audit.mapCount);
   for (const scene of scenes) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
-    const errors = [], missing = [], libraries = new Set();
+    const errors = [], missing = [], failedRequests = [], libraries = new Set();
     page.on('pageerror', error => errors.push(error.message));
+    page.on('requestfailed', request => failedRequests.push({ path: new URL(request.url()).pathname, error: request.failure()?.errorText }));
     page.on('response', response => {
       const path = new URL(response.url()).pathname;
       if (response.status() >= 400) missing.push({ path, status: response.status() });
@@ -77,14 +78,15 @@ try {
       await page.screenshot({ path: join(destination, `${scene.id}-${scene.x}-${scene.y}-mobile.png`) });
       assert.deepEqual(errors, []);
       assert.deepEqual(missing, []);
+      assert.deepEqual(failedRequests, []);
       assert.ok([...libraries].every(name => !/^BichonObjects25/.test(name)));
       report.scenes.push({ ...scene, sourceSha256: world.sourceSha256, desktopColors, mobileColors,
         desktopCanvasSha256: createHash('sha256').update(desktop).digest('hex'),
         mobileCanvasSha256: createHash('sha256').update(mobile).digest('hex'),
-        loadedLibraryNames: [...libraries].sort(), mobileOverflow: false, browserErrors: errors, missingResources: missing });
+        loadedLibraryNames: [...libraries].sort(), mobileOverflow: false, browserErrors: errors, missingResources: missing, failedRequests });
       console.log(`PASS ${scene.id}/${scene.name}: desktop/mobile, ${scene.expectedUnresolved} expected unresolved references.`);
     } catch (error) {
-      report.failure = { scene, browserErrors: errors, missingResources: missing,
+      report.failure = { scene, browserErrors: errors, missingResources: missing, failedRequests,
         layout: await page.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth })) };
       await page.screenshot({ path: join(destination, `${scene.id}-${scene.x}-${scene.y}-failure.png`) });
       throw error;

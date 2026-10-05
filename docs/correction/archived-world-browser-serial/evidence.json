@@ -1,0 +1,176 @@
+{
+  "checkedAt": "2026-10-05T00:24:14.122Z",
+  "before": "http://127.0.0.1:18880",
+  "after": "http://127.0.0.1:18889",
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+  "scenes": [
+    {
+      "name": "start",
+      "x": 289,
+      "y": 618,
+      "changedPixels": 284287,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "b208454427af4734ec4ee79b265c2f7811c93ab0c43d0040227bdd066cea29e1",
+      "afterCanvasSha256": "f729f348fc2a053207cd32d737d5e3757975166c6e2fd70dcbbfd1c622a22209",
+      "desktopColors": 409,
+      "mobileColors": 199,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "warehouse",
+      "x": 307,
+      "y": 627,
+      "changedPixels": 194493,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "e437673f6afffced50ddb1ec3ba115682e81730b6dd421d9b9caa306949709b7",
+      "afterCanvasSha256": "b7038a562e9478fa62f19fb23a5509edfc63df4f1ddb67a4f702a6fda4433364",
+      "desktopColors": 415,
+      "mobileColors": 194,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects6"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "city",
+      "x": 335,
+      "y": 299,
+      "changedPixels": 176491,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "56be30c886a0174251e51dff0ef22ae79c3d44a045fcd81330769453b950d59b",
+      "afterCanvasSha256": "5096c09a0cc91f4456ccfa9d3a2a92a818b907c13fe609f1d9a57e286f57cdda",
+      "desktopColors": 1589,
+      "mobileColors": 484,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "city-south",
+      "x": 329,
+      "y": 337,
+      "changedPixels": 237133,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "88dadfac4bbcb55ea1256971fe188e4a2f244d400c55c6fb96cdbc80b35505ad",
+      "afterCanvasSha256": "1272f5f4bbe17d78dba390b7626e46fca45aa2b1d76e7a6ef84d945f5709bd87",
+      "desktopColors": 1249,
+      "mobileColors": 465,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "southwest",
+      "x": 247,
+      "y": 664,
+      "changedPixels": 340480,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "989bb87089d9ef18858e37efd3c6dd26b16e09e36ff518028a7d45e3d19a57c0",
+      "afterCanvasSha256": "1a64ba50a287eb3da0f422322571e0204602d1915b1c10d6ae3ec56155330c13",
+      "desktopColors": 190,
+      "mobileColors": 144,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "northeast",
+      "x": 667,
+      "y": 94,
+      "changedPixels": 322646,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "e831717815ddcbb0aad7af6eb6c4369d1c885fa55c461601ba9a3bed67214157",
+      "afterCanvasSha256": "f3f897a1283c05a87b45a0af51d3459508aa138d13797e80fe687e5a54440daa",
+      "desktopColors": 473,
+      "mobileColors": 225,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "forest-entrance",
+      "x": 324,
+      "y": 34,
+      "changedPixels": 356654,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "323ed95ad08400d5d3202ace0ac6f5e57d821e1809798720a91c79adde0570c2",
+      "afterCanvasSha256": "da4f6c86d1c5e226effcb03f4b4fbb09ecc0881b97a6eee316e40969934d9855",
+      "desktopColors": 171,
+      "mobileColors": 132,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "name": "valley-entrance",
+      "x": 671,
+      "y": 82,
+      "changedPixels": 252414,
+      "beforeUnresolved": 0,
+      "afterUnresolved": 0,
+      "beforeCanvasSha256": "a20d310cd728128e756edb9ddd915356008a24c1e96ab075388d0c5b87f5f848",
+      "afterCanvasSha256": "8b431b481b34908b83527fa6d4338749d27eea5d0692fdcd38d407ecab6d64d3",
+      "desktopColors": 166,
+      "mobileColors": 125,
+      "mobileOverflow": false,
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "browserErrors": [],
+      "missingResources": []
+    }
+  ],
+  "browserCrashes": []
+}

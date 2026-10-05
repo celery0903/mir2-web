@@ -4,7 +4,7 @@ import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {join} from 'node:path';
 import {PNG} from 'pngjs';
 
-const assets=process.env.MIR_MINIMAP_ASSETS??'.runtime/classic-world/assets';
+const assets=process.env.MIR_MINIMAP_ASSETS??'.runtime/source-assets';
 const source=process.env.MIR_ARCHIVED_CLIENT??'.runtime/original-client-research/extracted/App_Executables';
 const destination=process.env.MIR_MINIMAP_PIXEL_REPORT??'.runtime/reports/archived-minimaps';
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');

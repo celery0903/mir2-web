@@ -1,0 +1,219 @@
+{
+  "checkedAt": "2026-10-05T00:31:54.800Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 256,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [
+    {
+      "id": "D2000",
+      "name": "封魔矿区",
+      "x": 24,
+      "y": 182,
+      "expectedUnresolved": 0,
+      "sourceSha256": "81365b41fae7a2b1b45fa7db3f347caeb8bb6ae866299e410bc7cfb3d2da84b3",
+      "desktopColors": 94,
+      "mobileColors": 64,
+      "desktopCanvasSha256": "25748cb294833196fc356a783c89c61fa3d8542773a94211dc1c1f2b00a58535",
+      "mobileCanvasSha256": "0639697fc8fb4e2bf5229fea5ae0c720c3cad0386e49793bbc579d1d40047b7c",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "D2013",
+      "name": "封魔殿",
+      "x": 81,
+      "y": 82,
+      "expectedUnresolved": 0,
+      "sourceSha256": "208c48bd0f727201dd54bd00d529140e87818a021b935dfe225afe95cbe13481",
+      "desktopColors": 184,
+      "mobileColors": 131,
+      "desktopCanvasSha256": "9f29707f9d792d7d5a2624217ea2e46c64a826180ac26fe16b4a2ffc4a8d5275",
+      "mobileCanvasSha256": "c346d978221b77386d25ff2d3c7d9bfaffb0b04bf105d7a44530bb67cdc8c965",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2",
+        "WemadeObjects4",
+        "WemadeObjects6"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "D2051",
+      "name": "尸魔洞一层",
+      "x": 107,
+      "y": 182,
+      "expectedUnresolved": 0,
+      "sourceSha256": "303c68a4842b29a12b70c28835c9e75220ea24c89c6682ef761d1dfaf73d12ed",
+      "desktopColors": 43,
+      "mobileColors": 31,
+      "desktopCanvasSha256": "2fa717732d92a8eb690392bc15e85f34771557020a6e4a4bed98867a4f980e16",
+      "mobileCanvasSha256": "755dc71eb7a34c8128382bfe3454f9497576bd16d8ae62d2cddea06f459963e9",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "D2067",
+      "name": "骨魔洞五层",
+      "x": 155,
+      "y": 161,
+      "expectedUnresolved": 0,
+      "sourceSha256": "9d4c207e48365584dd90db37f66917518247c840e5a8ed0f16c32030ae8a26d5",
+      "desktopColors": 79,
+      "mobileColors": 62,
+      "desktopCanvasSha256": "21ebb40cbfacadefac7132076010b971d8af93082484b1a6da26f92f6903207b",
+      "mobileCanvasSha256": "223bdf9b5bc518cd43133cb53e0e77d5714804f44a1c1c6bb9b43938567c3f95",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "D2079",
+      "name": "牛魔寺庙大厅",
+      "x": 14,
+      "y": 14,
+      "expectedUnresolved": 0,
+      "sourceSha256": "163d2b588de81306d69c5f000af1c9a2e8c174ebfc27da1bdca673fc8409ae42",
+      "desktopColors": 109,
+      "mobileColors": 89,
+      "desktopCanvasSha256": "d7db16a96758f8d73aa00ac49426b6f9f1624fe07a854c7654f6b92c37934850",
+      "mobileCanvasSha256": "ac77b3e11b5fd2af85fbafd75867b5c41e66679e79beb69b684175b926a92181",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "4",
+      "name": "fengmo-boundary",
+      "x": 8,
+      "y": 76,
+      "expectedUnresolved": 0,
+      "sourceSha256": "0691c8ddb6854af00e846a4e64637006cac10da413fc153b75a39cb3fc1ed98f",
+      "desktopColors": 149,
+      "mobileColors": 105,
+      "desktopCanvasSha256": "e1f86d58bc6df892e50f4580e9766fafa1ee0e497c851d92957289ebb30ee5b0",
+      "mobileCanvasSha256": "57fa467ef2b7264ee3af9c9e17ca93d4b82dbafa1ac6d754bf216e5d690ce377",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "5",
+      "name": "cangyue-boundary",
+      "x": 8,
+      "y": 22,
+      "expectedUnresolved": 0,
+      "sourceSha256": "43b7344cce5caea49c09f909a3ad36ea7e30af701fd1a0c7be27a263d772b895",
+      "desktopColors": 117,
+      "mobileColors": 71,
+      "desktopCanvasSha256": "8625b52f184d22bdf89148cca0788df2a92196ab0c43983690a260eaca9f04fd",
+      "mobileCanvasSha256": "c324526717669501892230c3fe7b0de1fc77367c83b880ee35201bd61f432cf4",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "11",
+      "name": "white-sun-boundary",
+      "x": 8,
+      "y": 12,
+      "expectedUnresolved": 0,
+      "sourceSha256": "d8493009ad70fbca5eda276988c7c9c8027ccdfbc4cbba4c433e8ad7a627e354",
+      "desktopColors": 144,
+      "mobileColors": 98,
+      "desktopCanvasSha256": "b492ce6cd50b8283359a0e93b9fe5f0eff47df1b46d51f00c703bc2830ac322f",
+      "mobileCanvasSha256": "63a520f046693125d4a33fdf49416fe169ca6a3c0cdfd4a33d2f967710673ae8",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "D714",
+      "name": "stone-tomb-known-missing",
+      "x": 398,
+      "y": 199,
+      "expectedUnresolved": 3,
+      "sourceSha256": "3dd6c8a733d9959bd933e77386eb1e72811ac449f2ee6ff724f1cc7dd12ad7d4",
+      "desktopColors": 70,
+      "mobileColors": 45,
+      "desktopCanvasSha256": "f5f193a002f046902bc7588c8899eb6d0a15a03e0834f4eed57341d2e4000917",
+      "mobileCanvasSha256": "6905a755d8674f76dfd2f8d6e3d0a6515dcbcabeca79919d4e7502eddcc9f4ba",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects7"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    }
+  ]
+}

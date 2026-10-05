@@ -1,0 +1,193 @@
+{
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "libraryFallbackMatchesPinnedPascal": true,
+  "libraryRules": {
+    "repository": "lzxsz/MIR2",
+    "revision": "98711dad31567d9a7e272956f6c5a2487000848b",
+    "file": "GameOfMir/MirClient/MShare.pas",
+    "sha256": "a9cdffe54266b44b88e473a9c1562026936789dca99bddf1d8749e6df2784be7",
+    "objectFileByteMinimum": 0,
+    "objectFileByteMaximum": 14,
+    "outsideRangeFallback": 0,
+    "methods": [
+      "GetObjs",
+      "GetObjsEx"
+    ],
+    "authenticated2003Client": false,
+    "interpretation": "The pinned traditional client declares g_WObjectArr[0..14] and explicitly resets out-of-range nUnit to 0. This rule applies to native classic-12 maps, not converted Crystal maps with Mir3 library namespaces. The reference contains later code and is not authentication of the complete 2003 client."
+  },
+  "rejectsAmbiguous14ByteMaps": true,
+  "cellsChecked": 494934,
+  "framesChecked": 6249,
+  "rgbaPixelsChecked": 45109139,
+  "allMapCellsAndLibraryPixelsMatch": true,
+  "maps": [
+    {
+      "id": "0",
+      "cells": 490000,
+      "allCellsMatchNative": true,
+      "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+      "nonDefaultFrontCells": 498
+    },
+    {
+      "id": "0102",
+      "cells": 225,
+      "allCellsMatchNative": true,
+      "sourceSha256": "7e8985dbc634a02cc5c5ff6b92f7f62b8c1712829cc38c9ebadbd6e824332cda",
+      "nonDefaultFrontCells": 0
+    },
+    {
+      "id": "0103",
+      "cells": 783,
+      "allCellsMatchNative": true,
+      "sourceSha256": "d314a54fea40b85eb0bd68d6b18a3fef6fc9221499697feb81f003ad9713da79",
+      "nonDefaultFrontCells": 0
+    },
+    {
+      "id": "0104",
+      "cells": 208,
+      "allCellsMatchNative": true,
+      "sourceSha256": "adea6fad4e8d2bc1c603055e74b078790c88d0c08b46553517f997212d75bc45",
+      "nonDefaultFrontCells": 0
+    },
+    {
+      "id": "0105",
+      "cells": 783,
+      "allCellsMatchNative": true,
+      "sourceSha256": "9de531bcf6f502482a809bcdbac50a38365f2c163202ba146b9f71b70519523e",
+      "nonDefaultFrontCells": 0
+    },
+    {
+      "id": "0106",
+      "cells": 783,
+      "allCellsMatchNative": true,
+      "sourceSha256": "eb5361adfcb1a7576759733386cff453d59e16388047fb32dbfa2c394c28a74c",
+      "nonDefaultFrontCells": 0
+    },
+    {
+      "id": "0108",
+      "cells": 270,
+      "allCellsMatchNative": true,
+      "sourceSha256": "d6727ef204bf25df10c35a3c47d6a693827b8c1c3d0cac5a35d7cf1efb91b3b9",
+      "nonDefaultFrontCells": 0
+    },
+    {
+      "id": "0109",
+      "cells": 150,
+      "allCellsMatchNative": true,
+      "sourceSha256": "939d34628c5f93b51c372c90487ca390216492b8523717c8f15774786f0801d9",
+      "nonDefaultFrontCells": 0
+    },
+    {
+      "id": "0132",
+      "cells": 528,
+      "allCellsMatchNative": true,
+      "sourceSha256": "7351bb29eb3a7ff3095f16dc99bcdd1ee66850eb365f69ee4a41ca24d2ffd5e1",
+      "nonDefaultFrontCells": 136
+    },
+    {
+      "id": "0140",
+      "cells": 340,
+      "allCellsMatchNative": true,
+      "sourceSha256": "679ffed7be2e314494f2be87f614a679ff3bc2e4e9974859deba5ba47b1659bb",
+      "nonDefaultFrontCells": 116
+    },
+    {
+      "id": "0141",
+      "cells": 864,
+      "allCellsMatchNative": true,
+      "sourceSha256": "b7db75768cdb072cc2a7c3b916f2ec438a8762e396c9f463010d086996723ff2",
+      "nonDefaultFrontCells": 307
+    }
+  ],
+  "mapResourceAcceptance": "passed",
+  "libraries": [
+    {
+      "name": "Objects",
+      "sourceSha256": "1f72c19425ef402a842d3d64e9d199153d7ff610766d41bb91145d74e4411b64",
+      "format": "crystal-lib-v2",
+      "sourceFile": "Objects.Lib",
+      "frames": 4517,
+      "empty": 4,
+      "missing": 0
+    },
+    {
+      "name": "SmTiles",
+      "sourceSha256": "1a6389e666cf0579ed5721dc6f29e2d46d806d17350ff1bfcae857e5dffcc113",
+      "format": "crystal-lib-v2",
+      "sourceFile": "SmTiles.Lib",
+      "frames": 209,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "Tiles",
+      "sourceSha256": "92dc40c4ed6ed4417daf1ae7ad753624f992a9a24e493d651cc2eebd11963f27",
+      "format": "wil-classic",
+      "sourceFile": "DATA/Tiles.wil",
+      "indexSha256": "d19435d0996b8d386bf709da1748a68b96105535d420a05b36eae715dab4e146",
+      "indexSourceFile": "DATA/Tiles.WIX",
+      "installerSha256": "3a8b815666a0263abddcff6dfb3bd3ee840c9196173744cad3d09f3cdeced698",
+      "frames": 610,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects2",
+      "sourceSha256": "5697f0c3a22230b1c2205988d1cdfe8a064e5f3b0862155ad9cc09d8e38fb938",
+      "format": "crystal-lib-v2",
+      "sourceFile": "Objects2.Lib",
+      "frames": 548,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects3",
+      "sourceSha256": "03662dce4b451535a4be91e94745bda57c10f4aa33735033e84c34346ef50163",
+      "format": "wil-classic",
+      "sourceFile": "DATA/Objects3.wil",
+      "indexSha256": "a00a376b60a79c0fc55e875424cc31e376ed5aa6f7f74b0030bc6cf6d298874f",
+      "indexSourceFile": "DATA/Objects3.WIX",
+      "installerSha256": "3a8b815666a0263abddcff6dfb3bd3ee840c9196173744cad3d09f3cdeced698",
+      "frames": 11,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects4",
+      "sourceSha256": "63383c8ed6e77bbee9ac6db91a9de00207b1f70cc42dd83d23f19c3d77ae7ce7",
+      "format": "wil-classic",
+      "sourceFile": "DATA/Objects4.wil",
+      "indexSha256": "8baea3402617ffb53ded0d3cf758800c6b3a1a68df04c9d30b1945faa93d4897",
+      "indexSourceFile": "DATA/Objects4.WIX",
+      "installerSha256": "3a8b815666a0263abddcff6dfb3bd3ee840c9196173744cad3d09f3cdeced698",
+      "frames": 118,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects5",
+      "sourceSha256": "48ce0f6de481f67925b5f35774da84e8ec64436510e7581e641b77f205c45bac",
+      "format": "wil-classic",
+      "sourceFile": "DATA/Objects5.wil",
+      "indexSha256": "3fe2cbb819d1db73ea4f1a414d6694506418e403b8738dab4a4f33d37f864cf0",
+      "indexSourceFile": "DATA/Objects5.WIX",
+      "installerSha256": "3a8b815666a0263abddcff6dfb3bd3ee840c9196173744cad3d09f3cdeced698",
+      "frames": 48,
+      "empty": 0,
+      "missing": 0
+    },
+    {
+      "name": "WemadeObjects6",
+      "sourceSha256": "d3511d75d5571d20b0946a70038af42a3b3ce564b05ef651bb98793895e80d5a",
+      "format": "crystal-lib-v2",
+      "sourceFile": "Objects6.Lib",
+      "frames": 188,
+      "empty": 6,
+      "missing": 0
+    }
+  ],
+  "missingMapReferences": []
+}

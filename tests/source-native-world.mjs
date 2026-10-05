@@ -17,7 +17,8 @@ assert.deepEqual(integration.missingMapReferences, []);
 assert.equal(integration.maps.find(map => map.id === '0').resourceNamespace, 'WemadeMir2');
 const world = await json(join(assets, 'maps/0/map.json'));
 const report = { checkedAt: new Date().toISOString(), before, after, passed: false,
-  full176Acceptance: false, authenticated2003Client: false, sourceSha256: world.sourceSha256, scenes: [] };
+  full176Acceptance: false, authenticated2003Client: false, sourceSha256: world.sourceSha256, scenes: [], browserCrashes: [] };
+let activeCapture;
 const scenes = [
   { name: 'start', x: 289, y: 618 },
   { name: 'warehouse', x: 307, y: 627 },
@@ -43,6 +44,9 @@ try {
     const captures = [];
     for (const [kind, base] of [['before', before], ['after', after]]) {
       const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+      const capture = { scene: scene.name, kind, url: base };
+      activeCapture = capture;
+      page.on('crash', () => report.browserCrashes.push({ ...capture, checkedAt: new Date().toISOString() }));
       const errors = [], missing = [], loaded = new Set();
       page.on('pageerror', error => errors.push(error.message));
       page.on('response', response => {
@@ -94,6 +98,7 @@ try {
   report.passed = true;
 } catch (error) {
   report.error = String(error);
+  report.failure = { ...activeCapture, browserConnected: browser.isConnected() };
   throw error;
 } finally {
   await browser.close();

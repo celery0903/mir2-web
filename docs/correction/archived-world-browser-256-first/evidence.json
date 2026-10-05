@@ -1,0 +1,609 @@
+{
+  "checkedAt": "2026-10-05T00:26:51.619Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": false,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 256,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [
+    {
+      "id": "0",
+      "name": "比奇省",
+      "x": 346,
+      "y": 187,
+      "expectedUnresolved": 0,
+      "sourceSha256": "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7",
+      "desktopColors": 230,
+      "mobileColors": 161,
+      "desktopCanvasSha256": "127d386f0647578a75e3df00b2880355d5d7a72527735bc4a18c7eb444d472df",
+      "mobileCanvasSha256": "96ad5a7abefaf621a178726f5de03e99411ea2623650f47467bdc4c4fdfd59dd",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "1",
+      "name": "沃玛森林",
+      "x": 559,
+      "y": 553,
+      "expectedUnresolved": 0,
+      "sourceSha256": "a60373a2e2bd1e982dcb614ea40a8aa86638b4d2680fdb2f2ed1640654c61793",
+      "desktopColors": 167,
+      "mobileColors": 121,
+      "desktopCanvasSha256": "6819e2e58d7a43caf515416525282d80f0c0254dfaf60ac2c36d2a91286e9838",
+      "mobileCanvasSha256": "6b4eb8b63e391f6f0ac01a0b028b107b7e62621994c96c180243542735200da1",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "2",
+      "name": "毒蛇山谷",
+      "x": 414,
+      "y": 563,
+      "expectedUnresolved": 0,
+      "sourceSha256": "6174b98752bb5a8464d6bcea979aeb4a7824ca36cc60d617fc58df0f48c88297",
+      "desktopColors": 159,
+      "mobileColors": 126,
+      "desktopCanvasSha256": "98a0306cf97392e30288a9f328e73a0b577ecbcd7d778f7736d9310b750a347b",
+      "mobileCanvasSha256": "cf73395081abdf7bcf1162f6306876298b9f7b63b23400361a19c8ccc319ce83",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "3",
+      "name": "盟重省",
+      "x": 273,
+      "y": 750,
+      "expectedUnresolved": 0,
+      "sourceSha256": "5bb37afef0bb827e0ee47b71ed455d737ebd503917fabad4407d7361f0ca694f",
+      "desktopColors": 1400,
+      "mobileColors": 383,
+      "desktopCanvasSha256": "ade48029aed67bd0ccd6ebfe782283b82c28003447098be87ad4db3e2b949acd",
+      "mobileCanvasSha256": "64896b4997031e193d22d8adab0b24879a70bf74dccc8b97202af01a8cd76a2b",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "4",
+      "name": "封魔谷",
+      "x": 219,
+      "y": 196,
+      "expectedUnresolved": 0,
+      "sourceSha256": "0691c8ddb6854af00e846a4e64637006cac10da413fc153b75a39cb3fc1ed98f",
+      "desktopColors": 151,
+      "mobileColors": 118,
+      "desktopCanvasSha256": "980ebafe8f12b250534d8f11c4574277a00b5b15cf04da2b39d8d4d20e3244d3",
+      "mobileCanvasSha256": "cd7804b4ed71187cdaac7a16f830da42b371c99f47b25bb09ea00ed26e55f6c8",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects6"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "5",
+      "name": "苍月岛",
+      "x": 127,
+      "y": 301,
+      "expectedUnresolved": 0,
+      "sourceSha256": "43b7344cce5caea49c09f909a3ad36ea7e30af701fd1a0c7be27a263d772b895",
+      "desktopColors": 556,
+      "mobileColors": 212,
+      "desktopCanvasSha256": "9e431eddd8805b9cd1a69ea689e7d4ed22bdb922ae01e77f078bd154e00bf680",
+      "mobileCanvasSha256": "bc3f3a3e2fac23b125a8207cc33a2a37bdc1870c7115479b69d3b34fceffaa29",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "11",
+      "name": "白日门",
+      "x": 348,
+      "y": 242,
+      "expectedUnresolved": 0,
+      "sourceSha256": "d8493009ad70fbca5eda276988c7c9c8027ccdfbc4cbba4c433e8ad7a627e354",
+      "desktopColors": 1331,
+      "mobileColors": 383,
+      "desktopCanvasSha256": "038274718c3ec6d14f28b4c6f94aa3a5d4dfa7e55552aef90183536b2f887a59",
+      "mobileCanvasSha256": "6428d99567660682c467dbaf61641fad43ab588b7e30e1018f552d090890ec4b",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "12",
+      "name": "丛林迷宫",
+      "x": 322,
+      "y": 475,
+      "expectedUnresolved": 0,
+      "sourceSha256": "d469f6f10bbf2df38f1813faa38dfb551354f93d9cd9584c087f07ab174be034",
+      "desktopColors": 1993,
+      "mobileColors": 590,
+      "desktopCanvasSha256": "e133b33b50f5996adcd0be92c45626b19c852036a184a9df230a484ad18ba2e3",
+      "mobileCanvasSha256": "0332e8252091d96b6f374e2dfd69f473659c58442a8b497e52ff00d71b54a41c",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0140",
+      "name": "仓库",
+      "x": 2,
+      "y": 10,
+      "expectedUnresolved": 0,
+      "sourceSha256": "679ffed7be2e314494f2be87f614a679ff3bc2e4e9974859deba5ba47b1659bb",
+      "desktopColors": 159,
+      "mobileColors": 101,
+      "desktopCanvasSha256": "c5d2b92fc34b60b2e5c2c95a8ad3d19afd4161d5576a58500b045c1f9804199c",
+      "mobileCanvasSha256": "bf375cf0c9473280691f20214b9b459958c8cda09c96afc853bc9b76ebb39064",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2",
+        "WemadeObjects3"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "0123A",
+      "name": "房屋",
+      "x": 12,
+      "y": 18,
+      "expectedUnresolved": 0,
+      "sourceSha256": "2cfa4b297ba8ee57ce1c9ce074aaa064dec74a86eaeb2f41ae4673e8259ec211",
+      "desktopColors": 120,
+      "mobileColors": 94,
+      "desktopCanvasSha256": "b09846d2846c2bd5dd1aa919111295158b0cba9e920cfb54f68fab049b46e978",
+      "mobileCanvasSha256": "a2907a044339d53a016fa303368d3d6c317e285496d5e3872ba0f90e330ab555",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "B341",
+      "name": "封魔皇宫",
+      "x": 26,
+      "y": 30,
+      "expectedUnresolved": 0,
+      "sourceSha256": "1e3b3a52a0d23dc9e5fbb98df4fc537ff6bfc9ace89e8e7793629c257758df4d",
+      "desktopColors": 102,
+      "mobileColors": 80,
+      "desktopCanvasSha256": "3144cfd5ada1d74db43c8c0f34ff9460e5540605628b68224858ea797682317f",
+      "mobileCanvasSha256": "6303e6ed934e5fa6db741ff68ad7607b12df4119dceb1ab355a7a393d256f096",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects6"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "B351",
+      "name": "武器库",
+      "x": 11,
+      "y": 13,
+      "expectedUnresolved": 0,
+      "sourceSha256": "64253af5072abdeae99d098d445417c1b0bc2cf240880b7c25d909e22e121748",
+      "desktopColors": 79,
+      "mobileColors": 55,
+      "desktopCanvasSha256": "9e097bbdf433d25e99efdcfd49d6c88330e9411db2f664f5688a41120e98f0b4",
+      "mobileCanvasSha256": "1d0b931cc27946c9510599a4ceddf0ee431f3db212939532bc7c91e30d591076",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "1001",
+      "name": "白日门武器库",
+      "x": 6,
+      "y": 17,
+      "expectedUnresolved": 0,
+      "sourceSha256": "2ffb55f5964650aba49ddc65a80137e95a033d25e5ce692928e7a3c70c111e6d",
+      "desktopColors": 110,
+      "mobileColors": 78,
+      "desktopCanvasSha256": "08035ccafcc2cb07182fae3d937121a373bd3d66f52b879b2deb400e34623c2f",
+      "mobileCanvasSha256": "102bba61849963580728308a7782d82533ea147e4f1afd37929b13955aace1d7",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D001",
+      "name": "兽人古墓一层",
+      "x": 151,
+      "y": 362,
+      "expectedUnresolved": 0,
+      "sourceSha256": "0047842a53a4806562746f6580859b3b06e2d64a7c4bfeb1ead40831bea2fa24",
+      "desktopColors": 96,
+      "mobileColors": 62,
+      "desktopCanvasSha256": "e6a77d18a8d8563ad37184fa7797b79ffcb099daf3ccacbaaead42b11e9da853",
+      "mobileCanvasSha256": "4ce81be0be054e82812aca30a661ce5091d8f092159571aeacf038abe3db93b0",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D011",
+      "name": "天然洞穴一层",
+      "x": 154,
+      "y": 367,
+      "expectedUnresolved": 0,
+      "sourceSha256": "cfe306b793ec8b7cace580ee1efcf67e1dcbd4b98b4541855a5e070a1b33c067",
+      "desktopColors": 81,
+      "mobileColors": 58,
+      "desktopCanvasSha256": "82674a7d8a62e4dddcabf937f63bf923c52e159ccf9e0e5a7984f7b5ce22f0fd",
+      "mobileCanvasSha256": "7974a5494295aeed7b78febc992b6b35860146f265621b396e0530be825ac690",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D021",
+      "name": "沃玛寺庙入口",
+      "x": 76,
+      "y": 74,
+      "expectedUnresolved": 0,
+      "sourceSha256": "65fc13c6e9055913b5ea8ba5be77178b2856832d1aa80cbab4ab40e3fe155894",
+      "desktopColors": 118,
+      "mobileColors": 79,
+      "desktopCanvasSha256": "f4a03d36551853bb6426dcfb7b792d1b7bc3677fd0155bb7f044049a80ba55b3",
+      "mobileCanvasSha256": "9cce2d19e37c31fda320becfbd6e55c781f3e8be77ec88021fdc8ae8f117128b",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D024",
+      "name": "沃玛教主大殿",
+      "x": 16,
+      "y": 19,
+      "expectedUnresolved": 0,
+      "sourceSha256": "8712b9f37da480fe68ca1918134002c1d0886aa41c8710647eecd064c54646a4",
+      "desktopColors": 174,
+      "mobileColors": 123,
+      "desktopCanvasSha256": "6cdc4f3343b5fa5e479653ebb88a0ded1ccaf909f0a1c9856c283a960fb9a764",
+      "mobileCanvasSha256": "b741fa24accb531ddb59265cd3995ff03f9f42a459bb34b94ef04ba29098c434",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D401",
+      "name": "废矿入口",
+      "x": 25,
+      "y": 181,
+      "expectedUnresolved": 0,
+      "sourceSha256": "81365b41fae7a2b1b45fa7db3f347caeb8bb6ae866299e410bc7cfb3d2da84b3",
+      "desktopColors": 92,
+      "mobileColors": 72,
+      "desktopCanvasSha256": "affa40addd323d022b2f6a11b95774d00071c7cf8b98e4bf87a0a06854f1de44",
+      "mobileCanvasSha256": "c1333aa6d61915dd85b937da04a8593f22bfcbadf3e173a6be781c4e377ca3a8",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "Q004",
+      "name": "尸王殿",
+      "x": 14,
+      "y": 14,
+      "expectedUnresolved": 0,
+      "sourceSha256": "85e8b17aca127199ddc38b2eecb656191a86e81a9daf97e9602a12a5071200c8",
+      "desktopColors": 94,
+      "mobileColors": 70,
+      "desktopCanvasSha256": "e5ffbb729942effef69f49e85e5e0eb788ce6e3d942b60a08bc6bf2fa03b30cc",
+      "mobileCanvasSha256": "f77a74f1e86fe0bde2ae4c74959c485f4d670d5ee7807cf9a60993d40771cbcc",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D501",
+      "name": "祖玛寺庙一层",
+      "x": 166,
+      "y": 216,
+      "expectedUnresolved": 0,
+      "sourceSha256": "2b47998a77fdb705b1923e40c12208f71e06736f5ec8e541d687ceb7fd63e9e2",
+      "desktopColors": 154,
+      "mobileColors": 116,
+      "desktopCanvasSha256": "04b05e33af2eee286a60e5599eb9b4a47ae0b0a945ee5cd5c13b7fd2dbf44a4d",
+      "mobileCanvasSha256": "6113ce4b734f914bb9e1b9f617301bbd7fc345d3cbe1481ff9fedc970fb37e9a",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2",
+        "WemadeObjects6"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D5061",
+      "name": "祖玛阁",
+      "x": 8,
+      "y": 16,
+      "expectedUnresolved": 0,
+      "sourceSha256": "54b0a1cd86faa15374f3d9a54c1e94e275695380efc4ef86af3b0180b504e83c",
+      "desktopColors": 152,
+      "mobileColors": 106,
+      "desktopCanvasSha256": "b6d2be5f2fd2dff44f410d099fbdbe2c81e0a6ccced0196465095d453aa4baa9",
+      "mobileCanvasSha256": "8e536a34ae63126a60e0c1a4bf8e1336090c1eba6362d118ebaf9eb4f1281f56",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5",
+        "WemadeObjects6"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D601",
+      "name": "地牢一层东",
+      "x": 207,
+      "y": 236,
+      "expectedUnresolved": 0,
+      "sourceSha256": "f9705528c429550ea71b68a5e02cb63024dceb0d4b4f0d738032b5f3cbabb268",
+      "desktopColors": 65,
+      "mobileColors": 54,
+      "desktopCanvasSha256": "f9ac19c7af45e2d822432f818a73d99f94e6baa592cd7d511a2e6ca4d5b5ee29",
+      "mobileCanvasSha256": "75aef015c7997959d06fe6249098432f6b6eb5c0e93c0ccd1d4b49edef1c1325",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D716",
+      "name": "石墓六层",
+      "x": 24,
+      "y": 27,
+      "expectedUnresolved": 0,
+      "sourceSha256": "ba23c1927691889738ae242c234b67b9eaf5c0857ddb167f01dd1daa853be88f",
+      "desktopColors": 93,
+      "mobileColors": 57,
+      "desktopCanvasSha256": "48cf4502714bb244ff5f73691c70826e67c37064778a721ff5b9da28f0bda375",
+      "mobileCanvasSha256": "009bd78947f11dbcd8c90c785bdf3cb42fc0810750c8977de640e5b24013923a",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2",
+        "WemadeObjects5",
+        "WemadeObjects7"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D71601",
+      "name": "石墓阵",
+      "x": 25,
+      "y": 13,
+      "expectedUnresolved": 0,
+      "sourceSha256": "68e2e3f69d3bfd8663409d3e386ece4d963cd1cc3aa84db9c004044f8b84d17e",
+      "desktopColors": 159,
+      "mobileColors": 123,
+      "desktopCanvasSha256": "b51281f0b79e1291c9170374f8c97f612cbf3ebbbab91e2d4eb7c94b8858be00",
+      "mobileCanvasSha256": "22b68a4e314d5ba394dd3ea29576175a5b40a707544d20fb70e915f57edfef1b",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5",
+        "WemadeObjects7"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D71625",
+      "name": "石墓阵",
+      "x": 36,
+      "y": 34,
+      "expectedUnresolved": 0,
+      "sourceSha256": "e3a01ca025a029ee726fc3706c2b5d247fb1661865f26a8e2cf378d7a537a00b",
+      "desktopColors": 117,
+      "mobileColors": 79,
+      "desktopCanvasSha256": "e0576eed50abf2a4945f9cfc9cd3029f4ed4c59fae74bd504897a41936d4f5c9",
+      "mobileCanvasSha256": "65555e4f2ab31cb0cabd4d82eaa4550e635cc202efa5e1b09e7c4bba95363c24",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects2",
+        "WemadeObjects5",
+        "WemadeObjects7"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D1002",
+      "name": "赤月峡谷广场",
+      "x": 62,
+      "y": 288,
+      "expectedUnresolved": 0,
+      "sourceSha256": "1aa0fbf77f29201277cab5c60f9c5f6923cc183486eb27438c94aaa2bcad849f",
+      "desktopColors": 102,
+      "mobileColors": 75,
+      "desktopCanvasSha256": "2468adea8d99b87c05765df819b5f61a2be1d0227892a87ceacb974091cf1218",
+      "mobileCanvasSha256": "8ce4d63934961dc74751ba9b3469335270e8e6f7325820e62ffb9aded11b2565",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    },
+    {
+      "id": "D10061",
+      "name": "恶魔祭坛",
+      "x": 20,
+      "y": 25,
+      "expectedUnresolved": 0,
+      "sourceSha256": "d0a4011d93d7a5ec760ff036639d3ed9ec47feee5df1ad37c06caef9c5672a9c",
+      "desktopColors": 104,
+      "mobileColors": 80,
+      "desktopCanvasSha256": "de260be28032293c608eeb6237c50faf2002c23c3af87a3826502dfcff7de704",
+      "mobileCanvasSha256": "a300a1864cf5694f2c9ca66911cd4999302aa49ad39e29d913fcc5c29b9561b4",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": []
+    }
+  ],
+  "failure": {
+    "scene": {
+      "id": "D2000",
+      "name": "封魔矿区",
+      "x": 24,
+      "y": 182,
+      "expectedUnresolved": 0
+    },
+    "browserErrors": [
+      "[Loader.load] Failed to load http://127.0.0.1:18883/libraries/SmTiles/132.e9fdef84af5e548d.png.\nTypeError: Failed to fetch"
+    ],
+    "missingResources": [],
+    "layout": {
+      "width": 1440,
+      "scrollWidth": 1440
+    }
+  },
+  "error": "Error: expect(locator).toBeEnabled() failed\n\nLocator:  locator('#map')\nExpected: enabled\nReceived: disabled\nTimeout:  60000ms\n\nCall log:\n  - Expect \"toBeEnabled\" locator('#map') with timeout 60000ms\n  - waiting for locator('#map')\n    123 × locator resolved to <select id=\"map\" disabled>…</select>\n        - unexpected value \"disabled\"\n"
+}
