@@ -1,0 +1,1009 @@
+{
+  "checkedAt": "2026-10-05T01:18:27.772Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "passed": true,
+  "full176Acceptance": false,
+  "fixture": "New level-one, zero-gold accounts moved offline to original route approaches. No stats, skills, items, NPC scripts or route coordinates changed. This does not verify travelling from birth to these regions.",
+  "images": {
+    "engine": "sha256:126259c18c539f8d6a59553ef6719077c3e4f4eb01064ebd72100c957fbe09c1",
+    "web": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+    "proxy": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c"
+  },
+  "errors": [],
+  "missingResources": [],
+  "failedRequests": [],
+  "browserCrashes": [],
+  "routes": [
+    {
+      "flow": "border",
+      "passed": true,
+      "approach": {
+        "map": "0",
+        "x": 324,
+        "y": 36
+      },
+      "outward": {
+        "map": "1",
+        "x": 559,
+        "y": 553
+      },
+      "return": {
+        "map": "0",
+        "x": 324,
+        "y": 35
+      },
+      "screenshots": [
+        {
+          "sampledColors": 636,
+          "width": 800,
+          "height": 600
+        },
+        {
+          "sampledColors": 345,
+          "width": 391,
+          "height": 294
+        }
+      ],
+      "minimap": {
+        "nativeSourceIndex": 102,
+        "projected": {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 101,
+          "sourceIndex": 102,
+          "mapGeneration": 2
+        },
+        "state": {
+          "mode": "compact",
+          "mapId": "1",
+          "name": "沃玛森林",
+          "world": {
+            "width": 600,
+            "height": 600
+          },
+          "position": {
+            "x": 559,
+            "y": 553
+          },
+          "frameIndex": 101,
+          "imageUrl": "/ui-national/mmap/101.65acb723bc9ec0d5.png",
+          "imageReady": true,
+          "drawRect": {
+            "left": 0.14666666666666117,
+            "top": 0,
+            "width": 159.70666666666668,
+            "height": 106
+          },
+          "markers": [
+            {
+              "id": "entity-1549241414",
+              "x": 559,
+              "y": 553,
+              "kind": "self"
+            }
+          ]
+        },
+        "sourceFrame": {
+          "index": 101,
+          "width": 904,
+          "height": 600,
+          "offsetX": -296,
+          "offsetY": -266,
+          "file": "101.65acb723bc9ec0d5.png",
+          "sha256": "65acb723bc9ec0d5de0ae23832605c4a0bfc2de1c7fd2aea5735818327d9bbcb"
+        },
+        "sampledCanvasColors": 86
+      },
+      "packets": [
+        {
+          "type": "map",
+          "map": "0"
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 100,
+          "sourceIndex": 101,
+          "mapGeneration": 1
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 101,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 324,
+          "y": 35,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 324,
+          "y": 34,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "1",
+          "playerId": 1549241414,
+          "x": 559,
+          "y": 553,
+          "brightness": 0
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 101,
+          "sourceIndex": 102,
+          "mapGeneration": 2
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 102,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 3,
+          "kind": "move",
+          "accepted": true,
+          "x": 559,
+          "y": 554,
+          "reason": 0,
+          "mapGeneration": 2
+        },
+        {
+          "type": "map",
+          "map": "0",
+          "playerId": 1549241414,
+          "x": 324,
+          "y": 35,
+          "brightness": 0
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 100,
+          "sourceIndex": 101,
+          "mapGeneration": 3
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 101,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        }
+      ]
+    },
+    {
+      "flow": "npc",
+      "passed": true,
+      "sourceScriptSha256": "4336d97d184883dd9095a7351bc8ac338b9d09599be0a4799e7439d3ea46e9ba",
+      "nativeTarget": {
+        "map": "11",
+        "x": 47,
+        "y": 477
+      },
+      "screenshot": {
+        "sampledColors": 688,
+        "width": 800,
+        "height": 600
+      },
+      "minimap": {
+        "nativeSourceIndex": 103,
+        "projected": {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 102,
+          "sourceIndex": 103,
+          "mapGeneration": 2
+        },
+        "state": {
+          "mode": "compact",
+          "mapId": "11",
+          "name": "白日门",
+          "world": {
+            "width": 500,
+            "height": 500
+          },
+          "position": {
+            "x": 47,
+            "y": 477
+          },
+          "frameIndex": 102,
+          "imageUrl": "/ui-national/mmap/102.b76eeb932a441f43.png",
+          "imageReady": true,
+          "drawRect": {
+            "left": 0.2879999999999967,
+            "top": 0,
+            "width": 159.424,
+            "height": 106
+          },
+          "markers": [
+            {
+              "id": "entity-156171515",
+              "x": 47,
+              "y": 477,
+              "kind": "self"
+            },
+            {
+              "id": "entity-1765069906",
+              "x": 44,
+              "y": 480,
+              "kind": "npc"
+            }
+          ]
+        },
+        "sourceFrame": {
+          "index": 102,
+          "width": 752,
+          "height": 500,
+          "offsetX": -296,
+          "offsetY": -266,
+          "file": "102.b76eeb932a441f43.png",
+          "sha256": "b76eeb932a441f43bd4ef73f096feb54b1424471b1d28bb5f706c372acb2dfed"
+        },
+        "sampledCanvasColors": 90
+      },
+      "packets": [
+        {
+          "type": "map",
+          "map": "1"
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 101,
+          "sourceIndex": 102,
+          "mapGeneration": 1
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 102,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "npcDialogue",
+          "npcId": 531246646,
+          "npcName": "传送员",
+          "text": "年轻的勇士，你想进入白日门吗？",
+          "options": [
+            {
+              "text": "去[白日门]",
+              "command": "@br",
+              "input": false
+            },
+            {
+              "text": "离开",
+              "command": "@Exit",
+              "input": false
+            }
+          ],
+          "lines": [
+            [],
+            [
+              {
+                "text": "年轻的勇士，你想进入白日门吗？",
+                "command": null,
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": " ",
+                "command": null,
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": "去[白日门]",
+                "command": "@br",
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": " ",
+                "command": null,
+                "input": false
+              }
+            ],
+            [
+              {
+                "text": "离开",
+                "command": "@Exit",
+                "input": false
+              }
+            ]
+          ],
+          "quest": null,
+          "quests": null
+        },
+        {
+          "type": "map",
+          "map": "11",
+          "playerId": 156171515,
+          "x": 47,
+          "y": 477,
+          "brightness": 0
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 102,
+          "sourceIndex": 103,
+          "mapGeneration": 2
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 103,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        }
+      ]
+    },
+    {
+      "flow": "alias",
+      "passed": true,
+      "logicalMapSaved": "0123A",
+      "graphicMapReceived": "0123",
+      "reconnect": true,
+      "return": {
+        "map": "11",
+        "x": 205,
+        "y": 386
+      },
+      "screenshot": {
+        "sampledColors": 497,
+        "width": 800,
+        "height": 600
+      },
+      "minimap": {
+        "nativeSourceIndex": 0,
+        "projected": {
+          "type": "minimap",
+          "available": false,
+          "frameIndex": null,
+          "sourceIndex": 0,
+          "mapGeneration": 2
+        },
+        "state": {
+          "mode": "compact",
+          "mapId": "0123",
+          "name": "房屋",
+          "world": {
+            "width": 18,
+            "height": 21
+          },
+          "position": {
+            "x": 12,
+            "y": 18
+          },
+          "imageReady": false,
+          "drawRect": {
+            "left": 11.857142857142861,
+            "top": 0,
+            "width": 136.28571428571428,
+            "height": 106
+          },
+          "markers": [
+            {
+              "id": "entity-656255491",
+              "x": 12,
+              "y": 18,
+              "kind": "self"
+            }
+          ]
+        }
+      },
+      "packets": [
+        {
+          "type": "map",
+          "map": "11"
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 102,
+          "sourceIndex": 103,
+          "mapGeneration": 1
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 103,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 204,
+          "y": 386,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 204,
+          "y": 385,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "0123",
+          "playerId": 656255491,
+          "x": 12,
+          "y": 18,
+          "brightness": 1
+        },
+        {
+          "type": "minimap",
+          "available": false,
+          "frameIndex": null,
+          "sourceIndex": 0,
+          "mapGeneration": 2
+        },
+        {
+          "type": "legacy",
+          "id": 711,
+          "recog": 0,
+          "param": 0,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "map",
+          "map": "0123"
+        },
+        {
+          "type": "minimap",
+          "available": false,
+          "frameIndex": null,
+          "sourceIndex": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "legacy",
+          "id": 711,
+          "recog": 0,
+          "param": 0,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 12,
+          "y": 17,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 12,
+          "y": 18,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "11",
+          "playerId": 117553398,
+          "x": 205,
+          "y": 386,
+          "brightness": 0
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 102,
+          "sourceIndex": 103,
+          "mapGeneration": 2
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 103,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        }
+      ]
+    },
+    {
+      "flow": "cangyue",
+      "passed": true,
+      "originalMapSha256": "7cb06f4ad1300ed93cea6745d4991c853eea7bb00f3668f5360a48f7ccd7897a",
+      "newlyOpenCellsWalked": [
+        {
+          "x": 148,
+          "y": 328
+        },
+        {
+          "x": 148,
+          "y": 327
+        },
+        {
+          "x": 149,
+          "y": 328
+        }
+      ],
+      "newlyBlockedCellStoppedMovement": {
+        "x": 150,
+        "y": 328
+      },
+      "blockedRequest": {
+        "type": "move",
+        "mapGeneration": 1,
+        "actionId": 5,
+        "kind": "move",
+        "startedAt": 12112.800000190735,
+        "duration": 600,
+        "acknowledged": false,
+        "fromX": 149,
+        "fromY": 328,
+        "x": 150,
+        "y": 328,
+        "direction": 2,
+        "run": false
+      },
+      "blockedResult": {
+        "type": "actionResult",
+        "actionId": 5,
+        "kind": "move",
+        "accepted": false,
+        "x": 149,
+        "y": 328,
+        "reason": 28,
+        "mapGeneration": 1
+      },
+      "clothingRoomEntrance": true,
+      "reconnect": true,
+      "return": {
+        "map": "5",
+        "x": 146,
+        "y": 324
+      },
+      "screenshots": [
+        {
+          "sampledColors": 973,
+          "width": 800,
+          "height": 600
+        },
+        {
+          "sampledColors": 439,
+          "width": 391,
+          "height": 294
+        },
+        {
+          "sampledColors": 525,
+          "width": 800,
+          "height": 600
+        }
+      ],
+      "minimap": {
+        "nativeSourceIndex": 161,
+        "projected": {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 160,
+          "sourceIndex": 161,
+          "mapGeneration": 1
+        },
+        "state": {
+          "mode": "compact",
+          "mapId": "5",
+          "name": "苍月岛",
+          "world": {
+            "width": 800,
+            "height": 800
+          },
+          "position": {
+            "x": 149,
+            "y": 328
+          },
+          "frameIndex": 160,
+          "imageUrl": "/ui-national/mmap/160.e4393b4f0040f4f6.png",
+          "imageReady": true,
+          "drawRect": {
+            "left": 0.23499999999999943,
+            "top": 0,
+            "width": 159.53,
+            "height": 106
+          },
+          "markers": [
+            {
+              "id": "entity-779597487",
+              "x": 149,
+              "y": 328,
+              "kind": "self"
+            },
+            {
+              "id": "entity-512389736",
+              "x": 155,
+              "y": 339,
+              "kind": "npc"
+            },
+            {
+              "id": "entity-1621815660",
+              "x": 147,
+              "y": 328,
+              "kind": "npc"
+            },
+            {
+              "id": "entity-1367614497",
+              "x": 138,
+              "y": 329,
+              "kind": "npc"
+            }
+          ]
+        },
+        "sourceFrame": {
+          "index": 160,
+          "width": 1204,
+          "height": 800,
+          "offsetX": -296,
+          "offsetY": -266,
+          "file": "160.e4393b4f0040f4f6.png",
+          "sha256": "e4393b4f0040f4f6abd009fe4984555b63adc318a7cdd7ce874ee75e6a6bd957"
+        },
+        "sampledCanvasColors": 89
+      },
+      "packets": [
+        {
+          "type": "map",
+          "map": "5"
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 160,
+          "sourceIndex": 161,
+          "mapGeneration": 1
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 161,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 148,
+          "y": 328,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 148,
+          "y": 327,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 3,
+          "kind": "move",
+          "accepted": true,
+          "x": 148,
+          "y": 328,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 4,
+          "kind": "move",
+          "accepted": true,
+          "x": 149,
+          "y": 328,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 5,
+          "kind": "move",
+          "accepted": false,
+          "x": 149,
+          "y": 328,
+          "reason": 28,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 6,
+          "kind": "move",
+          "accepted": true,
+          "x": 149,
+          "y": 329,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 7,
+          "kind": "move",
+          "accepted": true,
+          "x": 149,
+          "y": 330,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 8,
+          "kind": "move",
+          "accepted": true,
+          "x": 148,
+          "y": 330,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 9,
+          "kind": "move",
+          "accepted": true,
+          "x": 147,
+          "y": 330,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 10,
+          "kind": "move",
+          "accepted": true,
+          "x": 146,
+          "y": 330,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 11,
+          "kind": "move",
+          "accepted": true,
+          "x": 145,
+          "y": 330,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 12,
+          "kind": "move",
+          "accepted": true,
+          "x": 145,
+          "y": 329,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 13,
+          "kind": "move",
+          "accepted": true,
+          "x": 145,
+          "y": 328,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 14,
+          "kind": "move",
+          "accepted": true,
+          "x": 145,
+          "y": 327,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 15,
+          "kind": "move",
+          "accepted": true,
+          "x": 145,
+          "y": 326,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 16,
+          "kind": "move",
+          "accepted": true,
+          "x": 145,
+          "y": 325,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 17,
+          "kind": "move",
+          "accepted": true,
+          "x": 146,
+          "y": 325,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 18,
+          "kind": "move",
+          "accepted": true,
+          "x": 146,
+          "y": 324,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "B353",
+          "playerId": 779597487,
+          "x": 8,
+          "y": 21,
+          "brightness": 1
+        },
+        {
+          "type": "minimap",
+          "available": false,
+          "frameIndex": null,
+          "sourceIndex": 0,
+          "mapGeneration": 2
+        },
+        {
+          "type": "legacy",
+          "id": 711,
+          "recog": 0,
+          "param": 0,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "map",
+          "map": "B353"
+        },
+        {
+          "type": "minimap",
+          "available": false,
+          "frameIndex": null,
+          "sourceIndex": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "legacy",
+          "id": 711,
+          "recog": 0,
+          "param": 0,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 8,
+          "y": 20,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 8,
+          "y": 21,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "5",
+          "playerId": 533788761,
+          "x": 146,
+          "y": 324,
+          "brightness": 0
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 160,
+          "sourceIndex": 161,
+          "mapGeneration": 2
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 161,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        }
+      ]
+    }
+  ],
+  "candidateServiceAcceptance": "failed",
+  "activeFlow": "cangyue",
+  "fixtureShutdown": {
+    "nativeSaveAcknowledged": true,
+    "nativeExit": true
+  }
+}

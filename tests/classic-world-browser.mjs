@@ -12,13 +12,21 @@ const audit = JSON.parse(await readFile('docs/classic-world-audit.json'));
 const native = JSON.parse(await readFile(join(assets, 'native-world.json')));
 const ids = process.env.MIR_WORLD_IDS?.split(',') ?? ['0', '1', '2', '3', '4', '5', '11', '12', '0140', '0123A', 'B341', 'B351', '1001', 'D001', 'D011',
   'D021', 'D024', 'D401', 'Q004', 'D501', 'D5061', 'D601', 'D716', 'D71601', 'D71625', 'D1002', 'D10061', 'D2000', 'D2013', 'D2051', 'D2067', 'D2079'];
-const scenes = ids.map(id => {
+const points = process.env.MIR_WORLD_POINTS ? JSON.parse(process.env.MIR_WORLD_POINTS) : null;
+if (points) assert.ok(Array.isArray(points) && points.length > 0, 'Expected at least one world point');
+const scenes = points ? points.map(point => {
+  const map = audit.maps.find(map => map.id === point.id);
+  assert.ok(map, 'Unknown world point map');
+  assert.ok(Number.isInteger(point.x) && Number.isInteger(point.y)
+    && point.x >= 0 && point.x < map.width && point.y >= 0 && point.y < map.height, 'World point is outside the map');
+  return { id: map.id, name: map.name, x: point.x, y: point.y, expectedUnresolved: 0 };
+}) : ids.map(id => {
   const map = audit.maps.find(map => map.id === id);
   const entrance = audit.connections.find(edge => edge.to === id && !edge.physicalIssue);
   assert.ok(entrance, `No valid entrance for ${id}`);
   return { id, name: map.name, x: entrance.targetX, y: entrance.targetY, expectedUnresolved: 0 };
 });
-if (!process.env.MIR_WORLD_IDS || process.env.MIR_WORLD_BOUNDARIES === '1') scenes.push(
+if ((!process.env.MIR_WORLD_IDS && !points) || process.env.MIR_WORLD_BOUNDARIES === '1') scenes.push(
   { id: '4', name: 'fengmo-boundary', x: 8, y: 76, expectedUnresolved: 0 },
   { id: '5', name: 'cangyue-boundary', x: 8, y: 22, expectedUnresolved: 0 },
   { id: '11', name: 'white-sun-boundary', x: 8, y: 12, expectedUnresolved: 0 },
@@ -60,6 +68,9 @@ try {
         await expect(selector).toBeEnabled({ timeout: 60000 });
       }
       const world = JSON.parse(await readFile(join(assets, 'maps', scene.id, 'map.json')));
+      const response = await page.request.get(`${base}/maps/${scene.id}/map.json`);
+      assert.equal(response.status(), 200);
+      assert.deepEqual(await response.json(), world, 'Served map differs from the prepared map');
       await expect(page.locator('#x')).toHaveAttribute('max', String(world.width - 1));
       await expect(page.locator('#y')).toHaveAttribute('max', String(world.height - 1));
       await page.locator('#x').fill(String(scene.x));

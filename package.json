@@ -11,6 +11,7 @@
     "assets:archived-minimaps": "python3 scripts/prepare-archived-minimaps.py --output .runtime/classic-world/assets",
     "test:archived-minimaps": "node tests/archived-minimaps.mjs",
     "test:archived-map-assets": "node tests/archived-map-assets.mjs",
+    "test:archived-cangyue": "node tests/archived-cangyue.mjs",
     "test:source-minimap": "node --test tests/source-minimap.test.mjs",
     "test:classic-world": "node --test tests/classic-world.test.mjs",
     "test:world-profile": "node --test tests/classic-world-profile.test.mjs",

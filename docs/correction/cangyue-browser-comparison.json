@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-05T01:19:03.114Z",
+  "passed": true,
+  "scope": "Whole page screenshot pixel comparison; source identity and pixels are accepted by separate map and WIL checks.",
+  "scenes": [
+    {
+      "map": "5",
+      "x": 140,
+      "y": 335,
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 365754,
+      "before": "5-140-335-desktop.png",
+      "after": "5-140-335-desktop.png"
+    },
+    {
+      "map": "5",
+      "x": 140,
+      "y": 335,
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 69788,
+      "before": "5-140-335-mobile.png",
+      "after": "5-140-335-mobile.png"
+    },
+    {
+      "map": "5",
+      "x": 148,
+      "y": 328,
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "changedPixels": 196127,
+      "before": "5-148-328-desktop.png",
+      "after": "5-148-328-desktop.png"
+    },
+    {
+      "map": "5",
+      "x": 148,
+      "y": 328,
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "changedPixels": 37398,
+      "before": "5-148-328-mobile.png",
+      "after": "5-148-328-mobile.png"
+    }
+  ],
+  "full176Acceptance": false
+}

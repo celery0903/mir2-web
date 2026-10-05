@@ -54,3 +54,17 @@ export function collisionRows(map) {
     return (map.readUInt16LE(at) | map.readUInt16LE(at + 4)) & 0x8000 ? '1' : '0';
   }).join(''));
 }
+
+export function archivedMapPins(world, archive) {
+  return world.maps.map(pin => {
+    const source = archive.maps?.find(source => source.id === pin.id);
+    if (!source) return pin;
+    const file = archive.clientFiles.find(file => file.file === source.file);
+    if (!file) throw new Error(`Unpinned archived map: ${pin.id}`);
+    const { gitBlob, sourceFile, ...metadata } = pin;
+    return { ...metadata, bytes: file.bytes, sha256: file.sha256, sourceFile: source.file,
+      sourceKind: 'archived-client', sourceURL: archive.archive, installerSha256: archive.installer.sha256,
+      previousSource: { repository: world.repository, revision: world.revision, file: sourceFile,
+        sha256: pin.sha256, gitBlob } };
+  });
+}

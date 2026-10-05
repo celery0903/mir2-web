@@ -5,6 +5,7 @@ import { readFile, writeFile, mkdtemp, mkdir, symlink, rm } from 'node:fs/promis
 import { join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import test from 'node:test';
+import { archivedMapPins } from '../scripts/native-map.mjs';
 
 const root = resolve(new URL('..', import.meta.url).pathname);
 const seed = join(root, '.runtime/mirserver-source');
@@ -22,10 +23,15 @@ test('full profile retains aliases, source flags, maze routes, start points, gua
     assert.match(mapInfo, /D71601\s+17 12\s+->\s+D71609/);
     assert.match(mapInfo, /\[R001[^\]]+\].*NEEDHOLE/);
     const lock = JSON.parse(await readFile('shared/native-world.lock.json'));
-    for (const pin of lock.maps) {
+    const archive = JSON.parse(await readFile('shared/archived-176-client.lock.json'));
+    for (const pin of archivedMapPins(lock, archive)) {
       const bytes = await readFile(join(fixture, 'Map', pin.graphicID + '.map'));
       assert.equal(createHash('sha256').update(bytes).digest('hex'), pin.sha256);
     }
+    const cangyue = audit.maps.find(map => map.id === '5');
+    assert.equal(cangyue.sourceKind, 'archived-client');
+    assert.equal(cangyue.previousSource.sha256, lock.maps.find(map => map.id === '5').sha256);
+    assert.equal(cangyue.installerSha256, archive.installer.sha256);
     assert.equal(audit.services['StartPoint.txt'], 8);
     assert.equal(audit.services['GuardList.txt'], 49);
     assert.ok(audit.dependencies.includes('MonItems/暗之虹魔教主.txt'));
@@ -64,5 +70,21 @@ test('full profile rejects a modified spawn table rather than deriving an unpinn
     const result = spawnSync(process.execPath, ['scripts/prepare-classic-world.mjs', source, '.runtime/classic', join(fixture, 'profile'), '--all'], { cwd: root, encoding: 'utf8' });
     assert.equal(result.status, 1);
     assert.match(result.stderr, /World service checksum mismatch: MonGen.txt/);
+  } finally { await rm(fixture, { recursive: true, force: true }); }
+});
+
+test('full profile rejects a modified archived map without falling back to the community seed', async () => {
+  const fixture = await mkdtemp(join(tmpdir(), 'mir2-modified-archive-'));
+  try {
+    const directory = join(fixture, 'archive/map');
+    await mkdir(directory, { recursive: true });
+    const raw = Buffer.from(await readFile('.runtime/original-client-research/extracted/App_Executables/map/5.map'));
+    raw[raw.length - 1] ^= 1;
+    await writeFile(join(directory, '5.map'), raw);
+    const result = spawnSync(process.execPath, ['scripts/prepare-classic-world.mjs', seed, '.runtime/classic', join(fixture, 'profile'), '--all'], {
+      cwd: root, encoding: 'utf8', env: { ...process.env, MIR_ARCHIVED_CLIENT: join(fixture, 'archive') }
+    });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /Native map checksum mismatch: 5/);
   } finally { await rm(fixture, { recursive: true, force: true }); }
 });

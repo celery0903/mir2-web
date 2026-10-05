@@ -22,6 +22,7 @@
     {"file":"setup.ini","offset":93449275,"bytes":443}
   ],
   "clientFiles": [
+    {"file":"map/5.map","bytes":7680052,"sha256":"7cb06f4ad1300ed93cea6745d4991c853eea7bb00f3668f5360a48f7ccd7897a"},
     {"file":"DATA/Tiles.wil","bytes":29150159,"sha256":"92dc40c4ed6ed4417daf1ae7ad753624f992a9a24e493d651cc2eebd11963f27"},
     {"file":"DATA/Tiles.WIX","bytes":31688,"sha256":"d19435d0996b8d386bf709da1748a68b96105535d420a05b36eae715dab4e146"},
     {"file":"DATA/Objects3.wil","bytes":28091046,"sha256":"03662dce4b451535a4be91e94745bda57c10f4aa33735033e84c34346ef50163"},
@@ -38,6 +39,9 @@
     {"library":"WemadeObjects3","file":"DATA/Objects3.wil","index":"DATA/Objects3.WIX"},
     {"library":"WemadeObjects4","file":"DATA/Objects4.wil","index":"DATA/Objects4.WIX"},
     {"library":"WemadeObjects5","file":"DATA/Objects5.wil","index":"DATA/Objects5.WIX"}
+  ],
+  "maps": [
+    {"id":"5","file":"map/5.map"}
   ],
   "authenticated2003Client": false,
   "full176Acceptance": false,

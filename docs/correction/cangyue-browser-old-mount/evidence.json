@@ -1,0 +1,91 @@
+{
+  "acceptedAsUpdatedMapTest": false,
+  "actualResourceIdentityVerified": false,
+  "laterFinding": "The web container still mounted the old renamed directory. Original assertions passed but did not prove the new archived map was served. Repeat after web recreation with served/prepared manifest identity asserted.",
+  "checkedAt": "2026-10-05T01:16:32.231Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 256,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [
+    {
+      "id": "5",
+      "name": "苍月岛",
+      "x": 140,
+      "y": 335,
+      "expectedUnresolved": 0,
+      "sourceSha256": "7cb06f4ad1300ed93cea6745d4991c853eea7bb00f3668f5360a48f7ccd7897a",
+      "desktopColors": 548,
+      "mobileColors": 229,
+      "desktopCanvasSha256": "83ed8c8bd2a78dd8f955d5439a73821d15ebf5f582de4175ca3bdb2a3c9dbd7c",
+      "mobileCanvasSha256": "19cdd57f2c2668267b3e49b5a14dbbe1dc6ed748a8dc92abbd15071733a99468",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "5",
+      "name": "苍月岛",
+      "x": 148,
+      "y": 328,
+      "expectedUnresolved": 0,
+      "sourceSha256": "7cb06f4ad1300ed93cea6745d4991c853eea7bb00f3668f5360a48f7ccd7897a",
+      "desktopColors": 661,
+      "mobileColors": 253,
+      "desktopCanvasSha256": "163b52937b3c14a88faa616739a1385be98f6a7cbabfd83cd32f52aef3b927d7",
+      "mobileCanvasSha256": "4fe3a0632336de234b89b33f40aa59b6f14f5d41e4b0abe0324a37128f26cf44",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "B353",
+      "name": "布料铺",
+      "x": 8,
+      "y": 21,
+      "expectedUnresolved": 0,
+      "sourceSha256": "3010dd99a69bd4ca13cce6f19511e5cb24adce3dc7fc4f28bc171e5ab0d56ffb",
+      "desktopColors": 122,
+      "mobileColors": 81,
+      "desktopCanvasSha256": "78795ce156d4f6660607bc0b8265bec781ddc87814f17237f73f1749619799ce",
+      "mobileCanvasSha256": "666c9f5b6868a1d4b7596cb96e114da7eae0d2aa803bb32c67a28cf780560a40",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    }
+  ]
+}

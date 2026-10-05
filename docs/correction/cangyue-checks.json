@@ -1,0 +1,84 @@
+{
+  "checkedAt": "2026-10-05T01:21:59.529Z",
+  "full176Acceptance": false,
+  "checks": [
+    {
+      "command": "node --test tests/native-map.test.mjs tests/classic-world-profile.test.mjs",
+      "exitCode": 0,
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": "node tests/source-world-profile.mjs",
+      "exitCode": 0,
+      "report": "cangyue-native-profile/evidence.json",
+      "scope": "Actual candidate image identity and every native collision cell; eight unavailable source routes retained"
+    },
+    {
+      "command": "python3 scripts/prepare-native-map-assets.py --all (archived client)",
+      "exitCode": 1,
+      "expectedMissingReferences": [
+        {
+          "library": "WemadeObjects3",
+          "indices": [
+            9799
+          ]
+        }
+      ]
+    },
+    {
+      "command": "python3 tests/native-world-assets.py",
+      "exitCode": 1,
+      "report": "cangyue-world-assets.json",
+      "allMapCellsAndLibraryPixelsMatch": true
+    },
+    {
+      "command": "node tests/archived-map-assets.mjs",
+      "exitCode": 0,
+      "report": "cangyue-archived-map-assets/evidence.json"
+    },
+    {
+      "command": "node tests/archived-cangyue.mjs",
+      "exitCode": 0,
+      "report": "cangyue-map-data/evidence.json"
+    },
+    {
+      "command": "node scripts/verify-source-deployment.mjs (candidate, first replacement)",
+      "exitCode": 1,
+      "report": "cangyue-candidate-mount-failure.json"
+    },
+    {
+      "command": "node tests/classic-world-browser.mjs (old mount)",
+      "exitCode": 0,
+      "report": "cangyue-browser-old-mount/evidence.json",
+      "acceptedAsUpdatedMapTest": false
+    },
+    {
+      "command": "node scripts/verify-source-deployment.mjs (candidate, recreated web)",
+      "exitCode": 0,
+      "report": "cangyue-candidate-deployment.json"
+    },
+    {
+      "command": "node scripts/verify-source-deployment.mjs (production preservation)",
+      "exitCode": 0,
+      "report": "cangyue-production-preservation.json"
+    },
+    {
+      "command": "node tests/classic-world-browser.mjs (served map identity asserted)",
+      "exitCode": 0,
+      "report": "cangyue-browser-after/evidence.json"
+    },
+    {
+      "command": "node tests/source-world-travel.mjs (isolated Cangyue fixtures)",
+      "exitCode": 0,
+      "report": "cangyue-world-travel/evidence.json"
+    },
+    {
+      "command": "npm run audit:176 -- --check",
+      "exitCode": 1,
+      "report": "../version-audit.json",
+      "maps": 11,
+      "mixedVersionSkills": 108
+    }
+  ]
+}

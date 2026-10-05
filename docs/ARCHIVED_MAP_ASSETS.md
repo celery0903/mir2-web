@@ -13,6 +13,8 @@
 | Objects4 | 10,062 | 118 | 7,117 | 0 |
 | Objects5 | 9,919 | 48 | 6,550 | 0 |
 
+上述 256 图统计来自初次图库导入。后续[归档苍月岛地图接入](ARCHIVED_CANGYUE.md)把 Objects4 可用引用增至 7,119，四个原库共核对 23,559 帧；对应最新报告见该文档。
+
 原 WIL 中有实际图像头的透明占位帧也按原编号导出，不沿用转换 Lib 的“空帧”分类。11 图中恢复三个 Tiles 帧，256 图另恢复 72 个 Objects4 帧；原始几何与偏移均按 WIL 校验，不要求它们与公共转换文件相同。
 
 `tests/archived-map-assets.mjs` 直接读取原始 WIX 偏移、图像头、倒序像素与调色板，独立解码每张导出 PNG，再逐像素比较；没有调用 Python 导出器的解码结果作为预期值。[11 图检查](correction/archived-map-assets-11/evidence.json)通过 787 个原始帧、4,505,427 个 RGBA 像素。[256 图检查](correction/archived-map-assets-256/evidence.json)通过 23,557 个可用原始帧、94,932,620 个 RGBA 像素，地图引用集合和帧/空帧/缺帧分类也相符。
@@ -68,7 +70,7 @@ python3 scripts/prepare-native-map-assets.py \
   --archived-client .runtime/original-client-research/extracted/App_Executables --all
 ```
 
-该全目录导出预期因石墓缺帧返回 1，并保存完整 `native-world.json`。地图字节、连接、脚本、数据库和游戏规则不由图库导入修改；完整原包、苍月岛地图差异、8 条未安装连接、脚本/城堡错误、纯净版本数据和其余系统仍待完成，goal 保持未完成。
+该全目录导出预期因石墓缺帧返回 1，并保存完整 `native-world.json`。图库导入本身不修改地图单元、连接、脚本、数据库和游戏规则；当前带 `--archived-client` 的准备另使用已锁定的整个归档苍月岛地图，保留来源证据。完整原包、8 条未安装连接、脚本/城堡错误、纯净版本数据和其余系统仍待完成，goal 保持未完成。
 
 对已部署的固定镜像可分别复验正式流程与独立跨图；需要停止或重启独立引擎的测试必须串行执行：
 

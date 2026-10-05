@@ -36,6 +36,7 @@ finally { Console.SetOut(output); }
 if (result != 1) throw new Exception("Native MapInfo loader failed");
 using var pins = JsonDocument.Parse(File.ReadAllText("/world-lock.json"));
 var expectedMaps = pins.RootElement.GetProperty("maps").EnumerateArray().ToArray();
+var cellsChecked = 0;
 if (SystemShare.MapMgr.Maps.Count != expectedMaps.Length) throw new Exception($"Only {SystemShare.MapMgr.Maps.Count}/{expectedMaps.Length} maps loaded");
 foreach (var pin in expectedMaps) {
     var id = pin.GetProperty("id").GetString();
@@ -45,6 +46,13 @@ foreach (var pin in expectedMaps) {
     var data = File.ReadAllBytes(Path.Combine("/profile/Map", map.MapFileName + ".map"));
     var hash = Convert.ToHexString(SHA256.HashData(data)).ToLowerInvariant();
     if (hash != pin.GetProperty("sha256").GetString()) throw new Exception($"Loaded map bytes differ: {id}");
+    for (short x = 0; x < map.Width; x++) for (short y = 0; y < map.Height; y++) {
+        var at = 52 + (x * map.Height + y) * 12;
+        var blocked = ((System.Buffers.Binary.BinaryPrimitives.ReadUInt16LittleEndian(data.AsSpan(at))
+            | System.Buffers.Binary.BinaryPrimitives.ReadUInt16LittleEndian(data.AsSpan(at + 4))) & 0x8000) != 0;
+        if (map.CellValid(x, y) == blocked) throw new Exception($"Native map collision differs: {id}/{x},{y}");
+        cellsChecked++;
+    }
     var flags = pin.GetProperty("flags").GetString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
     foreach (var flag in flags) {
         bool? preserved = flag.ToUpperInvariant() switch {
@@ -89,4 +97,5 @@ using var audit = JsonDocument.Parse(File.ReadAllText("/profile/audit.json"));
 if (routes != audit.RootElement.GetProperty("connections").GetInt32()) throw new Exception("Native route count differs from prepared profile");
 Console.WriteLine("Unavailable source routes: " + JsonSerializer.Serialize(unavailable));
 Console.WriteLine($"Native world profile checks: {expectedMaps.Length} maps, {routes} route declarations, {routes - unavailable.Count} installed source routes.");
+Console.WriteLine($"Native collision cells checked: {cellsChecked}");
 Console.WriteLine("Version data, NPC scripts, monster visuals and actual travel workflows are not accepted by these parser checks.");

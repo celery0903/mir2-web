@@ -65,6 +65,13 @@ missing_references = []
 for entry in report['maps']:
     ident = entry['id']
     pin = next(pin for pin in lock['maps'] if pin['id'] == ident)
+    if entry.get('sourceKind') == 'archived-client':
+        source = next(source for source in archive['maps'] if source['id'] == ident)
+        source_pin = next(pin for pin in archive['clientFiles'] if pin['file'] == source['file'])
+        assert entry['sourceFile'] == source['file']
+        assert entry['installerSha256'] == archive['installer']['sha256']
+        assert entry['previousSource']['sha256'] == pin['sha256']
+        pin = {**pin, 'bytes': source_pin['bytes'], 'sha256': source_pin['sha256']}
     path = maps / f'{ident}.map'
     if not path.exists() and pin.get('sourceFile'):
         path = maps / pin['sourceFile']

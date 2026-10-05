@@ -1,0 +1,114 @@
+{
+  "checkedAt": "2026-10-05T01:04:21.191Z",
+  "passed": true,
+  "scope": "Map, Envir and experience configuration bytes compared with the previous local default preparation; metadata comparison is reported separately",
+  "worldFiles": [
+    [
+      "Envir/AutoLogin.txt",
+      "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    ],
+    [
+      "Envir/MapInfo.txt",
+      "bd19715bbcc63b4580a671a868241d803dafff129139385af57ba9e5e476e5a8"
+    ],
+    [
+      "Envir/MapQuest_def/QManage.txt",
+      "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    ],
+    [
+      "Envir/MapQuest.txt",
+      "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    ],
+    [
+      "Envir/Market_Def/QFunction-0.txt",
+      "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    ],
+    [
+      "Envir/Market_Def/比奇村/边界村保管员-0140.txt",
+      "0c6e843229645fb6252b98c94b483f5c0ea6555bcba758172a86a966d1f58e96"
+    ],
+    [
+      "Envir/Merchant.txt",
+      "092d6395c26943f9e212e883265a8f1addf6ca7852f79761f622368cead1058b"
+    ],
+    [
+      "Envir/MonGen.txt",
+      "28d15c1048ab38f6629b13edcc0e99c90a29fc240b5afffcbf4fd1d4eaaa5f10"
+    ],
+    [
+      "Envir/Npcs.txt",
+      "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    ],
+    [
+      "Envir/Robot.txt",
+      "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    ],
+    [
+      "Envir/StartPoint.txt",
+      "4d530e763041ccfc9ab83d70eb7f118783a9a5552ce8ad1cd433d57b8d5292f6"
+    ],
+    [
+      "exps.conf",
+      "41f8d7bbcdd4a44c4d8cc560c9b11791d595b0f933296940d62ae98b8f1d49f2"
+    ],
+    [
+      "Map/0.map",
+      "183e9d545e284275d7955e56dfc4af301e8af9e54c46470a4c7817ee7c5742e7"
+    ],
+    [
+      "Map/0102.map",
+      "7e8985dbc634a02cc5c5ff6b92f7f62b8c1712829cc38c9ebadbd6e824332cda"
+    ],
+    [
+      "Map/0103.map",
+      "d314a54fea40b85eb0bd68d6b18a3fef6fc9221499697feb81f003ad9713da79"
+    ],
+    [
+      "Map/0104.map",
+      "adea6fad4e8d2bc1c603055e74b078790c88d0c08b46553517f997212d75bc45"
+    ],
+    [
+      "Map/0105.map",
+      "9de531bcf6f502482a809bcdbac50a38365f2c163202ba146b9f71b70519523e"
+    ],
+    [
+      "Map/0106.map",
+      "eb5361adfcb1a7576759733386cff453d59e16388047fb32dbfa2c394c28a74c"
+    ],
+    [
+      "Map/0108.map",
+      "d6727ef204bf25df10c35a3c47d6a693827b8c1c3d0cac5a35d7cf1efb91b3b9"
+    ],
+    [
+      "Map/0109.map",
+      "939d34628c5f93b51c372c90487ca390216492b8523717c8f15774786f0801d9"
+    ],
+    [
+      "Map/0132.map",
+      "7351bb29eb3a7ff3095f16dc99bcdd1ee66850eb365f69ee4a41ca24d2ffd5e1"
+    ],
+    [
+      "Map/0140.map",
+      "679ffed7be2e314494f2be87f614a679ff3bc2e4e9974859deba5ba47b1659bb"
+    ],
+    [
+      "Map/0141.map",
+      "b7db75768cdb072cc2a7c3b916f2ec438a8762e396c9f463010d086996723ff2"
+    ]
+  ],
+  "worldBytesUnchanged": true,
+  "wholeProfileComparisonPassed": false,
+  "diagnosticDifferences": [
+    {
+      "path": "audit.json",
+      "beforeSha256": "78ffe17efd7b420fcbc423dbf144991984e6c3fb408bdfbf6886b76ef1e1f250",
+      "afterSha256": "ac616822b31d40a4a229dea062a284c078b375eb4ebfe10478cb914d9d9dc307"
+    },
+    {
+      "path": "profile.version",
+      "beforeSha256": null,
+      "afterSha256": "f52d8dc70a818c8a517cf88118040b8392891570f6154c7a0bde4f5553e5c2a5"
+    }
+  ],
+  "full176Acceptance": false
+}

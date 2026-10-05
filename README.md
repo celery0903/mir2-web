@@ -28,6 +28,8 @@ docker compose up -d --build --wait
 
 独立 18883 入口现加载 256 图候选配置，实际网页通过边界往返、原 NPC 传送和房屋别名存档/重登；正式 18880 保持 11 图。全连接与服务验收仍失败，见 [原生世界隔离核验](docs/WORLD_REVIEW.md)。另已在网上取得并固定一份盛大标注的 [1.76 升级补丁](docs/ARCHIVED_CLIENT.md)，它不包含完整基础客户端，尚未作为原版整包导入。默认准备与两个入口现使用补丁的 Tiles、Objects3/4/5 原 WIL 及 189 帧原小地图；其余基础图库仍有社区来源。逐像素核对、原生回包与正式部署见 [原地图库接入](docs/ARCHIVED_MAP_ASSETS.md) 和 [原始小地图](docs/ARCHIVED_MINIMAPS.md)。
 
+候选世界的苍月岛已改用该补丁的整个原地图，保留社区种子和归档来源的独立哈希。全部浏览器单元、实际镜像碰撞、素材像素与部署文件均已核对；范围和资源挂载失败记录见 [归档苍月岛接入](docs/ARCHIVED_CANGYUE.md)。正式入口的四个服务实例保持。
+
 账号使用 3 至 10 位字母数字，密码使用 5 至 10 位字母数字，角色名最多 14 个 GBK 字节。上游账号库沿用传统密码存储。
 
 ## 操作
@@ -69,7 +71,7 @@ npm run audit:176 -- --check
 
 `npm run verify:deployment` 校验正式入口的 HTML、JS、CSS 与运行中镜像的哈希，以及地图清单、全部地图块、素材库清单和全部导出地图与魔法 PNG（含地图遮罩）与准备产物的哈希；同时核对原生地图、容器健康和数据库/引擎/proxy 实例是否保持。首次记录没有可比较快照时会明确标为未证明实例保持。
 
-`tests/native-world-assets.py` 校验原生地图的全部导出单元、前景库路由、图像像素和偏移，并拒绝可能误判为尾部数据的 14 字节格式。`tests/source-native-world.mjs` 对照八处旧/新比奇画面与手机布局。`scripts/check-native-world-positions.mjs` 只读检查新地图是否阻挡已有角色位置；部署前须等待原生保存确认后再核对，检查不会调整角色坐标。
+`tests/native-world-assets.py` 校验原生地图的全部导出单元、前景库路由、图像像素和偏移，并拒绝可能误判为尾部数据的 14 字节格式。`tests/source-native-world.mjs` 对照八处旧/新比奇画面与手机布局。`scripts/check-native-world-positions.mjs` 只读检查新地图是否阻挡已有角色位置；`MIR_WORLD_SCOPE=all` 检查完整候选地图及别名，并列出范围外记录。部署前须等待原生保存确认后再核对，检查不会调整角色坐标。
 
 设置 `MIR_EXPECTED_WEB_IMAGE=sha256:...`、`MIR_EXPECTED_PROXY_IMAGE=sha256:...` 可要求网页和 proxy 镜像与声明的已实测镜像一致。报告中的补丁哈希来自当前工作树，单独的补丁哈希不能证明运行镜像已经应用它。
 

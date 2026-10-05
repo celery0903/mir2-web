@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile, readdir } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { createHash } from 'node:crypto';
-import { legacyMap, collisionRows } from './native-map.mjs';
+import { legacyMap, collisionRows, archivedMapPins } from './native-map.mjs';
 
 const args = process.argv.slice(2);
 if (args.some(arg => arg.startsWith('--') && arg !== '--all')) throw new Error('Unknown world option');
@@ -11,7 +11,9 @@ const paths = args.filter(arg => !arg.startsWith('--'));
 if (paths.length !== 3) throw new Error('Expected seed, legacy assets and output paths');
 const [seed, assets, output] = paths.map(value => resolve(value));
 const nativeWorld = JSON.parse(await readFile(new URL('../shared/native-world.lock.json', import.meta.url)));
-const selectedMaps = full ? nativeWorld.maps : nativeWorld.defaultMapIDs.map(id => nativeWorld.maps.find(map => map.id === id));
+const archive = full ? JSON.parse(await readFile(new URL('../shared/archived-176-client.lock.json', import.meta.url))) : null;
+const archivedClient = resolve(process.env.MIR_ARCHIVED_CLIENT ?? '.runtime/original-client-research/extracted/App_Executables');
+const selectedMaps = full ? archivedMapPins(nativeWorld, archive) : nativeWorld.defaultMapIDs.map(id => nativeWorld.maps.find(map => map.id === id));
 const mapIDs = selectedMaps.map(map => map.id);
 const names = full ? selectedMaps.map(map => map.name) : ['比奇省', '肉店', '铁器店', '技能书店', '首饰店', '衣服店', '药店', '炼药房', '边界书店', '边界仓库', '边界杂货店'];
 const supported = new Set(mapIDs);
@@ -42,7 +44,7 @@ for (const [index, id] of mapIDs.entries()) {
   let source;
   const pin = nativeMaps.get(id);
   if (pin) {
-    source = await readFile(join(seed, 'Mir200/Map', pin.sourceFile ?? `${id}.map`));
+    source = await readFile(pin.sourceKind === 'archived-client' ? join(archivedClient, pin.sourceFile) : join(seed, 'Mir200/Map', pin.sourceFile ?? `${id}.map`));
     if (source.length !== pin.bytes || createHash('sha256').update(source).digest('hex') !== pin.sha256) throw new Error(`Native map checksum mismatch: ${id}`);
   } else {
     try { source = await readFile(join(assets, 'server-maps', `${id}.map`)); }
@@ -61,6 +63,9 @@ for (const [index, id] of mapIDs.entries()) {
   audit.push({ id, name: names[index], width: rows[0].length, height: rows.length,
     collisionMismatches: pin ? null : differences,
     ...(pin ? { sourceSha256: pin.sha256, resourceNamespace: 'WemadeMir2', graphicID: pin.graphicID, ...(browser ? { previousCollisionDifferences: differences } : {}), browserCollisionVerification: 'pending export' } : {}) });
+  if (pin?.sourceKind === 'archived-client') Object.assign(audit.at(-1), {
+    sourceKind: pin.sourceKind, sourceFile: pin.sourceFile, sourceURL: pin.sourceURL,
+    installerSha256: pin.installerSha256, previousSource: pin.previousSource });
 }
 const mapInfo = (await readText('MapInfo.txt')).split(/\r?\n/);
 const connections = mapInfo.filter(line => {

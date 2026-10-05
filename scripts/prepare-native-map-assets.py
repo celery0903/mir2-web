@@ -54,13 +54,26 @@ def sha256(path):
 def prepare(maps, libraries, output, ids, supplement=None, archived_client=None):
     lock = json.loads((ROOT / 'shared/native-world.lock.json').read_text())
     pins = {entry['id']: entry for entry in lock['maps']}
+    archive = json.loads((ROOT / 'shared/archived-176-client.lock.json').read_text()) if archived_client else None
+    archive_maps = {entry['id']: entry for entry in archive.get('maps', [])} if archive else {}
     dependencies = {}
     map_report = []
     for ident in ids:
         pin = pins[ident]
-        path = maps / f'{ident}.map'
-        if not path.exists() and pin.get('sourceFile'):
-            path = maps / pin['sourceFile']
+        provenance = {}
+        if ident in archive_maps:
+            source = archive_maps[ident]
+            source_pin = next(entry for entry in archive['clientFiles'] if entry['file'] == source['file'])
+            path = archived_client / source['file']
+            provenance = {'sourceKind': 'archived-client', 'sourceURL': archive['archive'],
+                          'installerSha256': archive['installer']['sha256'],
+                          'previousSource': {'repository': lock['repository'], 'revision': lock['revision'],
+                                             'file': pin['sourceFile'], 'sha256': pin['sha256'], 'gitBlob': pin['gitBlob']}}
+            pin = {**pin, 'bytes': source_pin['bytes'], 'sha256': source_pin['sha256'], 'sourceFile': source['file']}
+        else:
+            path = maps / f'{ident}.map'
+            if not path.exists() and pin.get('sourceFile'):
+                path = maps / pin['sourceFile']
         data = path.read_bytes()
         if len(data) != pin['bytes'] or hashlib.sha256(data).hexdigest() != pin['sha256']:
             raise ValueError(f'Native map checksum mismatch: {ident}')
@@ -69,7 +82,7 @@ def prepare(maps, libraries, output, ids, supplement=None, archived_client=None)
         manifest = export_map(path, output / 'maps' / ident)
         manifest.update(id=ident, resourceNamespace='WemadeMir2', objectLibraries=object_libraries,
                         dependencies={name: sorted(values) for name, values in refs.items()},
-                        authenticated2003Client=False)
+                        authenticated2003Client=False, **provenance)
         if world.trailing_bytes:
             tail = data[52 + world.width * world.height * 12:]
             (output / 'maps' / ident / 'auxiliary-tail.bin').write_bytes(tail)
@@ -78,16 +91,16 @@ def prepare(maps, libraries, output, ids, supplement=None, archived_client=None)
         (output / 'maps' / ident / 'map.json').write_text(json.dumps(manifest, indent=2) + '\n')
         for name, values in refs.items():
             dependencies.setdefault(name, set()).update(values)
-        map_report.append({'id': ident, 'name': pin['name'], 'sourceSha256': pin['sha256'], 'width': world.width,
+        map_report.append({'id': ident, 'name': pin['name'], 'graphicID': pin.get('graphicID', ident), 'sourceSha256': pin['sha256'], 'width': world.width,
                            'height': world.height, 'objectLibraries': object_libraries,
-                           'resourceNamespace': 'WemadeMir2', 'sourceRepository': lock['repository'],
-                           'sourceRevision': lock['revision'], 'sourceFile': pin.get('sourceFile', f'{ident}.map')})
+                           'resourceNamespace': 'WemadeMir2',
+                           **({'sourceRepository': lock['repository'], 'sourceRevision': lock['revision']} if not provenance else provenance),
+                           'sourceFile': pin.get('sourceFile', f'{ident}.map')})
     if supplement:
         for name, values in supplement.items():
             if name in ('Tiles', 'SmTiles'):
                 dependencies.setdefault(name, set()).update(values)
     library_pins = {entry['file']: entry for entry in lock['libraries']}
-    archive = json.loads((ROOT / 'shared/archived-176-client.lock.json').read_text()) if archived_client else None
     archive_libraries = {entry['library']: entry for entry in archive['mapLibraries']} if archive else {}
     if archive:
         for entry in archive['clientFiles']:
@@ -130,6 +143,14 @@ def prepare(maps, libraries, output, ids, supplement=None, archived_client=None)
               'full176Acceptance': False, 'authenticated2003Client': False}
     (output / 'maps' / 'catalog.json').write_text(json.dumps(map_report, indent=2) + '\n')
     (output / 'native-world.json').write_text(json.dumps(report, indent=2) + '\n')
+    integration_path = output / 'integration.json'
+    if integration_path.exists():
+        integration = json.loads(integration_path.read_text())
+        if {entry['id'] for entry in integration['maps']} != set(ids):
+            raise ValueError('Existing integration map scope differs from the native export')
+        integration.update(maps=map_report, mapLibrarySources=library_report,
+                           missingMapReferences=missing, mapResourceAcceptance=report['mapResourceAcceptance'])
+        integration_path.write_text(json.dumps(integration, indent=2) + '\n')
     return report
 
 

@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "stage": "Candidate deployment resource verification after directory replacement",
+  "container": "mir2-rebuild-web-1",
+  "path": "/usr/share/nginx/resources/integration.json",
+  "actualSha256": "44342de57169fbe107ba5121dbd772acc155a556f84315a697e7b5e71c79a682",
+  "expectedSha256": "d6b5347b06769c6c7b18fdb5448d0a62c4e35bce54e684790e9d37e008abe871",
+  "exitCode": 1,
+  "webContainerWasRecreated": false,
+  "cause": "Compose kept the unchanged web container, whose bind mount still referenced the renamed old directory.",
+  "requiredCorrection": "Recreate the candidate web container, then verify served resource hashes and repeat browser checks.",
+  "full176Acceptance": false
+}

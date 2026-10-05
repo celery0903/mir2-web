@@ -4,7 +4,7 @@
 
 ## 原生配置
 
-`prepare-classic-world.mjs --all` 从固定 `mirbeta/MirServer@f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c` 准备 256 图。新增服务锁核验 373 个原 Git blob，保留地图别名、源标志、逗号和空格两种入口坐标、2,439 条刷怪、106 条商人声明、3 个固定 NPC、8 个出生点、49 个守卫及 264 个脚本和掉落依赖。保留 `D401` 的 `CHECKQUEST(Q001)` 依赖，但没有将其私服防挂机条件认证为原版规则。
+`prepare-classic-world.mjs --all` 以固定 `mirbeta/MirServer@f38deae64c521a28f8e0d86f2bf24d4ba7c9ea5c` 准备 256 图，苍月岛现另使用锁定的归档整个 `map/5.map`，同时保留原种子哈希。新增服务锁核验 373 个原 Git blob，保留地图别名、源标志、逗号和空格两种入口坐标、2,439 条刷怪、106 条商人声明、3 个固定 NPC、8 个出生点、49 个守卫及 264 个脚本和掉落依赖。保留 `D401` 的 `CHECKQUEST(Q001)` 依赖，但没有将其私服防挂机条件认证为原版规则。
 
 `Npc_Def` 到原生加载器 `Npc_def` 的大小写适配记录在审计中的 `scriptPaths`；源文本不变。AutoLogin、Robot、QFunction 和 QManage 全局脚本保持空白，避免从种子启用其假人、月卡和自动升级流程。其余候选脚本仍有 85 项待核对记录，包含目录外传送与版本内容，不应直接开放为原版服务。
 
@@ -18,7 +18,7 @@
 
 [原生脚本镜像对照](correction/source-world-script/evidence.json) 复现旧 DLL 把原 `MAPMOVE 11 47 477` 解析成 `EXEACTION`。修正使用枚举实际值，移除条件和动作的减一偏移；连续注册动作依次执行，`BREAK` 立即终止。原生回归核验原坐标、操作码、连续动作和终止行为，旧镜像失败、新镜像通过。已有物品、状态、安全区与登录返回通道构建回归同时通过。
 
-实测隔离镜像为 `sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3`；ScriptSystem.dll SHA-256 为 `6d91b8af4881f9fdf1c464112172395ce50c7027374d4ea74d5aff10270479c0`。M2Server.dll 保持 `357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6`。
+脚本修复时实测隔离镜像为 `sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3`；ScriptSystem.dll SHA-256 为 `6d91b8af4881f9fdf1c464112172395ce50c7027374d4ea74d5aff10270479c0`。M2Server.dll 保持 `357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6`。最新候选地图镜像与核验见[归档苍月岛接入](ARCHIVED_CANGYUE.md)，原生程序集保持。
 
 ## 实际跨图
 
@@ -41,6 +41,8 @@
 后续[原地图库接入](ARCHIVED_MAP_ASSETS.md)已用该补丁的 Tiles、Objects3/4/5 原 WIL 替换这四个公共转换库，并导入 189 帧原小地图。11 图和 256 图的全部可用导出帧均核对来源，正式 11 图三职业及仓库复验通过。其余基础库仍有公共来源，全目录仍缺石墓四层第 9799 帧；原包与完整版本认证没有因此通过。
 
 [更新图库后的真实跨图](correction/archived-world-travel/evidence.json)再次通过上述三条原生流程，并核对原始沃玛森林、白日门小地图与房屋的失败回包。fixture 范围仍仅是独立新角色的三个起点，版本和候选服务验收仍未通过。
+
+后续[归档苍月岛检查](ARCHIVED_CANGYUE.md)已更换候选整个苍月岛地图。四条真实流程通过，新增服装店入内/重登/返回、新开格移动、阻挡格的原生拒绝回包和原小地图编号 161；新增第四个专用起点 fixture，正式库与四个服务实例保持。完整连接和版本验收仍失败。
 
 ## 复现
 

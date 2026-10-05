@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { legacyMap, legacyTileRemap, collisionRows } from '../scripts/native-map.mjs';
+import { legacyMap, legacyTileRemap, collisionRows, archivedMapPins } from '../scripts/native-map.mjs';
 
 function crystalMap(frontLibrary) {
   const source = Buffer.alloc(8 + 4 * 26);
@@ -16,6 +16,24 @@ function crystalMap(frontLibrary) {
   source[at + 25] = 7;
   return source;
 }
+
+test('archived map pins retain the original seed provenance and refuse an unpinned override', () => {
+  const world = { repository: 'seed', revision: 'revision', maps: [
+    { id: '0', sha256: 'bichon' }, { id: '5', sourceFile: '5.map', sha256: 'seed-map', gitBlob: 'blob', bytes: 9 }
+  ] };
+  const archive = { archive: 'archive', installer: { sha256: 'installer' },
+    maps: [{ id: '5', file: 'map/5.map' }], clientFiles: [{ file: 'map/5.map', bytes: 12, sha256: 'original-map' }] };
+  const result = archivedMapPins(world, archive);
+  assert.equal(result[0], world.maps[0]);
+  assert.equal(result[1].sha256, 'original-map');
+  assert.equal(result[1].sourceFile, 'map/5.map');
+  assert.equal(result[1].sourceKind, 'archived-client');
+  assert.equal(result[1].gitBlob, undefined);
+  assert.deepEqual(result[1].previousSource, { repository: 'seed', revision: 'revision',
+    file: '5.map', sha256: 'seed-map', gitBlob: 'blob' });
+  assert.equal(world.maps[1].sha256, 'seed-map');
+  assert.throws(() => archivedMapPins(world, { ...archive, clientFiles: [] }), /Unpinned archived map/);
+});
 
 test('non-default front library survives conversion without changing collision or door data', () => {
   const converted = legacyMap(crystalMap(24));

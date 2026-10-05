@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-10-05T01:02:41.965Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 256,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [
+    {
+      "id": "5",
+      "name": "苍月岛",
+      "x": 140,
+      "y": 335,
+      "expectedUnresolved": 0,
+      "sourceSha256": "43b7344cce5caea49c09f909a3ad36ea7e30af701fd1a0c7be27a263d772b895",
+      "desktopColors": 551,
+      "mobileColors": 230,
+      "desktopCanvasSha256": "5a4dd6e164220c8617e9797e7b36265975159236f17148832791a1dd1f94fad7",
+      "mobileCanvasSha256": "31addd181e432278e1f6a42eb000af1104a13440d5b307aec95e10549ff46076",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "5",
+      "name": "苍月岛",
+      "x": 148,
+      "y": 328,
+      "expectedUnresolved": 0,
+      "sourceSha256": "43b7344cce5caea49c09f909a3ad36ea7e30af701fd1a0c7be27a263d772b895",
+      "desktopColors": 661,
+      "mobileColors": 253,
+      "desktopCanvasSha256": "163b52937b3c14a88faa616739a1385be98f6a7cbabfd83cd32f52aef3b927d7",
+      "mobileCanvasSha256": "4fe3a0632336de234b89b33f40aa59b6f14f5d41e4b0abe0324a37128f26cf44",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    }
+  ]
+}

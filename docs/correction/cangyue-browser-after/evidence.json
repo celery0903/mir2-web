@@ -1,0 +1,88 @@
+{
+  "checkedAt": "2026-10-05T01:17:34.522Z",
+  "url": "http://127.0.0.1:18883",
+  "passed": true,
+  "full176Acceptance": false,
+  "authenticated2003Client": false,
+  "candidateMapCount": 256,
+  "mapResourceAcceptance": "failed",
+  "missingMapReferences": [
+    {
+      "library": "WemadeObjects3",
+      "indices": [
+        9799
+      ]
+    }
+  ],
+  "scope": "Source H5 map renderer; candidate selection is not native gameplay or full-world activation",
+  "scenes": [
+    {
+      "id": "5",
+      "name": "苍月岛",
+      "x": 140,
+      "y": 335,
+      "expectedUnresolved": 0,
+      "sourceSha256": "7cb06f4ad1300ed93cea6745d4991c853eea7bb00f3668f5360a48f7ccd7897a",
+      "desktopColors": 534,
+      "mobileColors": 209,
+      "desktopCanvasSha256": "31cdfca2756066f0165ad0bbba1b016df2e398941954a4bd45a0945442845f30",
+      "mobileCanvasSha256": "e19a02726ec846aaa29755bd1f184d1faa041cd57ce3267d854e182d42db8eb4",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "5",
+      "name": "苍月岛",
+      "x": 148,
+      "y": 328,
+      "expectedUnresolved": 0,
+      "sourceSha256": "7cb06f4ad1300ed93cea6745d4991c853eea7bb00f3668f5360a48f7ccd7897a",
+      "desktopColors": 582,
+      "mobileColors": 228,
+      "desktopCanvasSha256": "7ddd6b437312e9487037cb17a7f583391b13ae139e04575f09de0fb3c7ca9eb5",
+      "mobileCanvasSha256": "48b62e968ab2e918495336d600f7b9540d239178ce7ba563b4f985c4041e2742",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects4",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    },
+    {
+      "id": "B353",
+      "name": "布料铺",
+      "x": 8,
+      "y": 21,
+      "expectedUnresolved": 0,
+      "sourceSha256": "3010dd99a69bd4ca13cce6f19511e5cb24adce3dc7fc4f28bc171e5ab0d56ffb",
+      "desktopColors": 122,
+      "mobileColors": 81,
+      "desktopCanvasSha256": "78795ce156d4f6660607bc0b8265bec781ddc87814f17237f73f1749619799ce",
+      "mobileCanvasSha256": "666c9f5b6868a1d4b7596cb96e114da7eae0d2aa803bb32c67a28cf780560a40",
+      "loadedLibraryNames": [
+        "Objects",
+        "SmTiles",
+        "Tiles",
+        "WemadeObjects5"
+      ],
+      "mobileOverflow": false,
+      "browserErrors": [],
+      "missingResources": [],
+      "failedRequests": []
+    }
+  ]
+}

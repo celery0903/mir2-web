@@ -1,0 +1,266 @@
+{
+  "checkedAt": "2026-10-05T01:15:22.861Z",
+  "passed": true,
+  "project": "mir2-rebuild",
+  "full176Acceptance": false,
+  "before": [
+    {
+      "name": "/mir2-web-db-1",
+      "id": "e2543ebcef06a518f4b3e4c54bfd1fe68cb943a25485f408c6b26ad3825e2f59",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "startedAt": "2026-10-04T10:27:41.001442121Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "mir2-web_openmir2-db",
+          "Source": "/var/lib/docker/volumes/mir2-web_openmir2-db/_data",
+          "Destination": "/var/lib/mysql"
+        },
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "Destination": "/docker-entrypoint-initdb.d"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-engine-1",
+      "id": "2fe8a707789707a6f8411b54053bf1833a7a542e2fea342eff695e2ec3d13607",
+      "image": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+      "startedAt": "2026-10-04T22:51:40.320863209Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "mir2-web_openmir2-engine",
+          "Source": "/var/lib/docker/volumes/mir2-web_openmir2-engine/_data",
+          "Destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-web-1",
+      "id": "c3c5f759b873ea8f9535039908d48b6d1f4aaba80eb04bb7f0e06337c3e52b67",
+      "image": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+      "startedAt": "2026-10-05T00:29:00.051393113Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/source-assets",
+          "Destination": "/usr/share/nginx/resources"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-source-proxy-1",
+      "id": "abd49090d958af1f230f123be8d5f8344bcfb1393e875f0fde827af63906d9cc",
+      "image": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c",
+      "startedAt": "2026-10-05T00:07:27.444317421Z",
+      "health": "healthy",
+      "mounts": []
+    },
+    {
+      "name": "/mir2-rebuild-db-1",
+      "id": "e093f989cfcf3dfea3a3e05207877311077ccc7847be5f16e166fb30ced5f2d4",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "startedAt": "2026-10-04T21:41:27.963928359Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "mir2-rebuild_openmir2-db",
+          "Source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-db/_data",
+          "Destination": "/var/lib/mysql"
+        },
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "Destination": "/docker-entrypoint-initdb.d"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-rebuild-engine-1",
+      "id": "8187db67c89d1a1ebec02c3c18df4aee995e10e18a994f1a0d92eb8cd2037691",
+      "image": "sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3",
+      "startedAt": "2026-10-05T00:49:52.722297697Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "mir2-rebuild_openmir2-engine",
+          "Source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-engine/_data",
+          "Destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-rebuild-web-1",
+      "id": "a3ba24d3aad3eb4e0b69b930c0f74d23ba4ce0570ebaa44d0bc123fdc8f37d85",
+      "image": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+      "startedAt": "2026-10-05T00:37:10.14060691Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/classic-world/assets",
+          "Destination": "/usr/share/nginx/resources"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-rebuild-source-proxy-1",
+      "id": "0aadfaf65f1fdde5b14dabf657eaaa48a281929c96e08ae817046570a45b5b26",
+      "image": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c",
+      "startedAt": "2026-10-05T00:04:45.503276462Z",
+      "health": "healthy",
+      "mounts": []
+    }
+  ],
+  "previousImage": "sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3",
+  "expectedImage": "sha256:126259c18c539f8d6a59553ef6719077c3e4f4eb01064ebd72100c957fbe09c1",
+  "shutdown": {
+    "nativeSaveAcknowledged": true,
+    "nativeExit": true
+  },
+  "positions": {
+    "passed": true,
+    "maps": 256,
+    "characters": 212,
+    "uncheckedCharacters": [
+      {
+        "id": 12389,
+        "map": null,
+        "x": 0,
+        "y": 0,
+        "level": 0
+      }
+    ]
+  },
+  "databaseBackup": {
+    "file": ".runtime/reports/cangyue-install/backup/database.sql",
+    "sha256": "f454805896a391ebd45bc8155df6c8728d1345131ed11e8ccaf32f035a23e82a",
+    "bytes": 1027853
+  },
+  "after": [
+    {
+      "name": "/mir2-web-db-1",
+      "id": "e2543ebcef06a518f4b3e4c54bfd1fe68cb943a25485f408c6b26ad3825e2f59",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "startedAt": "2026-10-04T10:27:41.001442121Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "mir2-web_openmir2-db",
+          "Source": "/var/lib/docker/volumes/mir2-web_openmir2-db/_data",
+          "Destination": "/var/lib/mysql"
+        },
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "Destination": "/docker-entrypoint-initdb.d"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-engine-1",
+      "id": "2fe8a707789707a6f8411b54053bf1833a7a542e2fea342eff695e2ec3d13607",
+      "image": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+      "startedAt": "2026-10-04T22:51:40.320863209Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "mir2-web_openmir2-engine",
+          "Source": "/var/lib/docker/volumes/mir2-web_openmir2-engine/_data",
+          "Destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-web-1",
+      "id": "c3c5f759b873ea8f9535039908d48b6d1f4aaba80eb04bb7f0e06337c3e52b67",
+      "image": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+      "startedAt": "2026-10-05T00:29:00.051393113Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/source-assets",
+          "Destination": "/usr/share/nginx/resources"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-source-proxy-1",
+      "id": "abd49090d958af1f230f123be8d5f8344bcfb1393e875f0fde827af63906d9cc",
+      "image": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c",
+      "startedAt": "2026-10-05T00:07:27.444317421Z",
+      "health": "healthy",
+      "mounts": []
+    },
+    {
+      "name": "/mir2-rebuild-db-1",
+      "id": "e093f989cfcf3dfea3a3e05207877311077ccc7847be5f16e166fb30ced5f2d4",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "startedAt": "2026-10-04T21:41:27.963928359Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/openmir2/sql",
+          "Destination": "/docker-entrypoint-initdb.d"
+        },
+        {
+          "Type": "volume",
+          "Name": "mir2-rebuild_openmir2-db",
+          "Source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-db/_data",
+          "Destination": "/var/lib/mysql"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-rebuild-engine-1",
+      "id": "e98758834ce083d294a06643d8ef6081e2981ae4b5addf0b1bd58b30dfa2ea4c",
+      "image": "sha256:126259c18c539f8d6a59553ef6719077c3e4f4eb01064ebd72100c957fbe09c1",
+      "startedAt": "2026-10-05T01:15:33.129166418Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "mir2-rebuild_openmir2-engine",
+          "Source": "/var/lib/docker/volumes/mir2-rebuild_openmir2-engine/_data",
+          "Destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-rebuild-web-1",
+      "id": "a3ba24d3aad3eb4e0b69b930c0f74d23ba4ce0570ebaa44d0bc123fdc8f37d85",
+      "image": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+      "startedAt": "2026-10-05T00:37:10.14060691Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/home/dev/workspace4/mir2-web/.runtime/classic-world/assets",
+          "Destination": "/usr/share/nginx/resources"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-rebuild-source-proxy-1",
+      "id": "0aadfaf65f1fdde5b14dabf657eaaa48a281929c96e08ae817046570a45b5b26",
+      "image": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c",
+      "startedAt": "2026-10-05T00:04:45.503276462Z",
+      "health": "healthy",
+      "mounts": []
+    }
+  ],
+  "productionInstancesPreserved": true,
+  "candidateDatabaseAndProxyPreserved": true,
+  "engineStoragePreserved": true
+}

@@ -75,6 +75,9 @@ const integrationBytes=await readFile(join(assets,'integration.json'));
 const {stdout:integrationHash}=await execute('docker',['exec',names[2],'sha256sum','/usr/share/nginx/resources/integration.json']);
 assert.equal(integrationHash.trim().split(/\s+/)[0],digest(integrationBytes),'Mounted integration manifest');
 const integration=JSON.parse(integrationBytes);
+const archiveLock=JSON.parse(await readFile('shared/archived-176-client.lock.json'));
+const nativeWorld=JSON.parse(await readFile('shared/native-world.lock.json'));
+const archivedMaps=[];
 let hasMapCatalog=false;
 try{await readFile(join(assets,'maps/catalog.json'));hasMapCatalog=true;}catch(error){if(error.code!=='ENOENT')throw error;}
 if(hasMapCatalog){
@@ -82,7 +85,7 @@ if(hasMapCatalog){
  assert.deepEqual(catalog.map(map=>map.id),integration.maps.map(map=>map.id),'Map catalog differs from the prepared profile');
  for(const map of catalog){
   const entry=integration.maps.find(entry=>entry.id===map.id);
-  for(const field of ['sourceSha256','width','height'])assert.equal(map[field],entry[field],`Map catalog ${map.id}/${field}`);
+  for(const field of ['sourceSha256','width','height','graphicID'])assert.equal(map[field],entry[field],`Map catalog ${map.id}/${field}`);
  }
 }
 const libraryNames=new Set(['Tiles','SmTiles','Objects']);
@@ -90,6 +93,19 @@ for(const map of integration.maps){
  assert.match(map.id,/^[A-Za-z0-9]+$/);
  const manifest=JSON.parse(await verifyResource(`maps/${map.id}/map.json`));
  assert.equal(manifest.sourceSha256,map.sourceSha256);
+ if(map.sourceKind==='archived-client'){
+  const source=archiveLock.maps.find(source=>source.id===map.id);
+  assert.ok(source,'Unpinned archived map');
+  const pin=archiveLock.clientFiles.find(file=>file.file===source.file);
+  assert.ok(pin,'Unpinned archived map file');
+  assert.equal(map.sourceSha256,pin.sha256,'Archived map source hash');
+  assert.equal(map.sourceFile,source.file,'Archived map source file');
+  assert.equal(manifest.sourceKind,map.sourceKind);
+  assert.equal(manifest.installerSha256,archiveLock.installer.sha256);
+  assert.equal(map.installerSha256,archiveLock.installer.sha256);
+  assert.equal(map.previousSource.sha256,nativeWorld.maps.find(pin=>pin.id===map.id).sha256);
+  archivedMaps.push({id:map.id,sourceFile:source.file,sourceSha256:pin.sha256,installerSha256:map.installerSha256});
+ }
  for(const name of Object.values(manifest.objectLibraries??{}))libraryNames.add(name);
  for(const chunk of manifest.chunks){
   assert.match(chunk.file,/^[A-Za-z0-9_.-]+$/);
@@ -104,7 +120,6 @@ for(const map of integration.maps){
 }
 const mapFrameRequests=[];
 const archivedMapLibraries=[];
-const archiveLock=JSON.parse(await readFile('shared/archived-176-client.lock.json'));
 for(const name of libraryNames){
  assert.match(name,/^[A-Za-z0-9]+$/);
  const manifest=JSON.parse(await verifyResource(`libraries/${name}/library.json`));
@@ -165,9 +180,17 @@ for(const entry of magicIntegration.libraries){
   assert.equal(digest(bytes),frame.sha256,'Effect PNG manifest hash');
  }
 }
-const {stdout:mapHashes}=await execute('docker',['exec',names[1],'sha256sum',...integration.maps.map(map=>`/data/server/Mir200/Map/${map.id}.map`)]);
+const nativeMapFiles=integration.maps.map(map=>{
+ const pin=nativeWorld.maps.find(pin=>pin.id===map.id);
+ assert.ok(pin,`Unpinned native map: ${map.id}`);
+ const graphicID=map.graphicID??pin.graphicID??map.id;
+ assert.match(graphicID,/^[A-Za-z0-9]+$/);
+ assert.equal(graphicID,pin.graphicID??map.id,`Native map alias differs: ${map.id}`);
+ return {id:map.id,graphicID,sourceSha256:map.sourceSha256};
+});
+const {stdout:mapHashes}=await execute('docker',['exec',names[1],'sha256sum',...new Set(nativeMapFiles.map(map=>`/data/server/Mir200/Map/${map.graphicID}.map`))]);
 const nativeMapHashes=new Map(mapHashes.trim().split('\n').map(line=>{const [hash,path]=line.trim().split(/\s+/);return [path.split('/').at(-1).replace(/\.map$/,''),hash];}));
-for(const map of integration.maps)assert.equal(nativeMapHashes.get(map.id),map.sourceSha256,`Native/browser map mismatch: ${map.id}`);
+for(const map of nativeMapFiles)assert.equal(nativeMapHashes.get(map.graphicID),map.sourceSha256,`Native/browser map mismatch: ${map.id}/${map.graphicID}`);
 const bookshopScript='/data/server/Mir200/Envir/Market_Def/比奇城/小书-0132.txt';
 const {stdout:bookshopHash}=await execute('docker',['exec',names[1],'sha256sum',bookshopScript]);
 const bookshopSha256=bookshopHash.trim().split(/\s+/)[0];
@@ -178,6 +201,6 @@ const patches=Object.fromEntries(await Promise.all(['server/source-client.patch'
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
 resourceFiles.sort((a,b)=>a.path.localeCompare(b.path));
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,mapCatalogVerified:hasMapCatalog,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,archivedMapLibraries,magicIntegration,minimapFramesVerified:Object.keys(minimapManifest.frames).length,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,expectedProxyImage,proxyMatchesDeclaredTestImage:expectedProxyImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,mapCatalogVerified:hasMapCatalog,nativeMapsMatchPreparedAssets:true,nativeMapFiles,archivedMaps,mapResourceAcceptance:integration.mapResourceAcceptance,archivedMapLibraries,magicIntegration,minimapFramesVerified:Object.keys(minimapManifest.frames).length,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,expectedProxyImage,proxyMatchesDeclaredTestImage:expectedProxyImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
 console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

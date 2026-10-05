@@ -3,7 +3,7 @@ import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, join, basename } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { PNG } from 'pngjs';
-import { legacyMap, legacyTileRemap } from './native-map.mjs';
+import { legacyMap, legacyTileRemap, archivedMapPins } from './native-map.mjs';
 
 const root = resolve(new URL('..', import.meta.url).pathname);
 const source = join(root, 'upstream/mir2-client');
@@ -12,6 +12,8 @@ const maps = resolve(process.env.MIR_SOURCE_MAPS ?? join(root, '.runtime/classic
 const output = resolve(process.env.MIR_SOURCE_ASSETS ?? join(root, '.runtime/source-assets'));
 const sourceAssets = join(source, 'assets/web');
 const nativeLock = JSON.parse(await readFile(join(root, 'shared/native-world.lock.json')));
+const effectiveNativeMaps = process.argv.includes('--archived-map-libraries') ? archivedMapPins(nativeLock,
+  JSON.parse(await readFile(join(root, 'shared/archived-176-client.lock.json')))) : nativeLock.maps;
 const nativeMapIDs = new Set(nativeLock.defaultMapIDs);
 const nativeLibraries = resolve(process.env.MIR_NATIVE_MAP_LIBRARIES ?? join(root, '.runtime/wemade-mir2'));
 const revision = execFileSync('git', ['-C', source, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
@@ -56,7 +58,7 @@ for (const { id } of mapAudit.maps) {
   const manifest = await json(join(output, 'maps', id, 'map.json'));
   if (manifest.id !== id) throw new Error(`Map ID mismatch: ${id}`);
   if (nativeMapIDs.has(id)) {
-    const pin = nativeLock.maps.find(map => map.id === id);
+    const pin = effectiveNativeMaps.find(map => map.id === id);
     const raw = await readFile(file);
     if (raw.length !== pin.bytes || digest(raw) !== pin.sha256) throw new Error(`Native map checksum mismatch: ${id}`);
   } else if (id === '0') {

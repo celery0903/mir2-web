@@ -14,12 +14,15 @@ FROM data AS profile
 ARG MIR_WORLD_SCOPE=default
 COPY --from=classic /assets/classic /classic
 COPY scripts/native-map.mjs scripts/prepare-classic-world.mjs scripts/
+COPY scripts/fetch-archived-176-client.mjs scripts/
 COPY shared/classic-experience.json shared/classic-experience.json
 COPY shared/classic-storage.json shared/classic-storage.json
 COPY shared/native-world.lock.json shared/native-world.lock.json
 COPY shared/classic-world-services.lock.json shared/classic-world-services.lock.json
+COPY shared/archived-176-client.lock.json shared/archived-176-client.lock.json
 COPY tests/native-map.test.mjs tests/native-map.test.mjs
-RUN node --test tests/native-map.test.mjs && MIR_WORLD_SCOPE=$MIR_WORLD_SCOPE node scripts/prepare-classic-world.mjs /seed /classic /profile
+RUN if [ "$MIR_WORLD_SCOPE" = all ]; then apt-get update && apt-get install -y --no-install-recommends p7zip-full unshield && node scripts/fetch-archived-176-client.mjs /archived-client; fi
+RUN node --test tests/native-map.test.mjs && MIR_ARCHIVED_CLIENT=/archived-client/extracted/App_Executables MIR_WORLD_SCOPE=$MIR_WORLD_SCOPE node scripts/prepare-classic-world.mjs /seed /classic /profile
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src

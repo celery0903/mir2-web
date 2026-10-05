@@ -13,6 +13,7 @@ assert.equal(new URL(base).hostname, '127.0.0.1');
 assert.equal(project, 'mir2-rebuild');
 const destination = process.env.MIR_WORLD_TRAVEL_REPORT ?? '.runtime/reports/source-world-travel';
 const verifyMinimaps = process.env.MIR_WORLD_MINIMAPS === '1';
+const verifyCangyue = process.env.MIR_WORLD_CANGYUE === '1';
 const execute = promisify(execFile);
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const inspect = async service => JSON.parse((await execute('docker', ['inspect', `${project}-${service}-1`])).stdout)[0];
@@ -33,7 +34,8 @@ const suffix = String(Date.now()).slice(-7);
 const fixtures = [
   { flow: 'border', map: '0', x: 324, y: 36 },
   { flow: 'npc', map: '1', x: 52, y: 33 },
-  { flow: 'alias', map: '11', x: 204, y: 387 }
+  { flow: 'alias', map: '11', x: 204, y: 387 },
+  ...(verifyCangyue ? [{ flow: 'cangyue', map: '5', x: 148, y: 329 }] : [])
 ].map((fixture, index) => ({ ...fixture, account: `w${index}${suffix}`, password: 'Source987', character: `wr${suffix}${index}` }));
 await writeFile(`.state/source-world-travel-${suffix}.json`, JSON.stringify(fixtures), { mode: 0o600 });
 const browser = await chromium.launch({ headless: true });
@@ -41,6 +43,7 @@ let closingBrowser = false;
 browser.on('disconnected', () => { if (!closingBrowser) report.unexpectedBrowserDisconnect = new Date().toISOString(); });
 let activePage;
 const packets = new Map();
+const movementsSent = new Map();
 const state = page => page.evaluate(() => window.__mir2Agent.snapshot());
 async function enter(fixture, register = false) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
@@ -49,16 +52,24 @@ async function enter(fixture, register = false) {
   page.on('crash', () => report.browserCrashes.push({ flow: fixture.flow, at: new Date().toISOString() }));
   page.on('requestfailed', request => report.failedRequests.push({ flow: fixture.flow, path: new URL(request.url()).pathname, error: request.failure()?.errorText }));
   const received = [];
+  const sent = [];
   packets.set(page, received);
+  movementsSent.set(page, sent);
   page.on('pageerror', error => report.errors.push(error.message));
   page.on('response', response => {
     if (response.status() >= 400) report.missingResources.push({ path: new URL(response.url()).pathname, status: response.status() });
   });
-  page.on('websocket', socket => socket.on('framereceived', frame => {
-    const message = JSON.parse(String(frame.payload)).message;
-    if (['map', 'actionResult', 'npcDialogue', 'minimap'].includes(message?.type)
-        || message?.type === 'legacy' && [710, 711].includes(message.id)) received.push(message);
-  }));
+  page.on('websocket', socket => {
+    socket.on('framesent', frame => {
+      const message = JSON.parse(String(frame.payload));
+      if (message.type === 'move') sent.push(message);
+    });
+    socket.on('framereceived', frame => {
+      const message = JSON.parse(String(frame.payload)).message;
+      if (['map', 'actionResult', 'npcDialogue', 'minimap'].includes(message?.type)
+          || message?.type === 'legacy' && [710, 711].includes(message.id)) received.push(message);
+    });
+  });
   await page.goto(`${base}/?agent=1`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => !!window.__mir2Agent, {}, { timeout: 60000 });
   await page.locator('#account').fill(fixture.account);
@@ -161,7 +172,7 @@ try {
   try {
     assert.ok(report.fixtureShutdown.nativeSaveAcknowledged && report.fixtureShutdown.nativeExit);
     for (const fixture of fixtures) {
-      assert.match(fixture.account, /^w[012]\d{7}$/);
+      assert.match(fixture.account, /^w[0123]\d{7}$/);
       const count = await sql(`UPDATE characters SET MapName='${fixture.map}',CX=${fixture.x},CY=${fixture.y} WHERE LoginID='${fixture.account}' AND ChrName='${fixture.character}' AND Level=1 AND Gold=0; SELECT ROW_COUNT();`);
       assert.equal(count, '1');
     }
@@ -213,6 +224,57 @@ try {
   report.routes.push({ flow: 'alias', passed: true, logicalMapSaved: '0123A', graphicMapReceived: '0123', reconnect: true, return: { map: '11', x: 205, y: 386 }, screenshot: aliasScreen, minimap: aliasMinimap, packets: [...packets.get(alias), ...packets.get(returning)] });
   await returning.close();
   await saved(fixtures[2], '11', 205, 386);
+  if (verifyCangyue) {
+    const original = await readFile('.runtime/original-client-research/extracted/App_Executables/map/5.map');
+    const archive = JSON.parse(await readFile('shared/archived-176-client.lock.json'));
+    assert.equal(digest(original), archive.clientFiles.find(file => file.file === 'map/5.map').sha256);
+    const manifest = await (await fetch(`${base}/maps/5/map.json`)).json();
+    assert.equal(manifest.sourceSha256, digest(original));
+    assert.equal(manifest.sourceKind, 'archived-client');
+    const cangyue = await enter(fixtures[3]);
+    await readyAt(cangyue, '5', 148, 329);
+    await step(cangyue, 'ArrowUp', '5', 148, 328);
+    await step(cangyue, 'ArrowUp', '5', 148, 327);
+    await step(cangyue, 'ArrowDown', '5', 148, 328);
+    await step(cangyue, 'ArrowRight', '5', 149, 328);
+    await expect.poll(async () => !(await state(cangyue)).pendingAction, { timeout: 10000 }).toBe(true);
+    const beforeBlockedMove = movementsSent.get(cangyue).length;
+    await cangyue.keyboard.press('ArrowRight');
+    await expect.poll(() => movementsSent.get(cangyue).length, { timeout: 10000 }).toBeGreaterThan(beforeBlockedMove);
+    const blockedRequest = movementsSent.get(cangyue)[beforeBlockedMove];
+    assert.deepEqual([blockedRequest.x, blockedRequest.y], [150, 328]);
+    await expect.poll(() => packets.get(cangyue).find(message => message.type === 'actionResult'
+      && message.actionId === blockedRequest.actionId)?.accepted, { timeout: 10000 }).toBe(false);
+    const blockedResult = packets.get(cangyue).find(message => message.type === 'actionResult'
+      && message.actionId === blockedRequest.actionId);
+    await readyAt(cangyue, '5', 149, 328);
+    const changedArea = await screenshot(cangyue, 'cangyue-original-desktop');
+    await cangyue.setViewportSize({ width: 390, height: 844 });
+    const changedMobile = await screenshot(cangyue, 'cangyue-original-mobile');
+    await cangyue.setViewportSize({ width: 1440, height: 900 });
+    const cangyueMinimap = await minimapEvidence(cangyue, 161, '苍月岛');
+    for (const [key, x, y] of [
+      ['ArrowDown', 149, 329], ['ArrowDown', 149, 330], ['ArrowLeft', 148, 330],
+      ['ArrowLeft', 147, 330], ['ArrowLeft', 146, 330], ['ArrowLeft', 145, 330],
+      ['ArrowUp', 145, 329], ['ArrowUp', 145, 328], ['ArrowUp', 145, 327],
+      ['ArrowUp', 145, 326], ['ArrowUp', 145, 325], ['ArrowRight', 146, 325]
+    ]) await step(cangyue, key, '5', x, y);
+    await step(cangyue, 'ArrowUp', 'B353', 8, 21);
+    const shopScreen = await screenshot(cangyue, 'cangyue-clothing-room-desktop');
+    await cangyue.close();
+    await saved(fixtures[3], 'B353', 8, 21);
+    const shopReturn = await enter(fixtures[3]);
+    await readyAt(shopReturn, 'B353', 8, 21);
+    await step(shopReturn, 'ArrowUp', 'B353', 8, 20);
+    await step(shopReturn, 'ArrowDown', '5', 146, 324);
+    await shopReturn.close();
+    await saved(fixtures[3], '5', 146, 324);
+    report.routes.push({ flow: 'cangyue', passed: true, originalMapSha256: digest(original),
+      newlyOpenCellsWalked: [{ x: 148, y: 328 }, { x: 148, y: 327 }, { x: 149, y: 328 }],
+      newlyBlockedCellStoppedMovement: { x: 150, y: 328 }, blockedRequest, blockedResult, clothingRoomEntrance: true, reconnect: true,
+      return: { map: '5', x: 146, y: 324 }, screenshots: [changedArea, changedMobile, shopScreen],
+      minimap: cangyueMinimap, packets: [...packets.get(cangyue), ...packets.get(shopReturn)] });
+  }
   assert.deepEqual(report.errors, []);
   assert.deepEqual(report.missingResources, []);
   assert.deepEqual(report.failedRequests, []);
