@@ -1,0 +1,12 @@
+diff --git a/GatewaySession.cs b/GatewaySession.cs
+--- a/GatewaySession.cs
++++ b/GatewaySession.cs
+@@ -562,6 +562,7 @@
+                 object? shopResult;
+                 lock (worldStateLock)
+                 {
+-                    if (packet.Id == 643) { activeNpc = packet.Recog; ClearShop(pendingRepair is not null); ClearStorage(); }
++                    // Native NPC processing can lag the TCP write; wait from the menu receipt.
++                    if (packet.Id == 643) { nextNpcClickTick = Environment.TickCount64 + 1100; activeNpc = packet.Recog; ClearShop(pendingRepair is not null); ClearStorage(); }
+                     shopResult = UpdateShopState(packet);
+                 }

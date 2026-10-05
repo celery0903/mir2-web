@@ -214,7 +214,7 @@ for (const [job, sex, index] of [[0, 0, 40], [1, 0, 80], [2, 0, 120], [0, 1, 160
 await library(chrDirectory, chrsel, { sourceManifest: 'auth-web/manifest.json', provenance: ui.client176 });
 const minimapFile = 'webui/bichon-map.png', minimap = await atlas(minimapFile);
 const mmapDirectory = join(output, 'ui-national/mmap');
-await library(mmapDirectory, { 100: await frame(mmapDirectory, 100, minimapFile, { x: 0, y: 0, w: minimap.width, h: minimap.height }) });
+await library(mmapDirectory, { 100: await frame(mmapDirectory, 100, minimapFile, { x: 0, y: 0, w: minimap.width, h: minimap.height }) }, { names: Object.fromEntries(mapAudit.maps.map(map => [map.id, map.name])) });
 
 const actorFiles = ['manifest.json', 'actors/classic-chicken.json', 'actors/classic-wildlife.json'];
 const actions = [['stand', '0'], ['walk', '1'], ['attack', '9'], ['hit', '18'], ['die', '21']];
@@ -289,6 +289,7 @@ for (const map of mapReport) {
 }
 await writeFile(mapAuditFile, JSON.stringify(mapAudit, null, 2) + '\n');
 await writeFile(join(output, 'maps/catalog.json'), JSON.stringify(mapReport.map(map => ({ ...map, name: mapAudit.maps.find(entry => entry.id === map.id).name })), null, 2) + '\n');
+if (process.argv.includes('--archived-minimaps')) execFileSync('python3', [join(root, 'scripts/prepare-archived-minimaps.py'), '--output', output], { stdio: 'inherit' });
 execFileSync('python3', [join(root, 'scripts/prepare-source-magic.py'), output], { stdio: 'inherit' });
 report.magicEffects = await json(join(output, 'effects/integration.json'));
 await writeFile(join(output, 'integration.json'), JSON.stringify(report, null, 2) + '\n');

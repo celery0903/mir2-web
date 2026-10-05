@@ -1,0 +1,807 @@
+{
+  "checkedAt": "2026-10-04T23:51:37.723Z",
+  "url": "http://127.0.0.1:18883",
+  "project": "mir2-rebuild",
+  "passed": false,
+  "full176Acceptance": false,
+  "fixture": "New level-one, zero-gold accounts moved offline to original route approaches. No stats, skills, items, NPC scripts or route coordinates changed. This does not verify travelling from birth to these regions.",
+  "images": {
+    "engine": "sha256:eca5adce35d1711702785c7e933a8167181253ceb426d9e404c5732079f20ad3",
+    "web": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+    "proxy": "sha256:370ca419aa5203b4064f50f4b23190b64fc2ae50d0c07ab5fcae5fe1aeff213d"
+  },
+  "errors": [],
+  "missingResources": [],
+  "routes": [
+    {
+      "flow": "border",
+      "passed": true,
+      "approach": {
+        "map": "0",
+        "x": 324,
+        "y": 36
+      },
+      "outward": {
+        "map": "1",
+        "x": 559,
+        "y": 553
+      },
+      "return": {
+        "map": "0",
+        "x": 324,
+        "y": 35
+      },
+      "screenshots": [
+        {
+          "sampledColors": 601,
+          "width": 800,
+          "height": 600
+        },
+        {
+          "sampledColors": 337,
+          "width": 391,
+          "height": 294
+        }
+      ],
+      "minimap": {
+        "nativeSourceIndex": 102,
+        "projected": {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 101,
+          "sourceIndex": 102,
+          "mapGeneration": 2
+        },
+        "state": {
+          "mode": "compact",
+          "mapId": "1",
+          "name": "沃玛森林",
+          "world": {
+            "width": 600,
+            "height": 600
+          },
+          "position": {
+            "x": 559,
+            "y": 553
+          },
+          "frameIndex": 101,
+          "imageUrl": "/ui-national/mmap/101.65acb723bc9ec0d5.png",
+          "imageReady": true,
+          "drawRect": {
+            "left": 0.14666666666666117,
+            "top": 0,
+            "width": 159.70666666666668,
+            "height": 106
+          },
+          "markers": [
+            {
+              "id": "entity-29991006",
+              "x": 559,
+              "y": 553,
+              "kind": "self"
+            }
+          ]
+        },
+        "sourceFrame": {
+          "index": 101,
+          "width": 904,
+          "height": 600,
+          "offsetX": -296,
+          "offsetY": -266,
+          "file": "101.65acb723bc9ec0d5.png",
+          "sha256": "65acb723bc9ec0d5de0ae23832605c4a0bfc2de1c7fd2aea5735818327d9bbcb"
+        },
+        "sampledCanvasColors": 86
+      },
+      "packets": [
+        {
+          "type": "map",
+          "map": "0"
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 100,
+          "sourceIndex": 101,
+          "mapGeneration": 1
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 101,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 1,
+          "kind": "move",
+          "accepted": true,
+          "x": 324,
+          "y": 35,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "actionResult",
+          "actionId": 2,
+          "kind": "move",
+          "accepted": true,
+          "x": 324,
+          "y": 34,
+          "reason": 0,
+          "mapGeneration": 1
+        },
+        {
+          "type": "map",
+          "map": "1",
+          "playerId": 29991006,
+          "x": 559,
+          "y": 553,
+          "brightness": 0
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 101,
+          "sourceIndex": 102,
+          "mapGeneration": 2
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 102,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        },
+        {
+          "type": "actionResult",
+          "actionId": 3,
+          "kind": "move",
+          "accepted": true,
+          "x": 559,
+          "y": 554,
+          "reason": 0,
+          "mapGeneration": 2
+        },
+        {
+          "type": "map",
+          "map": "0",
+          "playerId": 29991006,
+          "x": 324,
+          "y": 35,
+          "brightness": 0
+        },
+        {
+          "type": "minimap",
+          "available": true,
+          "frameIndex": 100,
+          "sourceIndex": 101,
+          "mapGeneration": 3
+        },
+        {
+          "type": "legacy",
+          "id": 710,
+          "recog": 0,
+          "param": 101,
+          "tag": 0,
+          "series": 0,
+          "encodedBody": "",
+          "status": null
+        }
+      ]
+    }
+  ],
+  "candidateServiceAcceptance": "failed",
+  "fixtureShutdown": {
+    "nativeSaveAcknowledged": true,
+    "nativeExit": true
+  },
+  "error": "TypeError: Cannot read properties of undefined (reading 'hp')",
+  "failedState": {
+    "now": 8281,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": true,
+    "authScene": "select",
+    "connection": "已连接 · wr78978041 · 47, 477",
+    "map": "11",
+    "mapGeneration": 2,
+    "lastSequence": 62,
+    "worldReady": false,
+    "self": {
+      "id": 1999246237,
+      "name": "wr78978041",
+      "x": 47,
+      "y": 477,
+      "direction": 0,
+      "action": "standing",
+      "dead": false,
+      "hp": 15,
+      "maxHp": 19
+    },
+    "confirmedCell": {
+      "x": 47,
+      "y": 477
+    },
+    "render": {
+      "pixel": {
+        "x": 2256,
+        "y": 15264
+      },
+      "queuedMovements": 0,
+      "action": "standing",
+      "direction": 0,
+      "framesReady": true,
+      "poseKey": "CArmour00/CHair00/standing/0/0/0/undefined/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3890,
+        "pixel": {
+          "x": 2256,
+          "y": 15264
+        }
+      },
+      "grid": {
+        "x": 47,
+        "y": 477
+      },
+      "screen": {
+        "x": 160,
+        "y": 14508
+      }
+    },
+    "camera": {
+      "x": -2096,
+      "y": -756
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "attributes": {
+      "type": "attributes",
+      "level": 1,
+      "job": 0,
+      "innerPowerLevel": 99,
+      "gold": 0,
+      "gameGold": 0,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 1,
+        "max": 1
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 15,
+      "mp": 15,
+      "maxHp": 19,
+      "maxMp": 15,
+      "experience": 0,
+      "maxExperience": 100,
+      "weight": 14,
+      "maxWeight": 50,
+      "wearWeight": 0,
+      "maxWearWeight": 15,
+      "handWeight": 0,
+      "maxHandWeight": 12
+    },
+    "inventory": {
+      "known": true,
+      "items": [
+        {
+          "name": "蜡烛",
+          "makeIndex": 2169142,
+          "durability": 8000,
+          "maxDurability": 8000,
+          "stdMode": 30,
+          "weight": 1,
+          "looks": 130,
+          "shape": 0,
+          "baseDurability": 8000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 10,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 0
+        },
+        {
+          "name": "金创药(小量)",
+          "makeIndex": 2169143,
+          "durability": 1,
+          "maxDurability": 1,
+          "stdMode": 0,
+          "weight": 1,
+          "looks": 398,
+          "shape": 0,
+          "baseDurability": 1,
+          "ac": {
+            "min": 20,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 80,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 1
+        },
+        {
+          "name": "木剑",
+          "makeIndex": 2169144,
+          "durability": 4000,
+          "maxDurability": 4000,
+          "stdMode": 5,
+          "weight": 7,
+          "looks": 30,
+          "shape": 1,
+          "baseDurability": 4000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 2,
+            "max": 5
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 50,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 2
+        },
+        {
+          "name": "布衣(男)",
+          "makeIndex": 2169145,
+          "durability": 5000,
+          "maxDurability": 5000,
+          "stdMode": 10,
+          "weight": 5,
+          "looks": 60,
+          "shape": 1,
+          "baseDurability": 5000,
+          "ac": {
+            "min": 0,
+            "max": 2
+          },
+          "mac": {
+            "min": 0,
+            "max": 1
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 400,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 3
+        }
+      ],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "makeIndex": 2169143,
+          "item": "金创药(小量)",
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "feature": 0,
+      "layers": {
+        "bodyName": "CArmour00",
+        "offset": 0,
+        "hairName": "CHair00",
+        "weaponOffset": 0
+      },
+      "images": [
+        {
+          "src": "http://127.0.0.1:18883/actors/CArmour00/16.09808129407f41c5.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:18883/actors/CHair00/16.54655924870007eb.png",
+          "loaded": true
+        }
+      ],
+      "ready": true
+    },
+    "groundItems": [],
+    "skills": {
+      "known": true,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "11",
+      "name": "白日门",
+      "world": {
+        "width": 1,
+        "height": 1
+      },
+      "position": {
+        "x": 47,
+        "y": 477
+      },
+      "imageReady": false,
+      "drawRect": {
+        "left": 0.5,
+        "top": 0,
+        "width": 159,
+        "height": 106
+      },
+      "markers": [
+        {
+          "id": "entity-1999246237",
+          "x": 47,
+          "y": 477,
+          "kind": "self"
+        }
+      ]
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "传送员",
+      "text": "年轻的勇士，你想进入白日门吗？ 去[白日门] 离开",
+      "options": [
+        {
+          "text": "去[白日门]",
+          "command": "@br"
+        },
+        {
+          "text": "离开",
+          "command": "@Exit"
+        }
+      ]
+    },
+    "combatStatus": "[攻击模式: 全体攻击]",
+    "nearby": [],
+    "directions": [
+      {
+        "direction": 0,
+        "dx": 0,
+        "dy": -1,
+        "clearSteps": 0
+      },
+      {
+        "direction": 1,
+        "dx": 1,
+        "dy": -1,
+        "clearSteps": 0
+      },
+      {
+        "direction": 2,
+        "dx": 1,
+        "dy": 0,
+        "clearSteps": 0
+      },
+      {
+        "direction": 3,
+        "dx": 1,
+        "dy": 1,
+        "clearSteps": 0
+      },
+      {
+        "direction": 4,
+        "dx": 0,
+        "dy": 1,
+        "clearSteps": 0
+      },
+      {
+        "direction": 5,
+        "dx": -1,
+        "dy": 1,
+        "clearSteps": 0
+      },
+      {
+        "direction": 6,
+        "dx": -1,
+        "dy": 0,
+        "clearSteps": 0
+      },
+      {
+        "direction": 7,
+        "dx": -1,
+        "dy": -1,
+        "clearSteps": 0
+      }
+    ],
+    "entityCount": 1,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {
+      "1999246237": "standing"
+    },
+    "actorEffects": {
+      "1999246237": {
+        "active": false,
+        "ready": false,
+        "frame": 3890,
+        "pixel": {
+          "x": 2256,
+          "y": 15264
+        }
+      }
+    }
+  },
+  "failedPackets": [
+    {
+      "type": "map",
+      "map": "1"
+    },
+    {
+      "type": "minimap",
+      "available": true,
+      "frameIndex": 101,
+      "sourceIndex": 102,
+      "mapGeneration": 1
+    },
+    {
+      "type": "legacy",
+      "id": 710,
+      "recog": 0,
+      "param": 102,
+      "tag": 0,
+      "series": 0,
+      "encodedBody": "",
+      "status": null
+    },
+    {
+      "type": "npcDialogue",
+      "npcId": 272455208,
+      "npcName": "传送员",
+      "text": "年轻的勇士，你想进入白日门吗？",
+      "options": [
+        {
+          "text": "去[白日门]",
+          "command": "@br",
+          "input": false
+        },
+        {
+          "text": "离开",
+          "command": "@Exit",
+          "input": false
+        }
+      ],
+      "lines": [
+        [],
+        [
+          {
+            "text": "年轻的勇士，你想进入白日门吗？",
+            "command": null,
+            "input": false
+          }
+        ],
+        [
+          {
+            "text": " ",
+            "command": null,
+            "input": false
+          }
+        ],
+        [
+          {
+            "text": "去[白日门]",
+            "command": "@br",
+            "input": false
+          }
+        ],
+        [
+          {
+            "text": " ",
+            "command": null,
+            "input": false
+          }
+        ],
+        [
+          {
+            "text": "离开",
+            "command": "@Exit",
+            "input": false
+          }
+        ]
+      ],
+      "quest": null,
+      "quests": null
+    },
+    {
+      "type": "map",
+      "map": "11",
+      "playerId": 1999246237,
+      "x": 47,
+      "y": 477,
+      "brightness": 0
+    }
+  ]
+}

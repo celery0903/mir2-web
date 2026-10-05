@@ -21,6 +21,10 @@
     {"file":"data2.cab","offset":1257091,"bytes":92084588,"sha256":"57d261ccf8a361aa543723c4eb37b334bb70d3644f6d65c5f1fbdb97ef603400"},
     {"file":"setup.ini","offset":93449275,"bytes":443}
   ],
+  "clientFiles": [
+    {"file":"DATA/mmap.wil","bytes":17396799,"sha256":"4bab9e49fb4b0c82ee0c90b264c7918e392907d46dd6fe9b3048ca47501895ee"},
+    {"file":"DATA/mmap.WIX","bytes":808,"sha256":"fface5fd53c83b2bc70085b618af3908ef6a61b98e680394d3111fd8deb80eb6"}
+  ],
   "authenticated2003Client": false,
   "full176Acceptance": false,
   "interpretation": "Archived 2004 compilation containing a Shanda-labelled 1.76 upgrade, not a complete client. Pins establish repeatable source bytes, not official signature or original distribution authenticity."

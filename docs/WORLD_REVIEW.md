@@ -1,6 +1,6 @@
 # 原生世界隔离核验
 
-继续使用固定的现成 H5 源码、配套 SourceProxy 和 OpenMir2。正式入口 <http://172.30.0.16:18880/> 保持原镜像与 11 图范围；<http://172.30.0.16:18883/> 是未通过整包验收的候选世界。完整 2003 盛大原版 1.76 goal 未完成。[正式入口核对](correction/source-world-production-preservation.json) 验证 30 个网页文件与 7,146 个资源哈希，并与隔离更换前记录比较正式四个实例。
+继续使用固定的现成 H5 源码、配套 SourceProxy 和 OpenMir2。正式入口 <http://172.30.0.16:18880/> 保持 11 图范围；<http://172.30.0.16:18883/> 是未通过整包验收的候选世界。完整 2003 盛大原版 1.76 goal 未完成。[脚本修复阶段的正式入口核对](correction/source-world-production-preservation.json) 验证 30 个网页文件与 7,146 个资源哈希，并与隔离更换前记录比较正式四个实例。后续网页和 proxy 小地图接入见[原始小地图](ARCHIVED_MINIMAPS.md)。
 
 ## 原生配置
 
@@ -24,7 +24,7 @@
 
 [网页跨图检查](correction/source-world-travel/evidence.json) 通过比奇与沃玛森林往返、原传送员 `@br` 到白日门，以及白日门房屋入内、重登和返回。后者实际存档地图为 `0123A`，原协议发送图形名 `0123`，共享文件的别名关系保持。检查核对原生回包、角色坐标、存档、桌面和 390×844 手机画布像素及资源响应；已实际查看手机与房屋截图。
 
-该测试只在 `mir2-rebuild` 新建一级、零金币角色，离线调整三处起点，再通过网页键盘和 NPC 对话跨图。没有调整技能、物品、怪物、传送坐标或 NPC 脚本；**不证明从出生点完整走到这些区域**，也不证明各区域小地图、怪物外观、完整任务和掉落。沃玛森林与房屋检查画面的小地图尚显示资料缺失。
+该测试只在 `mir2-rebuild` 新建一级、零金币角色，离线调整三处起点，再通过网页键盘和 NPC 对话跨图。没有调整技能、物品、怪物、传送坐标或 NPC 脚本；**不证明从出生点完整走到这些区域**，也不证明各区域小地图、怪物外观、完整任务和掉落。这份历史截图中的小地图仍显示资料缺失；后续[原小地图核验](ARCHIVED_MINIMAPS.md)已覆盖沃玛森林和白日门，房屋按原生失败回包处理。
 
 [修复前失败](correction/source-world-travel-before/evidence.json) 保留：边界往返已通过，NPC 选项获原生许可后没有传送。更早的[首次建角检查](correction/source-world-travel-first/evidence.json)因测试名被输入框截断、第二个名字重复而停止。后续缩短测试名。
 
@@ -48,6 +48,8 @@ npm run test:world-profile
 docker build -f server/Engine/Dockerfile --build-arg MIR_WORLD_SCOPE=all -t mir2-world-review-engine:test .
 npm run test:source-world-profile
 npm run test:source-script
+docker build -f server/SourceClient/Dockerfile -t mir2-minimap-web:test .
+docker build -f server/SourceProxy/Dockerfile -t mir2-minimap-proxy:test .
 docker compose -p mir2-rebuild -f compose.yaml -f compose.rebuild.yaml -f compose.world-review.yaml up -d --no-build --wait
 MIR_TEST_FIXTURES=1 npm run test:source-world-travel
 ```

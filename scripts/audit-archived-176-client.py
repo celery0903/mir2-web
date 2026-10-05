@@ -18,6 +18,9 @@ for path in sorted(source.rglob('*')):
         continue
     raw = path.read_bytes()
     entry = {'file': str(path.relative_to(source)), 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
+    pin = next((pin for pin in lock['clientFiles'] if pin['file'] == entry['file']), None)
+    if pin and any(pin[field] != entry[field] for field in ['bytes', 'sha256']):
+        raise ValueError('Archived client checksum mismatch: ' + entry['file'])
     files.append(entry)
     if path.suffix.lower() == '.map':
         pin = next((pin for pin in world['maps'] if pin['graphicID'].lower() == path.stem.lower()), None)

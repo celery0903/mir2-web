@@ -1,0 +1,140 @@
+{
+  "checkedAt": "2026-10-05T00:04:03.257Z",
+  "url": "http://127.0.0.1:18889",
+  "scope": "all",
+  "passed": true,
+  "full176Acceptance": false,
+  "jobs": [
+    {
+      "job": 0,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 889,
+      "mobileColors": 421,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 1,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(女)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 843,
+      "mobileColors": 413,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 2,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 856,
+      "mobileColors": 433,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    }
+  ],
+  "originRejected": true,
+  "warehouse": {
+    "browserEntrance": true,
+    "counterNpcDistance": 6,
+    "objectLibraries": {
+      "1": "WemadeObjects2",
+      "2": "WemadeObjects3"
+    },
+    "inlineScriptLinks": true,
+    "originalPanelDimensions": true,
+    "emptyList": true,
+    "dragSelectionAndCancel": true,
+    "selectedItemImageLoaded": true,
+    "mobileDeposit": true,
+    "mobileOverflow": false,
+    "deposit": true,
+    "reconnectWithdrawal": true,
+    "sameItemInstance": true,
+    "goldPreserved": true,
+    "visiblePlayerAfterRoundTrip": true,
+    "mapTransitions": [
+      {
+        "sequence": 3,
+        "mapGeneration": 1,
+        "type": "map",
+        "map": "0140"
+      },
+      {
+        "sequence": 66,
+        "mapGeneration": 2,
+        "type": "map",
+        "x": 306,
+        "y": 628,
+        "map": "0"
+      },
+      {
+        "sequence": 86,
+        "mapGeneration": 3,
+        "type": "map",
+        "x": 2,
+        "y": 10,
+        "map": "0140"
+      }
+    ],
+    "errors": [],
+    "missingResources": []
+  }
+}

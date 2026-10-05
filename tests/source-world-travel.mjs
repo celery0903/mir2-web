@@ -12,6 +12,7 @@ const project = process.env.MIR_PROJECT ?? 'mir2-rebuild';
 assert.equal(new URL(base).hostname, '127.0.0.1');
 assert.equal(project, 'mir2-rebuild');
 const destination = process.env.MIR_WORLD_TRAVEL_REPORT ?? '.runtime/reports/source-world-travel';
+const verifyMinimaps = process.env.MIR_WORLD_MINIMAPS === '1';
 const execute = promisify(execFile);
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const inspect = async service => JSON.parse((await execute('docker', ['inspect', `${project}-${service}-1`])).stdout)[0];
@@ -50,7 +51,8 @@ async function enter(fixture, register = false) {
   });
   page.on('websocket', socket => socket.on('framereceived', frame => {
     const message = JSON.parse(String(frame.payload)).message;
-    if (['map', 'actionResult', 'npcDialogue'].includes(message?.type)) received.push(message);
+    if (['map', 'actionResult', 'npcDialogue', 'minimap'].includes(message?.type)
+        || message?.type === 'legacy' && [710, 711].includes(message.id)) received.push(message);
   }));
   await page.goto(`${base}/?agent=1`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => !!window.__mir2Agent, {}, { timeout: 60000 });
@@ -77,6 +79,7 @@ async function enter(fixture, register = false) {
 async function readyAt(page, map, x, y) {
   await expect.poll(async () => {
     const s = await state(page);
+    if (!s.self) return false;
     assert.ok(s.self.hp > 0, 'The route test character died');
     return s.worldReady && s.render?.framesReady && !s.pending && s.map === map && s.self.x === x && s.self.y === y;
   }, { timeout: 20000 }).toBe(true);
@@ -98,6 +101,38 @@ async function screenshot(page, name) {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await page.screenshot({ path: `${destination}/${name}.png` });
   return { sampledColors: colors.size, width: png.width, height: png.height };
+}
+async function minimapEvidence(page, sourceIndex, expectedName) {
+  if (!verifyMinimaps) return undefined;
+  await expect.poll(async () => {
+    const s = await state(page);
+    const projected = packets.get(page).findLast(message => message.type === 'minimap');
+    return projected?.sourceIndex === sourceIndex && projected.mapGeneration === s.mapGeneration
+      && (sourceIndex ? s.minimap.imageReady && s.minimap.frameIndex === sourceIndex - 1 : !s.minimap.imageReady);
+  }, { timeout: 15000 }).toBe(true);
+  const s = await state(page), received = packets.get(page);
+  assert.equal(s.minimap.name, expectedName);
+  const projected = received.findLast(message => message.type === 'minimap');
+  assert.ok(projected, 'Missing native minimap projection');
+  assert.equal(projected.sourceIndex, sourceIndex);
+  assert.equal(projected.available, sourceIndex > 0);
+  assert.ok(received.some(message => message.type === 'legacy' && message.id === (sourceIndex ? 710 : 711) && message.param === sourceIndex));
+  let sourceFrame, colors;
+  if (sourceIndex) {
+    const response = await page.request.get(`${base}${s.minimap.imageUrl}`);
+    assert.equal(response.status(), 200);
+    const png = PNG.sync.read(await response.body());
+    const library = await (await page.request.get(`${base}/ui-national/mmap/library.json`)).json();
+    sourceFrame = library.frames[sourceIndex - 1];
+    assert.equal(digest(await response.body()), sourceFrame.sha256);
+    assert.equal(png.width, sourceFrame.width);
+    assert.equal(png.height, sourceFrame.height);
+    const bitmap = PNG.sync.read(await page.locator('#mini-map').screenshot()), unique = new Set();
+    for (let at = 0; at < bitmap.data.length; at += 28) unique.add(bitmap.data.subarray(at, at + 3).toString('hex'));
+    colors = unique.size;
+    assert.ok(colors > 35, 'Minimap canvas has no original bitmap');
+  }
+  return { nativeSourceIndex: sourceIndex, projected, state: s.minimap, sourceFrame, sampledCanvasColors: colors };
 }
 async function sql(query) {
   return (await execute('docker', ['exec', `${project}-db-1`, 'sh', '-c', 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -uroot mir2_db --batch --skip-column-names -e "$1"', 'sh', query])).stdout.trim();
@@ -132,12 +167,13 @@ try {
   await readyAt(border, '0', 324, 36);
   await step(border, 'ArrowUp', '0', 324, 35);
   await step(border, 'ArrowUp', '1', 559, 553);
+  const borderMinimap = await minimapEvidence(border, 102, '沃玛森林');
   const borderScreen = await screenshot(border, 'bichon-to-woma-desktop');
   await border.setViewportSize({ width: 390, height: 844 });
   const borderMobile = await screenshot(border, 'woma-mobile');
   await step(border, 'ArrowDown', '0', 324, 35);
   assert.ok(packets.get(border).some(packet => packet.type === 'map' && packet.map === '1'));
-  report.routes.push({ flow: 'border', passed: true, approach: { map: '0', x: 324, y: 36 }, outward: { map: '1', x: 559, y: 553 }, return: { map: '0', x: 324, y: 35 }, screenshots: [borderScreen, borderMobile], packets: packets.get(border) });
+  report.routes.push({ flow: 'border', passed: true, approach: { map: '0', x: 324, y: 36 }, outward: { map: '1', x: 559, y: 553 }, return: { map: '0', x: 324, y: 35 }, screenshots: [borderScreen, borderMobile], minimap: borderMinimap, packets: packets.get(border) });
   await border.close();
   await saved(fixtures[0], '0', 324, 35);
 
@@ -151,7 +187,8 @@ try {
   await readyAt(npc, '11', 47, 477);
   assert.ok(packets.get(npc).some(packet => packet.type === 'map' && packet.map === '11'));
   const npcScript = await readFile('.runtime/classic-world/profile/Envir/Market_Def/传送员/进白日门-1.txt');
-  report.routes.push({ flow: 'npc', passed: true, sourceScriptSha256: digest(npcScript), nativeTarget: { map: '11', x: 47, y: 477 }, screenshot: await screenshot(npc, 'white-gate-npc-desktop'), packets: packets.get(npc) });
+  const npcMinimap = await minimapEvidence(npc, 103, '白日门');
+  report.routes.push({ flow: 'npc', passed: true, sourceScriptSha256: digest(npcScript), nativeTarget: { map: '11', x: 47, y: 477 }, screenshot: await screenshot(npc, 'white-gate-npc-desktop'), minimap: npcMinimap, packets: packets.get(npc) });
   await npc.close();
   await saved(fixtures[1], '11', 47, 477);
 
@@ -160,6 +197,7 @@ try {
   await step(alias, 'ArrowUp', '11', 204, 386);
   await step(alias, 'ArrowUp', '0123', 12, 18);
   assert.ok(packets.get(alias).some(packet => packet.type === 'map' && packet.map === '0123'));
+  const aliasMinimap = await minimapEvidence(alias, 0, '房屋');
   const aliasScreen = await screenshot(alias, 'alias-room-desktop');
   await alias.close();
   await saved(fixtures[2], '0123A', 12, 18);
@@ -167,7 +205,7 @@ try {
   await readyAt(returning, '0123', 12, 18);
   await step(returning, 'ArrowUp', '0123', 12, 17);
   await step(returning, 'ArrowDown', '11', 205, 386);
-  report.routes.push({ flow: 'alias', passed: true, logicalMapSaved: '0123A', graphicMapReceived: '0123', reconnect: true, return: { map: '11', x: 205, y: 386 }, screenshot: aliasScreen, packets: [...packets.get(alias), ...packets.get(returning)] });
+  report.routes.push({ flow: 'alias', passed: true, logicalMapSaved: '0123A', graphicMapReceived: '0123', reconnect: true, return: { map: '11', x: 205, y: 386 }, screenshot: aliasScreen, minimap: aliasMinimap, packets: [...packets.get(alias), ...packets.get(returning)] });
   await returning.close();
   await saved(fixtures[2], '11', 205, 386);
   assert.deepEqual(report.errors, []);

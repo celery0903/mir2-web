@@ -1,0 +1,47 @@
+diff --git a/GatewaySession.cs b/GatewaySession.cs
+--- a/GatewaySession.cs
++++ b/GatewaySession.cs
+@@ -13,6 +13,7 @@
+     private HashSet<string> characters = [];
+     private long sequence;
+     private int mapGeneration;
++    private readonly Queue<int> minimapRequests = [];
+     private Task? gameReader;
+     private readonly object worldStateLock = new();
+     private readonly Dictionary<int, InventoryItem> inventory = [];
+@@ -86,6 +87,12 @@
+                     await game.Send(3030, cancellation, text);
+                 }
++                else if (type == "minimap" && phase == "world")
++                {
++                    ValidateActionMap(root);
++                    lock (worldStateLock) minimapRequests.Enqueue(mapGeneration);
++                    await game.Send(1033, cancellation);
++                }
+                 else if (type == "groupMode" && phase == "world")
+                 {
+                     bool enabled = root.GetProperty("enabled").GetBoolean();
+                     await game.Send(1019, cancellation, param: enabled ? (ushort)1 : (ushort)0);
+@@ -550,6 +557,8 @@
+                 }
+                 UpdateEntities(packet);
++                var minimap = UpdateMinimap(packet);
++                if (minimap is not null) await Send(minimap, lifetime.Token);
+                 string? knownName = null;
+                 byte? knownNameColor = null;
+                 lock (worldStateLock)
+                 {
+@@ -629,1 +638,13 @@
++    private object? UpdateMinimap(LegacyPacket packet)
++    {
++        if (packet.Id is not (710 or 711)) return null;
++        lock (worldStateLock)
++        {
++            if (!minimapRequests.TryDequeue(out int generation) || generation != mapGeneration) return null;
++            bool available = packet.Id == 710 && packet.Param > 0;
++            return new { type = "minimap", available, frameIndex = available ? (int?)packet.Param - 1 : null,
++                sourceIndex = packet.Param, mapGeneration = generation };
++        }
++    }
++
+     private async Task ClickNpc(JsonElement command, CancellationToken cancellation)

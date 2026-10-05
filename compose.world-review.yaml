@@ -7,11 +7,12 @@ services:
     environment:
       MIR_WORLD_CANDIDATE: '1'
   web:
-    image: mir2-classic-world-web:test
+    image: mir2-minimap-web:test
     ports: !override
       - 0.0.0.0:18883:8080
     volumes:
       - ./.runtime/classic-world/assets:/usr/share/nginx/resources:ro
   source-proxy:
+    image: mir2-minimap-proxy:test
     environment:
       MIR2_WEB_ORIGINS: http://127.0.0.1:18883,http://localhost:18883,http://172.30.0.16:18883

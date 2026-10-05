@@ -26,7 +26,7 @@ async function world(page) {
   await page.locator('[data-auth-start]').click();
   await expect.poll(async () => {
     const state = await observed(page);
-    return state.worldReady && state.inventory.known && state.attributes?.level === 1 && state.render?.framesReady;
+    return state.worldReady && state.inventory.known && state.attributes?.level === 1 && state.render?.framesReady && (state.map !== '0' || state.minimap.imageReady);
   }, { timeout: 60000 }).toBeTruthy();
 }
 function sampledColors(bytes) {

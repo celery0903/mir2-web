@@ -11,11 +11,13 @@ const project=process.env.MIR_PROJECT??'mir2-web';
 const destination=process.env.MIR_DEPLOYMENT_REPORT??'docs/correction/source-deployment-evidence.json';
 const expectedEngineImage=process.env.MIR_EXPECTED_ENGINE_IMAGE;
 const expectedWebImage=process.env.MIR_EXPECTED_WEB_IMAGE;
+const expectedProxyImage=process.env.MIR_EXPECTED_PROXY_IMAGE;
 const assets=process.env.MIR_SOURCE_ASSETS??'.runtime/source-assets';
 const rulesFile=process.env.MIR_MAGIC_RULES_FILE??'shared/classic-magic.json';
 assert.match(project,/^[a-z0-9][a-z0-9_-]*$/);
 if(expectedEngineImage)assert.match(expectedEngineImage,/^sha256:[a-f0-9]{64}$/);
 if(expectedWebImage)assert.match(expectedWebImage,/^sha256:[a-f0-9]{64}$/);
+if(expectedProxyImage)assert.match(expectedProxyImage,/^sha256:[a-f0-9]{64}$/);
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 let previous;
 try{previous=JSON.parse(await readFile(destination,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
@@ -25,6 +27,7 @@ const {stdout:inspection}=await execute('docker',['inspect',...names,'--format',
 const containers=inspection.trim().split('\n').map(line=>JSON.parse(line));
 for(const container of containers)assert.equal(container.health,'healthy',`${container.name} health`);
 if(expectedWebImage)assert.equal(containers.find(container=>container.name===`/${names[2]}`).image,expectedWebImage,'Web does not match the declared tested image');
+if(expectedProxyImage)assert.equal(containers.find(container=>container.name===`/${names[3]}`).image,expectedProxyImage,'Proxy does not match the declared tested image');
 const nativeContainers=containers.filter(container=>names.slice(0,2).includes(container.name.slice(1)));
 const hasPriorSnapshot=nativeContainers.every(container=>previous?.containers?.some(value=>value.name===container.name));
 const preservedInstance=container=>{
@@ -118,6 +121,16 @@ await Promise.all(Array.from({length:4},async()=>{
  }
 }));
 const magicIntegration=JSON.parse(await verifyResource('effects/integration.json'));
+const minimapManifest=JSON.parse(await verifyResource('ui-national/mmap/library.json'));
+if(minimapManifest.format==='wil-classic'){
+ const archive=JSON.parse(await readFile('shared/archived-176-client.lock.json'));
+ assert.equal(minimapManifest.sourceSha256,archive.clientFiles.find(file=>file.file==='DATA/mmap.wil').sha256);
+ assert.equal(minimapManifest.indexSha256,archive.clientFiles.find(file=>file.file==='DATA/mmap.WIX').sha256);
+}
+for(const frame of Object.values(minimapManifest.frames)){
+ assert.match(frame.file,/^[A-Za-z0-9_.-]+\.png$/);
+ assert.equal(digest(await verifyResource(`ui-national/mmap/${frame.file}`)),frame.sha256,'Minimap PNG manifest hash');
+}
 const rulesHash=digest(await readFile(rulesFile));
 assert.equal(magicIntegration.rulesSha256,rulesHash,'Deployed spell rules');
 assert.deepEqual(integration.magicEffects,magicIntegration,'Top-level spell integration');
@@ -146,10 +159,10 @@ const bookshopSha256=bookshopHash.trim().split(/\s+/)[0];
 assert.match(bookshopSha256,/^[a-f0-9]{64}$/);
 const preservedBookshopScript=previous?.bookshopSha256?previous.bookshopSha256===bookshopSha256:null;
 if(previous?.bookshopSha256)assert.equal(preservedBookshopScript,true,'Native bookshop script changed');
-const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch','server/openmir2-linux.patch','server/openmir2-status.patch','server/openmir2-safezone.patch'].map(async file=>[file,digest(await readFile(file))])));
+const patches=Object.fromEntries(await Promise.all(['server/source-client.patch','server/source-proxy.patch','server/source-tests.patch','server/source-magic.patch','server/source-minimap.patch','server/source-minimap-proxy.patch','server/source-npc-receipt.patch','server/openmir2-linux.patch','server/openmir2-status.patch','server/openmir2-safezone.patch','server/openmir2-script.patch'].map(async file=>[file,digest(await readFile(file))])));
 const {stdout:revision}=await execute('git',['-C','upstream/mir2-client','rev-parse','HEAD']);
 const engineReplacement=hasPriorSnapshot&&!preservedEngine?{previousId:priorEngine.id,previousImage:priorEngine.image,expectedImage:expectedEngineImage,matchesTestedImage:true,storagePreserved:preservedEngineStorage}:undefined;
 resourceFiles.sort((a,b)=>a.path.localeCompare(b.path));
-const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,mapCatalogVerified:hasMapCatalog,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
+const report={checkedAt:new Date().toISOString(),url,clientSource:'leiniaozl229/mir2',revision:revision.trim(),containers,files,resourceFiles,mapPngsVerified:mapFrameRequests.length,mapCatalogVerified:hasMapCatalog,nativeMapsMatchPreparedAssets:true,mapResourceAcceptance:integration.mapResourceAcceptance,magicIntegration,minimapFramesVerified:Object.keys(minimapManifest.frames).length,rulesFile,rulesHash,bookshopScript,bookshopSha256,preservedBookshopScript,patches,patchesAreWorktreeHashes:true,expectedWebImage,webMatchesDeclaredTestImage:expectedWebImage?true:null,expectedProxyImage,proxyMatchesDeclaredTestImage:expectedProxyImage?true:null,preservedNativeContainers,preservedDatabase,preservedEngine,preservedEngineStorage,preservedSourceProxy,engineReplacement,full176Acceptance:false};
 await writeFile(destination,JSON.stringify(report,null,2)+'\n');
 console.log(`Verified ${files.length} served HTML/JS/CSS and ${resourceFiles.length} resource hashes; native/browser maps match; map resource acceptance: ${integration.mapResourceAcceptance}; all services healthy; ${hasPriorSnapshot?(preservedEngine?'native engine and database match the prior snapshot':'database instance and engine storage preserved; engine matches the declared tested image'):'no prior native-container snapshot to compare'}.`);

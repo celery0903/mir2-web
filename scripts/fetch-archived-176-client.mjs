@@ -51,7 +51,9 @@ for (const entry of lock.embeddedFiles) {
 const setup = new TextDecoder('gbk').decode(await readFile(join(cabinets, 'setup.ini')));
 assert.ok(setup.includes(`AppName=${lock.installer.appName}`) && setup.includes(`CompanyName=${lock.installer.companyName}`));
 const extraction = await execute('unshield', ['-d', join(destination, 'extracted'), 'x', join(cabinets, 'data1.cab')], { timeout: 120000, maxBuffer: 1024 * 1024 });
+for (const entry of lock.clientFiles) assert.ok(await valid(join(destination, 'extracted/App_Executables', entry.file), entry), `Extracted client checksum mismatch: ${entry.file}`);
 await writeFile(join(destination, 'extraction-evidence.json'), JSON.stringify({ checkedAt: new Date().toISOString(), lock,
   installerExecuted: false, extractionTool: (await execute('unshield', ['-V'])).stdout.trim(), stdout: extraction.stdout,
+  verifiedClientFiles: lock.clientFiles,
   authenticated2003Client: false, full176Acceptance: false }, null, 2) + '\n');
 console.log(`Verified and extracted ${lock.installer.appName}; this is an upgrade package, not a complete original client.`);

@@ -1,0 +1,67 @@
+diff --git a/apps/web/src/minimap.ts b/apps/web/src/minimap.ts
+index 88771a3..a34b1cd 100644
+--- a/apps/web/src/minimap.ts
++++ b/apps/web/src/minimap.ts
+@@ -3,7 +3,7 @@ import {minimapFrameByMap,minimapName} from './minimap-profile';
+ export type MiniMapMode='compact'|'expanded'|'hidden';
+ export type MiniMapMarker={id:string;x:number;y:number;kind:'self'|'player'|'npc'|'monster'|'drop'};
+ type Frame={index:number;width:number;height:number;file:string};
+-type Library={frames:Record<string,Frame>};
++type Library={frames:Record<string,Frame>;names?:Record<string,string>};
+ type Rect={left:number;top:number;width:number;height:number};
+ type Size={width:number;height:number};
+ 
+@@ -68,15 +68,18 @@ export class MiniMapController{
+   requestAnimationFrame(()=>this.draw());
+  }
+ 
+- async setMap(mapId:string,width:number,height:number){
++ async setMap(mapId:string,width:number,height:number,nativeFrame?:number|null){
+   const generation=++this.generation;
+   this.mapId=mapId;this.mapName=minimapName(mapId);this.world={width:Math.max(1,width),height:Math.max(1,height)};
+-  this.nameElement.textContent=this.mapName;this.image=undefined;this.imageUrl=undefined;this.frameIndex=minimapFrameByMap[mapId];
++  this.nameElement.textContent=this.mapName;this.image=undefined;this.imageUrl=undefined;this.frameIndex=nativeFrame===undefined?minimapFrameByMap[mapId]:nativeFrame??undefined;
+   this.statusElement.textContent=this.frameIndex===undefined?'暂无地图资料':'正在读取地图…';this.draw();
+-  if(this.frameIndex===undefined)return;
+   try{
+    if(!this.library)this.library=fetch('/ui-national/mmap/library.json').then(async response=>{if(!response.ok)throw new Error('缺少 mmap 素材库');return response.json() as Promise<Library>;});
+-   const library=await this.library,frame=library.frames[this.frameIndex];
++   const library=await this.library;
++   if(generation!==this.generation)return;
++   this.mapName=library.names?.[mapId]??this.mapName;this.nameElement.textContent=this.mapName;this.applyMode();
++   if(this.frameIndex===undefined)return;
++   const frame=library.frames[this.frameIndex];
+    if(!frame)throw new Error(`mmap 帧 ${this.frameIndex} 不存在`);
+    const imageUrl=`/ui-national/mmap/${frame.file}`,image=await loadImage(imageUrl);
+    if(generation!==this.generation)return;
+diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
+index 67d8392..374b363 100644
+--- a/apps/web/src/play.ts
++++ b/apps/web/src/play.ts
+@@ -555,7 +555,14 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+    doorRetry=undefined;currentMap=message.map;
+    const player=(self===undefined?undefined:entities.get(self))??lastKnownSelf;
+    clearWorld(true);worldReady=false;mapGeneration=envelope.mapGeneration;classicHud.position(message.map,0,0);connection.textContent=`正在载入地图 ${message.map}…`;
+-   mapReady=view.setMap(message.map).then(()=>minimap.setMap(message.map,view.width,view.height)).then(()=>{worldReady=true;}).catch(error=>{
++   const generation=mapGeneration;
++   void minimap.setMap(message.map,1,1,null);
++   mapReady=view.setMap(message.map).then(async()=>{
++    if(socket!==active||generation!==mapGeneration)return;
++    await minimap.setMap(message.map,view.width,view.height,null);
++    if(socket===active&&generation===mapGeneration&&active.readyState===WebSocket.OPEN)active.send(JSON.stringify({type:'minimap',mapGeneration:generation}));
++   }).then(()=>{if(socket===active&&generation===mapGeneration)worldReady=true;}).catch(error=>{
++    if(socket!==active||generation!==mapGeneration)return;
+     const detail=error instanceof Error?error.message:`地图 ${message.map} 载入失败`;
+     console.error('地图载入失败',message.map,error);
+     connection.textContent=detail;
+@@ -569,6 +576,10 @@ function connect(intent:'login'|'register',resumeCharacter?:string,supplied?:Cre
+     connection.textContent=`已连接 · ${next.name} · ${next.x}, ${next.y}`;
+    }
+   }
++  else if(message.type==='minimap'){
++   const generation=envelope.mapGeneration;
++   void mapReady.then(()=>{if(socket===active&&generation===mapGeneration)void minimap.setMap(currentMap,view.width,view.height,message.available?message.frameIndex:null);});
++  }
+   else if(message.type==='entity'){
+    const prior=entities.get(message.id);const entity={...prior,...message,name:message.name??prior?.name??'',feature:message.feature??prior?.feature??0,self:message.self||prior?.self||false,kind:message.kind??prior?.kind} as Entity;
+    update(entity);if(entity.self){self=entity.id;classicHud.position(currentMap,entity.x,entity.y);minimap.setPosition(entity.x,entity.y);refreshMiniMapMarkers();if(initialSelfPending){initialSelfPending=false;void mapReady.then(()=>{const current=entities.get(entity.id);if(current)void view.setCenter(current.x,current.y);});}else if(entity.action==='walking'||entity.action==='running')view.moveCenter(entity.x,entity.y,MOVEMENT_DURATION_MS);connection.textContent=`已连接 · ${entity.name} · ${entity.x}, ${entity.y}`;}if(message.self&&mapGeneration===1)active.send(JSON.stringify({type:'inventory'}));
