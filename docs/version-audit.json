@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-05T01:49:46.515Z",
+  "checkedAt": "2026-10-05T02:19:47.227Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -20,11 +20,11 @@
     "upstream/mir2-client/apps/web/src/play.ts": "47681ebda2b8683431ec284b15fdb2304a9761fd6e93be430c3c6ec8e4f1e2e1",
     "upstream/mir2-client/apps/web/src/classic-hud.ts": "a9acc9220858066173af1552f48408a4bea81e86186d090a9693b9e792f66e4c",
     "upstream/mir2-client/services/web-gateway/GatewaySession.cs": "ea9e6d326d036d7ae8dfa7606a8f08eece20ede597236229bd1ae58d3d5ff2b6",
-    "server/Engine/Dockerfile": "7f9c4afae0d7561a2c12dc02d3ce1c7f02608552cfb86d8d46c1239f8bfea7e7",
+    "server/Engine/Dockerfile": "51ac825cb2f24baa06d326ca9948b3debec40499ede45c49b7ac784ac6615b79",
     "server/Engine/run.mjs": "12050b6997079384623210c636b9c65908cd4502d247283b86ab2c944fcc9e92",
     "server/openmir2-linux.patch": "4616cb27725a879277985c909bc6f0134b5b1eecc55b8d705a7dfea1b8b30812",
     "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0",
-    "scripts/verify-source-deployment.mjs": "1ae68d47c5e1c35a688b1650de14e94ac923c92d6b5b895872551bbc0c785324",
+    "scripts/verify-source-deployment.mjs": "8ef67d02a6f777750d668ef637fd70de5ad880159ae7e0a7082bca316951eebe",
     "scripts/native-map.mjs": "bab84b4bc4373f5ff845cae960179e1db90a3853c368e3a50abe47fec14ba055",
     "shared/classic-magic.json": "0ecf791c1e99c0f275baedcfa145b71272e608fe5e4713e253fedd95614e2b00",
     "server/source-magic.patch": "c74697f16991e20bb3b3cead027badbf7fd9bb1f68d28f70d874d94968c224e2",
@@ -59,7 +59,7 @@
     "server/source-minimap.patch": "1da44a244e50f5286160c582a573aa70fd8508dd672fc6bbeeaed0d946822a96",
     "server/source-minimap-proxy.patch": "a887b7677f796ed26c40dfbb7d77f097ab45fd37ac48b21e524d71224a6700d6",
     "server/source-npc-receipt.patch": "b6c744d7e5962ed149987c86f794da642b99a9fa63192f1a2e5c90cc5cf05eed",
-    "tests/source-client.mjs": "0ed7692bf1d8911bdc2b53dece63f7bcd2807f18f3b45b1618bf24b16e70c3d1",
+    "tests/source-client.mjs": "f004644a28f86ebf4258a3c8c9561fe40612c3bbd10569e2935572c5361b25e6",
     "tests/source-world-travel.mjs": "1af446b5fe001e0a6d23c690b1211b7d76d20bdea56693113c874a6ff9b15366",
     "tests/classic-world-browser.mjs": "90edd6ed99c1ca57697791b8c69d02d105890686515211d9e8ab9c9c8871be6a",
     "shared/classic-skills.json": "55c9bbf346fee54e292defdacb74af8d2267305d6b31741f8d817d3fba6332be",
@@ -67,7 +67,11 @@
     "scripts/migrate-classic-skills.mjs": "dcb61ac91787f97b1b7832b92c1e6ae75a6e17382bc264fdf708ecbdc43bdf0c",
     "tests/classic-skills-migration.mjs": "a95b986afb113b00e4eb94dc300030e54756e32ce0db140e0d95dd5014f12fd1",
     "tests/classic-skill-references.mjs": "ea6275ca85d82c2a096eadabcc69e631910bc9ecd140e5cb8fcda102785afcec",
-    "scripts/audit-classic-skill-numbers.py": "1b85abd41714fb5941eff5e1d679fdd54423a3757c553e1bee7aa98cf4fae1ca"
+    "scripts/audit-classic-skill-numbers.py": "1b85abd41714fb5941eff5e1d679fdd54423a3757c553e1bee7aa98cf4fae1ca",
+    "server/openmir2-items.patch": "827549ce7cce7a055f6d4d8fa2ad02908bbcd556bf2181aef899424857c7c4aa",
+    "tests/source-items.mjs": "84971b6875ec61e2065bfd8b8879c770b72c3ca88472a05bfe17d15e7dfe14a5",
+    "tests/items/ItemChecks.csproj": "a4bf8f9fe40125f30dbda9d9911315dfe3ad3db898d71db3b56d864662dba7b6",
+    "tests/items/Program.cs": "87da5a1ca926de1b1d24377616d308167643bfaa42f4c76361cfe0bab3530947"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",

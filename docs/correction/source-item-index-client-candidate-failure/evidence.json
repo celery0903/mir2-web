@@ -1,0 +1,809 @@
+{
+  "checkedAt": "2026-10-05T02:08:54.953Z",
+  "url": "http://127.0.0.1:18883",
+  "scope": "all",
+  "passed": false,
+  "full176Acceptance": false,
+  "jobs": [
+    {
+      "job": 0,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 1263,
+      "mobileColors": 494,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 1,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(女)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 947,
+      "mobileColors": 451,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    },
+    {
+      "job": 2,
+      "browserRegistrationAndCreation": true,
+      "level": 1,
+      "gold": 0,
+      "equipment": [
+        "木剑",
+        "布衣(男)"
+      ],
+      "acknowledgedMovement": true,
+      "equipmentAndPositionPersisted": true,
+      "minimapReady": true,
+      "unresolvedMapReferences": 0,
+      "desktopColors": 935,
+      "mobileColors": 441,
+      "mobileOverflow": false,
+      "loadedActorLibraries": [
+        "BichonMonster4",
+        "BichonMonster5",
+        "CArmour00",
+        "CArmour01",
+        "CHair00",
+        "CWeapon01",
+        "NPC00"
+      ],
+      "errors": [],
+      "missingResources": []
+    }
+  ],
+  "originRejected": true,
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 90000ms exceeded while waiting on the predicate\n    at captureRawStack (/home/dev/workspace4/mir2-web/node_modules/playwright-core/lib/coreBundle.js:8588:17)\n    at callMatcherAsStep (/home/dev/workspace4/mir2-web/node_modules/playwright/lib/matchers/expect.js:13310:57)\n    at Object.toBe (/home/dev/workspace4/mir2-web/node_modules/playwright/lib/matchers/expect.js:13302:23)\n    at walkToMap (/home/dev/workspace4/mir2-web/tests/source-client.mjs:63:259)\n    at async file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:174:3",
+  "failureDiagnostics": {
+    "stage": "gameplay",
+    "errors": [],
+    "missingResources": [],
+    "failedRequests": [],
+    "crashes": []
+  },
+  "browserConnectedAtFailure": true,
+  "pageClosedAtFailure": false,
+  "failureState": {
+    "map": "0",
+    "worldReady": true,
+    "attributes": {
+      "type": "attributes",
+      "level": 1,
+      "job": 0,
+      "innerPowerLevel": 99,
+      "gold": 0,
+      "gameGold": 0,
+      "ac": {
+        "min": 0,
+        "max": 2
+      },
+      "mac": {
+        "min": 0,
+        "max": 1
+      },
+      "dc": {
+        "min": 3,
+        "max": 6
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 17,
+      "mp": 15,
+      "maxHp": 19,
+      "maxMp": 15,
+      "experience": 0,
+      "maxExperience": 100,
+      "weight": 2,
+      "maxWeight": 50,
+      "wearWeight": 5,
+      "maxWearWeight": 15,
+      "handWeight": 7,
+      "maxHandWeight": 12
+    },
+    "render": {
+      "pixel": {
+        "x": 31008,
+        "y": 20064
+      },
+      "queuedMovements": 0,
+      "action": "standing",
+      "direction": 6,
+      "framesReady": true,
+      "poseKey": "CArmour01/CHair00/standing/6/0/1/CWeapon01/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3890,
+        "pixel": {
+          "x": 31008,
+          "y": 20064
+        }
+      },
+      "grid": {
+        "x": 646,
+        "y": 627
+      },
+      "screen": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    "authScene": "select",
+    "connection": "该方向暂时无法通行"
+  },
+  "failureTimeline": [
+    {
+      "at": 4785.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 3,
+        "mapGeneration": 1,
+        "type": "map",
+        "map": "0"
+      }
+    },
+    {
+      "at": 4851.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 5,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "player",
+        "x": 650,
+        "y": 628,
+        "direction": 0,
+        "id": 82039820,
+        "self": true,
+        "action": "standing",
+        "name": "src1352040"
+      }
+    },
+    {
+      "at": 4867.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 28,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 646,
+        "y": 626,
+        "direction": 3,
+        "id": 405736347,
+        "self": false,
+        "action": "standing",
+        "name": "银杏老兵"
+      }
+    },
+    {
+      "at": 4869.200000762939,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 32,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 650,
+        "y": 628,
+        "direction": 4,
+        "id": 882277317,
+        "self": false,
+        "action": "standing",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 4870.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 36,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 640,
+        "y": 623,
+        "direction": 0,
+        "id": 678721526,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 4872.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 40,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 651,
+        "y": 623,
+        "direction": 2,
+        "id": 1743695936,
+        "self": false,
+        "action": "standing",
+        "name": "官方举证制度"
+      }
+    },
+    {
+      "at": 5991.300000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 63,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 649,
+        "y": 629,
+        "direction": 5,
+        "id": 882277317,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 7418.200000762939,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 71,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 1,
+        "kind": "move",
+        "accepted": true,
+        "x": 649,
+        "y": 627,
+        "reason": 0
+      }
+    },
+    {
+      "at": 8145.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 73,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 2,
+        "kind": "move",
+        "accepted": true,
+        "x": 648,
+        "y": 627,
+        "reason": 0
+      }
+    },
+    {
+      "at": 8427,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 75,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 637,
+        "y": 617,
+        "direction": 2,
+        "id": 1508858863,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 8470.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 79,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 648,
+        "y": 628,
+        "direction": 7,
+        "id": 882277317,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 8883.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 81,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 3,
+        "kind": "move",
+        "accepted": true,
+        "x": 647,
+        "y": 627,
+        "reason": 0
+      }
+    },
+    {
+      "at": 9462,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 83,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 4,
+        "kind": "move",
+        "accepted": true,
+        "x": 646,
+        "y": 627,
+        "reason": 0
+      }
+    },
+    {
+      "at": 9988.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 85,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 647,
+        "y": 627,
+        "direction": 7,
+        "id": 882277317,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 10233.800000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 89,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 5,
+        "kind": "move",
+        "accepted": false,
+        "x": 646,
+        "y": 627,
+        "reason": 28
+      }
+    },
+    {
+      "at": 11045.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 91,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 638,
+        "y": 617,
+        "direction": 2,
+        "id": 1508858863,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 14184.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 99,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 651,
+        "y": 623,
+        "direction": 2,
+        "id": 1743695936,
+        "self": false,
+        "action": "standing",
+        "name": "官方举证制度"
+      }
+    },
+    {
+      "at": 27593.300000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 131,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 639,
+        "y": 617,
+        "direction": 2,
+        "id": 1508858863,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 28782.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 133,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 640,
+        "y": 623,
+        "direction": 3,
+        "id": 678721526,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 30541.300000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 137,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 641,
+        "y": 624,
+        "direction": 3,
+        "id": 678721526,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 34598.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 149,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 640,
+        "y": 617,
+        "direction": 2,
+        "id": 1508858863,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 38347.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 159,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 642,
+        "y": 625,
+        "direction": 3,
+        "id": 678721526,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 41331.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 167,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 651,
+        "y": 623,
+        "direction": 7,
+        "id": 1743695936,
+        "self": false,
+        "action": "standing",
+        "name": "官方举证制度"
+      }
+    },
+    {
+      "at": 45432.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 179,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 651,
+        "y": 623,
+        "direction": 4,
+        "id": 1743695936,
+        "self": false,
+        "action": "standing",
+        "name": "官方举证制度"
+      }
+    },
+    {
+      "at": 46887.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 187,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 643,
+        "y": 626,
+        "direction": 3,
+        "id": 678721526,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 47500.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 189,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 646,
+        "y": 626,
+        "direction": 6,
+        "id": 405736347,
+        "self": false,
+        "action": "standing",
+        "name": "银杏老兵"
+      }
+    },
+    {
+      "at": 48277.400000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 193,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 646,
+        "y": 626,
+        "direction": 7,
+        "id": 405736347,
+        "self": false,
+        "action": "standing",
+        "name": "银杏老兵"
+      }
+    },
+    {
+      "at": 50008.900000572205,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 203,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 644,
+        "y": 627,
+        "direction": 3,
+        "id": 678721526,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 51152.800000190735,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 205,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 646,
+        "y": 626,
+        "direction": 1,
+        "id": 405736347,
+        "self": false,
+        "action": "standing",
+        "name": "银杏老兵"
+      }
+    },
+    {
+      "at": 51196.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 209,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 641,
+        "y": 617,
+        "direction": 2,
+        "id": 1508858863,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 70197.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 247,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 651,
+        "y": 623,
+        "direction": 4,
+        "id": 1743695936,
+        "self": false,
+        "action": "standing",
+        "name": "官方举证制度"
+      }
+    },
+    {
+      "at": 74900.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 259,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 641,
+        "y": 617,
+        "direction": 4,
+        "id": 1508858863,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 81849.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 275,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 646,
+        "y": 626,
+        "direction": 6,
+        "id": 405736347,
+        "self": false,
+        "action": "standing",
+        "name": "银杏老兵"
+      }
+    },
+    {
+      "at": 91394.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 295,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 646,
+        "y": 626,
+        "direction": 6,
+        "id": 405736347,
+        "self": false,
+        "action": "standing",
+        "name": "银杏老兵"
+      }
+    },
+    {
+      "at": 91995.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 299,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 651,
+        "y": 623,
+        "direction": 5,
+        "id": 1743695936,
+        "self": false,
+        "action": "standing",
+        "name": "官方举证制度"
+      }
+    },
+    {
+      "at": 93141.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 303,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "npc",
+        "x": 646,
+        "y": 626,
+        "direction": 6,
+        "id": 405736347,
+        "self": false,
+        "action": "standing",
+        "name": "银杏老兵"
+      }
+    },
+    {
+      "at": 93453.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 307,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 644,
+        "y": 627,
+        "direction": 4,
+        "id": 678721526,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 93737.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 315,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 641,
+        "y": 618,
+        "direction": 4,
+        "id": 1508858863,
+        "self": false,
+        "action": "walking",
+        "name": "鹿"
+      }
+    }
+  ]
+}

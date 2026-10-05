@@ -3,14 +3,30 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { chromium, expect } from '@playwright/test';
 import { PNG } from 'pngjs';
 import WebSocket from 'ws';
+import PF from 'pathfinding';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 
 const base = (process.env.MIR_URL ?? 'http://127.0.0.1:18883').replace(/\/$/, '');
 const destination = process.env.MIR_SOURCE_REPORT ?? '.runtime/reports/source-client';
 const scope = process.env.MIR_SOURCE_SCOPE ?? 'all';
 assert.ok(['all', 'warehouse'].includes(scope), 'Unknown source test scope');
+const resumePath = process.env.MIR_SOURCE_RESUME_REPORT;
+const previous = resumePath ? JSON.parse(await readFile(resumePath)) : undefined;
+if (previous) assert.equal(previous.url, base, 'Warehouse continuation must use the same server');
+const fixture = process.env.MIR_SOURCE_WAREHOUSE_FIXTURE === '1';
+if (fixture) {
+  assert.ok(previous, 'Warehouse fixture requires a dedicated continuation account');
+  assert.equal(process.env.MIR_TEST_FIXTURES, '1');
+  assert.equal(process.env.MIR_PROJECT, 'mir2-rebuild');
+  assert.equal(new URL(base).hostname, '127.0.0.1');
+  assert.equal(new URL(base).port, '18883');
+}
 await mkdir(destination, { recursive: true });
 await mkdir('.state', { recursive: true });
 const report = { checkedAt: new Date().toISOString(), url: base, scope, passed: false, full176Acceptance: false, jobs: [] };
+if (previous) Object.assign(report, { scope: 'warehouse-continuation', continuedFrom: resumePath,
+  priorPartialChecks: { jobs: previous.jobs, passed: previous.passed } });
 const browser = await chromium.launch({ headless: true });
 let closingBrowser = false;
 browser.on('disconnected', () => { if (!closingBrowser) report.unexpectedBrowserDisconnect = new Date().toISOString(); });
@@ -56,13 +72,81 @@ async function openWarehouse(page) {
   await page.locator('#nearby-targets').getByRole('button', { name: /^边界村保管员/ }).click();
   await expect(page.locator('#npc-dialog')).toBeVisible({ timeout: 30000 });
 }
-async function walkToMap(page,x,y,target){
- const map=(await observed(page)).minimap,mini=page.locator('#mini-map'),box=await mini.boundingBox();
- const size=await mini.evaluate(element=>({width:element.clientWidth,height:element.clientHeight}));
- await page.mouse.click(box.x+(map.drawRect.left+x/(map.world.width-1)*map.drawRect.width)*box.width/size.width,box.y+(map.drawRect.top+y/(map.world.height-1)*map.drawRect.height)*box.height/size.height);
- await expect.poll(async()=>{const state=await observed(page);if(state.self?.hp!==undefined)assert.ok(state.self.hp>0,'Warehouse walk killed the player');return state.worldReady&&state.map===target&&!!state.self&&state.render?.framesReady;},{timeout:90000}).toBe(true);
+const navigation = new Map();
+async function collision(id) {
+  if (navigation.has(id)) return navigation.get(id);
+  const response = await fetch(`${base}/maps/${id}/map.json`); assert.equal(response.status, 200);
+  const map = await response.json(), cells = Array.from({ length: map.height }, () => new Uint8Array(map.width));
+  await Promise.all(map.chunks.map(async chunk => {
+    const response = await fetch(`${base}/maps/${id}/${chunk.file}`); assert.equal(response.status, 200);
+    const data = new DataView(await response.arrayBuffer());
+    assert.equal(data.byteLength, chunk.width * chunk.height * 12);
+    for (let x = 0; x < chunk.width; x++) for (let y = 0; y < chunk.height; y++) {
+      const offset = (x * chunk.height + y) * 12;
+      cells[chunk.y + y][chunk.x + x] = ((data.getUint16(offset, true) | data.getUint16(offset + 4, true)) & 0x8000) ? 1 : 0;
+    }
+  }));
+  const grid = new PF.Grid(cells); navigation.set(id, grid); return grid;
+}
+async function walkToMap(page, x, y, target) {
+  const initial = await observed(page), native = await collision(initial.map), started = Date.now();
+  const finder = new PF.AStarFinder({ allowDiagonal: true, dontCrossCorners: false, heuristic: PF.Heuristic.chebyshev });
+  let waypoints = 0, retries = 0;
+  while (true) {
+    const current = await observed(page);
+    assert.ok(current.self?.hp > 0 && !current.self.dead, 'Warehouse walk killed the player');
+    if (current.worldReady && current.map === target && current.render?.framesReady) break;
+    assert.equal(current.map, initial.map, 'Warehouse route entered an unexpected map');
+    assert.ok(Date.now() - started < 600000, 'Warehouse route exceeded ten minutes');
+    const grid = native.clone();
+    for (const actor of current.nearby) if (!actor.dead && grid.isInside(actor.x, actor.y)
+      && (actor.x !== current.self.x || actor.y !== current.self.y) && (actor.x !== x || actor.y !== y))
+      grid.setWalkableAt(actor.x, actor.y, false);
+    const path = finder.findPath(current.self.x, current.self.y, x, y, grid);
+    assert.ok(path.length > 1, `No served collision route to ${target}/${x},${y}`);
+    let end = 1;
+    const dx = path[1][0] - path[0][0], dy = path[1][1] - path[0][1];
+    while (end < Math.min(8, path.length - 1) && path[end + 1][0] - path[end][0] === dx
+      && path[end + 1][1] - path[end][1] === dy) end++;
+    const [px, py] = path[end], map = current.minimap, mini = page.locator('#mini-map');
+    const box = await mini.boundingBox(), size = await mini.evaluate(element => ({ width: element.clientWidth, height: element.clientHeight }));
+    // The native collision map plans straight segments; only UI clicks move the character.
+    await page.keyboard.down('Shift');
+    try { await page.mouse.click(box.x + (map.drawRect.left + px / (map.world.width - 1) * map.drawRect.width) * box.width / size.width,
+      box.y + (map.drawRect.top + py / (map.world.height - 1) * map.drawRect.height) * box.height / size.height); }
+    finally { await page.keyboard.up('Shift'); }
+    waypoints++;
+    await expect.poll(async () => {
+      const state = await observed(page); assert.ok(state.self?.hp > 0, 'Warehouse walk killed the player');
+      return state.worldReady && state.render?.framesReady && (state.map === target
+        || state.map === initial.map && !state.pending && !state.intentions.clickDestination);
+    }, { timeout: 30000, intervals: [100, 200, 300] }).toBe(true);
+    const arrived = await observed(page);
+    if (arrived.map === initial.map && arrived.self.x === current.self.x && arrived.self.y === current.self.y)
+      assert.ok(++retries <= 20, 'Warehouse route repeatedly failed to move');
+  }
+  (report.walks ??= []).push({ from: { map: initial.map, x: initial.self.x, y: initial.self.y }, target,
+    x, y, waypoints, retries, elapsedMs: Date.now() - started, collisionPlanned: true, uiMovementOnly: true });
 }
 try {
+  if (fixture) {
+    const credentials = JSON.parse(await readFile('.state/source-client-0.json'));
+    assert.match(credentials.account, /^s\d{7}0$/); assert.match(credentials.character, /^src\d{6}0$/);
+    const execute = promisify(execFile), engine = 'mir2-rebuild-engine-1', stoppedAt = new Date().toISOString();
+    await execute('docker', ['stop', '--time', '45', engine], { timeout: 65000 });
+    try {
+      const logs = await execute('docker', ['logs', '--since', stoppedAt, engine]);
+      assert.ok(logs.stdout.includes('OPENMIR2_SAVE_COMPLETE') && logs.stdout.includes('OPENMIR2_GAME_EXIT=0'));
+      const query = `UPDATE mir2_db.characters SET MapName='0',CX=289,CY=618 WHERE LoginID='${credentials.account}' AND ChrName='${credentials.character}'; SELECT ROW_COUNT();`;
+      const result = await execute('docker', ['exec', 'mir2-rebuild-db-1', 'sh', '-c',
+        'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -uroot --batch --skip-column-names -e "$1"', 'sh', query]);
+      assert.equal(result.stdout.trim(), '1', 'Warehouse fixture must update exactly its dedicated character');
+      report.fixture = { scope: 'Only the dedicated isolated warehouse character position is set offline to 0/289,618. The failed Silver Apricot journey is not accepted.',
+        nativeSaveAcknowledged: true, nativeExit: 0, changedRows: 1 };
+    } finally { await execute('docker', ['start', engine]); }
+    await expect.poll(async () => (await execute('docker', ['inspect', engine, '--format', '{{.State.Health.Status}}'])).stdout.trim(),
+      { timeout: 90000 }).toBe('healthy');
+  }
   assert.equal((await fetch(`${base}/missing-asset-probe.json`)).status, 404);
   const forbidden = await new Promise((resolve, reject) => {
     const ws = new WebSocket(base.replace(/^http/, 'ws') + '/ws', { origin: 'http://untrusted.invalid' });
@@ -73,7 +157,7 @@ try {
   });
   assert.equal(forbidden, 403);
   report.originRejected = true;
-  for (const job of scope === 'all' ? [0, 1, 2] : [0]) {
+  for (const job of previous ? [] : scope === 'all' ? [0, 1, 2] : [0]) {
     const credentials = { account: `s${String(Date.now()).slice(-7)}${job}`, password: 'Source987', character: `src${String(Date.now()).slice(-6)}${job}` };
     await writeFile(`.state/source-client-${job}.json`, JSON.stringify(credentials), { mode: 0o600 });
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
@@ -170,6 +254,7 @@ try {
   activePage = storagePage;
   await enter(storagePage, credentials);
   await world(storagePage);
+  assert.equal((await observed(storagePage)).self.name.split('\n')[0], credentials.character, 'Warehouse continuation character differs');
   if((await observed(storagePage)).map==='0140')await walkToMap(storagePage,2,11,'0');
   await walkToMap(storagePage,307,627,'0140');
   assert.equal((await observed(storagePage)).map, '0140');

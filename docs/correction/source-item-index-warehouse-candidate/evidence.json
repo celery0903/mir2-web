@@ -1,0 +1,198 @@
+{
+  "checkedAt": "2026-10-05T02:16:05.283Z",
+  "url": "http://127.0.0.1:18883",
+  "scope": "warehouse-continuation",
+  "passed": true,
+  "full176Acceptance": false,
+  "jobs": [],
+  "continuedFrom": ".runtime/reports/source-item-index-client-candidate/evidence.json",
+  "priorPartialChecks": {
+    "jobs": [
+      {
+        "job": 0,
+        "browserRegistrationAndCreation": true,
+        "level": 1,
+        "gold": 0,
+        "equipment": [
+          "木剑",
+          "布衣(男)"
+        ],
+        "acknowledgedMovement": true,
+        "equipmentAndPositionPersisted": true,
+        "minimapReady": true,
+        "unresolvedMapReferences": 0,
+        "desktopColors": 1263,
+        "mobileColors": 494,
+        "mobileOverflow": false,
+        "loadedActorLibraries": [
+          "BichonMonster4",
+          "BichonMonster5",
+          "CArmour00",
+          "CArmour01",
+          "CHair00",
+          "CWeapon01",
+          "NPC00"
+        ],
+        "errors": [],
+        "missingResources": []
+      },
+      {
+        "job": 1,
+        "browserRegistrationAndCreation": true,
+        "level": 1,
+        "gold": 0,
+        "equipment": [
+          "木剑",
+          "布衣(女)"
+        ],
+        "acknowledgedMovement": true,
+        "equipmentAndPositionPersisted": true,
+        "minimapReady": true,
+        "unresolvedMapReferences": 0,
+        "desktopColors": 947,
+        "mobileColors": 451,
+        "mobileOverflow": false,
+        "loadedActorLibraries": [
+          "BichonMonster4",
+          "BichonMonster5",
+          "CArmour00",
+          "CArmour01",
+          "CHair00",
+          "CWeapon01",
+          "NPC00"
+        ],
+        "errors": [],
+        "missingResources": []
+      },
+      {
+        "job": 2,
+        "browserRegistrationAndCreation": true,
+        "level": 1,
+        "gold": 0,
+        "equipment": [
+          "木剑",
+          "布衣(男)"
+        ],
+        "acknowledgedMovement": true,
+        "equipmentAndPositionPersisted": true,
+        "minimapReady": true,
+        "unresolvedMapReferences": 0,
+        "desktopColors": 935,
+        "mobileColors": 441,
+        "mobileOverflow": false,
+        "loadedActorLibraries": [
+          "BichonMonster4",
+          "BichonMonster5",
+          "CArmour00",
+          "CArmour01",
+          "CHair00",
+          "CWeapon01",
+          "NPC00"
+        ],
+        "errors": [],
+        "missingResources": []
+      }
+    ],
+    "passed": false
+  },
+  "fixture": {
+    "scope": "Only the dedicated isolated warehouse character position is set offline to 0/289,618. The failed Silver Apricot journey is not accepted.",
+    "nativeSaveAcknowledged": true,
+    "nativeExit": 0,
+    "changedRows": 1
+  },
+  "originRejected": true,
+  "walks": [
+    {
+      "from": {
+        "map": "0",
+        "x": 287,
+        "y": 619
+      },
+      "target": "0140",
+      "x": 307,
+      "y": 627,
+      "waypoints": 9,
+      "retries": 0,
+      "elapsedMs": 15950,
+      "collisionPlanned": true,
+      "uiMovementOnly": true
+    },
+    {
+      "from": {
+        "map": "0140",
+        "x": 2,
+        "y": 10
+      },
+      "target": "0",
+      "x": 2,
+      "y": 11,
+      "waypoints": 1,
+      "retries": 0,
+      "elapsedMs": 609,
+      "collisionPlanned": true,
+      "uiMovementOnly": true
+    },
+    {
+      "from": {
+        "map": "0",
+        "x": 306,
+        "y": 628
+      },
+      "target": "0140",
+      "x": 307,
+      "y": 627,
+      "waypoints": 1,
+      "retries": 0,
+      "elapsedMs": 988,
+      "collisionPlanned": true,
+      "uiMovementOnly": true
+    }
+  ],
+  "warehouse": {
+    "browserEntrance": true,
+    "counterNpcDistance": 6,
+    "objectLibraries": {
+      "1": "WemadeObjects2",
+      "2": "WemadeObjects3"
+    },
+    "inlineScriptLinks": true,
+    "originalPanelDimensions": true,
+    "emptyList": true,
+    "dragSelectionAndCancel": true,
+    "selectedItemImageLoaded": true,
+    "mobileDeposit": true,
+    "mobileOverflow": false,
+    "deposit": true,
+    "reconnectWithdrawal": true,
+    "sameItemInstance": true,
+    "goldPreserved": true,
+    "visiblePlayerAfterRoundTrip": true,
+    "mapTransitions": [
+      {
+        "sequence": 3,
+        "mapGeneration": 1,
+        "type": "map",
+        "map": "0140"
+      },
+      {
+        "sequence": 66,
+        "mapGeneration": 2,
+        "type": "map",
+        "x": 306,
+        "y": 628,
+        "map": "0"
+      },
+      {
+        "sequence": 78,
+        "mapGeneration": 3,
+        "type": "map",
+        "x": 2,
+        "y": 10,
+        "map": "0140"
+      }
+    ],
+    "errors": [],
+    "missingResources": []
+  }
+}

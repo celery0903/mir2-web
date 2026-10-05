@@ -1,0 +1,231 @@
+{
+  "checkedAt": "2026-10-05T02:17:27.621Z",
+  "project": "mir2-web",
+  "testedImage": "sha256:7ded311cd94e070ce8cc35c48c1b6d2e90d3eba6586472a242064c68f4d15837",
+  "passed": true,
+  "full176Acceptance": false,
+  "testedAssemblies": {
+    "GameSrv.dll": "1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79",
+    "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6",
+    "OpenMir2.dll": "225ebb4a54778979e6c4cd12420fe2eb7d3dec7de9b8d4982203cd72d5d53803",
+    "SystemModule.dll": "0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005"
+  },
+  "backups": {
+    "mir2_db": {
+      "path": "/home/dev/workspace4/mir2-web/.runtime/reports/item-index-mir2-web/backup/mir2_db.sql",
+      "sha256": "257dec4e45440224fda7264ac1acaeb2f8635526063411ea06e42fd10b5ff01b"
+    },
+    "mir2_data": {
+      "path": "/home/dev/workspace4/mir2-web/.runtime/reports/item-index-mir2-web/backup/mir2_data.sql",
+      "sha256": "21b5861813f8d205ca3ded92b2d08a8a1eb067d8feff146e8e3d04e6f63c9d95"
+    }
+  },
+  "itemDefinitionsMigrated": false,
+  "containersBefore": [
+    {
+      "name": "/mir2-web-db-1",
+      "id": "e2543ebcef06a518f4b3e4c54bfd1fe68cb943a25485f408c6b26ad3825e2f59",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "startedAt": "2026-10-04T10:27:41.001442121Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Name": "mir2-web_openmir2-db",
+          "Destination": "/var/lib/mysql"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-engine-1",
+      "id": "2fe8a707789707a6f8411b54053bf1833a7a542e2fea342eff695e2ec3d13607",
+      "image": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+      "startedAt": "2026-10-05T01:49:26.001263817Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Name": "mir2-web_openmir2-engine",
+          "Destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-web-1",
+      "id": "c3c5f759b873ea8f9535039908d48b6d1f4aaba80eb04bb7f0e06337c3e52b67",
+      "image": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+      "startedAt": "2026-10-05T00:29:00.051393113Z",
+      "health": "healthy",
+      "mounts": []
+    },
+    {
+      "name": "/mir2-web-source-proxy-1",
+      "id": "abd49090d958af1f230f123be8d5f8344bcfb1393e875f0fde827af63906d9cc",
+      "image": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c",
+      "startedAt": "2026-10-05T00:07:27.444317421Z",
+      "health": "healthy",
+      "mounts": []
+    }
+  ],
+  "before": {
+    "mir2_data.stditems": {
+      "rows": 1000,
+      "sha256": "d2d47e4c637fa51954e1c748960bcee9fec4e2c7863165cdbd63b51588442f3b"
+    },
+    "mir2_data.magics": {
+      "rows": 33,
+      "sha256": "c2af1be30229d4f491e72b94f32e1179f9bc1fed088624a6297db895148b1dd3"
+    },
+    "mir2_db.characters": {
+      "rows": 51,
+      "sha256": "e0f9c3e384c099bf1a5c493ed40aa901901278d8d441fc2d23325a2dea744cdd"
+    },
+    "mir2_db.characters_item": {
+      "rows": 663,
+      "sha256": "096d19a6eb92b8b54212a3ea26700dafb4a6179f31a682bd824b35b88c4180eb"
+    },
+    "mir2_db.characters_bagitem": {
+      "rows": 2346,
+      "sha256": "56aa18803972302f2d31b9fcd24928665f7b119b46447219f0b3ab31c9405f8f"
+    },
+    "mir2_db.characters_storageitem": {
+      "rows": 2550,
+      "sha256": "2428c7fbf4e30773e9bb5bc9f55ec9d7fc1d60082e192ca53973b52d6b11507e"
+    },
+    "mir2_db.characters_item_attr": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mir2_db.characters_magic": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "mapCount": 11,
+  "mapInfoSha256": "bd19715bbcc63b4580a671a868241d803dafff129139385af57ba9e5e476e5a8",
+  "previousImage": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+  "shutdown": {
+    "nativeSaveAcknowledged": true,
+    "nativeExit": true,
+    "containerExit": 0
+  },
+  "afterNativeSave": {
+    "mir2_data.stditems": {
+      "rows": 1000,
+      "sha256": "d2d47e4c637fa51954e1c748960bcee9fec4e2c7863165cdbd63b51588442f3b"
+    },
+    "mir2_data.magics": {
+      "rows": 33,
+      "sha256": "c2af1be30229d4f491e72b94f32e1179f9bc1fed088624a6297db895148b1dd3"
+    },
+    "mir2_db.characters": {
+      "rows": 51,
+      "sha256": "e0f9c3e384c099bf1a5c493ed40aa901901278d8d441fc2d23325a2dea744cdd"
+    },
+    "mir2_db.characters_item": {
+      "rows": 663,
+      "sha256": "096d19a6eb92b8b54212a3ea26700dafb4a6179f31a682bd824b35b88c4180eb"
+    },
+    "mir2_db.characters_bagitem": {
+      "rows": 2346,
+      "sha256": "56aa18803972302f2d31b9fcd24928665f7b119b46447219f0b3ab31c9405f8f"
+    },
+    "mir2_db.characters_storageitem": {
+      "rows": 2550,
+      "sha256": "2428c7fbf4e30773e9bb5bc9f55ec9d7fc1d60082e192ca53973b52d6b11507e"
+    },
+    "mir2_db.characters_item_attr": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mir2_db.characters_magic": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "deploymentOutput": " Container mir2-web-engine-1 Recreate \n Container mir2-web-engine-1 Recreated \n Container mir2-web-engine-1 Starting \n Container mir2-web-engine-1 Started \n Container mir2-web-engine-1 Waiting \n Container mir2-web-engine-1 Healthy \n",
+  "after": {
+    "mir2_data.stditems": {
+      "rows": 1000,
+      "sha256": "d2d47e4c637fa51954e1c748960bcee9fec4e2c7863165cdbd63b51588442f3b"
+    },
+    "mir2_data.magics": {
+      "rows": 33,
+      "sha256": "c2af1be30229d4f491e72b94f32e1179f9bc1fed088624a6297db895148b1dd3"
+    },
+    "mir2_db.characters": {
+      "rows": 51,
+      "sha256": "e0f9c3e384c099bf1a5c493ed40aa901901278d8d441fc2d23325a2dea744cdd"
+    },
+    "mir2_db.characters_item": {
+      "rows": 663,
+      "sha256": "096d19a6eb92b8b54212a3ea26700dafb4a6179f31a682bd824b35b88c4180eb"
+    },
+    "mir2_db.characters_bagitem": {
+      "rows": 2346,
+      "sha256": "56aa18803972302f2d31b9fcd24928665f7b119b46447219f0b3ab31c9405f8f"
+    },
+    "mir2_db.characters_storageitem": {
+      "rows": 2550,
+      "sha256": "2428c7fbf4e30773e9bb5bc9f55ec9d7fc1d60082e192ca53973b52d6b11507e"
+    },
+    "mir2_db.characters_item_attr": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mir2_db.characters_magic": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "containersAfter": [
+    {
+      "name": "/mir2-web-db-1",
+      "id": "e2543ebcef06a518f4b3e4c54bfd1fe68cb943a25485f408c6b26ad3825e2f59",
+      "image": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+      "startedAt": "2026-10-04T10:27:41.001442121Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Name": "mir2-web_openmir2-db",
+          "Destination": "/var/lib/mysql"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-engine-1",
+      "id": "9ef14001eba3c7850e98cfeddff18c140e9d5cee71bb2d173b0d2300a4c297ab",
+      "image": "sha256:7ded311cd94e070ce8cc35c48c1b6d2e90d3eba6586472a242064c68f4d15837",
+      "startedAt": "2026-10-05T02:17:42.74205688Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "Name": "mir2-web_openmir2-engine",
+          "Destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "/mir2-web-web-1",
+      "id": "c3c5f759b873ea8f9535039908d48b6d1f4aaba80eb04bb7f0e06337c3e52b67",
+      "image": "sha256:c41ba9644303d369bdd2c152002d86f60f3c500db41c809f4934a2b3ab188cbd",
+      "startedAt": "2026-10-05T00:29:00.051393113Z",
+      "health": "healthy",
+      "mounts": []
+    },
+    {
+      "name": "/mir2-web-source-proxy-1",
+      "id": "abd49090d958af1f230f123be8d5f8344bcfb1393e875f0fde827af63906d9cc",
+      "image": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c",
+      "startedAt": "2026-10-05T00:07:27.444317421Z",
+      "health": "healthy",
+      "mounts": []
+    }
+  ],
+  "runningAssemblyHashes": {
+    "GameSrv.dll": "1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79",
+    "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6",
+    "OpenMir2.dll": "225ebb4a54778979e6c4cd12420fe2eb7d3dec7de9b8d4982203cd72d5d53803",
+    "SystemModule.dll": "0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005"
+  },
+  "savedRowsPreserved": true,
+  "databaseWebAndProxyInstancesPreserved": true
+}

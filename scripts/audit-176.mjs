@@ -54,6 +54,7 @@ files.push('server/source-minimap.patch', 'server/source-minimap-proxy.patch', '
 files.push('tests/source-client.mjs', 'tests/source-world-travel.mjs', 'tests/classic-world-browser.mjs');
 files.push('shared/classic-skills.json', 'scripts/classic-skills.mjs', 'scripts/migrate-classic-skills.mjs', 'tests/classic-skills-migration.mjs', 'tests/classic-skill-references.mjs');
 files.push('scripts/audit-classic-skill-numbers.py');
+files.push('server/openmir2-items.patch', 'tests/source-items.mjs', 'tests/items/ItemChecks.csproj', 'tests/items/Program.cs');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);

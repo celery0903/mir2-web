@@ -1,0 +1,62 @@
+diff --git a/src/GameSrv/DB/MySqlDB.cs b/src/GameSrv/DB/MySqlDB.cs
+--- a/src/GameSrv/DB/MySqlDB.cs
++++ b/src/GameSrv/DB/MySqlDB.cs
+@@ -13,7 +13,7 @@ namespace GameSrv.DB
+         public int LoadItemsDB()
+         {
+             int result = -1;
+-            const string sSQLString = "SELECT * FROM stditems";
++            const string sSQLString = "SELECT * FROM stditems ORDER BY ID";
+             try
+             {
+                 HUtil32.EnterCriticalSection(M2Share.ProcessHumanCriticalSection);
+@@ -71,31 +71,42 @@ namespace GameSrv.DB
+                         stdItem.ItemType = dr.GetByte("ITEMTYPE");
+                         stdItem.ItemSet = dr.GetUInt16("ITEMSET");
+                         stdItem.Reference = dr.GetString("REFERENCE");
+-                        if (SystemShare.ItemSystem.ItemCount <= idx)
++                        if (idx <= SystemShare.ItemSystem.ItemCount || idx > ushort.MaxValue)
+                         {
+-                            SystemShare.ItemSystem.AddItem(stdItem);
+-                            result = 1;
+-                        }
+-                        else
+-                        {
+-                            LogService.Error($"加载物品(Idx:{idx} Name:{stdItem.Name})数据失败!!!");
++                            LogService.Error($"Invalid standard item ID {idx}: expected unique IDs in 1..65535.");
+                             result = -100;
+                             return result;
+                         }
++                        // Saved native indices are one-based SQL IDs, including vacancies.
++                        while (SystemShare.ItemSystem.ItemCount < idx - 1)
++                        {
++                            SystemShare.ItemSystem.AddItem(new StdItem { Name = string.Empty, Reference = string.Empty });
++                        }
++                        SystemShare.ItemSystem.AddItem(stdItem);
+                     }
+                 }
++                if (SystemShare.ItemSystem.ItemCount == 0)
++                {
++                    return result;
++                }
+                 M2Share.GameLogGold = M2Share.GetGameLogItemNameList(Grobal2.StringGoldName) == 1;
+                 // M2Share.GameLogHumanDie = M2Share.GetGameLogItemNameList(CommandHelp.HumanDieEvent) == 1;
+                 M2Share.GameLogGameGold = M2Share.GetGameLogItemNameList(SystemShare.Config.GameGoldName) == 1;
+                 M2Share.GameLogGamePoint = M2Share.GetGameLogItemNameList(SystemShare.Config.GamePointName) == 1;
++                result = 1;
+             }
+             catch (Exception ex)
+             {
+                 LogService.Error(ex.StackTrace);
++                result = -1;
+                 return result;
+             }
+             finally
+             {
++                if (result < 0)
++                {
++                    SystemShare.ItemSystem.Clear();
++                }
+                 Close();
+                 HUtil32.LeaveCriticalSection(M2Share.ProcessHumanCriticalSection);
+             }

@@ -1,0 +1,1402 @@
+{
+  "checkedAt": "2026-10-05T02:13:32.902Z",
+  "url": "http://127.0.0.1:18883",
+  "scope": "warehouse-continuation",
+  "passed": false,
+  "full176Acceptance": false,
+  "jobs": [],
+  "continuedFrom": ".runtime/reports/source-item-index-client-candidate/evidence.json",
+  "priorPartialChecks": {
+    "jobs": [
+      {
+        "job": 0,
+        "browserRegistrationAndCreation": true,
+        "level": 1,
+        "gold": 0,
+        "equipment": [
+          "木剑",
+          "布衣(男)"
+        ],
+        "acknowledgedMovement": true,
+        "equipmentAndPositionPersisted": true,
+        "minimapReady": true,
+        "unresolvedMapReferences": 0,
+        "desktopColors": 1263,
+        "mobileColors": 494,
+        "mobileOverflow": false,
+        "loadedActorLibraries": [
+          "BichonMonster4",
+          "BichonMonster5",
+          "CArmour00",
+          "CArmour01",
+          "CHair00",
+          "CWeapon01",
+          "NPC00"
+        ],
+        "errors": [],
+        "missingResources": []
+      },
+      {
+        "job": 1,
+        "browserRegistrationAndCreation": true,
+        "level": 1,
+        "gold": 0,
+        "equipment": [
+          "木剑",
+          "布衣(女)"
+        ],
+        "acknowledgedMovement": true,
+        "equipmentAndPositionPersisted": true,
+        "minimapReady": true,
+        "unresolvedMapReferences": 0,
+        "desktopColors": 947,
+        "mobileColors": 451,
+        "mobileOverflow": false,
+        "loadedActorLibraries": [
+          "BichonMonster4",
+          "BichonMonster5",
+          "CArmour00",
+          "CArmour01",
+          "CHair00",
+          "CWeapon01",
+          "NPC00"
+        ],
+        "errors": [],
+        "missingResources": []
+      },
+      {
+        "job": 2,
+        "browserRegistrationAndCreation": true,
+        "level": 1,
+        "gold": 0,
+        "equipment": [
+          "木剑",
+          "布衣(男)"
+        ],
+        "acknowledgedMovement": true,
+        "equipmentAndPositionPersisted": true,
+        "minimapReady": true,
+        "unresolvedMapReferences": 0,
+        "desktopColors": 935,
+        "mobileColors": 441,
+        "mobileOverflow": false,
+        "loadedActorLibraries": [
+          "BichonMonster4",
+          "BichonMonster5",
+          "CArmour00",
+          "CArmour01",
+          "CHair00",
+          "CWeapon01",
+          "NPC00"
+        ],
+        "errors": [],
+        "missingResources": []
+      }
+    ],
+    "passed": false
+  },
+  "originRejected": true,
+  "error": "AssertionError [ERR_ASSERTION]: Warehouse walk killed the player\n    at walkToMap (file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:87:12)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:472:9)\n    at async file:///home/dev/workspace4/mir2-web/tests/source-client.mjs:231:3",
+  "failureDiagnostics": {
+    "stage": "gameplay",
+    "errors": [],
+    "missingResources": [],
+    "failedRequests": [],
+    "crashes": []
+  },
+  "browserConnectedAtFailure": true,
+  "pageClosedAtFailure": false,
+  "failureState": {
+    "map": "0",
+    "worldReady": true,
+    "attributes": {
+      "type": "attributes",
+      "level": 1,
+      "job": 0,
+      "innerPowerLevel": 99,
+      "gold": 0,
+      "gameGold": 0,
+      "ac": {
+        "min": 0,
+        "max": 2
+      },
+      "mac": {
+        "min": 0,
+        "max": 1
+      },
+      "dc": {
+        "min": 3,
+        "max": 6
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 0,
+      "mp": 15,
+      "maxHp": 19,
+      "maxMp": 15,
+      "experience": 0,
+      "maxExperience": 100,
+      "weight": 2,
+      "maxWeight": 50,
+      "wearWeight": 5,
+      "maxWearWeight": 15,
+      "handWeight": 7,
+      "maxHandWeight": 12
+    },
+    "render": {
+      "pixel": {
+        "x": 23328,
+        "y": 17984
+      },
+      "queuedMovements": 0,
+      "action": "dead",
+      "direction": 6,
+      "framesReady": true,
+      "poseKey": "CArmour01/CHair00/dead/6/0/1/CWeapon01/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3891,
+        "pixel": {
+          "x": 23328,
+          "y": 17984
+        }
+      },
+      "grid": {
+        "x": 486,
+        "y": 562
+      },
+      "screen": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    "authScene": "select",
+    "connection": "角色已死亡"
+  },
+  "failureTimeline": [
+    {
+      "at": 89150.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1469,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 512,
+        "y": 566,
+        "direction": 7,
+        "id": 1207612191,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 89187.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1471,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 510,
+        "y": 560,
+        "direction": 5,
+        "id": 942192260,
+        "self": false,
+        "action": "walking",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 89191.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1473,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 513,
+        "y": 566,
+        "direction": 7,
+        "id": 348046852,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 89192.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1475,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 518,
+        "y": 566,
+        "direction": 7,
+        "id": 1055588978,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 89192.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1477,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 514,
+        "y": 568,
+        "direction": 7,
+        "id": 2139652864,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 89285,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1479,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 81,
+        "kind": "move",
+        "accepted": true,
+        "x": 507,
+        "y": 564,
+        "reason": 0
+      }
+    },
+    {
+      "at": 89785.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1481,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 82,
+        "kind": "move",
+        "accepted": true,
+        "x": 505,
+        "y": 564,
+        "reason": 0
+      }
+    },
+    {
+      "at": 90029.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1483,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 514,
+        "y": 565,
+        "direction": 7,
+        "id": 2061562377,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 90324.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1485,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 493,
+        "y": 562,
+        "direction": 0,
+        "id": 1966193538,
+        "self": false,
+        "action": "standing",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 90364,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1489,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 496,
+        "y": 570,
+        "direction": 2,
+        "id": 874603737,
+        "self": false,
+        "action": "standing",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 90365.80000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1493,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 509,
+        "y": 564,
+        "direction": 7,
+        "id": 1397049026,
+        "self": false,
+        "action": "walking",
+        "name": "半兽人"
+      }
+    },
+    {
+      "at": 90366.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1495,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1375704318
+      }
+    },
+    {
+      "at": 90366.80000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1497,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 879309133
+      }
+    },
+    {
+      "at": 90367.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1499,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1055588978
+      }
+    },
+    {
+      "at": 90367.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1501,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1881185743
+      }
+    },
+    {
+      "at": 90542.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1503,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 515,
+        "y": 564,
+        "direction": 5,
+        "id": 473173467,
+        "self": false,
+        "action": "walking",
+        "name": "钉耙猫"
+      }
+    },
+    {
+      "at": 90606.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1505,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 83,
+        "kind": "move",
+        "accepted": true,
+        "x": 503,
+        "y": 564,
+        "reason": 0
+      }
+    },
+    {
+      "at": 90790.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1507,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 511,
+        "y": 565,
+        "direction": 7,
+        "id": 1207612191,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 90816.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1509,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 509,
+        "y": 561,
+        "direction": 5,
+        "id": 942192260,
+        "self": false,
+        "action": "walking",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 90817.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1511,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 512,
+        "y": 565,
+        "direction": 7,
+        "id": 348046852,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 90817.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1513,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 513,
+        "y": 567,
+        "direction": 7,
+        "id": 2139652864,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 90975.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1515,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 84,
+        "kind": "move",
+        "accepted": true,
+        "x": 501,
+        "y": 564,
+        "reason": 0
+      }
+    },
+    {
+      "at": 91520.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1517,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 489,
+        "y": 559,
+        "direction": 0,
+        "id": 42665602,
+        "self": false,
+        "action": "standing",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 91553,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1521,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 492,
+        "y": 555,
+        "direction": 0,
+        "id": 2015424774,
+        "self": false,
+        "action": "standing",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 91556.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1525,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 565,
+        "direction": 3,
+        "id": 2104828317,
+        "self": false,
+        "action": "standing",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 91559,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1529,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 559,
+        "direction": 6,
+        "id": 1461976252,
+        "self": false,
+        "action": "standing",
+        "name": "钉耙猫"
+      }
+    },
+    {
+      "at": 91560.80000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1533,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 513,
+        "y": 564,
+        "direction": 7,
+        "id": 2061562377,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 91561.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1535,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1669766876
+      }
+    },
+    {
+      "at": 91561.80000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1537,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 473173467
+      }
+    },
+    {
+      "at": 91820.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1539,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 508,
+        "y": 564,
+        "direction": 6,
+        "id": 1397049026,
+        "self": false,
+        "action": "walking",
+        "name": "半兽人"
+      }
+    },
+    {
+      "at": 92273.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1541,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 510,
+        "y": 564,
+        "direction": 7,
+        "id": 1207612191,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 92303.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1543,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 508,
+        "y": 562,
+        "direction": 5,
+        "id": 942192260,
+        "self": false,
+        "action": "walking",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 92304.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1545,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 511,
+        "y": 564,
+        "direction": 7,
+        "id": 348046852,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 92305.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1547,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 512,
+        "y": 566,
+        "direction": 7,
+        "id": 2139652864,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 92305.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1549,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 85,
+        "kind": "move",
+        "accepted": true,
+        "x": 499,
+        "y": 564,
+        "reason": 0
+      }
+    },
+    {
+      "at": 92584.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1551,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 488,
+        "y": 565,
+        "direction": 3,
+        "id": 880807833,
+        "self": false,
+        "action": "standing",
+        "name": "毒蜘蛛"
+      }
+    },
+    {
+      "at": 92626.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1555,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 489,
+        "y": 575,
+        "direction": 3,
+        "id": 1242045475,
+        "self": false,
+        "action": "standing",
+        "name": "半兽人"
+      }
+    },
+    {
+      "at": 92627.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1559,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 489,
+        "y": 575,
+        "direction": 3,
+        "id": 1242045475,
+        "self": false,
+        "action": "walking",
+        "name": "半兽人"
+      }
+    },
+    {
+      "at": 92627.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1561,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 2061562377
+      }
+    },
+    {
+      "at": 92628.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1563,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 2139652864
+      }
+    },
+    {
+      "at": 92782,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1565,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 86,
+        "kind": "move",
+        "accepted": true,
+        "x": 497,
+        "y": 564,
+        "reason": 0
+      }
+    },
+    {
+      "at": 93372,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1567,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 497,
+        "y": 569,
+        "direction": 1,
+        "id": 874603737,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 93406.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1569,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 507,
+        "y": 564,
+        "direction": 6,
+        "id": 1397049026,
+        "self": false,
+        "action": "walking",
+        "name": "半兽人"
+      }
+    },
+    {
+      "at": 93573.80000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1571,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 87,
+        "kind": "move",
+        "accepted": true,
+        "x": 496,
+        "y": 564,
+        "reason": 0
+      }
+    },
+    {
+      "at": 93869.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1573,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 486,
+        "y": 576,
+        "direction": 3,
+        "id": 252471931,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 93905.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1577,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 507,
+        "y": 563,
+        "direction": 5,
+        "id": 942192260,
+        "self": false,
+        "action": "walking",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 93906.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1579,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1227143500
+      }
+    },
+    {
+      "at": 93906.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1581,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 348046852
+      }
+    },
+    {
+      "at": 93907.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1583,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1207612191
+      }
+    },
+    {
+      "at": 94169,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1585,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 493,
+        "y": 563,
+        "direction": 4,
+        "id": 1966193538,
+        "self": false,
+        "action": "walking",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 94493.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1587,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 565,
+        "direction": 0,
+        "id": 2104828317,
+        "self": false,
+        "action": "standing",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 94971.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1591,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 496,
+        "y": 568,
+        "direction": 7,
+        "id": 874603737,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 95005.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1593,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 506,
+        "y": 564,
+        "direction": 6,
+        "id": 1397049026,
+        "self": false,
+        "action": "walking",
+        "name": "半兽人"
+      }
+    },
+    {
+      "at": 95006.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1595,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 88,
+        "kind": "move",
+        "accepted": true,
+        "x": 494,
+        "y": 562,
+        "reason": 0
+      }
+    },
+    {
+      "at": 95244.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1597,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 490,
+        "y": 560,
+        "direction": 3,
+        "id": 42665602,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 95535.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1599,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 506,
+        "y": 562,
+        "direction": 7,
+        "id": 942192260,
+        "self": false,
+        "action": "walking",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 96084.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1605,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 492,
+        "y": 564,
+        "direction": 1,
+        "id": 2104828317,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 96117.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1607,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 492,
+        "y": 560,
+        "direction": 3,
+        "id": 1461976252,
+        "self": false,
+        "action": "walking",
+        "name": "钉耙猫"
+      }
+    },
+    {
+      "at": 96118.80000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1609,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1242045475
+      }
+    },
+    {
+      "at": 96119.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1611,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 252471931
+      }
+    },
+    {
+      "at": 96354.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1613,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 89,
+        "kind": "move",
+        "accepted": true,
+        "x": 492,
+        "y": 562,
+        "reason": 0
+      }
+    },
+    {
+      "at": 96614.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1615,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 495,
+        "y": 567,
+        "direction": 7,
+        "id": 874603737,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 96643.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1617,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 561,
+        "direction": 3,
+        "id": 42665602,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 97122.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1619,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 480,
+        "y": 567,
+        "direction": 2,
+        "id": 987584292,
+        "self": false,
+        "action": "standing",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 97150.60000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1623,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 942192260
+      }
+    },
+    {
+      "at": 97150.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1625,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1397049026
+      }
+    },
+    {
+      "at": 97151.20000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1627,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 90,
+        "kind": "move",
+        "accepted": true,
+        "x": 490,
+        "y": 562,
+        "reason": 0
+      }
+    },
+    {
+      "at": 97424.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1629,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 563,
+        "direction": 7,
+        "id": 2104828317,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 97631.30000019073,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1631,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 560,
+        "direction": 6,
+        "id": 1461976252,
+        "self": false,
+        "action": "walking",
+        "name": "钉耙猫"
+      }
+    },
+    {
+      "at": 97663.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1633,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 91,
+        "kind": "move",
+        "accepted": true,
+        "x": 488,
+        "y": 562,
+        "reason": 0
+      }
+    },
+    {
+      "at": 97914.70000076294,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1635,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 488,
+        "y": 564,
+        "direction": 0,
+        "id": 880807833,
+        "self": false,
+        "action": "walking",
+        "name": "毒蜘蛛"
+      }
+    },
+    {
+      "at": 97961.4000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1637,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 556,
+        "direction": 5,
+        "id": 2015424774,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    },
+    {
+      "at": 97962.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1639,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 494,
+        "y": 566,
+        "direction": 7,
+        "id": 874603737,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 98181.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1641,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 479,
+        "y": 558,
+        "direction": 2,
+        "id": 1428928578,
+        "self": false,
+        "action": "standing",
+        "name": "鹿"
+      }
+    },
+    {
+      "at": 98220,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1645,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 490,
+        "y": 562,
+        "direction": 5,
+        "id": 42665602,
+        "self": false,
+        "action": "walking",
+        "name": "稻草人"
+      }
+    },
+    {
+      "at": 98222.10000038147,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1647,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 202389589
+      }
+    },
+    {
+      "at": 98222.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1649,
+        "mapGeneration": 1,
+        "type": "entityRemoved",
+        "id": 1635557161
+      }
+    },
+    {
+      "at": 98222.9000005722,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1651,
+        "mapGeneration": 1,
+        "type": "actionResult",
+        "actionId": 92,
+        "kind": "move",
+        "accepted": true,
+        "x": 486,
+        "y": 562,
+        "reason": 0
+      }
+    },
+    {
+      "at": 98788.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1653,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 492,
+        "y": 562,
+        "direction": 7,
+        "id": 1966193538,
+        "self": false,
+        "action": "walking",
+        "name": "森林雪人"
+      }
+    },
+    {
+      "at": 99080.5,
+      "type": "gateway-in",
+      "data": {
+        "sequence": 1659,
+        "mapGeneration": 1,
+        "type": "entity",
+        "kind": "monster",
+        "x": 491,
+        "y": 562,
+        "direction": 0,
+        "id": 2104828317,
+        "self": false,
+        "action": "walking",
+        "name": "多钩猫"
+      }
+    }
+  ]
+}

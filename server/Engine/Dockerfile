@@ -35,6 +35,8 @@ COPY server/openmir2-safezone.patch server/openmir2-safezone.patch
 RUN git -C upstream/openmir2 apply --ignore-space-change /src/server/openmir2-safezone.patch
 COPY server/openmir2-script.patch server/openmir2-script.patch
 RUN git -C upstream/openmir2 apply /src/server/openmir2-script.patch
+COPY server/openmir2-items.patch server/openmir2-items.patch
+RUN git -C upstream/openmir2 apply /src/server/openmir2-items.patch
 RUN --mount=type=cache,target=/root/.nuget/packages \
     for project in GameSrv DBSrv LoginSrv LoginGate SelGate GameGate Storeages/DBSvr.Storage.MySQL; do \
       dotnet publish upstream/openmir2/src/$project/${project##*/}.csproj \
