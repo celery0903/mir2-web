@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "full176Acceptance": false,
+  "source": "mir2-web-engine-1",
+  "scope": "Actual extracted native DLLs; declared roots, inactive files, script branches, quoted goods/drops, currency and dynamic names.",
+  "assemblies": {
+    "GameSrv.dll": "1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79",
+    "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6",
+    "OpenMir2.dll": "481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad",
+    "ScriptSystem.dll": "6d91b8af4881f9fdf1c464112172395ce50c7027374d4ea74d5aff10270479c0",
+    "SystemModule.dll": "0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005"
+  },
+  "checkedReferences": 7
+}

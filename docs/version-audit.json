@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-05T02:19:47.227Z",
+  "checkedAt": "2026-10-05T03:00:04.188Z",
   "project": "mir2-web",
   "target": "2003 Chinese 1.76",
   "acceptance": "failed",
@@ -20,7 +20,7 @@
     "upstream/mir2-client/apps/web/src/play.ts": "47681ebda2b8683431ec284b15fdb2304a9761fd6e93be430c3c6ec8e4f1e2e1",
     "upstream/mir2-client/apps/web/src/classic-hud.ts": "a9acc9220858066173af1552f48408a4bea81e86186d090a9693b9e792f66e4c",
     "upstream/mir2-client/services/web-gateway/GatewaySession.cs": "ea9e6d326d036d7ae8dfa7606a8f08eece20ede597236229bd1ae58d3d5ff2b6",
-    "server/Engine/Dockerfile": "51ac825cb2f24baa06d326ca9948b3debec40499ede45c49b7ac784ac6615b79",
+    "server/Engine/Dockerfile": "66d676ebc936eaf98b009356facee080797101c77679520ac2537b61e3b19e74",
     "server/Engine/run.mjs": "12050b6997079384623210c636b9c65908cd4502d247283b86ab2c944fcc9e92",
     "server/openmir2-linux.patch": "4616cb27725a879277985c909bc6f0134b5b1eecc55b8d705a7dfea1b8b30812",
     "server/source-tests.patch": "51902f52d2f8c281275f4ec1ec96b72d6bfc384d5d8af4ac97ea4eaf54e404a0",
@@ -71,7 +71,19 @@
     "server/openmir2-items.patch": "827549ce7cce7a055f6d4d8fa2ad02908bbcd556bf2181aef899424857c7c4aa",
     "tests/source-items.mjs": "84971b6875ec61e2065bfd8b8879c770b72c3ca88472a05bfe17d15e7dfe14a5",
     "tests/items/ItemChecks.csproj": "a4bf8f9fe40125f30dbda9d9911315dfe3ad3db898d71db3b56d864662dba7b6",
-    "tests/items/Program.cs": "87da5a1ca926de1b1d24377616d308167643bfaa42f4c76361cfe0bab3530947"
+    "tests/items/Program.cs": "87da5a1ca926de1b1d24377616d308167643bfaa42f4c76361cfe0bab3530947",
+    "scripts/audit-classic-items.mjs": "84296d769ef4d107dd0bc2b6cd2def59f2e7a81c6807e99fbbd72c8f2795926d",
+    "scripts/item-audit/Program.cs": "d04a4244a82ecc7cdc98bde2df1a871e6d67b27c1f28440809f0c0c43c69fea5",
+    "scripts/item-audit/ItemAudit.csproj": "a4bf8f9fe40125f30dbda9d9911315dfe3ad3db898d71db3b56d864662dba7b6",
+    "scripts/audit-classic-item-numbers.py": "abf855d9fe63dd372287069a2fdc1cfebcd26663a19055fd6ecfb7a5b752314c",
+    "scripts/audit-classic-item-guides.mjs": "281a08202a163927e9784000f96d9147df0e3c9190be2f05620daa2b3ad03a7d",
+    "scripts/fetch-classic-item-candidates.mjs": "87389bf1b6d4c3d08099a560a9174ac17628fe8a9942f9400c04eb8fb577f97c",
+    "shared/classic-item-sources.json": "fe6e71d7ad15b4222c480fa6a9bf6698b7d1dd29c21e2fd0a58048ba7c6cb8d6",
+    "server/openmir2-quoted-names.patch": "3232d744c18176be8b4f5430eaefaf827ae4d5133d2ab8cb726d8a7b396cd6b8",
+    "tests/quoted-names/Program.cs": "1490399a80f9db134626a12c06451c87a02497850d0c286c5f1eacbd90a7f254",
+    "tests/quoted-names/QuoteChecks.csproj": "a4bf8f9fe40125f30dbda9d9911315dfe3ad3db898d71db3b56d864662dba7b6",
+    "tests/source-quoted-names.mjs": "a722e03a29d341a06fd7c8c6f5827409380aa5b3f4f4e9bc9c4075fd1fb192d7",
+    "tests/classic-items-audit.mjs": "de5241fc412daa4c4cd8681c77a2c6302d28b749f80f1d7c2478b71b532477b1"
   },
   "clientImplementation": {
     "repository": "leiniaozl229/mir2",
@@ -698,6 +710,21 @@
       "outsideSkills": [],
       "authenticated2003NumericalData": false
     }
+  },
+  "itemDataAudit": {
+    "available": true,
+    "file": "docs/correction/classic-items-production/evidence.json",
+    "sha256": "428254d43dff4e82e7b847c0570754d0bc271f4019d661eccea33becb9b25e51",
+    "projectMatches": true,
+    "definitionsMatch": true,
+    "definitionRows": 1000,
+    "classicBooks": 33,
+    "outsideClassicBooks": 169,
+    "compiledReferenceCount": 164,
+    "historicalMissingReferences": 27,
+    "referenceAcceptance": "failed",
+    "authenticated2003Data": false,
+    "interpretation": "Definition hash is checked against current SQL. Script and saved-reference counts describe the dated native audit; they are not a fresh proof of reachability or migration safety."
   },
   "clientArchive": {
     "file": "传奇1.76客户端.rar",

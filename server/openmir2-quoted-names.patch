@@ -1,0 +1,54 @@
+diff --git a/src/OpenMir2/HUtil32.cs b/src/OpenMir2/HUtil32.cs
+--- a/src/OpenMir2/HUtil32.cs
++++ b/src/OpenMir2/HUtil32.cs
+@@ -303,10 +303,11 @@
+             int et;
+             if (string.IsNullOrEmpty(source))
+             {
++                rdstr = string.Empty;
+                 return string.Empty;
+             }
+-            int c = 1;
+-            int len = source.Length;
++            int c = 0;
++            int len = source.Length - 1;
+             while (source[c] == ' ')
+             {
+                 if (c < len)
+@@ -344,10 +345,10 @@
+                     }
+                 }
+             }
+-            rdstr = source.Substring(st - 1, et - st + 1);
++            rdstr = source.Substring(st, et - st + 1);
+             if (len >= et + 2)
+             {
+-                result = source.Substring(et + 2 - 1, len - (et + 1));
++                result = source.Substring(et + 2, len - (et + 1));
+             }
+             else
+             {
+@@ -430,6 +431,7 @@
+         public static string GetValidStrCap(string str, ref string dest, char divider)
+         {
+             string result;
++            str = str?.TrimStart();
+             if (!string.IsNullOrEmpty(str))
+             {
+                 result = str[0] == '\"' ? CaptureString(str, ref dest) : GetValidStr3(str, ref dest, divider);
+@@ -445,6 +447,7 @@
+         public static string GetValidStrCap(string str, ref string dest, char[] divider)
+         {
+             string result;
++            str = str?.TrimStart();
+             if (!string.IsNullOrEmpty(str))
+             {
+                 result = str[0] == '\"' ? CaptureString(str, ref dest) : GetValidStr3(str, ref dest, divider);
+@@ -460,6 +463,7 @@
+         public static string GetValidStrCap(string str, ref string dest, string[] divider)
+         {
+             string result;
++            str = str?.TrimStart();
+             if (!string.IsNullOrEmpty(str))
+             {
+                 result = str[0] == '\"' ? CaptureString(str, ref dest) : GetValidStr3(str, ref dest, divider);

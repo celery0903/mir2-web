@@ -1,0 +1,366 @@
+{
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Actual native image DLLs; quoted item tokens and all GetValidStrCap overloads.",
+  "results": {
+    "before": {
+      "image": "sha256:7ded311cd94e070ce8cc35c48c1b6d2e90d3eba6586472a242064c68f4d15837",
+      "openMir2Sha256": "225ebb4a54778979e6c4cd12420fe2eb7d3dec7de9b8d4982203cd72d5d53803",
+      "exitCode": 1,
+      "stdout": "OpenMir2 assembly SHA-256: 225ebb4a54778979e6c4cd12420fe2eb7d3dec7de9b8d4982203cd72d5d53803\nQUOTE_CHECK_RESULTS=[{\"label\":\"null/overload:0\",\"passed\":true},{\"label\":\"null/overload:1\",\"passed\":true},{\"label\":\"null/overload:2\",\"passed\":true},{\"label\":\"empty/overload:0\",\"passed\":true},{\"label\":\"empty/overload:1\",\"passed\":true},{\"label\":\"empty/overload:2\",\"passed\":true},{\"label\":\"whitespace/overload:0\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\t\\u0022,\\u0022tail\\u0022:\\u0022\\u0022,\\u0022expectedToken\\u0022:\\u0022\\u0022,\\u0022expectedTail\\u0022:\\u0022\\u0022}\"},{\"label\":\"whitespace/overload:1\",\"passed\":true},{\"label\":\"whitespace/overload:2\",\"passed\":true},{\"label\":\"plain/overload:0\",\"passed\":true},{\"label\":\"plain/overload:1\",\"passed\":true},{\"label\":\"plain/overload:2\",\"passed\":true},{\"label\":\"quoted/overload:0\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022fireball\\u0022,\\u0022tail\\u0022:\\u0022 2\\u0022,\\u0022expectedToken\\u0022:\\u0022fireball\\u0022,\\u0022expectedTail\\u0022:\\u0022 2\\u0022}\"},{\"label\":\"quoted/overload:1\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022fireball\\u0022,\\u0022tail\\u0022:\\u0022 2\\u0022,\\u0022expectedToken\\u0022:\\u0022fireball\\u0022,\\u0022expectedTail\\u0022:\\u0022 2\\u0022}\"},{\"label\":\"quoted/overload:2\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022fireball\\u0022,\\u0022tail\\u0022:\\u0022 2\\u0022,\\u0022expectedToken\\u0022:\\u0022fireball\\u0022,\\u0022expectedTail\\u0022:\\u0022 2\\u0022}\"},{\"label\":\"spaces within quotes/overload:0\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\t\\\\u0022fire\\u0022,\\u0022tail\\u0022:\\u0022ball\\\\u0022 \\\\t3\\u0022,\\u0022expectedToken\\u0022:\\u0022fire ball\\u0022,\\u0022expectedTail\\u0022:\\u0022 \\\\t3\\u0022}\"},{\"label\":\"spaces within quotes/overload:1\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022fire\\u0022,\\u0022tail\\u0022:\\u0022ball\\\\u0022 \\\\t3\\u0022,\\u0022expectedToken\\u0022:\\u0022fire ball\\u0022,\\u0022expectedTail\\u0022:\\u0022 \\\\t3\\u0022}\"},{\"label\":\"spaces within quotes/overload:2\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022fire\\u0022,\\u0022tail\\u0022:\\u0022ball\\\\u0022 \\\\t3\\u0022,\\u0022expectedToken\\u0022:\\u0022fire ball\\u0022,\\u0022expectedTail\\u0022:\\u0022 \\\\t3\\u0022}\"},{\"label\":\"empty quotes/overload:0\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"empty quotes/overload:1\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"empty quotes/overload:2\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"empty quoted parameter/overload:0\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"empty quoted parameter/overload:1\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"empty quoted parameter/overload:2\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"single quote legacy token/overload:0\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"single quote legacy token/overload:1\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"single quote legacy token/overload:2\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"unclosed quote legacy token/overload:0\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"unclosed quote legacy token/overload:1\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"unclosed quote legacy token/overload:2\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"adjacent quoted tokens/overload:0\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"adjacent quoted tokens/overload:1\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"adjacent quoted tokens/overload:2\",\"passed\":false,\"error\":\"Index was outside the bounds of the array.\"},{\"label\":\"Chinese item name/overload:0\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022\\\\u706B\\\\u7403\\\\u672F\\u0022,\\u0022tail\\u0022:\\u0022 3 60\\u0022,\\u0022expectedToken\\u0022:\\u0022\\\\u706B\\\\u7403\\\\u672F\\u0022,\\u0022expectedTail\\u0022:\\u0022 3 60\\u0022}\"},{\"label\":\"Chinese item name/overload:1\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022\\\\u706B\\\\u7403\\\\u672F\\u0022,\\u0022tail\\u0022:\\u0022 3 60\\u0022,\\u0022expectedToken\\u0022:\\u0022\\\\u706B\\\\u7403\\\\u672F\\u0022,\\u0022expectedTail\\u0022:\\u0022 3 60\\u0022}\"},{\"label\":\"Chinese item name/overload:2\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022\\\\u706B\\\\u7403\\\\u672F\\u0022,\\u0022tail\\u0022:\\u0022 3 60\\u0022,\\u0022expectedToken\\u0022:\\u0022\\\\u706B\\\\u7403\\\\u672F\\u0022,\\u0022expectedTail\\u0022:\\u0022 3 60\\u0022}\"},{\"label\":\"Chinese spaced item name/overload:0\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022\\\\u706B\\u0022,\\u0022tail\\u0022:\\u0022 \\\\u672F\\\\u0022\\u0022,\\u0022expectedToken\\u0022:\\u0022\\\\u706B\\\\u7403 \\\\u672F\\u0022,\\u0022expectedTail\\u0022:\\u0022\\u0022}\"},{\"label\":\"Chinese spaced item name/overload:1\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022\\\\u706B\\u0022,\\u0022tail\\u0022:\\u0022 \\\\u672F\\\\u0022\\u0022,\\u0022expectedToken\\u0022:\\u0022\\\\u706B\\\\u7403 \\\\u672F\\u0022,\\u0022expectedTail\\u0022:\\u0022\\u0022}\"},{\"label\":\"Chinese spaced item name/overload:2\",\"passed\":false,\"error\":\"{\\u0022token\\u0022:\\u0022\\\\u0022\\\\u706B\\u0022,\\u0022tail\\u0022:\\u0022 \\\\u672F\\\\u0022\\u0022,\\u0022expectedToken\\u0022:\\u0022\\\\u706B\\\\u7403 \\\\u672F\\u0022,\\u0022expectedTail\\u0022:\\u0022\\u0022}\"}]\nQuoted-name checks: 11/39\n",
+      "stderr": "",
+      "cases": [
+        {
+          "label": "null/overload:0",
+          "passed": true
+        },
+        {
+          "label": "null/overload:1",
+          "passed": true
+        },
+        {
+          "label": "null/overload:2",
+          "passed": true
+        },
+        {
+          "label": "empty/overload:0",
+          "passed": true
+        },
+        {
+          "label": "empty/overload:1",
+          "passed": true
+        },
+        {
+          "label": "empty/overload:2",
+          "passed": true
+        },
+        {
+          "label": "whitespace/overload:0",
+          "passed": false,
+          "error": "{\"token\":\"\\t\",\"tail\":\"\",\"expectedToken\":\"\",\"expectedTail\":\"\"}"
+        },
+        {
+          "label": "whitespace/overload:1",
+          "passed": true
+        },
+        {
+          "label": "whitespace/overload:2",
+          "passed": true
+        },
+        {
+          "label": "plain/overload:0",
+          "passed": true
+        },
+        {
+          "label": "plain/overload:1",
+          "passed": true
+        },
+        {
+          "label": "plain/overload:2",
+          "passed": true
+        },
+        {
+          "label": "quoted/overload:0",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022fireball\",\"tail\":\" 2\",\"expectedToken\":\"fireball\",\"expectedTail\":\" 2\"}"
+        },
+        {
+          "label": "quoted/overload:1",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022fireball\",\"tail\":\" 2\",\"expectedToken\":\"fireball\",\"expectedTail\":\" 2\"}"
+        },
+        {
+          "label": "quoted/overload:2",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022fireball\",\"tail\":\" 2\",\"expectedToken\":\"fireball\",\"expectedTail\":\" 2\"}"
+        },
+        {
+          "label": "spaces within quotes/overload:0",
+          "passed": false,
+          "error": "{\"token\":\"\\t\\u0022fire\",\"tail\":\"ball\\u0022 \\t3\",\"expectedToken\":\"fire ball\",\"expectedTail\":\" \\t3\"}"
+        },
+        {
+          "label": "spaces within quotes/overload:1",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022fire\",\"tail\":\"ball\\u0022 \\t3\",\"expectedToken\":\"fire ball\",\"expectedTail\":\" \\t3\"}"
+        },
+        {
+          "label": "spaces within quotes/overload:2",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022fire\",\"tail\":\"ball\\u0022 \\t3\",\"expectedToken\":\"fire ball\",\"expectedTail\":\" \\t3\"}"
+        },
+        {
+          "label": "empty quotes/overload:0",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "empty quotes/overload:1",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "empty quotes/overload:2",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "empty quoted parameter/overload:0",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "empty quoted parameter/overload:1",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "empty quoted parameter/overload:2",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "single quote legacy token/overload:0",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "single quote legacy token/overload:1",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "single quote legacy token/overload:2",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "unclosed quote legacy token/overload:0",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "unclosed quote legacy token/overload:1",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "unclosed quote legacy token/overload:2",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "adjacent quoted tokens/overload:0",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "adjacent quoted tokens/overload:1",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "adjacent quoted tokens/overload:2",
+          "passed": false,
+          "error": "Index was outside the bounds of the array."
+        },
+        {
+          "label": "Chinese item name/overload:0",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022\\u706B\\u7403\\u672F\",\"tail\":\" 3 60\",\"expectedToken\":\"\\u706B\\u7403\\u672F\",\"expectedTail\":\" 3 60\"}"
+        },
+        {
+          "label": "Chinese item name/overload:1",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022\\u706B\\u7403\\u672F\",\"tail\":\" 3 60\",\"expectedToken\":\"\\u706B\\u7403\\u672F\",\"expectedTail\":\" 3 60\"}"
+        },
+        {
+          "label": "Chinese item name/overload:2",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022\\u706B\\u7403\\u672F\",\"tail\":\" 3 60\",\"expectedToken\":\"\\u706B\\u7403\\u672F\",\"expectedTail\":\" 3 60\"}"
+        },
+        {
+          "label": "Chinese spaced item name/overload:0",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022\\u706B\",\"tail\":\" \\u672F\\u0022\",\"expectedToken\":\"\\u706B\\u7403 \\u672F\",\"expectedTail\":\"\"}"
+        },
+        {
+          "label": "Chinese spaced item name/overload:1",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022\\u706B\",\"tail\":\" \\u672F\\u0022\",\"expectedToken\":\"\\u706B\\u7403 \\u672F\",\"expectedTail\":\"\"}"
+        },
+        {
+          "label": "Chinese spaced item name/overload:2",
+          "passed": false,
+          "error": "{\"token\":\"\\u0022\\u706B\",\"tail\":\" \\u672F\\u0022\",\"expectedToken\":\"\\u706B\\u7403 \\u672F\",\"expectedTail\":\"\"}"
+        }
+      ]
+    },
+    "after": {
+      "image": "sha256:48092dd5906bf7e5db0d57a3b210937f0dbb4565930569ef31bd18a8be71c728",
+      "openMir2Sha256": "481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad",
+      "stdout": "OpenMir2 assembly SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\nQUOTE_CHECK_RESULTS=[{\"label\":\"null/overload:0\",\"passed\":true},{\"label\":\"null/overload:1\",\"passed\":true},{\"label\":\"null/overload:2\",\"passed\":true},{\"label\":\"empty/overload:0\",\"passed\":true},{\"label\":\"empty/overload:1\",\"passed\":true},{\"label\":\"empty/overload:2\",\"passed\":true},{\"label\":\"whitespace/overload:0\",\"passed\":true},{\"label\":\"whitespace/overload:1\",\"passed\":true},{\"label\":\"whitespace/overload:2\",\"passed\":true},{\"label\":\"plain/overload:0\",\"passed\":true},{\"label\":\"plain/overload:1\",\"passed\":true},{\"label\":\"plain/overload:2\",\"passed\":true},{\"label\":\"quoted/overload:0\",\"passed\":true},{\"label\":\"quoted/overload:1\",\"passed\":true},{\"label\":\"quoted/overload:2\",\"passed\":true},{\"label\":\"spaces within quotes/overload:0\",\"passed\":true},{\"label\":\"spaces within quotes/overload:1\",\"passed\":true},{\"label\":\"spaces within quotes/overload:2\",\"passed\":true},{\"label\":\"empty quotes/overload:0\",\"passed\":true},{\"label\":\"empty quotes/overload:1\",\"passed\":true},{\"label\":\"empty quotes/overload:2\",\"passed\":true},{\"label\":\"empty quoted parameter/overload:0\",\"passed\":true},{\"label\":\"empty quoted parameter/overload:1\",\"passed\":true},{\"label\":\"empty quoted parameter/overload:2\",\"passed\":true},{\"label\":\"single quote legacy token/overload:0\",\"passed\":true},{\"label\":\"single quote legacy token/overload:1\",\"passed\":true},{\"label\":\"single quote legacy token/overload:2\",\"passed\":true},{\"label\":\"unclosed quote legacy token/overload:0\",\"passed\":true},{\"label\":\"unclosed quote legacy token/overload:1\",\"passed\":true},{\"label\":\"unclosed quote legacy token/overload:2\",\"passed\":true},{\"label\":\"adjacent quoted tokens/overload:0\",\"passed\":true},{\"label\":\"adjacent quoted tokens/overload:1\",\"passed\":true},{\"label\":\"adjacent quoted tokens/overload:2\",\"passed\":true},{\"label\":\"Chinese item name/overload:0\",\"passed\":true},{\"label\":\"Chinese item name/overload:1\",\"passed\":true},{\"label\":\"Chinese item name/overload:2\",\"passed\":true},{\"label\":\"Chinese spaced item name/overload:0\",\"passed\":true},{\"label\":\"Chinese spaced item name/overload:1\",\"passed\":true},{\"label\":\"Chinese spaced item name/overload:2\",\"passed\":true}]\nQuoted-name checks: 39/39\n",
+      "stderr": "",
+      "exitCode": 0,
+      "cases": [
+        {
+          "label": "null/overload:0",
+          "passed": true
+        },
+        {
+          "label": "null/overload:1",
+          "passed": true
+        },
+        {
+          "label": "null/overload:2",
+          "passed": true
+        },
+        {
+          "label": "empty/overload:0",
+          "passed": true
+        },
+        {
+          "label": "empty/overload:1",
+          "passed": true
+        },
+        {
+          "label": "empty/overload:2",
+          "passed": true
+        },
+        {
+          "label": "whitespace/overload:0",
+          "passed": true
+        },
+        {
+          "label": "whitespace/overload:1",
+          "passed": true
+        },
+        {
+          "label": "whitespace/overload:2",
+          "passed": true
+        },
+        {
+          "label": "plain/overload:0",
+          "passed": true
+        },
+        {
+          "label": "plain/overload:1",
+          "passed": true
+        },
+        {
+          "label": "plain/overload:2",
+          "passed": true
+        },
+        {
+          "label": "quoted/overload:0",
+          "passed": true
+        },
+        {
+          "label": "quoted/overload:1",
+          "passed": true
+        },
+        {
+          "label": "quoted/overload:2",
+          "passed": true
+        },
+        {
+          "label": "spaces within quotes/overload:0",
+          "passed": true
+        },
+        {
+          "label": "spaces within quotes/overload:1",
+          "passed": true
+        },
+        {
+          "label": "spaces within quotes/overload:2",
+          "passed": true
+        },
+        {
+          "label": "empty quotes/overload:0",
+          "passed": true
+        },
+        {
+          "label": "empty quotes/overload:1",
+          "passed": true
+        },
+        {
+          "label": "empty quotes/overload:2",
+          "passed": true
+        },
+        {
+          "label": "empty quoted parameter/overload:0",
+          "passed": true
+        },
+        {
+          "label": "empty quoted parameter/overload:1",
+          "passed": true
+        },
+        {
+          "label": "empty quoted parameter/overload:2",
+          "passed": true
+        },
+        {
+          "label": "single quote legacy token/overload:0",
+          "passed": true
+        },
+        {
+          "label": "single quote legacy token/overload:1",
+          "passed": true
+        },
+        {
+          "label": "single quote legacy token/overload:2",
+          "passed": true
+        },
+        {
+          "label": "unclosed quote legacy token/overload:0",
+          "passed": true
+        },
+        {
+          "label": "unclosed quote legacy token/overload:1",
+          "passed": true
+        },
+        {
+          "label": "unclosed quote legacy token/overload:2",
+          "passed": true
+        },
+        {
+          "label": "adjacent quoted tokens/overload:0",
+          "passed": true
+        },
+        {
+          "label": "adjacent quoted tokens/overload:1",
+          "passed": true
+        },
+        {
+          "label": "adjacent quoted tokens/overload:2",
+          "passed": true
+        },
+        {
+          "label": "Chinese item name/overload:0",
+          "passed": true
+        },
+        {
+          "label": "Chinese item name/overload:1",
+          "passed": true
+        },
+        {
+          "label": "Chinese item name/overload:2",
+          "passed": true
+        },
+        {
+          "label": "Chinese spaced item name/overload:0",
+          "passed": true
+        },
+        {
+          "label": "Chinese spaced item name/overload:1",
+          "passed": true
+        },
+        {
+          "label": "Chinese spaced item name/overload:2",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "reproduced": true
+}

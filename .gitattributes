@@ -3,3 +3,8 @@ docs/correction/classic-skills-references/references/*.html -whitespace
 docs/correction/classic-skills-candidate/*.log -whitespace
 docs/correction/classic-skills-production/*.log -whitespace
 docs/correction/classic-skills-sql/mysql.log -whitespace
+docs/correction/classic-item-guide-sources/*.html -whitespace
+docs/correction/classic-items-production/*.log -whitespace
+docs/correction/quoted-names-candidate/*.log -whitespace
+docs/correction/quoted-names-production/*.log -whitespace
+docs/correction/quoted-source-items/*.log -whitespace

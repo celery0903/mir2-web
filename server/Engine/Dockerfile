@@ -37,6 +37,8 @@ COPY server/openmir2-script.patch server/openmir2-script.patch
 RUN git -C upstream/openmir2 apply /src/server/openmir2-script.patch
 COPY server/openmir2-items.patch server/openmir2-items.patch
 RUN git -C upstream/openmir2 apply /src/server/openmir2-items.patch
+COPY server/openmir2-quoted-names.patch server/openmir2-quoted-names.patch
+RUN git -C upstream/openmir2 apply /src/server/openmir2-quoted-names.patch
 RUN --mount=type=cache,target=/root/.nuget/packages \
     for project in GameSrv DBSrv LoginSrv LoginGate SelGate GameGate Storeages/DBSvr.Storage.MySQL; do \
       dotnet publish upstream/openmir2/src/$project/${project##*/}.csproj \
@@ -53,6 +55,8 @@ COPY tests/login-channel tests/login-channel
 RUN dotnet run --project tests/login-channel/LoginChannelChecks.csproj -c Release --nologo
 COPY tests/script tests/script
 RUN dotnet run --project tests/script/ScriptChecks.csproj -c Release --nologo
+COPY tests/quoted-names tests/quoted-names
+RUN dotnet run --project tests/quoted-names/QuoteChecks.csproj -c Release
 
 FROM mcr.microsoft.com/dotnet/runtime:8.0
 COPY --from=data /usr/local/bin/node /usr/local/bin/node

@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "full176Acceptance": false,
+  "scope": "Actual running native DLLs; declared roots, inactive files, script branches, quoted goods/drops, currency and dynamic names.",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'\"火球术' !== '火球术'\n"
+}

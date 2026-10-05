@@ -55,6 +55,10 @@ files.push('tests/source-client.mjs', 'tests/source-world-travel.mjs', 'tests/cl
 files.push('shared/classic-skills.json', 'scripts/classic-skills.mjs', 'scripts/migrate-classic-skills.mjs', 'tests/classic-skills-migration.mjs', 'tests/classic-skill-references.mjs');
 files.push('scripts/audit-classic-skill-numbers.py');
 files.push('server/openmir2-items.patch', 'tests/source-items.mjs', 'tests/items/ItemChecks.csproj', 'tests/items/Program.cs');
+files.push('scripts/audit-classic-items.mjs', 'scripts/item-audit/Program.cs', 'scripts/item-audit/ItemAudit.csproj',
+  'scripts/audit-classic-item-numbers.py', 'scripts/audit-classic-item-guides.mjs', 'scripts/fetch-classic-item-candidates.mjs', 'shared/classic-item-sources.json');
+files.push('server/openmir2-quoted-names.patch', 'tests/quoted-names/Program.cs', 'tests/quoted-names/QuoteChecks.csproj',
+  'tests/source-quoted-names.mjs', 'tests/classic-items-audit.mjs');
 const contentHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const { stdout: sourceRevision } = await execute('git', ['-C', 'upstream/mir2-client', 'rev-parse', 'HEAD']);
 const { stdout: webLabels } = await execute('docker', ['inspect', `${project}-web-1`, '--format', '{{json .Config.Labels}}']);
@@ -157,6 +161,28 @@ const frames = Object.fromEntries(frameIndices.map(index => {
   if (!frame) throw new Error(`Missing original UI frame ${index}`);
   return [index, { width: frame.w, height: frame.h }];
 }));
+let itemDataAudit = { available: false, authenticated2003Data: false, referenceAcceptance: 'unverified' };
+const itemAuditFile = process.env.MIR_ITEM_AUDIT_FILE ?? 'docs/correction/classic-items-production/evidence.json';
+try {
+  const evidenceBytes = await readFile(itemAuditFile);
+  const evidence = JSON.parse(evidenceBytes);
+  const columns = evidence.allDefinitionColumns;
+  if (!Array.isArray(columns) || !columns.length || columns.some(column => !/^[A-Za-z0-9_]+$/.test(column))) throw new Error('Invalid audited item schema');
+  const query = `SELECT JSON_OBJECT(${columns.map(column => `'${column}',\`${column}\``).join(',')}) FROM mir2_data.stditems ORDER BY Id`;
+  const currentRows = (await execute('docker', ['exec', `${project}-db-1`, 'sh', '-c',
+    'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysql --default-character-set=utf8mb4 -uroot --batch --raw --skip-column-names -e "$1"', 'sh', query],
+    { maxBuffer: 16 * 1024 * 1024 })).stdout.trim().split('\n').filter(Boolean).map(JSON.parse);
+  const definitionsMatch = createHash('sha256').update(JSON.stringify(currentRows)).digest('hex') === evidence.definitionsSha256;
+  itemDataAudit = { available: true, file: itemAuditFile, sha256: createHash('sha256').update(evidenceBytes).digest('hex'),
+    projectMatches: evidence.project === project, definitionsMatch, definitionRows: evidence.definitionRows,
+    classicBooks: evidence.books.classic.length, outsideClassicBooks: evidence.books.outside.length,
+    compiledReferenceCount: evidence.references.length, historicalMissingReferences: evidence.missingReferences.length,
+    referenceAcceptance: definitionsMatch && evidence.project === project ? evidence.referenceAcceptance : 'stale',
+    authenticated2003Data: false,
+    interpretation: 'Definition hash is checked against current SQL. Script and saved-reference counts describe the dated native audit; they are not a fresh proof of reachability or migration safety.' };
+} catch (error) {
+  if (error.code !== 'ENOENT') itemDataAudit.error = String(error);
+}
 const report = {
   checkedAt: new Date().toISOString(), project, target: '2003 Chinese 1.76',
   acceptance: 'failed', goalComplete: false, contentHashes,
@@ -170,6 +196,7 @@ const report = {
   },
   world: { profile: world.profile, activatedMapIDs, enabledMaps: mapAudit.maps, installedMapIDsMatchCollisionAudit: JSON.stringify(activatedMapIDs.slice().sort()) === JSON.stringify(mapAudit.maps.map(map => map.id).sort()), connections: mapAudit.connections, scope: mapAudit.scope },
   database,
+  itemDataAudit,
   clientArchive: { file: ui.client176.archive, sha256: ui.client176.sha256, provenance: ui.client176.provenance, officialVersionAuthenticated: false, rawArchiveAvailableHere: false },
   originalFrameDimensions: frames,
   referenceCandidate: { repository: reference.repository, revision: reference.revision, tableCounts: reference.tableCounts, directImportAccepted: reference.directImportAccepted, laterSkills: reference.laterSkills, laterItems: reference.laterItems },

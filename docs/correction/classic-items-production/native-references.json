@@ -1,0 +1,3959 @@
+{
+  "assemblies": {
+    "GameSrv.dll": "1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79",
+    "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6",
+    "OpenMir2.dll": "481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad",
+    "ScriptSystem.dll": "6d91b8af4881f9fdf1c464112172395ce50c7027374d4ea74d5aff10270479c0",
+    "SystemModule.dll": "0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005"
+  },
+  "loadedMaps": [
+    "0",
+    "0102",
+    "0103",
+    "0104",
+    "0105",
+    "0106",
+    "0108",
+    "0109",
+    "0132",
+    "0140",
+    "0141"
+  ],
+  "declarations": [
+    {
+      "kind": "merchant",
+      "map": "0103",
+      "name": "\u536B\u5BB6\u5E97",
+      "source": "Merchant.txt",
+      "line": 1
+    },
+    {
+      "kind": "merchant",
+      "map": "0106",
+      "name": "\u5B89\u5BB6\u5E03\u8863",
+      "source": "Merchant.txt",
+      "line": 2
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u590F\u5BB6\u5E97\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 3
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u4E66\u5E97\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 4
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u6742\u8D27\u94FA\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 5
+    },
+    {
+      "kind": "merchant",
+      "map": "0105",
+      "name": "\u6212\u6307\u5E97\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 6
+    },
+    {
+      "kind": "merchant",
+      "map": "0105",
+      "name": "\u624B\u956F\u5E97\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 7
+    },
+    {
+      "kind": "merchant",
+      "map": "0105",
+      "name": "\u9879\u94FE\u5E97\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 8
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u8089\u5E97\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 9
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u8089\u5E97\u8001\u677F",
+      "source": "Merchant.txt",
+      "line": 10
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u5C60\u592B",
+      "source": "Merchant.txt",
+      "line": 11
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u8FB9\u754C\u6742\u8D27\u5E97",
+      "source": "Merchant.txt",
+      "line": 12
+    },
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u94F6\u674F\u6742\u8D27\u5E97",
+      "source": "Merchant.txt",
+      "line": 13
+    },
+    {
+      "kind": "merchant",
+      "map": "0132",
+      "name": "\u4E66\u5E97",
+      "source": "Merchant.txt",
+      "line": 14
+    },
+    {
+      "kind": "merchant",
+      "map": "0140",
+      "name": "\u8FB9\u754C\u6751\u4FDD\u7BA1\u5458",
+      "source": "Merchant.txt",
+      "line": 15
+    }
+  ],
+  "scriptRoots": [
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6212\u6307\u5E97-0105.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u624B\u956F\u5E97-0105.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u6751/\u8FB9\u754C\u6751\u4FDD\u7BA1\u5458-0140.txt",
+      "merchant": true
+    },
+    {
+      "file": "Market_Def/QFunction-0.txt",
+      "merchant": true
+    },
+    {
+      "file": "MapQuest_def/QManage.txt",
+      "merchant": false
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "merchant": false
+    }
+  ],
+  "spawnMonsters": [
+    "\u534A\u517D\u4EBA",
+    "\u591A\u94A9\u732B",
+    "\u68EE\u6797\u96EA\u4EBA",
+    "\u6BD2\u8718\u86DB",
+    "\u7A3B\u8349\u4EBA",
+    "\u86E4\u87C6",
+    "\u9489\u8019\u732B",
+    "\u98DF\u4EBA\u82B1",
+    "\u9E21",
+    "\u9E7F"
+  ],
+  "files": {
+    "MapInfo.txt": {
+      "bytes": 2869,
+      "sha256": "bd19715bbcc63b4580a671a868241d803dafff129139385af57ba9e5e476e5a8"
+    },
+    "Merchant.txt": {
+      "bytes": 1068,
+      "sha256": "092d6395c26943f9e212e883265a8f1addf6ca7852f79761f622368cead1058b"
+    },
+    "Npcs.txt": {
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    "MapQuest.txt": {
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    "MonGen.txt": {
+      "bytes": 1437,
+      "sha256": "28d15c1048ab38f6629b13edcc0e99c90a29fc240b5afffcbf4fd1d4eaaa5f10"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt": {
+      "bytes": 1046,
+      "sha256": "c58e09b0a8cab560dcb7bd6f8eef327292e5eb801d03504fb8dcce686b00e67e"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt": {
+      "bytes": 816,
+      "sha256": "800ce82e3a9a2b67b2261b8c35ea37f8b08736a64b569cb7d2c1fc553e0e3d57"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt": {
+      "bytes": 818,
+      "sha256": "9c506468b2c743f2c81fe5b121e7172f5c2cceefe959584b421a1c9e347c1d92"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt": {
+      "bytes": 5170,
+      "sha256": "768cc3e6856d578eaafad5496267aab3662c4d6a6081f8df5f426192b7ec4341"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt": {
+      "bytes": 1486,
+      "sha256": "7e5d558153bc009ebacf8108be966e190d17fce2f9824a5a501e52efa0327ce1"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u6212\u6307\u5E97-0105.txt": {
+      "bytes": 572,
+      "sha256": "2b27cbaeb12bcf266a203bff5e64b2f89295a49ade40911f49e953b073efc3ba"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u624B\u956F\u5E97-0105.txt": {
+      "bytes": 601,
+      "sha256": "481289a9fcc05137a54bc054e9e7c746d24078d4210573411eaa59b4dd71c78b"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt": {
+      "bytes": 2303,
+      "sha256": "6aca8db316dc821dc5e79979e7f4ab9faa29c66536ac4cb6ebe3aba611ff886c"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt": {
+      "bytes": 1138,
+      "sha256": "fe8b5c0ffbd3e36cfeaec2191f0eaecafbc24f22141c21c70a084c460635882d"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt": {
+      "bytes": 709,
+      "sha256": "02ddad8561fd6388b4be117e475e3c48799828ac664e884b2190c0041a785188"
+    },
+    "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt": {
+      "bytes": 1041,
+      "sha256": "6f246dbfb18dba4e95eb94c61311d63a2c7a751f34567fd1e6cc3831fc343602"
+    },
+    "Market_Def/\u6BD4\u5947\u6751/\u8FB9\u754C\u6751\u4FDD\u7BA1\u5458-0140.txt": {
+      "bytes": 292,
+      "sha256": "0c6e843229645fb6252b98c94b483f5c0ea6555bcba758172a86a966d1f58e96"
+    },
+    "Market_Def/QFunction-0.txt": {
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    "MapQuest_def/QManage.txt": {
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    "Robot_def/RobotManage.txt": {
+      "bytes": 326,
+      "sha256": "a58f8dcbd47993131a2ffc90bbeae7be095a206f02b78648ca98ea950de5b95a"
+    },
+    "MonItems/\u534A\u517D\u4EBA.txt": {
+      "bytes": 162,
+      "sha256": "dec2efd4b0e0eb905bced9709cb06690f37b485bd3d317101012fc95059e4296"
+    },
+    "MonItems/\u591A\u94A9\u732B.txt": {
+      "bytes": 162,
+      "sha256": "dec2efd4b0e0eb905bced9709cb06690f37b485bd3d317101012fc95059e4296"
+    },
+    "MonItems/\u68EE\u6797\u96EA\u4EBA.txt": {
+      "bytes": 163,
+      "sha256": "7e1fa9aac54835bcd3fd4fdcff36fd900c390400c132c6784c77991e7fbdaf6d"
+    },
+    "MonItems/\u6BD2\u8718\u86DB.txt": {
+      "bytes": 25,
+      "sha256": "b26f22c53073cdec24ef28fc3c1d8e1c91dbb94d1a3106c9024f450d72b2b8c2"
+    },
+    "MonItems/\u7A3B\u8349\u4EBA.txt": {
+      "bytes": 162,
+      "sha256": "dec2efd4b0e0eb905bced9709cb06690f37b485bd3d317101012fc95059e4296"
+    },
+    "MonItems/\u9489\u8019\u732B.txt": {
+      "bytes": 162,
+      "sha256": "dec2efd4b0e0eb905bced9709cb06690f37b485bd3d317101012fc95059e4296"
+    },
+    "MonItems/\u98DF\u4EBA\u82B1.txt": {
+      "bytes": 46,
+      "sha256": "ca132731c239c463287cb8c96aa4035406a11a284882cd24d2ffc2ce892f10a6"
+    },
+    "MonItems/\u9E21.txt": {
+      "bytes": 15,
+      "sha256": "44833c24cf36ca701cd6f3b605448111ad6ee348cabff2f90837dffa8e301074"
+    },
+    "MonItems/\u9E7F.txt": {
+      "bytes": 51,
+      "sha256": "3cc71db4223fab225335c179ba2d03fc2e11da2d950b57b35720c530c7eb3276"
+    }
+  },
+  "references": [
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u6728\u5251",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5315\u9996",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9752\u94DC\u5251",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9E64\u5634\u9504",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u77ED\u5251",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u94C1\u5251",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9752\u94DC\u65A7",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "kind": "Take",
+      "name": "\u91D1\u77FF",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "kind": "Give",
+      "name": "\u5BD2\u94C1\u6212\u6307",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8F7B\u578B\u76D4\u7532(\u7537)",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8F7B\u578B\u76D4\u7532(\u5973)",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91CD\u76D4\u7532(\u7537)",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91CD\u76D4\u7532(\u5973)",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u957F\u888D(\u7537)",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u957F\u888D(\u5973)",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7075\u9B42\u6218\u8863(\u7537)",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5B89\u5BB6\u5E03\u8863-0106.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7075\u9B42\u6218\u8863(\u5973)",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91D1\u521B\u836F(\u5C0F\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91D1\u521B\u836F(\u4E2D\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u836F(\u4E2D\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5F3A\u6548\u91D1\u521B\u836F",
+      "details": {
+        "count": 500,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5F3A\u6548\u9B54\u6CD5\u836F",
+      "details": {
+        "count": 500,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91D1\u521B\u836F(\u5C0F)\u5305",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F)\u5305",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91D1\u521B\u836F(\u4E2D)\u5305",
+      "details": {
+        "count": 300,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u836F(\u4E2D)\u5305",
+      "details": {
+        "count": 300,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8D85\u7EA7\u91D1\u521B\u836F",
+      "details": {
+        "count": 600,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8D85\u7EA7\u9B54\u6CD5\u836F",
+      "details": {
+        "count": 600,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u592A\u9633\u6C34",
+      "details": {
+        "count": 500,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u590F\u5BB6-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5F3A\u6548\u592A\u9633\u6C34",
+      "details": {
+        "count": 200,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u57FA\u672C\u5251\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u706B\u7403\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u6CBB\u6108\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7CBE\u795E\u529B\u6218\u6CD5",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u6297\u62D2\u706B\u73AF",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8BF1\u60D1\u4E4B\u5149",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5730\u72F1\u706B",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u65BD\u6BD2\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u653B\u6740\u5251\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u96F7\u7535\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u77AC\u606F\u79FB\u52A8",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5927\u706B\u7403",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7206\u88C2\u706B\u7130",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7075\u9B42\u706B\u7B26",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u53EC\u5524\u9AB7\u9AC5",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9690\u8EAB\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u96C6\u4F53\u9690\u8EAB\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@main/procedure:0",
+      "kind": "CHECKITEM",
+      "name": "\u4EC7\u4EBA\u7684\u5934\u9885",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@main/procedure:1",
+      "kind": "CHECKITEM",
+      "name": "\u65E0\u5B57\u5929\u4E66",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "kind": "CHECKITEM",
+      "name": "\u65E0\u5B57\u5929\u4E66",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "kind": "Take",
+      "name": "\u65E0\u5B57\u5929\u4E66",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "kind": "Give",
+      "name": "\u6218\u795E\u6CB9",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "kind": "CHECKITEM",
+      "name": "\u4EC7\u4EBA\u7684\u5934\u9885",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "kind": "Take",
+      "name": "\u4EC7\u4EBA\u7684\u5934\u9885",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:0",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u4E7E)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:1",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u5DFD)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:2",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u9707)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:3",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u5151)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:4",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u79BB)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:5",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u5764)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:6",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u574E)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:7",
+      "kind": "Give",
+      "name": "\u516B\u5366\u5B9D\u77F3(\u826E)",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8721\u70DB",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u968F\u673A\u4F20\u9001\u5377",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5730\u7262\u9003\u8131\u5377",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u968F\u673A\u4F20\u9001\u5377\u5305",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5730\u7262\u9003\u8131\u5377\u5305",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u62A4\u8EAB\u7B26",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9EC4\u8272\u836F\u7C89",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7070\u8272\u836F\u7C89",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u6708\u5361",
+      "details": {
+        "count": 200,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@main/procedure:0",
+      "kind": "CHECKITEM",
+      "name": "\u94C1\u9556",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@rw03/procedure:0",
+      "kind": "CHECKITEM",
+      "name": "\u94C1\u9556",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@rw03/procedure:0",
+      "kind": "Take",
+      "name": "\u94C1\u9556",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@rw03/procedure:0",
+      "kind": "Give",
+      "name": "\u51E4\u51F0\u7FCE\u6BDB",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6212\u6307\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u53E4\u94DC\u6212\u6307",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6212\u6307\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u516D\u89D2\u6212\u6307",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6212\u6307\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u73BB\u7483\u6212\u6307",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6212\u6307\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u725B\u89D2\u6212\u6307",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u624B\u956F\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5C0F\u624B\u956F",
+      "details": {
+        "count": 10,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u624B\u956F\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u94F6\u624B\u956F",
+      "details": {
+        "count": 10,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u624B\u956F\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u94C1\u624B\u956F",
+      "details": {
+        "count": 10,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u624B\u956F\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u94A2\u624B\u956F",
+      "details": {
+        "count": 10,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91D1\u9879\u94FE",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u4F20\u7EDF\u9879\u94FE",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9ED1\u6A80\u9879\u94FE",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9EC4\u8272\u6C34\u6676\u9879\u94FE",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9ED1\u8272\u6C34\u6676\u9879\u94FE",
+      "details": {
+        "count": 10,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw01/procedure:0",
+      "kind": "CHECKITEM",
+      "name": "\u7EAF\u94F6",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw01/procedure:0",
+      "kind": "Take",
+      "name": "\u7EAF\u94F6",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw02/procedure:0",
+      "kind": "Give",
+      "name": "\u94C1\u5320\u7684\u5DE5\u94B1",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "kind": "Give",
+      "name": "\u7948\u798F\u9879\u94FE",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "kind": "CHECKITEM",
+      "name": "\u8089",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "kind": "Take",
+      "name": "\u8089",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "kind": "Give",
+      "name": "\u8089\u5305",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "kind": "Give",
+      "name": "\u91D1\u5E01",
+      "details": null,
+      "currency": true,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8721\u70DB",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u968F\u673A\u4F20\u9001\u5377",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5730\u7262\u9003\u8131\u5377",
+      "details": {
+        "count": 20,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91D1\u521B\u836F(\u5C0F\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u91D1\u521B\u836F(\u4E2D\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9B54\u6CD5\u836F(\u4E2D\u91CF)",
+      "details": {
+        "count": 100,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E07\u80FD-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u592A\u9633\u6C34",
+      "details": {
+        "count": 500,
+        "refillTime": 3,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u57FA\u672C\u5251\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u706B\u7403\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u6CBB\u6108\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7CBE\u795E\u529B\u6218\u6CD5",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u6297\u62D2\u706B\u73AF",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u8BF1\u60D1\u4E4B\u5149",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5730\u72F1\u706B",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u65BD\u6BD2\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u653B\u6740\u5251\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u96F7\u7535\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u77AC\u606F\u79FB\u52A8",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u5927\u706B\u7403",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7206\u88C2\u706B\u7130",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u7075\u9B42\u706B\u7B26",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u53EC\u5524\u9AB7\u9AC5",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u9690\u8EAB\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u5C0F\u4E66-0132.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u96C6\u4F53\u9690\u8EAB\u672F",
+      "details": {
+        "count": 100,
+        "refillTime": 10,
+        "priceRate": 100
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u534A\u517D\u4EBA.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u91D1\u5E01",
+      "details": {
+        "numerator": 10,
+        "denominator": 30,
+        "count": 300
+      },
+      "currency": true,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u534A\u517D\u4EBA.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u91D1\u521B\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u534A\u517D\u4EBA.txt",
+      "location": "native-drop:2",
+      "kind": "monster-drop",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u534A\u517D\u4EBA.txt",
+      "location": "native-drop:3",
+      "kind": "monster-drop",
+      "name": "\u4E4C\u6728\u5251",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u534A\u517D\u4EBA.txt",
+      "location": "native-drop:4",
+      "kind": "monster-drop",
+      "name": "\u4F20\u7EDF\u9879\u94FE",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u534A\u517D\u4EBA.txt",
+      "location": "native-drop:5",
+      "kind": "monster-drop",
+      "name": "\u94C1\u624B\u956F",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u534A\u517D\u4EBA.txt",
+      "location": "native-drop:6",
+      "kind": "monster-drop",
+      "name": "\u53E4\u94DC\u6212\u6307",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u591A\u94A9\u732B.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u91D1\u5E01",
+      "details": {
+        "numerator": 10,
+        "denominator": 30,
+        "count": 300
+      },
+      "currency": true,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u591A\u94A9\u732B.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u91D1\u521B\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u591A\u94A9\u732B.txt",
+      "location": "native-drop:2",
+      "kind": "monster-drop",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u591A\u94A9\u732B.txt",
+      "location": "native-drop:3",
+      "kind": "monster-drop",
+      "name": "\u4E4C\u6728\u5251",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u591A\u94A9\u732B.txt",
+      "location": "native-drop:4",
+      "kind": "monster-drop",
+      "name": "\u4F20\u7EDF\u9879\u94FE",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u591A\u94A9\u732B.txt",
+      "location": "native-drop:5",
+      "kind": "monster-drop",
+      "name": "\u94C1\u624B\u956F",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u591A\u94A9\u732B.txt",
+      "location": "native-drop:6",
+      "kind": "monster-drop",
+      "name": "\u53E4\u94DC\u6212\u6307",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u68EE\u6797\u96EA\u4EBA.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u91D1\u5E01",
+      "details": {
+        "numerator": 10,
+        "denominator": 100,
+        "count": 300
+      },
+      "currency": true,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u68EE\u6797\u96EA\u4EBA.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u91D1\u521B\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u68EE\u6797\u96EA\u4EBA.txt",
+      "location": "native-drop:2",
+      "kind": "monster-drop",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u68EE\u6797\u96EA\u4EBA.txt",
+      "location": "native-drop:3",
+      "kind": "monster-drop",
+      "name": "\u4E4C\u6728\u5251",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u68EE\u6797\u96EA\u4EBA.txt",
+      "location": "native-drop:4",
+      "kind": "monster-drop",
+      "name": "\u4F20\u7EDF\u9879\u94FE",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u68EE\u6797\u96EA\u4EBA.txt",
+      "location": "native-drop:5",
+      "kind": "monster-drop",
+      "name": "\u94C1\u624B\u956F",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u68EE\u6797\u96EA\u4EBA.txt",
+      "location": "native-drop:6",
+      "kind": "monster-drop",
+      "name": "\u53E4\u94DC\u6212\u6307",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u6BD2\u8718\u86DB.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u6BD2\u8718\u86DB\u7259\u9F7F",
+      "details": {
+        "numerator": 10,
+        "denominator": 20,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u91D1\u5E01",
+      "details": {
+        "numerator": 10,
+        "denominator": 30,
+        "count": 300
+      },
+      "currency": true,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u91D1\u521B\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:2",
+      "kind": "monster-drop",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:3",
+      "kind": "monster-drop",
+      "name": "\u4E4C\u6728\u5251",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:4",
+      "kind": "monster-drop",
+      "name": "\u4F20\u7EDF\u9879\u94FE",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:5",
+      "kind": "monster-drop",
+      "name": "\u94C1\u624B\u956F",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:6",
+      "kind": "monster-drop",
+      "name": "\u53E4\u94DC\u6212\u6307",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9489\u8019\u732B.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u91D1\u5E01",
+      "details": {
+        "numerator": 10,
+        "denominator": 30,
+        "count": 300
+      },
+      "currency": true,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9489\u8019\u732B.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u91D1\u521B\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9489\u8019\u732B.txt",
+      "location": "native-drop:2",
+      "kind": "monster-drop",
+      "name": "\u9B54\u6CD5\u836F(\u5C0F\u91CF)",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9489\u8019\u732B.txt",
+      "location": "native-drop:3",
+      "kind": "monster-drop",
+      "name": "\u4E4C\u6728\u5251",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9489\u8019\u732B.txt",
+      "location": "native-drop:4",
+      "kind": "monster-drop",
+      "name": "\u4F20\u7EDF\u9879\u94FE",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9489\u8019\u732B.txt",
+      "location": "native-drop:5",
+      "kind": "monster-drop",
+      "name": "\u94C1\u624B\u956F",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9489\u8019\u732B.txt",
+      "location": "native-drop:6",
+      "kind": "monster-drop",
+      "name": "\u53E4\u94DC\u6212\u6307",
+      "details": {
+        "numerator": 10,
+        "denominator": 200,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u98DF\u4EBA\u82B1.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u98DF\u4EBA\u6811\u53F6",
+      "details": {
+        "numerator": 10,
+        "denominator": 20,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u98DF\u4EBA\u82B1.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u98DF\u4EBA\u6811\u679C\u5B9E",
+      "details": {
+        "numerator": 10,
+        "denominator": 20,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9E21.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u9E21\u8089",
+      "details": {
+        "numerator": 10,
+        "denominator": 10,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9E7F.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u8089",
+      "details": {
+        "numerator": 10,
+        "denominator": 10,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9E7F.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u8089",
+      "details": {
+        "numerator": 10,
+        "denominator": 50,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u9E7F.txt",
+      "location": "native-drop:2",
+      "kind": "monster-drop",
+      "name": "\u9E7F\u8840",
+      "details": {
+        "numerator": 10,
+        "denominator": 10000,
+        "count": 1
+      },
+      "currency": false,
+      "dynamic": false
+    }
+  ],
+  "statements": [
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@main/procedure:0",
+      "branch": "condition",
+      "command": "CHECK",
+      "parameters": [
+        "105",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "condition",
+      "command": "CHECKDURAEVA",
+      "parameters": [
+        "\u91D1\u77FF",
+        "10",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Take",
+      "parameters": [
+        "\u91D1\u77FF",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u5BD2\u94C1\u6212\u6307",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "else-action",
+      "command": "MessageBox",
+      "parameters": [
+        "\u672C\u5E97\u4ECE\u6765\u4E0D\u8D4A\u5E10\uFF01",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u536B\u5BB6\u5E97-0103.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "else-action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@main/procedure:0",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u4EC7\u4EBA\u7684\u5934\u9885",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@main/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@main/procedure:1",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u65E0\u5B57\u5929\u4E66",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u65E0\u5B57\u5929\u4E66",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "action",
+      "command": "Take",
+      "parameters": [
+        "\u65E0\u5B57\u5929\u4E66",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u6218\u795E\u6CB9",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:0",
+      "branch": "condition",
+      "command": "CHECK",
+      "parameters": [
+        "107",
+        "0",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:0",
+      "branch": "action",
+      "command": "MessageBox",
+      "parameters": [
+        "\u597D\u7684\uFF0C\u8BA9\u6211\u5148\u54ED\u4F1A\u513F\uFF01",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:1",
+      "branch": "condition",
+      "command": "CHECKNAMELIST",
+      "parameters": [
+        "..\\QuestDiary\\\u795E\u79D8\u6D1E\u53E3\u540D\u5355.txt",
+        "",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:1",
+      "branch": "action",
+      "command": "MessageBox",
+      "parameters": [
+        "\u6BCF\u5929\u53EA\u80FD\u63A2\u5BDF\u4E00\u4E2A\u795E\u79D8\u6D1E\u53E3",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:1",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u4EC7\u4EBA\u7684\u5934\u9885",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "branch": "action",
+      "command": "Take",
+      "parameters": [
+        "\u4EC7\u4EBA\u7684\u5934\u9885",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "branch": "action",
+      "command": "Set",
+      "parameters": [
+        "107",
+        "0",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "branch": "action",
+      "command": "Movr",
+      "parameters": [
+        "M10",
+        "8",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "branch": "action",
+      "command": "AddNameList",
+      "parameters": [
+        "..\\QuestDiary\\\u795E\u79D8\u6D1E\u53E3\u540D\u5355.txt",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw03/procedure:2",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:0",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "0",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u4E7E)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:0",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u6B7B\u4EA1\u68FA\u6750",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:0",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A191\uFF0C122",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:1",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:1",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u5DFD)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:1",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u738B\u8005\u7981\u5730",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:1",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A20\uFF0C84",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:1",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:2",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "2",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:2",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u9707)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:2",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u7956\u739B\u4E03\u5C42\u4E09",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:2",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A47\uFF0C19",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:2",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:3",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "3",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:3",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u5151)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:3",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u6843\u56ED\u4E4B\u95E8",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:3",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A20\uFF0C84",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:3",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:4",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "4",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:4",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u79BB)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:4",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u725B\u9B54\u5BFA\u5E99\u5927\u5385",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:4",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A36\uFF0C18",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:4",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:5",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "5",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:5",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u5764)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:5",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u9AA8\u9B54\u6D1E\u4E8C\u5C42",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:5",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A165\uFF0C24",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:5",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:6",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "6",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:6",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u574E)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:6",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u6C83\u739B\u5BFA\u5E99\u4E00\u5C42",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:6",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A89\uFF0C295",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:6",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:7",
+      "branch": "condition",
+      "command": "EQUAL",
+      "parameters": [
+        "M10",
+        "7",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:7",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u516B\u5366\u5B9D\u77F3(\u826E)",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:7",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u6240\u5728\u5730\u56FE\uFF1A\u6289\u62E9\u4E4B\u5730",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:7",
+      "branch": "action",
+      "command": "SendMsg",
+      "parameters": [
+        "7",
+        "\u795E\u79D8\u6D1E\u53E3\u5927\u81F4\u5750\u6807\uFF1A67\uFF0C230",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u4E66\u5E97-0.txt",
+      "location": "@rw04/procedure:7",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@main/procedure:0",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u94C1\u9556",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@rw03/procedure:0",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u94C1\u9556",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@rw03/procedure:0",
+      "branch": "action",
+      "command": "Take",
+      "parameters": [
+        "\u94C1\u9556",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u6742\u8D27-0.txt",
+      "location": "@rw03/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u51E4\u51F0\u7FCE\u6BDB",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@main/procedure:0",
+      "branch": "condition",
+      "command": "CHECK",
+      "parameters": [
+        "102",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u7EAF\u94F6",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Take",
+      "parameters": [
+        "\u7EAF\u94F6",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Goto",
+      "parameters": [
+        "@0",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw01/procedure:1",
+      "branch": "condition",
+      "command": "CHECK",
+      "parameters": [
+        "103",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "condition",
+      "command": "CHECKDURAEVA",
+      "parameters": [
+        "\u94F6\u77FF",
+        "10",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u94C1\u5320\u7684\u5DE5\u94B1",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "action",
+      "command": "Set",
+      "parameters": [
+        "103",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@0/procedure:0",
+      "branch": "action",
+      "command": "Inc",
+      "parameters": [
+        "M1",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@0/procedure:0",
+      "branch": "action",
+      "command": "DelayCall",
+      "parameters": [
+        "100",
+        "@1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@0/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@1/procedure:0",
+      "branch": "action",
+      "command": "DelayCall",
+      "parameters": [
+        "100",
+        "@2",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@1/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@2/procedure:0",
+      "branch": "action",
+      "command": "DelayCall",
+      "parameters": [
+        "100",
+        "@3",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@2/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "condition",
+      "command": "SMALL",
+      "parameters": [
+        "M1",
+        "30",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "action",
+      "command": "DelayCall",
+      "parameters": [
+        "100",
+        "@0",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "else-action",
+      "command": "Mov",
+      "parameters": [
+        "M1",
+        "0",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "else-action",
+      "command": "ClearDelayGoto",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "else-action",
+      "command": "Close",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "else-action",
+      "command": "Give",
+      "parameters": [
+        "\u7948\u798F\u9879\u94FE",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "else-action",
+      "command": "Set",
+      "parameters": [
+        "102",
+        "0",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "else-action",
+      "command": "MessageBox",
+      "parameters": [
+        "\u003C\u7948\u798F\u9879\u94FE\u003E\u5DF2\u7ECF\u6253\u9020\u5B8C\u6210\uFF0C\u8BF7\u5C06\u5B83\u4EB2\u624B\u732E\u7ED9\u3008\u6BD4\u5947\u56FD\u738B\u3009",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u9879\u94FE\u5E97-0105.txt",
+      "location": "@3/procedure:0",
+      "branch": "else-action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@main/procedure:0",
+      "branch": "condition",
+      "command": "CHECK",
+      "parameters": [
+        "101",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u8089",
+        "3",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Take",
+      "parameters": [
+        "\u8089",
+        "3",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u8089\u5305",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "else-action",
+      "command": "MessageBox",
+      "parameters": [
+        "\u522B\u5F00\u73A9\u7B11\uFF0C\u8D76\u7D27\u53BB\u627E\uFF01",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw01/procedure:0",
+      "branch": "else-action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/\u6BD4\u5947\u57CE/\u8089\u5E97-0.txt",
+      "location": "@rw02/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u91D1\u5E01",
+        "200",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u8BA1\u65F6/procedure:0",
+      "branch": "action",
+      "command": "Inc",
+      "parameters": [
+        "G3",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u8BA1\u65F6/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u6E05\u96F6/procedure:0",
+      "branch": "action",
+      "command": "ClearNameList",
+      "parameters": [
+        "..\\QuestDiary\\\u5723\u8BDE\u540D\u5355.txt",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u6E05\u96F6/procedure:0",
+      "branch": "action",
+      "command": "ClearNameList",
+      "parameters": [
+        "..\\QuestDiary\\\u85CF\u5B9D\u9601\u540D\u5355.txt",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u6E05\u96F6/procedure:0",
+      "branch": "action",
+      "command": "ClearNameList",
+      "parameters": [
+        "..\\QuestDiary\\\u9ED1\u94C1\u624B\u5957\u540D\u5355.txt",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u6E05\u96F6/procedure:0",
+      "branch": "action",
+      "command": "ClearNameList",
+      "parameters": [
+        "..\\QuestDiary\\\u547D\u8FD0\u4E4B\u5203\u540D\u5355.txt",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u6E05\u96F6/procedure:0",
+      "branch": "action",
+      "command": "ClearNameList",
+      "parameters": [
+        "..\\QuestDiary\\\u795E\u79D8\u6D1E\u53E3\u540D\u5355.txt",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Robot_def/RobotManage.txt",
+      "location": "@\u6E05\u96F6/procedure:0",
+      "branch": "action",
+      "command": "Break",
+      "parameters": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "kind": "missing-monster-drop-file",
+      "monster": "\u86E4\u87C6",
+      "file": "MonItems/\u86E4\u87C6.txt"
+    }
+  ],
+  "nativeLog": [],
+  "scope": "Native parsed references in declared scripts, every compiled branch and configured spawns; branch execution and missing/dynamic dependencies remain unverified.",
+  "full176Acceptance": false,
+  "readOnly": true
+}

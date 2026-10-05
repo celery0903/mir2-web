@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "target": "2003-cn-1.76",
+  "authenticated2003Data": false,
+  "directImportAccepted": false,
+  "tables": [
+    {
+      "repository": "mrzhqiang/mirserver-1.76",
+      "revision": "39e17246a32247a2c43c4cc481e97e88c692fa53",
+      "file": "mud2/db/StdItems.DB",
+      "path": ".runtime/mirserver-1.76-39e17246a32247a2c43c4cc481e97e88c692fa53/mud2/db/StdItems.DB",
+      "gitBlob": "b3c2aab7e94d71c3eb34453971574cf9b1fd9632",
+      "sha256": "10bf3e9fe4676475b9828a7e1d450dada0c76a724b0a20477f5b77f937a9fb8f",
+      "rows": 468
+    },
+    {
+      "repository": "pangliang/MirServer-Delphi",
+      "revision": "f829679d24acb3a097d396d737ab067db2c88ca2",
+      "file": "MirServer/Mud2/DB/StdItems.DB",
+      "path": ".runtime/data-research/delphi-StdItems.DB",
+      "gitBlob": "c74a9d31630e755f325d4dabbf5608663dfaf591",
+      "sha256": "b074960349a8bcb8f0e742e36df26d323f60f9707752e3e0856c30012e8e0f36",
+      "rows": 345
+    }
+  ],
+  "guides": [
+    {"url": "https://mir.17173.com/item/item.htm", "path": "docs/correction/classic-item-guide-sources/mir.17173.com_item_item_htm.html", "sha256": "2280f2b63a1c07cb0d67a292918d496ab2f540039cfe63910ac17d3fc186e6ac"},
+    {"url": "https://mir.17173.com/item/item2.htm", "path": "docs/correction/classic-item-guide-sources/mir.17173.com_item_item2_htm.html", "sha256": "676e82386d600059002119e480c6ae4bf8a5e37bc3ff390c4ff7789dc8c88f39"},
+    {"url": "https://mir.17173.com/item/item3.htm", "path": "docs/correction/classic-item-guide-sources/mir.17173.com_item_item3_htm.html", "sha256": "7ddd1076480c14f70d97fcdc9a197955df8584ca27448024b65202186ffcbad3"},
+    {"url": "https://mir.17173.com/item/item4.htm", "path": "docs/correction/classic-item-guide-sources/mir.17173.com_item_item4_htm.html", "sha256": "5d1a83632d2391ca9edd5ce661bee7fea627a78d57ed31efd1be9b8d69c7177c"},
+    {"url": "https://mir.17173.com/item/item5.htm", "path": "docs/correction/classic-item-guide-sources/mir.17173.com_item_item5_htm.html", "sha256": "98b830ff26d4faf98371747f5e9e6e370be875c15ddedc7a7315614f2cc8b396"},
+    {"url": "https://mir.17173.com/item/item6.htm", "path": "docs/correction/classic-item-guide-sources/mir.17173.com_item_item6_htm.html", "sha256": "bdf6e2125766e1b9166efa53e2db8a125dc3db90311726696f0980a9667e1a1b"},
+    {"url": "https://mir.17173.com/item/item7.htm", "path": "docs/correction/classic-item-guide-sources/mir.17173.com_item_item7_htm.html", "sha256": "03e886338964f28e45a0cc79cc04bda23ca6785479d612d6c736407ff75705e0"}
+  ],
+  "interpretation": "Both community tables contain later content; these current guide pages are not authenticated 2003 snapshots. Compare all rows and preserve conflicts. Presence is not a classic allowlist and agreement does not authenticate original numbers."
+}

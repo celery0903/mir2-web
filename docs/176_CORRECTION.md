@@ -194,3 +194,11 @@ PYTHONPATH=.runtime/client-archive-deps python3 scripts/inspect-client-archive.p
 [正式浏览器回归](correction/classic-skills-client-production/evidence.json) 已通过三职业正常一级零金币建角、装备、移动、桌面/手机和重登保持，以及仓库入口、手机存入、重登取回同一物品、金币保持和往返本人可见；无浏览器异常或资源错误。[部署核对](correction/classic-skills-deployment-evidence.json) 验证 30 个网页文件、7,339 个资源哈希和 11 张原生地图，四项服务 healthy。
 
 两个社区技能表仍拒绝整表导入，经典行也有数值差异；17173 旧页面不是认证的 2003 快照。完整审计继续返回 1：11 图、33 项经典技能身份、范围外技能 0，纯净数值、物品/怪物/掉落/NPC 数据、完整技能与世界等要求仍未完成。此前的 108 项和 71 个引用缺项记录保留为历史结果，不作为本轮状态；goal 继续 active。
+
+## 全表物品与原生引号解析
+
+2026-10-05 继续在现成 H5 源码、其配套 proxy 和 OpenMir2 上修正。全部 1,000 条物品已与两个固定 Paradox 候选、七份保存的资料页逐行比较；此前“没有普通黑铁头盔”的记录错误，实际普通定义在 ID 344，已更正。202 本技能书中仍有 169 本在经典技能范围之外。正式配置的原生编译分支、商店和掉落有 27 处缺失物品引用，候选有 142 处，未据此迁移数据。
+
+实际脚本回归还复现 `"火球术"` 商品名保留残余引号的错误。OpenMir2 补丁修正 Pascal 字符串下标移植及左侧空白处理；真实镜像为旧版 11/39、修复版 39/39，原生脚本商品、掉落、分支与未声明脚本排除检查通过，物品编号的真实 MySQL 检查仍为 14/14。详情、源码、数值冲突和失败记录见[物品与原生引用](ITEM_DATA.md)。
+
+正式引擎已部署已测镜像 `sha256:48092dd5906bf7e5db0d57a3b210937f0dbb4565930569ef31bd18a8be71c728`，网页和配套 proxy 保持原实例。原生正常保存后备份，数据库、存档卷、全部物品/技能及已有角色记录核对一致。[正式三职业与仓库复验](correction/quoted-names-client-production/evidence.json) 无 fixture 全部通过；[部署检查](correction/quoted-names-deployment-evidence.json) 核对 30 个网页文件与 7,339 个资源哈希，四项服务 healthy。候选的银杏长途仓库流程因角色死亡失败，独立报告保留。完整版本审计仍失败，goal 继续 active。

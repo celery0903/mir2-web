@@ -1,0 +1,206 @@
+{
+  "assemblies": {
+    "GameSrv.dll": "1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79",
+    "OpenMir2.dll": "225ebb4a54778979e6c4cd12420fe2eb7d3dec7de9b8d4982203cd72d5d53803",
+    "ScriptSystem.dll": "6d91b8af4881f9fdf1c464112172395ce50c7027374d4ea74d5aff10270479c0",
+    "SystemModule.dll": "0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005"
+  },
+  "loadedMaps": [
+    "0"
+  ],
+  "declarations": [
+    {
+      "kind": "merchant",
+      "map": "0",
+      "name": "\u5E97\u4E3B",
+      "source": "Merchant.txt",
+      "line": 1
+    }
+  ],
+  "scriptRoots": [
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "merchant": true
+    }
+  ],
+  "spawnMonsters": [
+    "\u7A3B\u8349\u4EBA"
+  ],
+  "files": {
+    "MapInfo.txt": {
+      "bytes": 19,
+      "sha256": "d070d33015a3559fff43c6b6c865e8b934c442417b501d6f0b9f227c1f8e4134"
+    },
+    "Merchant.txt": {
+      "bytes": 60,
+      "sha256": "03b705d4dcd5627313977a2f6dc811a67c06cba0049576508a64586c38c2b505"
+    },
+    "Npcs.txt": {
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    "MapQuest.txt": {
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    "MonGen.txt": {
+      "bytes": 53,
+      "sha256": "8ab7808ac78a6e11592f67f809d63ade2560ce9fc9dd571b69ba7929d1a27105"
+    },
+    "Market_Def/fixture-0.txt": {
+      "bytes": 185,
+      "sha256": "3fe9b0c52d5d129e120463e1df1cb179b47101e2d93de5238fdd715f156f6cd3"
+    },
+    "MonItems/\u7A3B\u8349\u4EBA.txt": {
+      "bytes": 74,
+      "sha256": "374dca6ec3cad40edbb39d9c66ad8b4b24e34b394b5db20c0eae530bffdad019"
+    }
+  },
+  "references": [
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "goods",
+      "kind": "shop-goods",
+      "name": "\u0022\u706B\u7403\u672F",
+      "details": {
+        "count": 3,
+        "refillTime": 60,
+        "priceRate": 110
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@main/procedure:0",
+      "kind": "CHECKITEM",
+      "name": "\u6728\u5251",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@main/procedure:0",
+      "kind": "Give",
+      "name": "\u91D1\u5E01",
+      "details": null,
+      "currency": true,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@main/procedure:0",
+      "kind": "Give",
+      "name": "\u57FA\u672C\u5251\u672F",
+      "details": null,
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@other/procedure:0",
+      "kind": "Give",
+      "name": "\u003C$STR(S0)\u003E",
+      "details": null,
+      "currency": false,
+      "dynamic": true
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:0",
+      "kind": "monster-drop",
+      "name": "\u706B\u7403\u672F",
+      "details": {
+        "numerator": 3,
+        "denominator": 10,
+        "count": 2
+      },
+      "currency": false,
+      "dynamic": false
+    },
+    {
+      "file": "MonItems/\u7A3B\u8349\u4EBA.txt",
+      "location": "native-drop:1",
+      "kind": "monster-drop",
+      "name": "\u91D1\u5E01",
+      "details": {
+        "numerator": 10,
+        "denominator": 10,
+        "count": 20
+      },
+      "currency": true,
+      "dynamic": false
+    }
+  ],
+  "statements": [
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@main/procedure:0",
+      "branch": "condition",
+      "command": "CHECKITEM",
+      "parameters": [
+        "\u6728\u5251",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        null
+      ]
+    },
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@main/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u91D1\u5E01",
+        "2",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@main/procedure:0",
+      "branch": "else-action",
+      "command": "Give",
+      "parameters": [
+        "\u57FA\u672C\u5251\u672F",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "file": "Market_Def/fixture-0.txt",
+      "location": "@other/procedure:0",
+      "branch": "action",
+      "command": "Give",
+      "parameters": [
+        "\u003C$STR(S0)\u003E",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "kind": "merchant-outside-loaded-maps",
+      "Number": 2,
+      "Text": "ignored 9 1 1 \u672A\u52A0\u8F7D 0 2 0"
+    }
+  ],
+  "nativeLog": [],
+  "scope": "Native parsed references in declared scripts, every compiled branch and configured spawns; branch execution and missing/dynamic dependencies remain unverified.",
+  "full176Acceptance": false,
+  "readOnly": true
+}

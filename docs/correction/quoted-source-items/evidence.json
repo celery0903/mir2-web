@@ -1,0 +1,164 @@
+{
+  "checkedAt": "2026-10-05T02:43:49.041Z",
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Real native DLLs and isolated MySQL; sparse, reordered and invalid SQL item IDs, retained fields and saved instance references.",
+  "results": {
+    "before": {
+      "image": "sha256:e2f6a9c5fc81e10ac1eff309f7701f16bbaf90f7edf87c4bb8a74eed6297548a",
+      "assemblyHashes": {
+        "GameSrv.dll": "7edb83c83c265e4c9e5d82c40ccfb33ff1781cd0e0cf409f6bb08436aaa028c3",
+        "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6",
+        "OpenMir2.dll": "225ebb4a54778979e6c4cd12420fe2eb7d3dec7de9b8d4982203cd72d5d53803",
+        "SystemModule.dll": "0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005"
+      },
+      "exitCode": 1,
+      "stdout": "Assembly GameSrv.dll SHA-256: 7edb83c83c265e4c9e5d82c40ccfb33ff1781cd0e0cf409f6bb08436aaa028c3\nAssembly M2Server.dll SHA-256: 357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6\nAssembly OpenMir2.dll SHA-256: 225ebb4a54778979e6c4cd12420fe2eb7d3dec7de9b8d4982203cd72d5d53803\nAssembly SystemModule.dll SHA-256: 0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005\nPASS dense seed preserves every native ID and item field\nFAIL sparse rows preserve IDs and all retained item fields: Deleted ID 1 resolved to another item\nFAIL equipped, bag and warehouse instances keep identity, durability and make index: Saved characters_item instance changed identity\nFAIL SQL physical order cannot change native item identities: Reverse-ordered table failed to load\nFAIL reloading a sparse list does not accumulate placeholders: Reload accumulated or collapsed vacant positions\nFAIL highest representable native item ID is preserved: ushort maximum ID shifted\nFAIL invalid SQL ID 0 rejects the whole list: Rejected load retained partial or old definitions\nFAIL invalid SQL ID -1 rejects the whole list: Rejected load retained partial or old definitions\nFAIL invalid SQL ID 65536 rejects the whole list: Invalid ID reported success\nFAIL invalid SQL ID 2147483648 rejects the whole list: Invalid ID reported success\nFAIL duplicate SQL IDs reject the whole list: Duplicate IDs accepted or left partial definitions\nFAIL conversion failure after a valid row cannot report partial success: Conversion exception reported success or kept partial rows\nPASS empty table rejects and removes the previous list\nFAIL a valid load recovers after rejection: Recovery changed native identity\nITEM_CHECK_RESULTS=[{\"label\":\"dense seed preserves every native ID and item field\",\"passed\":true},{\"label\":\"sparse rows preserve IDs and all retained item fields\",\"passed\":false,\"error\":\"Deleted ID 1 resolved to another item\"},{\"label\":\"equipped, bag and warehouse instances keep identity, durability and make index\",\"passed\":false,\"error\":\"Saved characters_item instance changed identity\"},{\"label\":\"SQL physical order cannot change native item identities\",\"passed\":false,\"error\":\"Reverse-ordered table failed to load\"},{\"label\":\"reloading a sparse list does not accumulate placeholders\",\"passed\":false,\"error\":\"Reload accumulated or collapsed vacant positions\"},{\"label\":\"highest representable native item ID is preserved\",\"passed\":false,\"error\":\"ushort maximum ID shifted\"},{\"label\":\"invalid SQL ID 0 rejects the whole list\",\"passed\":false,\"error\":\"Rejected load retained partial or old definitions\"},{\"label\":\"invalid SQL ID -1 rejects the whole list\",\"passed\":false,\"error\":\"Rejected load retained partial or old definitions\"},{\"label\":\"invalid SQL ID 65536 rejects the whole list\",\"passed\":false,\"error\":\"Invalid ID reported success\"},{\"label\":\"invalid SQL ID 2147483648 rejects the whole list\",\"passed\":false,\"error\":\"Invalid ID reported success\"},{\"label\":\"duplicate SQL IDs reject the whole list\",\"passed\":false,\"error\":\"Duplicate IDs accepted or left partial definitions\"},{\"label\":\"conversion failure after a valid row cannot report partial success\",\"passed\":false,\"error\":\"Conversion exception reported success or kept partial rows\"},{\"label\":\"empty table rejects and removes the previous list\",\"passed\":true},{\"label\":\"a valid load recovers after rejection\",\"passed\":false,\"error\":\"Recovery changed native identity\"}]\nNative item checks: 2/14 passed.\n",
+      "stderr": "",
+      "cases": [
+        {
+          "label": "dense seed preserves every native ID and item field",
+          "passed": true
+        },
+        {
+          "label": "sparse rows preserve IDs and all retained item fields",
+          "passed": false,
+          "error": "Deleted ID 1 resolved to another item"
+        },
+        {
+          "label": "equipped, bag and warehouse instances keep identity, durability and make index",
+          "passed": false,
+          "error": "Saved characters_item instance changed identity"
+        },
+        {
+          "label": "SQL physical order cannot change native item identities",
+          "passed": false,
+          "error": "Reverse-ordered table failed to load"
+        },
+        {
+          "label": "reloading a sparse list does not accumulate placeholders",
+          "passed": false,
+          "error": "Reload accumulated or collapsed vacant positions"
+        },
+        {
+          "label": "highest representable native item ID is preserved",
+          "passed": false,
+          "error": "ushort maximum ID shifted"
+        },
+        {
+          "label": "invalid SQL ID 0 rejects the whole list",
+          "passed": false,
+          "error": "Rejected load retained partial or old definitions"
+        },
+        {
+          "label": "invalid SQL ID -1 rejects the whole list",
+          "passed": false,
+          "error": "Rejected load retained partial or old definitions"
+        },
+        {
+          "label": "invalid SQL ID 65536 rejects the whole list",
+          "passed": false,
+          "error": "Invalid ID reported success"
+        },
+        {
+          "label": "invalid SQL ID 2147483648 rejects the whole list",
+          "passed": false,
+          "error": "Invalid ID reported success"
+        },
+        {
+          "label": "duplicate SQL IDs reject the whole list",
+          "passed": false,
+          "error": "Duplicate IDs accepted or left partial definitions"
+        },
+        {
+          "label": "conversion failure after a valid row cannot report partial success",
+          "passed": false,
+          "error": "Conversion exception reported success or kept partial rows"
+        },
+        {
+          "label": "empty table rejects and removes the previous list",
+          "passed": true
+        },
+        {
+          "label": "a valid load recovers after rejection",
+          "passed": false,
+          "error": "Recovery changed native identity"
+        }
+      ]
+    },
+    "after": {
+      "image": "sha256:48092dd5906bf7e5db0d57a3b210937f0dbb4565930569ef31bd18a8be71c728",
+      "assemblyHashes": {
+        "GameSrv.dll": "1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79",
+        "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6",
+        "OpenMir2.dll": "481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad",
+        "SystemModule.dll": "0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005"
+      },
+      "stdout": "Assembly GameSrv.dll SHA-256: 1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79\nAssembly M2Server.dll SHA-256: 357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\nAssembly SystemModule.dll SHA-256: 0aa62609c648cf6b6a56a864f45f47101e883fb6362f14dc8c2564bc976db005\nPASS dense seed preserves every native ID and item field\nPASS sparse rows preserve IDs and all retained item fields\nPASS equipped, bag and warehouse instances keep identity, durability and make index\nPASS SQL physical order cannot change native item identities\nPASS reloading a sparse list does not accumulate placeholders\nPASS highest representable native item ID is preserved\nPASS invalid SQL ID 0 rejects the whole list\nPASS invalid SQL ID -1 rejects the whole list\nPASS invalid SQL ID 65536 rejects the whole list\nPASS invalid SQL ID 2147483648 rejects the whole list\nPASS duplicate SQL IDs reject the whole list\nPASS conversion failure after a valid row cannot report partial success\nPASS empty table rejects and removes the previous list\nPASS a valid load recovers after rejection\nITEM_CHECK_RESULTS=[{\"label\":\"dense seed preserves every native ID and item field\",\"passed\":true},{\"label\":\"sparse rows preserve IDs and all retained item fields\",\"passed\":true},{\"label\":\"equipped, bag and warehouse instances keep identity, durability and make index\",\"passed\":true},{\"label\":\"SQL physical order cannot change native item identities\",\"passed\":true},{\"label\":\"reloading a sparse list does not accumulate placeholders\",\"passed\":true},{\"label\":\"highest representable native item ID is preserved\",\"passed\":true},{\"label\":\"invalid SQL ID 0 rejects the whole list\",\"passed\":true},{\"label\":\"invalid SQL ID -1 rejects the whole list\",\"passed\":true},{\"label\":\"invalid SQL ID 65536 rejects the whole list\",\"passed\":true},{\"label\":\"invalid SQL ID 2147483648 rejects the whole list\",\"passed\":true},{\"label\":\"duplicate SQL IDs reject the whole list\",\"passed\":true},{\"label\":\"conversion failure after a valid row cannot report partial success\",\"passed\":true},{\"label\":\"empty table rejects and removes the previous list\",\"passed\":true},{\"label\":\"a valid load recovers after rejection\",\"passed\":true}]\nNative item checks: 14/14 passed.\n",
+      "stderr": "",
+      "exitCode": 0,
+      "cases": [
+        {
+          "label": "dense seed preserves every native ID and item field",
+          "passed": true
+        },
+        {
+          "label": "sparse rows preserve IDs and all retained item fields",
+          "passed": true
+        },
+        {
+          "label": "equipped, bag and warehouse instances keep identity, durability and make index",
+          "passed": true
+        },
+        {
+          "label": "SQL physical order cannot change native item identities",
+          "passed": true
+        },
+        {
+          "label": "reloading a sparse list does not accumulate placeholders",
+          "passed": true
+        },
+        {
+          "label": "highest representable native item ID is preserved",
+          "passed": true
+        },
+        {
+          "label": "invalid SQL ID 0 rejects the whole list",
+          "passed": true
+        },
+        {
+          "label": "invalid SQL ID -1 rejects the whole list",
+          "passed": true
+        },
+        {
+          "label": "invalid SQL ID 65536 rejects the whole list",
+          "passed": true
+        },
+        {
+          "label": "invalid SQL ID 2147483648 rejects the whole list",
+          "passed": true
+        },
+        {
+          "label": "duplicate SQL IDs reject the whole list",
+          "passed": true
+        },
+        {
+          "label": "conversion failure after a valid row cannot report partial success",
+          "passed": true
+        },
+        {
+          "label": "empty table rejects and removes the previous list",
+          "passed": true
+        },
+        {
+          "label": "a valid load recovers after rejection",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "mysqlImage": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+  "mir2_dataSchemaSha256": "9b62084ab9caea16305f51568417ef272ddbaee673ed0b6521543df1600953ba",
+  "mir2_dbSchemaSha256": "815efc862c3ad9ef193741157a156ef6f0f6d29941cc6706a003e1cd6538f48a",
+  "reproduced": true
+}
