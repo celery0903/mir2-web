@@ -1,0 +1,4435 @@
+{
+  "checkedAt": "2026-10-05T03:42:06.810Z",
+  "url": "http://172.30.0.16:18880",
+  "passed": false,
+  "full176Acceptance": false,
+  "scope": "Three ordinary browser-created characters, one per job, enter together for three rounds. No offline fixtures.",
+  "rounds": [],
+  "errors": [],
+  "missingResources": [],
+  "receivedTypes": [
+    {
+      "round": 0,
+      "job": 0,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "map"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "groupMode"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "equipment"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "skills"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "attackMode"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "attributes"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "map"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "inventory"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "groupMode"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "equipment"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "skills"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "attackMode"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "attributes"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "minimap"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "inventory"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "minimap"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "resources"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "health"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    }
+  ],
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 60000ms exceeded while waiting on the predicate",
+  "state0": {
+    "now": 99464.4000005722,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": false,
+    "authScene": "select",
+    "connection": "正在进入比奇…",
+    "map": "0",
+    "mapGeneration": 0,
+    "lastSequence": 5,
+    "worldReady": true,
+    "confirmedCell": {},
+    "camera": {
+      "x": -13808,
+      "y": -19668
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "inventory": {
+      "known": false,
+      "items": [],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "images": [],
+      "ready": false
+    },
+    "groundItems": [],
+    "skills": {
+      "known": false,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": []
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "等待战斗事件",
+    "nearby": [],
+    "directions": [],
+    "entityCount": 0,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {},
+    "actorEffects": {}
+  },
+  "state1": {
+    "now": 92657.69999980927,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": true,
+    "authScene": "select",
+    "connection": "攻击模式：全体攻击",
+    "map": "0",
+    "mapGeneration": 1,
+    "lastSequence": 254,
+    "worldReady": true,
+    "self": {
+      "id": 935688320,
+      "name": "cq7268071\n平民",
+      "x": 287,
+      "y": 617,
+      "direction": 0,
+      "action": "struck",
+      "dead": false,
+      "hp": 14,
+      "maxHp": 16
+    },
+    "confirmedCell": {
+      "x": 287,
+      "y": 617
+    },
+    "render": {
+      "pixel": {
+        "x": 13776,
+        "y": 19744
+      },
+      "queuedMovements": 0,
+      "action": "standing",
+      "direction": 0,
+      "framesReady": true,
+      "poseKey": "CArmour00/CHair00/standing/0/0/0/undefined/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13776,
+          "y": 19744
+        }
+      },
+      "grid": {
+        "x": 287,
+        "y": 617
+      },
+      "screen": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    "camera": {
+      "x": -13376,
+      "y": -19444
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "attributes": {
+      "type": "attributes",
+      "level": 1,
+      "job": 1,
+      "innerPowerLevel": 99,
+      "gold": 0,
+      "gameGold": 0,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 0
+      },
+      "dc": {
+        "min": 0,
+        "max": 1
+      },
+      "mc": {
+        "min": 0,
+        "max": 1
+      },
+      "sc": {
+        "min": 0,
+        "max": 0
+      },
+      "hp": 14,
+      "mp": 17,
+      "maxHp": 16,
+      "maxMp": 18,
+      "experience": 0,
+      "maxExperience": 100,
+      "weight": 14,
+      "maxWeight": 50,
+      "wearWeight": 0,
+      "maxWearWeight": 15,
+      "handWeight": 0,
+      "maxHandWeight": 12
+    },
+    "inventory": {
+      "known": true,
+      "items": [
+        {
+          "name": "蜡烛",
+          "makeIndex": 1158822,
+          "durability": 8000,
+          "maxDurability": 8000,
+          "stdMode": 30,
+          "weight": 1,
+          "looks": 130,
+          "shape": 0,
+          "baseDurability": 8000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 10,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 0
+        },
+        {
+          "name": "金创药(小量)",
+          "makeIndex": 1158823,
+          "durability": 1,
+          "maxDurability": 1,
+          "stdMode": 0,
+          "weight": 1,
+          "looks": 398,
+          "shape": 0,
+          "baseDurability": 1,
+          "ac": {
+            "min": 20,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 80,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 1
+        },
+        {
+          "name": "木剑",
+          "makeIndex": 1158824,
+          "durability": 4000,
+          "maxDurability": 4000,
+          "stdMode": 5,
+          "weight": 7,
+          "looks": 30,
+          "shape": 1,
+          "baseDurability": 4000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 2,
+            "max": 5
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 50,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 2
+        },
+        {
+          "name": "布衣(男)",
+          "makeIndex": 1158825,
+          "durability": 5000,
+          "maxDurability": 5000,
+          "stdMode": 10,
+          "weight": 5,
+          "looks": 60,
+          "shape": 1,
+          "baseDurability": 5000,
+          "ac": {
+            "min": 0,
+            "max": 2
+          },
+          "mac": {
+            "min": 0,
+            "max": 1
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 400,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 3
+        }
+      ],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "makeIndex": 1158823,
+          "item": "金创药(小量)",
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "feature": 0,
+      "layers": {
+        "bodyName": "CArmour00",
+        "offset": 0,
+        "hairName": "CHair00",
+        "weaponOffset": 0
+      },
+      "images": [
+        {
+          "src": "http://172.30.0.16:18880/actors/CArmour00/16.09808129407f41c5.png",
+          "loaded": true
+        },
+        {
+          "src": "http://172.30.0.16:18880/actors/CHair00/16.54655924870007eb.png",
+          "loaded": true
+        }
+      ],
+      "ready": true
+    },
+    "groundItems": [],
+    "skills": {
+      "known": true,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 287,
+        "y": 617
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": [
+        {
+          "id": "entity-935688320",
+          "x": 287,
+          "y": 617,
+          "kind": "self"
+        },
+        {
+          "id": "entity-1292085935",
+          "x": 288,
+          "y": 609,
+          "kind": "npc"
+        },
+        {
+          "id": "entity-1520932355",
+          "x": 286,
+          "y": 620,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-529932239",
+          "x": 293,
+          "y": 608,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1874441515",
+          "x": 293,
+          "y": 620,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1205270866",
+          "x": 293,
+          "y": 606,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1758520540",
+          "x": 282,
+          "y": 607,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-667610882",
+          "x": 287,
+          "y": 618,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-171041932",
+          "x": 289,
+          "y": 618,
+          "kind": "player"
+        }
+      ]
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "cq7268071\n平民 12/16 HP",
+    "nearby": [
+      {
+        "type": "entity",
+        "id": 667610882,
+        "x": 287,
+        "y": 618,
+        "direction": 0,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "attack",
+        "dead": false,
+        "distance": 1
+      },
+      {
+        "type": "entity",
+        "id": 171041932,
+        "x": 289,
+        "y": 618,
+        "direction": 0,
+        "feature": 0,
+        "status": 0,
+        "name": "cq7268072\n平民",
+        "nameColor": 255,
+        "self": false,
+        "kind": "player",
+        "action": "standing",
+        "dead": false,
+        "distance": 2
+      },
+      {
+        "type": "entity",
+        "id": 1520932355,
+        "x": 286,
+        "y": 620,
+        "direction": 1,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 3
+      },
+      {
+        "type": "entity",
+        "id": 1874441515,
+        "x": 293,
+        "y": 620,
+        "direction": 4,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 6
+      },
+      {
+        "type": "entity",
+        "id": 1292085935,
+        "x": 288,
+        "y": 609,
+        "direction": 1,
+        "feature": 196658,
+        "status": 0,
+        "name": "边界杂货店",
+        "nameColor": 255,
+        "self": false,
+        "kind": "npc",
+        "action": "standing",
+        "dead": false,
+        "distance": 8
+      },
+      {
+        "type": "entity",
+        "id": 529932239,
+        "x": 293,
+        "y": 608,
+        "direction": 6,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 9
+      },
+      {
+        "type": "entity",
+        "id": 1758520540,
+        "x": 282,
+        "y": 607,
+        "direction": 3,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 10
+      },
+      {
+        "type": "entity",
+        "id": 1205270866,
+        "x": 293,
+        "y": 606,
+        "direction": 7,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 11
+      }
+    ],
+    "directions": [
+      {
+        "direction": 0,
+        "dx": 0,
+        "dy": -1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 1,
+        "dx": 1,
+        "dy": -1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 2,
+        "dx": 1,
+        "dy": 0,
+        "clearSteps": 4
+      },
+      {
+        "direction": 3,
+        "dx": 1,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 4,
+        "dx": 0,
+        "dy": 1,
+        "clearSteps": 0
+      },
+      {
+        "direction": 5,
+        "dx": -1,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 6,
+        "dx": -1,
+        "dy": 0,
+        "clearSteps": 4
+      },
+      {
+        "direction": 7,
+        "dx": -1,
+        "dy": -1,
+        "clearSteps": 4
+      }
+    ],
+    "entityCount": 9,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {
+      "171041932": "standing",
+      "529932239": "standing",
+      "667610882": "standing",
+      "935688320": "standing",
+      "1205270866": "standing",
+      "1292085935": "standing",
+      "1520932355": "walking",
+      "1758520540": "standing",
+      "1874441515": "standing"
+    },
+    "actorEffects": {
+      "171041932": {
+        "active": false,
+        "ready": false,
+        "frame": 3890,
+        "pixel": {
+          "x": 13872,
+          "y": 19776
+        }
+      },
+      "529932239": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14064,
+          "y": 19456
+        }
+      },
+      "667610882": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13776,
+          "y": 19776
+        }
+      },
+      "935688320": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13776,
+          "y": 19744
+        }
+      },
+      "1205270866": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14064,
+          "y": 19392
+        }
+      },
+      "1292085935": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13824,
+          "y": 19488
+        }
+      },
+      "1520932355": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13708.78400001526,
+          "y": 19852.810666656493
+        }
+      },
+      "1758520540": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13536,
+          "y": 19424
+        }
+      },
+      "1874441515": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14064,
+          "y": 19840
+        }
+      }
+    }
+  },
+  "state2": {
+    "now": 81284.19999980927,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": true,
+    "authScene": "select",
+    "connection": "攻击模式：全体攻击",
+    "map": "0",
+    "mapGeneration": 1,
+    "lastSequence": 250,
+    "worldReady": true,
+    "self": {
+      "id": 171041932,
+      "name": "cq7268072\n平民",
+      "x": 289,
+      "y": 618,
+      "direction": 0,
+      "action": "standing",
+      "dead": false,
+      "hp": 17,
+      "maxHp": 17
+    },
+    "confirmedCell": {
+      "x": 289,
+      "y": 618
+    },
+    "render": {
+      "pixel": {
+        "x": 13872,
+        "y": 19776
+      },
+      "queuedMovements": 0,
+      "action": "standing",
+      "direction": 0,
+      "framesReady": true,
+      "poseKey": "CArmour00/CHair00/standing/0/0/0/undefined/0/undefined",
+      "shield": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13872,
+          "y": 19776
+        }
+      },
+      "grid": {
+        "x": 289,
+        "y": 618
+      },
+      "screen": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    "camera": {
+      "x": -13472,
+      "y": -19476
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "attributes": {
+      "type": "attributes",
+      "level": 1,
+      "job": 2,
+      "innerPowerLevel": 99,
+      "gold": 0,
+      "gameGold": 0,
+      "ac": {
+        "min": 0,
+        "max": 0
+      },
+      "mac": {
+        "min": 0,
+        "max": 1
+      },
+      "dc": {
+        "min": 0,
+        "max": 1
+      },
+      "mc": {
+        "min": 0,
+        "max": 0
+      },
+      "sc": {
+        "min": 0,
+        "max": 1
+      },
+      "hp": 17,
+      "mp": 13,
+      "maxHp": 17,
+      "maxMp": 13,
+      "experience": 0,
+      "maxExperience": 100,
+      "weight": 14,
+      "maxWeight": 50,
+      "wearWeight": 0,
+      "maxWearWeight": 15,
+      "handWeight": 0,
+      "maxHandWeight": 12
+    },
+    "inventory": {
+      "known": true,
+      "items": [
+        {
+          "name": "蜡烛",
+          "makeIndex": 1158826,
+          "durability": 8000,
+          "maxDurability": 8000,
+          "stdMode": 30,
+          "weight": 1,
+          "looks": 130,
+          "shape": 0,
+          "baseDurability": 8000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 10,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 0
+        },
+        {
+          "name": "金创药(小量)",
+          "makeIndex": 1158827,
+          "durability": 1,
+          "maxDurability": 1,
+          "stdMode": 0,
+          "weight": 1,
+          "looks": 398,
+          "shape": 0,
+          "baseDurability": 1,
+          "ac": {
+            "min": 20,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 0,
+          "price": 80,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 1
+        },
+        {
+          "name": "木剑",
+          "makeIndex": 1158828,
+          "durability": 4000,
+          "maxDurability": 4000,
+          "stdMode": 5,
+          "weight": 7,
+          "looks": 30,
+          "shape": 1,
+          "baseDurability": 4000,
+          "ac": {
+            "min": 0,
+            "max": 0
+          },
+          "mac": {
+            "min": 0,
+            "max": 0
+          },
+          "dc": {
+            "min": 2,
+            "max": 5
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 50,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 2
+        },
+        {
+          "name": "布衣(男)",
+          "makeIndex": 1158829,
+          "durability": 5000,
+          "maxDurability": 5000,
+          "stdMode": 10,
+          "weight": 5,
+          "looks": 60,
+          "shape": 1,
+          "baseDurability": 5000,
+          "ac": {
+            "min": 0,
+            "max": 2
+          },
+          "mac": {
+            "min": 0,
+            "max": 1
+          },
+          "dc": {
+            "min": 0,
+            "max": 0
+          },
+          "mc": {
+            "min": 0,
+            "max": 0
+          },
+          "sc": {
+            "min": 0,
+            "max": 0
+          },
+          "need": 0,
+          "needLevel": 1,
+          "price": 400,
+          "attackSpeed": 0,
+          "agility": 0,
+          "accuracy": 0,
+          "magicAvoidance": 0,
+          "strong": 0,
+          "undead": 0,
+          "hpAdd": 0,
+          "mpAdd": 0,
+          "light": 0,
+          "slot": 3
+        }
+      ],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "makeIndex": 1158827,
+          "item": "金创药(小量)",
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "feature": 0,
+      "layers": {
+        "bodyName": "CArmour00",
+        "offset": 0,
+        "hairName": "CHair00",
+        "weaponOffset": 0
+      },
+      "images": [
+        {
+          "src": "http://172.30.0.16:18880/actors/CArmour00/16.09808129407f41c5.png",
+          "loaded": true
+        },
+        {
+          "src": "http://172.30.0.16:18880/actors/CHair00/16.54655924870007eb.png",
+          "loaded": true
+        }
+      ],
+      "ready": true
+    },
+    "groundItems": [],
+    "skills": {
+      "known": true,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 289,
+        "y": 618
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": [
+        {
+          "id": "entity-171041932",
+          "x": 289,
+          "y": 618,
+          "kind": "self"
+        },
+        {
+          "id": "entity-667610882",
+          "x": 287,
+          "y": 618,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1874441515",
+          "x": 293,
+          "y": 620,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-935688320",
+          "x": 287,
+          "y": 617,
+          "kind": "player"
+        },
+        {
+          "id": "entity-1520932355",
+          "x": 287,
+          "y": 619,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1205270866",
+          "x": 293,
+          "y": 606,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1692635382",
+          "x": 301,
+          "y": 607,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-529932239",
+          "x": 293,
+          "y": 608,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-416678711",
+          "x": 300,
+          "y": 621,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1758520540",
+          "x": 282,
+          "y": 607,
+          "kind": "monster"
+        },
+        {
+          "id": "entity-1292085935",
+          "x": 288,
+          "y": 609,
+          "kind": "npc"
+        }
+      ]
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "cq7268071\n平民 12/16 HP",
+    "nearby": [
+      {
+        "type": "entity",
+        "id": 667610882,
+        "x": 287,
+        "y": 618,
+        "direction": 0,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "attack",
+        "dead": false,
+        "distance": 2
+      },
+      {
+        "type": "entity",
+        "id": 935688320,
+        "x": 287,
+        "y": 617,
+        "direction": 0,
+        "feature": 0,
+        "status": 0,
+        "name": "cq7268071\n平民",
+        "nameColor": 255,
+        "self": false,
+        "kind": "player",
+        "action": "struck",
+        "dead": false,
+        "hp": 12,
+        "maxHp": 16,
+        "distance": 2
+      },
+      {
+        "type": "entity",
+        "id": 1520932355,
+        "x": 287,
+        "y": 619,
+        "direction": 1,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 2
+      },
+      {
+        "type": "entity",
+        "id": 1874441515,
+        "x": 293,
+        "y": 620,
+        "direction": 4,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 4
+      },
+      {
+        "type": "entity",
+        "id": 1292085935,
+        "x": 288,
+        "y": 609,
+        "direction": 1,
+        "feature": 196658,
+        "status": 0,
+        "name": "边界杂货店",
+        "nameColor": 255,
+        "self": false,
+        "kind": "npc",
+        "action": "standing",
+        "dead": false,
+        "distance": 9
+      },
+      {
+        "type": "entity",
+        "id": 529932239,
+        "x": 293,
+        "y": 608,
+        "direction": 6,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 10
+      },
+      {
+        "type": "entity",
+        "id": 416678711,
+        "x": 300,
+        "y": 621,
+        "direction": 1,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 11
+      },
+      {
+        "type": "entity",
+        "id": 1758520540,
+        "x": 282,
+        "y": 607,
+        "direction": 3,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 11
+      },
+      {
+        "type": "entity",
+        "id": 1205270866,
+        "x": 293,
+        "y": 606,
+        "direction": 7,
+        "feature": 10551307,
+        "status": 0,
+        "name": "鹿",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "walking",
+        "dead": false,
+        "distance": 12
+      },
+      {
+        "type": "entity",
+        "id": 1692635382,
+        "x": 301,
+        "y": 607,
+        "direction": 2,
+        "feature": 1769490,
+        "status": 0,
+        "name": "稻草人",
+        "nameColor": 255,
+        "self": false,
+        "kind": "monster",
+        "action": "standing",
+        "dead": false,
+        "distance": 12
+      }
+    ],
+    "directions": [
+      {
+        "direction": 0,
+        "dx": 0,
+        "dy": -1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 1,
+        "dx": 1,
+        "dy": -1,
+        "clearSteps": 2
+      },
+      {
+        "direction": 2,
+        "dx": 1,
+        "dy": 0,
+        "clearSteps": 4
+      },
+      {
+        "direction": 3,
+        "dx": 1,
+        "dy": 1,
+        "clearSteps": 2
+      },
+      {
+        "direction": 4,
+        "dx": 0,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 5,
+        "dx": -1,
+        "dy": 1,
+        "clearSteps": 4
+      },
+      {
+        "direction": 6,
+        "dx": -1,
+        "dy": 0,
+        "clearSteps": 1
+      },
+      {
+        "direction": 7,
+        "dx": -1,
+        "dy": -1,
+        "clearSteps": 3
+      }
+    ],
+    "entityCount": 11,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {
+      "171041932": "standing",
+      "416678711": "standing",
+      "529932239": "standing",
+      "667610882": "standing",
+      "935688320": "standing",
+      "1205270866": "standing",
+      "1292085935": "standing",
+      "1520932355": "walking",
+      "1692635382": "standing",
+      "1758520540": "standing",
+      "1874441515": "standing"
+    },
+    "actorEffects": {
+      "171041932": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13872,
+          "y": 19776
+        }
+      },
+      "416678711": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14400,
+          "y": 19872
+        }
+      },
+      "529932239": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14064,
+          "y": 19456
+        }
+      },
+      "667610882": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13776,
+          "y": 19776
+        }
+      },
+      "935688320": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13776,
+          "y": 19744
+        }
+      },
+      "1205270866": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14064,
+          "y": 19392
+        }
+      },
+      "1292085935": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13824,
+          "y": 19488
+        }
+      },
+      "1520932355": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13776,
+          "y": 19808
+        }
+      },
+      "1692635382": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14448,
+          "y": 19424
+        }
+      },
+      "1758520540": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 13536,
+          "y": 19424
+        }
+      },
+      "1874441515": {
+        "active": false,
+        "ready": false,
+        "frame": 3892,
+        "pixel": {
+          "x": 14064,
+          "y": 19840
+        }
+      }
+    }
+  }
+}

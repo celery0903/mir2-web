@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-07T08:03:48.867Z",
+  "image": "sha256:6ac84b5d5365c4f13be863918fc793dd527f948f7e3a1650abc0d0100c5cfd1a",
+  "previousHealth": {
+    "status": 200,
+    "body": {
+      "engine": "OpenMir2",
+      "ready": true
+    }
+  },
+  "candidatePredicateOverExistingConnections": {
+    "nativeLinksReady": false
+  },
+  "scope": "Read-only comparison in the still-disconnected original production namespace; the candidate helper evaluates actual TCP connection state, not a deployed replacement endpoint."
+}

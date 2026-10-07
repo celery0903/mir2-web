@@ -1,0 +1,5547 @@
+{
+  "checkedAt": "2026-10-05T03:53:15.327Z",
+  "url": "http://127.0.0.1:18887",
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Three ordinary browser-created characters, one per job, enter together for three rounds. No offline fixtures.",
+  "rounds": [
+    {
+      "round": 0,
+      "allThreeEntered": true,
+      "players": [
+        {
+          "job": 0,
+          "character": "cq3953240",
+          "map": "0",
+          "x": 287,
+          "y": 617,
+          "actorId": 1882796607,
+          "nativeInventoryKnown": true
+        },
+        {
+          "job": 1,
+          "character": "cq3953241",
+          "map": "0",
+          "x": 289,
+          "y": 616,
+          "actorId": 1115405499,
+          "nativeInventoryKnown": true
+        },
+        {
+          "job": 2,
+          "character": "cq3953242",
+          "map": "0",
+          "x": 287,
+          "y": 617,
+          "actorId": 190661495,
+          "nativeInventoryKnown": true
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "allThreeEntered": true,
+      "players": [
+        {
+          "job": 0,
+          "character": "cq3953240",
+          "map": "0",
+          "x": 287,
+          "y": 617,
+          "actorId": 690216661,
+          "nativeInventoryKnown": true
+        },
+        {
+          "job": 1,
+          "character": "cq3953241",
+          "map": "0",
+          "x": 289,
+          "y": 616,
+          "actorId": 2061854752,
+          "nativeInventoryKnown": true
+        },
+        {
+          "job": 2,
+          "character": "cq3953242",
+          "map": "0",
+          "x": 287,
+          "y": 617,
+          "actorId": 1906866108,
+          "nativeInventoryKnown": true
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "allThreeEntered": true,
+      "players": [
+        {
+          "job": 0,
+          "character": "cq3953240",
+          "map": "0",
+          "x": 287,
+          "y": 617,
+          "actorId": 441940531,
+          "nativeInventoryKnown": true
+        },
+        {
+          "job": 1,
+          "character": "cq3953241",
+          "map": "0",
+          "x": 289,
+          "y": 616,
+          "actorId": 1552667206,
+          "nativeInventoryKnown": true
+        },
+        {
+          "job": 2,
+          "character": "cq3953242",
+          "map": "0",
+          "x": 287,
+          "y": 617,
+          "actorId": 523303439,
+          "nativeInventoryKnown": true
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "missingResources": [],
+  "receivedTypes": [
+    {
+      "round": 0,
+      "job": 0,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "map"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "groupMode"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "equipment"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "skills"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "attackMode"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "attributes"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "map"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "groupMode"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "equipment"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "skills"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "attackMode"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "attributes"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "inventory"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "inventory"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "minimap"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "map"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "groupMode"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "equipment"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "skills"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "attackMode"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "attributes"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "minimap"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "inventory"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "minimap"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "entityRemoved"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "connected"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "connected"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "connected"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "map"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "groupMode"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "equipment"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "skills"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "attackMode"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "attributes"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "map"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "groupMode"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "equipment"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "skills"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "attackMode"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entityName"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "attributes"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "characterStatus"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "characterStatus"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entityName"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "inventory"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "inventory"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "map"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "groupMode"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "equipment"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "skills"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "attackMode"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "attributes"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "minimap"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "minimap"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "inventory"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "minimap"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 1,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "connected"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "connected"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "connected"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "map"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "groupMode"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "equipment"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "skills"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "attackMode"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entityName"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "attributes"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entityDied"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "characterStatus"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "characterStatus"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entityName"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "map"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "groupMode"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "equipment"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "skills"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "attackMode"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "attributes"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "inventory"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entityDied"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "characterStatus"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entityName"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "map"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "minimap"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "groupMode"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "equipment"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "skills"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "inventory"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "attackMode"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "attributes"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "secondaryAttributes"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityDied"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityDied"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "characterStatus"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityName"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "systemMessage"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "inventory"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "minimap"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "minimap"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "appearance"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "health"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "health"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "health"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "health"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "nameColor"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "health"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "health"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entityAction"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 2,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "entity"
+    },
+    {
+      "round": 2,
+      "job": 0,
+      "type": "legacy"
+    },
+    {
+      "round": 2,
+      "job": 1,
+      "type": "legacy"
+    }
+  ]
+}

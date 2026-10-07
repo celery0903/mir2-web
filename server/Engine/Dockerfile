@@ -39,6 +39,14 @@ COPY server/openmir2-items.patch server/openmir2-items.patch
 RUN git -C upstream/openmir2 apply /src/server/openmir2-items.patch
 COPY server/openmir2-quoted-names.patch server/openmir2-quoted-names.patch
 RUN git -C upstream/openmir2 apply /src/server/openmir2-quoted-names.patch
+COPY server/openmir2-group-storage.patch server/openmir2-group-storage.patch
+RUN git -C upstream/openmir2 apply --unidiff-zero /src/server/openmir2-group-storage.patch
+COPY server/openmir2-login-queue.patch server/openmir2-login-queue.patch
+RUN git -C upstream/openmir2 apply /src/server/openmir2-login-queue.patch
+COPY server/openmir2-data-channel.patch server/openmir2-data-channel.patch
+RUN git -C upstream/openmir2 apply --ignore-space-change /src/server/openmir2-data-channel.patch
+COPY server/openmir2-login-reconnect.patch server/openmir2-login-reconnect.patch
+RUN git -C upstream/openmir2 apply /src/server/openmir2-login-reconnect.patch
 RUN --mount=type=cache,target=/root/.nuget/packages \
     for project in GameSrv DBSrv LoginSrv LoginGate SelGate GameGate Storeages/DBSvr.Storage.MySQL; do \
       dotnet publish upstream/openmir2/src/$project/${project##*/}.csproj \
@@ -57,6 +65,12 @@ COPY tests/script tests/script
 RUN dotnet run --project tests/script/ScriptChecks.csproj -c Release --nologo
 COPY tests/quoted-names tests/quoted-names
 RUN dotnet run --project tests/quoted-names/QuoteChecks.csproj -c Release
+COPY tests/login-queue tests/login-queue
+RUN dotnet run --project tests/login-queue/LoginQueueChecks.csproj -c Release
+COPY tests/data-channel tests/data-channel
+RUN dotnet run --project tests/data-channel/DataChannelChecks.csproj -c Release
+COPY tests/login-reconnect tests/login-reconnect
+RUN dotnet run --project tests/login-reconnect/LoginReconnectChecks.csproj -c Release
 
 FROM mcr.microsoft.com/dotnet/runtime:8.0
 COPY --from=data /usr/local/bin/node /usr/local/bin/node

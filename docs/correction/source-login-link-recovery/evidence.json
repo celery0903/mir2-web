@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-07T08:01:54.716Z",
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Pause GameSrv only in the isolated ephemeral stack until the actual LoginSrv heartbeat expires; verify HTTP 503, automatic authentication recovery and HTTP 200 without restarting the container.",
+  "image": "sha256:6eedf853974926b78ee1fa31c7a3b02650b4c94ea1ec3e9eafcf1afcdf2be384",
+  "before": {
+    "status": 200,
+    "body": {
+      "engine": "OpenMir2",
+      "ready": true
+    }
+  },
+  "disconnected": {
+    "status": 503,
+    "body": {
+      "engine": "OpenMir2",
+      "ready": false
+    }
+  },
+  "recovered": {
+    "status": 200,
+    "body": {
+      "engine": "OpenMir2",
+      "ready": true
+    }
+  },
+  "containerPreserved": true
+}

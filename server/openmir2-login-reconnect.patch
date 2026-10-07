@@ -1,0 +1,42 @@
+diff --git a/src/GameSrv/Services/AuthenticationService.cs b/src/GameSrv/Services/AuthenticationService.cs
+--- a/src/GameSrv/Services/AuthenticationService.cs
++++ b/src/GameSrv/Services/AuthenticationService.cs
+@@ -23,6 +23,7 @@
+         {
+             _tcpClient.Setup(new TouchSocketConfig()
+                 .SetRemoteIPHost(new IPHost(IPAddress.Parse(SystemShare.Config.sIDSAddr), SystemShare.Config.nIDSPort))
++                .ConfigurePlugins(plugins => plugins.UseReconnection())
+                 .ConfigureContainer(a =>
+                 {
+                     a.AddConsoleLogger();
+@@ -431,6 +432,15 @@
+             //     return;
+             // }
+             ClearSession();
++            HUtil32.EnterCriticalSection(_userIdSection);
++            try
++            {
++                _socketRecvText = string.Empty;
++            }
++            finally
++            {
++                HUtil32.LeaveCriticalSection(_userIdSection);
++            }
+             LogService.Error("登录服务器[" + sender.IP + "]断开连接...");
+             return Task.CompletedTask;
+         }
+diff --git a/src/LoginSrv/Services/SessionServer.cs b/src/LoginSrv/Services/SessionServer.cs
+--- a/src/LoginSrv/Services/SessionServer.cs
++++ b/src/LoginSrv/Services/SessionServer.cs
+@@ -182,8 +182,9 @@
+                                 break;
+                         }
+                     }
+-                }
+-                msgServer.ReceiveMsg = sReviceMsg;
++                    msgServer.ReceiveMsg = sReviceMsg;
++                    break;
++                }
+             }
+         }
+ 

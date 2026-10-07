@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "full176Acceptance": false,
+  "beforeOnly": false,
+  "scope": "Actual WorldServer.ProcessHumans DLL method; unfinished requests and all positions of processed requests. Empty backend/network stubs, no database.",
+  "results": {
+    "before": {
+      "image": "sha256:c84de7a0eb4c5a8f638b9f95d5e2be41f1934d6601c69ffd3e36e7bd68af2157",
+      "assemblyHashes": {
+        "GameSrv.dll": "1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79",
+        "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6"
+      },
+      "exitCode": 1,
+      "stdout": "/tests/Program.cs(45,49): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\n/tests/Program.cs(45,65): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\n/tests/Program.cs(45,68): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\n/tests/Program.cs(45,30): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\nAssembly GameSrv.dll SHA-256: 1b6c017369a742d6ebeeb72a3b5bb9b2b14affeb5e659b6b60534dab03ddbc79\nAssembly M2Server.dll SHA-256: 357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6\nLOGIN_QUEUE_RESULTS=[{\"label\":\"finished indices \",\"passed\":true},{\"label\":\"finished indices 0\",\"passed\":true},{\"label\":\"finished indices 1\",\"passed\":false,\"error\":\"An unfinished character request was removed or a finished one remained\"},{\"label\":\"finished indices 2\",\"passed\":false,\"error\":\"An unfinished character request was removed or a finished one remained\"},{\"label\":\"finished indices 3\",\"passed\":false,\"error\":\"An unfinished character request was removed or a finished one remained\"},{\"label\":\"finished indices 0,1\",\"passed\":false,\"error\":\"An unfinished character request was removed or a finished one remained\"},{\"label\":\"finished indices 1,2\",\"passed\":false,\"error\":\"An unfinished character request was removed or a finished one remained\"},{\"label\":\"finished indices 0,2,3\",\"passed\":false,\"error\":\"An unfinished character request was removed or a finished one remained\"},{\"label\":\"finished indices 0,1,2,3\",\"passed\":false,\"error\":\"An unfinished character request was removed or a finished one remained\"}]\nNative login queue checks: 2/9\n",
+      "stderr": "",
+      "cases": [
+        {
+          "label": "finished indices ",
+          "passed": true
+        },
+        {
+          "label": "finished indices 0",
+          "passed": true
+        },
+        {
+          "label": "finished indices 1",
+          "passed": false,
+          "error": "An unfinished character request was removed or a finished one remained"
+        },
+        {
+          "label": "finished indices 2",
+          "passed": false,
+          "error": "An unfinished character request was removed or a finished one remained"
+        },
+        {
+          "label": "finished indices 3",
+          "passed": false,
+          "error": "An unfinished character request was removed or a finished one remained"
+        },
+        {
+          "label": "finished indices 0,1",
+          "passed": false,
+          "error": "An unfinished character request was removed or a finished one remained"
+        },
+        {
+          "label": "finished indices 1,2",
+          "passed": false,
+          "error": "An unfinished character request was removed or a finished one remained"
+        },
+        {
+          "label": "finished indices 0,2,3",
+          "passed": false,
+          "error": "An unfinished character request was removed or a finished one remained"
+        },
+        {
+          "label": "finished indices 0,1,2,3",
+          "passed": false,
+          "error": "An unfinished character request was removed or a finished one remained"
+        }
+      ]
+    },
+    "after": {
+      "image": "sha256:6ac84b5d5365c4f13be863918fc793dd527f948f7e3a1650abc0d0100c5cfd1a",
+      "assemblyHashes": {
+        "GameSrv.dll": "a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74",
+        "M2Server.dll": "357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6"
+      },
+      "stdout": "/tests/Program.cs(45,49): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\n/tests/Program.cs(45,65): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\n/tests/Program.cs(45,68): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\n/tests/Program.cs(45,30): warning CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. [/tests/LoginQueueChecks.csproj]\nAssembly GameSrv.dll SHA-256: a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74\nAssembly M2Server.dll SHA-256: 357ed91fc8119c1ea0fcb9edddfcf3faefc82ef66cd9e4be2571b1eaff6cd4d6\nLOGIN_QUEUE_RESULTS=[{\"label\":\"finished indices \",\"passed\":true},{\"label\":\"finished indices 0\",\"passed\":true},{\"label\":\"finished indices 1\",\"passed\":true},{\"label\":\"finished indices 2\",\"passed\":true},{\"label\":\"finished indices 3\",\"passed\":true},{\"label\":\"finished indices 0,1\",\"passed\":true},{\"label\":\"finished indices 1,2\",\"passed\":true},{\"label\":\"finished indices 0,2,3\",\"passed\":true},{\"label\":\"finished indices 0,1,2,3\",\"passed\":true}]\nNative login queue checks: 9/9\n",
+      "stderr": "",
+      "exitCode": 0,
+      "cases": [
+        {
+          "label": "finished indices ",
+          "passed": true
+        },
+        {
+          "label": "finished indices 0",
+          "passed": true
+        },
+        {
+          "label": "finished indices 1",
+          "passed": true
+        },
+        {
+          "label": "finished indices 2",
+          "passed": true
+        },
+        {
+          "label": "finished indices 3",
+          "passed": true
+        },
+        {
+          "label": "finished indices 0,1",
+          "passed": true
+        },
+        {
+          "label": "finished indices 1,2",
+          "passed": true
+        },
+        {
+          "label": "finished indices 0,2,3",
+          "passed": true
+        },
+        {
+          "label": "finished indices 0,1,2,3",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "reproduced": true
+}

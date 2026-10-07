@@ -1,0 +1,31 @@
+diff --git a/WorldProjection.cs b/WorldProjection.cs
+--- a/WorldProjection.cs
++++ b/WorldProjection.cs
+@@ -73,6 +73,15 @@
+             _ => null
+         };
+     }
++    public static object? GroupModeAtLogon(LegacyPacket packet)
++    {
++        if (packet.Id != 50) return null;
++        byte[] body = packet.Body;
++        if (body.Length < 16) return null;
++        // MessageBodyWL.Tag1 low byte carries the native saved AllowGroup flag.
++        return new { type = "groupMode", enabled = body[8] == 1 };
++    }
++
+     public static uint? Feature(LegacyPacket packet)
+     {
+         if (packet.Id == 41) return (uint)packet.Param | (uint)packet.Tag << 16;
+diff --git a/GatewaySession.cs b/GatewaySession.cs
+--- a/GatewaySession.cs
++++ b/GatewaySession.cs
+@@ -566,6 +566,8 @@
+                 if (projection is not null) await Send(projection, lifetime.Token);
+                 if (packet.Id == 50)
+                 {
++                    var groupMode = WorldProjection.GroupModeAtLogon(packet);
++                    if (groupMode is not null) await Send(groupMode, lifetime.Token);
+                     await Send(EquipmentSnapshot(), lifetime.Token);
+                     await Send(SkillSnapshot(), lifetime.Token);
+                 }

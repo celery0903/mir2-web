@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-10-05T03:26:13.158Z",
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Actual native storage image DLLs and isolated MySQL; independent group/recall flags on creation, save and native reload.",
+  "results": {
+    "before": {
+      "image": "sha256:48092dd5906bf7e5db0d57a3b210937f0dbb4565930569ef31bd18a8be71c728",
+      "assemblyHashes": {
+        "DBSrv.Storage.MySQL.dll": "39d14eada3826e9a91be4b89039ffad78f265603733800f4ff4491be669b5552",
+        "OpenMir2.dll": "481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad"
+      },
+      "exitCode": 1,
+      "stdout": "Assembly DBSrv.Storage.MySQL.dll SHA-256: 39d14eada3826e9a91be4b89039ffad78f265603733800f4ff4491be669b5552\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\nGROUP_STORAGE_RESULTS=[{\"label\":\"create group=0, recall=False\",\"passed\":true},{\"label\":\"save group=0, recall=False\",\"passed\":false,\"error\":\"AllowGroup became 1, expected 0\"},{\"label\":\"create group=0, recall=True\",\"passed\":false,\"error\":\"Group permission overwrote the independent recall permission\"},{\"label\":\"save group=0, recall=True\",\"passed\":false,\"error\":\"AllowGroup became 1, expected 0\"},{\"label\":\"create group=1, recall=False\",\"passed\":false,\"error\":\"AllowGroup became 0, expected 1\"},{\"label\":\"save group=1, recall=False\",\"passed\":false,\"error\":\"AllowGroup became 0, expected 1\"},{\"label\":\"create group=1, recall=True\",\"passed\":false,\"error\":\"AllowGroup became 0, expected 1\"},{\"label\":\"save group=1, recall=True\",\"passed\":false,\"error\":\"AllowGroup became 0, expected 1\"}]\nNative group storage checks: 1/8\n",
+      "stderr": "",
+      "cases": [
+        {
+          "label": "create group=0, recall=False",
+          "passed": true
+        },
+        {
+          "label": "save group=0, recall=False",
+          "passed": false,
+          "error": "AllowGroup became 1, expected 0"
+        },
+        {
+          "label": "create group=0, recall=True",
+          "passed": false,
+          "error": "Group permission overwrote the independent recall permission"
+        },
+        {
+          "label": "save group=0, recall=True",
+          "passed": false,
+          "error": "AllowGroup became 1, expected 0"
+        },
+        {
+          "label": "create group=1, recall=False",
+          "passed": false,
+          "error": "AllowGroup became 0, expected 1"
+        },
+        {
+          "label": "save group=1, recall=False",
+          "passed": false,
+          "error": "AllowGroup became 0, expected 1"
+        },
+        {
+          "label": "create group=1, recall=True",
+          "passed": false,
+          "error": "AllowGroup became 0, expected 1"
+        },
+        {
+          "label": "save group=1, recall=True",
+          "passed": false,
+          "error": "AllowGroup became 0, expected 1"
+        }
+      ]
+    },
+    "after": {
+      "image": "sha256:c84de7a0eb4c5a8f638b9f95d5e2be41f1934d6601c69ffd3e36e7bd68af2157",
+      "assemblyHashes": {
+        "DBSrv.Storage.MySQL.dll": "983623effe8f0a0102f43f784b1792ca6c0ef52e6c4c83185a38dd1bd00482cd",
+        "OpenMir2.dll": "481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad"
+      },
+      "stdout": "Assembly DBSrv.Storage.MySQL.dll SHA-256: 983623effe8f0a0102f43f784b1792ca6c0ef52e6c4c83185a38dd1bd00482cd\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\nGROUP_STORAGE_RESULTS=[{\"label\":\"create group=0, recall=False\",\"passed\":true},{\"label\":\"save group=0, recall=False\",\"passed\":true},{\"label\":\"create group=0, recall=True\",\"passed\":true},{\"label\":\"save group=0, recall=True\",\"passed\":true},{\"label\":\"create group=1, recall=False\",\"passed\":true},{\"label\":\"save group=1, recall=False\",\"passed\":true},{\"label\":\"create group=1, recall=True\",\"passed\":true},{\"label\":\"save group=1, recall=True\",\"passed\":true}]\nNative group storage checks: 8/8\n",
+      "stderr": "",
+      "exitCode": 0,
+      "cases": [
+        {
+          "label": "create group=0, recall=False",
+          "passed": true
+        },
+        {
+          "label": "save group=0, recall=False",
+          "passed": true
+        },
+        {
+          "label": "create group=0, recall=True",
+          "passed": true
+        },
+        {
+          "label": "save group=0, recall=True",
+          "passed": true
+        },
+        {
+          "label": "create group=1, recall=False",
+          "passed": true
+        },
+        {
+          "label": "save group=1, recall=False",
+          "passed": true
+        },
+        {
+          "label": "create group=1, recall=True",
+          "passed": true
+        },
+        {
+          "label": "save group=1, recall=True",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "mysqlImage": "sha256:8d132912e9d3c985237567595ec2aeae04936044eb1f9336e8e4da2326238b84",
+  "schemaSha256": "815efc862c3ad9ef193741157a156ef6f0f6d29941cc6706a003e1cd6538f48a"
+}

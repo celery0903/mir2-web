@@ -1,0 +1,615 @@
+{
+  "checkedAt": "2026-10-05T03:43:11.440Z",
+  "url": "http://127.0.0.1:18887",
+  "passed": false,
+  "full176Acceptance": false,
+  "scope": "Three ordinary browser-created characters, one per job, enter together for three rounds. No offline fixtures.",
+  "rounds": [],
+  "errors": [],
+  "missingResources": [],
+  "receivedTypes": [
+    {
+      "round": 0,
+      "job": 0,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "registrationResult"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characterCreationResult"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "characters"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "error"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "error"
+    },
+    {
+      "round": 0,
+      "job": 2,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "error"
+    },
+    {
+      "round": 0,
+      "job": 0,
+      "type": "connected"
+    },
+    {
+      "round": 0,
+      "job": 1,
+      "type": "error"
+    }
+  ],
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 60000ms exceeded while waiting on the predicate",
+  "state0": {
+    "now": 111132.19999980927,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": false,
+    "authScene": "select",
+    "connection": "正在登录…",
+    "map": "0",
+    "mapGeneration": 0,
+    "lastSequence": 1,
+    "worldReady": true,
+    "confirmedCell": {},
+    "camera": {
+      "x": -13808,
+      "y": -19668
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "inventory": {
+      "known": false,
+      "items": [],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "images": [],
+      "ready": false
+    },
+    "groundItems": [],
+    "skills": {
+      "known": false,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": []
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "等待战斗事件",
+    "nearby": [],
+    "directions": [],
+    "entityCount": 0,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {},
+    "actorEffects": {}
+  },
+  "state1": {
+    "now": 101324.19999980927,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": false,
+    "authScene": "select",
+    "connection": "正在登录…",
+    "map": "0",
+    "mapGeneration": 0,
+    "lastSequence": 1,
+    "worldReady": true,
+    "confirmedCell": {},
+    "camera": {
+      "x": -13808,
+      "y": -19668
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "inventory": {
+      "known": false,
+      "items": [],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "images": [],
+      "ready": false
+    },
+    "groundItems": [],
+    "skills": {
+      "known": false,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": []
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "等待战斗事件",
+    "nearby": [],
+    "directions": [],
+    "entityCount": 0,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {},
+    "actorEffects": {}
+  },
+  "state2": {
+    "now": 82466.20000076294,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": false,
+    "authScene": "select",
+    "connection": "正在登录…",
+    "map": "0",
+    "mapGeneration": 0,
+    "lastSequence": 1,
+    "worldReady": true,
+    "confirmedCell": {},
+    "camera": {
+      "x": -13808,
+      "y": -19668
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "inventory": {
+      "known": false,
+      "items": [],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "images": [],
+      "ready": false
+    },
+    "groundItems": [],
+    "skills": {
+      "known": false,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": []
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "等待战斗事件",
+    "nearby": [],
+    "directions": [],
+    "entityCount": 0,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {},
+    "actorEffects": {}
+  }
+}

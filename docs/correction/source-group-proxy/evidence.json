@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Actual proxy image assembly; saved group permission in native MessageBodyWL login payload.",
+  "results": {
+    "before": {
+      "image": "sha256:fe84ccf68217f12bdc3e00b8fda04912a72b4a42f4e981baebbcd93ad2bd272c",
+      "proxyAssemblySha256": "400debe0d130263a58f4a3eb22a124070358ac12ec49d1f9e22876051fac08b3",
+      "exitCode": 1,
+      "stdout": "Proxy assembly SHA-256: 400debe0d130263a58f4a3eb22a124070358ac12ec49d1f9e22876051fac08b3\nGROUP_PROXY_RESULTS=[{\"label\":\"saved permission off\",\"passed\":false,\"error\":\"Native login group permission is not projected\"},{\"label\":\"saved permission on\",\"passed\":false,\"error\":\"Native login group permission is not projected\"},{\"label\":\"feature extension is not permission\",\"passed\":false,\"error\":\"Native login group permission is not projected\"},{\"label\":\"feature extension preserves permission\",\"passed\":false,\"error\":\"Native login group permission is not projected\"},{\"label\":\"only the exact enabled flag is on\",\"passed\":false,\"error\":\"Native login group permission is not projected\"},{\"label\":\"other actor is not logon\",\"passed\":false,\"error\":\"Native login group permission is not projected\"},{\"label\":\"truncated logon is unknown\",\"passed\":false,\"error\":\"Native login group permission is not projected\"},{\"label\":\"empty logon is unknown\",\"passed\":false,\"error\":\"Native login group permission is not projected\"}]\nNative group login checks: 0/8\n",
+      "stderr": "",
+      "cases": [
+        {
+          "label": "saved permission off",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        },
+        {
+          "label": "saved permission on",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        },
+        {
+          "label": "feature extension is not permission",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        },
+        {
+          "label": "feature extension preserves permission",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        },
+        {
+          "label": "only the exact enabled flag is on",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        },
+        {
+          "label": "other actor is not logon",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        },
+        {
+          "label": "truncated logon is unknown",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        },
+        {
+          "label": "empty logon is unknown",
+          "passed": false,
+          "error": "Native login group permission is not projected"
+        }
+      ]
+    },
+    "after": {
+      "image": "sha256:b034c167506eb1c2999e874080f75f618aad3c70636e001794c0b976334a9522",
+      "proxyAssemblySha256": "4d03849020c4f6e49fb6fc2d6decf039cc6555a6ff1689822fb8a833110be553",
+      "stdout": "Proxy assembly SHA-256: 4d03849020c4f6e49fb6fc2d6decf039cc6555a6ff1689822fb8a833110be553\nGROUP_PROXY_RESULTS=[{\"label\":\"saved permission off\",\"passed\":true},{\"label\":\"saved permission on\",\"passed\":true},{\"label\":\"feature extension is not permission\",\"passed\":true},{\"label\":\"feature extension preserves permission\",\"passed\":true},{\"label\":\"only the exact enabled flag is on\",\"passed\":true},{\"label\":\"other actor is not logon\",\"passed\":true},{\"label\":\"truncated logon is unknown\",\"passed\":true},{\"label\":\"empty logon is unknown\",\"passed\":true}]\nNative group login checks: 8/8\n",
+      "stderr": "",
+      "exitCode": 0,
+      "cases": [
+        {
+          "label": "saved permission off",
+          "passed": true
+        },
+        {
+          "label": "saved permission on",
+          "passed": true
+        },
+        {
+          "label": "feature extension is not permission",
+          "passed": true
+        },
+        {
+          "label": "feature extension preserves permission",
+          "passed": true
+        },
+        {
+          "label": "only the exact enabled flag is on",
+          "passed": true
+        },
+        {
+          "label": "other actor is not logon",
+          "passed": true
+        },
+        {
+          "label": "truncated logon is unknown",
+          "passed": true
+        },
+        {
+          "label": "empty logon is unknown",
+          "passed": true
+        }
+      ]
+    }
+  }
+}

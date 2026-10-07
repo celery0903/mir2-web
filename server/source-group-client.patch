@@ -1,0 +1,15 @@
+diff --git a/apps/web/src/play.ts b/apps/web/src/play.ts
+--- a/apps/web/src/play.ts
++++ b/apps/web/src/play.ts
+@@ -559,9 +559,10 @@
+   }
+   else if(message.type==='groupMembers'){groupMemberNames=[...message.members];renderGroup();connection.textContent=groupMemberNames.length?`队伍成员：${groupMemberNames.join('、')}`:'队伍已清空';}
+-  else if(message.type==='groupCancel'){groupEnabled=false;groupMemberNames=[];renderGroup();connection.textContent='队伍已解散';}
++  else if(message.type==='groupCancel'){groupMemberNames=[];renderGroup();connection.textContent='队伍已解散';}
+   else if(message.type==='groupResult'){
+    const labels:Record<string,string>={create:'创建队伍',add:'邀请成员',remove:'移除成员'};
+    const reasons:Record<string,string>={'-1':'当前角色不满足组队条件','-2':'角色不存在或不可用','-3':'对方已经加入其他队伍','-4':'对方关闭了组队','-5':'队伍已满'};
++   if(message.action==='create'&&message.accepted){groupEnabled=true;renderGroup();}
+    connection.textContent=message.accepted?`${labels[message.action]??'队伍操作'}成功`:`${labels[message.action]??'队伍操作'}失败 · ${reasons[String(message.reason)]??`原因 ${message.reason}`}`;
+   }
+   else if(message.type==='tradeOpened'){tradeOpen=true;tradeLocal.clear();tradeRemote.clear();tradeGold=0;tradeRemoteGold=0;tradeTarget.value=message.target;tradeGoldInput.value='0';renderTrade();connection.textContent=`已与 ${message.target} 打开交易`;

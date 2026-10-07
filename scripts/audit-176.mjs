@@ -51,6 +51,16 @@ files.push('shared/native-world.lock.json', 'scripts/fetch-native-map-libraries.
 files.push('server/openmir2-safezone.patch', 'tests/source-safezone.mjs', 'tests/safezone/Program.cs', 'tests/world-maps/Program.cs');
 files.push('shared/archived-176-client.lock.json', 'scripts/fetch-archived-176-client.mjs', 'scripts/prepare-archived-minimaps.py', 'tests/archived-map-assets.mjs', 'tests/archived-minimaps.mjs');
 files.push('server/source-minimap.patch', 'server/source-minimap-proxy.patch', 'server/source-npc-receipt.patch');
+files.push('server/source-group-client.patch', 'server/source-group-proxy.patch', 'tests/source-social.mjs',
+  'tests/source-group-proxy.mjs', 'tests/group-proxy/Program.cs', 'tests/group-proxy/GroupProxyChecks.csproj');
+files.push('server/openmir2-group-storage.patch', 'tests/source-group-storage.mjs',
+  'tests/group-storage/Program.cs', 'tests/group-storage/GroupStorageChecks.csproj');
+files.push('server/openmir2-login-queue.patch', 'tests/source-login-queue.mjs',
+  'tests/login-queue/Program.cs', 'tests/login-queue/LoginQueueChecks.csproj', 'tests/source-concurrent-login.mjs');
+files.push('server/openmir2-data-channel.patch', 'tests/source-data-channel.mjs',
+  'tests/data-channel/Program.cs', 'tests/data-channel/DataChannelChecks.csproj');
+files.push('server/openmir2-login-reconnect.patch', 'tests/source-login-reconnect.mjs', 'tests/source-login-link-recovery.mjs', 'server/Engine/run.mjs',
+  'tests/login-reconnect/Program.cs', 'tests/login-reconnect/LoginReconnectChecks.csproj');
 files.push('tests/source-client.mjs', 'tests/source-world-travel.mjs', 'tests/classic-world-browser.mjs');
 files.push('shared/classic-skills.json', 'scripts/classic-skills.mjs', 'scripts/migrate-classic-skills.mjs', 'tests/classic-skills-migration.mjs', 'tests/classic-skill-references.mjs');
 files.push('scripts/audit-classic-skill-numbers.py');
@@ -191,7 +201,7 @@ const report = {
     default: 'existing Pixi H5 source plus its WebSocket/TCP proxy',
     deployedSource: labels['org.opencontainers.image.source'] ?? null,
     deployedRevision: labels['org.opencontainers.image.revision'] ?? null,
-    patches: ['server/source-client.patch', 'server/source-proxy.patch', 'server/source-magic.patch', 'server/source-minimap.patch', 'server/source-minimap-proxy.patch', 'server/source-npc-receipt.patch'],
+    patches: ['server/source-client.patch', 'server/source-proxy.patch', 'server/source-magic.patch', 'server/source-minimap.patch', 'server/source-minimap-proxy.patch', 'server/source-npc-receipt.patch', 'server/source-group-client.patch', 'server/source-group-proxy.patch'],
     sourceAssets, nativeMapsMatch, mapConversion
   },
   world: { profile: world.profile, activatedMapIDs, enabledMaps: mapAudit.maps, installedMapIDsMatchCollisionAudit: JSON.stringify(activatedMapIDs.slice().sort()) === JSON.stringify(mapAudit.maps.map(map => map.id).sort()), connections: mapAudit.connections, scope: mapAudit.scope },
@@ -204,7 +214,7 @@ const report = {
     'Complete classic world, entrances and spawn tables verified against the chosen version',
     'Version-specific item, monster, skill, drop and NPC data without later content',
     'Complete three-job skill actions and effects, original login transitions and remaining client interactions',
-    'Warehouse capacity and failure regressions, trade, groups, guilds and siege browser workflows',
+    'Full group capacity, combat, experience sharing and original dialog; warehouse failure regressions, trade, guilds and siege browser workflows',
     'Matched full client archive and historical gameplay reference for fidelity comparison',
     'Preserved map layer library indices and matching graphics libraries, with unresolved source references accounted for'
   ],

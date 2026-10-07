@@ -1,0 +1,23 @@
+diff --git a/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Add.cs b/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Add.cs
+--- a/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Add.cs
++++ b/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Add.cs
+@@ -96 +96 @@
+-            strSql.AppendLine("HungerStatus, PayMentPoint, LockLogon, MarryCount, AllowGroupReCall, GroupRcallTime, AllowGuildReCall, IsMaster, MasterName, DearName");
++            strSql.AppendLine("HungerStatus, PayMentPoint, LockLogon, MarryCount, AllowGroup, AllowGroupReCall, GroupRcallTime, AllowGuildReCall, IsMaster, MasterName, DearName");
+@@ -100 +100 @@
+-            strSql.AppendLine("@HungerStatus, @PayMentPoint, @LockLogon, @MarryCount, @AllowGroupReCall, @GroupRcallTime, @AllowGuildReCall, @IsMaster, @MasterName, @DearName");
++            strSql.AppendLine("@HungerStatus, @PayMentPoint, @LockLogon, @MarryCount, @AllowGroup, @AllowGroupReCall, @GroupRcallTime, @AllowGuildReCall, @IsMaster, @MasterName, @DearName");
+@@ -135 +135,2 @@
+-            command.Parameters.AddWithValue("@AllowGroupReCall", hd.AllowGroup);
++            command.Parameters.AddWithValue("@AllowGroup", hd.AllowGroup);
++            command.Parameters.AddWithValue("@AllowGroupReCall", hd.AllowGroupReCall);
+diff --git a/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Save.cs b/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Save.cs
+--- a/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Save.cs
++++ b/src/Storeages/DBSvr.Storage.MySQL/PlayDataStorage.Save.cs
+@@ -87 +87 @@
+-            strSql.AppendLine("IncHealing = @IncHealing, CreditPoint = @CreditPoint, BonusPoint =@BonusPoint, HungerStatus =@HungerStatus, PayMentPoint = @PayMentPoint, LockLogon = @LockLogon, MarryCount = @MarryCount, AllowGroupReCall = @AllowGroupReCall, ");
++            strSql.AppendLine("IncHealing = @IncHealing, CreditPoint = @CreditPoint, BonusPoint =@BonusPoint, HungerStatus =@HungerStatus, PayMentPoint = @PayMentPoint, LockLogon = @LockLogon, MarryCount = @MarryCount, AllowGroup = @AllowGroup, AllowGroupReCall = @AllowGroupReCall, ");
+@@ -121 +121,2 @@
+-            command.Parameters.AddWithValue("@AllowGroupReCall", hd.AllowGroup);
++            command.Parameters.AddWithValue("@AllowGroup", hd.AllowGroup);
++            command.Parameters.AddWithValue("@AllowGroupReCall", hd.AllowGroupReCall);

@@ -1,0 +1,347 @@
+{
+  "checkedAt": "2026-10-05T03:28:12.998Z",
+  "url": "http://127.0.0.1:18887",
+  "passed": true,
+  "full176Acceptance": false,
+  "scope": "Three ordinary level-one browser characters; native group permissions, membership and chat. No offline data fixtures.",
+  "reusedBrowserCharacters": false,
+  "checks": {
+    "ordinaryCharactersAndRoutes": true,
+    "closedInvitationRejected": true,
+    "nativeCreationEnablesLeaderPermission": true,
+    "leaderOnlyInvitation": true,
+    "removalPreservesNativePermission": true,
+    "reinviteWithoutPermissionToggle": true,
+    "chatDeliveredToAllMembers": true,
+    "disbandPreservesAllPermissions": true,
+    "disconnectCleanupAndSavedPermission": true,
+    "reconnectPreservesDisabledPermission": true
+  },
+  "walks": [
+    {
+      "from": {
+        "map": "0",
+        "x": 288,
+        "y": 616
+      },
+      "targetMap": "0132",
+      "x": 282,
+      "y": 636,
+      "waypoints": 6,
+      "uiMovementOnly": true
+    },
+    {
+      "from": {
+        "map": "0132",
+        "x": 13,
+        "y": 15
+      },
+      "targetMap": "0132",
+      "x": 11,
+      "y": 15,
+      "waypoints": 1,
+      "uiMovementOnly": true
+    },
+    {
+      "from": {
+        "map": "0",
+        "x": 288,
+        "y": 618
+      },
+      "targetMap": "0132",
+      "x": 282,
+      "y": 636,
+      "waypoints": 6,
+      "uiMovementOnly": true
+    },
+    {
+      "from": {
+        "map": "0132",
+        "x": 13,
+        "y": 15
+      },
+      "targetMap": "0132",
+      "x": 12,
+      "y": 15,
+      "waypoints": 1,
+      "uiMovementOnly": true
+    },
+    {
+      "from": {
+        "map": "0",
+        "x": 287,
+        "y": 617
+      },
+      "targetMap": "0132",
+      "x": 282,
+      "y": 636,
+      "waypoints": 6,
+      "uiMovementOnly": true
+    },
+    {
+      "from": {
+        "map": "0132",
+        "x": 13,
+        "y": 15
+      },
+      "targetMap": "0132",
+      "x": 13,
+      "y": 15,
+      "waypoints": 0,
+      "uiMovementOnly": true
+    }
+  ],
+  "errors": [],
+  "missingResources": [],
+  "phase": "complete",
+  "groupDesktopColors": 670,
+  "groupMobileColors": 421,
+  "packets": [
+    [
+      {
+        "type": "groupMode",
+        "enabled": false
+      },
+      {
+        "type": "groupResult",
+        "action": "create",
+        "accepted": false,
+        "reason": -4,
+        "target": ""
+      },
+      {
+        "type": "groupResult",
+        "action": "create",
+        "accepted": true,
+        "reason": 0,
+        "target": ""
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951"
+        ]
+      },
+      {
+        "type": "groupResult",
+        "action": "add",
+        "accepted": true,
+        "reason": 0,
+        "target": ""
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951"
+        ]
+      },
+      {
+        "type": "groupResult",
+        "action": "remove",
+        "accepted": true,
+        "reason": 0,
+        "target": "so8929952"
+      },
+      {
+        "type": "groupResult",
+        "action": "add",
+        "accepted": true,
+        "reason": 0,
+        "target": ""
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupResult",
+        "action": "remove",
+        "accepted": true,
+        "reason": 0,
+        "target": "so8929950"
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupResult",
+        "action": "create",
+        "accepted": true,
+        "reason": 0,
+        "target": ""
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupResult",
+        "action": "create",
+        "accepted": true,
+        "reason": 0,
+        "target": ""
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupResult",
+        "action": "remove",
+        "accepted": true,
+        "reason": 0,
+        "target": "so8929950"
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupResult",
+        "action": "create",
+        "accepted": false,
+        "reason": -4,
+        "target": ""
+      }
+    ],
+    [
+      {
+        "type": "groupMode",
+        "enabled": false
+      },
+      {
+        "type": "groupMode",
+        "enabled": true
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951"
+        ]
+      },
+      {
+        "type": "groupResult",
+        "action": "add",
+        "accepted": false,
+        "reason": -1,
+        "target": ""
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951"
+        ]
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupCancel"
+      }
+    ],
+    [
+      {
+        "type": "groupMode",
+        "enabled": false
+      },
+      {
+        "type": "groupMode",
+        "enabled": true
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929951",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupMode",
+        "enabled": true
+      },
+      {
+        "type": "groupMembers",
+        "members": [
+          "so8929950",
+          "so8929952"
+        ]
+      },
+      {
+        "type": "groupCancel"
+      },
+      {
+        "type": "groupMode",
+        "enabled": false
+      },
+      {
+        "type": "groupMode",
+        "enabled": false
+      }
+    ]
+  ]
+}

@@ -54,6 +54,20 @@ async function listeners() {
   return ports;
 }
 
+async function nativeLinksReady() {
+  const tables = await Promise.all(['/proc/net/tcp', '/proc/net/tcp6'].map(file => readFile(file, 'utf8')));
+  const connections = new Map();
+  for (const line of tables.join('\n').split('\n')) {
+    const fields = line.trim().split(/\s+/);
+    if (fields[3] !== '01') continue;
+    const port = parseInt(fields[2].split(':').at(-1), 16);
+    connections.set(port, (connections.get(port) ?? 0) + 1);
+  }
+  // GameSrv and DBSrv both authenticate with LoginSrv; each gate also needs its backend.
+  return [[5600, 2], [6000, 1], [5500, 1], [5100, 1], [5000, 1]]
+    .every(([port, count]) => (connections.get(port) ?? 0) >= count);
+}
+
 async function waitPorts(ports) {
   for (let retry = 0; retry < 180; retry++) {
     if ([...children.values()].some(child => child.exitCode !== null)) throw new Error('An OpenMir2 service exited during startup');
@@ -149,6 +163,11 @@ try {
   }
   await waitPorts([7000, 7100, 7200]);
   ready = true;
-  createServer((req, res) => { res.writeHead(ready ? 200 : 503, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ engine: 'OpenMir2', ready })); }).listen(8081, '0.0.0.0');
+  createServer(async (req, res) => {
+    let available = false;
+    try { available = ready && await nativeLinksReady(); } catch { /* A missing native link is unavailable. */ }
+    res.writeHead(available ? 200 : 503, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ engine: 'OpenMir2', ready: available }));
+  }).listen(8081, '0.0.0.0');
   console.log('OpenMir2 engine is ready.');
 } catch (error) { console.error(error.message); await stop(1); }

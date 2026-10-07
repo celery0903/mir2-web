@@ -1,0 +1,104 @@
+{
+  "checkedAt": "2026-10-05T03:52:13.700Z",
+  "passed": false,
+  "full176Acceptance": false,
+  "beforeOnly": true,
+  "scope": "Actual DataQueryServer DLL against a loopback TCP peer; native request framing, split/coalesced/large replies, signature rejection and per-connection packet isolation. Each case runs in a separate container.",
+  "results": {
+    "before": {
+      "image": "sha256:041ad0f0e224ed463d51a184e9f1d1a22f7a1785a55f37559061c75ccb2b2402",
+      "assemblyHashes": {
+        "GameSrv.dll": "9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5",
+        "OpenMir2.dll": "481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad"
+      },
+      "cases": [
+        {
+          "scenario": "single",
+          "stdout": "[03:52:20 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\n[03:52:20 INF] 数据库服务器[tcp://127.0.0.1:39199/]连接成功...\n[03:52:20 ERR] 数据库服务器[127.0.0.1:39199]断开连接...\nDATA_CHANNEL_RESULTS=[{\"scenario\":\"single\",\"passed\":true}]\nNative database channel checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "single",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "coalesced",
+          "stdout": "[03:52:20 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\n[03:52:21 INF] 数据库服务器[tcp://127.0.0.1:46365/]连接成功...\n[03:52:21 ERR] 数据库服务器[127.0.0.1:46365]断开连接...\nDATA_CHANNEL_RESULTS=[{\"scenario\":\"coalesced\",\"passed\":true}]\nNative database channel checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "coalesced",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "split-header",
+          "stdout": "[03:52:21 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\n[03:52:22 INF] 数据库服务器[tcp://127.0.0.1:45013/]连接成功...\n[03:52:22 ERR] 数据库服务器[127.0.0.1:45013]断开连接...\nDATA_CHANNEL_RESULTS=[{\"scenario\":\"split-header\",\"passed\":true}]\nNative database channel checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "split-header",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "split-body",
+          "stdout": "[03:52:22 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\n[03:52:23 INF] 数据库服务器[tcp://127.0.0.1:42161/]连接成功...\n[03:52:23 ERR] 数据库服务器[127.0.0.1:42161]断开连接...\nDATA_CHANNEL_RESULTS=[{\"scenario\":\"split-body\",\"passed\":true}]\nNative database channel checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "split-body",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "trailing-partial",
+          "stdout": "[03:52:23 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\n[03:52:24 INF] 数据库服务器[tcp://127.0.0.1:43653/]连接成功...\n[03:52:24 ERR] 数据库服务器[127.0.0.1:43653]断开连接...\nDATA_CHANNEL_RESULTS=[{\"scenario\":\"trailing-partial\",\"passed\":true}]\nNative database channel checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "trailing-partial",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "large-fragmented",
+          "exitCode": 139,
+          "stdout": "[03:52:24 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\n[03:52:25 INF] 数据库服务器[tcp://127.0.0.1:46307/]连接成功...\n[03:52:25 ERR] Specified argument was out of the range of valid values.\n",
+          "stderr": "",
+          "passed": false
+        },
+        {
+          "scenario": "invalid-signature",
+          "stdout": "[03:52:25 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\n[03:52:26 INF] 数据库服务器[tcp://127.0.0.1:39797/]连接成功...\n[03:52:26 ERR] 数据库服务器[127.0.0.1:39797]断开连接...\nDATA_CHANNEL_RESULTS=[{\"scenario\":\"invalid-signature\",\"passed\":true}]\nNative database channel checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "invalid-signature",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "independent-adapters",
+          "exitCode": 1,
+          "stdout": "[03:52:26 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 9a5246606e048374f112863378534efea4911526960e427670009ff222d120c5\nAssembly OpenMir2.dll SHA-256: 481f4a882f4825367c15435ff67a16081b3335013766fe28aeb48c21556425ad\nDATA_CHANNEL_RESULTS=[{\"scenario\":\"independent-adapters\",\"passed\":false,\"error\":\"Separate database connections share one mutable packet\"}]\nNative database channel checks: 0/1\n",
+          "stderr": "",
+          "native": {
+            "scenario": "independent-adapters",
+            "passed": false,
+            "error": "Separate database connections share one mutable packet"
+          },
+          "passed": false
+        }
+      ]
+    }
+  },
+  "reproduced": true
+}

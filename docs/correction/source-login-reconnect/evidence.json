@@ -1,0 +1,141 @@
+{
+  "checkedAt": "2026-10-07T08:00:22.307Z",
+  "passed": true,
+  "full176Acceptance": false,
+  "beforeOnly": false,
+  "scope": "Actual authentication and login-server parser DLLs; isolated loopback TCP, repeated passive disconnects, fresh authorization, partial frame reset, intentional close and independent connection buffers. No game database.",
+  "results": {
+    "before": {
+      "image": "sha256:6ac84b5d5365c4f13be863918fc793dd527f948f7e3a1650abc0d0100c5cfd1a",
+      "assemblyHashes": {
+        "GameSrv.dll": "a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74",
+        "LoginSrv.dll": "536e1e22a50c4557cf29d525604551eb66ccbf475848a062672477d764ded88f"
+      },
+      "cases": [
+        {
+          "scenario": "initial-session",
+          "stdout": "[08:00:39 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74\nAssembly LoginSrv.dll SHA-256: 536e1e22a50c4557cf29d525604551eb66ccbf475848a062672477d764ded88f\n[08:00:39 INF] 登录服务器[tcp://127.0.0.1:33203/]连接成功...\n[08:00:39 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"initial-session\",\"passed\":true}]\nNative login connection checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "initial-session",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "remote-close",
+          "exitCode": 1,
+          "stdout": "[08:00:40 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74\nAssembly LoginSrv.dll SHA-256: 536e1e22a50c4557cf29d525604551eb66ccbf475848a062672477d764ded88f\n[08:00:40 INF] 登录服务器[tcp://127.0.0.1:37887/]连接成功...\n[08:00:40 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"remote-close\",\"passed\":false,\"error\":\"The operation has timed out.\"}]\nNative login connection checks: 0/1\n",
+          "stderr": "",
+          "native": {
+            "scenario": "remote-close",
+            "passed": false,
+            "error": "The operation has timed out."
+          },
+          "passed": false
+        },
+        {
+          "scenario": "split-reset",
+          "exitCode": 1,
+          "stdout": "[08:00:48 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74\nAssembly LoginSrv.dll SHA-256: 536e1e22a50c4557cf29d525604551eb66ccbf475848a062672477d764ded88f\n[08:00:48 INF] 登录服务器[tcp://127.0.0.1:43153/]连接成功...\n[08:00:48 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"split-reset\",\"passed\":false,\"error\":\"The operation has timed out.\"}]\nNative login connection checks: 0/1\n",
+          "stderr": "",
+          "native": {
+            "scenario": "split-reset",
+            "passed": false,
+            "error": "The operation has timed out."
+          },
+          "passed": false
+        },
+        {
+          "scenario": "explicit-close",
+          "stdout": "[08:00:55 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74\nAssembly LoginSrv.dll SHA-256: 536e1e22a50c4557cf29d525604551eb66ccbf475848a062672477d764ded88f\n[08:00:56 INF] 登录服务器[tcp://127.0.0.1:35105/]连接成功...\n[08:00:56 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"explicit-close\",\"passed\":true}]\nNative login connection checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "explicit-close",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "interleaved-fragments",
+          "exitCode": 1,
+          "stdout": "[08:00:59 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: a8bf053137c9f71c2e8e9c286201234de900bd562521cbd537ef7a27d7173a74\nAssembly LoginSrv.dll SHA-256: 536e1e22a50c4557cf29d525604551eb66ccbf475848a062672477d764ded88f\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"interleaved-fragments\",\"passed\":false,\"error\":\"A partial login-server frame leaked into the other connection\"}]\nNative login connection checks: 0/1\n",
+          "stderr": "",
+          "native": {
+            "scenario": "interleaved-fragments",
+            "passed": false,
+            "error": "A partial login-server frame leaked into the other connection"
+          },
+          "passed": false
+        }
+      ]
+    },
+    "after": {
+      "image": "sha256:6eedf853974926b78ee1fa31c7a3b02650b4c94ea1ec3e9eafcf1afcdf2be384",
+      "assemblyHashes": {
+        "GameSrv.dll": "91840cd6cd88b2b7e2fb99d0c4f880e474900e1a3a0c22f946486f041a17ead3",
+        "LoginSrv.dll": "ade9719a1157f0c80ccba242ff4997bed19693b2f5ca34cfa1a12baf8f212b03"
+      },
+      "cases": [
+        {
+          "scenario": "initial-session",
+          "stdout": "[08:01:10 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 91840cd6cd88b2b7e2fb99d0c4f880e474900e1a3a0c22f946486f041a17ead3\nAssembly LoginSrv.dll SHA-256: ade9719a1157f0c80ccba242ff4997bed19693b2f5ca34cfa1a12baf8f212b03\n[08:01:10 INF] 登录服务器[tcp://127.0.0.1:35761/]连接成功...\n[08:01:10 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"initial-session\",\"passed\":true}]\nNative login connection checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "initial-session",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "remote-close",
+          "stdout": "[08:01:11 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 91840cd6cd88b2b7e2fb99d0c4f880e474900e1a3a0c22f946486f041a17ead3\nAssembly LoginSrv.dll SHA-256: ade9719a1157f0c80ccba242ff4997bed19693b2f5ca34cfa1a12baf8f212b03\n[08:01:11 INF] 登录服务器[tcp://127.0.0.1:44611/]连接成功...\n[08:01:11 ERR] 登录服务器[127.0.0.1]断开连接...\n[08:01:12 INF] 登录服务器[tcp://127.0.0.1:44611/]连接成功...\n[08:01:12 ERR] 登录服务器[127.0.0.1]断开连接...\n[08:01:13 INF] 登录服务器[tcp://127.0.0.1:44611/]连接成功...\n[08:01:13 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"remote-close\",\"passed\":true}]\nNative login connection checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "remote-close",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "split-reset",
+          "stdout": "[08:01:14 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 91840cd6cd88b2b7e2fb99d0c4f880e474900e1a3a0c22f946486f041a17ead3\nAssembly LoginSrv.dll SHA-256: ade9719a1157f0c80ccba242ff4997bed19693b2f5ca34cfa1a12baf8f212b03\n[08:01:14 INF] 登录服务器[tcp://127.0.0.1:40901/]连接成功...\n[08:01:14 ERR] 登录服务器[127.0.0.1]断开连接...\n[08:01:15 INF] 登录服务器[tcp://127.0.0.1:40901/]连接成功...\n[08:01:15 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"split-reset\",\"passed\":true}]\nNative login connection checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "split-reset",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "explicit-close",
+          "stdout": "[08:01:16 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 91840cd6cd88b2b7e2fb99d0c4f880e474900e1a3a0c22f946486f041a17ead3\nAssembly LoginSrv.dll SHA-256: ade9719a1157f0c80ccba242ff4997bed19693b2f5ca34cfa1a12baf8f212b03\n[08:01:16 INF] 登录服务器[tcp://127.0.0.1:34139/]连接成功...\n[08:01:16 ERR] 登录服务器[127.0.0.1]断开连接...\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"explicit-close\",\"passed\":true}]\nNative login connection checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "explicit-close",
+            "passed": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "interleaved-fragments",
+          "stdout": "[08:01:19 INF] 初始化脚本编码定义...\nAssembly GameSrv.dll SHA-256: 91840cd6cd88b2b7e2fb99d0c4f880e474900e1a3a0c22f946486f041a17ead3\nAssembly LoginSrv.dll SHA-256: ade9719a1157f0c80ccba242ff4997bed19693b2f5ca34cfa1a12baf8f212b03\n987\n988\nLOGIN_RECONNECT_RESULTS=[{\"scenario\":\"interleaved-fragments\",\"passed\":true}]\nNative login connection checks: 1/1\n",
+          "stderr": "",
+          "exitCode": 0,
+          "native": {
+            "scenario": "interleaved-fragments",
+            "passed": true
+          },
+          "passed": true
+        }
+      ]
+    }
+  },
+  "reproduced": true
+}

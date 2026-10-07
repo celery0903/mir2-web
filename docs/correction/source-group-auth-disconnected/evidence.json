@@ -1,0 +1,178 @@
+{
+  "checkedAt": "2026-10-07T07:51:46.980Z",
+  "url": "http://127.0.0.1:18880",
+  "passed": false,
+  "full176Acceptance": false,
+  "scope": "Three ordinary level-one browser characters; native group permissions, membership and chat. No offline data fixtures.",
+  "reusedBrowserCharacters": true,
+  "checks": {},
+  "walks": [],
+  "errors": [],
+  "missingResources": [],
+  "phase": "registration-and-native-shop-route",
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 60000ms exceeded while waiting on the predicate",
+  "state0": {
+    "now": 84343,
+    "visibility": "visible",
+    "hasFocus": true,
+    "inWorld": false,
+    "authScene": "select",
+    "connection": "正在进入比奇…",
+    "map": "0",
+    "mapGeneration": 0,
+    "lastSequence": 2,
+    "worldReady": true,
+    "confirmedCell": {},
+    "camera": {
+      "x": -13808,
+      "y": -19668
+    },
+    "intentions": {
+      "rightPointer": false,
+      "pursuitHarvest": false
+    },
+    "inventory": {
+      "known": false,
+      "items": [],
+      "pending": [],
+      "gold": 0
+    },
+    "itemQuickBar": {
+      "slots": [
+        {
+          "slot": 0,
+          "pending": false
+        },
+        {
+          "slot": 1,
+          "pending": false
+        },
+        {
+          "slot": 2,
+          "pending": false
+        },
+        {
+          "slot": 3,
+          "pending": false
+        },
+        {
+          "slot": 4,
+          "pending": false
+        },
+        {
+          "slot": 5,
+          "pending": false
+        }
+      ],
+      "pending": []
+    },
+    "equipment": {
+      "slots": [],
+      "pending": [],
+      "rendered": [
+        {
+          "slot": 3,
+          "kind": "cell",
+          "left": "175px",
+          "top": "108px"
+        },
+        {
+          "slot": 2,
+          "kind": "cell",
+          "left": "175px",
+          "top": "144px"
+        },
+        {
+          "slot": 5,
+          "kind": "cell",
+          "left": "48px",
+          "top": "197px"
+        },
+        {
+          "slot": 6,
+          "kind": "cell",
+          "left": "175px",
+          "top": "197px"
+        },
+        {
+          "slot": 7,
+          "kind": "cell",
+          "left": "48px",
+          "top": "233px"
+        },
+        {
+          "slot": 8,
+          "kind": "cell",
+          "left": "175px",
+          "top": "233px"
+        }
+      ]
+    },
+    "paperdoll": {
+      "images": [],
+      "ready": false
+    },
+    "groundItems": [],
+    "skills": {
+      "known": false,
+      "skills": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "icons": []
+    },
+    "minimap": {
+      "mode": "compact",
+      "mapId": "0",
+      "name": "比奇省",
+      "world": {
+        "width": 700,
+        "height": 700
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "frameIndex": 100,
+      "imageUrl": "/ui-national/mmap/100.42b979fe580b75ef.png",
+      "imageReady": true,
+      "drawRect": {
+        "left": 0.3485714285714181,
+        "top": -7.105427357601002e-15,
+        "width": 159.30285714285716,
+        "height": 106.00000000000001
+      },
+      "markers": []
+    },
+    "dialogue": {
+      "visible": false,
+      "npc": "NPC",
+      "text": "",
+      "options": []
+    },
+    "combatStatus": "等待战斗事件",
+    "nearby": [],
+    "directions": [],
+    "entityCount": 0,
+    "magicEffects": {
+      "activeSprites": 0,
+      "recent": [],
+      "errors": [],
+      "flights": [],
+      "casts": []
+    },
+    "actorActions": {},
+    "actorEffects": {}
+  },
+  "packets": [
+    [],
+    [],
+    []
+  ]
+}
